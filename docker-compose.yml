@@ -1,0 +1,29 @@
+services:
+  backend:
+    build: ./backend # Path to the backend Dockerfile
+    container_name: backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - DEBUG=1
+    env_file: .env
+    # depends_on:
+    #   - db
+
+  frontend:
+    build: ./frontend # Path to the frontend Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    working_dir: /app
+    command: npm run dev
+    env_file: .env
+
