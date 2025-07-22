@@ -1,3 +1,67 @@
+"""
+grailmoe_webscraper.py
+
+A command-line script to scrape and download educational PDFs (exam papers, notes, etc.) 
+from the Grail API (https://api.grail.moe). 
+
+It supports filtering by:
+- Category (e.g., IB, GCE 'A' Levels, GCE 'O' Levels)
+- One or more Subjects (e.g., Physics, Chemistry, Biology)
+- Document Type (e.g., Exam Papers, Notes, TYS Answers)
+
+For each matching document, it downloads the PDF, saves it into a categorized folder structure,
+and logs metadata about the download in a CSV file.
+
+---
+
+Usage:
+    python grailmoe_webscraper.py <category_key> <subject1,subject2,...> <doctype_key>
+
+Example:
+    python grailmoe_webscraper.py o_level physics,chemistry exam_papers
+
+---
+
+Key Features:
+- Fetches documents page-by-page using the Grail API with pagination support.
+- Skips downloading PDFs that already exist locally.
+- Logs download details (filename, title, URL, category, subject, doc type, upload date, saved path) to CSV.
+- Organizes downloads in a nested folder structure: grail_pdfs/<category>/<subject>/
+
+---
+
+Constants:
+- GRAIL_API: Base URL for the Grail API to fetch approved notes.
+- GRAIL_DOCS_URL: Base URL to construct PDF download links.
+- PAGE_SIZE: Number of results fetched per API call.
+- CATEGORY_LIST: Maps CLI category keys to Grail category names.
+- SUBJECT_LIST: Maps CLI subject keys to Grail subject names.
+- DOC_TYPE_LIST: Maps CLI doc type keys to Grail document types.
+
+---
+
+Dependencies:
+- requests
+- csv
+- os
+- sys
+
+Ensure you have the required packages installed, e.g.:
+    pip install requests
+
+---
+
+Error Handling:
+- Exits with usage instructions if invalid or insufficient CLI arguments are provided.
+- Catches and prints errors on network/API failures or file operations.
+- Skips invalid subjects and duplicate files gracefully.
+
+---
+
+This script is intended for educational resource management and bulk downloading 
+of exam-related documents from Grail for offline usage or further processing.
+"""
+
 import os
 import requests
 import sys
@@ -71,7 +135,7 @@ def safe_filename(name):
 def scrape_subject(subject_key):
     if subject_key not in SUBJECT_LIST:
         print(f"❌ Skipping invalid subject key: {subject_key}")
-        return
+        sys.exit(1)
 
     SUBJECT = SUBJECT_LIST[subject_key]
     save_dir = os.path.join("grail_pdfs", cat_key, subject_key)
