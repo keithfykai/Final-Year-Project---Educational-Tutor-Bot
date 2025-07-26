@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SignInPage, type AuthProvider } from '@toolpad/core/SignInPage';
 import { AuthError } from 'next-auth';
-import { providerMap, signIn } from '../../auth/auth';
+import { providerMap, signIn } from '../../../auth/auth';
 
 export default function SignIn() {
   return (
