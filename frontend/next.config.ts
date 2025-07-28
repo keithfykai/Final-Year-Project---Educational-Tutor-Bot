@@ -8,6 +8,9 @@ const nextConfig: Partial<NextConfig> & {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  images: {
+    domains: ["images.unsplash.com", "flowbite.com"],
+  }
 };
 
 export default nextConfig;
