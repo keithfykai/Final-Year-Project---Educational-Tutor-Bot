@@ -42,3 +42,6 @@ next-env.d.ts
 
 # mui library
 material-ui
+
+# flowbite
+.flowbite-react

@@ -6,8 +6,11 @@ WORKDIR /app
 
 # Install deps using local package.json before mounting
 COPY package*.json ./
-RUN npm install
 
-# Don't copy source files — volume mount will override anyway
+RUN rm -rf node_modules package-lock.json && npm install
+
+COPY . .
+
 EXPOSE 3000
+
 CMD ["npm", "run", "dev"]
