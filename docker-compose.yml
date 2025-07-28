@@ -13,9 +13,7 @@ services:
     #   - db
 
   frontend:
-    build: 
-      context: ./frontend # Path to the frontend Dockerfile
-      dockerfile: Dockerfile
+    build: ./frontend # Path to the frontend Dockerfile
     container_name: frontend
     ports:
       - "3000:3000"
