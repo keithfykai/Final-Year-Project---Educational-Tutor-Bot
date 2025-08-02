@@ -1,6 +1,7 @@
+# backend/api/urls.py
 from django.urls import path
-from . import views  # Import your views
+from .views import chat_with_bot
 
 urlpatterns = [
-    path('hello/', views.hello_world, name='hello_world'),
+    path('chat/', chat_with_bot, name='chat-with-bot'),
 ]

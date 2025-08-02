@@ -161,7 +161,7 @@ def scrape_subject(subject_key):
                 "category": CATEGORY,
                 "subject": SUBJECT,
                 "doc_type": DOC_TYPE,
-                "keyword": "",
+                "keyword": "Notes", # Notes for Notes
                 "page": page,
                 "size": PAGE_SIZE,
                 "sorted_by_upload_date": "desc"
