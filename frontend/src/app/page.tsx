@@ -11,7 +11,6 @@ export default function HomePage() {
     <>
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
         <Hero />
-        <Features />
         
         <div className="flex justify-center mt-8">
           <button
@@ -21,6 +20,8 @@ export default function HomePage() {
             Start Chatting Now!
           </button>
         </div>
+
+        <Features />
       </main>
     </>
   );

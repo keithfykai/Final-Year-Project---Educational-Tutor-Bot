@@ -106,6 +106,13 @@ export default function Navbar() {
           >
             Sign In
           </Link>
+          <Link
+            href="/chat"
+            className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+            onClick={handleNavClick}
+          >
+            Chat
+          </Link>
         </div>
       )}
     </nav>

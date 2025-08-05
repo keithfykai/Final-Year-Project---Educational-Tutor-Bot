@@ -2,10 +2,10 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="flex flex-col items-center justify-center text-center px-6 py-20 bg-sky-50 dark:bg-slate-900">
+    <section className="flex flex-col items-center justify-center text-center px-6 py-5 bg-sky-50 dark:bg-slate-900">
       <div className="w-full max-w-4xl">
         <Image
-          src="https://images.unsplash.com/photo-1633111148061-a976bbe6f193?q=80&w=1740&auto=format&fit=crop"
+          src="https://static1.straitstimes.com.sg/s3fs-public/articles/2022/01/05/yq-olvl-05012022.jpg?VersionId=zWpc6Ek6H.OABtR6ab9liu6jTgFzWel5"
           alt="Hero Image"
           width={900}
           height={500}

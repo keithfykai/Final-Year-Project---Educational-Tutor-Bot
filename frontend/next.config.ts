@@ -5,7 +5,7 @@ const nextConfig: Partial<NextConfig> = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ["images.unsplash.com", "flowbite.com"],
+    domains: ["cassette.sphdigital.com.sg, images.unsplash.com", "flowbite.com", "static1.straitstimes.com.sg"],
   },
   async rewrites() {
     return [

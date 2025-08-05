@@ -11,48 +11,47 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from langchain_community.document_loaders import TextLoader
 
-CATEGORY_LIST = {
-    "PSLE": "PSLE",
-    "ib": "IB",
-    "a_level": "GCE 'A' Levels",
-    "o_level": "GCE 'O' Levels"
-}
-
-SUBJECT_LIST = {
-    "science": "Science",
-    "mathematics": "Mathematics",
-    "combined_physics": "Combined Physics",
-    "combined_chemistry": "Combined Chemistry",
-    "combined_biology": "Combined Biology",
-    "physics": "Pure Physics",
-    "chemistry": "Pure Chemistry",
-    "biology": "Pure Biology",
-    "add_math": "Additional Mathematics",
-    "elem_math": "Elementary Mathematics",
-    "h2_math": "H2 Mathematics",
-    "h1_math": "H1 Mathematics",
-    "h2_biology": "H2 Biology",
-    "h1_biology": "H1 Biology",
-    "h2_physics": "H2 Physics",
-    "h1_physics": "H1 Physics",
-    "h2_chemistry": "H2 Chemistry",
-    "h1_chemistry": "H1 Chemistry",
-    "hl_math": "HL Mathematics",
-    "sl_math": "SL Mathematics",
-    "hl_biology": "HL Biology",
-    "sl_biology": "SL Biology",
-    "hl_physics": "HL Physics",
-    "sl_physics": "SL Physics",
-    "hl_chemistry": "HL Chemistry",
-    "sl_chemistry": "SL Chemistry",
+CATEGORY_SUBJECT_LIST = {
+    "psle": {
+        "science": "Science",
+        "mathematics": "Mathematics",
+        },
+    "ib": {
+        "hl_mathematics": "HL_Mathematics",
+        "sl_mathematics": "SL_Mathematics",
+        "hl_biology": "HL_Biology",
+        "sl_biology": "SL_Biology",
+        "hl_physics": "HL_Physics",
+        "sl_physics": "SL_Physics",
+        "hl_chemistry": "HL_Chemistry",
+        "sl_chemistry": "SL_Chemistry",
+        },
+    "a_level": {
+        "h2_mathematics": "H2_Mathematics",
+        "h1_mathematics": "H1_Mathematics",
+        "h2_biology": "H2_Biology",
+        "h1_biology": "H1_Biology",
+        "h2_physics": "H2_Physics",
+        "h1_physics": "H1_Physics",
+        "h2_chemistry": "H2_Chemistry",
+        "h1_chemistry": "H1_Chemistry",
+        },
+    "o_level": {
+        "combined_physics": "Combined_Physics",
+        "combined_chemistry": "Combined_Chemistry",
+        "combined_biology": "Combined_Biology",
+        "pure_physics": "Pure_Physics",
+        "pure_chemistry": "Pure_Chemistry",
+        "pure_biology": "Pure_Biology",
+        "add_math": "Additional_Mathematics",
+        "elem_math": "Elementary_Mathematics",
+    },
 }
 
 # --- CONFIGURATION ---
-SYLLABUS_FILE = "./api/olevelphysics/O Level Physics Syllabus_nougat.mmd"  # folder with syllabus + handwritten .mmd files
-NOTES_FOLDER = "./api/olevelphysics/notes"
-CHROMA_DB_DIR = "./api/chroma_db/"
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 OLLAMA_URL = "http://host.docker.internal:11434/api/chat"
+OLLAMA_MODEL = "llama3.1"
 
 # --- DOCUMENT LOADING ---
 def load_documents(syllabus_path: str, notes_folder: str) -> List[Document]:
@@ -92,7 +91,7 @@ def embed_and_store(docs, persist_dir):
 # --- OLLAMA CHAT INTERFACE ---
 def query_ollama_with_context(prompt: str, history: List[dict]) -> str:
     payload = {
-        "model": "llama3.1",
+        "model": OLLAMA_MODEL,
         "messages": history + [{"role": "user", "content": prompt}],
         "stream": True  # Important: Streaming output
     }
@@ -111,15 +110,41 @@ def query_ollama_with_context(prompt: str, history: List[dict]) -> str:
                 print(f"⚠️ Failed to parse line: {line}\nError: {e}")
     return full_reply
 
+retriever_cache = {}
+
 # Run once and cache
-def load_or_get_retriever():
-    if os.path.exists(CHROMA_DB_DIR):
-        vectordb = Chroma(persist_directory=CHROMA_DB_DIR,
+def load_or_get_retriever(level: str, subject: str):
+    # Cache
+    cache_key = f"{level}:{subject}"
+    if cache_key in retriever_cache:
+        return retriever_cache[cache_key]
+
+    # Normalize inputs
+    level = level.lower()
+    subject = subject.lower()
+
+    # Validate level and subject
+    if level not in CATEGORY_SUBJECT_LIST or subject not in CATEGORY_SUBJECT_LIST[level]:
+        raise ValueError(f"Invalid level/subject: {level}/{subject}")
+
+    # Use the VALUE as the folder and filename
+    subject_folder = CATEGORY_SUBJECT_LIST[level][subject]
+    base_path = os.path.join("./api/data", level, subject_folder)
+    syllabus_file = os.path.join(base_path, f"{subject_folder} Syllabus.mmd")
+    notes_folder = os.path.join(base_path, "notes")
+    chroma_dir = os.path.join("./api/chroma_db", level, subject_folder)
+
+    # Load or create Chroma DB
+    if os.path.exists(chroma_dir):
+        vectordb = Chroma(persist_directory=chroma_dir,
                           embedding_function=HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL))
     else:
-        docs = load_documents(SYLLABUS_FILE, NOTES_FOLDER)
+        print(f"🔍 Creating new Chroma DB for {level}/{subject_folder}...")
+        docs = load_documents(syllabus_file, notes_folder)
         chunks = chunk_documents(docs)
-        vectordb = embed_and_store(chunks, CHROMA_DB_DIR)
+        vectordb = embed_and_store(chunks, chroma_dir)
+
     retriever = vectordb.as_retriever()
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+    retriever_cache[cache_key] = (retriever, memory)
     return retriever, memory

@@ -1,12 +1,50 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { InlineMath, BlockMath } from 'react-katex';
+import 'katex/dist/katex.min.css';
 
-const levels = ['PSLE', 'A Levels', 'O Levels'];
-const subjects = ['Mathematics', 'Science'];
+const CATEGORY_SUBJECT_LIST = {
+  psle: {
+    science: 'Science',
+    mathematics: 'Mathematics',
+  },
+  ib: {
+    hl_mathematics: 'HL_Mathematics',
+    sl_mathematics: 'SL_Mathematics',
+    hl_biology: 'HL_Biology',
+    sl_biology: 'SL_Biology',
+    hl_physics: 'HL_Physics',
+    sl_physics: 'SL_Physics',
+    hl_chemistry: 'HL_Chemistry',
+    sl_chemistry: 'SL_Chemistry',
+  },
+  a_level: {
+    h2_mathematics: 'H2_Mathematics',
+    h1_mathematics: 'H1_Mathematics',
+    h2_biology: 'H2_Biology',
+    h1_biology: 'H1_Biology',
+    h2_physics: 'H2_Physics',
+    h1_physics: 'H1_Physics',
+    h2_chemistry: 'H2_Chemistry',
+    h1_chemistry: 'H1_Chemistry',
+  },
+  o_level: {
+    combined_physics: 'Combined_Physics',
+    combined_chemistry: 'Combined_Chemistry',
+    combined_biology: 'Combined_Biology',
+    pure_physics: 'Pure_Physics',
+    pure_chemistry: 'Pure_Chemistry',
+    pure_biology: 'Pure_Biology',
+    add_math: 'Additional_Mathematics',
+    elem_math: 'Elementary_Mathematics',
+  },
+};
+
+type LevelKey = keyof typeof CATEGORY_SUBJECT_LIST;
 
 export default function ChatPage() {
-  const [selectedLevel, setSelectedLevel] = useState('');
+  const [selectedLevel, setSelectedLevel] = useState<LevelKey | ''>('');
   const [selectedSubject, setSelectedSubject] = useState('');
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<
@@ -16,7 +54,10 @@ export default function ChatPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const sendMessage = async () => {
-    if (!input.trim()) return;
+    if (!input.trim() || !selectedLevel || !selectedSubject) {
+      alert('Please select both level and subject, and enter a message.');
+      return;
+    }
 
     const userMessage = input;
     setMessages((prev) => [...prev, { sender: 'user', text: userMessage }]);
@@ -31,6 +72,8 @@ export default function ChatPage() {
         },
         body: JSON.stringify({
           message: userMessage,
+          level: selectedLevel,
+          subject: selectedSubject,
           history: messages.map((msg) => ({
             role: msg.sender === 'user' ? 'user' : 'assistant',
             content: msg.text,
@@ -69,46 +112,61 @@ export default function ChatPage() {
   return (
     <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300">
       <header className="p-6 border-b border-slate-300 dark:border-slate-700">
-        <h1 className="text-3xl font-bold text-slate-800 dark:text-slate-100">
-          Educational Tutor Chat
+        <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100">
+          Educational Tutor Bot
         </h1>
 
+        <h2 className="text-l mt-2 text-slate-600 dark:text-slate-400">
+          Select Level and Subject to start chatting!
+        </h2>
+
         <div className="flex gap-4 mt-4">
+          {/* LEVEL SELECT */}
           <select
             title="level-select"
             className="p-2 px-4 border rounded bg-white dark:bg-slate-800"
             value={selectedLevel}
-            onChange={(e) => setSelectedLevel(e.target.value)}
+            onChange={(e) => {
+              setSelectedLevel(e.target.value as LevelKey | '');
+              setSelectedSubject('');
+            }}
           >
             <option value="">Select Level</option>
-            {levels.map((level) => (
-              <option key={level} value={level}>
-                {level}
+            {Object.keys(CATEGORY_SUBJECT_LIST).map((levelKey) => (
+              <option key={levelKey} value={levelKey}>
+                {levelKey.replace('_', ' ').toUpperCase()}
               </option>
             ))}
           </select>
 
+          {/* SUBJECT SELECT */}
           <select
             title="subject-select"
-            className="p-2 border rounded bg-white dark:bg-slate-800"
+            className="p-2 px-4 border rounded bg-white dark:bg-slate-800"
             value={selectedSubject}
             onChange={(e) => setSelectedSubject(e.target.value)}
+            disabled={!selectedLevel}
           >
             <option value="">Select Subject</option>
-            {subjects.map((subject) => (
-              <option key={subject} value={subject}>
-                {subject}
-              </option>
-            ))}
+            {selectedLevel &&
+              Object.entries(CATEGORY_SUBJECT_LIST[selectedLevel as LevelKey]).map(
+                ([subjectKey, subjectLabel]) => (
+                  <option key={subjectKey} value={subjectKey}>
+                    {subjectLabel.replace(/_/g, ' ')}
+                  </option>
+                )
+              )}
           </select>
         </div>
       </header>
 
-      <main className="flex-1 overflow-y-auto p-6 max-w-5xl mx-auto space-y-4">
+      <main className="flex-1 overflow-y-auto p-6 w-full space-y-4 h-0 grow">
         {messages.length === 0 && !loading && (
-          <p className="text-center text-slate-400">
-            Start chatting with your tutor bot...
-          </p>
+          <div className="flex flex-col justify-center items-center h-full">
+            <p className="text-center text-slate-400 text-lg">
+              Start chatting with your tutor bot...
+            </p>
+          </div>
         )}
 
         {messages.map((msg, index) => (
@@ -121,11 +179,22 @@ export default function ChatPage() {
             }`}
           >
             {msg.sender === 'bot' ? (
-              msg.text.split('\n').map((paragraph, i) => (
-                <p key={i} className="mb-2">
-                  {parseBoldMarkdown(paragraph.trim())}
-                </p>
-              ))
+              msg.text.split('\n').map((paragraph, i) => {
+                const parsed = parseMarkdownWithMath(paragraph.trim());
+
+                  const containsBlockMath = Array.isArray(parsed) &&
+                    parsed.some(
+                      (el: any) =>
+                        React.isValidElement(el) &&
+                        el.type?.name === 'BlockMath'
+                    );
+
+                  return (
+                    <div key={i} className="mb-2">
+                      {containsBlockMath ? parsed : <p>{parsed}</p>}
+                    </div>
+                  );
+                })
             ) : (
               msg.text
             )}
@@ -160,7 +229,7 @@ export default function ChatPage() {
           <button
             type="submit"
             className="px-6 py-3 bg-sky-600 text-white rounded hover:bg-sky-700 disabled:opacity-50"
-            disabled={loading}
+            disabled={loading || !selectedLevel || !selectedSubject}
           >
             Send
           </button>
@@ -190,14 +259,35 @@ function Dot({ delay }: { delay: string }) {
   );
 }
 
-// Parse **bold** markdown inside text
-function parseBoldMarkdown(text: string) {
+function parseMarkdownWithMath(text: string) {
+  // Regex to split text by inline \( ... \) and block \[ ... \] math
+  const regex = /(\\\[.*?\\\]|\\\(.*?\\\))/g;
+  const parts = text.split(regex);
+
+  return parts.map((part, i) => {
+    if (part.startsWith('\\[') && part.endsWith('\\]')) {
+      // Remove delimiters \[ and \]
+      const math = part.slice(2, -2);
+      return <BlockMath key={i}>{math}</BlockMath>;
+    } else if (part.startsWith('\\(') && part.endsWith('\\)')) {
+      // Remove delimiters \( and \)
+      const math = part.slice(2, -2);
+      return <InlineMath key={i}>{math}</InlineMath>;
+    } else {
+      // For normal text, also parse **bold**
+      return parseBoldMarkdown(part, i);
+    }
+  });
+}
+
+// Updated bold markdown parser to receive a key
+function parseBoldMarkdown(text: string, keyBase: number) {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
   return parts.map((part, i) => {
     if (part.startsWith('**') && part.endsWith('**')) {
       const content = part.slice(2, -2);
-      return <strong key={i}>{content}</strong>;
+      return <strong key={`${keyBase}-${i}`}>{content}</strong>;
     }
-    return <React.Fragment key={i}>{part}</React.Fragment>;
+    return <React.Fragment key={`${keyBase}-${i}`}>{part}</React.Fragment>;
   });
 }

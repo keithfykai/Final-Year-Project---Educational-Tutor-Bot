@@ -21,7 +21,7 @@ export default function Features() {
         <FeatureCard
           icon={<FaBookOpen />}
           title="Multi-Subject Support"
-          description="Covers a wide range of subjects from math to humanities."
+          description="Covers a wide range of Exams from PSLE to A Level."
         />
       </div>
     </section>
