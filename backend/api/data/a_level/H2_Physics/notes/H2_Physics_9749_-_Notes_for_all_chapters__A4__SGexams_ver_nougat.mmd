@@ -1,0 +1,3254 @@
+# H2 Physics
+
+Syllabus 9749
+
+Revision notes
+
+Last updated: 16 February 2020
+
+Master copy
+
+Marcus Soh
+
+2018-2019
+
+Victoria Junior College
+###### Contents
+
+* 1
+
+## Acknowledgements
+
+For providing the original lecture notes (in no particular order)
+
+Mr. Julius Chan
+
+Mr. Caleb Ho
+
+Mr. Kwek Eng Yeow
+
+Ms. Cai Xirui
+
+Ms. Khaw Hwee Ju
+
+Dr. Goh Ker Liang
+
+Mr. Jayesh Kumar
+
+For helping me with making the notes
+
+Ivan Lee
+
+Iris Tan
+
+For vetting through
+
+Ms. Khaw Hwee Ju
+
+Kay Yeo
+
+Ivan Lee
+
+Thanks to my class of 18S41 for pointing out errors where they were made.
+
+Certain images were made using the online tool [https://www.draw.io](https://www.draw.io).
+
+## Conventions
+
+Every definition that should be memorised will be highlighted in green.
+
+Every formula that accompanies a definition and / or should be memorised will be highlighted in yellow.
+
+Where applicable, content not in syllabus is boxed up with the heading "EXTRAI".
+
+## Disclaimer
+
+Although I have tried to ensure that everything in these notes are factually correct, some errors may arise. In which case, please send an email to:
+
+## marcussoh38@qmail.com
+
+with the details of the error, with "H2PHYE" as the subject.
+
+These notes are free to distribute, however please credit me if you do. I appreciate your honesty.
+
+[MISSING_PAGE_FAIL:4]
+
+## Chapter 2 Errors and Uncertainties
+
+### 2.1 Systematic errors
+
+Systematic errors are errors of measurements that occur according to some 'fixed rule or pattern' such that they yield a consistent overestimation or underestimation of the true value.
+
+The error is systematic if (1) repeated measurements taken under the same conditions yield the same error in magnitude and sign or if (2) its value changes in a predictable manner based on the surroundings.
+
+e.g. zero error, faulty instruments, wrong assumptions, wrong experimental technique
+
+Systematic errors are NOT reducible by taking the average.
+
+Instead, the error can be removed by calibrating instruments or by changing the experimental technique.
+
+### 2.2 Random errors
+
+Random errors are errors with different magnitudes and signs in repeated measurements. They occur due to the inability to obtain the true value of the measured quantity.
+
+The error may be random due to (1) variation in the condition of measuring instruments, (2) variation due to the inability of an observer to measure small intervals, (3) variation due to fluctuating external conditions, or (4) irregularity of a quantity to be measured.
+
+e.g. human reaction time, parallax error
+
+Random errors are reducible by taking a number of readings and finding the average.
+
+### 2.3 Precision and Accuracy in data
+
+Precision: the'spread' of the data
+
+Accuracy: how close the average value of the data is to the 'true' value
+
+### 2.4 Precision and Accuracy in instruments
+
+Precision can also refer to the smallest value an instrument can measure.
+
+Precision is reflected by the actual uncertainty of an instrument (to 1 s.f.).
+
+Accuracy refers to how close the measured value is from the true value.
+
+Accuracy is reflected by the fractional or percentage uncertainty (to 2 s.f.).
+
+## 5 Actual, Fractional and Percentage uncertainties
+
+Rules: (for \(R\ \pm\ \Delta R\))
+
+1. Actual uncertainty \(\Delta R\) is always expressed to 1 s.f.
+2. R is expressed to the same number of decimal places as in \(\Delta R\).
+
+e.g. (6.6 \(\pm\ 0.1\)) cm
+
+## 6 Uncertainties of calculated values
+
+The First Principles is a way to calculate the uncertainty of a function. It can be used in all scenarios.
+
+For example,
+
+\[R=(1.2\pm 0.1)\ \mathrm{m}\]
+
+Therefore,
+
+\[\Delta R=\frac{R_{max}-R_{min}}{2}=\frac{1.3-1.1}{2}=0.1\]
+
+\begin{tabular}{|c|c|} \hline Case & Method to find uncertainty \\  & (actual / fractional) \\ \hline \multirow{4}{*}{\begin{tabular}{} \end{tabular} } & Final actual uncertainty is the sum of all absolute \\  & \multicolumn{1}{c}{} \\  & \multicolumn{1}{c}{} \\  & \multicolumn{1}{c}{} \\  & \multicolumn{1}{c}{} \\  & \multicolumn{1}{c}{} \\  & \multicolumn{1}{c}{} \\  & \multicolumn{1}{c}{} \\  & \multicolumn{1}{c}{} \\  & \multicolumn{1}{c}{} \\  & \multicolumn{1}{c}{} \\ \end{tabular} } \\ \hline \multirow{4}{*}{
+\begin{tabular}{} \end{tabular} } & Final fractional uncertainty is the sum of the individual \\  & \multicolumn{1}{c}{} & fractional uncertainties. \\  & \multicolumn{1}{c}{} & \\
+
+**Page 7**
+
+Chapter 3: Kinematics
+
+**1 Displacement** (symbol \(s\), base units m)
+
+Shortest distance from the initial to the final position of a body along a specific direction.
+
+The area under a velocity - time graph gives the change in displacement.
+
+**2 Velocity** (symbol \(v\), base units ms\({}^{-1}\))
+
+Rate of change of displacement with respect to time.
+
+The gradient of a displacement - time graph gives the instantaneous velocity.
+
+The area under an acceleration - time graph gives the change in velocity.
+
+\[v=\frac{ds}{dt}\]
+
+**3 Acceleration** (symbol \(a\), base units ms\({}^{-2}\))
+
+Rate of change of velocity with respect to time.
+
+The gradient of a velocity - time graph gives the instantaneous acceleration.
+
+\[a=\frac{dv}{dt}\]
+
+**4 Free Fall**
+
+No air resistance: Downwards acceleration of 9.81 ms\({}^{-2}\)
+
+**5 Terminal Velocity in a Viscous Liquid**
+
+Terminal velocity is the maximum velocity obtained when an object is falling under the influence of gravity.
+
+Assume that a small sphere is dropped from a height \(h\) above a viscous fluid. Since the sphere is small and density of air is low, we can assume that \(a=g\) when sphere is falling in air (see below for the case of air resistance).
+
+When the sphere enters the fluid (e.g. water), the sphere will decelerate and its velocity decreases.
+
+\[mg-F_{v}=ma\]
+
+When \(mg=F_{v}\), the sphere has reached terminal velocity.
+
+## 6 Terminal Velocity in air
+
+Air resistance present: Still accelerate downwards, but as velocity increases, air resistance increases until acceleration reaches 0.
+
+The maximum velocity attained is the terminal velocity.
+
+1. When object starts from rest, initial v = 0 and only experiences weight = mg a. \(F=ma\) becomes \(F=mg\) (\(g=9.81\) ms\({}^{-2}\))
+2. As object gains speed in the downwards direction, it experiences increasing air resistance against its motion (in the upward direction) 1. Net force experienced is the resultant of weight (\(mg\)) and air resistance (\(F_{air}\)) 2. Net force = \(mg-\ F_{air}\) (which magnitude is smaller than mg) 3. \(mg-\ F_{air}=ma\) : \(a=g-\frac{F_{air}}{m}\)
+3. As speed of body increases, air resistance increases until it is equal to the body's weight a. \(mg-\ F_{air}=ma\) \(\Leftrightarrow\ 0=ma\) \(\Leftrightarrow\ a=0\) Body falls at constant velocity (terminal velocity at time \(t_{1}\))
+
+[MISSING_PAGE_FAIL:9]
+
+[MISSING_PAGE_EMPTY:10]
+
+[MISSING_PAGE_EMPTY:11]
+
+## 8 Projectile Motion
+
+An object thrown at angle will have its weight as the only force acting vertically downwards.
+
+The only acceleration the object experiences is due to gravity, \(g=9.81\) ms\({}^{-2}\). Air resistance is negligible.
+
+There will be constant horizontal velocity.
+
+Resolve the angle of motion to its horizontal and vertical components, then equations of kinematics to solve the problem.
+
+\begin{tabular}{|c|c|c|} \hline  & Horizontally (\(x\)-direction) & Vertically (\(y\)-direction) \\ \hline Displacement & \(s_{x}=u_{x}t\) & \(s_{y}=u_{y}t-\frac{1}{2}gt^{2}\) \\ \hline Velocity & \(u_{x}=u\cos\theta\) & \(v_{y}=u_{y}-gt\) \\ \hline Acceleration & \(a_{x}=0\) & \(a_{y}=-g\) \\ \hline \end{tabular}
+
+Note: Assuming upwards and to the right as positive for sign convention.
+
+* Path of projectile motion without air resistance is always symmetrical parabola (if starting and ending position are on the same level.)
+* At the highest point of motion, vertical velocity = 0 (turning point)
+
+\begin{tabular}{|c|c|c|} \hline  & & \\ \(u_{y}=u\) sin \(\theta\) & \(u_{x}=u\) cos \(\theta\) & range, \(R\) \\ \hline \end{tabular}
+
+Note: \(u_{y}=-v_{y}\) and \(u_{x}=v_{x}\)
+
+\(u\) and \(v\) can also be calculated using the formulae:
+
+\[u=\sqrt{u_{x}^{2}+u_{y}^{2}}\]
+
+## Chapter 4 Forces
+
+### 1 Non-contact forces
+
+Gravitational, electric, magnetic
+
+#### 2 Contact forces
+
+Normal contact, frictional, drag, elastic, upthrust
+
+#### 3 Hooke's Law
+
+Hooke's Law: Within the proportional limit, the extension e, produced in a material is directly proportional to the force \(F\) applied.
+
+\(F=k\bar{e}\)
+
+#### 4 Spring constant (symbol \(k\), units Nm\({}^{-1}\), base units kgs\({}^{-2}\))
+
+The spring constant is a measure of the stiffness of an object.
+
+Springs connected in series:
+
+\(\frac{1}{k_{eff}}=\frac{1}{k_{1}}+\frac{1}{k_{2}}+\cdots+\frac{1}{k_{N}}\)_or_\(k_{eff}=\frac{k}{N}\)
+
+Springs connected in parallel:
+
+\(k_{eff}\equiv k_{1}+k_{2}+\cdots+k_{N}\)_or_\(k_{eff}\equiv Nk\)
+
+#### 5 Elastic Potential Energy (EPE)
+
+The energy stored in a deformed (extended or compressed) wire or spring which obeys Hooke's law is known as the EPE.
+
+\(EPE=\frac{1}{2}Fx=\frac{F^{2}}{2k}=\frac{1}{2}kx^{2}\)
+
+It can be found from the area under the force-extension graph.
+
+#### 6 Centre of Gravity
+
+The entire mass of a body can be considered to act at a single point known as the centre of mass.
+
+If a body is symmetrical and of uniform composition, then its centre of mass is at the geometrical centre of the body.
+
+In uniform gravitational fields, the centre of mass coincides with the centre of gravity.
+
+## 7 Free body diagrams
+
+The purpose of free body diagrams is to analyse the forces acting on the object only. For forces in equilibrium, the 3 forces' line of action must coincide at the same point.
+
+## 8 Moments (symbol \(\tau\), units Nm, base units kgm\({}^{2}\)s\({}^{-2}\))
+
+The turning effect of a force is called its moment or torque.
+
+A moment is defined as the product of the force and the perpendicular distance from the line of action of the force to the pivot.
+
+\(\tau=\) F \(\times\) d
+
+Resolve F if perpendicular distance not given.
+
+Couple: 2 equal and opposite forces whose lines of action do not coincide. They produce rotation only as the net force is zero.
+
+\(\tau=\) F \(\times\) \(perpendicular\) _distance between the 2 forces_
+
+Principle of moments: For an object in rotational equilibrium, the sum of the anticlockwise moments about the pivot is equal to the sum of clockwise moments about the same pivot.
+
+\(\tau_{anticlockwise}=\tau_{clockwise}\)
+
+## 9 Equilibrium
+
+A closed vector triangle can be formed from the force vectors.
+
+\(\sum F=0\)
+
+Condition 1: The resultant force acting on the object must be zero.
+
+\(\sum\tau=0\)
+
+**10 Pressure** (symbol \(p\), units Pa, base units kgm\({}^{-1}\)s\({}^{-2}\))
+
+The pressure at a point X due to a column of liquid is given by
+
+\(p=\rho gh\)
+
+Derivation:
+
+\(p=\frac{F}{A}=\frac{mg}{A}=\frac{\rho Vg}{A}=\frac{\rho Ahg}{A}=\rho gh\)
+
+## 11 Uphrust
+
+For an object in a liquid, the pressure difference between the top and bottom of the object provides an upward force, or upthrust.
+
+Upthrust can be calculated as the weight of liquid displaced by the object.
+
+\[\text{Uphtrust}=(\rho h_{1}g)A-(\rho h_{2}g)A=\rho LgA\]
+
+where
+
+\[h_{1}\]
+
+ is the height of the bottom surface of the object under water
+
+\[h_{2}\]
+
+ is the height of the top surface of the object under water
+
+\[L\]
+
+ is the height of the object
+
+\[A\]
+
+ is the surface area of 1 face
+
+## 12 Principle of Flotation
+
+For an object in equilibrium, the upthrust is equal to the weight of the object.
+
+\[\rho LgA=mg\]
+
+## Chapter 5 Dynamics
+
+### 1 Inertia
+
+inertia is defined as the reluctance of a body to change its state of motion or rest. Inertia is affected by mass.
+
+### 2 Mass and Weight
+
+Mass is the amount of matter in a body. Weight is due to the effect of gravity on a mass.
+
+### 3 Momentum (symbol p, base units kgms\({}^{-1}\))
+
+The product of mass and velocity of an object.
+
+\(p=mv\)
+
+### 4 Newton's Laws
+
+Newton's First Law: Every body continues in its state of rest or uniform motion in a straight line unless an unbalanced (resultant) force acts on it to change its state.
+
+Newton's Second Law: The rate of change of momentum of a body is proportional to the unbalanced (resultant) force acting on it, and occurs in the direction of the force
+
+\[F\propto\frac{dp}{dt}\]
+
+Derivation of \(F=ma\)
+
+\[F=\frac{dp}{dt}=\frac{d(mv)}{dt}=m\frac{dv}{dt}=ma\]
+
+Note: resultant force is always in the same direction as the acceleration.
+
+Newton's Third Law: If body A exerts a force (action) on body B, then body B will exert an equal and opposite force (reaction) on body A.
+
+### 5 Impulse (symbol \(I\), units Ns, base units kgms\({}^{-1}\))
+
+Impulse is defined as the integral of the force over the time interval in which the force acts.
+
+Impulse=\(\int_{t_{1}}^{t_{2}}\!F\ dt\)
+
+Impulse can be thought of as the area under the force-time graph.
+
+Impulse-momentum theorem states that impulse is equal to the change in momentum.
+
+\[F_{avg}\Delta t=\Delta p\ or\ F_{avg}=\frac{\Delta p}{\Delta t}\]
+
+A small \(\Delta t\) leads to a large \(F\) and vice versa.
+
+Hence, when falling, we usually bend our knees when we land after a jump to have a larger \(\Delta t\) and hence a smaller force on our knees. This reduces the risk of injury.
+
+## 5 Collisions
+
+Principle of Conservation of Momentum (p.o.c.o.m.):
+
+The total momentum of a system is conserved provided no external unbalanced force acts on the system:
+
+\[m_{1}u_{1}+m_{2}u_{2}=m_{1}v_{1}+m_{2}v_{2}\]
+
+p.o.c.o.m. is always obeyed for every type of collision.
+
+Elastic collisions: Kinetic energy of the system is conserved.
+
+\[\frac{1}{2}m_{1}u_{1}^{2}+\frac{1}{2}m_{2}u_{2}^{2}=\frac{1}{2}m_{1}v_{1}^{2} +\frac{1}{2}m_{2}v_{2}^{2}\]
+
+Conservation of momentum and kinetic energy (p.o.c.o.m & c.o.e.) leads to the relative speed equation:
+
+\[u_{1}-u_{2}=v_{2}-v_{1}\]
+
+or relative speed of approach = relative speed of separation. (r.s.a. = r.s.s.)
+
+Inelastic collisions: Kinetic energy of the system is not conserved.
+
+Totally inelastic collisions: Kinetic energy of the system is not conserved and both objects stick to each other after collision. (coalescence)
+
+\[\frac{m_{1}u_{1}+m_{2}u_{2}=(m_{1}+m_{2})v}{\text{EXTRAI}}\]
+
+If an object collides into another object of equal mass that is originally stationary obliquely (not head on) and they travel off at an angle relative to one another, if the collision is elastic, the angle at which they separate will be \(90^{\circ}\).
+
+**Page 18**
+
+**Chapter 6: Work, Energy, Power**
+
+**1 Work done by a force (symbol \(W\), units J, base units kgm\({}^{2}\)s\({}^{-2}\))**
+
+The work done by a constant force on an object is defined as the product of the magnitude of the displacement and the component of the force parallel to the displacement:
+
+In general,
+
+\(W=F\cos\theta\left(\Delta x\right)\)
+
+\(F\)
+
+Alternatively, if the force is not constant, then
+
+\(W=\int_{x_{1}}^{x_{2}}F\,dx\)
+
+or the area under the force-displacement graph.
+
+**2 Work done by a gas**
+
+For a gas enclosed in a cylinder, the work done by the gas in expanding at constant pressure is given by:
+
+\(W=p\Delta V\)
+
+In general, the work done by a gas in changing the volume from \(V_{1}\) to \(V_{2}\) is given by:
+
+\(W=\int_{V_{1}}^{V_{2}}p\,dV\)
+
+or the area under the pressure-volume graph.
+
+**3 Common examples of energy**
+
+Chemical, nuclear, radiant, electrical, internal, kinetic, gravitational potential, elastic energy
+
+## 4 Kinetic energy
+
+Kinetic energy of an object is the energy it possess by virtue of its motion.
+
+\[E_{k}=\frac{1}{2}mv^{2}\]
+
+Derivation of equation:
+
+Consider an object of mass m moving to the right under a constant force \(F_{net}\). Then,
+
+\[F_{net}=ma\]
+
+From kinematics,
+
+\[v^{2}=u^{2}+2as\to\ s=\frac{v^{2}-u^{2}}{2a}\]
+
+From forces,
+
+\[W=F_{net}s=mas\]
+
+Then,
+
+\[W=ma\left(\frac{v^{2}-u^{2}}{2a}\right)=\frac{1}{2}m(v^{2}-u^{2})\]
+
+Therefore,
+
+\[W=\Delta KE\]
+
+For a body initially at rest, \(u=0\), and where work done is fully converted into kinetic energy, the KE of an object of mass \(m\) moving with speed \(v\) is defined as the equation above.
+
+This equation is an expression for the Work Energy theorem, which states that the net work done by forces acting on a particle is equal to the change in kinetic energy of the particle.
+
+## 5 Gravitational potential energy
+
+Consider a book being raised from a height \(h_{1}\) to a height \(h_{2}\) by a constant force \(F\) equal and opposite to the weight \(mg\) of the book, ignoring air resistance.
+
+Since \(F=mg\), then
+
+\[W=(F\cos\theta)\Delta x=mg(\Delta h)=mg(h_{2}-h_{1})=mgh_{2}-mgh_{1}\]
+
+Hence
+
+\[W=GPE_{f}-GPE_{i}\]
+
+We define the gravitational potential energy of a body as the product of its weight \(mg\) and its height \(h\) above a reference level. Hence
+
+\[GPE=mgh\]
+
+## 6 Different forms of potential energy
+
+Type of P.E.
+
+Due to
+
+Gravitational 2 masses
+
+Electric
+
+An electric current
+
+Elastic
+
+A deformed spring
+
+## 7 Conservation of energy
+
+The Principle of Conservation of Energy (c.o.e.) states that energy can neither be created nor destroyed, but can be converted from one form to another. The total energy in a closed system is always constant.
+
+\begin{tabular}{|l|l|l|} \hline Situation & Energy converted & \\ \cline{2-3}  & From & To \\ \hline Bullet strikes block and & KE of bullet & Internal energy, KE, GPE \\ becomes embedded in it & & of bullet and block \\ \hline Shooting an arrow using & Elastic PE of the bow & KE of the arrow \\ the bow & & \\ \hline Swinging pendulum & GPE \(\mathbf{\leqslant}\mathbf{\cdot}\mathbf{\times}\mathbf{\times}\) \\ \hline \end{tabular}
+
+In general,
+
+\(energy\)\(lost=energy\)\(gained\)
+
+**8 Power** (symbol \(P\), units W, base units kgm\({}^{2}\)s\({}^{-3}\))
+
+Power is defined as the rate at which work is done or the rate at which energy is transferred.
+
+\(P=\frac{\Delta W}{\Delta t}\)
+
+For a constant force \(F\) acting on an object with velocity \(\nu\),
+
+\(P=Fv\)
+
+Derivation:
+
+\[P=\frac{dW}{dt}=\frac{d(Fx)}{dt}=F\,\frac{dx}{dt}=Fv\]
+
+## 9 Efficiency
+
+In reality, no device can convert its total work done into useful energy. Most practical devices dissipate energy, usually due to fraction.
+
+Efficiency can be defined as the percentage ratio of useful power output to power input.
+
+\(\eta=\frac{\text{useful power output}}{\text{power input}}\)
+
+## Chapter 7 Motion in a Circle
+
+### 1 Angular displacement (symbol \(\theta\), units rad)
+
+Angular displacement is given by the formula
+
+\[\theta=\frac{s}{r}\]
+
+Can be thought of as the angle "travelled".
+
+The radian is the angle subtended at the centre of a circle by an arc of equal length to the radius.
+
+### 2 Angular velocity (symbol \(\omega\), units rad s\({}^{-1}\))
+
+Angular velocity is the rate of change of angular displacement.
+
+\[\omega=\frac{d\theta}{dt}\]
+
+Period \(T\) is the time taken for one complete revolution.
+
+For one revolution, \(\theta=2\pi\). Hence
+
+Note: for a body rotating in circular motion at constant speed, the angular velocity of the object is the same at every point on the body. However, the velocity at different points on the body varies.
+
+\[v_{C}>v_{B}>v_{A}\;but\;\omega_{A}=\omega_{B}=\omega_{C}\]
+
+### 3 Tangential velocity (symbol \(\nu\))
+
+Tangential velocity refers to the linear velocity of a point moving in a circle. It is directed tangentially to the circular path.
+
+\[\begin{array}{c}s=r\theta\\ \frac{ds}{dt}=r\frac{d\theta}{dt}\\ \dot{\nu}=r\omega\end{array}\]
+
+### 4 Centripetal acceleration (symbol \(a\))
+
+Consider a mass \(m\) moving from point A to B in a circular path of radius \(r\) with uniform speed \(\nu\). At A, its initial velocity is \(v_{a}\) and at B, its velocity is \(v_{B}\). (magnitude is the same, but direction is different)
+
+Hence \(\Delta\nu=v_{B}-v_{A}=v_{B}+(-v_{A})\)
+
+By small angle approximation, \(\Delta\nu=v\theta\)
+
+\[a=v\omega=r\omega^{2}=\frac{v^{2}}{r}\]
+
+Centripetal acceleration is always directed towards the centre.
+
+## 5 Centripetal force (symbol \(F_{c}\))
+
+Qualitative explanation of motion in a curved path:
+
+Newton's first law states that an object in motion will continue in its state of uniform motion in a straight line unless an external force acts on it. Hence, for an object moving with constant speed to execute uniform circular motion, an external force must act on the object.
+
+According to Newton's second law, this resultant force is proportional to its acceleration. Hence this resultant force acts in the same direction as the acceleration, i.e. perpendicular to the motion and directed towards the centre.
+
+This force is known as the centripetal force.
+
+\[F_{c}=ma=m\left(\frac{v^{2}}{r}\right)=mr\omega^{2}\]
+
+Note: Centripetal force is a resultant force. Hence, it should not be labelled in free body diagrams.
+
+Note: Centripetal force is never constant because its direction is always changing.
+
+## Chapter 8 Gravitational Field
+
+### 1 Law of Universal Gravitation
+
+Newton proposed a law, which says:
+
+Two particles attract each other with a force proportional to the product of their masses and inversely proportional to the square of their distance apart.
+
+\[F=\frac{GMm}{r^{2}}\]
+
+Note: As gravitational force is always attractive, the force is always negative, i.e.
+
+\[F=-\frac{GM\bar{m}}{r^{2}}\]
+
+However, in calculations, the negative sign can be dropped. This is because gravitational force is always attractive in nature (i.e. there is only 1 type, negative). \(r^{2}\) is the square of the distances between their geometrical centres.
+
+### 2 Gravitational field (strength) (symbol \(g\), units N kg\({}^{-1}\), base units ms\({}^{-2}\))
+
+The gravitational field strength \(g\) at a point in a gravitational field is defined as the force per unit mass acting on any mass placed at that point:
+
+\[g=\frac{F}{m}\]
+
+A mass \(M\) establishes a field of strength \(g\)
+
+\[g=\frac{GM\bar{m}}{m}=\frac{GM}{r^{2}}\]
+
+Due to sign convention, gravitational field is negative. However, the negative sign can be dropped as it is always attractive in nature.
+
+Near the earth's surface, \(g\) is approximately constant at 9.81 ms\({}^{-2}\).
+
+### 3 Satellite motion
+
+For a satellite of mass \(m\) orbiting a planet of mass \(M\), it is said that the gravitational force acting on the satellite _provides_ the centripetal force.
+
+Hence, for all satellites, gravitational force provides the centripetal force.
+
+\[F_{G}=F_{C}\]
+
+\[\frac{GMm}{r^{2}}=\frac{mv^{2}}{r}\]
+
+In this equation, the orbital velocity can be calculated.
+
+\[v_{orb}=\sqrt{\frac{GM}{r}}\]
+
+### 4 Geostationary satellites
+
+A geostationary satellite is a satellite that is doing circular orbit above the equator of the Earth and moving in a direction similar to the earth's rotation with a period exactly equal to the period of the Earth as it turns about its axis, which is 24 hours.
+
+The orbit is also sometimes called a 'parking orbit'.
+
+For a geostationary satellite, gravitational force provides the centripetal force.
+
+## 5 Kepler's third law
+
+Consider a planet of mass \(m\) orbiting a star of mass \(M.\) Let the distance between them be \(r.\) Since gravitational force provides the centripetal force,
+
+\[F_{G}=F_{C}\] \[\frac{GMm}{r^{2}}=mr\omega^{2}\] \[\frac{GMm}{r^{2}}=mr\left(\frac{2\pi}{T}\right)^{2}\] \[\overline{T^{2}}=\frac{4\pi^{2}}{GM}r^{3}\text{ }or\text{ }T^{2} \propto r^{3}\]
+
+## 6 Gravitational potential energy (symbol \(U,\) units J, base units kgm\({}^{2}\)s\({}^{-2}\))
+
+With infinity being taken as the zero reference, the GPE at a point is the work done by an external agent in bringing a test mass from infinity to the point without a change in kinetic energy.
+
+\[U=-\frac{GMm}{r}\]
+
+Note: The negative sign cannot be dropped in calculations as \(U\) is zero at infinity. The sign implies the attractive nature of the gravitational field.
+
+## 7 Binary stars
+
+A binary star system is one where two stars rotate about their common centre of mass.
+
+To find the period of rotation:
+
+\[F_{G}=\frac{GM_{1}M_{2}}{(R_{1}+R_{2})^{2}}\]
+
+For mass \(M_{1},\)
+
+\(F_{CM_{1}}=M_{1}R_{1}\omega^{2}.\) Since \(F_{G}=F_{CM},\)
+
+\(\frac{GM_{1}M_{2}}{(R_{1}+R_{2})^{2}}=M_{1}R_{1}\omega^{2}\) so \(\frac{GM_{2}}{(R_{1}+R_{2})^{2}}=R_{1}\omega^{2}\)-- (1)
+
+For mass \(M_{2},\)
+
+\(F_{CM_{2}}=M_{2}R_{2}\omega^{2}.\) Since \(F_{G}=F_{CM},\)
+
+\(\frac{GM_{1}M_{2}}{(R_{1}+R_{2})^{2}}=M_{2}R_{2}\omega^{2}\) so \(\frac{GM_{1}}{(R_{1}+R_{2})^{2}}=R_{2}\omega^{2}\)-- (2)
+
+(1) + (2):
+
+\[\frac{G(M_{1}+M_{2})}{(R_{1}+R_{2})^{2}}=(R_{1}+R_{2})\left(\frac{2\pi}{T} \right)^{2}\]
+
+\[T=\sqrt{\frac{4\pi^{2}(R_{1}+R_{2})^{3}}{G(M_{1}+M_{2})}}\]
+
+Calculating GPE:
+
+\[GPE_{1}=\frac{GM_{1}M_{2}}{R_{1}+R_{2}} GPE_{2}=\frac{GM_{1}M_{2}}{R_{1}+R_{2}}\] \[GPE_{T}=\frac{2GM_{1}M_{2}}{R_{1}+R_{2}}\]
+
+**8 Escape speed** (symbol \(v_{e}\))
+
+Escape speed is the velocity which will allow the object to go to infinity and never return. Assuming that at infinity, the speed of the object is zero,
+
+\[\frac{1}{2}mv^{2}\geq\frac{GMm}{r}\]
+
+\[v_{e}=\sqrt{\frac{2GM}{r}}\]
+
+where \(v_{e}\) is the minimum escape speed.
+
+**9 Gravitational potential** (symbol \(\phi\), units J kg\({}^{-1}\), base units m\({}^{2}\)s\({}^{-2}\))
+
+The gravitational potential at a point is the work done per unit mass by an external agent in bringing an object from infinity to the point.
+
+**Similarities**
+
+**GPE \(U\)**
+
+**GPE \(U\)**
+
+**GPE \(U\)**
+
+**GPE \(\phi\)**
+
+**Measure of work done**
+
+**Work done for the whole object**
+
+**mass**
+
+**Scalars**
+
+**Infinity as zero reference**
+
+\[\phi=\frac{U}{M}=-\frac{GM}{r}\]
+
+**10 Orbital energies**
+
+**The total energy of a satellite of mass** \(m\) **moving with speed** \(\nu\) **around the earth in an orbit of radius** \(r\) **around the earth of mass** \(M\) **is**
+
+\(E_{T}=K+U\)
+
+\(E_{T}=\frac{1}{2}mv^{2}+\left(-\frac{GMm}{r}\right)--(1)\)
+
+**For the circular motion of the satellite in orbit:**
+
+\(\frac{GMm}{r^{2}}=\frac{mv^{2}}{r}\)
+
+\(mv^{2}=\frac{GMm}{r}\Rightarrow K=\frac{GMm}{2r}\)
+
+**Therefore,**
+
+\[E_{T}=K+U=\frac{GMm}{2r}+\left(-\frac{GMm}{r}\right)=-\frac{GMm}{2r}\]
+
+**11 Relating \(F,U,g,\phi\)**
+
+**The gravitational force** \(F\) **can be derived from the negative of the potential energy gradient.**
+
+\[F=-\frac{dU}{dr}\]
+
+**The gravitational field strength** \(g\) **can be derived from the negative of the potential gradient.**
+
+[MISSING_PAGE_EMPTY:26]
+
+## Chapter 9 Temperature and Ideal Gases
+
+A measure of the degree of hotness or coldness of an object. Rises when thermal energy is supplied to an object, unless there is a phase change. Heat flows from regions of high temperature to regions of low temperature.
+
+Temperature of a substance is directly related to the amount of kinetic energy in the substance. The higher the temperature, the higher the kinetic energy.
+
+Kinetic energy comes in 3 forms: Translational, Rotational and Vibrational
+
+## 2 Internal Energy
+
+Internal energy, U, is the sum of the kinetic energy and intermolecular potential energy of all the molecules of the system.
+
+\(U=KE+PE\) of all molecules
+
+## 3 Thermal Equilibrium
+
+Heat energy is transferred from a hot body to a cooler body through 3 mechanisms:
+
+Conduction, Convection and Radiation.
+
+2 bodies in thermal contact will exchange energy between them, but if there is no net heat flow, they are in thermal equilibrium and at the same temperature.
+
+## 4 Empirical Scales
+
+Based on the observation of thermometric properties as they change with temperature.
+
+Usually has 2 fixed points which assumes a certain thermometric property varies linearly with temperature. The quantity of the thermometric property must have a unique value at every temperature. E.g. Must show a one-one graph
+
+For the configrade scale, the fixed points are the steam point (100\({}^{\circ}\)C) and ice point (0\({}^{\circ}\)C).
+
+If the value X is the value of the thermometric property, then
+
+\(\frac{\theta}{100}=\frac{X_{\theta}-X_{i}}{X_{s}-X_{i}}\)
+
+where \(X_{\theta}\) is the value of X at temperature \(\theta\)
+
+\(X_{i}\) is the value of X at ice point
+
+\(X_{s}\) is the value of X at steam point
+
+Assumption of linearity of the thermometric properties leads to inaccurate temperature readings as it is inherently a wrong assumption. Instead, the actual behaviour of the thermometric property is non-linear. Thus empirical scales are always slightly wrong, except at the fixed points.
+
+Thus, thermometers based on different thermometric properties will disagree, except at the 2 fixed points.
+
+## 5 Kelvin (absolute) Scale
+
+The lower point is absolute 0. This is the lowest possible temperature all matter can have, where all atoms have the minimum possible kinetic energy possible.
+
+At absolute 0, all atoms have minimal internal energy.
+
+The upper fixed point is the triple point of water, which is assigned 273.16 K. This is the temperature where water can exist in all 3 states in equilibrium. It was chosen as it is easily reproducible and precise.
+
+Thus the Kelvin, K, is defined as \(\frac{1}{273.16}\) of the triple point of water. Melting point of water is 273.15 K.
+
+## 6 Celsius scale
+
+It uses the same value as the centigrade scale, where 0\({}^{\circ}\)C is the melting point of water and 100\({}^{\circ}\)C is the boiling point of water. Thus,
+
+\(X/(^{\circ}\)C\()\)\(=\)\(K/(\)K\()\)\(-\) 273.15
+
+## 7 Ideal Gas Behaviours
+
+Ideal gases are a collection of perfectly hard spheres which collide but otherwise do not interact with each other. No real gases obey this completely, but they almost behave like ideal gases at high temperature and at low pressures.
+
+The ideal gas equation
+
+\[\frac{pV=nRT=NkT}{n}\]
+
+\[R=8.31\;\mathrm{J}\;\mathrm{mol}^{-1}\;\mathrm{K}^{-1}=\;k\;\frac{N}{n}=kN_{A}\]
+
+where \(k\) is the Boltzmann's constant, \(k=\frac{R}{N_{a}}=1.38\times 10^{-23}\;\mathrm{J}\;\mathrm{K}^{-1}\)
+
+Ideal gases obey the following laws.
+
+\begin{tabular}{|c|l|c|} \hline Boyle's law & Pressure of a fixed mass of gas is & \(\frac{p\propto\frac{1}{V}}{V}\) \\  & inversely proportional to its volume if the & \(M,T=constant\) \\ \hline Charles' law & Volume of a fixed mass of gas is & \\  & proportional to its thermodynamic & \\  & temperature if the pressure of the gas is & \(M,p=constant\) \\  & constant. & \\ \hline Pressure law & Pressure of a fixed mass of gas is & \(\frac{p\propto T}{V}\) \\ (Gay-Lussac law) & proportional to the thermodynamic & \(M,V=constant\) \\  & temperature if its volume is constant. & \\ \hline Avogadro's law & The volume of a gas is proportional to the & \\  & number of moles of the gas if its pressure & \\  & and temperature are constant. & \\ \hline \end{tabular}
+
+## 8 Avogadro's constant and mole
+
+A mole is the amount of substance that contains as many particles as there are atoms in 0.012 kg of carbon-12.
+
+This number is known as Avogadro's constant, \(N_{a}=\)\(6.02\times 10^{23}\;\mathrm{mol}^{-1}\)
+
+Molar mass M\({}_{m}\) is the mass of 1 mole of a substance.
+
+If each molecule has mass m, \(M_{m}=m\times N_{a}\).
+
+## 9 The kinetic theory
+
+An attempt to explain the macroscopic properties of the gas by looking at its microscopic properties.
+
+Assumptions of ideal gas using the acronym DAVE:
+
+Duration of impact among molecules and with walls are negligible.
+
+Attraction forces among molecules are negligible and do not exert forces on each other unless they collide.
+
+Volume of the atoms or molecules is negligible compared to the volume of the container.
+
+Elastic collisions, so that molecules do not lose any kinetic energy from collisions.
+
+## 10 Root mean square speed
+
+The molecules in a gas do not travel at the same speed, thus root mean square speed is used like an average speed.
+
+Let \(M\) be the total mass of the gas, and \(m\) be the mass of one molecule.
+
+\(M=Nm\)
+
+\(C_{rms}=\sqrt{<c^{2}>}=\sqrt{\frac{{c_{1}}^{2}+{c_{2}}^{2}+\cdots+{c_{N}}^{2}} {N}}\)
+
+\(c_{rms}=\sqrt{\frac{3RT}{M}}=\sqrt{\frac{3kT}{m}}\)
+
+Total kinetic energy is translational energy, \(\frac{1}{2}{M}{c_{rms}}^{2}\)
+
+\(p=\frac{1}{3}\frac{M}{V}<c^{2}>\)_where \(M\) is the mass of the gas_
+
+\(p=\frac{1}{3}\rho<c^{2}>\)_where \(\rho\) is the density of the gas_
+
+\(Mean\)\(KE=\frac{3}{2}kT=\frac{1}{2}m\langle c^{2}\rangle\)
+
+\(Total\)\(KE=\frac{3}{2}NkT=\frac{3}{2}nRT\)
+
+Derivation of \(p=\frac{1}{3}\frac{M}{V}\langle c^{2}\rangle\) and \(p=\frac{1}{3}\rho\langle c^{2}\rangle\)
+
+We start by analysing the momentum of a random molecule in the diagram shown on the right.
+
+\begin{tabular}{l l} Initial momentum: & \(p_{i}=mu\) \\ Final momentum: & \(p_{f}=-mu\) \\ Change in momentum: & \(\Delta p=p_{f}-p_{i}\) \\  & \(\Delta p=-2mu\) \\ \end{tabular}
+
+Time between consecutive collisions on the same wall:
+
+\begin{tabular}{l l} Force / Rate of change of momentum \\ (N2L): & \(\frac{\Delta p}{\Delta t}=-2mu\div\frac{2L}{u}\) \\  & \(\frac{\Delta p}{\Delta t}=-\frac{mu^{2}}{L}\) \\  & \(F=-\frac{mu^{2}}{L}\) \\ Force exerted by one molecule on wall (N3L): & \(F=\frac{mu^{2}}{L}\) \\ Force exerted by all molecules: & \(F=\frac{m(u_{1}^{2}+u_{2}^{2}+\cdots+u_{n}^{2})}{L}\) \\  & \(F=\frac{mN(u^{2})}{L}\) \\  & where \(\langle u^{2}\rangle=\frac{u_{1}^{2}+u_{2}^{2}+\cdots+u_{n}^{2}}{N}\) \\ Pressure exerted by all molecules: & \(p=\frac{F}{A}\) \\  & \(p=\frac{mN\langle u^{2}\rangle}{L(L^{2})}\) \\  & \(p=\frac{mN\langle u^{2}\rangle}{V}-eqn(1)\) \\ \end{tabular}
+
+Since there are 3 directions, x, y, z, each molecule has velocities u, v, w in the x, y, z, direction.
+
+Hence, we have \(c^{2}=u^{2}+v^{2}+w^{2}\)
+
+Averaging, we have \(\langle c^{2}\rangle=\langle u^{2}\rangle+\langle v^{2}\rangle+\langle w^{2}\rangle\)
+
+Since the motion is random and the number of molecules is very large,
+
+\(\langle u^{2}\rangle=\langle v^{2}\rangle=\langle w^{2}\rangle\)
+
+\begin{tabular}{l l} \(\langle u^{2}\rangle=\frac{1}{3}\langle c^{2}\rangle\) \\ \hline From eqn (1): & \(p=\frac{mN}{V}\Big{(}\frac{1}{3}\langle c^{2}\rangle\Big{)}\) \\  & \(p=\frac{1}{3}\bigg{(}\frac{Nm\langle c^{2}\rangle}{V}\bigg{)}\) \\ \(\text{Nm}=\text{total mass of particles}=M\) \\  & \(\frac{M}{V}=\text{density}=\rho\) \\  & \(p=\frac{1}{3}\rho\langle c^{2}\rangle--(1)\) \\ \end{tabular}
+
+Derivation of the relationship between \(c_{rms}\) and \(T\) of a given gas:
+
+From Ideal Gas law,
+
+\[p=\frac{nRT}{V}--(2)\]
+
+Equating (1) and (2),
+
+\[\frac{nRT}{V}=\frac{1}{3}\rho\langle c^{2}\rangle\] \[\frac{M}{M_{m}}*\frac{RT}{V}=\frac{1}{3}\rho\langle c^{2}\rangle\] \[\frac{\rho RT}{M_{m}}=\frac{1}{3}\rho\langle c^{2}\rangle\] \[\langle c^{2}\rangle=\frac{3RT}{M_{m}}\] \[c_{rms}=\sqrt{\frac{3RT}{M_{m}}}\]
+
+## Chapter 10 Thermodynamics
+
+### 1 Internal Energy
+
+Heat is defined as the energy that is transferred from one body at a higher temperature to one at lower temperature. Matter DOES NOT contain heat. Once transferred to an object, heat becomes internal energy.
+
+Internal Energy, U, of a system is the sum of the KE (movement of molecules) and PE (Forces between molecules in the system)
+
+\(U=KE+PE\)
+
+When a substance absorbs or gives off heat, internal energy changes, either through changing KE or PE.
+
+### 2 Temperature
+
+All matter is made of atoms and molecules which are in constant random motion.
+
+Hence they all possess KE. Temperature is actually a measure of the average KE of a substance. This is the microscopic view of temperature.
+
+When there is no net heat flow between 2 substances, they are in thermal equilibrium and said to be at the same temperature. This is the macroscopic view of temperature.
+
+### 3 Internal energy and Temperature
+
+Internal KE is related to the absolute temperature, T. But internal PE is related to the forces between the atoms or molecules, depending on their separation.
+
+When a system undergoes state change, PE increases but KE remains constant. Thus it cannot be said that an increase of Internal Energy reflects an increase in temperature.
+
+### 4 Kinetic energy and Temperature
+
+Temperature is related to the internal KE of the gas, NOT the bulk (i.e moving the whole container with gas inside) KE of the gas.
+
+### 5 Internal Energy of an Ideal Gas
+
+As the molecules do not exert any forces on each other, the Internal Energy of Ideal Gases is solely the KE of the molecules.
+
+### 6 Heat Capacity
+
+The heat capacity of a body is defined as the quantity of heat energy required to raise its temperature by 1 K.
+
+C is the heat capacity of an object and has the units J K\({}^{-1}\)
+
+\(Q=C\Delta T\) where C is the heat capacity
+
+The specific heat capacity of a body is defined as the heat required to raise the temperature of 1 kg of the substance by 1 K.
+
+C is the specific heat capacity of an object and has the units J kg\({}^{-1}\) K\({}^{-1}\)
+
+\(Q=mc\Delta T\) where C is the specific heat capacityThe molar heat capacity of a body is defined as the heat required to raise the temperature of 1 mole of a substance.
+
+\(C_{n}\) is the molar heat capacity of an object and has the units J mol\({}^{-1}\) K\({}^{-1}\)
+
+\(Q=nC_{n}\Delta T\)
+
+**7 Latent Heat**
+
+The specific latent heat of fusion is of a substance is defined as the amount of heat energy needed to change a unit mass of the substance from solid to liquid state without a change in temperature.
+
+The specific latent heat of vaporisation is of a substance is defined as the amount of heat energy needed to change a unit mass of the substance from liquid to gaseous state without a change in temperature.
+
+A transition from one state of matter to another is known as a phase change.
+
+During a phase change, latent heat is given off or absorbed and does not change the temperature of the object.
+
+\(Q\equiv m\ell\) where \(\ell\) is the specific latent heat of fusion/vaporisation
+
+**8 Kinetic Theory of matter**
+
+Solid: atoms are arranged closely together in a regular pattern. Intermolecular forces are strong and the motion of the atoms are limited to vibrations around their mean positions. Internal energy comprises of vibrational KE and PE.
+
+Liquid: atoms are slightly further apart than in a solid. Occur in clusters and are free to slide around each other. Intermolecular forces are weaker. Internal energy comprises of KE (translational, rotational and vibrational) and more PE than solid.
+
+Gas: atoms are very far apart from each other. Intermolecular forces are very weak and atoms move in a random manner. Internal Energy comprises of KE and PE (largest).
+
+**9 Melting**
+
+At the melting point, the amplitude of vibration of the atoms is large enough for atoms to move past the adjacent atoms and move to new positions (resulting in them being further apart) and hence have higher PE.
+
+The latent heat of fusion = work required at the molecular level to transform from a ordered solid phase to a disordered liquid phase but does not increase the average KE. Hence temperature does not increase during melting. Hence,
+
+\(\Delta U=0,\Delta Q_{s}=\Delta W_{by}\)
+
+**10 Boiling**
+
+Atoms in a liquid are close together and the forces between them are stronger than the widely separated gas atoms.
+
+The latent heat of vaporisation = work required to pull apart the atoms from being close together to being far apart in a gas.
+
+Specific Latent heat of vaporisation > fusion because atoms must move further apart for boiling than melting. Additionally, work must be done against the external atmospheric pressure.
+
+## 11 Cooling by evaporation
+
+Evaporation occurs when a liquid becomes a vapour without a heat source. Atoms near the surface gain enough energy to overcome the attractive forces of the surrounding atoms and thus escape from the liquid.
+
+It is the faster and more energetic atoms that evaporate. Thus, average KE of the remaining atoms decreases and thus the temperature decreases and evaporation is a cooling process.
+
+## 12 First Law of Thermodynamics
+
+The first law of thermodynamics states that the internal energy of a system depends only on its state, and that the increase in internal energy of the system is the sum of the heat supplied to the system and the external work done on the system.
+
+\begin{tabular}{|l|l|l|} \multicolumn{2}{l}{_Increase in internal energy \(=Heat\) supplied \(+\) External work done on the system_} \\ \multicolumn{2}{l}{} & \multicolumn{1}{c|}{\(\Delta U=\Delta Q_{s}+\Delta W_{on}\)} \\ \hline Term & Positive & Negative \\ \hline U & Increase in internal energy & Decrease in internal energy \\ \hline Q & Heat absorbed by the system & Heat given off by the system \\ \hline W & Work done on the system & Work done by the system \\ \end{tabular}
+
+Note: As from Chapter 9, internal energy is dependent on temperature ONLY for ideal gases (\(E_{k}=\frac{3}{2}nRT\), negligible PE)
+
+## 13 Calculations involving work done
+
+At constant pressure, the work done by the gas in displacing a piston through a small distance \(dx\) is:
+
+\[W_{by}=F\;dx=(pA)\;dx=p\;dV=p\Delta V\]
+
+Therefore
+
+\[W_{by}=\int_{\nu_{i}}^{\nu_{f}}\!\!p\;dV\]
+
+Or, work done is the area under the pressure-volume graph.
+
+## 14 Processes
+
+\begin{tabular}{|c|c|c|c|} \hline Type & Constant volume & Constant temperature & Constant pressure \\ \hline \(\Delta U=\) & \(\Delta Q_{s}\) & 0 & \(\Delta Q_{s}+\Delta W_{by}\) \\ \hline \(\Delta Q_{s}=\) & Calculated using molar heat capacity & & Calculated using molar heat capacity \\ \(Q=mc\Delta\theta\) or & \(+\Delta W_{by}\) & & \(Q=mc\Delta\theta\) or \\ \(Q=mc_{n}\Delta\theta\) & & & \(Q=mc_{n}\Delta\theta\) \\ \hline \(\Delta W_{by}=\) & 0 & Area under the p-V & \\  & & graph & \(p\Delta V\) \\ \hline \end{tabular}
+
+\begin{tabular}{|c|c|c|} \hline Type & No heat is supplied & No change in internal energy \\ \hline \(\Delta U=\) & \(+\Delta W_{by}\) or \(-\Delta W_{on}\) & 0 \\ \hline \(\Delta Q_{s}=\) & 0 & \(+\Delta W_{by}\) \\ \hline \(\Delta W_{by}=\) & Area under the p-V graph & Enclosed area \\ \hline \end{tabular}
+
+## Chapter 11: Oscillations
+
+### 1 Examples of free oscillations
+
+Cylinder oscillating vertically in water
+
+Spring-mass system oscillating horizontally on a frictionless surface
+
+#### 11.1.1 2 Definitions of some key terms
+
+Amplitude: maximum displacement of the oscillating body. Given by \(x_{0}\) or \(A\)
+
+Period: the time taken for one complete oscillation. Given by \(T\)
+
+Frequency: the total number of oscillations per unit time. Given by \(f=T^{-1}\) and has units of s\({}^{-1}\) or Hz
+
+Angular frequency: the product of \(2\pi\) and the frequency. Given by \(\omega=2\pi f=2\pi T^{-1}\)
+
+Phase difference: two particles are oscillating in phase if they are in the same state of disturbance. Otherwise, they are said to be out of phase. A phase difference of \(2\pi\) means the particles are in phase, while a phase difference of \(\pi\) means they are in antiphase.
+
+### 3 Simple harmonic motion (SHM)
+
+Requirement 1: There must be a restoring force proportional to the displacement but directed opposite to it. For a spring-mass system,
+
+\[F\equiv-kx--(1)\]
+
+Requirement 2: The acceleration of the system must be proportional to the displacement but directed opposite to it.
+
+\[F=ma--(2)\] \[(1)=(2)\to ma=-kx\] \[a=-\frac{k}{m}x\;or\;a\propto-x\]
+
+If \(a\) is proportional to \(-x\), the system is said to execute SHM.
+
+#### 3.1.2 4 Equations in SHM with respect to time \(t\)
+
+\begin{tabular}{|c|c|c|} \hline Type & Starting from equilibrium & Starting from extreme \\  & position (\(x=0\;at\;t=0\)) & position (\(x=x_{0}\;at\;t=0\)) \\ \hline Displacement \(x\) & \(x=x_{0}\sin(\omega t)\) & \(x=x_{0}\cos(\omega t)\) \\ \hline Velocity \(v\) & \(v=\frac{dx}{dt}=\omega x_{0}\cos(\omega t)\) & \(v=\frac{dx}{dt}=-\omega x_{0}\sin(\omega t)\) \\ \hline Acceleration \(a\) & \(a=\frac{dv}{dt}=-\omega^{2}x_{0}\sin(\omega t)\) & \(a=\frac{dv}{dt}=-\omega^{2}x_{0}\cos(\omega t)\) \\ \hline \end{tabular}
+
+Note: Use the GC to sketch the graph to see the general shape.
+
+\begin{tabular}{|c|c|c|} \hline Type & Graph & Equation \\ \hline Velocity \(v\) & -x\({}_{0}\) & \(\omega x_{0}\) & \(\omega x_{0}\) \\ \hline Acceleration \(a\) & \(\omega^{2}x_{0}\) & \(\omega^{2}x_{0}\) \\ \hline \end{tabular}
+
+Derivation of \(v=\ \pm\omega\sqrt{x_{0}^{2}-x^{2}}\)
+
+\(v=\omega x_{0}\cos(\omega t)--(1)\)
+
+\(\sin^{2}(\omega t)+\cos^{2}(\omega t)=1\)
+
+\(\cos(\omega t)=\pm\sqrt{1-\sin^{2}(\omega t)}--(2)\)
+
+\(x=x_{0}\sin(\omega t)\)
+
+\(\sin(\omega t)=\frac{x}{x_{0}}--(3)\)
+
+Sub (2) in (1):
+
+\(v=\pm\omega x_{0}\sqrt{1-\sin^{2}(\omega t)}--(4)\)
+
+Sub (3) in (4):
+
+\(v=\pm\omega x_{0}\sqrt{1-\left(\frac{x}{x_{0}}\right)^{2}}=\pm\omega\sqrt{x_{0 }^{2}-x^{2}}\)
+
+\begin{tabular}{|c|c|c|} \hline Type & Graph & Equation \\ \hline Kinetic & & \(E_{K}=\dfrac{1}{2}mv^{2}\) \\ energy \(E_{K}\) & & \(=\dfrac{1}{2}m\omega^{2}(x_{0}^{2}-x^{2})\) \\ \hline Potential & & \(E_{P}=\dfrac{1}{2}kx^{2}\) \\ energy \(E_{P}\) & & \(=\dfrac{1}{2}m\omega^{2}x^{2}\) \\ \hline \end{tabular}
+
+\begin{tabular}{|c|c|} \hline Type & Graph & Equation \\ \hline Kinetic & & \(E_{K}=\dfrac{1}{2}m\omega^{2}(x_{0}^{2}-x^{2})\) \\ energy \(E_{K}\) & & \(=\dfrac{1}{2}m\omega^{2}x_{0}^{2}\sin^{2}(\omega t)\) \\ \hline Potential & & \(E_{P}=\dfrac{1}{2}m\omega^{2}x^{2}\) \\ energy \(E_{P}\) & & \(=\dfrac{1}{2}m\omega^{2}x_{0}^{2}\cos^{2}(\omega t)\) \\ \hline Total energy & & \(E_{T}=E_{K}+E_{P}\) \\ \(E_{T}\) & & \(=\dfrac{1}{2}m\omega^{2}x_{0}^{2}\) \\ \hline \end{tabular}
+
+Derivation of \(E_{K}=\frac{1}{2}m\omega^{2}x_{0}^{2}\sin^{2}(\omega t)\)
+
+\begin{tabular}{c} \(x=x_{0}\cos(\omega t)\) \\ \(x^{2}=x_{0}^{2}\cos^{2}(\omega t)\) \\ \(x^{2}=x_{0}^{2}(1-\sin^{2}(\omega t))=x_{0}^{2}-x_{0}^{2}\sin^{2}(\omega t)--(1)\) \\ \(E_{K}=\dfrac{1}{2}m\omega^{2}(x_{0}^{2}-x^{2})--(2)\) \\ \end{tabular}
+
+Sub (1) in (2):
+
+\[E_{K}=\dfrac{1}{2}m\omega^{2}[x_{0}^{2}-(x_{0}^{2}-x_{0}^{2}\sin^{2}(\omega t ))]\]
+
+\[E_{K}=\dfrac{1}{2}m\omega^{2}x_{0}^{2}\sin^{2}(\omega t)\]
+
+[MISSING_PAGE_FAIL:39]
+
+## 9 Damped oscillations
+
+Oscillations gradually die away due to the effects of a damping force acting on the oscillator.
+
+\begin{tabular}{|c|c|c|} \hline Type & Graph & Elaboration \\ \hline  & & Oscillations still occur, but the \\  & Light damping & amplitude of the oscillation \\  & & decreases exponentially with \\  & & time. \\ \cline{2-3} Light & & EXTRA! \\  & & The graph follows the equation \\  & & \(y=Ae^{-\lambda t}\sin(\omega t)\) \\  & & where \(A,\lambda\) and \(\omega\) are constants. \\ \hline  & & There are no oscillations. When \\  & & the system is displaced from the \\  & & equilibrium position, it takes a \\  & & long time to return to the \\  & & equilibrium position. (e.g. door \\  & & damper) \\ \cline{2-3}  & & There are no oscillations. When \\  & & the system is displaced from the \\  & & equilibrium position, it returns to \\  & & the equilibrium position in the \\  & & shortest possible time. (e.g. \\  & & damping system of car) \\ \hline \end{tabular}
+
+Importance of critical damping: Car suspension system
+
+## 10 Forced oscillations and resonance
+
+Forced oscillations occur when a system is subjected to an external force. Instead of oscillating at its natural frequency, the system will oscillate at the frequency of the external force (driving frequency).
+
+When the driving frequency is very close to the natural frequency of a system, the system will oscillate at maximum amplitude. This phenomenon is known as resonance, where there is maximum transfer of energy from the driving system to the driven system.
+
+Example: A singer shattering a wine glass, Barton's pendulum
+
+## 11 Frequency response
+
+Notes:
+
+The amplitude of response is theoretically infinite in the absence of any damping. With damping, the amplitude of the system (and thus the total energy since \(E=\frac{1}{2}m\omega^{2}x_{0}^{2}\)) will rise till a point where the rate of work done on the system = the rate of work done against air resistance.
+
+i.e. rate of energy input = rate of energy loss. This can be due an increase in the resistive forces at higher speeds. (\(F_{air}\propto v^{2}\))
+
+With light damping, the amplitude of response is high within a narrow range of driving frequencies close to the natural frequency. The response is described as sharp.
+
+With significant damping, the amplitude of response is smaller, and takes place over a wider range of driving frequencies. The response is no longer sharp.
+
+The frequency of response at resonance also shifts slightly to the left of \(f_{0}\) in the case of increased damping.
+
+## 12 Examples of resonance
+
+\begin{tabular}{|c|c|} \hline Useful & Destructive \\ \hline Production of sound in many musical & Collapse of buildings which resonate to \\ instruments & seismic waves in an earthquake \\ \hline Cooking of food in a microwave oven & Collapse of bridges resonating to strong \\ \hline Magnetic resonance imaging (MRI) & \\ \hline \end{tabular}
+
+## Chapter 12 Wave Motion
+
+### 1 Types of waves
+
+Transverse waves:
+
+e.g. wave on rope
+
+The direction of vibration of the wave particles is
+
+perpendicular to the direction of propagation of the wave.
+
+The direction of vibration of the wave particles is parallel to
+
+e.g. sound wave
+
+Progressive waves:
+
+The wave profile moves in the direction of propagation of
+
+the wave. Progressive waves transfer energy in the
+
+direction of the wave velocity.
+
+### 12 Key terms
+
+Wavelength:
+
+The distance between 2 consecutive particles in the wave who
+
+are in phase with one another. Given by \(\lambda\)
+
+Frequency:
+
+The number of complete oscillations undergone by a wave
+
+particle per unit time. Given by \(f\)
+
+Period:
+
+The time taken for a wave particle to undergo one complete
+
+oscillation. Given by \(T\)
+
+Amplitude:
+
+The maximum displacement that a wave particle can have away
+
+from its equilibrium position. Given by \(A\)
+
+Wave velocity:
+
+The velocity of the advancing wave. Note: for EM waves -
+
+\(3\times 10^{8}\) ms\({}^{-1}\) in vacuum, for sound waves 330 ms\({}^{-1}\) in air.
+
+Given by \(v\)
+
+### 13 Derivation of \(v=f\lambda\)
+
+Distance travelled by wave in 1 period \(=\lambda\)
+
+Time taken \(=T\) (1 period)
+
+since speed \(=\dfrac{\text{distance travelled}}{\text{time taken}}\)
+
+\(v=\dfrac{\lambda}{T}=\dfrac{\lambda}{1}\)
+
+\(\dfrac{\lambda}{T}=\dfrac{\dfrac{\lambda}{1}}{\text{$\dot{f}$}}\)
+
+### 14 Mechanical waves
+
+Mechanical waves are types of waves that transfer energy through a medium.
+
+Both transverse and longitudinal waves are mechanical waves.
+
+E.g.: Water waves, seismic waves
+
+## 5 Wave equations
+
+\begin{tabular}{|c|c|c|} \hline  & Displacement-distance & Displacement-time \\ \hline Equation & \(y=A\sin\left(\frac{x}{\lambda}\times 2\pi\right)\) & \(y=-A\sin(\omega t)\) \\ \hline  & displacement, \(y\) & Direction of wave velocity \\ \hline  & & \\ Graph & \(y=A\sin\left(\frac{x}{\lambda}\times 2\pi\right)\) & \(y=-A\sin(\omega t)\) \\ \hline  & displacement, \(y\) & Direction of wave velocity \\ \hline  & & \\ Graph & \(y=A\sin\left(\frac{x}{\lambda}\times 2\pi\right)\) & \(y=-A\sin(\omega t)\) \\ \hline  & & \\ \end{tabular}
+
+## 6 Phase difference
+
+For a given displacement-distance graph:
+
+\begin{tabular}{|c|} \hline  & \\ \end{tabular}
+
+Note: this formula does not apply to stationary waves. See CH13 Superposition
+
+\begin{tabular}{|c|} \hline  & \\ \end{tabular}
+
+\begin{tabular}{|c|} \hline  & \\ \end{tabular}
+
+**Page 44**
+
+Example: P leads Q by \(\Delta t=\frac{1}{4}T\)
+
+Phase difference is thus
+
+\(\Delta\phi=\frac{\frac{1}{4}T}{T}\times 2\pi=\frac{\pi}{2}rad\)
+
+**7 Intensity** (symbol \(I\), units Wm\({}^{-2}\)) and Amplitude (symbol \(A\), units m)
+
+Intensity is the energy transmitted per unit time across a unit area of a surface
+
+perpendicular to the direction of the energy flow.
+
+\[\text{Intensity}=\frac{\text{power}}{\text{area}}=\frac{\text{energy}}{ \text{time}\times\text{area}}\]
+
+Hence, when the power of the source is kept constant, the relation between intensity and distance from the source follows the inverse square law.
+
+Given uniform spreading of wave, then the intensity at a distance r is:
+
+\(I=\frac{P}{A}=\frac{P}{4\pi r^{2}}\) : \(\therefore I\propto\frac{1}{r^{2}}\)
+
+The relation between intensity and amplitude is as such:
+
+\[\text{Intensity}\propto(\text{Amplitude})^{2}\]
+
+EXTRAI
+
+\(I=\frac{E}{t\times\text{Area}}=\frac{\frac{1}{2}m\omega^{2}A^{2}}{t \times\text{Area}}=(\frac{\frac{1}{2}m\omega^{2}}{t\times\text{Area}})A^{2} \therefore I\propto A^{2}\)
+
+Hence, assuming no energy is lost during propagation, the amplitude of a wave decreases with increasing distance from the source, due to the spreading of waves (amplitude of original source remaining constant). For example, the light from a star decreases with increasing distance.
+
+## 8 Polarisation
+
+Polarisation occurs with all transverse waves. Longitudinal waves cannot be polarised.
+
+Polarisation is usually applied to electromagnetic waves, e.g. light.
+
+Electromagnetic waves consist of an electric field and a magnetic field which vibrate in phase in directions perpendicular to each other.
+
+We usually only keep track of the direction of the oscillation of the electric field vector only. Hence, the direction of the e-field vector is the direction of polarisation of the wave.
+
+_View of a vertically polarized EM wave with magnetic and electric components_
+
+When an unpolarised EM wave is incident on a polariser, its intensity will be reduced by \(\frac{1}{2}\). Hence,
+
+\[I=\frac{1}{2}I_{0}\]
+
+This means that 50% of the wave's energy passes through the polariser (energy \(\propto\) intensity as derived above).
+
+When a polarised EM wave is incident on a polariser, its intensity can be found by the formula:
+
+\[I=I_{0}\cos^{2}\theta\]
+
+where \(\theta\) is the angle between the direction of polarisation of the incident wave and the polarizing axis.
+
+This is known as Malus' Law.
+
+[MISSING_PAGE_EMPTY:46]
+
+## Chapter 13 Superposition
+
+The principle of superposition states that the resultant wave displacement (and hence the amplitude) is given by the vectorial sum of the individual wave displacements (amplitude) at the point where the waves meet.
+
+According to the principle of superposition, when a wave meets a fixed end, the reflected wave will be inverted. When a wave meets a free end, the reflected wave will not be inverted.
+
+Strategy: Extend the wave past the end. Mirror the wave from the right onto the left (reflection in the y-axis). If it is a fixed end, invert the wave (reflection in the x-axis).
+
+Note: Waves which are polarised perpendicular to one another will not produce observable interference patterns on a screen.
+
+They obey the Principle of Superposition, but there will be no destructive interference, hence there will be no observable bright and dark fringes.
+
+These waves can still interfere with each other.
+
+Common examples of end types:
+
+\begin{tabular}{c|c} \hline Free end & Fixed end \\ \hline End of a rope & End of a rope attached to a wall \\ \hline Wall of water tank & \\ \hline \end{tabular}
+
+## 2 Stationary / Standing waves
+
+A standing or stationary wave is formed when two waves of the same propagation speed, wavelength and amplitude overlap while travelling in opposite directions.
+
+A standing or stationary wave is one which the wave profile does not travel in the direction of the wave velocity, though the wave particles still execute oscillatory motion (SHM) about their rest positions. Hence, a stationary wave does not transport any energy. Energy is trapped within the stationary wave.
+
+Particles on the wave oscillate with different amplitudes vertically.
+
+Nodes are a point at which the displacement of a particle is permanently zero.
+
+Antinodes are a point with maximum amplitude.
+
+Particles in a N-A-N segment are in phase with one another. They are 180\({}^{\circ}\) out of phase with the adjacent N-A-N segment.
+
+\begin{tabular}{|c|l|l|} \hline  & Progressive wave & Stationary wave \\ \hline Frequency & Same for all points & Same except at the nodes (\(f=0\)) \\ \hline Energy & Transfers from one point to & No transmission of energy along \\  & another & the wave \\ \hline Wavelength & Distance between two & Twice the distance between a pair \\  & consecutive points in phase & of adjacent nodes or antinodes \\ \hline  & Different phases in 1 & All particles in the same segment \\ Phase & wavelength & are vibrating in phase. Particles in \\  & & alternate segments are \(180^{\circ}\) out of \\  & & phase. \\ \hline Amplitude & Same for all points & Varies; largest at antinode, 0 at \\  & & the node \\ \hline Waveform & Travels in direction of wave & Does not advance \\ \hline Method to remember: **FEW PAW** & \\ \hline \end{tabular}
+
+## 3 Transverse stationary waves
+
+Supposed a string is stretched tightly between fixed supports. It is then able to vibrate in a direction perpendicular to its length if it is plucked. Waves travel away from the position it is plucked, reach the fixed ends, get reflected and travel back along the string, forming stationary waves.
+
+As the ends are fixed, they are nodes. The distance between adjacent nodes / antinodes is \(\frac{1}{2}\lambda\).
+
+\begin{tabular}{|c|c|} \hline Mode 1 & \(\lambda=2L\) \\ 1st harmonic & \(f_{1}=\frac{\upsilon}{2L}\) \\ 2 nodes, 1 antinode & \(f_{1}=\frac{\upsilon}{2L}\) \\ \hline Mode 2 & \(\lambda=L\) \\ 2nd harmonic & \(f_{2}=\frac{\upsilon}{L}=2f_{1}\) \\ 3 nodes, 2 antinodes & \(\lambda=\frac{2L}{3}\) \\ \hline Mode 3 & \(f_{3}=\frac{3\upsilon}{2L}=3f_{1}\) \\ 4 nodes, 3 antinodes & \(f_{3}=\frac{3\upsilon}{2L}=3f_{1}\) \\ \hline \end{tabular}
+
+There are an infinite number of such harmonics.
+
+**Page 49**
+
+Experiment: finding wavelength of microwave using a detector
+
+The detector will read 0 at a displacement antinode or pressure node. The distance between nodes can be calculated, and from this the wavelength through \(v=f\lambda\) The same setup can be used for other EM waves.
+
+## 4 Longitudinal stationary waves
+
+Stationary waves can be formed in either a pipe that has 2 closed ends or 1 open end.
+
+Kundt's' tube - experiment to demonstrate longitudinal standing waves
+
+At the nodes, the air particles are not moving. Hence, they allow powder to collect at the nodes.
+
+At the antinodes, the air particles are moving with maximum amplitude. Hence, they "push" the powder away from the antinodes to the nodes.
+
+Strategy for calculations: find the wavelength in terms of \(L\).
+
+End correction: In reality, the antinode occurs at a short distance - called the end correction - away from the open end.
+
+The wavelength is now \(\lambda=4(L+e)\).
+
+## 5 Diffraction
+
+Diffraction refers to the spreading of waves when they encounter an aperture of obstacle whose linear dimension (e.g. width of aperture) is comparable to the wavelength of the waves.
+
+Generally, the smaller the width of the aperture, the greater the spreading or diffraction of the waves.
+
+Wavelength remains unchanged before and after diffraction.
+
+## 6 Two-source interference
+
+Interference refers to the phenomenon of two or more waves of the same type meeting at a point in space to produce a resultant wave disturbance given by the superposition of individual waves at that point.
+
+There are 3 conditions needed for steady (constant) observable interference patterns - The 2 wave sources must be coherent, must be unpolarised or polarised in the same plane, and must have roughly the same amplitude.
+
+[MISSING_PAGE_EMPTY:51]
+
+[MISSING_PAGE_FAIL:52]
+
+## 9 Multiple slit diffraction or diffraction grating
+
+Diffraction gratings are useful for analysing light sources. Fringes formed by the grating is sharper than the double slits because of the enormously large number of slits in the grating.
+
+Formula:
+
+\[\bar{d}\sin\theta=n\bar{\lambda}\]
+
+Maximum number of orders (maximums) visible is given by \(n_{max}\leq\frac{d}{\lambda}\). This is because the maximum value of \(\sin\theta\) is 1.
+
+If white light is shone through the grating, then each wavelength in white light will be diffracted slightly differently. This results in a spectrum of colours to be seen on the screen, with one spectrum for each order n.
+
+Red light will diffract more than violet light as the wavelength of red light is more than that of violet light.
+
+It is possible for two spectra of colours to overlap (i.e. violet of 1st order and red of 2nd order may overlap).
+
+At the straight-through position, there is no diffraction, and hence a white band is observed.
+
+**Page 54**
+
+Chapter 14: Current of Electricity
+
+**1 Electric current** (symbol \(I\), units A or Cs\({}^{-1}\))
+
+The current \(I\) is the rate of flow of electric charge Q through a given cross-section of a.conductor.
+
+\[I=\frac{d\omega}{dt}\text{ for varying current,}\]
+
+\[I=\frac{Q}{t}\text{ for steady current}\]
+
+Direction of conventional current is taken to be the flow of positive charges.
+
+Direction of conventional current can be thought of as opposite to the flow of negative charges.
+
+Therefore, net charge flow in a direction is the total charge of positive charges moving in that direction plus the total charge of negative charges moving in the opposite direction.
+
+\begin{tabular}{|c|c|c|} \hline Flow of positive charges & Flow of negative charges & Net charge flow to the right \\ \hline
+5C to the right & 5C to the right & \(5C-5C=0C\) \\ \hline
+5C to the right & 5C to the left & \(5C+5C=10C\) \\ \hline \end{tabular}
+
+**2 Charge** (symbol Q, units C or coulumb)
+
+The charge Q which flows past a given cross section is the product of the steady current \(I\) that flows past the section and the time during which the current flows.
+
+Q = It
+
+The coulomb C is the amount of electrical charge that passes through a given cross section of a circuit when a steady current of one ampere flows in one second.
+
+An electron or proton carries an electric charge of approximate magnitude \(1.6\times 10^{-19}\) C.
+
+One coulomb is approximately \(6.24\times 10^{18}\) electrons or protons.
+
+Total charge is given by \(Q=Ne\).
+
+Given the charge, the number of electrons can be calculated:
+
+\[N=\frac{Q}{e}=\frac{1C}{1.6\times 10^{-19}}\]
+
+The charge density \(n\) is the number of charge carriers per unit length, surface area, or volume in a conductor.
+
+"We usually consider the volume charge density.
+
+Assume charge flows through a conducting wire of length \(l\) and cross-sectional area \(A\).
+
+Volume of this area \(\Delta V=A\Delta x\) and number of charge carriers is \(N=n\Delta V\)
+
+Therefore \(N=nA\Delta x\).
+
+[MISSING_PAGE_FAIL:55]
+
+[MISSING_PAGE_FAIL:56]
+
+**9 Resistivity** (symbol \(\rho\), units \(\Omega\)m)
+
+Resistivity is a property of the material, independent of the shape and size of the conductor.
+
+Definition: Resistivity is given by \(R=\frac{\rho L}{A}\), where \(R\) is the resistance of the component, \(A\) is its cross-sectional area, and \(L\) is its length.
+
+**10 Internal resistance**
+
+An ideal battery should produce a voltage (termed "terminal voltage" - p.d. at the terminals) that is equal to the e.m.f.. However, in reality, all batteries have a small internal resistance \(r\) that causes the terminal voltage to be less than the stated e.m.f.
+
+When connecting a voltmeter across the ends of the battery, we see that the voltage \(V\) is less than the e.m.f. \(\varepsilon\). This is because the drop in voltage is used to drive the current through the internal resistance \(r\).
+
+Therefore drop in voltage = voltage across resistor and \(r=\frac{V_{r}}{t}\Rightarrow V_{r}=Ir\).
+
+Since \(V_{terminal}=\varepsilon-V_{r}\), therefore
+
+\(V_{terminal}\equiv\varepsilon-Ir\), and \(\varepsilon=I(R+r)\) where \(R\) is the total external resistance.
+
+Note: p.d. across total external resistance is equal to the terminal p.d.. Hence
+
+\(IR_{ext}=\varepsilon-Ir\)
+
+**11 Power** (symbol \(P\), units Js\({}^{-1}\) or W)
+
+Whenever a current passes through a resistance, power is transformed from one type to another.
+
+From the equations of p.d. and e.m.f., the following equations can be obtained.
+
+\(P=VI=I^{2}R=\frac{V^{2}}{R}\)
+
+\(P=I^{2}R\) is usually used for series circuits.
+
+\(P=\frac{V^{2}}{R}\) is usually used for parallel circuits.
+
+**Chapter 15: Electric Fields**
+
+**In the case of electrons, gravity is assumed to be negligible, as \(m_{e}\ll e\). However, for particles that are made up of at least a few molecules (e.g. oil drop), gravity cannot be assumed to be negligible.\({}^{**}\)
+
+**1 Electric field**
+
+An electric field is a region of space where a charged particle will experience an electric force. (refer to gravitational field notes)
+
+It can be represented using lines of force. starting from a positive charge and ending on a negative charge.
+
+When drawing electric fields, take note of:
+
+a) Electric field lines must begin from a positive charge and end on a negative charge
+
+b) Electric field lines must not intersect each other
+
+c) Electric field lines must be at a normal to the surface of the charge
+
+d) The number of lines per unit area is proportional to the strength of the electric field in the given region.
+
+On an irregularly shaped conductor, the charge concentrates at locations where the radius of curvature is the smallest - at pointed regions.
+
+**2 Electric field strength (general) (symbol \(E\), units NC\({}^{-1}\))**
+
+The electric field strength \(E\) at a point is the electric force acting per unit positive charge placed at that point:
+
+\[E=\frac{F}{+q}\]
+
+E is a vector whose direction at a point is the direction of the electric force that would be exerted on a small positive test charge placed at that point.
+
+Hence, a small positive test charged placed (\(u=0\)) along a field line will travel along that field line.
+
+Note: if the initial velocity is not 0, then it will not exhibit such behaviour.
+
+A charged particle entering a uniform electric field perpendicular to it will follow a parabolic path.
+
+Proof:
+
+\(u_{x}=u\) and \(u_{y}=0\)
+
+Hence \(s_{x}=u_{x}t=ut\) and \(s_{y}=u_{y}t+\frac{1}{2}at^{2}=\frac{1}{2}at^{2}\)
+
+Since \(F=ma=Eq\), \(a=\frac{Eq}{m}\)
+
+Therefore \(s_{y}=\frac{1}{2}\left(\frac{Eq}{m}\right)\left(\frac{1}{u_{x}^{2}}\right)s_{ x}^{2}\Rightarrow y=kx^{2}\)The electric field strength at a point P due to a point charge at distance \(r\) is given by
+
+\[E=\frac{Q}{4\pi\epsilon_{0}r^{2}}\]
+
+This formula is also applicable to a sphere of radius \(R\). The distance \(r\) will then be the distance of the point to the centre of the sphere.
+
+Note that there is no electric field inside an isolated electrically charged sphere. Any excess charge on an isolated conductor resides entirely on its surface.
+
+EXTRAI
+
+According to Gauss' law, the electric field passing through a "Gaussian Sphere" (that is, an imaginary sphere which electric field lines pass through) is given by
+
+\[E(4\pi r^{2})=\frac{q_{enc}}{\epsilon_{0}}\]
+
+Considering a conducting shell of radius \(a\) and holding a charge \(q\) (right), a "Gaussian Sphere" of a radius \(r<a\) will not enclose any net charge. Hence, the electric field is zero. This law also shows how we can treat charged spheres as point sources for the cases of \(r>a\), as the value of \(q_{enc}\) is simply the total charge on the sphere.
+
+To draw the electric field-distance graph for 2 objects, first define the sign convention, e.g. \(\rightarrow+ve\). Then, draw the strength of the e-field according to the line density.
+
+Left: visualisation of the electric field lines. Right: Electric field vs distance graph 
+
+## 3 Coulomb's Law
+
+To calculate the force acting on a charged particle due to another charged particle, we can use Coulomb's Law.
+
+Coulomb's Law states that the electric force between two point particles carrying charges \(Q_{1}\) and \(Q_{2}\) separated by a distance \(r\) apart is proportional to the product of the two charges and inversely proportional to the square of their distance apart.
+
+\[\begin{array}{c}F\propto\frac{Q_{1}Q_{2}}{r^{2}}\\ F=\frac{Q_{1}Q_{2}}{4\pi\varepsilon_{0}r^{2}}\end{array}\qquad\qquad\varepsilon= 8.85\times 10^{-12}\;\mbox{Fm}^{-1}\]
+
+Coulomb's Law also applies to charged spherical conductors. The distance \(r\) will then be measured from the centre of the sphere.
+
+## 4 Electric Potential Energy (symbol \(U\), units \(J\))
+
+The electric potential energy (EPE) between two point charges \(Q_{1}\) and \(Q_{2}\) separated by a distance \(r\) apart is given by
+
+\[\begin{array}{c}U=\frac{Q_{1}Q_{2}}{4\pi\varepsilon_{0}r}\end{array}\]
+
+EPE can be negative, if one charge is positive and the other is negative.
+
+Note: The work done on a particle by an external agent is equal to the negative of the work done by the electric field.
+
+## 5 Electric Potential (symbol \(V\), units \(JC^{-1}\))
+
+The electric potential at a point in an electric field is the work done per unit positive charge by an external agent in bringing a small test charge from infinity to that point without a change in kinetic energy.
+
+Note: the electric potential at infinity is taken to be zero by convention (see gravitational field notes).
+
+\[\begin{array}{c}V_{c}=\frac{W}{q}=\frac{Q}{4\pi\varepsilon_{0}r}\end{array}\]
+
+Electric potential can be negative, if the charge \(Q\) is negative.
+
+Potential energy \(U\) and potential \(V\) is related by the equation
+
+\[\begin{array}{c}U\equiv Vq\end{array}\]
+
+Positive charges will move from places of high potential to places of lower potential.
+
+Negative charges will move from places of low potential to places of higher potential.
+
+Change in EPE by a particle moving between 2 points whose potential difference is \(\Delta V\) is given by the formula
+
+\[\begin{array}{c}\overline{\Delta U=q\Delta V}\end{array}\]
+
+Charges moving along an equipotential line will not experience a change in potential energy.
+
+Note: while the electric field strength inside a charged sphere of radius \(R\) is 0, the potential energy in a charged sphere of radius \(R\) is not 0, it is \(\frac{Q}{4\pi\varepsilon_{0}R}\)
+
+**6 Relationship between electric field quantities**
+
+Generally, the electric field strength at a point is equal to the negative of the potential gradient at that point.
+
+\[E=-\frac{dV}{dr}\]
+
+Generally, the force acting on a charge is numerically equal to the negative of the potential energy gradient at that point.
+
+\[F=-\frac{dU}{dr}\]
+
+**7 Summary**
+
+\[F=\frac{Qq}{4\pi\varepsilon_{0}r^{2}} \Leftarrow E=\frac{F}{q}\Rightarrow E=\frac{Q}{4\pi\varepsilon_{0}r^{2}}\] \[\pitchfork\] \[F=-\frac{dU}{dr} E=-\frac{dV}{dr}\] \[U=\frac{Qq}{4\pi\varepsilon_{0}r} \Leftarrow\Delta U=q\Delta V\Rightarrow V=\frac{Q}{4\pi\varepsilon_{0}r}\]
+
+### 1 Symbols
+
+Common devices:
+
+Thermistor:Resistance decreases as temperature increases
+
+Light-dependent resistor (LDR):Resistance decreases as light intensity increases
+
+Diode:Allows electrical current only in one direction
+
+Common assumptions made:
+
+Ammeter:Zero resistance
+
+Galvanometer:Zero resistance
+
+Voltmeter:Infinite resistance
+
+### 2 Current
+
+Kirchhoff's Current Law states that the algebraic sum of the currents at a junction of a circuit is zero.
+
+\[\sum_{junction}I_{i}=0\]
+
+where currents entering the junction are given a positive (+) sign and currents leaving the junction are given a negative (-) sign.
+
+Generally
+
+sum of currents entering a junction = sum of currents leaving the junction
+
+This law arises from the Principle of Conservation of Charge.
+
+## 3 Voltage
+
+Electromotive force (symbol \(\varepsilon\)) of a cell is the amount of energy converted from non-electrical to electrical form per unit charge that moves from one terminal of the cell to the other outside of the cell.
+
+\[\varepsilon=\frac{\Delta W}{q}\]
+
+Potential difference (symbol \(V\)) across a circuit component is the amount of energy converted from electrical to non-electrical forms per unit charge that flows through the component.
+
+\[\Delta V=\frac{\Delta W}{q}\]
+
+Note: the negative terminal of a battery can still have a positive potential. Negative terminal just means that it is at a lower potential, compared to the positive terminal.
+
+Ohm's law: For a resistor obeying Ohm's law, this equation holds true:
+
+\[\Delta V=IR\]
+
+Kirchhoff's Voltage Law states that the algebraic sum of all electrical potential changes around any closed loop is zero.
+
+\[\sum_{junction}\Delta V_{i}=0\]
+
+This law arises from the Law of Conservation of Energy.
+
+Note: current always flows from higher potential to lower potential.
+
+## 4 Resistors
+
+For resistors in series, the total resistance is simply _the sum of the resistances_.
+
+\[R_{eff}=R_{1}+R_{2}+R_{3}+\cdots+R_{n}\]
+
+For resistors in parallel, the reciprocal of the total resistance is the sum of the reciprocals of the individual resistances.
+
+\[\frac{1}{R_{eff}}=\frac{1}{R_{1}}+\frac{1}{R_{2}}+\frac{1}{R_{3}}+\cdots+ \frac{1}{R_{n}}\]
+
+Note: effective resistance of resistors in parallel is always lower than the lowest resistance in the network.
+
+## 5 Ammeters and Voltmeters
+
+Ammeters / galvanometers should be connected in series.
+
+An ideal ammeter / galvanometer has 0 resistance.
+
+Voltmeters should be connected in parallel.
+
+An ideal voltmeter has infinite resistance.
+
+## 6 Non-ideal cells
+
+All cells inherently possess an internal resistance \(r\). This is represented with a dotted line as such:
+
+The internal resistance is in series with the battery.
+
+This causes the terminal p.d. to be lower than the e.m.f.
+
+\(V=\varepsilon-Ir\)
+
+## 7 Potential-divider Principle
+
+The Potential-Divider rule states that if a voltage exists across several resistors connected in series, then the voltage across each resistor is proportional to the total resistance.
+
+\[V_{1}=\frac{R_{1}}{R_{1}+R_{2}}*V=\frac{R_{1}}{R_{T}}*V\]
+
+When used in a circuit in series with a thermistor or LDR, the following graph can be obtained.
+
+The potential-divider principle can also be used for a continuous resistor, e.g. a resistance wire.
+
+If a wire has a constant resistance per metre, then the voltage drop across any section of the wire will be proportional to the length of the section as a fraction to the wire's total length.
+
+\[V_{AB}=\frac{l_{AB}}{l_{T}}*V_{0}\]
+
+EXTRAI
+
+If a wire has non-uniform resistance per metre, integrating over the length of the wire will give the total resistance of the wire.
+
+e.g. the resistance per metre of wire \(X\), which is \(L\) cm long, is given by \(r=A+Bx\).
+
+Hence total resistance is \(\int_{0}^{L}A+Bx\,dx\)
+
+## 8 Potentiometer
+
+The potentiometer is essentially a device used to measure an unknown potential difference. The unknown voltage is compared with a fraction of a voltage from a known source across a resistance wire.
+
+The balance length is the point when the galvanometer shows no current.
+
+This means that the potential difference across PJ is the same as the unknown e.m.f. i.e. \(V_{1}=V_{2}\). Hence, no current flows.
+
+The unknown voltage \(E\) can be calculated by
+
+\[E=\frac{L_{PJ}}{L_{PQ}}*V\]
+
+Note: the potentiometer is very accurate (provided that the e.m.f. source for the main circuit is known accurately)
+
+Note: The presence of any resistors in series with the unknown e.m.f. does not affect the balance length at all.
+
+\[V_{resistor}=IR_{resistor}\]
+
+When \(I=0\) as there is no current flow, there is no potential drop across the resistor. Hence, the balance length is not affected by resistors.
+
+## 9 Wheatstone bridge
+
+The Wheatstone Bridge is a way to determine an unknown resistance accurately.
+
+\(R_{x}=\) unknown resistance
+
+\(R_{1}=\) variable resistance
+
+\(R_{2}\) and \(R_{3}=\) known resistances (fixed)
+
+Like a galvanometer, the resistance \(R_{1}\) is adjusted until the balance point (\(I=0\)).
+
+This means that the potential difference between 1) A and B is 0. Hence,
+
+\(V_{PA}=V_{PB}\)
+
+\(I_{1}R_{1}=I_{2}R_{x}\)
+
+and
+
+\(V_{AQ}=V_{BQ}\)
+
+\(I_{1}R_{2}=I_{2}R_{3}\)
+
+Hence,
+
+\(\dfrac{I_{1}}{I_{2}}=\dfrac{R_{x}}{R_{1}}=\dfrac{R_{3}}{R_{2}}\)
+
+\(R_{x}=\dfrac{R_{1}}{R_{2}}\times R_{3}\)
+
+## Chapter 17 Electromagnetism
+
+### 1 Magnets
+
+Magnets produce magnetic fields. The region of space close to a magnet is called a magnetic field.
+
+The field is represented by lines of force, starting from the North pole and ending at the South pole.
+
+Hard magnetic materials like cobalt and nickel are difficult to magnetise but tend to retain their magnetism.
+
+Soft magnetic materials like iron are easily magnetised but tend to lose their magnetism easily.
+
+### 2 Magnetic field (symbol \(B\), units T)
+
+Magnetic field is a vector. The strength of the magnetic field at a point is represented by the symbol \(B\).
+
+Note: Magnetic field \(\equiv\) magnetic flux density (covered later)
+
+The tangent to the magnetic field line at a point in the magnetic field gives the direction of the field at that point.
+
+The number of lines per unit cross section area is an indication of the strength of the field.
+
+Arrow: Magnetic field acting in direction of arrow
+
+Cross: Magnetic field acting into plane of paper
+
+Dot with a circle: Magnetic field acting out of the plane of paper
+
+### 3 Magnetic field patterns of different magnetic objects
+
+\begin{tabular}{|c|c|c|} \hline  & Magnetic field due to... & \\ \hline Current flowing in long & Current flowing in a long & Current in a circular coil \\ straight wire & solenoid & \\ \hline  & & \\ \end{tabular}
+
+\begin{tabular}{|c|c|c|} \hline  & Magnetic field due to... & \\ \hline Current flowing in long & Current flowing in a long & Current in a circular coil \\ straight wire & solenoid & \\ \hline  & & \\ \end{tabular}
+
+\begin{tabular}{|c|c|c|} \hline  & Magnetic field \(\equiv\) magnetic field & \\ \hline  & & \\ \end{tabular}
+
+\begin{tabular}{|c|c|c|} \hline  & & \\ \hline  & & \\ \end{tabular}
+
+\begin{tabular}{|c|c|c|} \hline  & & \\ \hline  & & \\ \end{tabular}
+
+\begin{tabular}{|c|c|c|} \hline  & & \\ \end{tabular}
+
+\begin{tabular}{|c|c|c|} \hline  & & \\ \hline  & & \\ \end{tabular}
+
+[MISSING_PAGE_POST]
+
+## 4 Solenoid
+
+The polarity of the ends of the solenoid can be determined by the "Clock" rule.
+
+Looking at the end of a solenoid, if the current is flowing counter-clockwise, that end is a north pole. If the current is flowing clockwise, that end is a south pole.
+
+The polarity can also be determined by grasping the core, with the fingers curled in the direction of the current. The thumb will then point to the north pole.
+
+A ferrous core can increase the magnetic field strength of a solenoid very dramatically.
+
+This is because of the presence of "domains" in the ferromagnetic material, which are composed of tiny magnets made up of atoms.
+
+In the unmagnetised state, these atomic magnets point randomly in all directions.
+
+When subjected to an external magnetic field, the domains start to become aligned in one direction, and the magnetic field becomes very strong.
+
+## 5 Right hand grip rule
+
+If the wire is grasped in the right hand, with the thumb in the direction of the current, the fingers will curl in the direction of the magnetic field.
+
+## 6 Fleming's Left Hand rule
+
+Fleming's Left Hand rule can be used to find the direction of the force acting on a current-carrying conductor in a magnetic field.
+
+The seCond finger represents the Current, the First finger represents the magnetic Field and the thumb represents the magnetic force.
+
+## 7 Magnetic force acting on a current-carrying conductor
+
+The direction of the force can be calculated using Fleming's left hand rule. The magnitude of the force can be calculated using:
+
+\(F=BIL\sin\theta\)
+
+where \(\theta\) is the angle between the magnetic field vector and the direction of the current.
+
+## 8 Magnetic Flux Density (symbol \(B\), units T)
+
+Magnetic flux density is defined as the force acting per unit length of a conductor which carries unit current and is of right angles to the magnetic field.
+
+\(B=\frac{F}{IL\sin\theta}\)
+
+The Tesla is the unit of magnetic flux density equivalent to a force of \(1\,N\) experienced by a straight conductor of length \(1\,m\) and carrying a current of \(1\,A\) when it is placed perpendicular to the magnetic field.
+
+## 9 Forces acting on a pair of current-carrying wires
+
+If the currents are flowing in the same direction (A), then the wires will attract each other.
+
+If the currents are flowing in the opposite direction (B), then the wires will repel each other.
+
+The directions of the forces can be explained using (1) the right hand grip rule, to determine the direction of the magnetic field, followed by Fleming's left hand rule, to determine the direction of the force.
+
+The force of interaction is given by
+
+Derivation: See later:
+
+\(F_{1}=BI_{1}L=\frac{\mu_{0}l_{2}}{2\pi r}I_{1}L\)
+
+## 10 Forces (torque) acting on a current-carrying rectangular loop
+
+The force acting on the vertical arm is \(F=BIb\). Since the forces are a couple, the torque \(\tau\) experienced is:
+
+\[\tau=Fa=(BIb)a=BIA\]
+
+For a loop of N turns, the torque experienced is:
+
+\[\overline{\tau}=BIAN\]
+
+A current balance can be used to figure out the strength of a magnetic field. It does this by aiming to balance the (1) force acting on the current-carrying rectangular loop (via electromagnetism) and a (2) known force (from a non-conducting rod) in a see-saw configuration.
+
+The torque acting on side CD (clockwise) is
+
+\(\tau_{clockwise}=F_{B}x=(BIL)x\), where \(L\) is the length of the wire CD
+
+The torque acting on side AF (anticlockwise) is
+
+\(\tau_{anticlockwise}=F_{rod}y=mgy\)
+
+To achieve rotational equilibrium,
+
+\[\tau_{anticlockwise}=\tau_{clockwise}\]
+
+\[BILx=mgy\]
+
+\[B=\frac{mgy}{ILx}\]
+
+## 11 Force acting on a charged particle moving in a magnetic field
+
+To find out the direction of force acting on a charged particle moving in a magnetic field, first we must resolve the B field into a component parallel and perpendicular to the direction of velocity \(v\).
+
+Note: take the direction of conventional current (i.e. positive charge flow), not electron flow.
+
+[MISSING_PAGE_EMPTY:71]
+
+[MISSING_PAGE_FAIL:72]
+
+For particles in a magnetic field, the magnetic force provides the centripetal force:
+
+\[F_{B}=F_{c}\]
+
+\[B_{0}qv_{0}=\frac{mv_{0}^{2}}{r}\Longrightarrow B_{0}q=\frac{mv_{0}}{r}\]
+
+\[r=\frac{mv_{0}}{B_{0}q}\]
+
+\[r=\frac{m\left(\frac{E}{B_{in}}\right)}{B_{0}q}\]
+
+\[r=\frac{me}{B_{in}B_{0}q}\]
+
+If \(B_{in}=B_{0}\) (same magnetic field in velocity selector and mass spectrometer),
+
+\[r=\frac{me}{qB^{2}}\]
+
+If \(B\), \(q\) and \(E\) are constant, then \(r\propto m\).
+
+**14 Magnetic field due to current flowing in a long, straight wire**
+
+The magnetic field in the vicinity of a long, straight wire takes the form of concentric circles with the wire passing through the common centre.
+
+The direction of the magnetic field can be found through Fleming's Left Hand rule
+
+The strength of the field at a point varies proportionately with the current \(I\) and the distance \(r\).
+
+\[\begin{array}{c}B\propto\frac{I}{r}\\ B=\frac{\mu_{0}I}{2\pi r}\end{array}\]
+
+\[\begin{array}{c}\mbox{\sf{{}^{*}given in formula sheet}}\\ \mbox{\sf{{}^{*}}given in formula sheet}\end{array}\]
+
+Where \(\mu_{0}=4\pi\times 10^{-7}Hm^{-1}=\) permeability of free space
+
+**15 Magnetic field due to current flowing in a solenoid**
+
+The direction of the magnetic field (and hence the polarity) can be determined by the "clock" rule, or, by grasping the solenoid core in the direction of current flow. The thumb will point towards the north pole. This is known as the Right Hand grip rule.
+
+The magnitude of the magnetic field is proportional to the current \(I\) in the solenoid and the number of turns per unit length \(n\) of the solenoid.
+
+\[\begin{array}{c}\mbox{\sf{{}^{*}}given in formula sheet}\\ \mbox{\sf{{}^{*}}}\mbox{\sf{{}^{*}}}\mbox{\sf{{}^{*}}}\mbox{\sf{{}^{*}}}\mbox{ \sf{{}^{*}}}\mbox{\sf{{}^{*}}}\mbox{\sf{{}^{*}}}\mbox{\sf{{}^{*}}}\mbox{\sf{{ }^
+
+## 16 Magnetic field due to current in a circular coil
+
+The magnetic field takes the form of closed loops about any curved portion of the wire in the circular coil.
+
+Theoretically, the magnetic field at the centre of the coil is directed through its centre. This field line appears to come from infinity and end at infinity.
+
+One side of the coil corresponds to the North pole and the other side corresponds to the South pole and the polarity can be determined using the right-hand drip rule.
+
+The magnitude of the magnetic field at the centre is proportional to the current \(I\) and the number of coils \(N\), and inversely proportional to the radius \(r\).
+
+\[B\propto\frac{NI}{r}\]
+
+\[B=\frac{\mu_{0}NI}{2r}\]
+
+## Chapter 18 Electromagnetic Induction
+
+### 1 Magnetic flux (symbol \(\Phi\), units Wb)
+
+The magnetic flux passing through the surface area \(A\) is defined as the product of the component of the magnetic field normal to the plane of the surface and the area of the surface.
+
+\(\phi=B_{\perp}A=BA\cos\theta\)\(\phi=\iint B.dA\)
+
+where \(\theta\) is the angle between the normal of the plane and the magnetic field.
+
+The unit of magnetic flux is the weber (Wb).
+
+The weber is the flux of a uniform magnetic field \(B\) of flux density \(1T\), through a plane surface of area \(A\) of \(1m^{2}\), placed normally to the \(B\) field.
+
+The total magnetic flux linkage passing through a coil of N turns can be calculated using:
+
+\[\Phi=N\phi=NBA\cos\theta\]
+
+where \(N\) is the number of turns in the coil.
+
+### 2 Faraday's law
+
+Faraday's law states that when the magnetic flux linkage with a circuit is changed, an induced e.m.f. is set up whose magnitude is proportional to the rate of change of flux linkage.
+
+\[\varepsilon=\left|\frac{d\Phi}{dt}\right|\]
+
+### 3 Lenz's law
+
+Lenz's law states that the direction of the induced e.m.f. (and hence current flow in a closed circuit) is always such as to opposite the change in flux causing it.
+
+\[\varepsilon=-k\frac{d\phi}{dt}=-\frac{d\phi}{dt}\]
+
+where \(k=1\), and \(\varepsilon\), \(\phi\) and \(t\) are in their respective S.l. units.
+
+## 4 Applications of Lenz's law
+
+No e.m.f. / current induced when the current is at steady state.
+
+## 5 Eddy currents
+
+A useful application of Lenz's law is in electromagnetic braking through the formation of eddy currents.
+
+### Eddy currents are induced currents flowing in loops.
+
+A simple experimental set-up can be designed to show the effects of eddy currents.
+
+A metal disc is set to swing on a pivot, freely. As the disc passes the magnet, it
+
+unslotted disc
+
+experiences a changing magnetic flux.
+
+Hence, eddy currents are induced.
+
+These eddy currents set up a magnetic field which opposes the field of the magnet, which retards the motion of the disc.
+
+Eddy currents are used in applications such as stopping rollercoasters, galvanometers, voltmeters and ammeters.
+
+To minimize eddy currents, slots can be cut in the disc. This hinders the formation of large induced currents, which reduces the braking effect.
+
+This is important when eddy currents should be reduced to avoid the loss of energy in applications such as a transformer, as induced currents do work and raise the temperature of the iron core and cause energy loss.
+
+## 6 Fleming's Right Hand rule
+
+Fleming's right hand rule allows us to identify the direction of the induced e.m.f. and hence current in a circuit.
+
+The seCond finger represents the Current, the First finger represents the magnetic Field and the thumb represents the force (or the direction of motion).
+
+[MISSING_PAGE_FAIL:79]
+
+Page 80:
+
+**8 Factors affecting magnitude of induced e.m.f.**
+
+From \(\varepsilon=BA\omega N\), the factors affecting the magnitude of e.m.f. produced are:
+
+magnetic flux density \(B\),
+
+Plane area of the coil \(A\),
+
+Angular frequency of rotation \(\omega\),
+
+Number of turns of the coil \(N\)
+
+**Page 81**
+
+**1 Introduction**
+
+Direct current (D.C.) is one where the current only flows in one direction.
+
+The magnitude of the current may vary, but the direction of the current must never change.
+
+Alternating current (A.C.) is one where the direction of the current flow changes periodically with time (with a constant period).
+
+**2 Key terms**
+
+Period: The time taken for the current to undergo one complete cycle.
+
+Given by \(T\)
+
+Frequency: The number of complete cycles undergone by the current per unit time. Given by \(f\), and \(f=\frac{1}{T}\)
+
+Angular
+
+frequency: The frequency in terms of radians per unit time rather than cycles per unit time. Given by \(\omega\)
+
+\[\omega=\frac{2\pi}{T}=2\pi f\]
+
+Peak current: The maximum magnitude of the current attained in each cycle.
+
+Given by \(I_{0}\)
+
+Peak-to-peak
+
+current: The difference between the maximum and minimum values of the current within one cycle.
+
+Given by \(I_{pp}\)
+
+For a sinusoidal wave,
+
+## 3 Alternating current (sinusoidal) properties
+
+In the H2 syllabus, the most commonly encountered form of alternating current is that with a sinusoidal waveform.
+
+This sinusoidal alternating current is represented mathematically by
+
+\(I=I_{0}\sin\omega t\)
+
+where \(\omega=\frac{2\pi}{T}=2\pi f\)
+
+NOTE: if the current starts at the peak value instead, use \(I=I_{0}\cos\omega t\).
+
+## 4 Instantaneous Power
+
+To calculate instantaneous power, we simply have to take the value of \(I\) or the value of \(V\) at the desired time, and apply the formula:
+
+\[P=I^{2}R=\frac{V^{2}}{R}\]
+
+However, to calculate average power, we need to use the mean-square value of the current.
+
+## 5 Mean-square and root-mean-square
+
+The mean-square value is the mean (average value) of the square of the current over the time interval being considered.
+
+\[\langle I^{2}\rangle=\frac{I_{1}^{2}+I_{2}^{2}+\cdots+I_{n}^{2}}{n}\]
+
+EXTRAI
+
+For currents that vary periodically with time, the mean-square current between time
+
+\(t_{1}\) and time \(t_{2}\) can be calculated as such:
+
+\[\langle I^{2}\rangle=\frac{1}{T}{\int_{t_{1}}^{t_{2}}}I^{2}\,dt\]
+
+NOTE: \(\langle I^{2}\rangle\neq\langle I\rangle^{2}\)The root-mean-square current of an alternating current (a.c.) is that value of the direct current (d.c.) that would produce thermal energy at the same rate in a resistor.
+
+The root-mean-square value is the square root of the mean of the square of the current over the time interval being considered.
+
+It is simply the square root of the mean-square current. Hence,
+
+\(I_{rms}=\sqrt{\langle I^{2}\rangle}\)
+
+## 6 Average power
+
+Instead of using the instantaneous current / voltage, we will now replace it with the mean-square / root-mean-square currents and voltages respectively. Hence,
+
+\[\langle P\rangle=\langle I^{2}R\rangle=I_{rms}^{2}R\]
+
+\[\langle P\rangle=\langle\frac{V^{2}}{R}\rangle=\frac{V_{rms}^{2}}{R}\]
+
+\[\langle P\rangle=V_{rms}I_{rms}\]
+
+For square waves, it is necessary to calculate the root- and mean-square values manually.
+
+To do this, first square each straight section of the square wave and plot a new graph with the values. Then, calculate the mean of these values, which is the area under the graph divided by the total time.
+
+\[\langle I^{2}\rangle=\frac{\frac{3}{4}T\times I_{1}^{2}+\frac{1}{4}T\times I _{2}^{2}}{T}=\frac{3}{4}I_{1}^{2}+\frac{1}{4}I_{2}^{2}\]
+
+For sinusoidal waves, there are some special equations to help us calculate root-mean-square values.
+
+\(I=I_{0}\sin\omega t\)\(I^{2}=I_{0}^{2}\sin^{2}\omega t\)\(I^{2}=\frac{1}{2}I_{0}^{2}(1-\cos 2\omega t)\)\(I^{2}=\frac{1}{2}I_{0}^{2}(1-\cos 2\omega t)\)\(I^{2}=I_{0}^{2}\sin^{2}\omega t\)\(I^{2}=I_{0}^{2}
+
+Hence, we can see that the mean-square value for \(I_{0}\) is \(\frac{1}{2}I_{0}^{2}\).
+
+Hence, the root-mean-square value is
+
+\[I_{rms}=\sqrt{\frac{1}{2}I_{0}^{2}}=\frac{I_{0}}{\sqrt{2}}\]
+
+Similarly,
+
+\[V_{rms}=\frac{V_{0}}{\sqrt{2}}\]
+
+Then, for average power,
+
+\[\langle P\rangle=\langle I^{2}\rangle R=\left(\frac{I_{0}}{\sqrt{2}}\right)^{ 2}R=\frac{I_{0}^{2}R}{2}=\frac{P_{0}}{2}\]
+
+Hence, we can see that
+
+\[\langle P\rangle=\frac{P_{0}}{2}\]
+
+These equations hold true only for a sinusoidal waveform.
+
+## 7 Transformers
+
+The reason why we use transformers in long-distance power transmission is due to the issue of Joule heating, given by the formula:
+
+\[P_{dissipated}=I^{2}R_{transmission}\]
+
+In order to reduce the current, for the same power, we can increase the voltage (\(P=VI\)). This can be done using a transformer.
+
+Since D.C. currents are hard to step down or up using a transformer, A.C. current is used for long-distance power transmission.
+
+The high voltage reduces the energy loss as heat generation in the cables.
+
+An alternating voltage \(V_{p}\) applied to the primary coil causes an alternating current \(I_{p}\) to flow inside the coil.
+
+This generates an alternating magnetic flux \(\underline{\phi}\) (through \(\phi=BA=(\mu_{0}nI)A\)) in the soft iron core.
+
+Assuming no flux leakage (transformer is ideal), the same flux passes through the primary and secondary coils.
+
+This alternating magnetic flux passing through the secondary coil induces an alternating voltage in the secondary coil.
+
+Completing the circuit (i.e. by connecting a load) will allow an induced current to low through the load.
+
+Hence, the transformer transfers electrical power from an input voltage of \(V_{p}\) to an output voltage of \(V_{s}\).
+
+For an ideal transformer, the relationship between the primary (input) voltage \(V_{p}\) and the secondary (output) voltage \(V_{s}\) is:
+
+\[\frac{V_{s}}{V_{p}}=\frac{N_{s}}{N_{p}}=turns\ ratio\]
+
+If \(N_{s}>N_{p}\), then \(V_{s}>V_{p}\) and the transformer is a step-up transformer.
+
+If \(N_{s}<N_{p}\), then \(V_{s}<V_{p}\) and the transformer is a step-down transformer.
+
+Assuming no power loss (ideal transformer),
+
+\[V_{p}I_{p}=V_{s}I_{s}\]
+
+Hence,
+
+\[\frac{V_{s}}{V_{p}}=\frac{I_{p}}{I_{s}}\]
+
+## 8 Non-ideal transformers
+
+While an ideal transformer transfers 100% of power supplied to the primary coil to the secondary coil, in reality, all transformers lose some amount of energy within the transform.
+
+The efficiency of a transformer is:
+
+\[\text{efficiency}=\frac{\text{power output from secondary coil}}{\text{power input to primary coil}}\]
+
+Below are the reasons for this inefficiency.
+
+\begin{tabular}{|l|l|} \hline Reason & Explanation \\ \hline Eddy currents & The alternating magnetic flux in the core will also induce circular currents in the soft iron core, called eddy currents. \\ \end{tabular}
+
+To reduce the effect of eddy currents, transformer cores are usually laminated, which means they are made from thin sheets of soft iron separated by layers of insulation. This prevents the formation of large eddy currents and the associated energy loss.
+
+Joule heating & A small amount of energy will be lost as heat in the primary and secondary coils due to Joule heating.
+
+\[P=I^{2}r\]
+
+where \(r\) is the resistance of the coil.
+
+Page 86
+
+\begin{tabular}{|p{113.8pt}|p{113.8pt}|} \hline Heating within soft core due to hysteresis hysteresis & The soft iron core will retain some of the magnetism caused by the magnetic field. Hence, when the magnetic field is reversed, energy is needed to force the magnetic domains to reverse. This energy is lost as heat generated in the core. \\  & Hard magnetic materials cannot be used for the core because they strongly retain their magnetisation. Hence, it takes a lot of energy to reverse the magnetisation. \\ \hline Magnetic flux leakage & In reality, the efficiency of flux coupling between the 2 coils cannot be perfect and there will be some flux leakage. \\  & This limits the power that can be transferred from the primary to the secondary coil (as the flux linkage is reduced). \\ \hline \end{tabular}
+
+## 9 Half-wave rectification of an alternating current
+
+A diode is a circuit component that only allows current to flow one way through it. If a potential difference applied in the direction that allows it to conduct current, the diode is said to be forward-biased. If a potential difference applied in the direction that causes it to block current, the diode is said to be reverse-biased. Hence, if a diode is connected in series with a sinusoidal alternating current, then the diode will block the current during the half-cycle in which it is reverse-biased.
+
+Hence, the diode is able to convert an A.C. current into a D.C. current. This process is called rectification, and the diode is said to rectify the A.C.
+
+Similar to full sinusoidal waveforms, we can calculate the root-mean-square values for a rectified A.C.
+
+\[\left\langle I^{2}\right\rangle=\frac{1}{2}(81)=40.5\]
+
+From \(t=0\) to \(t=\frac{1}{2}T\), the graph obeys the equation \(I^{2}=9^{2}\sin^{2}\omega t\). Hence, the average value \(\left\langle I^{2}\right\rangle\) is \(\frac{1}{2}I_{0}^{2}=\frac{1}{2}(81)=40.5\).
+
+From \(t=\frac{1}{2}T\) to \(t=T\), the average current is simply 0.
+
+Hence, the mean value of the current \(\left\langle I^{2}\right\rangle\) for one entire cycle is:
+
+\[\left\langle I^{2}\right\rangle=\frac{\frac{1}{2}I_{0}^{2}\times\frac{1}{2}T+ 0\times\frac{1}{2}T}{T}=\frac{1}{4}I_{0}^{2}=20.25\;A^{2}\]
+
+Hence, the root-mean-square current \(I_{rms}\) is:
+
+\[I_{rms}=\sqrt{\frac{1}{4}I_{0}}=\frac{I_{0}}{2}=4.5\;A\]Page 88
+
+Chapter 20: Quantum Physics 1
+
+**1 Introduction**
+
+We know that electromagnetic radiation (e.g. light) can behave as waves. However, some phenomena cannot be explained by classical wave theory. For example, the photoelectric effect is a phenomenon that cannot be explained classically.
+
+**2 Photoelectric effect**
+
+The photoelectric effect is the phenomenon of electrons being ejected from a given meal surface when light about a certain minimum frequency falls upon its surface.
+
+The photoelectric effect can be demonstrated with an electroscope.
+
+The gold leaf is initially repelled due to electron repulsion. When UV light shines on the zinc plate, the gold plate falls. This means that electrons have been emitted.
+
+These electrons are called photoelectrons.
+
+**3 Observations that result from the Photoelectric effect**
+
+The photoelectric effect results in a disagreement between predictions based on classical theory and the actual observations. The table below lists three wrong predictions and one correct prediction.
+
+\begin{tabular}{|l|l|} \hline Prediction based on classical theory & Observation \\ \hline Since intensity is a measure of energy, if we use & Wrong prediction. \\ radiation of enough intensity, electrons would & There is a threshold frequency, below which no \\ absorb enough energy to escape. & electrons are emitted, no matter the frequency. \\ Frequency of the light should be irrelevant. & Wrong prediction. \\ Electrons can absorb the light energy over time. & Photoelectrons are emitted immediately. \\ Hence, a lower intensity light will take a longer & Wrong prediction. \\ time to emit photoelectrons and vice versa. & Wrong prediction. \\ For a light of a frequency, a greater intensity & Max KE of electrons is independent of intensity \\ (and hence larger energy) of light should result & and dependent on frequency. \\ in the emitted photoelectrons having a greater & Correct prediction. \\ kinetic energy. & In fact, \\ \hline For light of any frequency, a greater intensity & Correct prediction. \\ should result in more emitted photoelectrons per unit time. & In fact, \\ \hline Hence, Einstein came up with his Quantum Theory to explain the discrepancies, \\ which postulated that the energy carried by electromagnetic radiation might exist as \\ discrete packets called quanta. & Hence, incident light was not wave-like, but behaved like projectiles, subsequently \\ called photons, striking the surface of the metal. \\ \hline \end{tabular}
+
+## 4 Photons
+
+A photon is an indivisible quantum (or packet) of electromagnetic energy which is emitted, transmitted and absorbed as a whole.
+
+\[E=hf=\frac{hc}{\lambda}\]
+
+where \(h=6.63\times 10^{-34}\) Js = planck constant and \(E\) is the energy of one photon.
+
+The energy of photons is often expressed in electron-volts, as it is easier to read and write.
+
+The electron-volt is the amount of kinetic energy that an electron gains when it is accelerated through a potential difference of one volt.
+
+\[\mathbbm{1}\,\mathrm{eV}=1.6\times 10^{-19}\,\mathrm{J}\]
+
+With the formula \(E=hf\), we can calculate values such as the rate of emission / arrival of photons in light.
+
+Suppose a lamp has power \(P\) and emits light of wavelength \(\lambda\).
+
+The energy of one photon in the light is:
+
+\[E=\frac{hc}{\lambda}\]
+
+If the lamp produces \(P\) J of energy in 1 second, then the number of photons per second can be deduced:
+
+\[P=\frac{\mathrm{Energy}}{\mathrm{time}}\]
+
+\[P=\frac{Nhf}{t}\]
+
+\[\frac{N}{t}=\frac{P}{hf}\]
+
+Hence,
+
+\[\mathrm{number\ per\ second}=\frac{N}{t}=\frac{P}{E}\]
+
+We can also prove the relationship of intensity, frequency and photons.
+
+Since intensity is defined as
+
+\[\mathrm{Intensity}=\frac{\mathrm{Power}}{\mathrm{Area}}=\frac{P}{\mathrm{Area }}=\frac{NE}{t}\times\mathrm{Area}\]
+
+Substituting \(E=hf\),
+
+\[\mathrm{Intensity}=\frac{\mathrm{Number\ of\ photons}\times hf}{t}\times\mathrm{Area}\]Hence
+
+\[\text{Intensity}=(\frac{n}{t})\times\frac{hf}{\text{Area}}\]
+
+assuming that the area of incident light is constant.
+
+Assuming that frequency is constant, doubling the intensity will double the rate of photons.
+
+Assuming that intensity is constant, doubling the frequency of light will halve the rate of photons.
+
+## 5 Work function
+
+When a photon hits an free electron in the metal, the photon must be able to transfer sufficient energy to the electron such that it is able to overcome the electrostatic forces of attraction keeping the electron in the metal.
+
+The minimum amount of energy a photon must have is given by the work function of the metal.
+
+The work function (\(\phi\)) of a metal is the minimum amount of energy required for an electron to escape from the surface.
+
+To find the work function, we can form this equation:
+
+\[E_{photon}=E_{metal}+E_{electron}\]
+
+Since the work function is the minimum energy an electron must possess, from the equation, this is only possible if \(E_{electron}\) is zero, i.e. \(KE_{electron}=0\).
+
+Hence,
+
+\[E_{photon}=\text{work function}\]
+
+\[\phi=hf_{0}\]
+
+where \(f_{0}\) is the threshold frequency.
+
+This is the minimum frequency where surface electrons are ejected with zero KE.
+
+Below this frequency, no electrons will be emitted.
+
+## 6 Energy of photoelectrons
+
+In order to measure the energy of photoelectrons, we can make an experimental set-up.
+
+Imagine that the adjustable p.d. is set such that the collector is of a lower potential than that of the emitter, where A is the emitter and B is the collector.
+
+In order to reach the collector (B), since the plate is of negative potential, _the electron must have sufficient kinetic energy to convert into electric potential energy such that it has \(KE\geq 0\) at plate B_.
+
+From electric fields, we know that \(E=q\Delta V\). In the case of an electron,
+
+\(E=e\Delta V\)
+
+Since we know that the electron must have enough kinetic energy to convert into electric potential energy,
+
+\(E_{electron}-E_{EPE}\geq 0\)
+
+\(\frac{1}{2}m_{e}v_{max}^{2}-e\Delta V\geq 0\)
+
+Hence, the potential that stops the most energetic electron is when
+
+\(e\Delta V_{s}=\frac{1}{2}m_{e}v_{max}^{2}\)
+
+Higher potentials cause the value of \(E_{electron}-E_{EPE}\) to be less than 0. Hence, the electron will not reach the collector, resulting in 0 current.
+
+This potential that stops the most energetic photoelectron is called the stopping potential \(V_{s}\).
+
+The stopping potential is the minimum value of the retarding voltage which will just stop even the most energetic photoelectrons from reaching the collector, indicated by current just dropped to zero as measured in a micro-ammeter.
+
+On the other hand, if the collector is at a higher potential than that of the emitter, this means that electrons experience an attractive force towards the emitter. Hence, all photoelectrons emitted will reach the collector.
+
+This also means that the current will be a constant value regardless of the potentials of the emitter and the collector.
+
+Hence, we can obtain this graph:
+
+where \(V_{s}\) is the stopping potential.
+
+Earlier, we showed how the rate of photons is dependent on intensity on light. Here, we will prove how the rate of photoelectrons is also dependent on the intensity of light.
+
+The photoelectric current \(I_{PE}\) is a measure of the number of photoelectrons emitted per second.
+
+\[I_{PE}=\frac{Q}{t}=\frac{N_{e}\times e}{t}=\left(\frac{N_{e}}{t}\right)e\]
+
+Since intensity is proportional to the rate of arrival of photons, this should increase the rate of emission of photoelectrons as more photons are striking the metal surface per unit area per unit time and thus more photoelectrons will be emitted.
+
+One photoelectron is emitted when approximately \(10^{6}\) photons have struck the surface of the metal.
+
+**7 Einstein's photoelectric equation**
+
+The equation \(E_{photon}=E_{metal}+E_{electron}\) is for a general situation of the photoelectric effect. However, Einstein's equation is the study of one particular energy situation, where minimum energy is used to overcome the forces of attraction of the metal and the KE of the photoelectron is the maximum. Hence,
+
+\[E_{photon}=Work\ function\ of\ metal+Maximum\ KE\ of\ electron\]
+
+\[hf=\phi+\frac{1}{2}m_{e}v_{max}^{2}\]
+
+where \(m_{e}=9.11\times 10^{-31}\) kg
+
+**8 Various graphs**
+
+Since \(eV_{s}=\frac{1}{2}m_{e}v_{max}^{2}\), we can rewrite the equation as
+
+\[hf=eVs+\phi\]
+
+This allows us to see that by varying the frequency of light shone on one particular metal, different stopping potentials \(V_{c}\) is needed to reduce the measured current to zero.
+
+We can also rewrite the equation as
+
+\[V_{s}=\frac{h}{e}f-\frac{\phi}{e}\]
+
+This allows us to plot a graph of \(V_{s}\) against \(f\).
+
+Connecting the points, we get a straight line where the gradient is \(\frac{h}{e}\) and the y-intercept is \(-\frac{\phi}{e}\)When the light is at the threshold frequency, electrons emitted have 0 KE. Hence, 0 EPE is needed to stop these electrons. By \(EPE=e\Delta V\), the stopping potential will be zero.
+
+The gradient of every \(V_{s}-f\) graph will be the same, as \(\frac{h}{e}\) is a universal constant. However, different metals have different work functions. Since the y-intercept is \(-\frac{\phi}{e}\), different metals will have different y-intercepts.
+
+We can also consider the I-V graph for light of various frequencies, while keeping the intensity constant. This means that the rate of arrival of photons will be constant for each frequency, meaning that they will all have the same saturation current. Additionally, by \(E=hf\), different frequencies of light will have a different stopping potential, since \(\phi=hf_{0}\).
+
+If we consider the I-V graph for light of varied intensities instead of frequency, keeping frequency constant, we can see that since the rate of arrival of photons is different, the rate of emission of photoelectrons will also be different, and hence the saturation current will be different. This is because \(Intensity=(\frac{N}{t})\times\frac{hf}{Area}\), and a change in intensity without a change in frequency will change \(\left(\frac{N}{t}\right)\).
+
+We can also consider the current-intensity graph for light of constant frequency. Earlier, we proved that intensity is related to the rate of emission of photoelectrons. Hence, a larger intensity of light will have a higher saturation current and vice versa.
+
+[MISSING_PAGE_EMPTY:94]
+
+[MISSING_PAGE_EMPTY:95]
+
+## Chapter 21 Quantum Physics 2
+
+### 1 Wave-particle duality
+
+Light can behave as both a particle (photon) or a wave. However, it will never be both at the same time.
+
+Wave characteristics: Interference, diffraction
+
+Particle characteristics: Photoelectric effect
+
+In actual fact, matter can also behave like waves. This is summed up by de Broglie's equation:
+
+\[\lambda=\frac{h}{p}=\frac{h}{mv}\]
+
+where \(h\) is the Planck constant \(h=6.63\times 10^{-34}\) Js.
+
+As a result, even though light is massless, it can exert a force, by Newton's Second Law:
+
+\[F\propto\frac{dp}{dt}\propto\frac{\Delta p}{\Delta t}\text{ where }p=\frac{h}{\lambda}\]
+
+### 2 Electron diffraction
+
+In an experiment, electrons were observed to diffract. This effectively confirmed de Broglie's equation.
+
+The filament (cathode, -) is heated and emits electrons via thermionic emission (not photoelectric).
+
+Electrons are then accelerated to the anode through a potential difference \(V\). This leaves them with an energy \(E_{k}=eV\).
+
+The electrons are then diffracted by the thin graphite sample using \(d\sin\theta=n\lambda\).
+
+The wavelength of the accelerated electrons can be calculated by using the alternate formula for kinetic energy:
+
+\[E_{k}=\frac{1}{2}mv^{2}=\frac{(mv)^{2}}{2m}=\frac{p^{2}}{2m}\]By de Broglie's equation,
+
+\[E_{k}=\frac{h^{2}}{\lambda^{2}(2m)}=eV\]
+
+\[V=\frac{h^{2}}{\lambda^{2}(2m)e}\]
+
+## 3 Energy levels
+
+Each atom possesses discrete energy levels.
+
+Electrons revolve around the nucleus with uniform motion due to the coulomb force (\(F=\frac{Qq}{4\pi\varepsilon_{0}r^{2}}\)).
+
+Electrons can jump from an orbit of lower energy to one of higher energy (\(E_{1}\) to \(E_{2}\)). This process is called excitation and requires energy.
+
+Electrons can also jump from an orbit of higher energy to one of lower energy (\(E_{2}\) to \(E_{1}\)) This process is called de-excitation and releases energy in the form of a photon.
+
+Both processes are able to show evidence that discrete energy levels exist in an atom.
+
+The ground state of an atom refers to the most stable, and lowest energy state available.
+
+The energy of a given level is usually expressed in electron-volts. (\(1eV=1.6\times 10^{-19}J\))
+
+By convention, the energy of an electron at rest outside the atom is taken to be 0. This means that all other energy levels have negative values.
+
+The energy level of a hydrogen atom is given by \(E_{n}=-\frac{13.6}{n^{2}}\).
+
+\(E_{\infty}\) is also known as the ionisation energy, if the ground state is taken to be at 0 energy.
+
+Any state above the ground state are known as excited states.
+
+The excitation energy is the energy required to raise the atom from its ground state to an excited state.
+
+## 4 De-excitation
+
+De-excitation occurs when an electron jumps from an orbit of higher energy to one of lower energy. Energy does not need to be supplied to the atom.
+
+Electrons in higher orbits are not stable and the atom will want to de-excite by allowing the electron to jump back to the ground state.
+
+Electrons can jump to any state that is lower energy than the current one. That is, it can go from n=4 to n=3 or n=4 to n=2 or directly from n=4 to n=1.
+
+The number of ways an electron can jump from the \(n^{th}\) state to the ground state is given by:
+
+\[\text{number of ways}={}^{n}C_{2}\]
+
+When an electron de-excites, it emits a photon equal to the energy difference between the states:
+
+\[E_{2}-E_{1}=hf\]
+
+This phenomena is used to produce unique spectral fingerprints, which are evidence for the discrete energy levels.
+
+The spectral fingerprints are produced by passing the photons emitted (light) from de-excitation through a prism, which will produce an emission line spectrum.
+
+The emission line spectrum consists of bright lines of definite wavelengths on a dark background.
+
+The hot gas contains electrons in excited states. These electrons then de-excite, emitting photons of definite wavelengths, which are then diffracted by the prism.
+
+## 5 Excitation
+
+Excitation occurs when an electron jumps from an orbit of lower energy to one of higher energy. As a result, energy needs to be supplied to the atom.
+
+This can take the form of bombarding the atom with 1) electrons or 2) photons.
+
+Particles of suitable energy will cause an electron to jump from a lower energy level to one that is higher.
+
+Electrons of any energy that is higher than the minimum excitation energy will cause an excitation. This is because incoming electrons can collide with electrons in the atom and leave with any excess energy.
+
+However, only photons whose energy equals to that of the excitation energy will cause an excitation. This is because photons are indivisible and are absorbed as a whole (Q Phy 1). This means that photons cannot leave with excess energy and all energy must be transferred at once. This phenomenon can demonstrate the existence of discrete energy levels through the production of unique spectral fingerprints.
+
+Instead of passing photons emitted from de-excitation through a prism, white light is shone at a gas. Atoms in these gases then absorb photons whose wavelengths exactly match the energy level difference. The light is then passed through a prism, producing an absorption line spectrum.
+
+The absorption line spectrum consists of a continuous spectrum crossed by dark lines due to some missing wavelengths.
+
+\begin{tabular}{l} Photons of definite wavelengths are absorbed, leading to missing wavelengths in the spectrum. \\ \end{tabular}
+
+Note: While the electrons excited by the light de-excite immediately, emitting the same wavelength of photons they absorbed, these photons are emitted in all directions. Hence, the intensity of that particular wavelength emitted in one direction is very small relative to the rest of the wavelengths. Hence, dark lines are seen.
+
+[MISSING_PAGE_FAIL:100]
+
+## 7 X-rays
+
+X-rays are ionising radiation with short wavelengths of about \(10^{-11}\) to \(10^{-8}\) m. They can be diffracted by passage through crystals but cannot be focused by lenses.
+
+X-rays can be used for medical therapy, research in crystal structures or used to diagnose flaws in large welds and castings.
+
+X-rays can be produced through a method similar to one demonstrating electron diffraction.
+
+The cathode is heated by the filament, producing electrons by thermionic emission. These electrons are accelerated at high speed towards the anode through a potential difference of about 10 kV to 1 MV.
+
+The apparatus is evacuated of air so that the path of the electrons is unobstructed.
+
+The target contains of atoms with a high atomic number such as tungsten which has a high melting point.
+
+The intensity of X-rays produced increases with the atomic number, as heavier elements have a higher effective nuclear charge, resulting in stronger interactions with electrons, making them lose more energy through braking.
+
+## 8 Bremsstrahlung radiation (braking)
+
+As electrons approach a nucleus, the electron slows down and loses some kinetic energy, which is released as X-ray photon energy.
+
+\[K_{i}-K_{f}=\frac{hc}{\lambda}\]
+
+\[\lambda=\frac{hc}{K_{i}-K_{f}}\]
+
+As a variable amount of energy can be lost, a continuous range of wavelengths are obtained during braking. This gives rise to the continuous spectrum.
+
+## 9 Continuous spectrum
+
+The continuous spectrum is formed by a continuous range of wavelengths obtained from billions of electrons losing different amounts of kinetic energy during braking.
+
+When the electrical energy given to an accelerated electron is totally converted into X-ray photon energy as the electron strikes the target in one single interaction, the wavelength of the photon produced is the minimum wavelength as shown in the graph.
+
+\[Ve=\frac{hc}{\lambda_{min}}\]
+
+\[\lambda_{min}=\frac{hc}{Ve}\]
+
+This process is sometimes called the inverse photoelectric effect.
+
+This equation is known as the Duane-Hunt Law. This minimum wavelength depends only on the accelerating p.d. and is the same for all target materials.
+
+## 10 Characteristic spectrum
+
+Characteristic X-ray spectra are due to electron transitions deep within atoms of high atomic numbers.
+
+When incoming electrons dislodges electrons in a shell, that shell will have a vacancy. Electrons in higher orbits can then jump to that shell, releasing photons with a definite wavelength.
+
+There will then be a spike in intensity for photons of that wavelength.
+
+The characteristic X-ray spectra are unique to each element.
+
+**Page 103**
+
+While the spectra is the same for each element, the minimum wavelength depends on the accelerating voltage as seen in the Duane-Hunt law.
+
+**10 Heisenberg's Uncertainty Principle**
+
+Heisenberg's Uncertainty Principle states that the product of the uncertainty \(\Delta x\) in the position of a body at any instant and the uncertainty \(\Delta p\) in its momentum at the same instant is greater than or approximately equal to the Planck constant.
+
+\[\Delta x\Delta p\geq\hbar\]
+
+The more precisely one variable is known, the less precisely the other is known. Hence, it is impossible to know the exact speed (mass can be exact) or exact position of an object, as the uncertainty in the other would approach infinity.
+
+One way to think of it as it is impossible to tell the speed of a car from a picture (knowing its position exactly), likewise it is impossible to tell the exact position of a car from a video (knowing its speed exactly).
+
+## Chapter 22: Nuclear Physics 1
+
+### 1 Nucleus
+
+In Nuclear Physics, the atom is characterised as having an extremely small central nucleus in which the positive charge and mass are concentrated.
+
+The nucleus is composed of protons and neutrons (except the hydrogen nucleus). It can be represented by the notation:
+
+\[\begin{array}{c}A\\ Z\end{array}\]
+
+where \(A\) is the atomic number (proton + neutron)
+
+\(Z\) is the proton number (proton)
+
+The number of neutrons can be calculated by \(A-Z\).
+
+Atoms of the same element can have a different atomic number. These elements are known as isotopes.
+
+Isotopes are atoms of the same element with the same number of protons but a different number of neutrons.
+
+The mass of a proton is marginally different from that of a neutron.
+
+\[m_{proton}=1.6726\times 10^{-27}\,\mathrm{kg}\hskip 56.905512ptm_{neutron}=1.6749 \times 10^{-27}\,\mathrm{kg}\]
+
+Since the masses are only marginally different, we can define a separate unit which can be thought of as the average weight of a nucleon (particle in the nucleus):
+
+\[1u=1.66\times 10^{-27}\,\mathrm{kg}\]
+
+where \(u\) is the unified atomic mass.
+
+The unified atomic mass is equivalent to one-twelfth the mass of a carbon-12 atom. The mass of an atom is often expressed in terms of the unified atomic mass. For example, the mass of a carbon-12 atom is 12 u.
+
+The mass of an atom can also be expressed by the relative atomic mass.
+
+The relative atomic mass is defined as the ratio of the mass of the atom to the mass of one-twelfth of the mass of the neutral carbon-12 isotope.
+
+\[\begin{array}{c}\mbox{Relative atomic mass},A_{r}=\frac{\mbox{mass of atom}}{ \mbox{12 the mass of 12 c atom}}\\ \mbox{12 the mass of 6}\end{array}\]
+
+### 2 Rutherford's scattering experiment
+
+This experiment, conducted in 1909, helped Rutherford to publish his model of the atom In 1911, which is now accepted as the correct model.
+
+Rutherford and his team fired a beam of alpha particles at a gold foil a few atoms (3-4) thick in a special apparatus, shown below.
+
+**Page 105**
+
+Alpha particles which are emitted with high energy bombard the thin gold foil and are scattered due to Coulomb repulsion (electrostatic repulsion between nuclei).
+
+Most alpha particles pass straight through. Some are deflected forwards (forwards scatter), some are deflected backwards (back scatter) while some are deflected directly backwards (back-tracking)
+
+Scattered alpha particles are then detected
+
+using the screen (fluorescent screen).
+
+When the particles strike the screen, tiny
+
+flashes of light are observed. This gives rise to
+
+the following graph:Rutherford and his team were able to use these observations and make deductions about the model of the atom.
+
+\begin{tabular}{|c|c|} \hline Observation & Deduction \\ \hline Most alpha particles passed straight & The atom consists of mostly empty \\ through the atom. & space. \\ \hline Some alpha particles were deflected & The nucleus is positively charged. \\ forwards and backwards. & The nucleus is very small and has a \\ backtracked. & very large mass relative to the atom. \\ \hline \end{tabular}
+
+## 3 Nuclear reactions
+
+Nuclear reactions can be represented in the following ways:
+
+\begin{tabular}{|c|c|} \hline An equation where the total nucleon number and proton & \(\begin{array}{c}9\\ 4\end{array}\)\(\begin{array}{c}9\\ 2\end{array}\)\(\begin{array}{c}9\\ 2\end{array}\)\(\begin{array}{c}4\end{array}\)\(\begin{array}{c}4\end{array}\)\(\begin{array}{c}12\\ 6\end{array}\)\(\begin{array}{c}C+\begin{array}{c}1\\ 0\end{array}\)\(\begin{array}{c}n\\ 0\end{array}\) \\ \hline A symbolic expression of the form: & \(\begin{array}{c}9\\ 4\end{array}\)\(\begin{array}{c}12\\ 6\end{array}\)\(\begin{array}{c}C\\ 6\end{array}\) \\ initial nuclide (incoming, outgoing) final nuclide & \(\begin{array}{c}9\\ 4\end{array}\)\(\begin{array}{c}Be\end{array}\)\(\begin{array}{c}(\alpha,n)\end{array}\)\(\begin{array}{c}12\\ 6\end{array}\)\(\begin{array}{c}C\\ 6\end{array}\) \\ \hline There are different types of particles involved in nuclear reactions. \\ \hline \end{tabular}
+
+\begin{tabular}{|c|c|} \hline Particle & Representation \\ \hline \(\alpha\)-particle & \(\begin{array}{c}4\\ 2\end{array}\)\(\begin{array}{c}He\\ 2\end{array}\)\(\begin{array}{c}He\\ 0\end{array}\)\(\begin{array}{c}e\\ -1\end{array}\)\(\begin{array}{c}e\\ 0\end{array}\)\(\begin{array}{c}e\\ 0\end{array}\)\(\begin{array}{c}n\\ 0\end{array}\) \\ \hline Neutron & \(\begin{array}{c}1\\ 0\end{array}\)\(\begin{array}{c}n\\ 0\end{array}\) \\ \hline \end{tabular}
+
+## 4 Conservation
+
+Just like in Mechanics, nuclear reactions obey certain conservation laws.
+
+\begin{tabular}{|c|c|} \hline \multicolumn{2}{|c|}{Conserved quantity} \\ \hline Nucleon number & The sum of the mass numbers on both \\  & sides of the equation are the same. \\ \hline Proton number & The sum of the atomic numbers on both \\  & sides of the equation is the same. \\ \hline Momentum & The linear momentum of all the particles \\  & in the system is conserved. \\ \hline Mass-energy & 
+\begin{tabular}{c} Since mass and energy are \\ interchangeable, the total mass-energy \\ of the system remains constant. \\ \end{tabular}
+
+Essentially, in balancing nuclear reactions, the total number of nucleons and total proton number must remain constant.
+
+## 5 Einstein's equation
+
+Einstein's famous equation was a result of special relativity. It stated that mass and energy are equivalent:
+
+\[\overline{\Delta E}=\Delta mc^{2}\]
+
+where \(E\) is the energy of the object \(m\) is the mass of the object \(c\) is the speed of light. This equation thus relates mass and energy. As a result, any mass has an equivalent amount of energy. This equation means that a loss of energy (e.g. in chemical reactions) should equate to a loss in mass of an object. In nuclear reactions, any object that has energy (e.g. KE) will have a larger mass than at rest and any object that loses energy (e.g. nuclear fission) will have a smaller product mass. The mass of an object that is at rest is called its rest mass.
+
+## 6 Consequences of \(E=mc^{2}\)
+
+In order to break up the nucleus by separating it into its individual components (neutrons and protons), energy needs to be supplied to the nucleus.
+
+EXTRAI
+
+Energy needs to be supplied to overcome the strong nuclear force holding the nucleons together. This force is only significant at very small distances (\(\approx 1\) fm).
+
+Since \(\Delta E=\Delta mc^{2}\), the additional energy supplied will cause an increase in mass of the neutrons and protons. Hence, the total mass of the nucleons will always be greater than that of the nucleus.
+
+\[\overline{\Sigma m_{neutrons}+\Sigma m_{protons}}>m_{nucleus}\]
+
+The difference (\(\Delta m\)) between the mass of the nucleons and that of the nucleus is known as the mass defect.
+
+The amount of energy needed to break up the nucleus into its constituent protons and neutrons is known as the binding energy, and can be calculated by:
+
+\[\mbox{binding energy}=(\mbox{mass defect})c^{2}=\Delta mc^{2}\]The binding energy of the nucleus is defined as the energy released when the nucleus is first formed from its separate protons and neutrons.
+
+The binding energy of the nucleus is also defined as the work done on the nucleus to separate the nucleus into individual protons and neutrons.
+
+This energy appears in the form of a \(\gamma\) photon or kinetic energy.
+
+The binding energy of a proton or neutron is zero.
+
+The binding energy per nucleon is simply the binding energy of the nucleus divided by the nucleon number. It is a measure of the stability of the nucleus.
+
+**7 Stability of nucleus**
+
+As mentioned earlier, the binding energy is a measure of the stability of the nucleus. The higher the binding energy per nucleon, the more stable the nucleus and vice versa.
+
+The graph of binding energy per nucleon against the nucleon number can be plotted.
+
+Note: it is not needed to memorise the peaks in the graph. A smooth curve can be plotted instead.
+
+From the graph, several observations can be made.
+
+The average binding energy per nucleon is about 8 MeV, except for lighter nuclei.
+
+Iron-56 is the most stable nuclide as it has the maximum binding energy per nucleon.
+
+Nuclei with low mass numbers (\(<56\)) may undergo fusion such that the final product will have a higher binding energy per nucleon.
+
+Nuclei with high mass numbers (\(>56\)) may undergo fission such that the daughter nuclei will have a higher binding energy per nucleon.
+
+**Page 109**
+
+EXTRA!
+
+_Why do we compare binding energy per nucleon and not total binding energy?_
+
+Stability is relative. If a daughter particle exists that has lesser total binding energy
+
+(e.g. \(\frac{2}{3}BE_{parent}\)) and half the number of nucleons (\(\frac{Aparent}{2}\)), even though the binding energy is less, the daughter particle is actually more stable as the binding energy per nucleon is higher.
+
+The peak of the graph at iron means that reactions that involve 1) fusion of low mass number particles and 2) fission of high mass number particles will release energy.
+
+In general,
+
+Energy released = \(BE_{final}-BE_{initial}\)
+
+Energy is taken in to break up the reactants (\(-BE_{initial}\)). Energy is then released
+
+when the final product is formed (\(BE_{final}\)).
+
+Einstein's equation can also be used to calculate the energy released.
+
+**8 Nuclear fission**
+
+Nuclear fission is the disintegration of a heavy nucleus into 2 or more lighter nuclei
+
+when bombarded by a particle, usually a neutron, and in the process releasing more neutrons.
+
+Energy is released in the process as the total binding energy of the products is higher than that of the reactants.
+
+Using \(\Delta E=\Delta mc^{2}\), the mass defect \(\Delta m\) is positive. Hence, energy is released.
+
+This energy is released in the form of kinetic energy of the particles or \(\gamma\)-radiation.
+
+Example of a nuclear fission reaction:
+
+\(\frac{235}{92}\)U + \(\frac{1}{0}\)n \(\rightarrow\)\(\frac{144}{56}\)Ba + \(\frac{90}{36}\)Kr + \(\frac{3}{0}\)n + energy
+
+**9 Nuclear fusion**
+
+Nuclear fusion occurs when 2 light nuclei combine to form a single more massive
+
+nucleus leading to a release of an enormous amount of energy.
+
+This is because the increase in binding energy per nucleon for fusion particles is greater (left side of graph is steeper), a greater amount of energy per nucleon is released.
+
+Fusion is difficult to achieve because of the strong electrical repulsion (proton and proton) between the nuclei. Hence, the reaction needs to occur at extremely high temperatures (about 100 million K). Even then, the probability of the reaction occurring is small.
+
+Example of a nuclear fusion reaction:
+
+## Chapter 23 Nuclear Physics 2
+
+### 1 Radioactivity
+
+Radioactivity or radioactive decay is the spontaneous and random disintegration of heavy unstable nuclei into more stable products through the emission of radiation such as alpha particles, beta particles and gamma rays.
+
+Radioactivity is spontaneous because it occurs on its own accord and is not affected by external factors.
+
+This means that physical factors (e.g. temperature, pressure) and chemical factors (e.g. state; aqueous, liquid) do not influence the process of decaying.
+
+Radioactivity is random because it is not possible to predict which nucleus will decay or when it will decay.
+
+Radioactivity can be measured using a Geiger-Muller tube connected to a ratemeter. The Geiger-Muller tube displays the radioactivity in counts per minute or counts per second.
+
+Using the Geiger-Muller tube, the random nature of radioactivity can be shown from the uneven and random peaks and troughs in the count rate.
+
+The Geiger-Muller tube does not detect the true amount of radiation that the source gives off. Instead, it only detects what enters the tube.
+
+The count rate follows an inverse square law, that is:
+
+\[\text{count rate}=\frac{\text{Area}}{4\pi r^{2}}\times\text{Activity}\]
+
+\[\text{count rate}\propto\frac{1}{r^{2}}\]
+
+## 2 Background radiation
+
+Even when there are no explicit radioactive sources present, there will still be background radiation, for example from cosmic rays or the decay of radon.
+
+The background radiation ranges from 20 to 50 counts per minute, or 0.333 to 0.833 counts per second.
+
+In experiments where the emission rate from radioactive sources is large, the background radiation is negligible and hence can be ignored.
+
+In experiments where the emission rate from radioactive sources is small, the background radiation is not negligible. Hence, the actual emission rate can be calculated by subtracting the background radiation.
+
+## 3 Ionising radiation
+
+Ionising radiation refers to radiation that has enough energy to strip electrons from an atom, thus producing free electrons and ions.
+
+Ionising radiation can be electromagnetic or nuclear (alpha, beta, gamma) in nature.
+
+When an atom is ionised, energy is absorbed. Hence, the radiation loses energy. This is why alpha particles are stopped by a few cm of air (see below).
+
+Gamma rays, X-rays, and radiation in the higher part of the ultraviolet spectrum are considered ionising.
+
+The lower energy limit for radiation to be considered ionising is 10 eV.
+
+From \(E=\frac{hc}{\lambda}\),
+
+\[10\times(1.6\times 10^{-19})=\frac{(6.63\times 10^{-34})\times(3\times 10^{8})}{ \lambda_{max}}\]
+
+\[\lambda_{max}=124\text{ nm}\]
+
+When exposed to ionising radiation, there will be short-term and long-term effects.
+
+Short-term effects include blistering of the skin, nausea, vomiting, radiation sickness, loss of hair, emaciation, and even death.
+
+Long-term effects include anaemia, leukaemia, cancer, sterility and genetic mutation. Safety precautions can be taken, both in the lab and in the real world to prevent this.
+
+In the real world, workers should take precautions such as:
+
+Storing radioactive materials in lead containers to stop radiation
+
+Handling samples by remote control or at a safe distance
+
+Using shielding from equipment producing or scattering radiation
+
+Wearing radiation badges which can inform the user of radiation levels
+
+In the lab, students should observe the following procedures:
+
+Handle radioactive substances with tongs rather than fingers to prevent accidental ingestion
+
+Hold radioactive substances at a distance, pointing away from the body and from other people
+
+Wearing rubber gloves
+
+## 4 Alpha particles
+
+Alpha particles are identical to the helium nuclei. That is,
+
+\[\text{alpha particle}=\frac{4}{2}\alpha=\frac{4}{2}He\]
+
+Alpha particles have a +2 positive charge.
+
+Alpha particles have a rest mass of 4 \(u\).
+
+Alpha particles have a speed of about 0.1 \(c\)
+
+Alpha particles have high ionising power because it moves relatively slowly and
+
+easily ionises atoms and molecules in their way.
+
+Alpha particles have low penetrating power because it loses its energy quickly due to ionisation of other particles.
+
+They can be stopped by 0.1 mm of paper or 0.01 mm of aluminium foil and travel only about 2 cm in air.
+
+Alpha particles are deflected slightly by electric and magnetic fields because of their high mass and charged state.
+
+Alpha particles are always emitted with a definite kinetic energy as governed by the Principle of Conservation of Momentum (and energy).
+
+## 5 Beta particles
+
+Beta particles are electrons. That is,
+
+\[\text{beta particle}=\frac{0}{-1}\beta=\frac{0}{-1}e\]
+
+When a nucleus has too many neutrons, it disintegrates by converting a neutron into a proton and electron.
+
+Beta particles have a -1 negative charge.
+
+Beta particles have a speed of about 0.9 \(c\).
+
+Beta particles have lower ionising power compared to alpha particles as they are small and fast moving.
+
+Beta particles have high penetrating power.
+
+They can be stopped by 5 mm of aluminium foil and travel about 5 m in air.
+
+Beta particles are easily deflected by electric and magnetic fields as they are 7300 times lighter than alpha particles.
+
+Beta particles are emitted with a range of kinetic energies due to the production of neutrinos. Neutrinos are needed to fulfil the conservation laws.
+
+## 6 Gamma rays
+
+When a nucleus decays, it is often left in an excited energy state. It can then decay to its ground state by emitting a photon, also called a gamma (\(\gamma\)) ray.
+
+Gamma rays are electromagnetic radiation.
+
+Gamma rays have no charge and no mass.
+
+Gamma rays have a speed of 1 \(c\).
+
+Gamma rays cause relatively little ionisation as they have no charge.
+
+Gamma rays have the greatest penetrating power as they travel very far.
+
+They can only be stopped with about 5 cm of thick lead or about 10 m of thick concrete and travel about 500 m in air.
+
+**7 Half-life** (symbol \(t_{1/2}\))
+
+Half-life is defined as the time taken for half the number of nuclei of a radioactive element to decay.
+
+**8 Activity** (symbol \(A\), units becquerel = Bq)
+
+The activity of a radioactive material is the number of disintegrations of its atoms per unit time.
+
+**9 Decay Constant** (symbol \(\lambda\), units s\({}^{-1}\))
+
+The decay constant is the probability that a radioactive nuclide of an isotope in a sample would decay in one second.
+
+**10 Decay Law**
+
+The rate of radioactive decay \(A=\frac{dN}{dt}\) is directly proportional to the number \(N\) of the radioactive nuclei present.
+
+\[-\frac{dN}{dt}\propto N\]
+
+\[=\frac{dN}{dt}=\lambda N\]
+
+**10 Equations**
+
+\[x=\left(\frac{1}{2}\right)^{n}x_{0}\]
+
+where \(x\) can be activity \(A\)
+
+number of undecayed particles \(N\)
+
+count rate \(C\)
+
+mass of undecayed material \(m\)
+
+[MISSING_PAGE_EMPTY:115]
+
+Page 116Page 119:
+
+[MISSING_PAGE_EMPTY:120]
+
+[MISSING_PAGE_EMPTY:122]
+
+Page 123
+
+[MISSING_PAGE_EMPTY:125]
+
+[MISSING_PAGE_EMPTY:127]
+
+[MISSING_PAGE_EMPTY:128]
+
+[MISSING_PAGE_EMPTY:130]
+
+[MISSING_PAGE_EMPTY:132]
+
+Page 134:
+
+\begin{tabular}{|c|c|c|c|} \hline \multicolumn{3}{|c|}{Annex 2: Formula list} \\ \hline Physical Quantities and Units (1) & Kinematics (3) & Dynamics (4) & Forces (5) \\ \hline \(R\,=\,\sqrt{A^{2}+B^{2}+2AB\cos\theta}\) & \(v=u+at\) & \(p=mv\) & \(F=kx\) \\ \hline \(s=\,\frac{1}{2}\,(u+v)t\) & \(F\,\propto\frac{dp}{dt}\) & \(\frac{1}{k_{eff}}=\frac{1}{k_{1}}+\frac{1}{k_{2}}+\cdots+\frac{1}{k_{N}}\) \\ \hline \(s=ut+\frac{1}{2}a\,t^{2}\) & \(Impulse=\int_{t_{1}}^{t_{2}}F\,dt\) & \(k_{eff}=k_{1}+k_{2}+\cdots+k_{N}\) \\ \hline \(v^{2}=u^{2}+2as\) & \(F_{avg}=\frac{\Delta p}{\Delta t}\) & \(EPE=\frac{1}{2}F_{X}=\frac{F^{2}}{2k}=\frac{1}{2}kx^{2}\) \\ \hline \(v^{2}=u^{2}+2as\) & \(m_{1}u_{1}+m_{2}u_{2}=m_{1}v_{1}+m_{2}v_{2}\) & \(W=\int_{x_{1}}^{x_{2}}F\,dx\) \\ \hline \(v^{2}=u^{2}+2as\) & \(m_{1}u_{1}+m_{2}u_{2}=m_{1}v_{1}+m_
+
+\begin{tabular}{|c|c|c|} \hline Work, energy, power (6) & Motion in a circle (7) & Gravitational field (8) \\ \hline \hline \(W=F\cos\theta\left(\Delta x\right)\) & \(\theta=\frac{s}{r}\) & \(F=-\frac{GMm}{r^{2}}\) & \(\phi=-\frac{GM}{r}\) \\ \hline \(W=p\Delta V\) & \(\omega=\frac{d\theta}{dt}\) & \(g=\frac{F}{m}=-\frac{GM}{r^{2}}\) & \(E_{T}=-\frac{GMm}{2r}\) \\ \hline \(E_{k}=\frac{1}{2}mv^{2}\) & \(\omega=\frac{2\pi}{T}=2\pi f\) & \(v_{orb}=\sqrt{\frac{GM}{r}}\) & \(F=-\frac{dU}{dr}\) \\ \hline \(GPE=mgh\) & \(v=r\omega\) & \(r_{geostat}=\sqrt{\frac{GMT^{2}}{4\pi^{2}}}\) & \(g=-\frac{d\phi}{dr}\) \\ \hline \(P=\frac{\Delta W}{\Delta t}\) & \(a=v\omega=r\omega^{2}=\frac{v^{2}}{r}\) & \(T^{2}=\frac{4\pi^{2}}{GM}r^{3}\ or\ T^{2}\propto r^{3}\) & \\ \hline \(P=Fv\) & \(F_{c}=\frac{mv^{2}}{r}=mr\omega^{2}\) & \(T_{binary}=\sqrt{\frac{4\pi^{2}(R_{1}+R_{2})^{3}}{G(M_{1}+M_{2})}}\) & \\ \hline \(\eta=\frac{\text{useful power output}}{\text{power input}}\) & & \(U=-\frac{GMm}{r}\) & \\ \hline  & & \(v_{escape}=\sqrt{\frac{2GM}{r}}\) & \\ \hline \end{tabular}
+
+\begin{tabular}{|c|c|c|} \hline Temperature and ideal gases & Thermodynamics (10) & Oscillations (11) \\ \hline \(U=KE+PE\) & \(a=-\dfrac{k}{m}x\) & \(T=2\pi\sqrt{\dfrac{m}{k}}\) \\ \hline \(\dfrac{\theta}{100}=\dfrac{X_{\theta}-X_{t}}{X_{s}-X_{t}}\) & \(Q=C\Delta T=mc\Delta T\) & \(T=2\pi\sqrt{\dfrac{m}{\rho Ag}}\) \\ \hline \(X^{\circ}C=K+273.15\) & \(C=mc\) & \(x=x_{0}\sin(\omega t)\) \\ \hline \(pV=nRT=NKT\) & \(Q=m\ell\) & \(v=\dfrac{dx}{dt}=\omega x_{0}\cos(\omega t)\) & \(v=\pm\omega\sqrt{x_{0}^{2}-x^{2}}\) \\ \hline \(k=\dfrac{R}{N_{a}}\) & \(\Delta U=\Delta Q_{s}+\Delta W_{on}\) & \(a=\dfrac{dv}{dt}=-\omega^{2}x_{0}\sin(\omega t)\) & \(a=-\omega^{2}x\) \\ \hline \(C_{rms}=\sqrt{<c^{2}>}\) & \(W_{by}=\int_{V_{t}}^{V_{f}}p\;dV=p\Delta V\) & \(E_{K}=\dfrac{1}{2}mv^{2}=\dfrac{1}{2}m\omega^{2}(x_{0}^{2}-x^{2})\) & \(E_{K}=\dfrac{1}{2}m\omega^{2}(x_{0}^{2}-x^{2})\) \\ \(=\dfrac{1}{2}m\omega^{2}x_{0}^{2}\sin^{2}(\omega t)\) \\ \hline \(p=\dfrac{1}{3}\rho<c^{2}>\) & \(E_{p}=\dfrac{1}{2}kx^{2}=\dfrac{1}{2}m\omega^{2}x^{2}\) & \(E_{p}=\dfrac{1}{2}m\omega^{2}x^{2}\) \\ \(=\dfrac{1}{2}m\omega^{2}x_{0}^{2}\cos^{2}(\omega t)\) \\ \hline \end{tabular}
+
+\begin{tabular}{|c|c|c|c|} \hline Wave Motion (12) & Superposition (13) & Current of Electricity (14) & Electric Fields (15) \\ \hline \(v=f\lambda\) & \(l=\frac{Q}{t}\) & \(E=\frac{F}{+q}\) \\ \hline \(y=A\sin\left(\frac{x}{\lambda}\times 2\pi\right)\) & constructive interference: \(\Delta x=n\lambda\) & \(I=nAv_{d}q\) & \(E=\frac{Q}{4\pi\epsilon_{o}r^{2}}\) \\  & where \(n\leq\mathbb{Z}^{+}\) & \(V=\frac{W}{Q}\) & \(F=\frac{Q_{1}Q_{2}}{4\pi\epsilon_{o}r^{2}}\) \\ \hline \(\Delta\phi=\frac{\Delta x}{\lambda}\times 2\pi\) & destructive interference: \(\Delta x=\left(n+\frac{1}{2}\right)\lambda\) & \(E=\frac{W}{Q}\) & \(U=\frac{Q_{1}Q_{2}}{4\pi\epsilon_{o}r}\) \\  & where \(n\leq\mathbb{Z}^{+}\) & \(R=\frac{V}{I}\) & \(V_{c}=\frac{W}{q}\) \\ \hline \(\Delta\phi=\frac{\Delta t}{T}\times 2\pi\) & \(\Delta\phi=(2n+1)\pi\) & \(R=\frac{V}{I}\) & \(V_{c}=\frac{W}{q}\) \\ \hline \(\text{Intensity}\propto(\text{Amplitude})^{2}\) & \(\sin\theta=\frac{n\lambda}{a}\) & \(R=\frac{\rho L}{A}\) & \(V_{c}=\frac{Q}{4\pi\epsilon_{o}r}\) \\ \hline \(I=\frac{1}{2}I_{0}\) & \(\tan\theta=\frac{w}{2D}\) & \(V_{terminal}=\varepsilon-lr\) & \(U=Vq\) \\ \hline \(I=I_{0}\cos^{2}\theta\) & \(\theta_{min}=\frac{\lambda}{a}\) & \(IR_{ext}=\varepsilon-lr\) & \(\Delta U=q\Delta V\) \\ \hline \(\Delta y=\frac{\lambda D}{d}\) & \(P=VI=l^{2}R=\frac{V^{2}}{R}\) & \(E=-\frac{dV}{dr}\) \\ \hline \(d\sin\theta=n\lambda\) & \(F=-\frac{dU}{dr}\) \\ \hline \end{tabular}
+
+\begin{tabular}{|c|c|c|c|} \hline D.C. Circuits (16) & Electromagnetism (17) & Electromagnetic Induction (18) & Alternating Current (19) \\ \hline \(\sum_{junction}l_{i}=0\) & \(\begin{array}{c}F=BIL\sin\theta\\ B=\frac{F}{IL\sin\theta}\end{array}\) & \(\phi=B_{\perp}A=BA\cos\theta\) & \(I=I_{0}\sin\omega t\) \\ \hline \(\varepsilon=\frac{\Delta W}{q}\) & A pair of current-carrying wires & \\ \(F\propto\frac{1^{4}l_{2}}{d}\) & \(\Phi=N\phi= NBA\cos\theta\) & \(\langle l^{2}\rangle=\frac{I_{1}^{2}+l_{2}^{2}+\cdots+l_{n}^{2}}{n}\) \\ \hline \(\Delta V=\frac{\Delta W}{q}\) & \(\begin{array}{c}\text{A current-carrying rectangular}\\ \text{loop}\\ \tau=BIAN\end{array}\) & \(\varepsilon=\left|\frac{d\Phi}{dt}\right|\) & \(l_{rms}=\sqrt{\langle l^{2}\rangle}\) \\ \hline \(\sum_{junction}\Delta V_{i}=0\) & \(F=B_{\perp}qv=B\sin\theta\,qv\) & \(\varepsilon=-k\,\frac{d\phi}{dt}=\frac{d\phi}{dt}\) & \(\langle P\rangle=\frac{V_{rms}^{2}}{R}=l_{rms}^{2}R=V_{rms}I_{rms}\) \\ \hline \(\begin{array}{c}\text{Series}\\ R_{eff}=R_{1}+R_{2}+\cdots+R_{n}\end{array}\) & \(f=\frac{B_{in}q}{2\pi m}\) & Straight conductor moving & \(l_{rms}=\frac{I_{0}}{\sqrt{2}}\) \\ \hline \(\begin{array}{c}\text{Parallel}\\ \frac{1}{R_{eff}}=\frac{1}{R_{1}}+\frac{1}{R_{2}}+\cdots+\frac{1}{R_{n}}\end{array}\) & Current in a long, straight wire & \(\varepsilon=Blv\) & \(V_{rms}=\frac{V_{0}}{\sqrt{2}}\) \\ \hline \(V=\varepsilon-lr\) & \(B\propto\frac{I}{r}\) & \(B=\frac{\mu_{0}l}{2\pi r}\) & Rotating disk in B-field & \(\langle p\rangle=\frac{P_{0}}{2}\) \\ \hline \(V_{1}=\frac{R_{1}}{R_{1}+R_{2}}*V=\frac{R_{1}}{R_{T}}*V\) & Current in a solenoid & \(\varepsilon=B\pi r^{2}f\) & \(\frac{V_{s}}{V_{p}}=\frac{N_{s}}{N_{p}}=turns\,ratio\) \\ \hline \(V_{AB}=\frac{\frac{\Lambda_{B}}{l_{T}}*V_{0}}\) & \(B\propto nl\) & \(B=\mu_{0}nI\) & AC generator & \(\frac{V_{s}}{V_{p}}=\frac{I_{p}}{I_{s}}\) \\ \hline \(\begin{array}{c}\text{Current in a circular coil}\\ \end{array}\) & \(\begin{array}{c}\text{Current in a circular coil}\\ \end{array}\) & \(\begin{array}{c}\text{Half-wave rectification:}\\ \end{array}\) \\ \hline \(\begin{array}{c}\text{B}\propto\frac{NI}{r}\end{array}\) & \(B=\frac{\mu_{0}NI}{2r}\) & \(l_{rms}=\frac{I_{0}}{2}\) \\ \hline \end{tabular}
+
+\begin{tabular}{|c|c|c|c|} \hline Quantum Physics 1 (20) & Quantum Physics 2 (21) & Nuclear Physics 1 (22) & Nuclear Physics 2 (23) \\ \hline \(E=hf=\dfrac{hc}{\lambda}\) & \(\lambda=\dfrac{h}{p}=\dfrac{h}{mv}\) & \(A_{r}=\dfrac{\text{mass of atom}}{\frac{1}{12}\text{ the mass of }\overset{12}{6}\text{c atom}}\) & \(count\ rate\propto\dfrac{1}{r^{2}}\) \\ \hline \(1\text{ eV}=1.6\times 10^{-19}J\) & \(E_{k}=\dfrac{1}{2}mv^{2}=\dfrac{(mv)^{2}}{2m}=\dfrac{p^{2}}{2m}\) & \(\sum m_{n}+\sum m_{p}>m_{nucleus}\) & \(-\dfrac{dN}{dt}=\lambda N\) \\ \hline \(Intensity=(\dfrac{n}{r})\times\dfrac{hf}{Area}\) & \(\Delta x\Delta p\gtrsim h\) & \(BE=\Delta mc^{2}\) & \(x=\left(\dfrac{1}{2}\right)^{n}x_{0}\) \\ \hline \(E_{photon}=E_{metal}+E_{electron}\) & \(\Delta E=BE_{final}-BE_{initial}\) & \(x=x_{0}e^{-\lambda t}\) \\ \hline \(\phi=hf_{0}\) & & \(t_{1/2}=\dfrac{\ln 2}{\lambda}\) \\ \hline \(hf=\phi+\dfrac{1}{2}m_{e}v_{max}^{2}\) & & \\ \(hf=eVs+\phi\) & & \\ \(V_{s}=\dfrac{h}{e}f-\dfrac{\phi}{e}\) & & \\ \hline \end{tabular}
+
+[MISSING_PAGE_EMPTY:146]
+
+Page 147
+
+\begin{tabular}{|c|c|c|} \hline \multicolumn{2}{|c|}{Impulse-momentum theorem} & impulse is equal to the change in momentum. \\ \hline Principle of Conservation of Momentum & the total momentum of a system is conserved provided no external unbalanced force acts on the system. \\ \multicolumn{2}{|c|}{(p.o.c.o.m)} \\ \hline \multirow{4}{*}{_Proposed_} & Hooke’s law & Within the proportional limit, the extension e, produced in a material is directly proportional to the force F applied. \\ \cline{2-3}  & Moment & the product of the force and the perpendicular distance from the line of action of the force to the pivot. \\ \cline{2-3}  & Couple & 2 equal and opposite forces whose lines of action do not coincide. \\ \cline{2-3}  & Principle of moments & For an object in rotational equilibrium, the sum of the anticlockwise moments about the pivot is equal to the sum of clockwise moments about the same pivot. \\ \cline{2-3}  & Work done & The work done by a constant force on an object is defined as the product of the magnitude of the displacement and the component of the force parallel to the displacement. \\ \cline{2-3}  & Principle of Conservation of Energy (c.o.e.) & energy can neither be created nor destroyed, but can be converted from one form to another. The total energy in a closed system is always constant. \\ \cline{2-3}  & Efficiency & the percentage ratio of useful power output to power input. \\ \hline \end{tabular}
+
+[MISSING_PAGE_EMPTY:148]
+
+Page 149
+
+\begin{tabular}{|c|c|p{284.5pt}|p{284.5pt}|} \hline  & Heat & the energy that is transferred from one body at a higher temperature to one at lower temperature. \\ \hline  & Heat capacity & The heat capacity of a body is defined as the quantity of heat energy required to raise its temperature by 1 K. \\ \cline{2-4}  & Specific heat capacity & The specific heat capacity of a body is defined as the heat required to raise the temperature of 1 kg of the substance by 1 K. \\ \cline{2-4}  & Specific latent heat of fusion & The specific latent heat of fusion is of a substance is defined as the amount of heat energy needed to change a unit mass of the substance from solid to liquid state without a change in temperature. \\ \cline{2-4}  & Specific latent heat of vaporisation & The specific latent heat of vaporisation is of a substance is defined as the amount of heat energy needed to change a unit mass of the substance from liquid to gaseous state without a change in temperature. \\ \cline{2-4}  & First law of thermodynamics & The first law of thermodynamics states that the internal energy of a system depends only on its state, and that the increase in internal energy of the system is the sum of the heat supplied to the system and the external work done on the system. \\ \cline{2-4}  & Amplitude & maximum displacement of the oscillating body \\ \cline{2-4}  & Period & the time taken for one complete oscillation \\ \cline{2-4}  & Frequency & the total number of oscillations per second \\ \cline{2-4}  & Angular frequency & the product of \(2n\) and the frequency \\ \cline{2-4}  & Wavelength & the distance between 2 consecutive particles in the wave who are in phase with one another \\ \cline{2-4}  & Simple harmonic motion & an oscillating system where (1) there must be a restoring force proportional to the displacement but directed opposite to it and (2) the acceleration of the system must be proportional to the displacement but directed opposite to it \\ \cline{2-4}  & Light damping & oscillations still occur, but the amplitude of the oscillation decreases with time \\ \cline{2-4}  & \multicolumn{1}{p{284.5pt}|}{} & \multicolumn{1}{p{284.5pt}|}{} \\ \end{tabular}
+
+[MISSING_PAGE_EMPTY:150]
+
+\begin{tabular}{|c|p{346.9pt}|p{346.9pt}|} \hline \multicolumn{2}{|c|}{Constructive interference} & the amplitude of the resultant wave at a given time or position is greater than that of either individual wave \\ \hline \multicolumn{2}{|c|}{Destructive interference} & the amplitude of the resultant wave at a given time or position is smaller than that of either individual wave \\ \hline \multicolumn{2}{|c|}{Electric current} & the current \(I\) is the rate of flow of electric charge Q through a given cross-section of a conductor \\ \hline \multicolumn{2}{|c|}{Electric charge} & the charge Q which flows past a given cross section is the product of the steady current \(I\) that flows past the section and the time during which the current flows. \\ \hline \multicolumn{2}{|c|}{Coulomb} & the coulomb \(C\) is the amount of electrical charge that passes through a given cross section of a circuit when a steady current of one ampere flows in one second \\ \hline \multicolumn{2}{|c|}{Charge density} & the charge density \(n\) is the number of charge carriers per unit length, surface area, or volume in a conductor \\ \hline \multicolumn{2}{|c|}{Potential difference} & the potential difference between two points in a circuit is the amount of electrical energy converted to other forms of energy per unit charge passing from one point to another \\ \hline \multicolumn{2}{|c|}{Volt} & the volt is the potential difference between two points in a circuit if one joule of electrical energy is converted to other forms of energy per coulomb of charge passing from one point to the other \\ \hline \multicolumn{2}{|c|}{Electromotive force} & the electromotive force (e.m.f.) of any source of electrical energy is the total energy converted into electrical energy per unit charge supplied \\ \hline \multicolumn{2}{|c|}{Resistance} & Resistance of a conductor is the ratio of potential difference across the conductor to the current flowing through it. \\ \hline \multicolumn{2}{|c|}{Ohm's law} & the current flowing through a conductor is directly proportional to the p.d. across it, providing temperature and other physical conditions are constant \\ \hline \end{tabular}
+
+Page 153
+
+\begin{tabular}{c|c|c} \hline \multirow{2}{*}{**Road-mean-square**} & Magnetic flux density is defined as the force acting per unit length of a conductor which carries unit current and is of right angles to the magnetic field. \\ \cline{2-3}  & Tesla & The Tesla is the unit of magnetic flux density equivalent to a force of 1 N experienced by a straight conductor of length 1 m and carrying a current of 1 A when it is placed perpendicular to the magnetic field. \\ \hline \multirow{2}{*}{**Road-mean-square**} & Magnetic flux & The magnetic flux passing through the surface area A is defined as the product of the component of the magnetic field normal to the plane of the surface and the area of the surface. \\ \cline{2-3}  & Weber & The Weber is the flux of a uniform magnetic field B of flux density 1 T, through a plane surface of area A of 1m\({}^{2}\), placed normally to the B field. \\ \cline{2-3}  & Faraday's law & Faraday's law states that when the magnetic flux linkage with a circuit is changed, an induced e.m.f. is set up whose magnitude is proportional to the rate of change of flux linkage. \\ \cline{2-3}  & Lenz's law & Lenz's law states that the direction of the induced e.m.f. (and hence current flow in a closed circuit) is always such as to opposite the change in flux causing it. \\ \cline{2-3}  & Root-mean-square & The root-mean-square value of an alternating current (a.c.) is that value of the direct current (d.c.) that would produce thermal energy at the same rate in a resistor. \\ \hline \end{tabular}
+
+[MISSING_PAGE_EMPTY:155]
+
+## Annex 4: Summary of Key Quantities, Symbols and Units
+
+The following list illustrates the symbols and units that will be used in question papers.
+
+### Quantity
+
+_Base Quantities_
+
+mass
+
+length
+
+time
+
+electric current
+
+thermodynamic temperature
+
+amount of substance
+
+_Other Quantities_
+
+distance
+
+displacement
+
+s, x
+
+area
+
+volume
+
+\(t\)
+
+s
+
+density
+
+\(I\)
+
+A
+
+speed
+
+\(u\), \(v\), \(w\), \(c\)
+
+m s-1
+
+velocity
+
+\(u\), \(v\), \(w\), \(c\)
+
+m s-1
+
+acceleration
+
+acceleration of free fall
+
+\(g\)
+
+\(F\)
+
+\(N\)
+
+weight
+
+\(W\)
+
+\(N\)
+
+momentum
+
+\(p\)
+
+\(N\)
+
+work
+
+\(w\), \(W\)
+
+\(J\)
+
+energy
+
+\(E\),\(U\),\(W\)
+
+\(J\)
+
+potential energy
+
+kinetic energy
+
+heating
+
+change of internal energy
+
+\(\Delta U\)
+
+\(J\)
+
+power
+
+pressure
+
+\(p\)
+
+\(Pa\)
+
+torque
+
+gravitational constant
+
+\(G\)
+
+gravitational field strength
+
+\(g\)
+
+gravitational potential
+
+\(\phi\)
+
+\(J\) kg-1
+
+angle
+
+angular displacement
+
+\(\theta\)
+
+\({}^{\circ}\), rad
+
+angular speed
+
+\(\omega\)
+
+angular velocity
+
+\(\omega\)
+
+period
+
+\(T\)
+
+frequency
+
+angular frequency
+
+wavelength
+
+\(\lambda\)
+
+speed of electromagnetic waves
+
+electric charge
+
+elementary charge
+
+electric potential
+
+electric potential difference
+
+electromotive force
+
+resistance
+
+resistivity
+
+electric field strength
+
+permittivity of free space
+
+magnetic flux density
+
+magnetic flux density
+
+ permeability of free space
+
+force constant
+
+\(\rho\)
+
+\(\Omega\)
+
+\(\Omega\)
+
+\(E\)
+
+\(N\) C-1, V m-1
+
+\(\omega\)
+
+\(\Gamma\) m-1
+
+magnetic flux
+
+\(B\)
+
+\(T\)
+
+permeability of free space
+
+\(\mu_{0}\)
+
+force constant
+
+\(k\)
+
+\(N\)
+
+[MISSING_PAGE_EMPTY:157]
+
+[MISSING_PAGE_FAIL:158]
+
+magnetic flux density due to a long solenoid
+
+radioactive decay
+
+decay constant
+
+\(B\) = \(\mu_{0}nI\)
+
+\(x\) = \(x_{0}\exp(-\lambda t)\)
+
+\(\lambda\) = \(\frac{\ln 2}{t_{\frac{1}{2}}}\)

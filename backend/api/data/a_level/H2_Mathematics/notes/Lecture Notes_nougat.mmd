@@ -1,0 +1,636 @@
+## Chapter 4 Graphing Techniques
+
+**Table of Content**
+
+1 Basic Features of Graphs
+
+1.1 Asymptotes (A)
+
+(a) Vertical Asymptotes
+
+(b) Horizontal Asymptotes
+
+(c) Oblique Asymptotes
+
+1.2 Axial Intercepts (I)
+
+1.3 Stationary points (S)
+
+1.4 Symmetries
+
+2. Graphs of Rational Functions
+
+2.1 Degree of P(\(x\)) \(<\) Degree of Q(\(x\))
+
+2.2 Degree of P(\(x\)) \(=\) Degree of Q(\(x\))
+
+2.3 Degree of P(\(x\)) \(>\) Degree of Q(\(x\))
+
+3. Graphs of Conic Sections
+
+3.1 Parabola
+
+3.2 Circles
+
+3.3 Ellipse
+
+3.4 Hyperbolas
+
+3.5 Conics App in GC
+
+4. Parametric Equations
+
+4.1 Graphs
+
+4.2 Converting Parametric equations to Cartesian Equations
+
+5 Modelling the Projectile Motion using Parametric Equations
+
+6. Self-reading Examples
+
+Annex 1 GC Keystrokes for finding Maximum Point and Axial Intercepts.
+
+**Objectives:**
+
+At the end of the chapter, you should be able to
+
+* Use Graphing Calculator to graph a given function
+* Understand important characteristics of graphs such as symmetry, intersections with the axes, turning points and asymptotes of the following: \[\frac{x^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}=1\] \[\frac{x^{2}}{a^{2}}-\frac{y^{2}}{b^{2}}=1;\ \ \ \frac{y^{2}}{b^{2}}-\frac{x^{2}}{a^{2}}=1\] \[y=\frac{ax+b}{cx+d}\] \[y=\frac{ax^{2}+bx+c}{dx+e}\]
+* Determine the equations of asymptotes, axes of symmetry and restrictions on the possible values of \(x\) and/or \(y\)
+* Understand and draw simple parametric equations and their graphs.
+
+**Prerequisite Knowledge:**
+
+You should be able to
+
+* Perform long division,
+* Able to complete the square for quadratic expressions,
+* Apply differentiation techniques to find stationary points,
+* Applying second derivative test to find nature of stationary points,
+* Sketch the graphs of basic graphs such as linear function \(\left(y=mx+c\right),\) quadratic function \(\left(y=ax^{2}+bx+c\right)\) and their properties such as estimation of gradient, maximum and minimum points and symmetry,
+* Sketch the graphs of exponential function \(\left(y=ka^{x}\right)\) and logarithmic function \(\left(y=\log_{a}x\right)\) where \(a\) is a positive integer.
+
+Basic Features of Graphs
+
+**Purpose of a Graph**
+
+A graph illustrates diagrammatically the relationship between two variables, usually denoted as \(x\) and \(y\). This helps us to 'visualise' the relationship between \(x\) and \(y\) which can aid us in understanding the relationship between \(x\) and \(y\).
+
+In secondary mathematics, we learnt to plot the graph of a function. It is done by plotting points on a graph paper.
+
+Unlike plotting a graph, in curve sketching we are not required to find all points of the function. Instead, we are required to show important features of the graph, such as
+
+* Asymptotes (A)
+* Intersection with axes (I)
+* Stationary points (S)
+* Symmetry
+
+In particular, the first three are the more commonly seen and important basic features of a graph and you can remember them using the acronym "**A.I.S**".
+
+### Asymptotes (A)
+
+In our syllabus, we will learn three types of asymptotes, namely, vertical asymptote, horizontal asymptote and oblique asymptote. Asymptotes are usually drawn as **dotted lines**.
+
+### Asymptotes
+
+In the graph of \(y=\mathrm{f}(x)\), if there exist a constant \(a\) such that
+
+\(x\to a\), \(y\to+\infty\)  or as  \(x\to a\), \(y\to-\infty\), then the line \(x=a\) is a vertical asymptote of the graph.
+
+For example, in the graph of  \(y=\ln x\), \(x>0\), the value of \(y\) tends to \(-\infty\)
+
+when \(x\) gets closer and closer to \(0\). (In fact, \(x\) approaches to \(0\) from the right side, i.e.  \(x\to 0^{+}\)). Then the line is a vertical asymptote of the graph \(y=\ln x\).
+
+Figure 4: Graphing Techniques
+
+**Note:**
+
+1. A graph does not touch its vertical asymptote(s) at all times.
+2. GC **does not** indicate the presence of asymptotes. For example, the graph \(y=\ln x\), obtained from GC is shown, appears as if the graph discontinues approximately at the point \((0.15,-2)\)! This is due to the limitation of GC.
+
+**Example 1**
+
+Find the equation of vertical asymptotes (if any) of the following graphs with equation **(a)**\(y=-\dfrac{2}{1+x}\)**(b)**\(y=\dfrac{x^{3}}{x^{2}+5}\)**(c)**\(y=\ln\left(1-2x\right)\)
+
+_Solution:_
+
+**(b) Horizontal Asymptote**
+
+In the graph of \(y=\mathrm{f}(x)\), if there exist a constant \(k\) such that
+
+\(x\to+\infty\), \(y\to k\)**or** as \(x\to-\infty\), \(y\to k\), then the line \(y=k\) is a horizontal asymptote of the graph.
+
+For example, for the graph of \(y=\mathrm{e}^{x}\),
+
+As \(x\to\infty\), \(y=\mathrm{e}^{x}\to\infty\),
+
+but \(x\to-\infty\), \(y=\mathrm{e}^{x}\to 0\).
+
+The line is a horizontal asymptote.
+
+**Figure 4**: Graphing Techniques
+
+**Remark:**
+
+A graph **may cut** across a horizontal asymptote. However, positive pre negative infinity, the graph does not touch the horizontal asymptote.
+
+**(c) Oblique Asymptote**
+
+If the graph of \(y=\bar{\mathrm{f}}(x)\) approaches the line \(y=mx+c\) (where \(m\neq 0\)) as \(x\to-\infty\) and \(x\to\infty\), then the line \(y=mx+c\) is an oblique asymptote for the curve \(y=\bar{\mathrm{f}}(x)\).
+
+Consider the graph of \(y=x+2+\dfrac{1}{x^{2}}\), as the \(x\)-value gets larger and larger, the \(y\)-value seems to get closer and closer to a certain non-horizontal, non-vertical straight line.
+
+As \(x\to-\infty\),
+
+As \(x\to\infty\),
+
+Therefore we say that is an oblique asymptote.
+
+**Figure 4:** Graphing Techniques
+
+### Axial Intercepts (\(x\) and \(y\) intercepts) (I)
+
+These are the point where the curve intersects \(x\)- and \(y\)-axes.
+
+Obtain the \(x\)- and \(y\)-intercepts by setting \(y=0\) and \(x=0\) respectively.
+
+**Example 2**
+
+Find the axial intercepts of \(y=x^{2}\mathrm{e}^{x}-1\).
+
+_Solution:_
+
+\(y\)-intercept: When \(x=0\), \(y=-1\).
+
+\(x\)-intercept:
+
+Hence, the axial intercepts are
+
+_Self-learning activity:_
+
+See **ANNEX 1- AXIAL INTERCEPTS** (pg 35) to find out how to use GC to find \(x\)- and \(y\)-intercepts on a graph.
+
+### Stationary Points (S)
+
+If \(\dfrac{\mathrm{d}y}{\mathrm{d}x}=0\) when \(x=a\), then the stationary points occurs at \(x=a\).
+
+To determine the nature of the stationary points we can use the second derivative test.
+
+\begin{tabular}{|c|c|} \hline Maximum point & Minimum point \\ \hline \(\dfrac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}\bigg{|}_{x=a}<0\) & \(\dfrac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}\bigg{|}_{x=a}>0\) \\ \hline \end{tabular}
+
+However, for stationary points of inflexion, \(\dfrac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}\bigg{|}_{x=a}=0\)
+
+[MISSING_PAGE_EMPTY:7]
+
+To test for the nature of stationary points:
+
+\[\left.\frac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}\right|_{x\to 0} = \mathrm{e}^{0}\left(2+0+0\right)\] \[= 2>0\] Therefore \[\left(0,\ -1\right)\ \ \text{is a minimum point.}\] \[\left.\frac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}\right|_{x\to 2} = \mathrm{e}^{-2}\left(2-8+4\right)\] \[= -2\mathrm{e}^{-2}<0\] Therefore \[\left(-2,\,4\mathrm{e}^{-2}-1\right)\ \text{is a maximum point.}\] So, which test should we use and why? First derivative test is recommended when:
+
+_Self-learning activity:_
+
+See **ANNEX 1- STATIONARY POINTS** (pg 33) to find out how to use GC to find stationary points on a graph.
+
+### Symmetries
+
+\begin{tabular}{|p{56.9pt}|p{113.8pt}|p{113.8pt}|p{113.8pt}|} \hline
+**Axis/Point of Symmetry** & \(y\)**-axis** & \(x\)**-axis** & **origin** \\ \hline \multirow{6}{*}{**Algebraically**} & If \((x,y)\) is a point on the graph, then \((-x,y)\) is also a point on the same graph. & If \((x,y)\) is a point on the graph, then \((x,-y)\) is also a point on the same graph. & If \((x,y)\) is a point on the graph, then \((-x,-y)\) is also a point on the same graph. & If \((-x,-y)\) is also a point on the same graph. \\ \cline{1-1}  & \multirow{2}{*}{**Graph**} & \(\mathrm{eg.}\ y=x^{4}\) & \(\mathrm{eg.}\ y^{2}=x\) & \(\mathrm{eg.}\ y=x^{3}\) \\ \cline{1-1}  & & \(y\) & \(y\) & \\ \cline{1-1}  & & \(o\) & \(x\) & \(o\) \\ \cline{1-1} \end{tabular}
+
+[MISSING_PAGE_FAIL:9]
+
+### If degree of \(\mathbf{P(x)=degree}\) of Q(\(x\))
+
+**Graph of the form \(y=\frac{ax+b}{cx+d}\), \(a\neq 0,c\neq 0,ad-bc\neq 0\)**
+
+**Example 5**
+
+Sketch \(y=\frac{x}{1+x}\), giving the equations of asymptotes, exact coordinates of points of intersection with the axes and turning points (if any).
+
+_Solution:_
+
+\(y=\frac{x}{1+x}=1-\frac{1}{1+x}\) (by long division. Why?)
+
+**Asymptotes:**
+
+Vertical asymptote : As \(x+1\to 0\), \(y\to\infty\) or \(y\to-\infty\).
+
+Let
+
+Horizontal asymptote:
+
+**Intercepts with axes:**
+
+**Stationary (turning) points:**
+
+\(\frac{\mathrm{dy}}{\mathrm{d}x}=-\frac{1}{\left(1+x\right)^{2}}\)
+
+Using GC to obtain the sketch:
+
+**2.3 If degree of P(\(x\)) > degree of Q(\(x\))**
+
+**Graph of the form \(y=\dfrac{ax^{2}+bx+c}{dx+e}\), \(a\neq 0,\ d\neq 0\)**
+
+**Example 6**
+
+Sketch \(y=\dfrac{x^{2}+4x+3}{x+2}\), giving the equations of asymptotes and exact coordinates of any points of intersection with the axes.
+
+Determine if there are any turning points for the graph.
+
+_Solution:_
+
+By long division, \(y=\dfrac{x^{2}+4x+3}{x+2}=x+2-\dfrac{1}{x+2}\) (why long division?)
+
+**Asymptotes:**
+
+Vertical asymptote :
+
+Oblique asymptote :
+
+**Intercepts:**
+
+**Stationary points:**
+
+\(\dfrac{\mathrm{d}y}{\mathrm{d}x}=1+\dfrac{1}{\left(x+2\right)^{2}}\)
+
+**In summary:**
+
+\begin{tabular}{|c|c|c|} \hline  & **Type of Rational Function** & **Asymptote** \\ \hline \multirow{4}{*}{**Non-linear**} & If degree of P(\(x\)) \(<\) degree of Q(\(x\)) & \\  & \(\Rightarrow\) f (\(x\)) = \(\dfrac{\text{P}(x)}{\text{Q}(x)}\) is a proper fraction & Horizontal asymptote: \(y=0\) \\ \hline \multirow{4}{*}{**Non-linear**} & If degree of P(\(x\)) \(\geq\) degree of Q(\(x\)) & \\  & \(\Rightarrow\) f (\(x\)) = \(\dfrac{\text{P}(x)}{\text{Q}(x)}\) is an improper & If \(a=0\), there is an horizontal asymptote \(y=b\). \\  & fraction. & If \(a\neq 0\), there is an oblique asymptote \(y=ax+b\). \\ \cline{1-1}  & Divide P(\(x\)) by Q(\(x\)) to obtain & \\ \cline{1-1}  & \(\text{f}(x)\) = \(ax+b+\dfrac{\text{R}(x)}{\text{Q}(x)}\) & \\ \cline{1-1} \cline{2-3} \end{tabular}
+
+**Note:** In all cases, check if there is a solution for \(x\) in \(Q(x)=0\). If there is, it means that there exists a vertical asymptote for the graph of \(y=\text{f}(x)\).
+
+**Drill Practice 1**
+
+Use long division to simplify the following rational functions:
+
+\[\text{(i)}\quad\dfrac{27x^{3}+9x^{2}-3x-9}{3x-2}\qquad\text{(ii)}\quad\dfrac{ 3x^{3}+4x+11}{x^{2}-3x+2}\]
+
+**Example 7**
+
+Consider the graph \(y=\dfrac{2x}{x^{2}+1}\).
+
+Find the stationary points of the graph analytically.
+
+Sketch the graph. giving the equations of asymptotes and coordinates of any points of intersection with the axes.
+
+Comment on the symmetry of the curve.
+
+Solution:
+
+\[\text{(i)}\quad\dfrac{\text{d}y}{\text{d}x}=\dfrac{2(x^{2}+1)-2x(2x)}{\left(x ^{2}+1\right)^{2}}\,.\]
+
+\end{table}
+Table 4: Graphing Techniques
+
+[MISSING_PAGE_EMPTY:13]
+
+[MISSING_PAGE_FAIL:14]
+
+### Parabola
+
+The equation of a parabola with vertex (0, 0) is as follows.
+
+\(y=ax^{2}\) axis of symmetry: \(y\) - axis
+
+\(y^{2}=ax\) axis of symmetry: \(x\) - axis
+
+The standard form of the equation of a parabola with vertex (\(h\), \(k\)) is as follows.
+
+\((y-k)=a(x-h)^{2}\), \(a\neq 0\), axis of symmetry: \(x=h\)
+
+\((y-k)^{2}=a(x-h)\), \(a\neq 0\), axis of symmetry: \(y=k\)
+
+**Example 10**: Sketch the graph of \((y-2)^{2}=4(x+1)\) and state the axis of symmetry
+
+_Solution:_
+
+### Circle
+
+Recall from O levels Mathematics, the equation of the circle is
+
+\(\left(x-h\right)^{2}+\left(y-k\right)^{2}=r^{2}\), centered at \((h,k)\) with radius \(r\). In particular, the equation of the circle is \(x^{2}+y^{2}=r^{2}\) centered at (0, 0) with radius \(r\).
+
+**Example 11**:
+
+Sketch the graphs of \(x^{2}+y^{2}-2x+4y=4\).
+
+**Solution**
+
+\[x^{2}+y^{2}-2x+4y=4\] \[(x^{2}-2x)+(y^{2}+4y)=4\]
+
+_(In this example, we need to complete the square for \(x^{2}\) and \(y^{2}\) to express in the form \(\left(x-h\right)^{2}+\left(y-k\right)^{2}=r^{2}\) )_
+
+Completing the squares, we have
+
+\[(x-1)^{2}-1+(y+2)^{2}-4=4\]
+
+Converting to standard form:
+
+\[(x-1)^{2}+(y+2)^{2}=3^{2}\]
+
+### Ellipse
+
+The standard form of the equation of an ellipse with centre (\(h,k\)) and major and minor axes of lengths \(2a\) and \(2b\) respectively, is
+
+\[\frac{(x-h)^{2}}{a^{2}}+\frac{(y-k)^{2}}{b^{2}}=1\ \,\ \ a>b,\ \ \ \ \ \ \text{Major axis is horizontal.}\]
+
+The major and minor axes of lengths \(2b\) and \(2a\) respectively is
+
+\[\frac{(x-h)^{2}}{a^{2}}+\frac{(y-k)^{2}}{b^{2}}=1\ \,\ \ \ b>a,\ \ \ \ \ \text{Major axis is vertical.}\]
+
+These ellipse are symmetrical about the lines \(\ x=h\) and \(\ y=k\).
+
+When the centre of the ellipse is at the origin (0, 0), the equation of the ellipse takes the form
+
+\[\frac{x^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}=1,\ \ a>b,\ \ \ \ \ \text{ Major axis is horizontal}\]
+
+\[\frac{x^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}=1,\ \ b>a,\ \ \ \ \ \text{ Major axis is vertical}\]
+
+These ellipses are symmetrical about the \(x\) and \(y\) axes.
+
+\begin{tabular}{|c|c|c|} \hline  & **Centre (\(h,k\))** & **Centre (0, 0)** \\ \hline \(a>b\) & \(\ \
+
+**Example 12**:
+
+Sketch the graph of \(4x^{2}+y^{2}-6y-16=0\).
+
+_Solution_:
+
+\(4x^{2}+y^{2}-6y-16=0\)
+
+\(4x^{2}+(y^{2}-6y)-16=0\)
+
+_(Similarly, we need to complete the square for \(x^{2}\) and \(y^{2}\) to express in the form \(\frac{(x-h)^{2}}{a^{2}}+\frac{(y-k)^{2}}{b^{2}}=1\) )_
+
+**Note:** You can also use the GC to sketch this graphs in Example 11 and 12.
+
+Refer to **Examples 19** and **20** in **Section 6 Self-Reading Examples.**
+
+[MISSING_PAGE_EMPTY:19]
+
+**Example 13**:
+
+Sketch the graph of \(\dfrac{x^{2}}{9}-\dfrac{y^{2}}{4}=1\) and state the equations of the asymptotes, if any.
+
+_Solution:_
+
+See **Example 15 (page 21)** for steps to using GC to sketch the hyperbola, but we need to find the oblique asymptotes for the hyperbola.
+
+\[\dfrac{x^{2}}{9}-\dfrac{y^{2}}{4}=1\ \ \Leftrightarrow\ \ \dfrac{x^{2}}{3^{2}}-\dfrac{y^{2}}{2^{2}}=1\]
+
+**Example 14 (non standard)**:
+
+Express \(2x^{2}+4x-y^{2}+6y=9\) in the form \(\dfrac{(x-c)^{2}}{a^{2}}-\dfrac{(y-d)^{2}}{b^{2}}=1\), where \(a\), \(b\), \(c\), \(d\) are integers to be determined. Hence, determine the asymptotes of this graph.
+
+**Solution:**
+
+\((2x^{2}+4x)-(y^{2}-6y)=9\)
+
+(_Similarly, we need to complete the square for \(x^{2}\) and \(y^{2}\) to express in the form_
+
+\[\dfrac{(x-c)^{2}}{a^{2}}-\dfrac{(y-d)^{2}}{b^{2}}=1)\] \[(2x^{2}+4x)-(y^{2}-6y)=9\] \[(y-3)^{2}=2(x+1)^{2}-2\]
+
+**Drill Questions 2**
+
+Identify and sketch the curves represented by the following equations.
+
+1. \(x^{2}-7x+y^{2}+6=0\) (b) \(y=\sqrt{4-x^{2}}\)
+2. \((12x)^{2}+(5y)^{2}=13^{2}\) (d) \(y=\frac{x+1}{x+2}\)
+
+### Conics App in GC
+
+**Limitation of the CONICS Application:** It can give us the shape of the conic but it cannot be used to find the intersection points with another graph. [Refer to **Example 23** on how to find the intersection of a conic with another graph]
+
+**Example 15** Sketch the graph \(\frac{x^{2}}{3^{2}}-\frac{y^{2}}{2^{2}}=1\)
+
+\begin{tabular}{|l|l|l|} \hline
+**Steps** & **Screenshot** & **Remarks** \\ \hline Press [APPS] & & \\ Select the Conics mode & & \\ press [ENTER] & & \\ \hline Press [4] to select & & \\ HYPERBOLA & 1: CIRCLE & \\ Press [ENTER] & 2: EELLIPSE & \\ Press [ENTER] & & \\  & 4:PBRBOLA & \\ \hline Press [1] & & \\ \hline Key in the appropriate & & \\ values for \(A\), \(B\), \(H\) and \(K\). & & \\ In this case \(A=3\), \(B=2\), & & \\ \(H=0\), \(K=0\) & & \\ Press [GRAPH] & & \\ \hline \end{tabular}
+
+This is the correct graph of the \(\left(\begin{array}{c}0,0\end{array}\right)\)
+
+\(x\)-intecepts are (3, 0), (-3, 0)
+
+[Note that the asymptotes are not shown on the GC.]Parametric Equations
+
+### Graph of Parametric Equations
+
+There are two forms of equations for curves:
+
+Cartesian equations and parametric equations.
+
+Cartesian equations are equations expressed in term of \(x\) and \(y\).
+
+For examples, \(y=2x^{2}\), \(y=x^{3}+\mathrm{e}^{x-4}\), \(y=\ln\,(x-1)\) are Cartesian equations.
+
+In parametric equations, \(x\) and \(y\) are expressed separately in terms of a third variable, for example, \(t\), which is called a parameter.
+
+For example, \(x=t\), \(y=t^{2}\), \(t>-1\) is a pair of parametric equation.
+
+The coordinates of a point on the curve defined by the parametric equations \(x=t\), \(y=t^{2}\), \(t>-1\) is of the form \(\left(t,t^{2}\right)\).
+
+\begin{tabular}{|c|c|c|c|} \hline \(t\) & \(x=t\) & \(y=t^{2}\) & \((x,\,y)=(t,\,\,t^{2})\) \\ \hline
+**1** & **1** & **1** & \((1,1)\) \\ \hline
+**2** & **2** & **4** & \((2,4)\) \\ \hline
+**3** & **3** & **9** & \((3,9)\) \\ \hline
+**4** & **4** & **16** & \((4,16)\) \\ \hline
+**5** & **5** & **25** & \((5,25)\) \\ \hline \(\vdots\) & & & \\ \hline \end{tabular}
+
+### Example 16
+
+Use the graphic calculator to sketch a parametric curve \(x=\dfrac{1}{8}t^{3}-2\), \(y=\dfrac{1}{2}t\), where
+
+\(t\in\mathbb{R}\). Find the exact axial intercepts and label its coordinates on the curve.
+
+\begin{tabular}{|c|c|c|c|} \hline
+**Steps** & **Screenshot** & **Remarks** \\ \hline
+1. Press MOE & & & \\ Select the parametric & & & \\ mode by toggling & & & \\ cursor to & & & \\ \hline PARAMETRIC then & & & \\ press ENTER & & & \\ \hline \end{tabular}
+
+2. Press V= to access the parametric equation & & \\ parametric equation & & & \\ input window. The & & & \\ key in the parametric & & & \\ equations. & & & \\ \hline \end{tabular}
+
+2. Press V= to access the parametric equation & & \\ input window. The & & & \\ key in the parametric & & \\ equations. & & & \\ \hline \end{tabular}
+
+3.2.1.2.3.4.5.6.7.8.9.
+
+**GC limitation**: Although the GC can give us the general shape of the graph, it is unable to give us the exact axes intercepts of the graph and we need to calculate it manually!
+
+\(x\)-intercepts \(\Rightarrow\)\(y=0\) :
+
+Set \(y=\dfrac{1}{2}t\)\(\Rightarrow\)\(t=0\).
+
+Then substitute \(t=0\) into \(x=\dfrac{1}{8}\bigl{(}0\bigr{)}^{3}-2=-2\).
+
+\(y\)-intercepts \(\Rightarrow\)\(x=0\) :
+
+Set \(x=\dfrac{1}{8}t^{3}-2\)\(\Rightarrow\)\(\dfrac{1}{8}t^{3}=2\)\(t^{3}=16\)\(\Rightarrow\)\(t=2\sqrt{2}\)
+
+Then substitute \(t=2\sqrt[3]{2}\) into \(y=\dfrac{1}{2}\bigl{(}2\sqrt[3]{2}\bigr{)}=\sqrt[3]{2}\).
+
+[FIGURE:S4.F1][ENDFIGUR
+
+[MISSING_PAGE_FAIL:24]
+
+This is how the final sketch of the graph looks like:
+
+**Note**:
+
+When using a graphic calculator to sketch a parametric curve,
+
+if the domain of \(t\) is not specified, we take it to be \(t\in\mathbb{R}\).
+
+ensure that the scale is the same for the \(x\) and \(y\) axes for a circle and an ellipse. [If not, circles may appear to look like ellipses or vice versa].
+
+**Drill Questions 3**
+
+Sketch the following parametric equations, indicating the axes intercepts on the graphs
+
+1. \(x=2\cos\theta,y=\sin\theta\) for \(0\leq\theta\leq\pi\).
+2. \(x=t^{2},y=2t\) for \(t\in\Re\)
+3. \(x=\cos^{2}t,y=\sin^{3}t\) for \(0\leq t\leq\frac{\pi}{2}\)
+
+### Converting Parametric Equations to Cartesian Equations
+
+To convert parametric equations to a Cartesian equation (equation involving only \(x\) and \(y\)), elimination of parameter \(t\) is necessary. The common method used are:
+
+1. Making the parameter \(t\) the subject from one of the equations and substituting into \(t\) into the other equation 2. Using trigonometry identities, e.g. \(\sin^{2}\theta+\cos^{2}\theta=1\).
+3. Using some algebraic approach.
+
+**Note:** It is not always possible to convert parametric equations to Cartesian equations.
+
+**Example 18**:
+
+Convert the following pairs of parametric equations to Cartesian Equation:
+
+1. \(x=3t-1,\quad y=\frac{3}{t}\) ;
+2. \(x=3\cos\theta-4\), \(y=\sin\theta+2\).
+3. \(x=t+\frac{1}{t}\), \(y=t-\frac{1}{t}\)
+
+_Solution:_
+
+1. Given: \[x=3t-1 \Rightarrow t=\frac{x+1}{3}...(1)\] \[y=\frac{3}{t} \Rightarrow t=\frac{3}{y}....(2)\] Making the parameter, \(t\) the subject Equating (1) & (2), \[\frac{3}{y}=\frac{\left(x+1\right)}{3}\] Elimination of \(t\) The Cartesian equation is \(y=\frac{9}{x+1}\).
+2. Given: \[x=3\cos\theta-4 \Rightarrow \cos\theta=\frac{x+4}{3}\cdots(1)\] \[y=\sin\theta+2 \Rightarrow \sin\theta=y-2\cdots\left(2\right)\]
+
+[MISSING_PAGE_EMPTY:27]
+
+Modelling the Projectile Motion using Parametric Equations Aim: To show how parametric equations arise naturally from real-world situations, model motion of objects encountered in the real-world and interpret the parametric equations in context.
+
+**Example 19**: **: A Falling Care Package**
+
+The figure above shows an airplane moving horizontally releases a 'care package' to the ground along a curved trajectory. The constant velocity of the airplane is 115 ms-1 at an altitude of 1050 m.
+
+Ignoring air resistance and assuming the acceleration due to gravity is 9.8 ms-2,
+
+(i) What coordinates system is used in this scenarios?
+
+(ii) Express the position of the care package \(t\) seconds after being dropped from the plane in the form of parametric equations.
+
+(iii) How long will the 'care package' take to reach the ground?
+
+_Solution:_
+
+(i) We use the Cartesian coordinates system (i.e. \(x\)-\(y\) plane) by taking the 'care packing' dropping point from the plane as the origin, the positive \(x\)-direction as rightwards and positive \(y\)-direction as upwards.
+
+(ii) Let \(\left(x,\,y\right)\) be the position of the care package at time \(t\). Along the horizontal direction, the object moves with constant velocity 115 ms-1
+
+. The horizontal distance at time \(t\) is In the vertical motion, due to gravity, the object undergoes an acceleration of - 9.8 ms-2,
+
+Using the formula \(\ s=ut+\frac{1}{2}at^{2}\), where \(u=\) initial vertical velocity and \(a=\) acceleration = - 9.8 ms-2
+
+The vertical distance at time \(t\) is
+
+The negative sign indicates that the object is below the \(x\)-axis.
+
+Hence the position of the care package at time \(t\) is \((x,y)\) where
+
+As the plane is at the height 1050 m above the ground, so the object at time \(t\) is at a height \(h=1050-4.9t^{2}\) above the ground. When the care package reaches the ground, \(h=0\)Self-Reading Examples Example Example 20
+
+Sketch the graph of \((x-1)^{2}+(y+2)^{2}=9\).
+
+Write the equation in standard form : \((x-1)^{2}+(y-(-2))^{2}=3^{2}\)
+
+\begin{tabular}{|l|l|} \hline
+**Steps** & **Screenshot** & **Remarks** \\ \hline Press [APPS] & \(\frac{\text{EPC}}{\text{EPC}}\) & \(\frac{\text{EPC}}{\text{EPC}}\) \\ Select the Conics mode & \(\frac{\text{EPC}}{\text{EPC}}\) \\ \hline press [ENTER] & \(\frac{\text{EPC}}{\text{EPC}}\) \\ \hline Press [1] to select CIRCLE & \(\frac{\text{EPC}}{\text{EPC}}\) \\ \hline \end{tabular}
+
+\begin{tabular}{|l|l|} \hline Press [ENTER] & \(\frac{\text{EPC}}{\text{EPC}}\) \\ \hline Press [ENTER] & \(\frac{\text{EPC}}{\text{EPC}}\) \\ \hline \end{tabular}
+
+\begin{tabular}{|l|l|} \hline Key in the appropriate & \(\frac{\text{EPC}}{\text{EPC}}\) \\ values. & \(\frac{\text{EPC}}{\text{EPC}}\) \\ In this case, \(H=1\), \(K=\) -2, & \(\frac{\text{EPC}}{\text{EPC}}\) \\ \hline Press [GRAPH] & \(\frac{\text{EPC}}{\text{EPC}}\) \\ \hline \end{tabular}
+
+\begin{tabular}{|l|l|} \hline Press [GRAPH] & \(\frac{\text{EPC}}{\text{EPC}}\) \\ \hline \end{tabular}
+
+\begin{tabular}{|l|l|} \hline Press [GRAPH] & \(\frac{\text{EPC}}{\text{EPC}}\) \\ \hline \end{tabular}
+
+\begin{tabular}{|l|l|} \hline Press [GRAPH] & \(\frac{\text{EPC}}{\text{EPC}}\) \\ \hline \end{tabular}
+
+\begin{tabular}{|l|l|} \hline \end{tabular}
+
+[MISSING_PAGE_FAIL:31]
+
+[MISSING_PAGE_EMPTY:32]
+
+**Example 23**:
+
+Find the intersection between the circle \((x-1)^{2}+(y+2)^{2}=9\) and the line \(y=x-2\). We cannot use the Conics App here to sketch the circle, this is because in the Conics App, we cannot find the point of intersection.
+
+First, we make \(y\) the subject of the equation: \(y=-2\pm\sqrt{9-(x-1)^{2}}\).
+
+\begin{tabular}{|l|c|c|} \hline
+**Steps** & **Screenshot** & **Notes** \\ \hline Press \(\gamma\) and enter the expression & & \\  & & \\ \(-2+\sqrt{9-(x-1)^{2}}\) into Y\({}_{1}\) & & \\ \(-2-\sqrt{9-(x-1)^{2}}\) into Y\({}_{2}\), and \(x-2\) into Y\({}_{3}\). & & \\ \hline Press [200M [5] & & \\  & & \\ \end{tabular}
+
+Notice that there is a gap between two parts of the circle, this is due to limitation of GC.
+
+To find the point of intersection between the upper circle and the line, De-select Y\({}_{2}\) by simply move the cursor on Y\({}_{2}\) then press ENTER.
+
+\begin{tabular}{|l|c|} \hline Press [2nd]CALC & & \\ select [5] & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\ \end{tabular}
+
+\begin{tabular}{|l|c|} \hline Press [2nd]CALC & & \\ select [5] & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\ \end{tabular}
+
+\begin{tabular}{|l|c|} \hline Press [2nd]CALC & & \\ select [5] & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\ \end{tabular}
+
+\begin{tabular}{|l|c|} \hline Press [2nd]CALC & & \\ select [5] & & \\ select [5] & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\  & & \\ \end{tabular}
+
+\begin{tabular}{|l|c|} \hline Press [2nd]CALC & & \\ select [5] & & \\ select [
+
+[MISSING_PAGE_EMPTY:34]
+
+[MISSING_PAGE_EMPTY:35]
+
+* [6] Respond to "Right bound?", move the cursor to the right of the maximum point and press [\(\overline{\text{\sc ENTER}}\)]
+* [7] When prompted "Guess?", press [\(\overline{\text{\sc ENTER}}\)]
+* [8] The \(x\)-value and the \(y\)-value of the maximum point is shown on the screen.
+* [8] The \(x\)-value and the \(y\)-value of the maximum point is shown on the screen.
+* 6 till the screen "Guess?", instead of pressing [\(\overline{\text{\sc ENTER}}\)], input \(x=-2\) followed by [\(\overline{\text{\sc ENTER}}\)], then you will see the screen below which confirms the fact that the maximum point indeed occurs when \(x=-2\).
+
+[FIGURE:S4.F1][ENDFIGUR* [3] Respond to "Right bound?", move the cursor to the right of the \(x\)-intercept and press ENTER
+* [4] When prompted "Guess?", press ENTER
+* [5] The \(x\)-intercept is \(x=0.7034674\).
+
+[MISSING_PAGE_FAIL:38]
+
+**Graphing Techniques - A Checklist of Concepts**
+
+I understand the characteristics of graphs such as Stationary points (**S**), intersections with the axes (**I**) and asymptotes (**A**). [Refer to **Section 1]**
+
+I am able to determine equations of asymptote (horizontal, vertical and oblique), axes of symmetry and restrictions of possible values of \(x\)/or \(y\) of a graph; [Refer to **Examples 4, 5 and 6]**
+
+I know how to use a graphic calculator to draw a given function, locating the turning points, axial intercepts, and adjusting the 'window setting' that would display the essential features of the functions [Refer to **Example 8** and **Annex 1]**
+
+I am able to sketch the graphs of rational functions such as
+
+\[y=\frac{\alpha x+b}{cx+d}\ \ \text{and}\ \ y=\frac{\alpha x^{2}+bx+c}{dx+e}\ \ \text{[Refer to **Example 5** and 6]}\]
+
+I can recognize different types of conics such as circle, ellipse and hyperbola and sketch their graphs with or without the use of a graphing calculator; [Refer to **Section 3.1 to 3.4]**
+
+I understand the concept of parametric equations and sketch their graphs [Refer to **Examples 16** and 17]**
+
+I can convert parametric equations into Cartesian equations. [Refer to **Example 18**]
+
+**Relevant websites**
+
+1) **Applet on conics:** [https://www.geogebra.org/m/GmTngth7#material/T8TV2JqG](https://www.geogebra.org/m/GmTngth7#material/T8TV2JqG)
+
+2) **Applet on rational function:** [https://www.geogebra.org/m/Fsnt4mRk](https://www.geogebra.org/m/Fsnt4mRk)
+
+[https://www.geogebra.org/m/naKtmybb](https://www.geogebra.org/m/naKtmybb)
+
+[https://www.geogebra.org/m/dFP5VqR7](https://www.geogebra.org/m/dFP5VqR7)
+
+3) **Applet on graphs of parametric equations:** [https://www.geogebra.org/m/z3sh6xSE](https://www.geogebra.org/m/z3sh6xSE)
+
+4) **Applet on graphs of various functions:** [http://www.analyzermath.com/](http://www.analyzermath.com/)

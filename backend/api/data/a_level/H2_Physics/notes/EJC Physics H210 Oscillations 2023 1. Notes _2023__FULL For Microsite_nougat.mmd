@@ -1,0 +1,301 @@
+## H2 Topic 10 - Oscillations
+
+###### Contents
+
+* Simple harmonic motion
+* Energy in simple harmonic motion
+* Damped and forced oscillations, resonance
+
+### Learning Outcomes
+
+Candidates should be able to:
+
+(a) describe simple examples of free oscillations
+
+(b) investigate the motion of an oscillator using experimental and graphical methods
+
+(c) show an understanding of and use the terms amplitude, period, frequency, angular frequency and phase difference and express the period in terms of both frequency and angular frequency
+
+(d) recall and use the equation \(\partial\textbf{=}\neg\partial^{2}X\) as the defining equation of simple harmonic motion
+
+(e) recognise and use \(x\textbf{=}\chi_{\circ}\sin\alpha t\) as a solution to the equation \(\partial\textbf{=}\neg\partial^{2}X\)
+
+(f) recognise and use the equations \(\nu\textbf{=}\nu_{\circ}\cos\alpha t\) and \(\nu\textbf{=}\pm\omega\sqrt{\chi_{\circ}^{2}-\chi^{2}}\)
+
+(g) describe, with graphical illustrations, the changes in displacement, velocity and acceleration during simple harmonic motion
+
+(h) describe the interchange between kinetic and potential energy during simple harmonic motion
+
+(i) describe practical examples of damped oscillations with particular reference to the effects of the degree of damping and to the importance of critical damping in applications such as a car suspension system
+
+(j) describe practical examples of forced oscillations and resonance
+
+(k) describe graphically how the amplitude of a forced oscillation changes with driving frequency near to the natural frequency of the system, and understand qualitatively the factors which determine the frequency response and sharpness of the resonance
+
+(l) show an appreciation that there are some circumstances in which resonance is useful, and other circumstances in which resonance should be avoided
+
+### Introduction
+
+We have studied the kinematics of bodies in (i) straight line, (ii) projectile and (iii) circular motions.
+
+Oscillatory motions are another type of motion that can be often seen in everyday life: the swinging pendulum of a grandfather clock, the vibrations of a bus, and the waves on the strings of a guitar. Other non-visible examples include the electro-magnetic oscillations emitted by wireless equipment, gaseous atoms and molecules that propagate sound waves, and the lattice vibrations of atoms.
+
+To better understand how these systems work, it is important we learn the mechanics of oscillations.
+
+[MISSING_PAGE_FAIL:2]
+
+#### Quantities of Oscillation
+
+We refer to a vertical spring-mass system attached to a ceiling to help familiarize ourselves with the various quantities used to describe an oscillation.
+
+\begin{tabular}{|c|l|} \hline equilibrium position & position where no net force acts on the oscillating mass \\ \hline displacement \(x\) & distance in a specified direction from equilibrium position of oscillating mass \\ \hline amplitude \(x_{0}\) & maximum displacement from equilibrium position \\ \hline period \(T\) & time taken for one complete oscillation of the oscillating mass \\ \hline frequency \(f\) & number of complete oscillations per unit time. (unit: Hertz, Hz) \(f=\dfrac{1}{T}\) \\ \hline phase \(\phi\) & an angular measure (in either degrees or radians) of the fraction of a cycle completed by the oscillating mass \\ \cline{2-2}  & i.e. completion of one complete cycle corresponds to a phase \(\phi=360^{\circ}\) or \(2\pi\) rad \\ \hline phase difference & measure of how much an oscillation is out of step with another oscillation \\ \cline{2-2} \(\Delta\phi\) & if two oscillations are \\ \cline{2-2}  & in-phase: \(\Delta\phi=0\) \\ \cline{2-2}  & out-of-phase: \(\Delta\phi\neq 0\) \\ \cline{2-2}  & anti-phase: \(\Delta\phi=\pi\) OR \(180^{\circ}\) \\ \hline \end{tabular}
+
+\begin{tabular}{|c|l|} \hline angular frequency & (i) is effectively rate of change of phase of oscillating mass \(\omega=\dfrac{\mathrm{d}\theta}{\mathrm{d}t}\) \\ \cline{2-2}  & (ii) shares same symbol \({}^{\omega}\) as circular motion's angular velocity (rate of change of angular displacement \(\omega=\dfrac{\mathrm{d}\theta}{\mathrm{d}t}\)) but are different quantities! \\ \hline \end{tabular}
+
+[MISSING_PAGE_EMPTY:4]
+
+[MISSING_PAGE_EMPTY:5]
+
+[MISSING_PAGE_FAIL:6]
+
+[MISSING_PAGE_EMPTY:7]
+
+### Comparing Simple Harmonic Motion with Circular Motion
+
+We can visualise SHM as a 2D projection of uniform circular motion.
+
+In the setup (right), a motorized circular turntable with a stick attached to its rim rotates with an adjustable angular _speed_\(\omega\) of circular motion. A simple pendulum oscillates directly above the turntable.
+
+A projector provides a collimated light beam and casts the shadows of the ball and the pendulum on a screen. The angular speed of the turntable is adjusted such that the two shadows move in sync, one above the other.
+
+While the ball performs uniform circular motion, its shadow exhibits SHM.
+
+### Kinematics of Simple Harmonic Motion
+
+The variation with time of displacement of a body under SHM is sinusoidal (sine or cosine function). In this scenario,
+
+* at time \(t=0\), the body is at the equilibrium point (\(x=0\)).
+* some time \(t\) later, the displacement of the body is \(x\) and the phase angle is \(\theta=\omega t\).
+
+We say that \(x=x_{0}\,\sin(\omega t)\) is a solution to the defining equation of SHM. Mathematically, it means that \(x=x_{0}\,\sin(\omega t)\) can always fulfil the condition of \(\dfrac{\mathrm{d}^{2}x}{\mathrm{d}t^{2}}=-k\alpha\) where the proportionality constant is \(k=\omega^{2}\).[If time \(t=0\) when \(x=x_{0}\), then \(x=x_{0}\,\cos(\omega t)\) would have been the defining solution]
+
+There will be times when it would be useful to eliminate the variable \(t\) from the equations. Using the trigonometric identity
+
+\[\sin^{2}wt+\cos^{2}wt=1\] \[\left(\dfrac{x}{x_{0}}\right)^{2}+\left(\dfrac{\nu}{\omega x_{0}} \right)^{2}=1\] \[\omega^{2}x^{2}+\nu^{2}=\omega^{2}x_{0}^{2}\]
+
+Hence the velocity of a body under SHM is given by
+
+\[\nu=\pm\omega\sqrt{x_{0}^{2}-x^{2}}\]
+
+Thus, the kinematic relationships of a S.H.M. can be summarized as follows:
+
+**Quick Check:** How would the variation of \(x\), \(\nu\) and a with respect to \(t\) differ when oscillator starts moving in the negative direction?
+
+**Example 1 (a)**
+
+An oscillation has amplitude 5.0 mm and a period \(T\) of 0.180 s. At time \(t=0\), its displacement is at the equilibrium position and travelling downwards.
+
+Determine for the oscillation, its
+
+**(i)**: angular frequency,
+**(ii)**: maximum velocity and
+**(iii)**: maximum acceleration.
+
+\[\begin{array}{ll}\mbox{(i)}&\omega=2\pi t=\frac{2\pi}{T}\\ &=\frac{2\pi}{0.18}\\ &=34.9\mbox{ rad s}^{-1}\\ \end{array}\qquad\begin{array}{ll}\mbox{(ii)}&\nu=\pm\omega\sqrt{x_{0}^{2}-x ^{2}}\\ &\left|\nu_{0}\right|=\omega\sqrt{x_{0}^{2}-0}\\ &=\left|\omega x_{0}\right|=\left(\frac{2\pi}{T}\right)x_{0}\\ &=\left(\frac{2\pi}{0.18}\right)\left(5\times 10^{-3}\right)\\ &=0.175\mbox{ m s}^{-1}\\ \end{array}\qquad\begin{array}{ll}\mbox{(iii)}&\mathbf{a}=-\omega^{2}\mathbf{x}\\ &\mathbf{a}_{0}=\left|\omega^{2}x_{0}\right|\\ &=\left(\frac{2\pi}{T}\right)^{2}x_{0}\\ &=\left(\frac{2\pi}{0.18}\right)^{2}\left(5\times 10^{-3}\right)\\ &=6.09\mbox{ m s}^{-2}\\ \end{array}\]
+
+[MISSING_PAGE_EMPTY:11]
+
+[MISSING_PAGE_EMPTY:12]
+
+[MISSING_PAGE_EMPTY:13]
+
+[MISSING_PAGE_EMPTY:14]
+
+**Example 5**: A simple harmonic oscillator has a time period of 10 seconds. Which equation relates its acceleration \(a\) and displacement \(x\)?
+
+**A**: \(a=-\left(\frac{20}{2\pi}\right)^{2}x\)**B**: \(a=\left(20\pi\right)^{2}x\)
+**C**: \(a=\left(\frac{20}{2\pi}\right)^{2}x\)**D**: \(a=-\left(\frac{2\pi}{10}\right)^{2}x\)
+**Solution**: \(a=-\omega^{2}x=-\left(\frac{2\pi}{T}\right)^{2}x\)
+
+### Energy of Oscillations
+
+Considering the energies of an SHM can help to simplify the analysis of the oscillatory motion.
+
+When a body is performing free oscillations, there is continuous and periodic interchange of its kinetic energy and potential energies. The body also experiences no energy loss or gain due to the absence of resistive or driving forces acting on the system.
+
+For a pendulum bob undergoing free oscillations:
+
+**Note**: There are similar energy conversions for an oscillating vertical spring-mass system. Depending on how the question is set up, we may need to sum up gravitational potential energy and elastic potential energy for total potential energy.
+
+\begin{tabular}{c|c} \hline kinetic energy with displacement & potential energy with displacement \\ \hline  & designate total potential energy \(E_{\rm p}=0\) at equilibrium \\  & such that all the KE is converted to PE at amplitude positions: \\  & \(E_{\rm total}=E_{\kappa}+E_{\rm p}\) \\  & \(=E_{\kappa,\max}+0\) (when KE is a max, PE is zero) \\ \(E_{\rm total}=E_{\kappa,\max}\) \\  & \(=\frac{1}{2}\,m\omega^{2}\,x_{\rm o}^{2}\) \\  & then \(E_{\rm p}=E_{\rm total}-E_{\kappa}\) \\  & \(=\frac{1}{2}\,m\omega^{2}\,x_{\rm o}^{2}-\frac{1}{2}\,m\omega^{2}\, \left(x_{\rm o}^{2}-x^{2}\right)\) \\  & \(=\frac{1}{2}\,m\omega^{2}\,x^{2}\) \\ \hline \end{tabular}
+
+\begin{tabular}{c|c} \hline
+**Note:** & \\ When sketching & \\ graphs involving & \\ oscillations, **do not** & \\
+**extend beyond the** & \\
+**amplitudes** (i.e. \(x_{\rm o}\) & \\ and \(-x_{\rm o}\)). & \\ \hline \end{tabular}
+
+\begin{tabular}{c|c} \hline
+**Note:** & \\ When sketching & \\ graphs involving & \\ oscillations, **do not** & \\
+**extend beyond the** & \\
+**amplitudes** (i.e. \(x_{\rm o}\) & \\ and \(-x_{\rm o}\)). & \\ \hline \end{tabular}
+
+\begin{tabular}{c|c} \hline
+**Note:** & \\ When sketching & \\ graphs involving & \\ oscillations, **do not** & \\
+**extend beyond the** & \\
+**amplitudes** (i.e. \(x_{\rm o}\) & \\ and \(-x_{\rm o}\)). & \\ \hline \end{tabular}
+
+\begin{tabular}{c|c} \hline
+**Note:** & \\ When sketching & \\ graphs involving & \\ oscillations, **do not** & \\
+**extend beyond the** & \\
+**amplitudes** (i.e. \(x_{\rm o}\) & \\ and \(-x_{\rm o}\)). & \\ \hline \end{tabular}
+
+\begin{tabular}{c|c} \hline
+**Note:** & \\ When sketching & \\ graphs involving & \\ oscillations, **do not** & \\
+**extend beyond the** & \\
+**amplitudes** (i.e. \(x_{\rm o}\) & \\ and \(-x_{\rm o}\)). & \\ \hline \end{tabular}
+
+\begin{tabular}{c|c} \hline
+**Note:** & \\ When sketching & \\ graphs involving & \\ oscillations, **do not** & \\
+**extend beyond the** & \\
+**amplitudes** (i.e. \(x_{\rm o}\) & \\ and \(-x_{\rm o}\)). & \\ \hline \end{tabular}
+
+\begin{tabular}{c|c} \hline
+**Note:** & \\ When sketching & \\ graphs involving & \\ oscillations, **do not** & \\
+**extend beyond the** & \\
+**amplitudes** (i.e. \(x_{\rm o}\) & \\ and \(-x_{\rm o}\)). & \\ \hline \end{tabular}
+
+\begin{tabular}{c|c} \hline
+**Note:** & \\ When sketching & \\ graphs involving & \\ oscillations, **do not** & \\
+**extend beyond the** & \\
+**amplitudes** (i.e. \(x_{\rm o}\) and \(-x_{\rm o}\)). & \\ \hline \end{tabular}
+
+\begin{tabular}{c|c} \hline
+**Note:** & \\ When sketching & \\ graphs involving & \\ oscillations, **do not** & \\
+**extend beyond the** & \\
+
+\begin{tabular}{|c|c|} \hline kinetic energy with time & potential energy with time \\ \hline \(E_{\text{v}}=\frac{1}{2}\,mv^{2}\) & \(E_{\text{p}}=E_{\text{total}}-E_{\text{v}}\) \\ \(=\frac{1}{2}\,mv^{2}\) & \(=\frac{1}{2}\,mv^{2}\,x_{0}^{2}-\frac{1}{2}\,mv^{2}\,x_{0}^{2}\cos^{2}\left( \omega t\right)\) \\ \(=\frac{1}{2}\,mv^{2}\,x_{0}^{2}\cos^{2}\left(\omega t\right)\) & \(=\frac{1}{2}\,mv^{2}\,x_{0}^{2}\left[1-\cos^{2}\left(\omega t\right)\right]\) \\ \(=\frac{1}{2}\,mv^{2}\,x_{0}^{2}\sin^{2}\left(\omega t\right)\) & \(=\frac{1}{2}\,mv^{2}\,x_{0}^{2}\sin^{2}\left(\omega t\right)\) \\ \hline \end{tabular}
+
+The variation of total energy \(E_{\text{total}}\), total potential energy \(E_{\text{p}}\) and kinetic energy \(E_{\text{K}}\) with time: energy
+
+\begin{tabular}{|c|} \hline \(E_{\text{total}}=\left[\frac{1}{2}\,mv^{2}\right]x_{0}^{2}\) \\ \(=\frac{1}{2}\,mv^{2}\,x_{0}^{2}\) \\ \(=\frac{1}{2}\,mv^{2}\,x_{0}^{2}\cos^{2}\left(\omega t\right)\) \\ \(=\frac{1}{2}\,mv^{2}\,x_{0}^{2}\sin^{2}\left(\omega t\right)\) \\ \hline \end{tabular}
+
+**Example 6**: A mass of 8.0 g oscillate in simple harmonic motion with an amplitude of 5.0 mm at a frequency of 40 Hz. Find the total energy of this simple harmonic oscillator.
+
+**Solution**
+
+\[E_{\text{total}} =E_{\text{v, max}}=\frac{1}{2}\,mv_{\text{max}}^{2}\] \[=\frac{1}{2}\,mv^{2}\,x_{0}^{2}\] \[=\frac{1}{2}\,m\left(2\pi t\right)^{2}\,x_{0}^{2}\] \[=\frac{1}{2}\left(8.0\,\times 10^{-3}\right)\left(2\pi\left(40 \right)\right)^{2}\left(5.0\,\times 10^{-3}\right)^{2}\] \[=6.31\,\text{mJ}\]
+\begin{tabular}{c c}  & **9749(2023) H2 Physics** \\ \end{tabular}
+
+\begin{tabular}{c c}  & **10.5** & **Damped Oscillations** \\ \end{tabular}
+
+\begin{tabular}{c c}  & **Damped oscillations** \\ \end{tabular}
+
+\begin{tabular}{c c}  & **10.5** & **Damped Oscillations** \\ \end{tabular}
+
+\begin{tabular}{c c}  & **10.
+
+#### Application of Damped Oscillations: Car suspension system
+
+A car suspension supports the chassis (body) of the car onto the axles of the car wheels. A good suspension system should
+
+1. _partially absorb the impact of a bump_ in the road for the comfort of the passengers
+2. _return the car to equilibrium quickly_ so that it is ready to respond to other bumps on the road.
+
+The desired degree of damping is near critical damping.
+
+\begin{tabular}{|c|l|} \hline
+**other degrees** & **effects** \\ of damping & **c** \\ \hline none / too light & car will bounce after a bump \\  & and continue oscillating for a long time \\  & uncomfortable for passengers \\ \hline too heavy & car takes a long time to return to \\  & equilibrium \\  & cannot respond to further bumps \\ \hline \end{tabular}
+
+Modern car suspensions consist of a spring and a shock absorber, which typically uses oil as a damper.
+
+### _Forced Oscillations_
+
+Forced oscillations are the opposite of free oscillations.
+
+In free oscillations, a once-off input of energy initiates the periodic oscillations at the system's natural frequency.
+
+In contrast, energy is continuously supplied and the system is _forced_ to vibrate at the frequency of the external _driver_.
+
+As a simple example, a hand moving up and down repeatedly while holding onto a spring with a mass attached to it will cause the mass to oscillate.
+
+The hand is providing an external periodic force (resulting in a continuous energy input) to the spring-mass system.
+
+Some other examples of forced oscillations:
+
+* A child on a swing being pushed by a parent standing at one end.
+* A car driven over a series of evenly spaced humps at a constant speed.
+* The body of a washing machine vibrating due to the spinning of its drum.
+
+In an ideal situation in which there is no damping, the total energy of the oscillator of a forced oscillation keeps adding up and so the total energy (Correspondingly the amplitude \(x_{0}\) since \(E_{\text{total}}=\frac{1}{2}\,m\omega^{2}x_{0}^{2}\)) approaches infinity.
+
+However, with damping, the total energy (and amplitude) of a body initially at rest, will increase until a steady state of constant amplitude. This is when
+
+\[\begin{array}{c}\text{rate of transfer of energy}\\ \text{from external driver}\\ \text{to oscillating system}\end{array}\quad=\quad\begin{array}{c}\text{rate of loss of energy}\\ \text{from oscillating system}\\ \text{as work done against resistive forces}\end{array}\]
+
+The _driving frequency_ provided by the external periodic force determines the frequency that the system oscillates at. The driving frequency need not be the same as the natural frequency.
+
+#### Frequency Response of Forced Oscillations
+
+A _frequency response graph_ shows how the amplitude of oscillations vary with the frequency of the external periodic force. A typical frequency response of a lightly damped oscillator is as shown.
+
+As the frequency of the external driver increases from zero, the amplitude of the forced oscillation increases.
+
+The amplitude reaches a maximum when the external driving frequency matches that of the natural frequency of the system.
+
+Beyond that point, the amplitude decreases with further increases in driving frequency.
+
+When external driving frequency matches the natural frequency of the system, _resonance_ occurs.
+
+**Resonance** is a phenomenon in which
+
+the amplitude of an oscillatory motion is at maximum because
+
+there is maximum rate of transfer of energy
+
+from the external driver to the oscillating system.
+
+This occurs when the
+
+driving frequency of external periodic force equals to natural frequency of the system.
+
+The degree of damping determines the _frequency response and sharpness_ of the resonance.
+
+\begin{tabular}{|c|c|c|c|} \hline
+**degree of damping** & **amplitude** & **frequency response** & **sharpness** \\ \hline \multirow{2}{*}{\begin{tabular}{} \end{tabular} } & \multirow{2}{*}{consistently higher} & Maximum amplitude & \\  & & very near (or equal) & sharper \\  & & natural frequency & \\ \hline \multirow{2}{*}{
+\begin{tabular}{} \end{tabular} } & \multirow{2}{*}{consistently lower} & Maximum amplitude & \\  & & shifts lower than & \\ \cline{1-1}  & & natural frequency & \\ \cline{1-1}  & & (period \(T\) is _longer_) & \\ \hline \end{tabular}
+
+### Practical Uses of Resonance
+
+(a) _Microwave Cooking_
+
+The driving frequency of the microwave matches the natural frequency of vibration of water molecules. When food containing water molecules is placed in the oven, there is maximum transfer of energy to the water molecules which is set into resonance. This results in the water molecules oscillating with maximum amplitude and greater vibrational kinetic energy and is indicated with an increase in temperature. The heated water transfer heat to other parts of the food.
+
+(b) _FM radio reception_
+
+The driving frequency of the radio tuner is adjusted to match the natural frequency of the broadcast in order to hear it. There is maximum transfer of energy and resonance occurs. Resonance amplifies the signals contained in the selected frequency while the radio waves of other frequencies are diminished.
+
+(c) _Magnetic Resonance Imaging_
+
+A strong electromagnetic field is made to operate at driving frequencies which matches that of atomic nuclei of the molecules in a human body. As a result, maximum energy is transferred to the body by the field. When resonance occurs, the atomic nuclei of the molecules oscillate with maximum amplitude. By analyzing the pattern of energy absorption, a computer-generated image can be produced.
+
+(d) _Musical instruments_
+
+The external driving force is applied at a frequency that matches the natural frequencies of the strings, or columns of air or physical shapes/conditions of string, wind and percussion instruments respectively. Maximum energy is transferred to instruments which in turn oscillate with maximum amplitude.
+
+### Destructive Resonance
+
+_Buildings and Structures_
+
+All physical structures, by virtue of their shape, dimensions, material and other physical properties, have natural frequencies. The London Millennium Footbridge was closed after 2 days of opening because the frequency of motion from pedestrians matched the natural frequency of the bridge, causing it to sway with alarming amplitude. The bridge was closed for 2 years of remediation works.
+
+During earthquakes, buildings are forced to oscillate by the seismic waves. If the frequency of the seismic waves approaches the natural frequency of the buildings, resonance occurs. This results in large amplitude oscillations of the buildings which increases the risks of collapse.
+
+Wine glasses, have natural frequencies too. You can hear the natural frequency by lightly tapping on a glass, or running a damp finger around the lip of the glass to set it into oscillation.
+
+[MISSING_PAGE_EMPTY:23]
+
+### Ending Notes
+
+We embark on another family of topics dealing with waves and oscillations in this topic. The simple harmonic motion of a single, individual body is the building block of "bulk" phenomenon such as waves and interference.
+
+You may use the space below for your own mindmaps and summaries.

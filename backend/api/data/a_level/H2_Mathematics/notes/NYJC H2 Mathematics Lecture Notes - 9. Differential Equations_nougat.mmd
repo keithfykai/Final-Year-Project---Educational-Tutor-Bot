@@ -1,0 +1,648 @@
+[MISSING_PAGE_FAIL:1]
+
+### Terminologies
+
+Consider the equations \(y=2x+1,\ y=2x-3\), and \(y=2x\). If we compare their graphs, we will see that they are straight lines with the same gradient. They all exhibit the property \(\frac{\mathrm{d}y}{\mathrm{d}x}=2\).
+
+In mathematics and in real life, we may be given the differential equation first, in this case \(\frac{\mathrm{d}y}{\mathrm{d}x}=2\), and we want to find the functions that satisfy this 'property'.
+
+The idea is to find a function of the form \(y=\mathrm{f}(x)\) whose rate of change with respect to \(x\) is \(2\). By inspection, we can see that \(y=2x\) is a solution. However, there are also other possible solutions such as \(y=2x+1,y=2x-3\). So in general, we can deduce that any function of the form \(y=2x+C\), where \(C\) is any real constant, is a solution of the differential equation \(\frac{\mathrm{d}y}{\mathrm{d}x}=2\).
+
+We can obtain the solution by direct integration as \(y=\big{\lceil}\,2\ \mathrm{d}x\ =2x+C\) where \(C\) is a constant.
+
+**Note:**
+
+1. \(y=2x+C\) is called the **general solution** of the differential equation \(\frac{\mathrm{d}y}{\mathrm{d}x}=2\).
+2. \(C\) is called an **arbitrary constant**, meaning it can be _any_ real number. If the solution does not contain any arbitrary constant (e.g. \(y=2x\), \(y=2x+1\), \(y=2x-3\)), then it is called the **particular solution** of the differential equation.
+3. The general solution of a _first order_ DE contains _one_ arbitrary constant.
+
+### Solving First Order Differential Equations
+
+We will focus on solving first order differential equations of the following forms.
+
+1. \(\frac{\mathrm{d}y}{\mathrm{d}x}=\mathrm{f}\left(x\right)\) (i.e. RHS is an expression involving \(x\) only)
+2. \(\frac{\mathrm{d}y}{\mathrm{d}x}=\mathrm{g}\left(y\right)\) (i.e. RHS is an expression involving \(y\) only)
+
+Both forms are known as **separable DEs**. We will solve DE of form (a) via _direct integration_ and DE of form (b) via _separation of variables_.
+
+1. \(\frac{\mathrm{d}y}{\mathrm{d}x}=\mathrm{f}\left(x\right)\) (via "direct integration")
+2. \(\frac{\mathrm{d}y}{\mathrm{d}x}=\mathrm{g}\left(y\right)\) (via "separation of variables")
+
+[MISSING_PAGE_EMPTY:3]
+
+[MISSING_PAGE_EMPTY:4]
+
+**Note:**
+
+1) To find the _particular solution_ of the DE, we will need to find the general solution of the DE first and then use the given initial conditions to determine the specific value of the arbitrary constant.
+
+2) A different set of initial conditions will give different particular solution.
+
+**Example 13.5**:
+
+A curve \(C\) with cartesian equation \( y=\mathrm{f}\left(x\right)\) obeys the differential equation \(\frac{\mathrm{d}y}{\mathrm{d}x}=x\mathrm{e}^{2x}\).
+
+**(i)**: What can you say about the gradient of the curve \(C\) as \( x\to\pm\infty\)?
+
+[You may assume that \( x\mathrm{e}^{2x}\to 0\) as \( x\to-\infty\) ]
+**(ii)**: Write down the \(x\)-coordinate of the stationary point on \(C\) and determine the nature of this stationary point without referring to the graph of \(C\).
+**(iii)**: Given that \(C\) passes through the origin, find the cartesian equation of \(C\).
+**(iv)**: Sketch the graph of \(C\).
+
+**Solution:**
+
+**(f)**: \(\frac{\mathrm{d}y}{\mathrm{d}x}=x\mathrm{e}^{2x}\to\infty\) as \( x\to\infty\)
+
+so the gradient of the curve approaches infinity as \( x\to\infty\).
+
+\(\frac{\mathrm{d}y}{\mathrm{d}x}=x\mathrm{e}^{2x}\to 0\) as \( x\to-\infty\)
+
+so the gradient of the curve approaches zero as \( x\to-\infty\).
+**(ii)**: \(\frac{\mathrm{d}y}{\mathrm{d}x}=0\Rightarrow x\mathrm{e}^{2x}=0\Rightarrow x=0\) (as \(\mathrm{e}^{2x}>0\) for all \(x\in\mathbb{R}\) )
+
+So \(C\) has a stationary point at \(x=0\).
+
+\[\frac{\mathrm{d}y}{\mathrm{d}x}=x\mathrm{e}^{2x}\begin{cases}<0\ \ \mathrm{if}\ x<0\\ >0\ \ \mathrm{if}\ x>0\end{cases}\]
+
+\[\begin{array}{|c|c|c|}\hline x&0^{-}&0&0^{+}\\ \hline\mathrm{Sign\ of}\ \mathrm{d}y/\mathrm{d}x&-&0&+\\ \hline\mathrm{Shape\ of\ tangent}&\framebox{$\phantom{\frac{\mathrm{d}y}{\mathrm{d}x} }$}&\framebox{$\phantom{\frac{\mathrm{d}y}{\mathrm{d}x}}$}\\ \hline\end{array}\]
+
+Thus the stationary point is a minimum point by the first derivative test.
+
+**(iii)**: Integrating directly,
+
+[MISSING_PAGE_EMPTY:6]
+
+#### 13.3.2 Reduction to a Separable DE by Substitution
+
+Very often we encounter DEs that are not separable (i.e. not of the form \(\frac{\mathrm{d}y}{\mathrm{d}x}\!=\!\mathrm{f}\left(x\right)\) or \(\frac{\mathrm{d}y}{\mathrm{d}x}\!=\!\mathrm{g}\left(y\right)\)). In this case, we have to reduce the DE to a separable one via a suitable substitution first before solving.
+
+In general, we may follow this set of procedures:
+
+**Step 1:** Differentiate the given substitution.
+
+**Step 2:** Apply the substitution and simplify into a separable DE
+
+**Step 3:** Solve the separable DE, which is now in the new variables
+
+**Step 4:** Change back to original variables
+
+**Example 13.7**
+
+The variables \(x\) and \(y\) are related by the differential equation \(3xy^{2}\frac{\mathrm{d}y}{\mathrm{d}x}\!+\!y^{3}-2x\!=\!0\). Show that by using the substitution \(u\!=\!xy^{3}\), the differential equation may be reduced to \(\frac{\mathrm{d}u}{\mathrm{d}x}\!=\!2x\). Hence find the general solution of the differential equation \(3xy^{2}\frac{\mathrm{d}y}{\mathrm{d}x}\!+\!y^{3}-2x\!=\!0\).
+
+**Solution:**
+
+Step 1: Differentiate the given substitution with respect to the independent variable (i.e. \(x\)) of the original DE.
+
+Step 2: Apply the substitution \(u\!=\!xy^{3}\) and \(\frac{\mathrm{d}u}{\mathrm{d}x}\!=\!y^{3}+3xy^{2}\frac{\mathrm{d}y}{\mathrm{d }x}\!\) into the original DE. The new dependent variable becomes \(u\).
+
+Step 3: DE is now in the separable form of \(\frac{\mathrm{d}u}{\mathrm{d}x}\!=\!\mathrm{g}\left(x\right)\). Solve for \(u\).
+
+Step 4: Change the DE back to its original variables by using replacing \(u\) with \(xy^{3}\).
+
+**Note:**
+
+It is not necessary to express \(y\) explicitly in terms of \(x\) when finding the solution of the DE unless required by the question.
+
+**Example 13.8**: By using the substitution \(y=ux^{2}\), find the general solution of the differential equation \(x^{2}\frac{\frac{\mathrm{d}y}{\mathrm{d}x}}{\mathrm{d}x}-2xy=y^{2}\), giving your answer in the form \(y=\mathrm{f}(x)\).
+
+**Solution:**
+
+Step 1: Apply implicit differentiation and product rule.
+
+Step 2: Substitute and simplify.
+
+We obtain a separable DE of the form
+
+\(\frac{\mathrm{d}u}{\mathrm{d}x}=\mathrm{g}\left(u\right)\).
+
+The new dependent variable is \(u\).
+
+Step 3: Separate the variables and solve.
+
+\(\int\frac{1}{u^{2}}\mathrm{d}u=\int u^{-2}\mathrm{d}u=\frac{u^{-4}}{-1}+C\)
+
+Step 4: Replace \(u\) with the original variable
+
+\(y\) using \(y=ux^{2}\) (i.e \(u=\frac{y}{x^{2}}\))
+
+**Example 13.9** (MC N91/II/14b modified): Show that the differential equation \(x^{2}\frac{\mathrm{d}y}{\mathrm{d}x}-2xy+3=0\) may be reduced by means of the substitution \(y=ux^{2}\) to \(\frac{\mathrm{d}u}{\mathrm{d}x}=-\frac{3}{x^{4}}\).
+
+Hence, or otherwise, show that the general solution for \(y\) in terms of \(x\) is \(y=Cx^{2}+\frac{1}{x}\), where \(C\) is an arbitrary constant. Sketch, for \(x>0\), a solution curve corresponding to \(C>0\).
+
+**Solution:**
+
+\(y=ux^{2}\Rightarrow\frac{\mathrm{d}y}{\mathrm{d}x}=2ux+x^{2}\frac{\mathrm{d}u }{\mathrm{d}x}\Rightarrow x^{2}\frac{\mathrm{d}y}{\mathrm{d}x}=2ux^{3}+x^{4} \frac{\mathrm{d}u}{\mathrm{d}x}\)
+
+Substituting into DE gives
+
+\(2ux^{3}+x^{4}\frac{\mathrm{d}u}{\mathrm{d}x}-2x\left(ux^{2}\right)+3=0\)
+
+\(\Rightarrow\frac{\mathrm{d}u}{\mathrm{d}x}=-\frac{3}{x^{4}}\)
+
+[MISSING_PAGE_EMPTY:9]
+
+[MISSING_PAGE_FAIL:10]
+
+[MISSING_PAGE_EMPTY:11]
+
+For mathematics at H2 level, you should obtain one differential equation which takes the form of either \(\frac{\mathrm{d}y}{\mathrm{d}x}=\mathrm{f}(x)\), \(\frac{\mathrm{d}y}{\mathrm{d}x}=\mathrm{g}(y)\) or \(\frac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}=\mathrm{h}(x)\).
+
+A modelling problem involves the following stages:
+
+(i) identifying the dependent and independent variables
+
+(ii) inferring the initial conditions
+
+(iii) solving the resulting DE, usually separable
+
+(iv) interpreting the solution of the DE and making prediction about the behaviour of the system in the long run
+
+**Tips:**
+
+(1) When formulating the differential equation, remember that the
+
+Rate of change of variable = Rate of increase - Rate of decrease
+
+(2) When solving the differential equation, do pay attention to some key words in the question such as "_initially_", "_at the beginning_" or "_originally_" which implies \(t=0\).
+
+**Example: 13.12**
+
+Formulate differential equations describing the scenarios below.
+
+(a) The rate of growth of the population of a certain organism is proportional to the population of the organism.
+
+(b) Newton's law of cooling states that the rate of decrease in the temperature of a hot body is proportional to the difference in temperature between the body and the surrounding.
+
+(c) Water is poured into a filtration device at a constant rate of \(a\) litres per minute. The device discharges water at a rate proportional to the volume of water in the device.
+
+**Solution:**
+
+(a) Let \(\rho\) (dependent variable) denotes the population of the organism at any time \(t\) (independent variable).
+
+(a) rate of increase \(\kappa\)p
+
+(b) rate of decrease :0
+
+(c) Therefore \(\frac{\mathrm{d}t}{\mathrm{d}x}=\kappa\)p-0
+
+(a) Note: \(k\) is called the constant of proportionality.
+
+[MISSING_PAGE_EMPTY:13]
+
+[MISSING_PAGE_EMPTY:14]
+
+**Example 13.15** (2016 Prelim RVHS/I/8 - Logistics model): In a certain fish farm, the growth of the population of garoupa is studied. The population of garoupa at time \(t\) days is denoted by \(x\) (in thousands). It was found that the rate of birth per day is twice of \(x\), and the rate of death per day is proportional to \(x^{2}\).
+
+1. Given that there is no change in the population of garoupa when its population hits 10000, write down a differential equation relating \(\dfrac{\mathrm{d}x}{\mathrm{d}t}\) and \(x\).
+2. Its owner decides to sell away 1800 garoupa daily. Modify the differential equation in part (i) and show that the resulting differential equation can be written as \(\dfrac{\mathrm{d}x}{\mathrm{d}t}=-\dfrac{1}{5}\Big{[}(x-5)^{2}-a^{2}\Big{]}\), where \(a\) is a constant to be determined. Given that the initial population of garoupa is 13000, solve this modified differential equation, expressing \(x\) in terms of \(t\). Deduce the long term implication on the population of garoupa in the farm, and sketch the curve of \(x\) against \(t\).
+
+**Solution:**
+
+```
+1rateofkoreus*x+
+2d=1x-k2*
+3uenx=0,ddx=0
+4O=2(1O)-k1(0)*x/k2*/ \(\dfrac{\alpha}{\mathrm{d}t}\)-2x-\(\dfrac{\alpha^{2}}{5}\)
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+290
+300
+41
+420
+520
+620
+72
+820
+92
+102
+102
+102
+102
+102
+102
+102
+102
+1023
+1024
+1025
+1026
+1027
+1028
+1029
+1029
+1028
+1029
+1029
+1029
+1029
+1029
+1029
+1029
+1029
+1029
+1029
+1029
+1029
+1029
+1029
+1030
+1040
+1050
+1060
+1070
+1080
+1081
+1082
+1083
+1084
+1085
+1086
+1087
+10888
+1089
+1090
+11091
+11092
+11093
+1110
+11293
+11304
+11405
+1406
+1407
+14089
+14109
+1411
+1420
+14312
+1445
+14613
+14714
+14815
+14916
+14917
+1492
+1493
+1494
+1504
+1516
+1604
+17048
+1704
+17161
+1804
+1905
+1906
+1907
+1908
+19099
+1910
+19111
+1912
+1913
+1920
+19214
+19215
+1922
+1923
+1924
+1925
+1926
+1927
+1928
+1929
+1929
+1929
+1930
+1931
+1932
+19333
+1934
+1935
+1936
+1937
+1938
+1939
+1939
+1939
+1940
+1941
+1942
+1943
+1944
+1945
+1946
+1947
+1948
+1949
+1949
+1950
+1951
+1952
+1953
+1954
+1955
+1956
+1957
+1958
+19596
+19597
+1959
+1960
+1961
+1962
+1963
+1964
+1965
+1966
+1967
+1968
+1969
+1970
+1971
+1972
+1973
+1974
+1975
+1976
+1977
+1978
+1979
+1980
+1981
+1981
+1982
+1983
+1984
+1985
+1986
+1987
+1988
+1989
+1989
+2000
+2001
+2002
+2030
+2041
+Chapter 13 Learning Experience (I) Application of Differential Equation: Radiocarbon \(C^{14}\) Dating
+
+In Example 13.13, the time taken for 100 g of the radioactive mass to decrease to 50 g is 263 hrs. In fact, the time taken for the radioactive mass to decrease from 50 g to 25 g is also 263 hrs. It is known as the **half-life** of the radioactive substance, which is characteristic to that radioactive substance.
+
+One of the radioactive substances that is present in all living matters is isotope carbon-14 (C-14). After the death of the living matter, the amount of C-14 in the dead material decreases at a rate proportional to the amount present. (Similar to Example 13.13). If we know how much C-14 is left in the dead material, we can estimate the length of time the matter has been dead. The half-life of the C-14 is approximately 5600 years.
+
+**Task:** A cypress beam found in the tomb of Sneferu in Egypt contained 55% of the radioactive carbon-14 that is found in living cypress word. Using the working in Example 13.13, show that the tomb is at least 4830 years old.
+
+Let \(r\) be the amount of radioactive carbon-14 in a cypress beam found in the tomb of Sneferu at time \(t\).
+
+\begin{tabular}{|p{142.3pt}|p{142.3pt}|} \hline Let \(r\) be the amount of radioactive carbon-14 in a cypress beam found in the tomb of Sneferu at time \(t\).
+
+\begin{tabular}{|p{142.3pt}|p{142.3pt}|} \hline Let \(r\) be the amount of radioactive carbon-14 in a cypress beam found in the tomb of Sneferu at time \(t\).
+
+\begin{tabular}{|p{142.3pt}|p{142.3pt}|} \hline Let \(r\) be the amount of radioactive carbon-14 in a cypress beam found in the tomb of Sneferu at time \(t\).
+
+\begin{tabular}{|p{142.3pt}|p{142.3pt}|} \hline Let \(r\) be the amount of radioactive carbon-14 in a cypress beam found in the tomb of Sneferu at time \(t\).
+
+## 11 Nanyang Junior College
+
+**DEPARTMENT OF MATHEMATICS**
+
+_To imbue our students with excellent mathematical habits of thought that will enable them to become critical thinkers, effective problem-solvers and proficient in the use of the language of mathematics_
+
+**Tutorial 13 H2 Mathematics Year 2 / 2020**
+
+Appendix A Solving First Order Separable DEs of the Form \(\frac{\mathrm{d}y}{\mathrm{d}x}=\mathrm{f}\left(x\right)\) and \(\frac{\mathrm{d}y}{\mathrm{d}x}=\mathrm{f}\left(y\right)\)
+
+1. Find the general solution of each of the following differential equations: (a) \(\mathrm{sec}^{2}\,x\,\frac{\mathrm{d}y}{\mathrm{d}x}=2\tan x\) (b) \(\frac{\mathrm{d}y}{\mathrm{d}x}+2y=1\)
+
+Appendix B Solving DEs Reducible to the Form \(\frac{\mathrm{d}y}{\mathrm{d}x}=\mathrm{f}\left(x\right)\) or \(\frac{\mathrm{d}y}{\mathrm{d}x}=\mathrm{f}\left(y\right)\) by a Suitable Substitution
+
+2. Find the general solution of each of the following differential equations by means of the suggested substitution: (a) \(\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{2x+y+2}{2x+y-1}\); \(z=2x+y\) (b) \(x\,\frac{\mathrm{d}y}{\mathrm{d}x}=2y+x^{2}\mathrm{ln}\,x\) ; \(y=w^{2}\)
+3. Use the substitution \(y=wx\), where \(v\) is a function of \(x\), to reduce the differential equation \(x\,\frac{\mathrm{d}y}{\mathrm{d}x}=3x+y\) to a differential equation of the form \(\frac{\mathrm{d}v}{\mathrm{d}x}=\mathrm{f}\left(x\right)\). (l) Solve the above differential equation for \(v\) in terms of \(x\). (l) Hence find \(y\) in terms of \(x\) and obtain the particular solution for which \(y=0\) when \(x=2\). (l) Prove that, in the general case, \(\frac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}=\frac{3}{x}\). (MB \(J75\) / \(\mathrm{\SIUnitSymbolMicro}\) / \(20\))
+
+Appendix C Solving Second Order DEs of the Form \(\frac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}=\mathrm{f}\left(x\right)\)
+
+4. **(a)** Find the general solution of the differential equation \(\frac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}=\cos^{2}3x\). (b) By considering \(\frac{\cdot\mathrm{d}}{\mathrm{d}x}\left(x\ln x\right)\), find \(\int\ln x\,\mathrm{d}x\). Hence solve the differential equation \(\frac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}=\ln x\) given that when \(x=1\), \(y=0\) and \(\frac{\mathrm{d}y}{\mathrm{d}x}=-1\).
+
+## Appendix D Miscellaneous Problems on Solving First Order DEs
+
+5. **(i)** Find the general solution of the differential equation \(\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{3x}{x^{2}+1}\). (ii) Find the particular solution of the differential equation for which \(y=2\) when \(x=0\). (iii) What can you say about the gradient of every solution curve as \(x\to\pm\infty\)? Justify your conclusion.
+
+* Sketch, on a single diagram, the graph of the particular solution found in part (ii), together with another solution curve corresponding to a negative value for the arbitrary constant in the general solution obtained in part (i). (H2 Math N2008 / I / 4 modified)
+* Given that \(z=\mathrm{e}^{2x}\frac{\mathrm{d}y}{\mathrm{d}x}\), express \(\frac{\mathrm{d}z}{\mathrm{d}x}\) in terms of \(x\), \(\frac{\mathrm{d}y}{\mathrm{d}x}\) and \(\frac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}\). Hence show that the differential equation \(\frac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}+2\frac{\mathrm{d}y}{\mathrm{d}x}= \mathrm{e}^{\mathrm{d}-4x}\) (*) can be reduced to the differential equation \(\frac{\mathrm{d}z}{\mathrm{d}x}=\mathrm{e}^{\mathrm{d}-2x}\). Hence solve the differential equation (*), expressing \(y\) in terms of \(x\).
+* (DHS Prelim 2012 / I / 11(a) modified)
+* Applications of Differential Equations as Mathematical Models
+* The current \(I\) in an electric circuit at time \(t\) satisfies the differential equation \(4\frac{\mathrm{d}I}{\mathrm{d}t}=2-3I\). Find \(I\) in terms of \(t\), given that \(I=2\) when \(t=0\). State what happens to the current in this circuit for large values of \(t\). (H2 Math N2007 / I / 4)
+* A rectangular tank has a horizontal base. Water is flowing into the tank at a constant rate, and flows out at a rate which is proportional to the depth of water in the tank. At time \(t\) seconds the depth of water in the tank is \(x\) m. If the depth is \(0.5\) m, it remains at this constant value. Show that \(\frac{\mathrm{d}x}{\mathrm{d}t}=-k\left(2x-1\right)\) where \(k\) is a positive constant. When \(t=0\), the depth of water in the tank is \(0.75\) m and is decreasing at a rate of \(0.01\) ms\({}^{1}\). Find the time at which the depth of water is \(0.55\) m. (Math 9233 N2001 / II / 14(b))
+* A sky diver jumped out of an aeroplane over a certain mountainous valley with zero speed and \(t\) seconds later, the speed of his descent was \(v\) metres per second. He experienced gravitational force and air resistance which affect \(v\). Gravity would increase his speed by a constant \(10\) metres per second\({}^{2}\) and the air resistance would decrease his speed at a rate proportional to the square of his speed. It is given that when his speed reaches \(50\) metres per second, the rate of change of his speed is \(7.5\) metres per second\({}^{2}\). By setting up and solving a differential equation, show that \[v=\frac{100\left(1-\mathrm{e}^{-m}\right)}{1+\mathrm{e}^{-m}}\,,\,\text{ where $m$ is a constant to be found.}\] Describe briefly what his speed would be after he had descended for a long time and just before he deployed his parachute. (2017 YJC Prelim/P1/10)
+
+[MISSING_PAGE_FAIL:19]
+
+It is given that the rate of increase of the temperature of an object over time is proportional to the difference between the temperature of the object and that of the medium in which it is placed. A steak is removed from a freezer and put into the refrigerator to thaw. The freezer is kept at \(-10^{\circ}\)C and the refrigerator is kept at \(4^{\circ}\)C. After 4 hours, the temperature of the steak was \(-6^{\circ}\)C. It is given that \(\frac{\mathrm{d}\theta}{\mathrm{d}t}=k(\theta-4)\), where \(\theta\)\({}^{\circ}\)C is the temperature of the steak \(t\) hours after it is placed in the refrigerator and \(k\) is the constant of proportionality. **(i)**: Explain whether \(k\) should be positive or negative. **(ii)**: Find \(\theta\) in terms of \(t\) and verify your answer in (i). **(iii)**: Sketch the graph of \(\theta\) against \(t\). **(iv)**: Determine when the steak will be thawed to \(2^{\circ}\)C. (CJC Prelim 2011 / I / 4 (Modified))
+
+**Answers to Tutorial Questions**
+
+1(a) \(y=-\frac{1}{2}\cos 2x+C\) (b) \(y=\frac{1}{2}\left(1+C\mathrm{e}^{-2x}\right)\) 2(a) \(y-\ln\left|2x+y\right|=x+C\) (b) \(y=\frac{1}{2}x^{2}(\ln x)^{2}+cx^{2}\)
+
+3. \(\mathrm{f}\left(x\right)=\frac{3}{x}\); (i) \(\nu=3\ln\left|x\right|+C\) (ii) \(y=3x\ln\left|x\right|-\left(3\ln 2\right)x\)
+
+4. (a) \(y=\frac{x^{2}}{4}-\frac{\cos 6x}{72}+Cx+D\) (b) \(x\ln x-x+C\); \(y=\frac{x^{2}}{4}\left(2\ln x-3\right)+\frac{3}{4}\)
+
+5(i) \(y=\frac{3}{2}\ln\left(x^{2}+1\right)+C\)(ii) \(y=\frac{3}{2}\ln\left(x^{2}+1\right)+2\) 6. \(\frac{\mathrm{d}z}{\mathrm{d}x}=\mathrm{e}^{2x}\frac{\mathrm{d}^{2}y}{\mathrm{ d}x^{2}}+2\mathrm{e}^{2x}\frac{\mathrm{d}y}{\mathrm{d}x}\) ; \(y=\frac{1}{8}\mathrm{e}^{-4x}+A\mathrm{e}^{-2x}+B\)
+
+7. \(I=\frac{2}{3}\left(1+2\mathrm{e}^{\frac{3}{4}}\right)\); \(I\to\frac{2}{3}\) 8. 40.2 s 9. \(m=0.2\) 10(ii) 10.8 days
+
+11. \(x=\left(A-a\right)\mathrm{e}^{\frac{x}{4}}+a\) ; \(A<a\)
+
+**Extra Practice Questions (H2 Maths- Differential Equations)**
+
+(_The questions will not be discussed during tutorials. Full solutions will be uploaded to NY Portal_)
+
+**1 2015 Prelimm MI/PU3/I/5 (modified)**
+
+**(I)**  Find the general solution of the differential equation \(\frac{\mathrm{d}y}{\mathrm{d}x}=1-y^{2}\). [3]
+
+**(II)**  Find the particular solution of the differential equation for which \(y=\frac{1}{3}\) when \(x=0\). [1]
+
+**(III)**  What can you say about the gradient of every solution curve as \(x\to\pm\infty\)? [1]
+
+Sketch the graph of the solution found in part **(II)**.
+
+**2 2015 Prelimm DHS/I/10 (modified)**
+
+**(a)**  Show that the substitution \(w=xy^{2}\) reduces the differential equation
+
+\[2xy\frac{\mathrm{d}y}{\mathrm{d}x}=4x^{2}y^{4}-y^{2}+1\]
+
+to the form
+
+\[\frac{\mathrm{d}w}{\mathrm{d}x}=aw^{2}+b,\]
+
+where \(a\) and \(b\) are to be determined.
+
+Hence obtain the general solution in the form \(y^{2}=\mathrm{f}(x)\). [5]
+
+**(b)** A certain species of bird with a population of size \(n\) thousand at time \(t\) months satisfies the differential equation
+
+\[\frac{\mathrm{d}^{2}n}{\mathrm{d}t^{2}}=\mathrm{e}^{-\frac{1}{4}t}.\]
+
+Find the general solution of this differential equation. [2]
+
+Given further that \(n=30\) when \(t=0\), show that
+
+\[n=16\mathrm{e}^{-\frac{t}{4}}+Ct+14\quad\mbox{(*)}\]
+
+where \(C\) is an arbitrary constant. [1]
+
+Sketch 3 members of the solution curves given in **(*)** corresponding to \(C=-1\), \(0\), \(1\). [3]
+
+**3 2015 Prelimm YJC/I/4**
+
+Find the solution of the differential equation \(\frac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}=-\frac{\mathrm{d}y}{\mathrm{d}x}\) in the form \(y=\mathrm{f}(x)\), given that
+
+\[y=0\ \ \mbox{and}\ \frac{\mathrm{d}y}{\mathrm{d}x}=1\ \mbox{when}\ \ x=0\,.\]
+
+Sketch the solution curve, stating the equations of any asymptotes and the coordinates of any points of intersection with the axes. [3]* Show that the differential equation \(x\frac{\mathrm{d}u}{\mathrm{d}x}+u-\sqrt{4-(ux)^{2}}=0\) may be reduced by means of the substitution \(y=ux+2\) to \(\frac{\mathrm{d}y}{\mathrm{d}x}=\sqrt{4y-y^{2}}\). [2] Hence, find the general solution of the differential equation, leaving your answer in exact form. [4]
+* The displacement \(s\) (metres) of an object moving in a straight line from a fixed point \(O\) is related to time \(t\) (seconds) by the differential equation \(\frac{\mathrm{d}s}{\mathrm{d}t}=\sqrt{4s-s^{2}}\).
+* Sketch the solution curve of the particular solution for \(0\leq t\leq 4\pi\) given that \(s=1\) when \(t=\frac{5\pi}{6}\). [4]
+* Describe the motion of the object and comment on whether the differential equation in \(s\) and \(t\) is an appropriate model in the real-life context. [2]
+* 2015 Prelim RI/II/4 (modified)
+* The variables \(u\) and \(t\) are related by the differential equation \[\frac{\mathrm{d}u}{\mathrm{d}t}=\big{(}a-u\big{)}\big{(}b-u\big{)},\] where \(a\) and \(b\) are positive constants such that \(u<a\) and \(u<b\). It is given that \(u=0\) when \(t=0\). Find, simplifying your answer, **(i)**\(u\), in terms of \(t\) and \(a\), when \(a=b\), **(ii)**\(t\), in terms of \(u\), \(a\) and \(b\), when \(a\neq b\). [5]
+* A differential equation is of the form \(y=px+qx\frac{\mathrm{d}y}{\mathrm{d}x}\), where \(p\) and \(q\) are constants. Its general solution is \(y=x+\frac{C}{x}\), where \(C\) is an arbitrary constant.
+* Find the values of \(p\) and \(q\). [2]
+* Sketch, on a single diagram, for \(x>0\), \(3\) solution curves corresponding to the following cases: \(C=0\), \(C>0\) and \(C<0\). [3]
+* At the intensive care unit of a hospital, patients of a particular condition receive a certain treatment drug through an intravenous drip at a constant rate of 30mg per hour. Due to the limited capacity for absorption by the body, the drug is lost from a patient's body at a rate proportional to \(x\), where \(x\) is the amount of drug (in mg) present in the body at time \(t\) (in hours). It is assumed that there is no presence of the drug in any patient prior to admission to the hospital.
+* Form a differential equation involving \(x\) and \(t\) and show that \(x=\frac{30}{k}\big{(}1-\mathrm{e}^{-k\pi}\big{)}\) where \(k\) is a positive constant. [4]
+
+**(ii)**: If there is more than 1000mg of drug present in a patient's body, it is considered an overdose. Suppose the drug continues to be administered, determine the range of values of \(k\) such that a patient will have an overdose. [2] For a particular patient, \(k=\dfrac{1}{50}\).
+**(iii)**: Find the time required for the amount of the drug present in the patient's body to be 200mg. [3]
+* 7 **2018 Prelimm NJC/I/11**
+
+A swimming pool contains 375000 litres of pure water. Water containing \(s\) milligrams of free chlorine per litre flows into the pool at a rate of 10 litres per minute. The pool is also draining at a rate of 10 litres per minute, such that the volume of the water in the pool remains constant.
+**(f)**: Show that the rate at which the mass of the free chlorine, \(x\) grams, is changing in the pool over time, \(t\) minutes, can be modelled by the differential equation
+
+\[\dfrac{\mathrm{d}x}{\mathrm{d}t}=\dfrac{375s-x}{37500}\,,\]
+
+State a necessary assumption for the above model to be valid. [3]
+**(ii)**: Given that no free chlorine is present in the pool initially, find \(x\) in terms of \(t\) and \(s\).[4]
+**(iii)**: Find, in terms of \(s\), the mass of free chlorine present in the pool after one hour. [1]
+**(iv)**: Sketch the graph of \(x\) against \(t\) which is relevant to the context, labelling the point(s) where the curve crosses the axes and the equation(s) of the asymptote(s). Hence determine the mass of free chlorine present in the pool after a long period in terms of \(s\). [3]
+
+To prevent health complications, the recommended safe level of free chlorine to be used is between 375 grams and 1125 grams in a pool which contains 375 000 litres of water. Find the range of values of \(s\) that should be used. [2]
+
+## 8 2018 Prelim PJC/I/11
+
+Environmental conditions such as acidity, temperature, oxygen levels and toxins influence the rate of growth of microorganisms. A biologist investigates the change of population of a particular type of microorganism of size \(n\) thousand at time \(t\) days under different conditions. In both models I and II, the initial population of the microorganism is 3000 and the population reaches 2000 after 1 day.
+
+**(i)**: Under model I, the biologist observes that the rate of growth of microorganism is a constant whereas the death rate is proportional to its population. He also observes that when the population of the microorganism is 1000, it remains at this constant value. By setting up and solving a differential equation, show that \(n=1+2^{1-t}\). [8]
+**(ii)**: Under model II, the biologist observes that \(n\) and \(t\) are related by the differential equation \(\dfrac{\mathrm{d}^{2}n}{\mathrm{d}t^{2}}=4-6t\). Find the particular solution of this differential equation. [3]
+
+**(iii)** By sketching the graphs of \(n\) against \(t\) for both model I and II, state and explain which of the two models is more harmful for the growth of this type of microorganism. [2]
+* 9 2016 **Prelim TJC/1/11** On the remote island of Squiro, ecologists introduced a non-native species of insects that can feed on weeds that are killing crops. Based on past studies, ecologists have observed that the birth rate of the insects is proportional to the number of insects, and the death rate is proportional to the square of the number of insects. Let \(x\) be the number of insects (in hundreds) on the island at time \(t\) months after the insects were first introduced. Initially, 10 insects were released on the island. When the number of insects is 50, it is changing at a rate that is \(\dfrac{3}{4}\) times of the rate when the number of insects is 100. Show that \[\dfrac{\mathrm{d}x}{\mathrm{d}t}=\beta x\big{(}2-x\big{)}\] where \(\beta\) is a positive real constant. [3] Solve the differential equation and express \(x\) in the form \(\dfrac{p}{1+q\mathrm{e}^{-2\beta t}}\), where \(p\) and \(q\) are constants to be determined. [6] Sketch the solution curve and state the number of insects on the island in the long run. [3]
+* 10 2018 **Prelim SRJC/1/11** A charged particle is placed in a varying magnetic field. A researcher decides to fit a mathematical model for the path of the fast-moving charged particle under the influence of the magnetic field. The particle was observed for the first 1.5 seconds. The displacement of the particle measured with respect to the origin in the horizontal and vertical directions, at time \(t\) seconds, is denoted by the variables \(x\) and \(y\) respectively. It is given that when \(t=0,\ x=-\dfrac{1}{32}\), \(y=0\) and \(\dfrac{\mathrm{d}x}{\mathrm{d}t}=3\). The variables are related by the differential equations \[\big{(}\cos t\big{)}\dfrac{\mathrm{d}y}{\mathrm{d}t}+y\sin t=4\cos^{2}t-y^{2} \ \ \mathrm{and}\ \dfrac{\mathrm{d}^{2}x}{\mathrm{d}t^{2}}=\cos 3t\cos t\.\] (1)  Using the substitution \(\ y=v\cos t\), show that \(\dfrac{\mathrm{d}v}{\mathrm{d}t}=4-v^{2}\) and hence find \(y\) in terms of \(t\). [7]  Show that \(\ x=-\dfrac{1}{32}\cos 4t-\dfrac{1}{8}\cos 2t+3t+\dfrac{1}{8}\). [4] (3)  Sketch the path travelled by the particle for the first 1.5 seconds, labelling the coordinates of the end points of the path. The evaluation of the \(y\)-intercept is not needed. [2]
+
+[MISSING_PAGE_EMPTY:25]
+
+\(A=6x^{2}+8x\left(\frac{100}{x^{2}}\right)\left(k+1\right)=6x^{2}+\frac{800\left(k+1 \right)}{x}\)
+
+When \(A\) is stationary, \(\frac{\mathrm{d}A}{\mathrm{d}x}=0\). Thus
+
+It is mandatory to do a first or second derivative test to ensure that \(A\) is minimum even if only one value of \(x\) is obtained for \(\frac{\mathrm{d}A}{\mathrm{d}x}=0\).
+
+\(A\) is a minimum when \(x=\left[\frac{200\left(k+1\right)}{3}\right]^{\frac{1}{3}}\).
+
+(ii) find the ratio \(\frac{y}{x}\) in terms of \(A\)
+
+\(y=\frac{100}{x^{2}}\)\(\Rightarrow\)\(\frac{y}{x}=\frac{100}{x^{3}}=100+\frac{200\left(k+1\right)}{3}=\frac{3}{2\left(k+1 \right)}\)
+
+(iii) find the values between which \(\frac{y}{x}\)\(\left[\frac{3}{2\left(k+1\right)}\right]\) must lie
+
+\(0<k\leq 1\)\(\Rightarrow\)\(1<k+1\leq 2\)\(\Rightarrow\)\(2<2\left(k+1\right)\leq 4\)
+
+\(\Rightarrow\)\(\frac{1}{2}>\frac{1}{2\left(k+1\right)}\geq\frac{1}{4}\)\(\Rightarrow\)\(\frac{3}{2}>\frac{3}{2\left(k+1\right)}\geq\frac{3}{4}\)
+
+Hence \(\frac{3}{2}>\frac{y}{x}\geq\frac{3}{4}\).
+
+(iv) find the value of \(A\) when the box has square ends.
+
+If the box has square ends, then
+
+Thus,
+
+Therefore
+
+[MISSING_PAGE_FAIL:27]
+
+\(x=0\) (reject), \(\frac{R}{\sqrt{2}},-\frac{R}{\sqrt{2}}\) (reject)
+
+Therefore \(x=\frac{R}{\sqrt{2}}\)
+
+Observe that \(R+\sqrt{2}x>0\) since \(R>0\) and \(x>0\).
+
+When \(x=\left(\frac{R}{\sqrt{2}}\right)^{-}\), \(x<\frac{R}{\sqrt{2}}\)\(\Rightarrow\)\(R-\sqrt{2}x>0\), so
+
+When \(x=\left(\frac{R}{\sqrt{2}}\right)^{+}\), \(x>\frac{R}{\sqrt{2}}\)\(\Rightarrow\)\(R-\sqrt{2}x<0\), so
+
+\(\frac{\mathrm{d}A}{\mathrm{d}x}=\)
+
+Hence, when \(x=\frac{R}{\sqrt{2}}\), \(A\) is maximum.
+
+\(x=\frac{R}{\sqrt{2}}\Rightarrow 2x^{2}=R^{2}\).
+
+\(\therefore\)\(h=\sqrt{4R^{2}-4x^{2}}=\sqrt{4(2x^{2})-4x^{2}}\)
+
+\(=\sqrt{4x^{2}}=2x=\) diameter of cylinder
+
+Hence, the maximum value of \(A\) is obtained when the height \(h\) of the cylinder is equal to its diameter \(2x\).
+
+#### 8.9.1 General steps involved in solving optimisation problems
+
+**Steps**
+
+**1. Obtain the equation of constraint and write**
+
+**This is usually an equation connecting two variables,**
+
+**one variable in terms of the other.**
+
+**For example, the equation of constraint could be**
+
+\(x+y=1\)**. Writing** \(y\) **in terms of** \(x\) **gives** \(y=1-x\)**.**
+
+**Note: If the variables are not defined in the question, you will need to define them first before proceeding.
+
+\begin{tabular}{|l|l|} \hline
+2. Obtain an equation connecting the variable & For example, this equation could look like \\ to be optimized, say \(A\) and the variables \(x\) and \(y\). Write \(A\) in terms of \(x\) and \(y\). & Notice that \(A\) is expressed in terms of two variables \(x\) and \(y\). \\ \hline
+3. Substitute the variable in terms of the other & This substitution reduces the number of variables by \\ in step 1 into the equation in step 2. & one. \\  & For example, substitute \(y=1-x\) into \(A=xy\) gives \\  & \(A=x(1-x)\) so that the quantity \(A\) is in terms of only \\  & one variable, \(x\). \\ \hline
+4. Differentiate the variable to be optimized & Differentiate \(A\) with respect to \(x\) in the equation \(A=x(1-x)\) to obtain \(\dfrac{\mathrm{d}A}{\mathrm{d}x}=1-2x\). \\ \hline
+5. Set the derivative to zero and solve the equation. & Set \(\dfrac{\mathrm{d}A}{\mathrm{d}x}=0\Rightarrow 1-2x=0\Rightarrow x=\dfrac{1}{2}\). \\ \hline
+6. Determine the nature of the stationary value & Construct a table for the first derivative test \\ of the optimized variable using either the first & **or** \\ or second derivative test, whichever is easier. & find the sign of \(\dfrac{\mathrm{d}^{2}A}{\mathrm{d}^{2}x}\) for the second derivative test. \\ \hline Note: This step is mandatory unless the question specifically says that this is unnecessary. & For example, \(\dfrac{\mathrm{d}^{2}A}{\mathrm{d}^{2}x}=-2<0\). \\  & So \(A\) is a maximum when \(x=\dfrac{1}{2}\). \\  & Note: In this example, the second derivative test is \\  & easier. \\ \hline
+7. Obtain the optimum value of the variable to & In this example, \\ be optimized. & the maximum value of \(A\) is \(\dfrac{1}{2}\biggl{(}1-\dfrac{1}{2}\biggr{)}=\dfrac{1}{4}\). \\ \hline
+**Self-Review 5** & \\ (a) A piece of wire of length \(l\) units is cut into two pieces. One piece is bent to form an equilateral triangle \\ while the other piece is bent to form a square. Prove that, when the combined area of the two figures \\ attains a minimum, the length of each side of the equilateral triangle is approximately \(0.188l\) units. \\ (You need to verify that the value obtained is a minimum) & \\ (b) Find the coordinates of the points on the curve \(y=x^{2}+2x-1\) that is closest to the point \((-1,2)\). \\  & \([(0.871,1.50)\) and \((-2.871,1.50)\) ] \\ \hline \end{tabular}
+
+[MISSING_PAGE_FAIL:30]
+
+[MISSING_PAGE_EMPTY:31]

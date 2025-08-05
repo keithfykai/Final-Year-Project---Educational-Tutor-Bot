@@ -1,0 +1,715 @@
+**Chapter 6 (Statistics) : Hypothesis Testing**
+
+**Objectives:**
+
+At the end of the chapter, you should have learnt about the following:
+
+* Concepts of null hypothesis (H\({}_{0}\)) and alternative hypothesis (H\({}_{1}\)), test statistic, critical region, critical value, level of significance, and _p_-value
+* Formulation of hypotheses and testing for a population mean based on: \(\Box\): a sample from a normal population of known variance \(\Box\): a large sample from any population
+* 1-tailed and 2-tailed tests
+* Interpretation of the results of a hypothesis test in the context of the question
+
+**Pre-requisite Knowledge**
+
+* Sampling Distribution of Means;
+* Point Estimates
+
+**Content**
+
+6.1 Introduction to Hypothesis Testing
+
+6.2 Terms and definitions
+
+6.2.1 Null Hypothesis and Alternative Hypothesis
+
+6.2.2 Test Statistic
+
+6.2.3 Comparing _z_-score and critical value; or _p_-value and level of significance
+
+6.2.4 Formal definitions of _p_-value and level of significance
+
+6.3 Carrying out a Hypothesis Test (Examples)
+
+6.3.1 Sample size large/small, Population normal, \(\sigma^{2}\) known
+
+6.3.2 Sample size large, Population non-normal, \(\sigma^{2}\) known
+
+6.3.3 Sample size large, Population non-normal, \(\sigma^{2}\) unknown
+
+6.4 Further Examples
+
+6.5 Summary and Checklist
+
+### Introduction to Hypothesis Testing
+
+Claims abound in advertising and merchandise, as well as elsewhere e.g. social sciences. The most objective way to test whether a claim is valid is to take a (random) sample and measure it.
+
+To be specific: In H1 Maths, we measure its sample mean (\(\overline{X}\)) and calculate how much deviates from an assumed population mean (\(\mu_{0}\), which could be based on known facts or some unverified claim). This deviation is expressed in terms of a _relative_ score or probability, which we compare with a predetermined standard to reach a conclusion about whether the claim is valid. This whole procedure is known as **hypothesis testing**.
+
+A **statistical hypothesis** is a statement, which may or may not be true, concerning one or more population parameters (e.g. mean, variance, proportion).
+
+**Hypothesis testing** is the procedure used to test the validity of this statement based on evidence from random samples drawn from the population.
+
+Let us look at some concrete examples:
+
+**Example 1a**
+
+A fizzy drink brand claims that the mean volume of its canned drinks (the volume is normally distributed with standard deviation 10ml) is 330ml. A consumer weighs a random carton of 24 drinks and found that **it has a mean volume of 325ml.** He suspects that the mean volume is less than what is claimed. Test the manufacturer's claim at the 5% level of significance.
+
+**Solution:**
+
+Let \(X\) be the volume (in ml) of a canned drink with population mean volume \(\mu\).
+
+\(X\sim\) N(\(\mu\),10\({}^{2}\))
+
+\(\overline{X}\sim\) N(330,\(\dfrac{10^{2}}{24}\))
+
+Test \(\text{H}_{0}:\mu=330\)
+
+vs. \(\text{H}_{1}:\mu<330\)
+
+at the 5% level of significance.
+
+and demonstrate the
+
+calculations involved.
+
+Under \(\text{H}_{0}\), \(Z=\dfrac{\overline{X}-\mu}{\sqrt[\mu]{n}}=\dfrac{\overline{X}-330}{10/\sqrt{24 }}\sim\) N(0,1)
+
+**Option 1: Critical Value Method**
+
+**Option 2: \(p\)-value Method**
+
+Using a one-tailed \(z\)-test,
+
+reject \(\text{H}_{0}\) if \(z=-1.64485\)
+
+Using GC, \(\overline{x}=325\)
+
+gives \(\text{real}=-2.4495<-1.64485\)
+
+We reject \(\text{H}_{0}\) and conclude that at the 5% level of significance, there is sufficient evidence that the mean volume of a canned drink is less than 330ml.
+
+Note: \(p=\text{P}\left(\overline{X}\leq 325\right)\)
+
+Chapter 6 : Hypothesis Testing
+
+**Example 1b (two-tailed test)**
+
+A fizzy drink brand claims that the mean volume of its canned drinks (the volume is normally distributed with standard deviation 10ml) is 330ml. A random carton of 24 drinks has a mean volume of 325ml. Test the manufacturer's claim at 5% level of significance.
+
+**Solution:**
+
+Let \(X\) be the volume (in ml) of a canned drink with population mean volume \(\mu\).
+
+\(X\sim\) N(\(\mu\),10\({}^{2}\))
+
+\(\overline{X}\sim\) N(330,\(\dfrac{10^{2}}{24}\))
+
+Test \(\mathrm{H}_{0}:\mu=330\)
+
+vs. \(\mathrm{H}_{1}:\mu\neq 330\) at the 5% level of significance.
+
+Under \(\mathrm{H}_{0}\), \(Z=\dfrac{\overline{X}-\mu}{\sqrt[]{n}}\) = \(\dfrac{\overline{X}-330}{10/\sqrt{24}}\sim\) N(0,1)
+
+**Option 1: Critical Value Method**
+
+**Using a two-tailed \(z\)-test,**
+
+**reject \(\mathrm{H}_{0}\) if \(z\leq-1.95996\) or \(z\geq 1.95996\).**
+
+Using GC, \(\overline{x}=325\)
+
+gives \(z\)-cal = -2.4495 \(<-1.95996\)
+
+\(\therefore\). We reject \(\mathrm{H}_{0}\) and conclude that at the 5% level of significance, there is sufficient evidence that the mean volume of a canned drink is not 330ml.
+
+Note: The implied message is that since the \(p\)-value is really low (\(\leq 0.05\)), it is unlikely that the mean volume is indeed 330ml.
+
+\begin{tabular}{|l|l|l|} \hline Press [Stats], & Choose [Stats], key in & The output: \\ choose [Z-Test] & stats, select [Calculate] & \\ \hline EDIT CALC & \(\mathtt{H12}\)Test & \(\mathtt{H14}\)Data \(\mathtt{H15}\) & \(\mathtt{H16}\) \\
+21:T-test & \(\mathtt{w}\)= 330 & \(\mathtt{z}\)=2.449489743 \\
+3:2-Same2Test & \(\mathtt{g}\):10 & \(\mathtt{p}\)=0.014305866 \\
+4:2-SameTest & \(\mathtt{h}\):24 & \(\mathtt{x}\)=25 \\
+6:2-Prop2Test & \(\mathtt{w}\)=24 & \(\mathtt{w}\)=24 \\
+7:2InterEval & Color: \(\mathtt{w}\)=24 & \\
+8:1TInterval & \(\mathtt{Calculate}\)Draw & \\
+94-Same2Int & & \\ \hline \end{tabular}
+
+**Option 2: \(p\)-value Method**
+
+Using a two-tailed \(z\)-test,
+
+reject \(\mathrm{H}_{0}\) if \(z\leq-1.95996\) or \(z\geq 1.95996\).
+
+Using GC, \(\overline{x}=325\)
+
+gives \(z\)-cal = -2.4495 \(<-1.95996\)
+
+\(\therefore\). We reject \(\mathrm{H}_{0}\) and conclude that at the 5% level of significance, there is sufficient evidence that the mean volume of a canned drink is not 330ml.
+
+Note: The implied message is that since the \(p\)-value is really low (\(\leq 0.05\)), it is unlikely that the mean volume is indeed 330ml.
+
+\begin{tabular}{|l|l|l|} \hline Press [Stats], & Choose [Stats], key in & The output: \\ choose [Z-Test] & stats, select [Calculate] & \\ \hline EDIT CALC & \(\mathtt{H12}\)Test & \(\mathtt{H14}\)Data \(\mathtt{H15}\) & \(\mathtt{w}\)=330 \\
+21:T-test & \(\mathtt{w}\)= 330 & \(\mathtt{z}\)=2.449489743 \\
+3:2-Same2Test & \(\mathtt{g}\):10 & \(\mathtt{p}\)=0.014305866 \\
+4:2-SameTest & \(\mathtt{g}\):325 & \(\mathtt{x}\)=25 \\
+51:1-Prop2Test & \(\mathtt{n}\)=24 & \(\mathtt{w}\)=24 \\
+6:2-Prop2Test & \(\mathtt{w}\)=24 & \\
+7:2InterEval & Color: \(\mathtt{w}\)=24 & \\
+8:1TInterval & \(\mathtt{Calculate}\)Draw & \\
+94-Same2Int & & \\ \hline \end{tabular}
+
+**Option 3: Critical Value Method**
+
+**Option 4: \(p\)-value Method**
+
+Using a two-tailed \(z\)-test,
+
+reject \(\mathrm{H}_{0}\) if \(z\leq-1.95996\) or \(z\geq 1.95996\).
+
+Using a two-tailed \(z\)-test,
+
+reject \(\mathrm{H}_{0}\) if \(z\leq-1.95996\) or \(z\geq 1.95996\).
+
+Using GC, \(\overline{x}=325\)
+
+gives \(z\)-cal = -2.4495 \(<-1.95996\)
+
+\(\therefore\). We reject \(\mathrm{H}_{0}\) and conclude that at the 5% level of significance, there is sufficient evidence that the mean volume of a canned drink is not 330ml.
+
+**Example 1b (two-tailed test)**
+
+A fizzy drink brand claims that the mean volume of its canned drinks (the volume is normally distributed with standard deviation 10ml) is 330ml. A random carton of 24 drinks has a mean volume of 325ml. Test the manufacturer's claim at 5% level of significance.
+
+**Solution:**
+
+Let \(X\) be the volume (in ml) of a canned drink with population mean volume \(\mu\).
+
+\(X\sim\) N(\(\mu\),10\({}^{2}\))
+
+\(\overline{X}\sim\) N(330,\(\dfrac{10^{2}}{24}\))
+
+Test \(\mathrm{H}_{0}:\mu=330\)
+
+vs. \(\mathrm{H}_{1}:\mu\neq 330\)
+
+at the 5% level of significance.
+
+Under \(\mathrm{H}_{0}\), \(Z=\dfrac{\overline{X}-\mu}{\sqrt[]{n}}\) = \(\dfrac{\overline{X}-330}{10/\sqrt{24}}\sim\) N(0,1)
+
+**Option 4: Critical Value Method**
+
+**Option 5: \(p\)-value Method**
+
+Using a two-tailed \(z\)-test,
+
+reject \(\mathrm{H}_{0}\) if \(z\leq-1.95996\) or \(z\geq 1.95996\).
+
+Using GC, \(\overline{x}=325\)
+
+gives \(z\)-cal = -2.4495 \(<-1.95996\)
+
+\(\therefore\). We reject \(\mathrm{H}_{0}\) and conclude that at the 5% level of significance, there is sufficient evidence that the mean volume of a canned drink is not 330ml.
+
+Note: The implied message is that since the \(p\)-value is really low (\(\leq 0.05\)), it is unlikely that the mean volume is indeed 330ml.
+
+\begin{tabular}{|l|l|l|} \hline Press [Stats], & Choose [Stats], key in & The output: \\ choose [Z-Test] & stats, select [Calculate] & \\ \hline EDIT CALC & \(\mathtt{H12}\)Test & \(\mathtt{H14}\)Data \(\mathtt{H15}\) & \(\mathtt{w}\)=330 \\
+21:T-test & \(\mathtt{w}\)= 330 & \(\mathtt{z}\)=2.449489743 \\
+3:2-Same2Test & \(\mathtt{g}\):10 & \(\mathtt{p}\)=0.014305866 \\
+4:2-Same2Test & \(\mathtt{g}\):325 & \(\mathtt{x}\)=25 \\
+51:1-Prop2Test & \(\mathtt{n}\)=24 & \(\mathtt{w}\)=24 \\
+6:2-Prop2Test & \(\mathtt{w}\)=24 & \\
+7:2InterEval & Color: \(\mathtt{w}\)=24 & \\
+8:1TInterval & \(\mathtt{Calculate}\)Draw & \\
+94-Same2Int & & \\ \hline \end{tabular}
+
+**Option 6: Hypothesis Testing**
+
+### 6.2 Terms & definitions
+
+#### Null Hypothesis and Alternative Hypothesis
+
+Are we testing for (a) any change/difference from the (assumed) population mean \(\mu_{0}\), or (b)/(c) a definite increase/decrease in the (assumed) population mean?
+
+**Null hypothesis** (denoted by \(H_{0}\))
+
+\(H_{0}\) is a statement that says that a **population parameter** takes a **specific value**.
+
+**Alternative hypothesis** (denoted by \(H_{1}\))
+
+\(H_{1}\) is a statement that says that the population parameter takes a value different, in some way, from the value given in \(H_{0}\).
+
+\begin{tabular}{l l} Test & \(H_{0}:\mu=\mu_{0}\) (Assumption: population mean is \(\mu_{0}\)) \\ vs. & (a) \(H_{1}:\mu\neq\mu_{0}\) (b) \(H_{1}:\mu>\mu_{0}\) (c) \(H_{1}:\mu<\mu_{0}\) \\ \end{tabular}
+
+\begin{tabular}{l l} \hline In a two-tailed test, \\ \(H_{1}\) looks for any change in the population \\ mean (can be increase or decrease). \\ \end{tabular}
+
+Note:
+
+1. The rejection of the null hypothesis will generally imply that the alternative hypothesis is accepted. In this case, we conclude that the null hypothesis is false.
+2. Failure to reject the null hypothesis is not the same as accepting the null hypothesis. It only means there is insufficient statistical evidence to reject \(H_{0}\) in favour of \(H_{1}\) (i.e. \(H_{0}\) may or may not be true). In other words, **we cannot conclude that we accept \(H_{0}\)**.
+
+#### 6.2.2 Test Statistic
+
+The sample statistic used to test the hypotheses is called the **test statistic**. In the H1 Maths syllabus, we take the sample mean \(\overline{X}\) and _standardise_ it to obtain the standard normal distribution \(Z\). In this way, any particular value \(\overline{x}\) will have a corresponding standard score (also known as \(z\)-score), which is a measure of its number of standard deviations above or below \(\mu\). Recall that if we use a large sample size \(n\), then \(\overline{X}\) approximately follows a normal distribution by Central Limit Theorem (CLT), so a bell curve appears!
+
+If we now assume our null hypothesis is true, then we get something familiar:
+
+\[\mbox{Under }H_{0}\,,\ \overline{X}\sim\mbox{N}\!\left(\mu,\frac{\sigma^{2}}{n} \right)\mbox{ and so }Z=\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}\sim\mbox{N}(0,1)\,.\]
+
+Note:
+
+1. If the population \(X\) is already normal, then Central Limit Theorem is not required.
+2. If \(\sigma^{2}\) is unknown, we use the unbiased estimate \(s^{2}\) (\(S^{2}_{x}\) in GC) instead.
+
+\[s^{2}=\frac{\dot{n}}{n-1}\!\left(\frac{\Sigma(x-\overline{x})^{2}}{n}\right) \!\!=\!\frac{1}{n-1}\!\left(\Sigma x^{2}-\frac{(\Sigma x)^{2}}{n}\right)\ \ =\frac{n}{n-1}\!\times\!\mbox{sample variance}\]
+
+Inside MF26
+
+Not inside MF26
+
+#### 6.2.3 Comparing \(z\)-score and critical value; or \(p\)-value and level of significance
+
+The extent the test statistic differs from \(\mu\) is measured by its \(z\)-score and \(p\)-value:
+
+E.g. For a 5% level of significance (i.e. \(c_{1}=5\%\)),
+
+Two-tailed test: \(c_{1}=-1.96\) and \(c_{2}=1.96\); Critical region \(=\left\{z\in\mathbb{R}:z\leq-1.96\;\text{ or }\;z\geq 1.96\right\}\)
+
+Left-tailed test: \(c=-1.645\); Critical region \(=\left\{z\in\mathbb{R}:z\leq-1.645\right\}\)
+
+Right-tailed test: \(c=1.645\); Critical region \(=\left\{z\in\mathbb{R}:z\geq 1.645\right\}\)
+
+Chapter 6 : Hypothesis Testing
+
+### Formal definitions of _p_-value and level of significance
+
+There are two formal definitions of the _p_-value of a test:
+
+(1) The smallest level of significance at which H\({}_{0}\) can be rejected.
+
+(2) The probability that the sample mean is at least as extreme as observed, assuming H\({}_{0}\) is true.
+
+The **level of significance** of a test (denoted by \(\boldsymbol{<_{1}}\) ) is the probability of rejecting H\({}_{0}\) when H\({}_{0}\) is true.
+
+Note:
+
+1. The level of significance \(\dfrac{\alpha}{100}\) is the conditional probability P(reject H\({}_{0}\) | H\({}_{0}\) is true).
+2. The lower the level of significance (i.e. the smaller the value of \(\alpha\)), the smaller the probability of making **this error** of rejecting H\({}_{0}\) when H\({}_{0}\) is true. \(\boldsymbol{<_{1}}\) and _p_-value are tools that help us quantify and control **this error**.
+3. This margin of error is typically set at 5% as that is an industrial and research standard. That is why many of our examples specify a 5% level of significance.
+4. No hypothesis test can yield 100% accuracy. We could end up with a test statistic in the Critical Region 5% of the time when H\({}_{0}\) is true, simply due to random sampling error. The luck of the draw matters.
+
+In Example 1a, why do we need to do a hypothesis test when 325ml is _clearly_ less than 330ml?
+
+The reason is simple: We only looked at a **sample**, not the entire population. Perhaps the population mean is indeed 330ml and the lower value of 325ml was due to sampling error. (If we take another carton of 24 cans and measured their volume, the new sample mean might be close to 330ml.) A hypothesis test assesses the likelihood that scenario will occur, without having to literally take another sample! Thus, we can make a decision backed by statistical theory.
+
+_In theory_, if we repeatedly measure different cartons, we can plot a distribution of the sample means, called the **sampling distribution of means**. You might recall this theoretical distribution follows a normal distribution for large samples.
+
+### Carrying out a Hypothesis Test
+
+This is the outline of the steps in hypothesis testing:
+
+1. Define the appropriate random variables and population distribution.
+2. State the probability distribution from which the observations were taken.
+3. State the null hypothesis \(\,\mathrm{H}_{0}\,\) and alternative hypothesis \(\,\mathrm{H}_{1}\,\).
+4. State the type of test and level of significance \(\,\mathcal{C}_{1}\,\).
+5. Identify the test statistic and its distribution.
+6. Either Compute the \(z\)-score and compare it with the critical value(s) or Compute the \(p\)-value and compare it with \(\,\mathcal{C}_{1}\,\).
+7. Draw conclusions - reject or do not reject \(\,\mathrm{H}_{0}\,\).
+
+With the availability of computational tools such as GC, it is more convenient to use the \(p\)-value method. However, the critical value method is useful in situations where there are unknowns to be found.
+
+The critical value method requires standardising the test statistic to the standard normal variable \(Z\) (for H1 Maths). We shall illustrate the use of both the critical value and \(p\)-value methods in a few scenarios.
+
+**Hands On Practice**
+
+**2016/PJC/Promo/7**
+
+The manager of a shopping mall claims that customers spend more than 4 hours shopping in the mall. To investigate this claim, the time, \(x\) hours, spent by 60 randomly chosen customers is recorded and summarised as follows.
+
+\[\sum\bigl{(}x-4\bigr{)}=10.6\,\,\,\,\text{and}\,\,\,\sum\bigl{(}x-4\bigr{)}^{2 }=63.2.\]
+
+**(i)**: Calculate unbiased estimates of the population mean and variance.
+**(ii)**: Carry out a test at the 2% level of significance to determine whether the manager's claim is true.
+
+[Answer: \(\,\overline{x}\approx 4.18\,\,\,,\,\,s^{2}\,\approx 1.04\,\)]
+
+[MISSING_PAGE_FAIL:9]
+
+#### Sample size large, Population non-normal, \(\sigma^{2}\) known
+
+_Recall :_
+
+Since \(n\) is large, Central Limit Theorem tells us that
+
+\[\overline{X}\sim\mathrm{N}\bigg{(}\mu,\frac{\sigma^{2}}{n}\bigg{)}\text{ approximately}.\]
+
+Use \(\mathbf{z}\)**-test** with test statistic \(Z=\dfrac{\overline{X}-\mu}{\sigma/\sqrt{n}}\sim\mathrm{N}(0,1)\) approximately.
+
+**Example 3**
+
+The mean IQ of Math professors was known to be 118, but is now claimed to be greater than 118. It is known that the population variance is 64. A sample (\(n=50\)) yields \(\overline{x}=\)120.
+
+(a) Perform a hypothesis test on the claim at 5% significance level.
+
+(b) Using the same data, what would be the conclusion for this claim at 5% significance level:
+
+The mean IQ of Math professors is not equal to 118.
+
+**Solution:**
+
+(a) Let \(X\) be the IQ of a Math professor and \(\mu\) be the population mean IQ.
+
+Test \(\mathrm{H}_{0}:\mu=118\)
+
+vs. \(\mathrm{H}_{1}:\mu>118\) at the 5% level of significance.
+
+Under \(\mathrm{H}_{0}\), since \(n=50\) is large, by Central Limit Theorem, \(\overline{X}\sim\mathrm{N}(118,\dfrac{64}{50})\) approximately
+
+\[Z=\dfrac{\overline{X}-\mu}{\sigma/\sqrt{n}}=\dfrac{\overline{X}-118}{8/\sqrt{5 0}}\sim\mathrm{N}(0,1)\]
+
+**Option 1: Critical Value Method**
+
+**Using a one-tailed \(z\)-test,**
+
+**reject \(\mathrm{H}_{0}\) if \(z\geq 1.64485\).**
+
+Using GC, \(\overline{x}=\)120 gives \(z\)-score \(=1.7678>1.64485\).
+
+.: We reject \(\mathrm{H}_{0}\) and conclude that at the 5% level of significance, there is sufficient evidence that the mean IQ of Math professors is more than 118.
+
+(b) Using a 2-tailed \(z\)-test, \(p\)-value \(=2\times 0.0385\)
+
+\[=0.0771>0.05\]
+
+.: We do not reject \(\mathrm{H}_{0}\) and conclude that at the 5% level of significance, there is insufficient evidence that the mean IQ of Math professors is not 118.
+
+[MISSING_PAGE_FAIL:11]
+
+#### Sample size large, Population non-normal, \(\sigma^{2}\) unknown
+
+_Recall :_
+
+We can estimate the population variance using the unbiased estimate \(s^{2}\).
+
+Then by Central Limit Theorem, \(\overline{X}\sim\) N\(\left(\mu,\frac{s^{2}}{n}\right)\) approximately, since
+
+sample size is large.
+
+Use \(z\)**-test** with test statistic \(Z=\dfrac{\overline{X}-\mu}{S/\sqrt{n}}\sim\) N(0,1).
+
+**Example 5**
+
+A horticultural takes a random sample of 80 bean seeds of a particular variety, and sows them under standard laboratory conditions. The number of the seeds that germinate is 64. The crop weight, \(x\) kg, of each of the 64 plants is measured, with the following summarised results:
+
+\(\Sigma\)\(x=303.4\), \(\Sigma\)\(x^{2}=1615.96\). Find the unbiased estimate of the population mean and variance of crop weight per plant. The horticultural wishes to test the hypothesis that the mean crop weight per plant is 5 kg, against the alternative hypothesis that the mean crop weight per plant is less than 5 kg. Carry out the test at the 10 % level of significance.
+
+Find the smallest level of significance at which the test would result in rejection of the null hypothesis.
+
+**Solution:**
+
+Let \(X\) be the crop weight (in kg) of a plant and \(\mu\) be the population mean weight.
+
+Unbiased estimate of population mean \(=\overline{x}=\dfrac{303.4}{64}\approx 4.7406=4.74\) (3 s.f.)
+
+Unbiased estimate of population variance, \(s^{2}=\dfrac{1}{63}\bigg{[}1615.96-\dfrac{303.4^{2}}{64}\bigg{]}\approx 2.8199=2.82\) (3 s.f.)
+
+Test \(\mathrm{H}_{0}:\mu=5\)
+
+vs. \(\mathrm{H}_{1}:\mu<5\) at the 10% level of significance.
+
+Under \(\mathrm{H}_{0}\), since \(n=64\) is large, by Central Limit Theorem.
+
+\(\overline{X}\sim\) N(5,\dfrac{2.8199}{64})\) approximately
+
+\(Z=\dfrac{\overline{X}-\mu}{S/\sqrt{n}}=\dfrac{\overline{X}-5}{\sqrt{2.8199}/8 }\sim\) N(0,1)
+
+Using a one-tailed \(z\)-test,
+
+\(\mathrm{reject}\)\(\mathrm{H}_{0}\) if \(p\leq 0.10\).
+
+Using GC, \(\overline{x}=4.74\)
+
+gives \(p\)-value \(=0.1077>0.10\)
+
+. We do not reject \(\mathrm{H}_{0}\) and conclude that at the 10% level of significance, there is insufficient evidence that the mean crop weight of the plants is less than 5 kg.
+
+If \(\mathrm{H}_{0}\) is rejected at the \(\alpha\) % level, then \(p\)-value \(\leq\alpha\) %.
+
+\(\dfrac{\alpha}{100}\geq 0.1077\Rightarrow\alpha\geq 10.77\)
+
+The smallest significance level is 10.8%. (3 s.f.)
+
+### Further Examples
+
+**Example 6**
+
+The table below shows the number of handphones owned by 100 households.
+
+**Example 7** [2015/H2 Math 9740/Prelims/YJC/II/8 (modified)]: Under ordinary conditions, the mean time required by a person to complete an arithmetic sum is 50 s. Sixty people were randomly selected to do the sum in a room with a temperature set at 15\({}^{\circ}\)C. The time taken for this sample had an average of 55 s and a standard deviation of 19.3 s.
+**(i)**: Test, at the 5% significance level, whether there has been an increase in the mean time required by a person to complete the sum.
+**(ii)**: Explain whether any assumptions about the population are needed in order for the test to be valid.
+**(iii)**: The same sample is now used to carry out a test at the 5% significance level, of whether the mean time required by a person to complete the sum has changed. State with a reason using **(i)**, whether there is any change in the conclusion of this test.
+
+**Solution:**
+
+(i): Let \(X\) be the length of time (in s) required to complete the sum and \(\mu\) be the population mean time.
+
+\[\begin{array}{ll}\text{Test}&\text{H}_{0}:\mu=50\\ \text{vs.}&\text{H}_{1}:\mu>50\end{array}\quad\text{at the 5 \% significance level.}\]
+
+Unbiased estimate of the population variance, \(s^{2}=\dfrac{60}{59}{\left(19.3\right)}^{2}\approx 378.80\)
+
+Under \(\text{H}_{0}\), since \(n=60\) is large, by Central Limit Theorem.
+
+\[\begin{array}{ll}\overline{X}\sim\text{N}(50,\dfrac{378.8}{60})\text{ approximately}\\ Z=\dfrac{\overline{X}-\mu}{\sqrt[s]{n}}\ =\dfrac{\overline{X}-50}{\sqrt[378.80 /\sqrt[3]{60}}\sim\text{N}(0,1)\end{array}\]
+
+Using a one-tailed \(z\)-test,
+
+\[\text{reject H}_{0}\text{ if }\ p\leq 0.05\,.\]
+
+\(\overline{x}=55\) gives \(p\)-value \(=0.0233<0.05\)
+
+\(\therefore\). We reject H\({}_{0}\) and conclude that at the 5% significance level, there is sufficient evidence that the mean time required to complete the sum has increased.
+
+(ii): Since the sample size (60) is large, Central Limit Theorem can be used to approximate the sample mean time required to complete the sum to a normal distribution. Hence no assumption about the population distribution is necessary.
+
+(iii): For a two-tailed test, \(p\)-value \(=2(0.0233)\) (from **(i)**)
+
+\(=0.0466<0.05\)
+
+\(\therefore\). We still reject H\({}_{0}\). There is no change in the conclusion.
+
+**Example 8 [2014/H2 Math 9740/ACJC/II/Q11 (part)]**
+
+The mean mathematics examination mark for the whole school was 55 last year. Let the random variable \(X\) denote the mathematics examination mark obtained by a student this year.
+
+A mathematics teacher has finished marking all the 120 scripts of the mathematics examination this year for his tutorial classes. The standard deviation of his 120 students' marks is 15. He carried out a test, at the 5% significance level, to determine whether the mean mark for the mathematics examination for the whole school this year has exceeded that of last year.
+
+Find the range of values of \(\overline{x}\) for which the result of the test would be to reject the null hypothesis, where \(\overline{x}\) is the mean mark of his 120 students. (Answers obtained by trial and improvement from a calculator will obtain no marks.)
+
+**Solution:**
+
+Let \(\mu\) be the population mean maths exam mark obtained by a student this year.
+
+Test \(\mathrm{H}_{0}:\mu=55\)
+
+vs. \(\mathrm{H}_{1}:\mu>55\) at the 5% level of significance.
+
+Unbiased estimate of population variance, \(s^{2}=\frac{120}{119}\times 15^{2}\approx 226.89\)
+
+Under \(\mathrm{H}_{0}\), since \(n=120\) is large, by Central Limit Theorem.
+
+\(\overline{X}\sim\mathrm{N}(55,\frac{226.89}{120})\) approximately
+
+\(Z=\frac{\overline{X}-\mu}{\sqrt[s]{n}}=\frac{\overline{X}-55}{\sqrt[226.89]{ \sqrt{120}}}\sim\mathrm{N}(0,1)\)
+
+Using a one-tailed \(z\)-test,
+
+reject \(\mathrm{H}_{0}\) if \(z\geq 1.64485\).
+
+\(\sqrt[226.89]{\frac{\overline{x}-55}{120}}\geq 1.64485\)
+
+\(\overline{x}\geq 57.262\)
+
+\(\overline{x}\geq 57.3\) (3 s.f.)
+
+**Hands on practice**
+
+At an early stage in analysing the marks scored by the large number of candidates in an examination paper, the Examining Board takes a random sample of 250 candidates and finds that the marks, \(x\), of these candidates give \(\Sigma\)\(x=11872\) and \(\Sigma\)\(x^{2}=646\)\(193\). Using the figures obtained in this sample, the null hypothesis \(\mu=49.5\) is tested against the alternative hypothesis \(\mu<49.5\) at the \(\alpha\) % significance level.
+
+Determine the set of values of \(\alpha\) for which the null hypothesis is rejected in favour of the alternative hypothesis.
+
+\[[\mathrm{Answer:}\ \ \overline{x}=47.488\,\ s^{2}\approx 330.99\,\ \alpha\geq 4.02\ ]
+
+**Exercise**
+
+1. **[N2001/2/Q10]**
+
+A random sample of 90 batteries, used in a particular model of mobile phone, is tested and the "standby-time" is measured. The results are summarised by
+
+\(\sum x=3040.8\) and \(\sum x^{2}=115773.66\).
+
+Test, at the 1 % significance level, whether the mean standby-time is less than 36.0 h.
+
+This type of battery is advertised as having a 'talk-time" of 5 hours. In a test at the 5% significance it is found that there is significant evidence that the population mean talk-time is less than 5 hours. Using only this information, and giving a reason in each case, state whether each of the following statements is (i) necessarily true, (ii) necessarily false, (iii) neither necessarily true nor necessarily false.
+
+1. There is significant evidence at the 10% significance level that the population mean talk-time is less than 5 hours.
+2. There is significant evidence at the 5% significance level that the population mean talk-time is not 5 hours.
+
+**Solution:**
+
+Unbiased estimate of the population mean, \(\overline{x}=\dfrac{3040.8}{90}\approx 33.787\)
+
+Unbiased estimate of the population variance, \( s^{2}=\dfrac{1}{89}\bigg{[}115773.66-\dfrac{3040.8^{2}}{90}\bigg{]}\approx 146.463\)
+
+Let \(X\) be the standby-time (in h) of a battery in this model of mobile phone and \(\mu\) be the population mean time.
+
+Test \(\mathrm{H}_{0}:\mu=36\) vs. \(\mathrm{H}_{1}:\mu<36\) at the 1% level of significance.
+
+Under \(\mathrm{H}_{0}\), since \(n=90\) is large, by Central Limit Theorem.
+
+\(\overline{X}\sim\mathrm{N}(36,\dfrac{146.463}{90})\) approximately
+
+\(Z=\dfrac{\overline{X}-\mu}{\sqrt[3]{n}}=\dfrac{\overline{X}-36}{\sqrt{146.463 }/\sqrt{90}}\sim\mathrm{N}(0,1)\)
+
+Using a one-tailed \(z\)-test,
+
+reject \(\mathrm{H}_{0}\) if \(p\leq 0.01\).
+
+\(\overline{x}=33.787\) gives \(p\)-value \(=0.0414>0.01\)
+
+\(\therefore\) We do not reject \(\mathrm{H}_{0}\) and conclude that at the 1% level of significance, there is insufficient evidence that the mean standby-time is less than 36h.
+
+1. Necessarily true. This is still a one-tailed test, with the same \(p\)-value. \(p\leq 0.05\Rightarrow p<0.10\), so evidence that is significant at the 5% level is also significant at the 10% level.
+2. Neither necessarily true nor necessarily false. This is now a two-tailed test, with twice the \(p\)-value. If \(p\leq 0.05\), then \(2\,p\) may or may not be less than or equal to 0.05.
+
+(E.g. It is true if \(p=0.02\) but false if \(p=0.04\))2. **[2018/H1 Math/A Level/Q11]** A website states that the mean length of adults in a particular species of fish is 30 cm. A scientist claims that the true mean length is greater than 30 cm. To test this claim, a random sample of 100 adult fish of this species is captured from a lake. The lengths of the fish, \(x\) cm, are summarised by \[\sum(x-30)=15\,,\,\,\,\sum(x-30)^{2}=82\] (i) Find unbiased estimates of the population mean and variance. (ii) Test at the 2.5% significance level whether the scientist's claim is supported by the data. (iii) State, with a reason, whether it is necessary to assume that the lengths of these fish are distributed normally for the test to be valid. A new random sample of 100 adult fish of this species is captured from a different lake. The mean length of the fish in this sample is \(m\) cm and the population variance is 0.9 cm\({}^{2}\). A test at the 10% significance level supports the scientist's claim that the mean length of the fish is greater than 30 cm. (iv) Find the range of possible values of \(m\). Solution: (i) Unbiased estimate of the population mean, \(\overline{x}=\frac{15}{100}+30=30.15\) (ii) Let \(X\) be the length (in cm) of an adult fish in this particular species and \(\mu\) be the population mean length. Test \(\mathrm{H}_{0}\) : \(\mu=30\) vs. \(\mathrm{H}_{1}\) : \(\mu>30\) at the 2.5% level of significance. Under \(\mathrm{H}_{0}\), since \(n=100\) is large, by Central Limit Theorem. \(\overline{X}\sim\mathrm{N}(30,\frac{0.80556}{100})\) approximately \(Z=\frac{\overline{X}-30}{\sqrt{0.80556}\,/10}\sim\mathrm{N}(0,1)\) approximately by Central Limit Theorem. Using a one-tailed \(z\)-test, reject \(\mathrm{H}_{0}\) if \(p\leq 0.025\). \(\overline{x}=30.15\) gives \(p\)-value \(=0.0473>0.025\). We do not reject \(\mathrm{H}_{0}\) and conclude that at the 2.5% significance level, there is insufficient evidence that the mean length of adult fish in this species is greater than 30cm. The scientist's claim is not supported by the data. (iii) Not necessary since the sample size of 100 is large. By Central Limit theorem, the sample mean lengths of adult fish will be approximately normal. (iv) Under \(\mathrm{H}_{0}\), since \(n=100\) is large, by Central Limit Theorem. \(\overline{X}\sim\mathrm{N}(30,\frac{0.9}{100})\) \(Z=\frac{\overline{X}-30}{\sqrt{0.9}\,/10}\sim\mathrm{N}(0,1)\)To support the scientist's claim (i.e. reject \(\mathrm{H_{0}}\)), \(z\geq\)1.28155. \[\frac{m-30}{\sqrt{0.9\,/10}}\geq 1.28155\] \[m\geq 30.122\] \[m\geq 30.1\ \ (3\ \mathrm{s.f.})\]
+3. Under usual conditions, a certain type of seed produces fruit with mean mass 1.84 kg and standard deviation 0.13 kg. A crop of this fruit is grown under new conditions and each fruit in a random sample of 50 of the fruits produced is weighed. The mean mass of the sample is 1.88 kg. **(i)**  Test at the 3% significance level whether the data indicate the mean mass of this crop differs from 1.84 kg. **(ii)**  If the test had been for an increase in the mean at the 1% significance level, what would have been the result of the test? **(iii)**  State, giving a reason, whether it is necessary to assume that the mass of the fruit follows a normal distribution. **Solution:**  Let \(X\) be the random variable "the mass of fruits" and \(\mu\) denote "the population mean mass of fruits". **(i)**  To test \(\mathrm{H_{o}}\) : \(\mu\) = 1.84  against \(\mathrm{H_{1}}\) : \(\mu\) \(\neq\) 1.84  Using 2-tailed test at 3% significance level (i.e. \(\alpha\) = 0.03)  Under \(\mathrm{H_{o}}\), \(\overline{X}\) \(\sim\) N(1.84, \(\frac{(0.13)^{2}}{50}\) ) approximately by Central Limit Theorem since the sample size = 50 is large. Using GC, p-value = 0.0296. Since p-value \(<\) 0.03, we reject \(\mathrm{H_{o}}\) and conclude that there is sufficient evidence that the population mean mass of the crop differs from 1.84 kg at 3% significance level. **(ii)**  To test \(\mathrm{H_{o}}\) : \(\mu\) = 1.84  against \(\mathrm{H_{1}}\) : \(\mu\) \(>\) 1.84  Using GC, p-value = 0.0148. Since the p-value \(>\) 0.01, we do not reject \(\mathrm{H_{o}}\) and conclude that there is insufficient evidence that there is an increase in the population mean mass of the crop at 1% significance level. **(iii)**  Not necessary. Since the sample size is large, Central Limit Theorem applies to approximate the distribution of the sample mean to be normal. 4. A random variable \(X\) is known to have a normal distribution with variance 25. The mean of the distribution of \(X\) is denoted by \(\mu\). A random sample of 40 observations of \(X\) has mean \(\overline{x}\). In a 2-tail test of the null hypothesis \(\mu\) = 65 at the 3% significance level, the alternative hypothesis is accepted. Find the range of values of \(\overline{x}\). **Solution:**Test \(\mathrm{H}_{0}:\mu=65\) vs. \(\mathrm{H}_{1}:\mu\neq 65\) at the 3% level of significance.
+
+Under \(\mathrm{H}_{0}\), \(\overline{X}\sim\mathrm{N}(65,\frac{25}{40})\)\(Z=\frac{\overline{X}-65}{5/\sqrt{40}}\sim\mathrm{N}(0,1)\)
+
+Using a two-tailed \(z\)-test, \(\mathrm{H}_{0}\) is rejected
+
+\(\Rightarrow\)\(z\leq-2.1701\) or \(z\geq 2.1701\)
+
+\(\frac{\overline{x}-65}{5/\sqrt{40}}\leq-2.1701\) or \(\frac{\overline{x}-65}{5/\sqrt{40}}\geq 2.1701\)
+
+\(\overline{x}\leq 63.3\) or \(\overline{x}\geq 66.7\) (3 s.f.)
+5. [N2008/H1/10] A consumer association is testing the lifetime of a particular type of battery that is claimed to have a lifetime of 150 hours. A random sample of 70 batteries of this type is tested and the lifetime, \(x\) hours, of each battery is measured. The results are summarised by
+
+\(\sum x=10317\), \(\sum x^{2}=1540231\).
+
+The population mean lifetime is denoted by \(\mu\) hours. The null hypothesis \(\mu=150\) is to be tested against the alternative hypothesis \(\mu<150\). Find the \(p\)-value of the test and state the meaning of this \(p\)-value in the context of the question.
+
+A second random sample of 50 batteries of this type is tested and the lifetime, \(y\) hours, of each battery is measured, with results summarised by
+
+\(\sum y=7331,\ \sum y^{2}=1100565\).
+
+Combining the two samples into a single sample, carry out a test, at the 10% significance level, of the same null and alternative hypotheses.
+
+_Probing questions_:
+
+Q1. For the first part, what can you deduce about the value of \(\overline{x}\), is this value greater or lesser than the population mean? Why?
+
+Solution: The value of \(\overline{x}\) is expected to be less than 150. We can know this as the alternative hypothesis is \(\mu<150\).
+
+Q2. For the 2 samples, why we did not add up the population mean and variance and divide by 2? What are the essential conditions for this?
+
+Solution: This method of solving is only true if the 2 samples consist of the same number of items. Hence, we need to add up the population mean and variance and divide by the total population so that the value that we have gotten will be the average.
+
+Q3. For the 2 samples, what can you can deduce the \(p\)-value or \(z\)-value? Is this value larger or lesser than each sample \(p\)-value or \(z\)-value and why?Solution: We cannot deduce anything for the 2 samples from each sample in terms of \(p\)-value or \(z\)-value as the population will be different. Hence, we need to recalculate again for \(p\)-value or \(z\)-value for 2 samples.
+
+\begin{tabular}{|l l|} \hline \multicolumn{2}{|l|}{Examiners' Report:} \\ (i) & Most candidates were able to find the value of p, although many \\  & incorporated some premature approximation into their calculation. \\ (ii) & Few could interpret the meaning of p correctly, many giving an explanation \\  & of when to reject or accept the null hypothesis. \\ (iii) & The second part of this question was poorly answered. Most candidates \\  & added means and variances from two separate samples instead of \\  & combining the two samples into a single large sample. Others simply used \\  & only the second sample mean and variance. \\ (iv) & The final conclusion was often confused, with inconsistent statements such \\  & as 'p \(>\) 0.1 so do not reject the null hypothesis' and'mean lifetime is less \\  & than 150'. \\ \hline \end{tabular}
+**Solution:**:
+
+Unbiased estimate of population mean, \(\overline{x}=\dfrac{10317}{70}=147.386\)
+
+Unbiased estimate of population variance, \(s^{2}=\dfrac{1}{69}\bigg{[}1540231-\dfrac{10317^{2}}{70}\bigg{]}\approx 284.82\)
+
+Let \(X\) be the lifetime (in h) of a battery of the particular type and \(\mu\) be the population mean lifetime.
+
+Test \(\mathrm{H}_{0}:\mu=150\) vs. \(\mathrm{H}_{1}:\mu<150\) at the \(\alpha\) % level of significance.
+
+Under \(\mathrm{H}_{0}\), since \(n=70\) is large, by Central Limit Theorem.
+
+\(\overline{X}\sim\mathrm{N}(150,\dfrac{284.82}{70})\) approximately
+
+\(Z=\dfrac{\overline{X}-\mu}{s\sqrt[3]{n}}=\dfrac{\overline{X}-150}{\sqrt{284.8 2}\,/\sqrt{70}}\sim\mathrm{N}(0,1)\)
+
+Using a one-tailed \(z\)-test,
+
+\(\overline{x}=147.386\) gives \(p\)-value \(=0.0975\)
+
+\(p\)-value is the probability that the sample mean lifetime of battery in hours is less than 147.386, given that the population mean lifetime of battery in hours is 150.
+
+For the combined sample,
+
+Unbiased estimate of population mean \(=\dfrac{\sum x+\sum y}{n_{x}+n_{y}}=\dfrac{10317+7331}{70+50}=147.067\)Unbiased estimate of population variance \[=\frac{1}{n-1}\Bigg{[}\left(\sum x^{2}+\sum y^{2}\right)-\frac{\left(\sum x+\sum y \right)^{2}}{n}\Bigg{]}=\frac{1}{119}\Bigg{[}2640796-\frac{17648^{2}}{120} \Bigg{]}=381.206\] where \(n=n_{x}+n_{y}=70+50=120\) Under \(\,\mathrm{H}_{0}\,\), since \(n=120\) is large, by Central Limit Theorem. \(\overline{X}\sim\mathrm{N}(150,\frac{381.206}{120})\) approximately Using a one-tailed \(z\)-test, reject \(\,\mathrm{H}_{0}\,\) if \(\,p\leq 0.10\,\). \(\overline{x}=147.067\) gives \(p\)-value \(=0.0499<0.10\) \(\therefore\) We reject \(\,\mathrm{H}_{0}\,\) and conclude that at the 10% significance level, there is sufficient evidence that the population mean lifetime is less than 150 hours.
+
+**Practice Questions**
+
+1. State whether each of the following statements is True or False. 1. If a test is significant at 5% level, then it must be significant at 1% level. 2. When a statistician selects a particular level of significance for a test, he is effectively setting the probability of rejecting the null hypothesis when in fact it is true. 3. One can never prove the truth of a statistical (null) hypothesis.
+
+**Solution:**
+
+1. False. A statistic significant at 5% level is not necessarily significant at the 1% level (refer to diagram).
+
+1. If the test statistic lies here, then it is significant at 5% but not at 1%. **Note:** If the statement is reversed, then it is true (If a test is significant at the 1% level, then it must be significant at 5% level.).
+2. True by the definition of level of significance. 3. True. In statistical inference there is always some probability, however small, of drawing the wrong conclusion. The fact that a hypothesis is consistent with a set of data does not mean that it is correct; at the same time, if it is not consistent with the data set it does not mean that it is incorrect.
+
+2. **[N2011/2/Q10 Modified]**
+
+In a factory, the time in minutes for an employee to install an electronic component is a normally-distributed continuous random variable \(T\). The standard deviation of \(T\) is 5.0and under ordinary conditions the expected value of \(T\) is 38.0. After background music is introduced into the factory, a sample of \(n\) components is taken and the mean time taken for randomly chosen employees to install them is found to be \(\overline{t}\) minutes. A test is carried out, at the 5% significance level, to determine whether the mean time taken to install a component has been reduced. (i) State appropriate hypotheses for the test, defining any symbols you use. (ii) Given that \(n=50\), state the set of values of \(\overline{t}\) for which the result of the test would be to reject the null hypothesis. (iii) It is given instead that \(\overline{t}=37.1\), and the result of the test is that the null hypothesis is not rejected. Obtain an inequality involving \(n\), and hence find the set of values that \(n\) can take.
+
+Examiners' Report:
+
+Most candidates correctly define \(H_{0}\) and \(H_{1}\)in terms of \(\mu\). Although many candidates went on to explain what \(H_{0}\) and \(H_{1}\) were (which were not required), very few defined \(\mu\) and a very small minority defined it correctly as the population mean time taken for employees to install one component. (ii) A few candidates used 0.05 rather than a \(z\)-value. Others used \(+1.645\) rather than \(-1.645\). Still others used the wrong inequality or multiplied by a factor \(\sqrt{\frac{n}{n-1}}\). (iii) Candidates found this part rather challenging. Candidates made sign errors manipulating an inequality involving negatives and square root. For full credit, candidates were expected to realise that \(n\) was an integer.
+
+Solution:
+
+Let \(\mu\) be the population mean time taken for an employee to install one component.
+
+Test \(H_{0}:\mu=38.0\) vs. \(H_{1}:\mu<38.0\) at the 5% level of significance. (ii) Under \(H_{0}\), \(Z=\frac{\overline{T}-38}{5\sqrt{50}}\sim\) N(0,1)
+
+Reject \(H_{0}\) if \(z\leq-1.64485\).
+
+\(\frac{\overline{t}-38}{5\sqrt{50}}\leq-1.64485\)
+
+\(\overline{t}\leq 36.837\)
+
+\(\therefore\) \(\{\overline{t}\in\mathbb{R}:\overline{t}\leq 36.8\}\)
+
+[MISSING_PAGE_FAIL:23]
+
+[MISSING_PAGE_FAIL:24]
+
+Test \(\text{H}_{0}:\mu=\mu_{0}\) vs. \(\text{H}_{1}:\mu<\mu_{0}\) at the 10% level of significance. Under \(\text{H}_{0}\), \(\ Z=\dfrac{\overline{X}-\mu_{0}}{3.9\sqrt{8}}\sim\text{N}(0,1)\). Using a one-tailed \(z\)-test, reject \(\text{H}_{0}\) if \(\ z\leq-1.28155\). If company has overstated the average lifetime, then \(\text{H}_{0}\) is rejected. \(\dfrac{54.8625-\mu_{0}}{3.9\sqrt{8}}\leq-1.28155\) \(\mu_{0}\geq 56.6\) (3 s.f.) The least value of \(\mu_{0}\) is 57.
+
+Chapter 6 : Hypothesis Testing
+
+**6.5 Summary and Checklist**
+
+**Decision chart:**
+
+\begin{tabular}{|p{113.8pt}|p{113.8pt}|} \hline \multicolumn{2}{|c|}{**Population variance \(\sigma^{2}\)**} \\ \hline Known/ **Given** in question. & Unknown/ **NOT given** in question. \\ \hline Then we need to **calculate the unbiased estimate** of population variance, \(s^{2}\). \\ \hline \end{tabular}
+
+\begin{tabular}{|p{113.8pt}|p{113.8pt}|} \hline Population is **Normal**. & Distribution of population is not normal or **NOT** given and \(n\) is large \\ Under \(\text{H}_{0}\), \(\overline{X}\) \(\sim\) N\(\left(\mu,\frac{\sigma^{2}}{n}\right)\) & Test statistic is \(\overline{X}\). \\ Under \(\text{H}_{0}\), \(\overline{X}\) \(\sim\) N\(\left(\mu,\frac{\sigma^{2}}{n}\right)\) & \(\overline{X}\) \(\sim\) N\(\left(\mu,\frac{s^{2}}{n}\right)\) \\ \hline \end{tabular}
+
+**Use of GC to calculate _p_-value:**
+
+\begin{tabular}{|l|l||c|} \hline
+**Keystrokes** & **Screenshot** & **Remark** \\ \hline Press [Stat], and select & EDIT CALC HSSTS & \\
+[TESTS]. Select [1: Z- & 2:T-Test\_ & \\ test]. & 3:Z-Same2Test\_ & \\
+4:2-Same1Test\_ & \\
+5:1-Prop2Test\_ & \\
+6:2-Prop2Test\_ & \\
+7:2Interval\_ & \\
+8:1TInterval\_ & \\
+94-2-Same2Int\_ & \\ \hline There are two ways to & \\ input values: & Input:Data HSSTS & \\ Choose [Stats] if & \\ \(\omega\):1 & \(\omega\):1 & \(\omega\) = standard deviation of the \\ summary data (e.g. \(\overline{x}\), \(\sigma\) and \(n\)) is given. & \\ \(\omega\):4 & \(\omega\):4 & population \\ \(\omega\):4 & \(\omega\):4 & \(\overline{x}\) = sample mean. \\ Choose [Data] if raw & Color: & \(n\) = sample size \\ \(\omega\):4 & Calculate Draw & For two-tailed test, choose \(\ \neq\mu_{o}\) \\ data is given e.g. in a & & For one-tailed test, choose either \\ table. & & \(>\mu_{o}\) or \(\ <\ \mu_{o}\) \\ \hline Press [Calculate]: & & Note: \\  & z=1.238643937 & \(z\) is the \(z\)-score \\  & p=0.1077387594 & \(p\) is the \(p\)-value \\  & x=4.74 & \\  & n=64 & \\ \end{tabular}
+
+Or press [Draw] to obtain a standard normal curve with the shaded area equal to the _p_-value.
+
+**Concepts & Skills**
+
+**I am able to:**
+
+\(\Box\): formulate the null hypothesis ( \(H_{0}\) ) and alternative hypothesis ( \(H_{1}\) ) for a given problem
+
+\(\Box\): define following terms in the context of the given problem :
+
+\(\circ\): significance level
+
+\(\circ\): \(p\)-value
+
+\(\Box\): perform a \(z\)-test when testing population mean in the following cases :
+
+\(\circ\): population is normal and variance is known
+
+\(\circ\): population is not normal and variance is known and sample size is large
+
+\(\circ\): population variance is unknown and sample size is large
+
+\(\Box\): state the test statistic for the test & its distribution under \(H_{0}\)
+
+\(\Box\): know how to carry out a hypothesis test using both the \(p\)-value method and critical value method
+
+\(\Box\): interpret the results of a hypothesis test in the context of the problem

@@ -1,0 +1,576 @@
+## Chapter 10 Complex Numbers
+
+The set of real numbers can be extended to complex numbers. This set of numbers arose, historically, from the question of whether a negative number can have a square root.
+
+For example, what are the roots of \(x^{2}+1=0\)?
+
+From this problem, a new number was discovered: the square root of negative one. This number is denoted by i, a symbol assigned by Leonhard Euler (1707-1783, Swiss mathematician).
+
+i.e. i = \(\sqrt{-1}\)
+
+Complex numbers consist of all numbers of the form \(a+b\) i, where \(a\) and \(b\) are real numbers.
+
+Complex numbers have applications in a variety of sciences and related areas such as signal processing, control theory, electromagnetism, quantum mechanics, cartography, and many others.
+
+### 10.1 Introduction
+
+Let us start by solving the equation \(x^{2}-8x+20=0\). Applying the formula, we have
+
+\[x = \frac{8\,\pm\,\sqrt{64-80}}{2}\] \[= 4\,\pm\,2\sqrt{-1}\]
+
+If we let i = \(\sqrt{-1}\), it follows that \(x=4+2\)i or \(x=4-2\)i.
+
+The numbers \(4+2\)i and \(4-2\)i are called complex numbers.
+
+A **complex number**, usually denoted by the letter \(z\), is defined as any number of the form \(z=a+b\)i where i = \(\sqrt{-1}\) and \(a\), \(b\in\mathbb{R}\), and this is known as the **Cartesian form** of complex numbers.
+
+The real number \(a\) is called the **real part of z**, written as \(a=\)**Re(z)**.
+
+The real number \(b\) is called the **imaginary part of z**, written as \(b=\)**Im(z)**.
+
+The set of complex numbers is denoted by \(\mathbb{C}\).
+
+[MISSING_PAGE_FAIL:2]
+
+[MISSING_PAGE_EMPTY:3]
+
+[MISSING_PAGE_EMPTY:4]
+
+[MISSING_PAGE_EMPTY:5]
+
+**Chapter 10: Complex Numbers**
+
+\begin{tabular}{|l|l|} \hline
+**Solution:** & **ThinkZone:** \\ \((2-\mathrm{i})^{3}=2^{3}+\binom{3}{1}2^{2}(-\mathrm{i})+\binom{3}{2}2(-\mathrm{i })^{2}+(-\mathrm{i})^{3}\) & In general, \(a-b\mathrm{i}=-\mathrm{i}(b+a\mathrm{i})\). \\ So \((-11)-2\mathrm{i}\;=\;-\mathrm{i}(2-11\mathrm{i})\). \\ \(=8+3\times 4\times(-\mathrm{i})+3\times 2\times\mathrm{i}^{2}-\mathrm{i}^{3}\) & Or, you can use GC to evaluate \\ \(=8-12\mathrm{i}-6+\mathrm{i}\;=\;2-11\mathrm{i}\) & \(-11-2\mathrm{i}\). \\ \((\mathrm{z}-\mathrm{i})^{3}\;z\;-1\;-2\;(\mathrm{z}\;=\;-\mathrm{i}(\mathrm{z} -\mathrm{i}))\) & \(2-11\mathrm{i}\). \\ \(-1\;(\mathrm{z}-\mathrm{i})^{3}\;z\;-1\;-2\;(\mathrm{z}\;=\;-\mathrm{i}(\mathrm{z }-\mathrm{i}))\) & Why do we write - \(\mathrm{i}=\mathrm{i}^{3}\)? \\ \(-1\;(\mathrm{z}-\mathrm{i})^{3}\;z\;-1\;-2\;(\mathrm{z}\;=\;1\;+\mathrm{z})\) & \(1+3\mathrm{i}\) is just one of the roots for \((\mathrm{z}-\mathrm{i})^{3}=-11-2\mathrm{i}\), there are \(2\) \\ more roots. Can you find them? \\ \hline
+**Self review 1:** & Given that \((1+5\mathrm{i})p-2q=3+7\mathrm{i}\), find \(p\) and \(q\) when: \\  a) \(p\) and \(q\) are real & \\  b) \(p\) and \(q\) are complex conjugates. & [a: \(p=7\,/\,5,q=-4\,/\,5\) ; b: \(p=2-\mathrm{i},q=2+\mathrm{i}\) ] \\ \hline
+**Solution:** & Let \(p=a+b\mathrm{i}\) where \(a,b\in\mathbb{R}\). \\ (a) & Thus \(q=a-b\mathrm{i}\). \\ \((1+5\mathrm{i})p-2q=3+7\mathrm{i}\) & \((1+5\mathrm{i})p-2q=3+7\mathrm{i}\) \\ \(\Rightarrow\;\;p-2q+5\mathrm{i}p=3+7\mathrm{i}\) & \(\Rightarrow(1+5\mathrm{i})(a+b\mathrm{i})-2(a-b\mathrm{i})=3+7\mathrm{i}\) \\  & \(\Rightarrow a-5b+(5a+b)\mathrm{i}-2a+2b\mathrm{i}=\tilde{3}+7\mathrm{i}\) \\ \(p-2q=3\); \(5p=7\) & Comparing real and imaginary parts: \\  & \(-a-5b=3\); \(5a+3b=7\) \\ \(\Rightarrow\;p=\frac{7}{5}\), \(q=-\frac{4}{5}\) & \(\Rightarrow a=2\), \(b=-1\) \\  & Thus \(p=2-\mathrm{i}\), \(q=2+\mathrm{i}\) \\ \hline \end{tabular}
+
+**Complex Numbers in Graphic Calculator**
+
+\begin{tabular}{|l|l|} \hline
+**Press** & to display mode setting. \\  Use arrow keys to select \\ (i) & a+bi to display the complex number in Cartesian form, or \\ (ii) & re\({}^{*}\)bi to display it in exponential form (to be discussed in 10.6). \\ \hline
+**Note:** & \\ \(\bullet\) The **radian mode** is to be used for calculations involving complex numbers \\ \(\bullet\) To enter the complex number \(\mathrm{i}\), press & \\ \(\bullet\) & \\ \hline \end{tabular}
+
+You can find operations or functions for complex numbers in the **MATH CPLX menu** (press \\ \(\bullet\) & \(\bullet\) & \(\bullet\) \\ \(\bullet\) & \(\bullet\) & \
+
+[MISSING_PAGE_EMPTY:7]
+
+**Chapter 10: Complex Numbers**
+
+**Self-Review 2 (b):** If \(z=4-3\)i, express \(z-\dfrac{1}{z}\) in Cartesian form. Hence, find a complex number \(w\) in Cartesian form such that \(w+\dfrac{1}{w}=\dfrac{78}{25}+\dfrac{96}{25}\)i. \([w=3+4\mathrm{i}\;\;\mathrm{or}\;\dfrac{1}{25}(3-4\mathrm{i})\;]\)
+
+**Solution:**
+
+Using GC, \(z-\dfrac{1}{z}=\dfrac{96}{25}\dfrac{78}{25}\)
+
+\(w+\dfrac{1}{w}=\dfrac{78}{25}+\dfrac{96}{25}=\mathrm{i}\left(\dfrac{96}{25}- \dfrac{78}{25}\mathrm{i}\right)=\mathrm{i}\left(z-\dfrac{1}{z}\right)=\mathrm{ i}\,z-\dfrac{\mathrm{i}}{z}=\mathrm{i}\,z+\dfrac{1}{\mathrm{i}\,z}\)
+
+By comparison, \(w=\mathrm{i}\,z\;\;\mathrm{or}\;\;\;\dfrac{1}{\mathrm{i}\,z}\).
+
+Thus, \(w=\mathrm{i}(4-3\mathrm{i})=3+4\mathrm{i}\;\;\;\mathrm{or}\;\;\;\;\;w=\dfrac{1 }{\mathrm{i}\,z}=\dfrac{1}{3+4\mathrm{i}}=\dfrac{1}{25}(3-4\mathrm{i})\).
+
+### Solving equations involving Complex numbers
+
+**Example 6:**
+
+Find the two roots of the equation \(ww^{*}=4+2\mathrm{i}+2\mathrm{i}\,w^{*}\), giving your answers in the form \(a+\mathrm{i}b\), where \(a,\;b\in\mathbb{R}\).
+
+**Solution:**
+
+Let \(w=a+b\mathrm{i}\), where \(a,b\in\mathbb{R}\)
+
+Note the complexity when we substitute \(w=a+\mathrm{i}b\) into the equation.
+
+\(w^{*}=4+2\mathrm{i}+2\mathrm{i}\,w^{*}\)
+
+\(w=a+b\mathrm{i}\left(a-b\mathrm{i}\right)=4+2\mathrm{i}+2\mathrm{i}\left(a-b \mathrm{i}\right)\)
+
+\(w=a^{2}+b^{2}=4+2\mathrm{i}+2a\mathrm{i}+2b\)
+
+The problem develops into a system of 2 unknowns and subsequently 2 equations.
+
+Consequently, 2 equations.
+
+If there are 2 or more unknown complex numbers involved, this method would be too tedious as an approach and inadvisable in general.
+
+Hence the two roots are \(-1-\mathrm{i}\) and \(-1+3\mathrm{i}\).
+
+[MISSING_PAGE_FAIL:9]
+
+**Chapter 10: Complex Numbers**
+
+**Self-Review 3:** Solve the simultaneous equations \(\mathrm{i}z+2w=2\), \(z-\left(1+\mathrm{i}\right)w=4\), giving your answers in the form \(x+\mathrm{i}y\), where \(x\), \(y\in\mathbb{R}\). \([z=6-4\mathrm{i},w=-1-3\mathrm{i}]\)
+
+\begin{tabular}{|l l|} \hline Given: & \(\mathrm{i}z+2w=2\) & \(\ldots\) (1) \\  & \(z-\left(1+\mathrm{i}\right)w=4\) & \(\ldots\) (2) \\ (1) - \(\mathrm{i}\times(2)\); & \(2w+\mathrm{i}(1+\mathrm{i})w=2-4\mathrm{i}\) \\ Thus & \(\left[2+\mathrm{i}(1+\mathrm{i})\right]w=2-4\mathrm{i}\) \\  & \(\Rightarrow w=\dfrac{2-4\mathrm{i}}{2+\mathrm{i}+\mathrm{i}^{2}}=\dfrac{2-4 \mathrm{i}}{1+\mathrm{i}}=-1-3\mathrm{i}\) \\ Hence, & \(z=4+(1+\mathrm{i})w=4+(1+\mathrm{i})(-1-3\mathrm{i})=6-4\mathrm{i}\). \\ \hline \end{tabular}
+
+**Conjugate Root Theorem**
+
+Let \(\mathfrak{f}(z)\) be a polynomial in \(z\) with **real coefficients**. If \(\alpha\) is a complex root of \(\mathfrak{f}(z)=0\), then \(\alpha^{*}\) is also a root.
+
+E.g. Suppose the equation \(az^{4}+bz^{3}+cz^{2}+dz+e=0\), where \(a\), \(b\), \(c\), \(d\) and \(e\) are real numbers, has a complex root \(\alpha\). Then \(\mathrm{a}^{*}+\mathrm{b}\alpha^{3}+\mathrm{c}\alpha^{2}+\mathrm{d}\alpha+ \mathrm{e}=0\) \(\Rightarrow(\mathrm{a}\alpha^{4}+\mathrm{b}\alpha^{3}+\mathrm{c}\alpha^{2}+ \mathrm{d}\alpha+\mathrm{e})^{*}=0^{*}=0\) \(\Rightarrow(\mathrm{a}\alpha^{4})^{*}+(\mathrm{b}\alpha^{3})^{*}+(\mathrm{c} \alpha^{2})^{*}+(\mathrm{d}\alpha)^{*}+\mathrm{e}^{*}=0\) \(\Rightarrow\) \(\mathrm{a}^{*}(\alpha^{4})^{*}+\mathrm{b}^{*}(\alpha^{3})^{*}+\mathrm{c}^{*}( \alpha^{2})^{*}+\mathrm{d}^{*}(\alpha^{2})^{*}+\mathrm{e}=0\) \(\Rightarrow\) \(\mathrm{a}(\alpha^{*})^{4}+\mathrm{b}(\alpha^{*})^{*}+\mathrm{c}(\alpha^{2})^{ *}+\mathrm{d}(\alpha^{*})+\mathrm{e}=0\) \(\Rightarrow\) \(\mathrm{a}^{*}(\alpha^{*})^{4}+\mathrm{b}(\alpha^{*})^{*}+\mathrm{c}(\alpha^{ 2})^{*}+\mathrm{d}(\alpha^{*})^{*}+\mathrm{e}=0\) \(\Rightarrow\) \(\mathrm{a}^{*}(\alpha^{*})^{4}+\mathrm{b}(\alpha^{*})^{*}+\mathrm{c}(\alpha^{ 2})^{*}+\mathrm{d}(\alpha^{*})^{*}+\mathrm{e}=0\) Then \(\alpha^{*}\) is also a root.
+
+In general, whenever a polynomial equation with **real coefficients** has complex roots, by Conjugate Root Theorem, the complex roots will occur in conjugate pairs.
+
+**Example 9:**
+
+Without the use of GC, solve the equation \(z^{4}+z^{3}-8z^{2}+14z-8=0\) given that \(1+\mathrm{i}\) is one of the roots.
+
+**Solution:**
+
+Since \(z^{4}+z^{3}-8z^{2}+14z-8=0\) has **real coefficients**, by Conjugate Root Theorem, \(1-\mathrm{i}\) is another root.
+
+Then \([z-(1+\mathrm{i})]\) and \([z-(1-\mathrm{i})]\) are factors of the expression on the RHS of the given equation.
+
+Hence, \([z-(1+\mathrm{i})][z-(1-\mathrm{i})]\) is also a factor of it.
+
+That is,
+
+\(x^{2}-(\mathrm{sum}\) of roots)\(x+(\mathrm{product}\) of roots) = 0
+
+\(z^{2}-2\pm\pm 2\)
+
+[MISSING_PAGE_FAIL:11]
+
+**Chapter 10: Complex Numbers**
+
+Given that \(z=-2+3i\) is a root of the equation \(2z^{2}+(-1+4i)z+c=0\), find the complex number \(c\) and the other root.
+
+**Solution:**
+
+Let \(\alpha=-2+3i\) and the other root be \(\beta\)
+
+\(\alpha+\beta=-1+Mi\)
+
+\(\beta=\frac{c}{2}-2i-(-2+3i)=\frac{5}{2}-5i\)
+
+\(\alpha+\beta=-\frac{b}{a}\), \(\alpha\beta=\frac{c}{a}\)
+
+\(\beta=\frac{c}{a}\)
+
+\(\beta=\frac{c}{2}-2+3i)(\frac{f}{2}-5i)>20\nu 5i\)
+
+Why can't we use Conjugate Root Theorem?
+
+**Self-Review 4:** (NJC Prelim 2007/I/1) Without the use of GC, verify that \(-2+3i\) is a root of the equation \(z^{3}+5z^{2}+17z+13=0\) and hence determine the other roots of the equation.
+
+\([-2-3i,-1]\)
+
+**Solution:**
+
+\(\left(-2+3i\right)^{2}=(-2)^{2}+2(-2)(3i)+(3i)^{2}=4-12i+9i^{2}=-5-12i\)
+
+\(\left(-2+3i\right)^{3}=\left(-2+3i\right)^{2}\left(-2+3i\right)=\left(-5-12i \right)\left(-2+3i\right)=10-15i+24i+36=46+9i\)
+
+Substitute \(z=-2+3i\) into the equation \(z^{3}+5z^{2}+17z+13=0\),
+
+\(\left(-2+3i\right)^{2}+5\left(-2+3i\right)^{2}+17\left(-2+3i\right)+13=46+9i+ 5\left(-5-12i\right)-21+51i=0\)
+
+Hence \(-2+3i\) is a root of the equation.
+
+By conjugate root theorem, since the coefficients are real numbers, the conjugate is also a root. Thus \(\big{(}z-(-2+3i)\big{)}\big{(}z-(-2-3i)\big{)}\) is a factor, i.e., \(z^{2}+4z+13\) is a factor.
+
+Since \(z^{3}+5z^{2}+17z+13=\big{(}z^{2}+4z+13\big{)}(z+1)\). Thus the roots are \(z=-2\pm 3i,-1\)
+
+### The Argand Diagram
+
+The \(x\)-axis of the Cartesian plane represents the real part of a complex number, while the \(y\)-axis represents the imaginary part. Hence, the \(x\)-axis is called real axis while the \(y\)-axis is the imaginary axis.
+
+We use the point \(P\) with coordinates \((a,\,b)\) to represent the complex number \(z=a+b\)i.
+
+\(b\)\(P=z\)
+
+\(O\)\(a\)
+
+A diagram in which complex numbers are represented this way is called an **Argand Diagram**. (This idea was introduced by the French Mathematician Argand, hence this diagram is known as
+
+**Chapter 10: Complex Numbers**
+
+the **Argand diagram.**) We say that the complex number \(z\) is represented by the point \(P\). Sometimes this is written as \(P\equiv z\).
+
+**Example 12:**
+
+Show on the Cartesian plane the following complex numbers \(3+2\mathrm{i}_{1}-4+\mathrm{i}_{1}-3-5\mathrm{i}_{1}\)\(3-2\mathrm{i}\).
+
+**Solution:**
+
+ThinkZone:
+
+It is always good to draw to scale for all Argand diagram.
+
+A distorted diagram will distort your view.
+
+Notice, \(3+2\mathrm{i}\) and \(3-2\mathrm{i}\) are reflections of each other in the real axis.
+
+**Conjugation**
+
+Again for simplicity, let \(z=a+b\mathrm{i}\) where \(a\!>\!0\) and \(b\!>\!0\).
+
+The conjugate of \(z\), \(z^{\star}=a\!-b\mathrm{i}\). Let \(P\equiv z\) and \(Q\equiv z^{\star}\).
+
+**Note:**
+
+(a) \(z^{\star}\) will be represented by \(Q\) is the reflection of \(P\) (\(a\), \(b\)) in the Real axis, i.e. \(Q\) (\(a\), \(-b\)).
+
+(b) \(-z\) will be represented by \(P^{\prime}\) (\(-a\), \(-b\)). It is the reflection in the origin of the point \(P\) (\(a\), \(b\)) representing \(z\).
+
+[MISSING_PAGE_EMPTY:14]
+
+**Chapter 10: Complex Numbers**
+
+**Vector Representation**
+
+In vector form, the complex number \(a+bi\) may be alternatively represented in the Argand diagram by the position vector \(\overrightarrow{OP}\) where \(P\) is \((a\,\ b)\).
+
+Note: Do **not** write \(\overrightarrow{OP}=z\) (A vector **cannot** be equal to a complex number). Instead, we will write \(P\equiv z\)
+
+**Addition of Two Complex Numbers in an Argand Diagram**
+
+Geometrically, if \(P_{1}\), \(P_{2}\) represent the complex numbers \(z_{i}\), \(z_{2}\), then \(P\equiv z_{1}+z_{2}\) where \(P\) is the 4th vertex of the parallelogram determined by the points, \(O\), \(P_{1}\), \(P_{2}\).
+
+**Subtraction of Two Complex Numbers in an Argand Diagram**
+
+Writing \(z_{1}-z_{2}\) as \(z_{1}+(-z_{2})\), the point \(P\), the 4th vertex of the parallelogram determined by the points \(O\), \(P_{1}\), \(P_{2}\)' represents \(z_{1}-z_{2}\).
+
+**Note: Addition and subtraction of two complex numbers are 'the same' as vector addition and subtraction.**
+
+**Multiplication of a complex number by i**
+
+For the sake of simplicity, let \(z=a+b\)i where \(a,b\in\mathbb{R}\) and \(a>0\), \(b>0\).
+
+i\(z=\) i\((a+b\ )=a\ \mathrm{i}+b\ \mathrm{i}^{2}\ =-b+a\)i.
+
+[MISSING_PAGE_EMPTY:16]
+
+### Trigonometric form (or Polar form) of a Complex Number
+
+#### 10.5.1 Modulus and argument:
+
+Let point \(P\) represents the complex number \(z=x+\mathrm{i}y\).
+
+Let the length of the line segment \(OP\) be \(r\) and the angle subtended by \(OP\) and the real axis be \(\theta\).
+
+Then \(x=r\cos\theta,y=r\sin\theta\) and \(r=\sqrt{x^{2}+y^{2}}\).
+
+\(r\) is called the **modulus of \(z\)** and is denoted by \(|z|\), i.e. \(r=|z|=\left|x+iy\right|=\sqrt{x^{2}+y^{2}}\).
+
+\(\theta\) is called the **argument of \(z\)** and is denoted by \(\arg z\), i.e. \(\theta=\arg z=\arg(x+\mathrm{i}y)\).
+
+**Chapter 10: Complex Numbers**
+
+\begin{tabular}{|l|l|} \hline
+**Note:** & \\ \hline If \(P\) is **above** the real axis, \(\theta\) is measured **anti-clockwise sense** and \(\theta\) is **positive**. & If \(P\) is **below** the real axis, \(\theta\) is measured **clockwise sense** and \(\theta\) is **negative**. \\ \hline \end{tabular}
+
+Conventionally, we restrict \(\theta\) to the range \(-\pi<\theta\leq\pi\), called the **principal range**. The **unique** value of \(\theta\) lying in the principal range is called the **principal argument**. From now onwards, the argument of a complex number is taken to be the principal argument unless otherwise stated. Follow the **ABS** approach to get the principal argument correctly.
+
+**Step 1.**: Argand diagram: To find the argument of a complex number, always **draw an Argand diagram** and indicate on the diagram which quadrant the complex number lies in.
+**Step 2.**: Basic angle: Find basic angle\(=\alpha=\tan^{-1}\left(\left|\frac{y}{x}\right|\right)\)
+**Step 3.**: Sign: Find the sign and magnitude of the argument of a complex number. This depends on which quadrant the complex number is in.
+
+\begin{tabular}{|l|l|} \hline
+**2\({}^{\text{nd}}\) Quadrant:** & \(\text{Im}(z)\) & \(\text{Im}(z)\) \\ \hline \(\text{arg}(z)=\pi-\alpha\) & \(\text{arg}(z)=\alpha\) & \(\text{Re}(z)\) \\ Argument is positive and obtuse. & Argument is positive and acute. \\ \hline \end{tabular}
+
+\begin{tabular}{|l|l|} \hline
+**3\({}^{\text{rd}}\) Quadrant** & \(\text{Im}(z)\) & \(\text{4}^{\text{th}}\) Quadrant & \(\text{Im}(z)\) \\ \hline \(\text{arg}(z)=-(\pi-\alpha)\) & \(\text{arg}(z)=-\alpha\) & Argument is negative and obtuse. \\ Argument is negative and obtuse. & Argument is negative and acute. \\ \hline \end{tabular}
+
+**Chapter 10: Complex Numbers**
+
+**10.5.2 Complex Number in Trigonometric form (or Polar form)**
+
+Consider the complex number \(z=x+\mathrm{i}y\) in the Argand diagram shown below:
+
+If the _principal argument_ of \(z=x+\mathrm{i}y\) is defined to be \(\theta\), where \(-\pi<\theta\leq\pi\),
+
+\(z=x+\mathrm{y}\mathrm{i}\)
+
+\(=r\cos\theta+r\sin\theta\,\mathrm{i}\)
+
+\(=r(\cos\theta+\mathrm{i}\sin\theta)\)
+
+\(=r\,\mathrm{e}^{\mathrm{i}\theta}\)
+
+\(z=r\,\mathrm{(cos\ \theta+\mathrm{i}\ \sin\ \theta)}\) where \(-\pi<\theta\leq\pi\) is called the **trigonometric form, modulus argument form or polar form** of the complex number.
+
+**Note:**
+
+(i) If \(z=r(\cos\theta+\mathrm{i}\sin\theta)\), then
+
+\(z^{\ast}=r(\cos\theta-\mathrm{i}\ \sin\ \theta\ )\)
+
+\(=r[\cos(-\theta)+\mathrm{i}\sin\ (-\theta)]\)
+
+Both \(z\) and \(z^{\ast}\) are represented on
+
+an Argand diagram as shown.
+
+It is easy to notice that : \(\left|z\right|=\left|z^{\ast}\right|=r\), \(\arg z^{\ast}=-\arg z=-\theta\) (\(-\pi<\theta\leq\pi\))
+
+(ii) \(z\) is purely real \(\Leftrightarrow\) principal argument of \(z\) is 0 or \(\pi\).
+
+(iii) \(z\) is purely imaginary \(\Leftrightarrow\) principal argument of \(z\) is \(\frac{\pi}{2}\) or \(-\frac{\pi}{2}\).
+
+**Remark:**
+
+It is important to remember the trigonometric ratios of special angles: i.e. \(0\), \(\frac{\pi}{6}\), \(\frac{\pi}{4}\), \(\frac{\pi}{3}\), \(\frac{\pi}{2}\). The following examples will illustrate the relationship between "special" complex numbers with these \(\varepsilon_{\nu}\)-cial angles.
+
+[MISSING_PAGE_EMPTY:20]
+
+**Chapter 10: Complex Numbers**
+
+**GC basics to calculate \(|\,z\,|\) and \(\,\arg(z)\) :**
+
+You may use the GC to calculate the modulus and the argument of a complex number.
+
+Take for e.g. in Example 16(c), \(\,z=-\sqrt{3}+\mathrm{i}\,\).
+
+To find the modulus, we can key to access the modulus function, and type in our complex number accordingly.
+
+(note: if it is a irrational number, you can square the number, then square root it back to get the nice surd form)
+
+To find the angle, we can key to get the argument of the complex number
+
+(note: the number given is usually irrational, we can divide our answer by \(\,\pi\,\) to see if \(\arg(z)\) is a nice number in terms of \(\,\pi\,\).
+
+#### Multiplication in Trigonometric Form
+
+If \(\,z_{1}=r_{1}\big{(}\cos\theta_{1}+\mathrm{i}\sin\theta_{1}\big{)}\,\) and \(\,z_{2}=r_{2}\big{(}\cos\theta_{2}+\mathrm{i}\sin\theta_{2}\big{)}\,\), then
+
+\[\,z_{1}z_{2} =r_{1}r_{2}\big{(}\cos\theta_{1}+\mathrm{i}\sin\theta_{1}\big{)} \big{(}\cos\theta_{2}+\mathrm{i}\sin\theta_{2}\big{)}\] \[=r_{1}r_{2}\big{[}\big{(}\cos\theta_{1}\cos\theta_{2}-\sin\theta_ {1}\sin\theta_{2}\big{)}+\mathrm{i}\big{(}\sin\theta_{1}\cos\theta_{2}+\cos \theta_{1}\sin\theta_{2}\big{)}\big{]}\] \[=r_{1}r_{2}\big{[}\cos\big{(}\theta_{1}+\theta_{2}\big{)}+\mathrm{ i}\sin\big{(}\theta_{1}+\theta_{2}\big{)}\big{]}\]
+
+In general,
+
+\[\,z_{1}z_{2}....z_{n}=r_{1}r_{2}^{\prime}....r_{n}\Big{[}\cos\big{(}\theta_{1} +\theta_{2}+.....+\theta_{n}\big{)}+\mathrm{i}\sin\big{(}\theta_{1}+\theta_{2} +.....+\theta_{n}\big{)}\Big{]}\]
+
+Taking \(\,z_{1}=z_{2}=....=z_{n}=z\)
+
+\[\,z^{n}=r^{\,n}\big{(}\,\cos\,n\theta+\mathrm{i}\sin\,n\theta\,\big{)}\]
+
+\[\,\Big{|}\,z^{n}\,\Big{|}=\big{|}\,z\big{|}^{n}\,\,\,\,,\,\,\,\,\,\,\,\,\arg \big{(}\,z^{n}\,\big{)}=n\theta=n\arg\big{(}\,z\big{)}\,\,\,\,\,\,\,\,\,\,\,\, \,\,\,\,\,\,\,\
+
+[MISSING_PAGE_EMPTY:23]
+
+[MISSING_PAGE_EMPTY:24]
+
+[MISSING_PAGE_EMPTY:25]
+
+[MISSING_PAGE_EMPTY:26]
+
+[MISSING_PAGE_EMPTY:27]
+
+**Example 21**: (Method of "taking out half power" )
+
+Show that the modulus of the complex number \(z_{1}\), where \(z_{1}=1+\mathrm{e}^{\mathrm{i}\pi/3}\), is \(\sqrt{3}\), and find its argument.
+
+**Example 22**: Show that \(\mathrm{e}^{\mathrm{i}2\theta}+\mathrm{e}^{\mathrm{i}\pi/2\theta}\) is a real number for all \(\theta\). The complex number \(w\) is given by \(w=\frac{2}{1+\mathrm{e}^{\mathrm{i}\theta}}\) where \(0<\theta<\pi\). Hence show that \(\mathrm{Re}\big{(}w\big{)}=1\).
+
+[MISSING_PAGE_EMPTY:29]
+
+## Appendix A Nanyang Junior College
+
+Department of mathematics
+
+**YEAR 1 (2019) H2 Mathematics Tutorial 10a Complex Numbers**
+
+**OPERATION WITH COMPLEX NUMBERS**
+
+1. Simplify the following complex numbers without the use of GC.
+
+(a) \((3-7i)(-4+i)\) (b) \(\frac{7+5i}{4-3i}\)
+
+(c) \(\left(\frac{1+\sqrt{3}\,i}{1-\sqrt{3}\,i}\right)^{2}\) (d) \(\frac{3-4i}{-i+2}\) - \(\frac{7-4i}{3+2i}\) (e) \(\frac{\left(7+8i\right)^{10}}{\left(-8+7i\right)^{11}}\)
+
+_(Check your answers using GC.)_
+
+2. **Without the use of a graphing calculator,** find the square roots of \(21-20i\).
+
+3. **N2002/I/5**
+
+(i) The complex number \(x+iy\) is such that \((x+iy)^{2}=i\). Find the possible values of the real numbers \(x\) and \(y\), giving your answers in exact form.
+
+(ii) Hence find the possible values of the complex number \(w\) such that \(w^{2}=-i\)
+
+4. (a) Two complex numbers \(w\) and \(z\) are such that
+
+\[2w+z=12i\quad\,,\,\,\,w+2z=-\frac{13+4i}{2-i}.\]
+
+Find \(w\) and \(z\), giving each answer in the form \(x+iy\).
+
+(b) Two complex numbers \(w\) and \(z\) are such that
+
+\[2w^{*}+z=12i\quad\,,\,\,\,w+2z=-6-i.\]
+
+Find \(w\) and \(z\), giving each answer in the form \(x+iy\).
+
+(c) **2016/MJC/Prelim/I/Q10(a)**
+
+Solve the simultaneous equations
+
+\[z=w+2i-1\,\,\,\,\mbox{and}\,\,\,z^{2}-iw+\frac{5}{2}=0\,,\]
+
+giving \(z\) and \(w\) in the form \(x+yi\) where \(x\) and \(y\) are real.
+
+5. **N2008/I/8**
+
+A graphic calculator is not to be used in answering this question.
+
+(i) It is given that \(z_{1}=1+\sqrt{3}\,i\). Find the value of \(z_{1}\), showing clearly how you obtain your answer.
+
+(ii) Given that \(1+\sqrt{3}\,i\) is a root of the equation \(2z^{3}+az^{2}+bz+4=0\), find the values of the real numbers \(a\) and \(b\).
+
+3. For these values of \(a\) and \(b\), solve the equation in part (ii), and show all the roots on an Argand diagram.
+6. **2011/RI/Prelim/II/I** Given that one of the roots of the equation \(z^{4}-az^{3}+10z-25=0\) is \(1+2{\rm i}\) where \(a\) is real, show that \(a=2\). Without using the graphic calculator, find the other roots of the equation in exact form. Hence find the roots of the equation \((w-1)^{4}+2(w-1)^{3}-10(w-1)-25=0\), giving your answers in exact form.
+7. **9233/N2007/I/9 (Modified)** The equation \(az^{4}+bz^{3}+cz^{2}+dz+e=0\) has a root \(z=ki\), where \(k\) is real and non-zero. Given that the coefficients \(a\), \(b\), \(c\), \(d\) and \(e\) are real, show that \[ad^{2}+b^{2}e=bcd.\] Verify that this condition is satisfied for the equation \[z^{4}+3z^{3}+13z^{2}+27z+36=0\] And hence find two roots of this equation which are of the form \(z=ki\), where \(k\) is real. Hence express \(z^{4}+3z^{3}+13z^{2}+27z+36\) as a product of 2 quadratic factors.
+8. **2016/DHS/Prelim/I/Q2** The complex number \(w\) is such that \(kw^{2}+kww^{*}+{\rm i}w-{\rm i}w^{*}-1=0\), where \(w^{*}\) is the complex conjugate of \(w\) and \(k\) is a real and non-zero constant. (i) For \(w=a+bi\) where \(a\) and \(b\) are real numbers, obtain an expression for \(b\) in terms of \(a\) and \(k\). Explain why \(w\) is either purely real or purely imaginary. (ii) Using your result in part (i), or otherwise, find the real roots of the equation \(2w^{2}+2ww^{*}+{\rm i}w-{\rm i}w^{*}-1=0\).
+9. **2016/HCI/Prelim/II/Q2(a)** Given that \(z_{1}=-\dfrac{{\rm i}}{2}\) is a root of the equation \(2z^{3}+\bigl{(}{\rm i}-8\bigr{)}z^{2}+az+13{\rm i}=0\), find the complex number \(a\) and solve the equation, giving your answer in Cartesian form \(x+{\rm i}y\). Hence, find in Cartesian form the roots of the equation \(2w^{3}+\bigl{(}1+8{\rm i}\bigr{)}w^{2}-aw-13=0\).
+
+**Answers**
+
+1. (a) \(-5+31{\rm i}\) (b) \(\dfrac{13+4{\rm i}}{25}\) (c) \(-\dfrac{1}{2}-\dfrac{\sqrt{3}}{2}{\rm i}\) (d) \(1+{\rm i}\) (e) \(\dfrac{8+7{\rm i}}{113}\)
+2. \(\pm(5-2{\rm i})\)3. (i) \(x\!=\!\pm\frac{\sqrt{2}}{2}\) \(y\!=\!\pm\frac{\sqrt{2}}{2}\), (ii)\(\pm\!\frac{\sqrt{2}}{2}(-1\!+\!{\rm i})\)
+4. (a) \(w\!=\!2+\frac{25}{3}{\rm i}\), \(z\!=\!-4\!-\!\frac{14}{3}{\rm i}\),(b) \(w\!=\!2-5{\rm i}\), \(z\!=\!-4\!+2{\rm i}\)
+5. (i) \(w\!=\!\frac{3}{2}\!-\!\frac{1}{2}{\rm i}\), \(z\!=\!\frac{1}{2}\!+\!\frac{3}{2}{\rm i}\) or \(w\!=\!\frac{1}{2}\!-\!\frac{5}{2}{\rm i}\), \(z\!=\!-\frac{1}{2}\!-\!\frac{1}{2}{\rm i}\)
+6. \(z\!=\!1\!\pm 2{\rm i}\), \(\pm\!\sqrt{5}\), \(w\!=\!\pm 2{\rm i}\), \(\pm\!\sqrt{5}\)
+7. \(\pm 3{\rm i}\)
+8. (i) \(b\!=\!\frac{2ka^{2}-1}{2}\) (ii) \(w\!=\!-\!\frac{1}{2}\) or \(w\!=\!\frac{1}{2}\)
+9. \(a\!=\!26-4{\rm i}\), \(z\!=\!-\!\frac{{\rm i}}{2}\) or \(z\!=\!2\!\pm 3{\rm i}\), \(w\!=\!-\!\frac{1}{2}\) or \(w\!=\!\pm 3\!-2{\rm i}\)
+
+**Assignment**
+
+1. **[CJC/Prelim/2017/1I/Q4 part] (a)** The complex numbers \(z\) and \(w\) satisfy the simultaneous equations \(z+w^{*}\!+\!5{\rm i}\!=\!10\) and \(\left|w\right|^{2}=z\!+\!18\!+\!{\rm i}\). Find \(z\) and \(w\). [4] (b) (i) It is given that \(2\!+\!{\rm i}\) is a root of the equation \(z^{2}-5z\!+\!7\!+\!{\rm i}\!=\!0\). Find the second root of the equation in cartesian form, showing your working clearly. [2] (ii) Hence find the roots of the equation \(-{\rm i}w^{2}+5w\!+\!7{\rm i}\!-\!1\!=\!0\). [2]
+2. **[YJC Prelim 9758/2017/02/Q3] Do not use a calculator in answering this question.** Given that \(z\!=\!1\!+\!{\rm i}\) is a root of the equation \(2z^{4}+az^{3}+7z^{2}+bz+2\!=\!0\), find the values of the real numbers \(a\) and \(b\) and the other roots. [5] Deduce the roots of the equation \(2z^{4}+bz^{3}+7z^{2}+az+2\!=\!0\). [2]Nanyang Junior College
+
+Department of Mathematics
+
+**Year 1 (2019)**
+
+**H2 Mathematics Tutorial 10B**
+
+**Complex Numbers**
+
+**Geometry of Complex Numbers and Polar Representation**
+
+1. Express the following complex numbers in the polar form, stating the modulus and argument, as well as in exponential form. Represent each on an Argand diagram: (a) \(1+\sqrt{3}\) i (b) \(-6-6\) i (c) \(-2\) i
+2. Express the complex number \(z=\dfrac{7+5\mathrm{i}}{6-\mathrm{i}}\) in polar form. Find the modulus and argument of \(2z\), \(1/z\), \(z^{*}\) and iz.
+3. **MI/2015/1/11(c)**
+
+Given that \(\left|z^{2}\right|=2\), \(\left|wz\right|=2\sqrt{2}\), \(\arg\left(-\mathrm{i}z\right)=\dfrac{\pi}{4}\) and \(\arg\left(\dfrac{z^{2}}{w}\right)=-\dfrac{5\pi}{6}\), find \(w\) in the form \(a+bi\), where \(a\) and \(b\) are real coefficients to be determined.
+4. Let \(z\) be a complex number with \(0<\arg z<\dfrac{\pi}{2}\). Let \(A\) represents \(z\) on the Argand diagram. Sketch on \(\underline{\mathbf{a}}\)
+
+**single Argand diagram**, \(A\) and the points representing the following complex numbers: (a) \(2z\) (b) \(-z\) (c) \(z^{*}\) (d) \(-z^{*}\) (e) iz (f) \(-\)iz
+
+You should illustrate the geometrical relationship for each point with respect to \(A\) clearly on your diagram.
+5. In an Argand diagram the points \(A\), \(B\) and \(C\) represent the complex numbers \(a\), \(6+8\mathrm{i}\) and \(c\) respectively. \(OABC\) is a square described in an anti-clockwise sense. Find \(c\) in terms of \(a\). Find by calculation, \(a\) and \(c\).
+6. **N2002/11/2b**
+
+Given that \(\arg\bigl{(}a+ib\bigr{)}=\theta\), where \(a>0\), \(b>0\), find, in terms of \(\theta\) and \(\pi\), the value of
+
+(i) \(\arg\bigl{(}-a+ib\bigr{)}\) (ii) \(\arg\bigl{(}-a-ib\bigr{)}\) (iii) \(\arg\bigl{(}b+ia\bigr{)}\)
+7. **N1996/II/12(a)**
+
+The complex numbers \(z\) and \(w\) are given by \(z=-3+2i\) and \(w=5+4i\).
+
+1. Find \(\left|z\right|\) and \(\arg z\), expressing the modulus in surd form and the argument in radians correct to 3 significant figures. 2. Express \(\dfrac{z}{w}\) in the form \(a+bi\), where \(a\) and \(b\) are exact fractions. 3. In an Argand diagram the points \(Z\) and \(W\) represent the complex numbers \(z\) and \(w\) respectively, and \(Z^{*}\) represents \(z^{*}\), the complex conjugate of \(z\). The point \(P\) is such that \(ZWZ^{*}P\) (in that order) is a parallelogram. Find the complex number \(p\) represented by \(P\).
+
+8. **ACJC/2010/1/4** The complex number \(w\) has modulus 3 and argument \(\frac{2\pi}{3}\). Find the modulus and argument of \(\frac{-i}{w*}\), where \(w*\) is the complex conjugate of \(w\). Hence express \(\frac{-i}{w*}\) in the form \(a+ib\), where \(a\) and \(b\) are real, giving the exact values of \(a\) and \(b\) in non-trigonometrical form. Find the possible values of \(n\) such that \(\left(\frac{-i}{w*}\right)^{n}\) is purely imaginary.
+9. **N2000/II/14(a)** The complex number \(w\) has modulus \(\sqrt{2}\) and argument \(-\frac{3}{4}\pi\), and the complex number \(z\) has modulus 2 and argument \(-\frac{1}{3}\pi\). Find the modulus and argument of \(wz\), giving each answer exactly. By expressing \(w\) and \(z\) in the form \(x+iy\), find the real and imaginary parts of \(wz\). Hence show that \(\sin\left(\frac{1}{12}\pi\right)=\frac{\sqrt{3}-1}{2\sqrt{2}}\).
+10. **J90/II/12(a)** Find the modulus of the complex number \(\frac{2i}{3-4i}\), and show that the argument, in radians, is 2.5, correct to one decimal place. Hence, find correct to one decimal place, the value of \(x\) and a value of \(y\) such that \(\mathrm{e}^{*+iy}=\frac{2i}{3-4i}\).
+11. **N1998/2/12b** The complex number \(q\) is given by \(q=\frac{\mathrm{e}^{i\theta}}{1-\mathrm{e}^{i\theta}}\), where \(0<\theta<2\pi\). In either order, (i) find the real part of \(q\), (ii) show that the imaginary part of \(q\) is \(\frac{1}{2}\cot\left(\frac{1}{2}\theta\right)\).
+12. **N99/II/12** 1. The complex numbers \(2\mathrm{e}^{\frac{1}{3}\pi i}\) and \(2\mathrm{e}^{\frac{1}{3}\pi i}\) are represented by the points \(A\) and \(B\) respectively in an Argand diagram with origin \(O\). Show that triangle \(OAB\) is equilateral. 2. The complex numbers \(z\) and \(w\) each have modulus \(R\), and have argument \(\alpha\) and \(\beta\) respectively, where \(0<\alpha<\beta<\frac{1}{2}\pi\). In either order, (i) show that \(z+w=2R\cos\frac{1}{2}(\beta-\alpha)\mathrm{e}^{\frac{1}{3}(\alpha+\beta)i}\), express \(|z+w|\) and \(\arg(z+w)\) in terms of \(R\), \(\alpha\) and \(\beta\), as appropriate. Show also that \(|z-w|=2R\sin\frac{1}{2}(\beta-\alpha)\). (ii) The complex number \(z\) and \(w\) are represented by the points \(Z\) and \(W\) respectively in an Argand diagram with origin \(O\). Triangle \(OZW\) has area \(\Delta\). Show that \(|z^{2}-w^{2}|=4\Delta\).
+
+**Answers:**
+
+1. (a) \(2\left(\cos\frac{\pi}{3}+\mathrm{i}\sin\frac{\pi}{3}\right)\) (b) \(6\sqrt{2}\left[\cos\left(-\frac{3\pi}{4}\right)+\mathrm{i}\sin\left(-\frac{3\pi}{4 }\right)\right]\) (c) \(2\left[\cos\left(-\frac{\pi}{2}\right)+\mathrm{i}\sin\left(-\frac{\pi}{2} \right)\right]\)
+2. \(\sqrt{2}\left(\cos\frac{\pi}{4}+\mathrm{i}\sin\frac{\pi}{4}\right)\); \(2\sqrt{2}\;,\frac{\pi}{4}\); \(\frac{1}{\sqrt{2}},-\frac{\pi}{4}\); \(\sqrt{2}\;,-\frac{\pi}{4}\); \(\sqrt{2}\), \(\frac{3\pi}{4}\)
+3. \(1+\sqrt{3}\mathrm{i}\) 5. \(a=7+\mathrm{i}\), \(c=-1+7\mathrm{i}\)
+6. (i) \(\pi-\theta\) (ii) \(-\pi+\theta\) (iii) \(\frac{\pi}{2}-\theta\) 7. (a)\(\sqrt{13}\), 2.55 (b) \(-\frac{7}{41}+\frac{22}{41}\mathrm{i}\) (c)\(-11-4\mathrm{i}\)
+8. \(\frac{1}{3}\), \(\frac{\pi}{6}\), \(\frac{\sqrt{3}}{6}+\frac{i}{6}\), \(3(2k+1),k\in\mathbb{Z}\) 9. \(2\sqrt{2}\), \(\frac{11}{12}\pi\); \(\mathrm{Re}\left(wz\right)=-1-\sqrt{3}\), \(\mathrm{Im}\left(wz\right)=\sqrt{3}-1\)
+10. \(\frac{2}{5}\), \(x=\ln\frac{2}{5}\), \(y=2.5\) 11. \(-\frac{1}{2}\)
+
+**Assignment**
+
+1. **ACJC/Prelim/2007/1/5**
+
+Show that complex number \(z=1+\mathrm{e}^{-\frac{\mathrm{i}\pi}{3}}\) can be expressed as \(\sqrt{3}\mathrm{e}^{-\frac{\mathrm{i}\pi}{6}}\). The complex number \(zw\) has modulus 5 and argument \(\frac{3}{4}\pi\). Find the complex number \(w\) in exact polar form.
+
+2. **SAJC Prelim 9758/2017/01/Q7**
+
+**(i)** Show that for any complex number \(z=r\mathrm{e}^{\mathrm{i}\theta}\), where \(r>0\), and \(-\pi<\theta\leq\pi\),
+
+\[\frac{z}{z-r}=\frac{1}{2}-\frac{1}{2}\left(\cot\frac{\theta}{2}\right)\mathrm{ i}\;. \tag{3}\]
+
+**(ii)** Given that \(z=2\mathrm{e}^{\mathrm{i}\left(\frac{\pi}{3}\right)}\) is a root of the equation \(z^{2}-2z+4=0\). State, in similar form the other root of the equation. [1]
+
+**(iii)** Using parts **(i)** and **(ii)**, solve the equation \(\frac{4w^{2}}{\left(w-1\right)^{2}}-\frac{4w}{w-1}+4=0\). [4]
+
+3. **CJC Prelim 9758/2017/02/Q4c**
+
+The complex number \(z\) is given by \(z=-a+a\mathrm{i}\), where \(\alpha\) is a positive real number.
+
+**(i)** It is given that \(w=-\frac{\sqrt{2}z^{*}}{z^{4}}\). Express \(w\) in the form \(r\mathrm{e}^{\mathrm{i}\theta}\), in terms of \(\alpha\), where \(r>0\) and \(-\pi<\theta\leq\pi\).
+
+**(ii)** Find the two smallest positive whole number values of \(n\) such that \(\mathrm{Re}\left(w^{n}\right)=0\). [3]
+
+**Extra Practice Questions**
+
+(_The questions will not be discussed during tutorials. Full solutions will be uploaded to SLS_)
+
+**1 RVHS/2012 Prelim/I/Q1**
+
+One root of the equation \(z^{4}-2z^{3}+14z^{2}+az+b=0\), where \(\alpha\) and \(b\) are real, is \(z=1+2\mathrm{i}\). Find the values of \(a\) and \(b\) and the other roots. [5]
+
+Deduce the roots of the equation \(z^{4}+2iz^{3}-14z^{2}-18iz+45=0\). [2]
+
+**TJC/2012 Prelim/I/Q2**
+
+Consider the equation \(2z^{3}+\left(1-2\mathrm{i}\right)z^{2}-\left(a+b\mathrm{i}\right)z+2+2\mathrm{i }=0\), where \(a\) and \(b\) are real. Given that \(-2\) is a root of the equation, find the values of \(a\) and \(b\).
+
+Given also that \(1+\mathrm{i}\) is another root, find the third root of the equation. [3]
+
+**JJC/2014 Prelim/I/Q10a**
+
+Given that the complex number \(z=\left(1+\mathrm{i}\right)t+\dfrac{1-\mathrm{i}}{t}\) is represented by the point \(P\) on an Argand diagram where \(t\) is a non-zero real constant. Find the Cartesian equation of the locus of the point \(P\). [3]
+
+**ACJC/2016 Prelim/I/Q8**
+
+The complex number \(z\) is given by \(z=k+\mathrm{i}\) where \(k\) is a non-zero real number.
+
+**(i)** Find the possible values of \(k\) if \(z=k+\mathrm{i}\) satisfies the equation \(z^{3}-\mathrm{i}z^{2}-2z-4\mathrm{i}=0\). [3]
+
+**(ii)** For the complex number \(z\) found in part **(i)** for which \(k>0\), find the smallest integer value of \(n\) such that \(\left|z^{n}\right|>100\) and \(z^{n}\) is real. [3]
+
+**CJC/2016 Prelim/I/Q8**
+
+**Do not use a calculator in answering this question.**
+
+(i) It is given that complex numbers \(z_{1}\) and \(z_{2}\) are the roots of the equation \(z^{2}-6z+36=0\) such that \(\arg(z_{1})>\arg(z_{2})\). Find exact expressions of \(z_{1}\) and \(z_{2}\) in the form \(r\mathrm{e}^{\mathrm{i}\theta}\), where \(r>0\) and \(-\pi<\theta\leq\pi\). [4]
+
+(ii) Find the complex number \(\dfrac{z_{1}^{4}}{\mathrm{i}z_{2}}\) in exact polar form. [3]
+
+Find the smallest positive integer \(n\) such that \(z_{2}^{n}\)'s a positive real number. [2]
+
+**HCI/2016 Prelim/II/Q2 (part)**
+
+Given that \(z_{1}=-\dfrac{\mathrm{i}}{2}\) is a root of the equation \(2z^{3}+\left(\mathrm{i}-8\right)z^{2}+az+13\mathrm{i}=0\), find the complex number \(a\) and solve the equation, giving your answer in Cartesian form \(x+\mathrm{i}y\). [4]
+
+Hence, find in Cartesian form the roots of the equation \(2w^{3}+\left(1+8\mathrm{i}\right)w^{2}-aw-13=0\). [2]
+
+**(a)**: Solve the simultaneous equations
+
+\[z=w+2{\rm i}-1\;\;{\rm and}\;\;z^{2}-{\rm i}w+\frac{5}{2}=0\,,\]
+
+giving \(z\) and \(w\) in the form \(x+y{\rm i}\;\) where \(x\) and \(y\) are real. [5]
+**(b)**: **(i)**: Given that \(z=w-\frac{1}{w}\) where \(w=2\left(\cos\theta+{\rm i}\sin\theta\right)\), \(-\pi<\theta\leq\pi\), express the real and imaginary parts of \(z\) in terms of \(\theta\). [3]
+**(ii)**: Hence show that locus of \(z\) on an Argand diagram lies on the curve with cartesian equation \(\frac{x^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}=1\) where \(a\) and \(b\) are constants. [3]
+**(8)**: **(a)**: Solve \(z^{3}-2\left(2-{\rm i}\right)z^{2}+\left(8-3{\rm i}\right)z-5+{\rm i}=0\), given that one of the three roots is real. [5]
+**(b)**: The complex number \(u\) is given by \(u=\cos\theta+{\rm i}\sin\theta\), where \(0<\theta<\frac{\pi}{2}\). [3]
+**(i)**: Show that \(1-u^{2}=-2{\rm i}u\sin\theta\) and hence find the modulus and argument of \(1-u^{2}\) in terms of \(\theta\). [4]
+
+Given that \(\left(1-u^{2}\right)^{10}\) is real and negative, find the possible values of \(\theta\) in terms of \(\pi\). [3]
+**(9)**: **SAJC/2017 Prelimm/I/Q7**
+
+**(i)**: Show that for any complex number \(z=r{\rm e}^{{\rm i}\theta}\), where \(r>0\), and \(-\pi<\theta\leq\pi\),
+
+\[\frac{z}{z-r}=\frac{1}{2}-\frac{1}{2}\left(\cot\frac{\theta}{2}\right){\rm i}\,.\] [3]
+**(ii)**: Given that \(z=2{\rm e}^{{\rm i}\left(\frac{\pi}{3}\right)}\) is a root of the equation \(z^{2}-2z+4=0\). State, in similar form, the other root of the equation. [1]
+**(iii)**: Using parts **(i)** and **(ii)**, solve the equation \(\frac{4w^{2}}{\left(w-1\right)^{2}}-\frac{4w}{w-1}+4=0\). [4]
+
+[MISSING_PAGE_EMPTY:38]

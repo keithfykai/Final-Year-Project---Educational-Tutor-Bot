@@ -1,0 +1,415 @@
+## Chapter S3: Normal Distribution
+
+**Syllabus Includes**
+
+* Concept of continuous random variables
+* Concept of a normal distribution as an example of a continuous probability model and its mean and variance; use of \(N(\mu,\,\sigma^{2})\) as a probability model
+* Standard normal distribution
+* Finding the value of \(P(X<x_{1})\) or a related probability, given the values of \(x_{1},\,\mu,\sigma\)
+* Symmetry of the normal curve and its properties
+* Finding a relationship between \(x_{1},\,\mu,\sigma\) given the value of \(P(X<x_{1})\) or a related probability
+* Solving problems involving the use of \(E(aX+b)\) and \(Var(aX+b)\)
+* Solving problems involving the use of \(E(aX+bY)\) and \(Var(aX+bY)\), where \(X\) and \(Y\) are independent
+
+**PRE-REOUISITES**
+
+* Concepts of random variable, expectation, variance/standard deviation
+
+**CONTENT**
+
+* **Continuous Random Variable**
+* **Normal Distribution and Normal Curve**
+* Normal Distribution
+* Normal Curve and its Properties
+* Use of GC to Evaluate Normal Probabilities
+* Use of GC to Evaluate Inverse Normal Values
+* **Standard Normal Distribution**
+* **Linear Combinations of Independent Normal Random Variables**
+* Properties of Expectation and Variance of Random Variables
+* Properties of Independent Normal Random Variables
+* Random variable \(X_{1}+X_{2}\) vs random variable \(2X\)* [1] Probability Density Function, Expectation and Variance of Continuous Random Variables
+* [2] Approximating a Binomial Distribution using a Normal Distribution
+* [3] Use of GC to sketch Normal Curves
+* [4] Proof of Mean and Standard Deviation of Standard Normal Random Variable
+
+**INTRODUCTION**
+
+In Chapter S2, we learnt about discrete random variables and a special discrete probability distribution, the binomial distribution.
+
+In this chapter, we shall learn about continuous random variables and the most important continuous distribution in statistics - the normal distribution.
+
+## 1 Continuous Random Variable
+
+Recall that a random variable is a quantity that takes different numerical values according to the outcome of a random experiment.
+
+A continuous random variable can take any value in a given range, and it best describes data such as height, mass, time, distance, etc.
+
+While a discrete random variable is defined by its probability distribution, a continuous random variable is defined by its probability density function.
+
+The probability density function is represented by a curve \(\,y=\mathrm{f}(x)\,\), and the **probabilities are given by the area under the curve**.
+
+As in the case of discrete random variables, we are also interested in the expectation and variance of continuous random variables.
+
+(Refer to Appendix 1 for more information on the probability density function, expectation and variance of continuous random variables)
+
+## 2 Normal distribution and normal curve
+
+### Normal Distribution
+
+Consider the following situation:
+
+A large number of 1kg bags of sugar are weighed to check how accurately they have been filled, and the results are shown in the histogram below.
+
+This histogram is similar to the histograms you might obtain for a variety of different types of data, such as the heights of 5 year-old girls, or the time taken to run 2.4km by 18 year-old boys, or the lifespans of batteries, etc,
+
+Observe that
+
+* the histogram is (almost) symmetrical about the mean, and
+* the percentages of bags with weight close to the mean is higher than the percentage of bags with weight further away from the mean.
+
+If a smooth curve is drawn through the top of the columns, this will give a distribution which is roughly 'bell'-shaped.
+
+Such a distribution can be modelled by the **normal distribution**, whose probability density function is given by
+
+\[\mathrm{f}(x)=\frac{1}{\sqrt{2\pi}\sigma}\mathrm{e}^{-\frac{1}{2}\left(\frac{x -\mu}{\sigma}\right)^{2}},\quad x\in\mathbb{R}\,.\]
+
+Note : There is no need to memorize the complicated function above.
+
+If a continuous random variable \(X\) follows a normal distribution, we write \(X\sim\mathrm{N}(\mu,\sigma^{2})\),
+
+where
+
+\(\bullet\)\(\mathrm{E}(X)=\mu\),
+
+\(\bullet\)\(\mathrm{Var}(X)=\sigma^{2}\).
+
+Remarks :
+
+Recall that in section 1.4 of Chapter S2B, we looked at the graphs of the probability distribution of the random variable \(X\), where \(X\sim\mathrm{B}\left(n,p\right)\). It can be observed that for large \(n\) and value of \(p\) which is not too close to 0 or 1, the shape of the graph of the probability distribution of \(X\) becomes symmetrical and bell-shaped. In fact, for large \(n\) and value of \(p\) which is not too close to 0 or 1, the Binomial distribution can be approximated using a normal distribution. (Refer to Appendix 2 for more details)
+
+### Normal Curve and its Properties
+
+Let \(X\sim\text{N}(\mu,\sigma^{2})\).
+
+Properties of the normal curve are as follow:
+
+\begin{tabular}{l l} \hline
+**(1)** & It is **symmetrical** about the line \(x=\mu\). \\
+**(2)** & The mean, median and mode are all \\  & equal to \(\mu\). \\
+**(3)** & It approaches the \(x-\)axis as \(x\to\pm\infty\). \\
+**(4)** & Area under the graph gives the probabilities, \\  & i.e., \\  & where \(y=\text{f}(x)\) represents the probability \\  & density function of the normal curve. \\ \end{tabular} Hence \(\text{P}(a<X<b)\) is given by the area under the graph from \(x=a\) to \(x=b\).
+**(5)** & Total area under the curve is 1. \\
+**(6)** & \(\text{P}(\mu-\sigma<X<\mu+\sigma)\approx 0.68\) \\  & \(\text{P}(\mu-2\sigma<X<\mu+2\sigma)\approx 0.95\) \\  & \(\text{P}(\mu-3\sigma<X<\mu+3\sigma)\approx 0.997\) \\  & i.e., approximately 68%, 95% and 99.7% \\  & of the values drawn from a normal distribution \\  & lies within 1, 2 and 3 standard deviations of \\  & the mean respectively. \\ \hline \end{tabular}
+
+Chapter S3: Normal Distribution
+
+Page 4 of 26
+
+[MISSING_PAGE_EMPTY:5]
+
+[MISSING_PAGE_FAIL:6]
+
+[MISSING_PAGE_FAIL:7]
+
+### Use of GC to Evaluate Inverse Normal Values
+
+Back to our example of 1kg bags of sugar.
+
+Recall that \(X\sim\) N(1000,50\({}^{2}\)) where \(X\) denotes the mass of a 1kg bag of sugar in grams.
+
+What is the value of \(m\) (to nearest gram) such that P(\(X\leq m\)) = 0.9?
+
+This time we need to find \(m\) such that the shaded area (refer to diagram) is 0.9.
+
+From GC, \(m=1064\) (nearest gram)
+
+To find \(m\) such that P(\(X\leq m\)) = 0.9, given \(X\sim\) N(1000,50\({}^{2}\)) :
+
+1. Press **2nd**|vars**
+
+Select **3: invNorm(**
+
+2. Enter 0.9 for area 1000 for \(\mu\) 50 for \(\sigma\) Select "LEFT" for Tail since the area is shaded on the left. Highlight **Paste** and press **enter** twice.
+
+Note: For invNorm, the location of tail within the shaded region will help you to decide what to select for Tail-"LEFT", "CENTER" or "RIGHT".
+
+Chapter S3: Normal Distribution Page 8 of 26
+
+[MISSING_PAGE_EMPTY:9]
+
+[MISSING_PAGE_FAIL:10]
+
+### Example 4
+
+The diameter of copper wires found in a certain type of equipment may be assumed to have a normal distribution with mean \(\mu\) mm and standard deviation \(\sigma\) mm.
+
+It was known that 1% of all wires produced have diameters at most 2.24 mm and 5% have diameters exceeding 2.30 mm.
+
+Find the values of \(\mu\) and \(\sigma\).
+
+```
+Solution Let \(X\) be the diameter of a copper wire in mm. Then \(X\sim\mathrm{N}(\mu,\sigma^{2})\).
+```
+
+```
+P(\(X\leq 2.24\)) = 0.01 P(\(Z\leq\frac{2.24-\mu}{\sigma}\)) = 0.01 P(\(Z\leq-2.3263\)) = 0.01 P(\(X>2.30\)) = 0.05 P(\(Z>\frac{2.30-\mu}{\sigma}\)) = 0.05 From GC, P(\(Z>1.6449\)) = 0.05 P(\(Z>\frac{2.30-\mu}{\sigma}\)) = 0.05 From GC, P(\(Z>1.6449\)) = 0.05 P(\(Z>2.30-\mu\)) = 0.05 From GC, P(\(Z>1.6449\)) = 0.05 P(\(Z>1.6449\)) = 0.05 P(\(Z>2.30-\mu\)) = 1.6449 (5s.f.)
+```
+
+Solving (1) and (2), \(\mu=2.28\) (3 s.f.) and \(\sigma=0.0151\) (3 s.f.).
+
+```
+
+## 4 Linear Combinations of Independent Normal Random Variables
+
+### Properties of Expectation and Variance of Random Variables
+
+In Chapter S2A, we were introduced to the properties of expectation and variance for discrete random variables. The properties of expectation and variance for continuous random variables are similar and are as follows :
+
+Let \(X\) and \(Y\) be random variables and \(a\) and \(b\) be constants.
+
+We have
+
+Let \(X\) and \(Y\) be **independent** random variables and \(a\) and \(b\) be constants.
+
+We have
+
+Let \(X\) and \(Y\) be **independent** random variables and \(a\) and \(b\) be constants.
+
+We have
+
+Let \(X\) and \(Y\) be **independent** random variables and \(a\) and \(b\) be constants.
+
+We have
+
+Let \(X\sim\mathrm{N}(\mu_{1},\sigma_{1}^{\ 2})\) and \(Y\sim\mathrm{N}(\mu_{2},\sigma_{2}^{\ 2})\) be **independent** random variables and \(a\) and \(b\) be constants. We have
+
+\[\begin{array}{ll}\textbf{(1)}&X\pm Y\sim\mathrm{N}(\mu_{1}\pm\mu_{2},\sigma _{1}^{\ 2}+\sigma_{2}^{\ 2})\\ \textbf{(2)}&aX\pm b\sim\mathrm{N}(a\mu_{1}\pm b,\,a^{2}\sigma_{1}^{\ 2})\\ \textbf{(3)}&aX\pm bY\sim\mathrm{N}(a\mu_{1}\pm b\mu_{2},\,a^{2}\sigma_{1}^{ \ 2}+b^{2}\sigma_{2}^{\ 2})\\ \end{array}\]
+
+The mean and variance of the distributions can be shown using the properties in section 4.1.
+
+### Example 5
+
+Let \(X\) and \(Y\) be 2 independent normal random variables. The means of \(X\) and \(Y\) are 10 and 12 respectively, and the standard deviations are 2 and 3 respectively.
+
+Find **(a)**\(\mathrm{P}(X+Y\leq 18)\), **(b)**\(\mathrm{P}(Y<X)\), **(c)**\(\mathrm{P}(4X+5Y>90)\),
+
+stating clearly the means and variances in each case.
+
+**Solution**
+
+Given \(X\sim\mathrm{N}(10,2^{2})\) and \(Y\sim\mathrm{N}(12,3^{2})\), where \(X\) and \(Y\) are independent.
+
+**(a)**\(\mathrm{E}(X+Y)=\mathrm{E}(X)+\mathrm{E}(Y)=10+12=22\)
+
+\(\mathrm{Var}(X+Y)=\mathrm{Var}(X)+\mathrm{Var}(Y)=4+9=13\)
+
+\(\therefore\)\(X+Y\sim\mathrm{N}(22,13)\)
+
+\(\mathrm{P}(X+Y\leq 18)=0.134\) (3 s.f.)
+
+**(b)**\(\mathrm{E}(Y-X)=\mathrm{E}(Y)-\mathrm{E}(X)=12-10=2\)
+
+\(\mathrm{Var}(Y-X)=\mathrm{Var}(Y)+\mathrm{Var}(X)=4+9=13\)
+
+\(\therefore\)\(Y-X\sim\mathrm{N}(2,13)\)
+
+\(\mathrm{P}(Y<X)=\mathrm{P}(Y-X<0)=0.290\) (3 s.f.)
+
+**(c)**\(\mathrm{E}(4X+5Y)=4\mathrm{E}(X)+5\mathrm{E}(Y)=4(10)+5(12)=100\)
+
+\(\mathrm{Var}(4X+5Y)=4^{2}\mathrm{Var}(X)+5^{2}\mathrm{Var}(Y)=16(4)+25(9)=289\)
+
+\(\therefore\)\(4X+5Y\sim\mathrm{N}(100,289)\)
+
+\(\mathrm{P}(4X+5Y>90)=0.722\) (3 s.f.)
+
+### Random variable \(X_{1}+X_{2}\) versus random variable \(2x\)
+
+Let \(X\sim\mathrm{N}(\mu,\sigma^{2})\).
+
+We write \(X_{1}\) and \(X_{2}\) to denote 2 independent and identically distributed (i.i.d.) observations of \(X\), i.e. \(X_{1}\sim\mathrm{N}(\mu,\sigma^{2})\), \(X_{2}\sim\mathrm{N}(\mu,\sigma^{2})\), \(X_{1}\) and \(X_{2}\) are independent.
+
+We write \(2X\) to denote twice the value of one observation of \(X\).
+
+Now, if \(X\) denotes the number shown when a fair six-sided die is thrown, then
+
+**(i)**\(X_{1}+X_{2}\) denotes the sum of the numbers shown on two such dice, while
+
+**(ii)**\(2X\) denotes twice the number shown on a die.
+
+What can we say about \(X_{1}+X_{2}\)and \(2X\)?
+
+Possible values of \(X_{1}+X_{2}\) are 2, 3, 4,..., 11, 12 while that of \(2X\) are 2, 4, 6,..., 10, 12.
+
+Let us consider the means and variances of \(X_{1}+X_{2}\) and \(2X\):
+
+\begin{tabular}{|l|l|l|} \hline  & \(X_{1}+X_{2}\) & \(2X\) \\ \hline Mean & \(\mathrm{E}(X_{1}+X_{2})=\mathrm{E}(X_{1})+\mathrm{E}(X_{2})=\mu+\mu=2\mu\) & \(\mathrm{E}(2X)=2\mathrm{E}(X)=2\mu\) \\ \hline Variance & \(\mathrm{Var}(X_{1}+X_{2})\) & \(\mathrm{Var}(2X)\) \\  & \(=\mathrm{Var}(X_{1})+\mathrm{Var}(X_{2})=\sigma^{2}+\sigma^{2}=2\sigma^{2}\) & \(=2^{2}\mathrm{Var}(X)=4\sigma^{2}\) \\ \hline Distribution & \(X_{1}+X_{2}\sim\mathrm{N}(2\mu,2\sigma^{2})\) & \(2X\sim\mathrm{N}(2\mu,4\sigma^{2})\) \\ \hline \end{tabular}
+
+**Conclusion:**
+
+The variances of \(X_{1}+X_{2}\) and \(2X\) are different but their means are the same.
+
+As such, extra care must be taken to distinguish between the random variable \(2X\) and the random variable \(X_{1}+X_{2}\), where \(X_{1}\) and \(X_{2}\) are two independent observations of the random variable \(X\).
+
+In general, note the difference between \(X_{1}+X_{2}+...+X_{n}\) and \(nX\).
+
+[MISSING_PAGE_FAIL:15]
+
+[MISSING_PAGE_EMPTY:16]
+
+[MISSING_PAGE_FAIL:17]
+
+### Example 9 [NYJC9740Prelim/2007/02/Q11 (part)]
+
+A soft drink dispenser delivers lemonade into a cup when a coin is inserted into the machine. The amount of lemonade delivered is normally distributed with mean 260 ml and standard deviation 10 ml. The nominal amount of lemonade in a cup is 250 ml and the capacity of the cup is 275 ml.
+
+**(i)**: What is the probability that the cup overflows?
+**(ii)**: On an occasion, five such cups of lemonade were purchased. Find the probability that not more than one cup contains less than 250 ml.
+**(iii)**: Some customers have complained that there is a high proportion of cups with less than the nominal amount of lemonade. The standard deviation of the amount of lemonade delivered per cup is fixed, but the mean can be altered. Find the least value of the new mean such that not more than 5% of the cups will contain less than 250 ml of lemonade.
+
+**Solution**: Let \(X\) be the amount of lemonade delivered in a cup, in ml.
+
+Then \(X\sim\) N(260,10\({}^{2}\)).
+
+**(i)**: P(cup overflows)= P(\(X>275\)) = 0.0668 (3 s.f.)
+**(ii)**: P(\(X<250\)) = 0.15866 (5 s.f.)
+
+Let \(Y\) be the number of cups that contain less than 250 ml of lemonade each, out of 5.
+
+Then \(Y\sim\) B(5,0.15866).
+
+P(\(Y\leq\) I) = 0.819 (3 s.f.)
+**(iii)**: Let \(\mu\) be the value of the new mean.
+
+Then \(X\sim\) N\(\left(\mu,\)10\({}^{2}\right)\)
+
+We need P(\(X<250\)) \(\leq\) 0.05.
+
+P(\(Z<\frac{250-\mu}{10}\)) \(\leq\) 0.05
+
+From GC, P(\(Z<-1.6449\)) = 0.05
+
+From the diagram,
+
+\(\frac{250-\mu}{10}\leq-1.6449\)
+
+\(\mu\geq 266.45\)
+
+The least value of the new mean is 267 ml (3 s.f.).
+
+### Example 10 [RI 9740 Prelim/2012/02/Q9]
+
+Red and green grapes are sold in boxes by weight. The masses, in grams, of a box of red grapes and a box of green grapes are modeled as having independent normal distributions with means and standard deviations as shown in the table.
+
+\begin{tabular}{|l|c|c|} \hline  & Mean Mass & Standard Deviation \\ \hline Box of red grapes & 300 & 40 \\ \hline Box of green grapes & 150 & 20 \\ \hline \end{tabular}
+**(i)**: A fruit-seller packs and weighs each box of red grapes. Find the probability that the 10th box of red grapes he weighs is the second box that is at least 310g.
+**(ii)**: Find the probability that the mass of 3 boxes of red grapes differs from 3 times the mass of a box of green grapes by at least 500 g.
+**(iii)**: Red grapes are sold at $5 per kg and green grapes are sold at $6 per kg. Find the probability that 10 boxes of red grapes cost more than 10 boxes of green grapes by at most $7.
+
+**Solution**
+
+Let \(R\) and \(G\) be the weight of a box of red grapes and green grapes in grams respectively.
+
+Then \(R\sim\) N(300, 40\({}^{2}\)) and \(G\sim\) N(150, 20\({}^{2}\)).
+
+**(i)**: Let \(X\) be the number of boxes of red grapes which weighs at least 310g, out of 9 boxes.
+
+\(X\sim\) B(9, P(\(R\geq\)310))
+
+i.e. \(X\sim\) B(9, 0.40129)
+
+Requireed probability = P(\(X=1\)) P(\(R\geq\)310) = 0.0239 (3 s.f.)
+**(ii)**: Let \(T=R_{1}+R_{2}+R_{3}-3G\)
+
+\(T\sim\) N(3(300)-3(150), 3(40\({}^{2}\))+ 3\({}^{2}\) (20\({}^{2}\)))
+
+\(T\sim\) N(450,8400)
+
+\(\mathrm{P}\big{(}\big{|}T\big{|}\geq 500\big{)}=\mathrm{P}(T\leq-500)+ \mathrm{P}(T\geq 500)\)
+
+\(=\)1 - P(-500 \(<T<500\))
+
+\(=\)0.293 (3 s.f.)
+**(iii)**: Let \(W=0.005(R_{1}+\ldots+R_{10})-0.006(G_{1}+\ldots+G_{10})\)
+
+\(\mathrm{E}\left(W\right)=0.005\big{(}10\big{)}\mathrm{E}\left(R\right)-0.006 \big{(}10\big{)}\mathrm{E}\left(G\right)=6\)
+
+\(\mathrm{Var}\left(W\right)=\big{(}0.005\big{)}^{2}\left(10\right)\mathrm{ Var}\left(R\right)+\big{(}0.006\big{)}^{2}\left(10\right)\mathrm{Var}\left(G \right)=0.544\)
+
+\(W\sim\) N(6, 0.544)
+
+Requireed probability = P(0\(<\)\(W\)\(\leq\)7) = 0.912 (3 s.f.)
+
+## Conclusion
+
+The normal distribution was introduced by the French mathematician Abraham De Moivre in 1733. He used this distribution to approximate probabilities connected with coin tossing, and called it the exponential bell-shaped curve. Its usefulness, however, became truly apparently only in 1809, when the famous German mathematician K. F. Gauss used it as an integral part of his approach to predict the location of astronomical entities. As a result, it became common after this time to call it the Gaussian distribution.
+
+During the mid to late nineteenth century, however, most statisticians started to believe that the majority of data sets would have histograms conforming to the Gaussian bell-shaped form. Indeed, it came to be accepted that it was "normal" for any well-behaved data set to follow this curve. As a result, following the lead of the British statistician Karl Pearson, people began referring to the Gaussian curve by calling it simply the normal curve.
+
+The normal distribution is used to model a wide range of real-world situations. Its applications are highly prevalent in pure sciences as well as in social sciences. You should be very familiar with its properties and be highly comfortable in solving related questions, as it is going to play a huge part in subsequent topics in Statistics.
+
+## Appendix 1
+
+### Probability Density Function of Continuous Random Variables
+
+A continuous random variable \(X\) is defined by its probability density function which can be represented by a curve \(y=\mathrm{f}(x)\). The probabilities are given by the area under the curve.
+
+Properties of the probability density function:
+
+**(1)**: \(\mathrm{f}(x)\geq 0\) for all values of \(x\)
+**(2)**: \(\int_{-\infty}^{\infty}\mathrm{f}(x)\mathrm{d}x=1\) (**total probability equals one**)
+**(3)**: \(\mathrm{P}(a<X<b)=\mathrm{P}(a\leq X\leq b)=\mathrm{P}(a<X\leq b)=\mathrm{P}( a\leq X<b)=\int_{a}^{b}\mathrm{f}(x)\,\mathrm{d}x\)
+
+### Remarks:
+
+* \(\mathrm{f}(a)\) is **not** a probability; it is not the probability at \(x=a\).
+* A continuous random variable has a probability of **zero** of assuming exactly any of its values. That is (a) \(\mathrm{P}(X=x)=0\) for all values of \(x\), and (b) the probability of randomly selecting \(X\) to be exactly \(x\) (and not one of the infinitely many real numbers so close to \(x\) that you cannot humanly measure the difference) is extremely remote. Hence **(3)** follows.
+
+Let's look at an example :
+
+The random variable \(X\) has probability density function given by
+
+\[\mathrm{f}(x)=\begin{cases}\frac{1}{2}\big{(}x-2\big{)},&2\leq x\leq 4,\\ 0\,&\text{otherwise.}\end{cases}\]
+
+To find \(\mathrm{P}\big{(}X<3\big{)}\), we evaluate \(\int_{2}^{3}\mathrm{f}\big{(}x\big{)}\mathrm{d}x\) which gives us 0.25.
+
+Now evaluate \(\int_{3}^{4}\mathrm{f}\big{(}x\big{)}\mathrm{d}x\).
+
+We hope you were not surprised that the answer is 0.75, since total probability equals one.
+
+### Expectation and Variance of Continuous Random Variables
+
+Let \(X\) be a continuous random variable.
+
+Then
+
+* the expectation of \(X\) is given by \[\operatorname{E}(X)=\mu=\int_{-\infty}^{\infty}\,x\operatorname{f}(x)\, \mathrm{d}x\]
+* the variance of \(X\) is given by \[\operatorname{Var}(X) =\operatorname{E}\bigl{[}(X-\mu)^{2}\bigr{]}\] \[=\int_{-\infty}^{\infty}\,(x-\mu)^{2}\operatorname{f}(x)\, \mathrm{d}x\] However, for most computational purposes, we prefer to use the equivalent form \[\operatorname{Var}(X)=\operatorname{E}(X^{2})-\bigl{[}\operatorname{E}(X) \bigr{]}^{2},\,\text{where}\ \ \operatorname{E}(X^{2})=\int_{-\infty}^{\infty}\,x^{2}\, \operatorname{f}(x)\,\mathrm{d}x\,.\]
+
+## Appendix 2 Approximating a Binomial Distribution using a Normal Distribution
+
+We may approximate a binomial distribution using a normal distribution when the number of trials \(n\) is large and the probability of success \(p\) is not too close to 0 or 1.
+
+The closer \(p\) is to 0.5, the less skewed the binomial distribution, and the better the approximation using a normal distribution (which is symmetrical).
+
+How large must \(n\) be? Generally we require
+
+\[n\) to be sufficiently large such that \(np>5\) and \(n(1-p)>5\).
+
+Note however that a binomial random variable is discrete while a normal random variable is continuous. Hence a **continuity correction** must be applied.
+
+We need to state "by continuity correction" when it is being applied, and it is always helpful to draw a diagram.
+
+Let \(X\sim\mathrm{B}(n,p)\).
+
+If \(n\) is large such that \(np>5\) and \(n(1-p)>5\), then
+
+\(X\sim\mathrm{N}(np,\ np(1-p)\ )\) approximately.
+
+\(\mathrm{P}(X=x)=\mathrm{P}(x-0.5<X<x+0.5)\) (by continuity correction)
+
+[MISSING_PAGE_EMPTY:24]
+
+[MISSING_PAGE_EMPTY:25]
+
+## Summary

@@ -1,0 +1,685 @@
+## Chapter 7 Hypothesis Testing
+
+In this chapter, students will learn
+
+* concepts of null hypothesis (H\({}_{0}\)) and alternative hypothesis (H\({}_{1}\)), test statistic, critical region, critical value, level of significance and \(p\)-value,
+* the formulation of hypotheses and tests for a population mean based on:
+* a sample from a normal population of known variance,
+* a large sample from any population,
+* 1-tail and 2-tail tests,
+* interpretation of the results of a hypothesis test in the context of the problem.
+
+### 7.1 Introduction (Self reading)
+
+Suppose a school superintendent reads an article which states that the overall mean rank points (RP) for the 2019 GCE 'A' Level Exams is 79. Furthermore, suppose that the average RP of a sample of students from the superintendent's school district is 83. Can the superintendent conclude that the students in the school district scored significantly higher than average? At first glance, you might be inclined to say yes, since 83 is higher than 79. But recall that the means of samples vary about the population mean when samples are selected from a specific population. So the question arises. Is there a real difference in the means, or is the difference simply due to chance i.e. sampling error? In this chapter, you will learn how to answer many questions of this type by using statistics that are explained in the theory of hypothesis testing.
+
+Researchers are interested in answering many types of questions. For example, a doctor might want to know whether a new medication will lower a person's blood pressure. Automobile manufacturers are interested in determining whether seat belts will reduce the severity of injuries caused by accidents. These types of questions can be addressed through statistical **hypothesis testing**, which is a decision-making process for evaluating claims about a population.
+
+In hypothesis testing, the researcher must define the population under study, state the particular hypotheses that will be investigated, give the significance level, select a sample from the population, collect the data, perform the calculations required for the statistical test, and reach a conclusion.
+
+In other words, we will have a _hypothesis_ about the population parameter, and we will use our sample values to conclude whether our assumptions are valid with a certain level of confidence. This is known as _hypothesis testing_. In this chapter, we will be focusing on **testing the population mean** and we will be learning a procedure to test the validity of statements (or claims) made.
+
+**A hypothesis test is a procedure whereby information from a random sample is used to determine whether there is evidence for rejecting the claim related to the population parameter.**
+
+#### 7.1.1 Null and Alternative Hypothesis
+
+When making a statistical enquiry, we often put forward a hypothesis concerning a population parameter.
+
+For example:
+
+_The mean weight of JC2 male students is 70 kg._
+
+This hypothesis is called the **null hypothesis**, denoted by \(H_{\theta}\).
+
+The **null hypothesis (\(H_{\theta}\)) is a statement about the value of a population parameter which is **assumed to be true** unless sample results imply that it is not.
+
+Contrasting to the null hypothesis is the **alternative hypothesis**, denoted by \(H_{1}\). For example, we could set up the following alternative hypothesis:
+
+_The mean weight of JC2 male students is more than 70 kg._
+
+Usually, we are hoping to reject the null hypothesis and establish the alternative hypothesis.
+
+In order to test the validity of \(H_{\theta}\), we consider observations made from a random sample taken from the population and perform a **statistical test**. We write the above statements concisely as
+
+\[H_{\theta}\colon\mu=70\quad vs\quad H_{1}\colon\mu>70\]
+
+#### 7.1.2 1-Tail and 2-Tail Tests
+
+There are two types of test that can be performed, depending on the alternative hypothesis being made. These are 1-**tail** or 2-**tail** tests.
+
+\[\begin{array}{ll}\text{(i)}&\text{A 1-**tail test** is performed when the alternative hypothesis considers an increase or a decrease in the population parameter;}\\ \text{(ii)}&\text{A 2-**tail test** is performed when the alternative hypothesis considers any change in the parameter (either an increase or a decrease).
+
+For testing of population mean, we formulate the null and alternative hypothesis as follows:
+
+**Null Hypothesis: \(H_{\theta}\colon\mu=\mu_{\theta}\quad\text{(note: $\mu_{\theta}$ is the hypothesized population mean)}\\ \text{Alternative Hypothesis:}&H_{1}\colon\mu\neq\mu_{\theta}\text{(any change)}\\ &H_{1}\colon\mu>\mu_{\theta}\text{(definite increase)}\\ &H_{1}\colon\mu<\mu_{\theta}\text{(definite decrease)}\end{array}\right\}\quad \text{2-tail test}\\ &\text{1-tail test}\end{array}\]
+
+**Example 7.1**:
+
+For each of the following situations in **(a)** to **(c)**, write down the null and alternative hypothesis, and state whether they are one or two-tailed tests.
+
+**(a)**: A machine packs flour into bags, with average mass, which are supposed to be 1000 g. After adjustments to the machine, one is interested to find out whether the bags have mass that are more than 1000 g.
+
+**(b)**: A cake shop sells an average of 200 cakes per day. The manager claims that the sales per day should not be 200.
+
+[MISSING_PAGE_FAIL:3]
+
+### Testing of Population Mean1
+Footnote 1: Note: Our syllabus only covers hypothesis testing on population mean.
+
+We will be using two methods to test the population mean, namely, the classical method and the \(p\)-value approach. Both methods follow through from the previous chapters on Normal distribution and Sampling Theory.
+
+We will consider two main cases:
+
+1. Sample from a Normal population with known variance;
+2. Large sample from any population, and this is where Central Limit Theorem will be applied.
+
+#### 7.2.1 Sample from a Normal Population with Known Variance
+
+When performing a significance test it is useful to follow a set of procedures:
+
+1. **Null Hypothesis:** \(\mathrm{H}_{\phi}:\ \mu=\mu_{\phi}\)
+2. **Alternative Hypothesis:** \(\mathrm{H}_{1}\): \(\mu\neq\mu_{\phi}\) (any change) \(\mathrm{H}_{1}\): \(\mu>\mu_{\phi}\) (definite increase) \(\mathrm{H}_{1}\): \(\mu<\mu_{\phi}\) (definite decrease) \(\mathrm{H}_{1}\): \(\mu<\mu_{\phi}\) (definite decrease) \(\mathrm{H}_{1}\): A **significance level** will be given, say \(\alpha\) (\(\alpha\) usually takes value of 0.1, 0.05, 0.01).
+2. If the population variance \(\sigma^{2}\)is known, then **under the assumption that \(\mathrm{H}_{\phi}\) is true**, we have \(X\sim\mathrm{N}(\mu,\sigma^{2})\). Thus, \(\overline{X}\sim\mathrm{N}\bigg{(}\mu,\frac{\sigma^{2}}{n}\bigg{)}\). Now, we want to investigate whether there is a significant difference between the sample mean and the population mean given by the null hypothesis. After standardization, the test statistic is \(Z=\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}\sim\mathrm{N}(0,\mathrm{I})\) Using the observed sample values, we compute the value of the test statistic \(z_{\text{calc}}=\frac{\overline{x}-\mu}{\sigma/\sqrt{n}}\).
+3. Critical region (Rejection region) The critical region depends on the alternative hypothesis \(\mathrm{H}_{1}\). For example, for \(\mathrm{H}_{1}\): \(\mu>\mu_{\phi}\), we use the notation \(\mathrm{P}\big{(}Z\geq z_{\alpha}\big{)}=\alpha\) where \(z_{\alpha}\) is called the critical value. With this notation, we can now state the critical region.
+
+[MISSING_PAGE_EMPTY:5]
+
+[MISSING_PAGE_EMPTY:6]
+
+[MISSING_PAGE_FAIL:7]
+
+**Chapter S7. Hypothesis Testing**
+
+**Remarks: The T\({}^{2}\)C\({}^{3}\)**acronym ensures the 5 essential steps to the testing procedure is adhered to.
+
+**Self-Review 7.2: (J82/II/10 Modified)**
+
+The length of string in the balls of string made by a particular manufacturer has mean \(\mu\) m and variance \(27.4\) m\({}^{2}\). The manufacturer claims that \(\mu=300\). A random sample of 100 balls of string is taken and the sample mean is found to be 299.2 m. Test whether this provides significant evidence, at the 3% level, that the manufacturer's claim overstates the value of \(\mu\). Assume that the length of string in each ball is normally distributed.
+
+**Solution:**
+
+**Example 7.5:**
+
+It is claimed that the components produced at a particular workshop has mass that is normally distributed with mean 6g and a standard deviation 0.8g. If this claim is accepted, at the 5% level, on the basis of the mean mass obtained from a random sample of 50 components, what is the possible range of values for the mean mass of the sample?
+
+**Solution:**
+
+**Let** \(X\) **denote the mass of a component produced by the factory. Given**
+
+\(X\sim\mbox{N}(6,0.8^{2})\)**,** \(n=50\)**.**
+
+**To test** \(\mbox{H}_{9}:\mu=6\)
+
+\(\mbox{H}_{1}:\mu\neq 6\)
+
+**at 5% level of significance**
+
+**Chapter S7 Hypothesis Testing**
+
+\begin{tabular}{|c|} \hline \hline Test Statistics: Under \(\,\mathrm{H}_{\mathrm{q}}\), \(\,\overline{X}\sim\mathrm{N}\left(6,\frac{0.8^{2}}{50}\right)\) and test statistic, \\ \(\,Z=\frac{\,\overline{X}-6}{0.8\sqrt{50}}\sim\mathrm{N}(0,1)\). \\ Critical Region: Reject \(\,\mathrm{H}_{\mathrm{q}}\) if \(\left|z_{\mathrm{acle}}\right|\geq 1.960\). \\ Since \(\,\mathrm{H}_{\mathrm{q}}\) is 'accepted', we have \\ \hline \hline \end{tabular}
+
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \hline
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \hline \hline \end{tabular} \\ \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \hline \end{tabular}
+**Note:**
+
+\begin{tabular}{|c|} \hline \hline \end{tabular}
+**Note:**
+
+[MISSING_PAGE_EMPTY:10]
+
+[MISSING_PAGE_EMPTY:11]
+
+**Example 7.7:**
+
+Solve Example 7.4 using the \(p\)-value approach.
+
+**Solution:**
+
+**TheinKZone:**
+
+Let \(X\) denote the breaking tension of an elastic band.
+
+Given \(X\sim\mathrm{N}(45,4.36^{2})\), \(n=\)50
+
+To test \(\mathrm{H}_{\mathrm{q}}:\mu=45\)
+
+\(\mathrm{H}_{\mathrm{1}}:\mu\neq 45\)
+
+At 5% significance level.
+
+Test Statistic: Under \(\mathrm{H}_{\mathrm{q}}\), \(\overline{X}\sim\mathrm{N}\left(45,\frac{4.36^{2}}{50}\right)\) and test statistic,
+
+\(Z=\frac{\overline{X}-45}{4.36/\sqrt{50}}\sim\mathrm{N}(0,1)\)
+
+Critical Region: Reject \(\mathrm{H}_{\mathrm{q}}\) if \(p\)-value \(\leq 0.05\)
+
+Calculation: \(z_{\mathrm{q}\mathrm{e}\mathrm{t}}=\frac{43.46-45}{4.36/\sqrt{50}}=-2.4976\)
+
+Conclusion: Since \(p\)-value \(<0.05\), we reject \(\mathrm{H}_{\mathrm{q}}\). There is sufficient evidence, at 5% level of significance, to conclude that the sample data indicates a change in the mean breaking tension.
+
+**Example 7.8:**
+
+A sample of size 16 is taken from a distribution of \(X\sim\mathrm{N}(\mu,\,9)\) and a hypothesis test is carried out at the \(\alpha\)% level of significance. Given that \(\overline{x}=\)101.23, and that the null hypothesis \(\mu=\)100 is rejected in favour of the alternative hypothesis \(\mu>\)100, find the \(p\)-value for this test. Hence, find the range of values that \(\alpha\) satisfies.
+
+**Solution:**
+
+Given \(X\sim\mathrm{N}(\mu,9)\), \(n=\)16
+
+To test \(\mathrm{H}_{\mathrm{q}}:\mu=\)100
+
+\(\mathrm{H}_{\mathrm{1}}:\mu>\)100
+
+at \(\alpha\)% level of significance
+
+Test Statistic: Under \(\mathrm{H}_{\mathrm{q}}\), \(\overline{X}\sim\mathrm{N}\left(\mu,\frac{9}{16}\right)\) and test statistic,
+
+\(Z=\frac{\overline{X}-100}{\sqrt{9/16}}\sim\mathrm{N}(0,1)\)
+
+**Chapter S7 Hypothesis Testing**
+
+\begin{tabular}{|c|} \hline \hline \(\bullet\) Critical Region: Reject \(\mathrm{H_{q}}\) if \(p\)-value \(\leq\dfrac{\alpha}{100}\) \\ \(\bullet\) Calculation: \(z_{\mathrm{c}\mathrm{c}\mathrm{k}}=\dfrac{101.23-100}{3/\sqrt{16}}=1.64\) \\ \(p\)-value \(=0.050503\). \\ Since \(\mathrm{H_{q}}\) is rejected, \(p\)-value \(\leq\dfrac{\alpha}{100}\) \\ \hline \hline \end{tabular}
+
+**7.3.1 Large Sample from any Population**
+
+Recall from Chapter 6 that if the population variance \(\sigma^{2}\) is unknown, we will estimate it by the unbiased estimator \(s^{2}\) where
+
+\[\begin{split}& s^{2}=\dfrac{n}{n-1}\times\text{sample variance}\\ &=\dfrac{n}{n-1}\Bigg{(}\dfrac{\sum(x-\overline{x})^{2}}{n} \Bigg{)}=\dfrac{1}{n-1}\Bigg{[}\sum x^{2}-\dfrac{\left(\sum x\right)^{2}}{n} \Bigg{]}\,\,\,\,\text{(in List MF26)}\\ &=\dfrac{1}{n-1}\Bigg{[}\sum(x-a)^{2}-\dfrac{\left(\sum(x-a)\right) ^{2}}{n}\Bigg{]}\end{split}\]
+
+When the sample size is large (\(n\geq 30\)) and distribution of \(X\) is not normally distributed, the distribution of \(\overline{X}\) is approximately normal by Central Limit Theorem.
+
+Hence (i) \(\overline{X}\sim\text{N}\Bigg{(}\mu,\dfrac{\sigma^{2}}{n}\Bigg{)}\) approximately, if population variance is known, or
+
+(ii) \(\overline{X}\sim\text{N}\Bigg{(}\mu,\dfrac{s^{2}}{n}\Bigg{)}\) approximately, if population variance is unknown.
+
+The test statistic is \(Z=\dfrac{\overline{X}-\mu}{\sigma/\sqrt{n}}\sim\text{N}(0,1)\) or \(Z=\dfrac{\overline{X}-\mu}{s/\sqrt{n}}\sim\text{N}(0,1)\) approximately.
+
+**Example 7.9:**
+
+A manufacturer claims that the average life span of his electric light bulbs is 2000 hours. A random sample of 64 bulbs is tested and the life span \(x\) in hours recorded. The results obtained are as follows:
+
+\[\Sigma x=127808,\quad\Sigma(x-\overline{x})^{2}=9694.6\]
+
+Is there sufficient evidence, at 2% level of significance, that the manufacturer is over-estimating the lifetime of his light bulbs?
+
+**Chapter S7. Hypothesis Testing**
+
+**Solution:**
+
+Unbiased estimates for population mean and population variance,
+
+\(\overline{x}=\)\(\frac{127808}{64}=\)\(1997\), \(s^{2}=\)\(\frac{1}{n-1}\sum\limits_{n=1}^{n}(x_{i}-\overline{x})^{2}=\)\(153.8825\)
+
+Let \(\mu\) denote the mean lifetime of an electric light bulb.
+
+* To test \(\mathrm{H_{0}}\) : \(\mu=2000\)
+
+\(\mathrm{H_{1}}\) : \(\mu<2000\)
+
+at 2% level of significance
+
+* Test Statistic: Under \(\mathrm{H_{0}}\), since \(n=64\) is large by Central Limit
+
+Theorem, \(\overline{X}\sim\)\(\mathrm{N}\)\(\left(2000,\)\(\frac{153.8825}{64}\right)\)approximately, and test statistic,
+
+\(Z=\)\(\frac{\overline{X}-2000}{\sqrt{153.8825/64}}\)\(\sim\)\(\mathrm{N}\)\(\left(0,\mathrm{I}\right)\)approx.
+
+* Critical Region: Reject \(\mathrm{H_{0}}\) if \(p\)-value \(\leq 0.02\)
+
+* Calculations :
+
+* Conclusion: Since \(p\)-value \(>0.02\), we do not reject \(\mathrm{H_{0}}\). There is insufficient evidence, at 2% level of significance, to say that the manufacturer is over-estimating the lifetime of his light bulbs.
+
+**Self-Review 7.3 (N91/II/10)**
+
+A supermarket manager investigated the lengths of time that customers spent shopping in the store. The time, \(x\) minutes, spent by each of a random sample of 150 customers was measured, and it was found that \(\Sigma x=2871,\quad\Sigma x^{2}=60\) 029. Test, at the 5% level of significance, the hypothesis that the mean time spent shopping by customers is 20 minutes, against the alternative that it is less than this.
+
+**Example 7.10**:
+
+Suppose that 100 tires made by a certain manufacturer lasted on average 21819 miles with a standard deviation of 1295 miles. Test the null hypothesis \(\mu=22000\) miles against the alternative hypothesis \(\mu\neq 22000\) miles at the 5% level of significance.
+
+**Solution:**
+
+Unbiased estimates for population mean and population variance,
+
+\(\overline{x}=21819\),
+
+\(\overline{y}=\frac{100}{99}\times\text{sample variance}=\frac{100}{99}(1295 )^{2}=1301.5^{2}\)
+
+\(\bullet\) To test \(\mathrm{H}_{0}:\mu=22000\)
+
+\(\mathrm{H}_{1}:\mu\neq 22000\)
+
+at 5% level of significance
+
+\(\bullet\) Test Statistics: Under \(\mathrm{H}_{0}\), since \(n=100\) is large, by Central Limit
+
+\(\bullet\) Theorm, \(\overline{X}\sim\mathrm{N}\bigg{(}22000,\frac{1301.5^{2}}{100}\bigg{)}\) approximately, and test statistic,
+
+\(Z=\frac{\overline{X}-22000}{\sqrt{1301.5^{2}/100}}\sim\mathrm{N}(0,1)\) approx.
+
+\(\bullet\) Critical Region: Reject \(\mathrm{H}_{0}\) if \(p\)-value \(\leq 0.05\)
+
+\(\bullet\) Calculations :
+
+\(z_{\text{cal}}=\frac{21819-22000}{1301.5/\sqrt{100}}=-1.3907\)
+
+\(p\)-value \(=2\mathrm{P}\big{(}Z\leq-1.3907\big{)}=0.16432\)
+
+\(\bullet\) Conclusion: Since \(p\)-value \(>0.05\), we do not reject \(\mathrm{H}_{0}\). There is insufficient evidence, at 5% level of significance, to conclude that the average miles lasted by the tires is not 22000 i.e. \(\mu\neq 22000\).
+
+**Example 7.11**:
+
+A manufacturer of sports equipment has developed a new synthetic fishing line that he claims to have a mean breaking strength of 8 kg. A random sample of 150 fishing lines is tested and the breaking strength \(x\) kg recorded. The results are as follows: \(\Sigma\big{(}x-8\big{)}=74.535,\quad\Sigma(x-\overline{x})^{2}=1974.035\). Is there sufficient evidence, at 4% level of significance, that the manufacturer has under-estimated the breaking strength of the fishing line? Is it necessary for the manufacturer to know anything about the distribution of the breaking strength of the fishing line?
+
+**Chapter S7. Hypothesis Testing**
+
+**Solution:**
+
+**Unbiased estimates for population mean and population variance,**
+
+**Note that we are testing if "_the_**
+
+_manufacturer's_
+
+_claim is under-_
+
+_stated"._
+
+**To test \(\mathrm{H}_{0}:\mu=8\)
+
+**H\({}_{1}:\mu>8\)
+
+**at 4% level of significance**
+
+**Test Statistics: Under \(\mathrm{H}_{0}\), since \(n=150\) is large, by Central Limit**
+
+**Theorem, \(\overline{X}\sim\mathrm{N}\bigg{(}8,\dfrac{13.2486}{150}\bigg{)}\) approximately, and test statistic,**
+
+\(Z=\dfrac{\overline{X}-8}{\sqrt{13.2486/150}}\sim\mathrm{N}(0,\mathrm{I})\) approximately.**
+
+**Critical Region: Reject \(\mathrm{H}_{0}\) if \(p\)-value \(\leq 0.04\)**
+
+**Calculations :**
+
+\(z_{\text{cal}}=\dfrac{8.4969-8}{\sqrt{13.2486/150}}=1.67198\)
+
+\(p\)**-value = P (\(Z\geq 1.67198\)) = 0.047264**
+
+**Conclusion: Since \(p\)-value \(>0.04\), we do not reject \(\mathrm{H}_{0}\). There is insufficient evidence, at 4% level of significance, to conclude that the manufacturer has under-estimated the average breaking strength of the fishing line.**
+
+**Since the sample size is large, by Central Limit Theorem, the mean breaking strength of the fishing line follows the standard normal distribution. As such, he does not need to know the distribution of the breaking strength of the fishing line.**
+
+**Example 7.12:**
+
+**The security department of a factory wants to know whether or not the true average time required by the night guard to walk his round is 30 minutes. In a random sample of 100 rounds, the night guard averaged 30.8 minutes with a standard deviation of 3.8 minutes. Determine the minimum value of the level of significance to claim that the true average time is not 30 minutes.**
+
+**Solution:**
+
+**Unbiased estimates for population mean and population variance,**
+
+**The standard deviation**
+
+**given is obtained from**
+
+**the sample. This is not**
+
+**the population**
+
+**parameter (variance).**
+
+**Let \(X\) be the time required by the night guard to walk his round.**
+
+[MISSING_PAGE_EMPTY:17]
+
+**Chapter S7. Hypothesis Testing**
+
+**Solution:**
+
+**The Product Manager should use a 2-tail test since he is**
+
+**interested on find out whether the average time taken has changed.**
+
+**Since the sample size is large, by Central Limit Theorem, the test**
+
+**statistics will follow the standard normal distribution**
+
+**approximately. Thus he does not need to have the knowledge of the distribution.**
+
+**The unbiased estimates of the population mean and variance are:**
+
+\(\overline{t}=\frac{\Sigma t}{n}=16.714\)**,**
+
+\(s^{2}=\frac{1}{n-1}\Bigg{[}\Sigma t^{2}-\frac{\left(\Sigma t\right)^{2}}{n} \Bigg{]}\)****
+
+**at 10% level of significance**
+
+**Test Statistics: Under H**
+
+**since** \(n=50\) **is large, by Central Limit Theorem,**
+
+\(\overline{T}\sim\)**N**\(\left(17,\frac{2.0261}{50}\right)\) **approximately and test statistic,**
+
+\(\overline{T}=\frac{\overline{T}-17}{\sqrt{2.0261/50}}\sim\) **N**\(\left(0,1\right)\) **approximately.**
+
+**Critical Region: Reject H**
+
+**if**
+
+\(p\)**-value**
+
+\(\leq 0.1\)****
+
+**Calculations :**
+
+\(z_{\text{cal}}=\) \(\frac{16.714-17}{\sqrt{2.0261/50}}=-1.4208\)****
+
+\(p\)**-value**
+
+\(=2\)**P**\(\left(Z\leq-1.4208\right)=0.15539\)****
+
+**Conclusion: Since** \(p\)**-value**
+
+\(>0.1\)**, we do not reject H**
+
+\(\bullet\) **The control panel manufactured by the alternative process might be of a higher quality.**
+
+**The key phrase is** _"how the population variance of the times will affect...",_ **we need to find a condition on the population variance to decide the outcome of test.**
+
+**Chapter S7 Hypothesis Testing**
+
+\begin{tabular}{|l|l|l|l|} \hline \hline  & \(\bullet\) & Test Statistics: Under \(H_{\emptyset}\), since \(n=40\) is large by Central \\  & Limit Theorem, \(\overline{T}\sim\) N\(\left(17,\dfrac{\sigma^{2}}{40}\right)\) approximately and test \\  & statistic, \(Z=\dfrac{\overline{T}-17}{\sigma/\sqrt{40}}\sim\) N\((0,1)\) approximately \\  & \(\bullet\) & Critical Region: Reject \(H_{\emptyset}\) if \(z_{\mathrm{cal}}\leq-1.282\) \\  & \(\bullet\) & Calculations : \\  & \(z_{\mathrm{cal}}=\dfrac{16.7-17}{\sigma/\sqrt{40}}\) \\  & \(\bullet\) & To reject \(H_{\emptyset}\), \(z_{\mathrm{cal}}=\dfrac{16.7-17}{\sigma/\sqrt{40}}\leq-1.282\)\(\Rightarrow\)\(\sigma^{2}\leq 2.19\) \\  & \(\bullet\) & Thus, if the population variance is less than \(2.19\), the Finance \\  & \(\bullet\) & Manager will conclude that the alternative process is shorter. \\ \hline \hline \end{tabular}
+
+**Summary**
+
+1) **Hypothesis Test on the population mean**
+
+Note that a sample random sample of size \(n\) is assumed in each case.
+
+\begin{tabular}{|l|l|l|l|l|} \hline Variance & Population & Sample size & Test statistic & Remark \\ \hline Known & Normal & Any & \(Z=\dfrac{\overline{X}-\mu}{\sigma/\sqrt{n}}\sim\) N\((0,1)\) & \\ \hline Known & Any & Large & \(Z=\dfrac{\overline{X}-\mu}{\sigma/\sqrt{n}}\sim\) N\((0,1)\) approx & Use CLT if \\  & \(\bullet\) & \(\bullet\) & non-normal \\ \hline Unknown & Any & Large & \(Z=\dfrac{\overline{X}-\mu}{s/\sqrt{n}}\sim\) N\((0,1)\) approx & Use CLT if \\  & & & \(Z=\dfrac{\overline{X}-\mu}{s/\sqrt{n}}\sim\) N\((0,1)\) approx & non-normal \\ \hline \hline \end{tabular}
+
+**2) **To Test : Null Hypothesis: \(H_{\emptyset}\)**: \(\mu=\mu_{0}\) vs
+
+**Alternative Hypothesis**
+
+\begin{tabular}{|l|l|l|l|} \hline \hline \(H_{1}\): \(\mu\neq\mu_{0}\) (any change) & **Reject \(H_{0}\) if** \(\left|z_{\mathrm{cal}}\right|\geq z_{\mathrm{cal}}\) & **Reject \(H_{0}\) if** \(p\)-value \(\leq\dfrac{\alpha}{100}\) \\ \hline \(H_{1}\): \(\mu>\mu_{0}\) (definite increase) & **Reject \(H_{0}\) if** \(z_{\mathrm{cal}}\geq z_{\alpha}\) & **Reject \(H_{0}\) if** \(p\)-value \(\leq\dfrac{\alpha}{100}\) \\ \hline \(H_{1}\): \(\mu<\mu_{0}\) (definite decrease) & **Reject \(H_{0}\) if** \(z_{\mathrm{cal}}\leq-z_{\alpha}\) & **Reject \(H_{0}\) if** \(p\)-value \(\leq\dfrac{\alpha}{100}\) \\ \hline \end{tabular}
+
+3) **Extra Reading on \(p\)-value:**
+
+**Example** (based on information in Example 7.6):
+
+Take \(X\) to be mass of a bag of flour where \(X\sim\) N\((1000,\,50^{2})\), and suppose five different samples of 30 bags of flour give sample means \(\widetilde{x}\) of
+
+i) 990 g ii) 1010 g iii) 1013 g. iv) 1020 g v) 1030 g
+
+Investigate the claim that the mean mass of a bag of flour is 1000 g, versus the alternative claim that it is more than 1000 g by finding the \(p\)-values for the 5 samples.
+
+Which sample provides the strongest evidence to reject \(H_{\emptyset}\)? Which sample provides the least evidence to reject \(H_{\emptyset}\)? What do you notice about the \(p\)-value for these samples?
+
+## Chapter S7 Hypothesis Testing
+
+### Annex A - GC Keystrokes for the Examples
+
+Example 7.2:
+
+[MISSING_PAGE_FAIL:22]
+
+**H2 Mathematics**
+
+**Tutorial S7 - Hypothesis Testing**
+
+**Year 2/2020**
+
+**1.**: [N2004/II/30 (OR)]
+
+The mean of a random variable \(X\) is denoted by \(\mu\). A sample of 50 random observations of \(X\) is taken and the results are summarised by \(\sum x=527.1\).
+
+**(i)**: It is given that the population variance is 15. Carry out a 2-tail test of the null hypothesis \(\mu=9.5\), at the 5% significance level. [do not reject \(H_{0}\)]
+**(ii)**: It is given instead that \(\sum x^{2}=6172.31\). In a 1-tail test of the null hypothesis \(\mu=11.5\), the alternative hypothesis is accepted. State the alternative hypothesis, and find an inequality satisfied by the significance level of the test. [\(H_{1}:\mu<11.5\), \(\alpha\geq 2.80\) ]
+
+**2.**: A random sample of 90 batteries, used in a particular model of mobile phone, is tested and the'standby-time', \(x\) hours, is measured. The results are summarised by \(\Sigma x=3040.8\) and \(\Sigma x^{2}=115773.66\). Test, at the 1% significance level, whether the mean standby-time is less than 36.0 [Do not reject \(H_{0}\)]
+
+State, with a reason, whether in using the above test, it is necessary to assume that the'standby-time' has a normal distribution.
+
+In a test at the 5% significance level, it is found that there is significant evidence that the population mean talk-time is less than 5 hours. Using only this information, and giving a reason in each case, state whether each of the following statements is (i) necessarily true, (ii) necessarily false, or (iii) neither necessarily true nor false.
+
+**(i)**: There is significant evidence at the 10% significance level that the population mean talk-time is less than 5 hours.
+**(ii)**: There is significant evidence at the 5% significance level that the population mean talk-time is not 5 hours.
+
+**3.**: At an early stage in analysing the marks scored by the large number of candidates in an examination paper, the Examining Board took a random sample of 250 candidates and found that the mark, \(x\), of these candidates gave \(\sum x=11872\), \(\sum x^{2}=646193\). Using these figures obtained in this sample, the null hypothesis \(\mu=49.5\) is tested against the alternative hypothesis \(\mu<49.5\) at the \(\alpha\)% significance level. Determine the set of values of \(\alpha\) for which the null hypothesis is rejected in favour of the alternative hypothesis.
+
+It is subsequently found that the population mean and standard deviation for the paper are 45.292 and 18.761 respectively. Find the probability of a random sample of size 250 giving a sample mean at least as high as one found in the sample above.
+
+[\(\alpha>4.02\) ; 0.0321]
+
+_It is not the answers that enlightens but the questions... Eugene Ionesco_
+
+**[ACJC/2018/II/05]**
+
+The management of a supermarket wishes to analyse the effectiveness of an advertising campaign. Before the campaign, the daily takings, \(\$X\)_,_ is normally distributed with mean $72 300 and standard deviation $4410.
+
+Immediately after the campaign, a sample of 30 shopping days is taken and the mean daily takings was found to be $\(\,\overline{x}\,\). A test is carried out, at the 5% significance level, to determine whether the campaign is effective, assuming that there is no change in the standard deviation of the daily takings after the campaign.
+
+**(i)**: State appropriate hypotheses for the test.
+**(ii)**: By stating a necessary assumption, find the set of values of \(\,\overline{x}\,\), to the nearest dollar, for which the result of the test would be to reject the null hypothesis at 5% level of significance.
+**(iii)**: The 30 readings taken on \(X\) immediately after the campaign is summarised as follows.
+
+\[\sum\left(x-70\ 000\right)=129\ 000\]
+
+By finding \(\,\overline{x}\,\), state the conclusion of the test, at the 5% significance level, whether the campaign is effective.
+
+**5. [2012/II/6]**
+
+On a remote island a zoologist measures the tail lengths of a random sample of 20 squirrels. In a species of squirrel known to her, the tail lengths have mean 14.0 cm. She carries out a test, at the 5% significance level, of whether squirrels on the island have the same mean tail length as the species known to her. She assumes that the tail lengths of squirrels on the island are normally distributed with standard deviation 3.8 cm.
+
+**(i)**: State appropriate hypotheses for the test.
+
+The sample mean tail length is denoted by \(\,\overline{x}\,\) cm.
+**(ii)**: Use an algebraic method to calculate the set of values of \(\,\overline{x}\,\) for which the null hypothesis would not be rejected. (Answers obtained by trial and improvement from a calculator will obtain no marks.)
+
+\[\left[\left\{x\in\mathbb{R}:\!12.3<\overline{x}<\!15.7\right\}\,\right]\]
+**(iii)**: State the conclusion of the test in the case where \(\,\overline{x}=15.8\). [Rejected]
+
+**6. [SAJC/2019/II/11]**
+
+The time \(T\) seconds required for a computer to boot up, from the moment it is switched on, is a normally distributed random variable. The specifications for the computer state that the population mean time should not be more than 30 seconds. A Quality Control inspector checks the boot up time using a sample of 25 randomly chosen computers.
+
+A particular sample yielded \(\,\sum t=802.5\) and \(\sum t^{2}=26360.25\,\).
+
+**(i)**: Calculate the unbiased estimates of the population mean and variance.
+**(ii)**: What do you understand by the term "unbiased estimate"?
+**(iii)**: Test, at the 5% level of significance level, whether the specification is being met. Explain in the context of the question, the meaning of "5% level of significance". [\(p\)-value = 0.0179, reject H\({}_{0}\)].
+**(iv)**: Find the range of values of \(\,\overline{t}\,\) such that the specification will be met in the test carried out in part **(iii)**.
+
+\[\left[\,0<\overline{t}<31.6\,\right]\]
+**(v)**: A new Quality Control policy is that when the specification is not met, all the computers will be sent back to the manufacturer for upgrading. The inspector tested a second random sample of 25 computers, and the boot up time, \(y\) seconds, of each computer is measured, with \(\,\overline{y}=32.4\,\). Using a hypothesis test at the 5% level of significance, find the range of values of the population standard deviation such that the computers will not be sent back for upgrading.
+
+\(\,\)
+7. [DHS/2019/II/9] The time taken, \(T\) (in minutes), for a 17-year-old student to complete a 5-km run is a random variable with mean 30. After a new training programme is introduced for these students, a random sample of \(n\) students is taken. The mean time and standard deviation for the sample are found to be 28.9 minutes and 4.0 minutes respectively. 1. Find the unbiased estimate of the population variance in terms of \(n\). 2. Using \(n=40\), 1. carry out a test at the 10% significance level to determine if the mean time taken has changed. State appropriate hypotheses for the test and define any symbols you use. 2. State what it means by the \(p\)-value in this context. 3. Give a reason why no assumptions about the population are needed in order for the test to be valid. 4. The trainer claims instead that the new training programme is able to improve the mean of \(T\), 30 minutes, by at least 5%. The school wants to test his claim. 5. Write down the null and alternative hypothesis. 6. Using the existing sample, the school carried out a test at 1% significance level and found that there was sufficient evidence to reject the trainer's claim. Find the set of values that \(n\) can take, stating any necessary assumption(s) needed to carry out the test. 2. [EJC/2018/I/08] A teacher, Mr. Ku, suspects that the average time a student spends on his or her mobile phone per day is \(\mu_{0}\) minutes. He selected a random sample of 97 students in the school who own mobile phones and recorded the amount of time each student spent on his or her phone in a randomly selected day. The results are displayed in the table below. 3. [EJC/2018/I/08] A teacher, Mr. Ku, suspects that the average time a student spends on his or her mobile phone per day is \(\mu_{0}\) minutes. He selected a random sample of 97 students in the school who own mobile phones and recorded the amount of time each student spent on his or her phone in a randomly selected day. The results are displayed in the table below. 4. [EJC/2018/I/08] A teacher, Mr. Ku, suspects that the average time a student spends on his or her mobile phone per day is \(\mu_{0}\) minutes. He selected a random sample of 97 students in the school who own mobile phones and recorded the amount of time each student spent on his or her phone in a randomly selected day. The results are displayed in the table below. 5. Calculate unbiased estimates of the population mean and variance of the time a student spends on his or her mobile phone per day. 6. [EJC/2018/I/08] The null hypothesis that the average time a student spends on his or her mobile phone per day is \(\mu_{0}\) minutes is tested, at 5% level of significance, against the alternative hypothesis that the average time a student spends on his or her mobile phone per day differs from \(\mu_{0}\) minutes. 7. Determine the range of values of \(\mu_{0}\) for which the null hypothesis is rejected. 8. Explain, in the context of this question, the meaning of 'at 5% level of significance'. _It is not the answers that enlightens but the questions... Eugene Ionesco_Experimental data concerning a variable \(X\), which measures the reliability of a certain electronic component, is as follows : \(\sum x=1164.2\), \(\sum x^{2}=13911.6\), \(n=100\). Calculate the unbiased estimates of the population mean and standard deviation from this figures. Explain whether, on the evidence of this sample, you would reject the hypothesis that the mean value of \(X\) is 12. Figures collected over a long period have established that the mean and standard deviation of \(X\) are 12 and 2 respectively. After a change in the manufacturing process, it is expected that the mean will have increased, but it may be assumed that the standard deviation remains equal to 2. A sample of \(n\) values of \(X\) is taken, with sample mean \(m\); if \(m\) is greater than some critical value, it will be accepted that the mean has in fact increased, but if \(m\) is less than the critical value, the increase is not established. State carefully appropriate null and alternative hypotheses for this situation, and find, in terms of \(n\), the critical value for a 1% significance level. [11.642, 1.911, do not reject at 5% level of \(\mbox{sig}:12+\frac{4.652}{\sqrt{n}}\) ]
+
+10. [H1 N2008/I/10] A consumer association is testing the lifetime of a particular type of battery that is claimed to have a lifetime of 150 hours. A random sample of 70 batteries of this type is tested and the lifetime, \(x\) hours, of each battery is measured. The results are summarised by
+
+\[\sum x=10\ 317,\hskip 28.452756pt\sum x^{2}=1540\ 231.\]
+
+The population mean lifetime is denoted by \(\mu\) hours. The null hypothesis \(\mu=150\) is to be tested against the alternative hypothesis \(\mu<150\). Find the \(p\)-value of the test and state the meaning of this \(p\)-value in the context of the question. [5]
+
+A second random sample of 50 batteries of this type is to be tested and the lifetime, \(y\) hours, of each battery is measured, with results summarized by
+
+\[\sum y=7331,\hskip 28.452756pt\sum y^{2}=1100\ 565.\]
+
+Combining the two samples into a single sample, carry out a test, at the 10% significance level, of the same null and alternative hypotheses. [6]
+
+\[[p\mbox{-value}=0.0975<0.10,\mbox{ reject }H_{0}]\]
+
+_It is not the answers that enlightens but the questions... Eugene Ionesco_
+
+**Assignment:**
+
+1. [2013/Prelim/RI/II/8] The manufacturer of a particular type of battery claims that the lifetime is distributed with mean 150 hours and standard deviation 16.877 hours. A random sample of \(n\) batteries, where \(n\) is large, is taken and the lifetime, \(t\) hours, of each battery is measured. It is found that \(\sum t=10\) 317. A test is carried out to determine whether the manufacturer has overstated the mean lifetime of the batteries, and the \(p\)-value is found to be 0.0975. (i) Write down appropriate hypotheses for the test, defining any symbols you use. State, in context, the conclusion of the test if the level of significance is 8%. [3] (ii) Show that \(n\) satisfies the equation \(\dfrac{10317}{n}+\dfrac{21.871}{\sqrt{n}}-150=0\), and solve it numerically. [5] (iii) State, with a reason, whether it is necessary to assume that the lifetime of the batteries is normally distributed in order to carry out the calculation in (ii). [1]
+2. [2017 Prelim ACJC /II/7 modified] It has been suggested that the optimal pH value for shampoo should be 5.5, to match the pH level of healthy scalp. Any pH value that is too low or too high may have undesirable effects on the user's hair and scalp. A shampoo manufacturer wants to investigate if the pH level of his shampoo is at the optimal value, by carrying out a hypothesis test at the 10% significance level. He measures the pH value, \(x\), of \(n\) randomly chosen bottles of shampoo, where \(n\) is large. (a) In the case where \(n=30\), it is found that \(\sum x=178.2\) and \(\sum x^{2}=1238.622\). (i) Find unbiased estimates of the population mean and variance, and carry out the test at the 10% significance level. [6] (ii) Explain if it is necessary for the manufacturer to assume that the pH value of a bottle of shampoo follows a normal distribution. [1] (iii) State what it means by the \(p\)-value in this context. [1] (b) In the case where \(n\) is unknown, assume that the sample mean is the same as that found in (a). (i) State the critical region for the test. (i) Given that \(n\) is large and that the population variance is found to be 6.5, find the greatest value of \(n\) that will result in a favourable outcome for the manufacturer at the 10% significance level. [3]
+
+_It is not the answers that enlightens but the questions... Eugene Ionesco_Extra Practice Questions
+
+1. **2014/DHS/II/11** In Factory A, it is claimed that the mean mass of each bag of beans produced is 22 kg. To investigate this claim, the mass, \(x\) kg, of a random sample of 50 bags of beans are obtained and summarised by: \[\sum(x-18)=165.3\;\;\text{and}\;\sum\left(x-18\right)^{2}=876.5.\] **(i)** What do you understand by the term "unbiased estimate"? [1] **(ii)** Find the unbiased estimates of the population mean and variance. [2] **(iii)** Test at the 5% level of significance whether this claim is valid. [4] **(iv)** State the meaning of the \(p\)-value obtained in part **(iii)**. [1] [(ii) 21.3, 6.74, Do not reject H\({}_{0}\), \(p\)-value = 0.0586]
+2. **2013/MI/II/9** In XYZ School, the students' mean running time in the 2.4 km run is claimed to be 705 seconds. A programme to help the students perform better in the run is introduced. After the programme, a sample of 100 students was taken and their mean running time is 690 seconds. At a significance level of 7%, a \(z\)-test was done to test if the students are performing better. It was concluded that there is sufficient evidence that the students are performing better in the 2.4 km run. **(i)** In the test above, explain if any assumption about the students' 2.4 km running times is necessary. [1] **(ii)** If a two-tailed test had been conducted, is it necessarily true, necessarily false or not necessarily true or false that the conclusion will remain the same? [2] **(iii)** What can you do to increase the \(p\)-value in the test in part **(b)**? [1]
+3. **2017/RVHS/II/11** Physicists are conducting an experiment involving collisions between protons and anti-protons. The mean amount of energy, \(\overline{x}\;\;\text{MeV}\), released in \(n\) collisions is found to be 1864 MeV. One model predicts the energy released would be 1860 MeV with standard deviation 40 MeV. This is tested at a 1% level of significance against a newer model that claims a higher value. **(i)** Find the least value of \(n\) such that the hypothesis that the mean amount of energy released is 1860 MeV is rejected. [5] Given instead that \(n=600\). **(ii)** Calculate the \(p\)-value and state its meaning in context of the question. [3] **(iii)** State, with a reason, whether it is necessary to assume the amount of energy released in collisions to be normally distributed for this test to be valid. [1] Two-sigma is an indicative of how confident researchers feel their results are. For researchers to feel confident, they must be able to produce a "two-sigma" result - that is the experimental result must be at least two standard deviations away from the predicted mean under the null hypothesis. **(iv)** Calculate the level of significance that corresponds to a "two-sigma" test. Hence, using your answer from part **(ii)** determine whether the experiment has met the "two-sigma" threshold. [3] [3] [(i) 542, (ii) \(p\)-value = 0.00715, (iv) 2.28%] _It is not the answers that enlightens but the questions... Eugene Ionesco_2017/CJC/II/9 A computer hard drive manufacturer claims that the mean usage hours before failure of their R series hard drives is 50 thousand hours. A technology columnist wishes to investigate this claim and collected the usage hours, \(t\) thousand hours for each of the 50 randomly chosen hard drives which were submitted to the local service centre for drive failures. The data is summarized as follows. \[n=50\,,\qquad\Sigma t=2384.5\,,\qquad\Sigma t^{2}=115885.23\] The technology columnist wants to use hypothesis testing to test whether the mean usage hours before failure of a hard drive is different from what the manufacturer has stated. **(i)**: Explain whether it is necessary for the columnist to know about the distribution of the usage hours before failure of the drives in order to carry out a hypothesis test. [1] **(ii)**: Find the unbiased estimates of the population mean and variance and carry out the test at 1% level of significance for the columnist. [6] The columnist published the data and the results of the hypothesis testing in an online article. **(iii)**: Suggest a reason why the test result might not be useful to a reader of the article who is deciding whether to buy an R series hard drive from the manufacturer. [1] **(iv)**: State an alternative hypothesis that is more relevant to the decision making process and explain whether the result will differ from the earlier test carried out by the columnist at 1% level of significance. **(v)**: State a necessary assumption that was made for all the tests carried out. [2] [1] [(ii) 47.69, 44.3, \(p\)-value = 0.0141, do not reject H\({}_{0}\)]
+5. **2017/SAJC/II/11** The Kola Company receives a number of complaints that the volume of cola in their cans are less than the stated amount of 500 ml. A statistician decides to sample 50 cola cans to investigate the complaints. He measures the volume of cola, \(x\) ml, in each can and summarised the results as follows: \[\sum x=24730,\,\sum x^{2}=12242631.\] **(i)**: Find unbiased estimates of the population mean and variance correct to 2 decimal places and carry out the test at the 1% level of significance. [6] **(ii)**: One director in the company points out that the company should test whether the volume of cola in a can is 500 ml at the 1% significance level instead. Using the result of the test conducted in **(i)**, explain how the \(p\)-value of this test can be obtained from \(p\)-value in part **(i)** and state the corresponding conclusion. [2] The head statistician agrees the company should test that the volume of cola in a can is 500 ml at the 1% level of significance. He intends to make a simple rule of reference for the production managers so that they will not need to keep coming back to him to conduct hypothesis tests. On his instruction sheet, he lists the following: 1. Collect a random sample of 40 cola cans and measure their volume. 2. Calculate the mean of your sample, \(\overline{\tau}\) and the variance of your sample, \(s_{x}^{2}\). 3. Conclude that the volume of cola differs from 500 ml if the value of \(\overline{\tau}\) lies... **(iii)**: Using the above information, complete the decision rule in step 3 in terms of \(\bar{s}_{x}\). [4] A party organiser has \(n\) cans of cola and \(2n\) packets of grape juice. Assume now that the volume of a can of cola has mean 500 ml and variance 144 ml2, and the volume of a packet of grape juice has mean 250 ml and variance 25 ml2. She mixes all the cola and grape juice into a mocktail, which she pours into a 120-litre barrel. Assume that \(n\) is sufficiently large and that _It is not the answers that enlightens but the questions... Eugene Ionesco_the volumes of the cans of cola and packets of grape juice are independent. **(iv)** Show that if the party organiser wants to be at least 95% sure that the barrel will not overflow, \(n\) must satisfy the inequality \(1000n+22.9\sqrt{n}-120,000\leq 0\). [4] [(i) 494.60, 228.02, \(p\)-value = 0.00572, Reject H\({}_{0}\), (iii) 500 - 0.412\(s_{x}\geq\overline{x}\) or \(\overline{x}\geq 500+0.412\)\(s_{x}\)]
+6. **2017/TPJC/II/9** The town council is investigating the mass of rubbish in domestic dustbins. In 2016, the mean mass of rubbish in domestic dustbins was 20.0 kg per household per week. The town council starts a recycling initiative and wishes to determine whether there has been a reduction in the mass of rubbish in domestic dustbins. The mass of rubbish in a domestic dustbin is denoted by \(X\) kg. A random sample of 50 domestic dustbins is selected and the results are summarised as follows. \(n=50\)\(\sum x=924.5\)\(\sum x^{2}=18249.2\) **(i)** Explain what is meant in this context by the term 'a random sample'. [2] **(ii)** Explain why the town council is able to carry out a hypothesis test without knowing anything about the distribution of the mass of rubbish in domestic dustbins. [2] **(iii)**Find the unbiased estimates of the population mean and variance and carry out the test at the 1% level of significance for the town council. [6] **(iv)** Use your results in part **(iii)** to find the range of values of \(n\) for which the result of the test would be that the null hypothesis is rejected at the 1% level of significance. [3] [(iii) 18.5, 23.6, \(p\)-value = 0.013937 do not reject H\({}_{0}\), \(n\geq 56\), \(n\in\mathbb{Z}^{+}\)]
+7. **2019/HCI/II/9** A company purchased a machine to pack shower gel into its bottles. The expected mean volume of shower gel in a bottle is 950 ml. **(a)** The floor supervisor believes that the machine is packing less amount of shower gel than expected. A random sample of 80 bottles is taken and the data is as follows: 
+
+**(i)** Find unbiased estimates of the population mean and variance, giving your answers correct to 2 decimal places. [2] Write down the appropriate hypotheses to test the floor supervisor's belief. You should define any symbols used. [2] Using the given data, find the \(p\)-value of the test. State what is meant by this \(p\)-value in the context of this question. [2] It was concluded at \(\alpha\%\) level of significance that the machine is indeed packing less amount of shower gel than expected. State the set of values of \(\alpha\). [1] **(b)** Due to a change in marketing policy, the machine is being recalibrated to pack smaller bottles of shower gel with mean volume of 250 ml. The volume of a recalibrated bottle of shower gel is denoted by \(Y\) ml. A random sample of 50 bottles of \(y\) ml each is taken and the data obtained is summarised by:
+
+\[\sum(y-250)=-25,\qquad\sum(y-250)^{2}=k.\]
+
+_It is not the answers that enlightens but the questions... Eugene Ionesco_average weight for the second sample is \(k\) grams.
+
+Based on the combined sample of 100 mini breads, find the range of values of \(k\) such that the customer's claim is valid at the 4% level of significance. [4]
+
+[ 44.6, 3.80, \(p\)-value = 0.0482 do not reject H\({}_{0},\ k\leq 45.1\) ]
+
+10. **2019/VJC/II/9**
+
+Exposure to Volatile Organic Compounds (VOCs), which have been identified in indoor air, is suspected as a cause for headaches and respiratory symptoms. Indoor plants have not only a positive psychological effect on humans, but may also improve the air quality. Certain species of indoor plants were found to be effective removers of VOCs.
+
+A commonly known VOC is Benzene. The following data gives the benzene levels, \(x\) (in ppm) in 40 test chambers containing the indoor plant _Epipremmun aureus_.
+
+\[n=40\,,\ \sum\bigl{(}x-26.0\bigr{)}=-30.1\,,\ \sum\bigl{(}x-26.0\bigr{)}^{2}=214.61\,.\]
+
+The initial mean Benzene level (in ppm) without _Epipremmun aureus_ was found to be 26.0.
+
+**(i)**: Test, at the 5% level of significance, the claim that the mean Benzene level, \(\mu\) (in ppm), has decreased as a result of the indoor plant _Epipremmun aureus_. You should state your hypotheses clearly. [5]
+**(ii)**: State, giving a reason, whether there is a need to make any assumptions about the population distribution of the Benzene level in order for the test to be valid. [2]
+
+The Benzene levels of another 50 test chambers containing the indoor plant _Epipremmun aureus_ were recorded, The sample mean is \(\overline{x}\) ppm and the sample variance is 8.33 ppm\({}^{2}\).
+
+**(iii)**: The acceptance region of a test of the null hypothesis \(\mu=26.0\) is \(\overline{x}>25.1\). State the alternative hypothesis and find the level of significance of the test. [4]
+**(iv)**: If the null hypothesis is \(\mu=\mu_{0}\), where \(\mu_{0}>26.0\), would the significance level of a test with the same acceptance region in part **(iii)** be larger or smaller than that found in part **(iii)**? Give a reason for your answer. [2]
+
+[(i) \(p\)-value = 0.0160, Reject H\({}_{0}\), (iii) 1.45% (iv) smaller ]
+
+_It is not the answers that enlightens but the questions... Eugene Ionesco_
+
+[MISSING_PAGE_EMPTY:32]

@@ -1,0 +1,664 @@
+**Nanyang Junior College**
+
+**JC1 H2 Mathematics 2019**
+
+**Lecture Notes**
+
+\begin{tabular}{|c|l|l|} \hline
+**Chapter** & **Topic** \\ \hline
+**7** & **Differentiation Techniques** \\ \hline
+**8** & **Applications of Differentiation** \\ \hline \end{tabular}
+
+**Name:**
+
+**CT: 19**
+
+[MISSING_PAGE_FAIL:2]
+
+[MISSING_PAGE_EMPTY:3]
+
+[MISSING_PAGE_EMPTY:4]
+
+## Chapter 7 Differentiation
+
+### 7.2 Differentiation of Basic Trigonometric Functions (Independent reading)
+
+\begin{tabular}{|l|l|l|l|} \hline  & Derivative & dy & Derivative & dy \\ \(y=\)f(x) & & dx & \(y=\)f(x) & \\ \hline \(\sin x\) & \(\cos x\) & \(\sin\)f(x) & f'(x)\(\times\) cos f(x) \\ \hline \(\cos x\) & \(\dot{-}\sin x\) & cos f(x) & \(-\) f'(x)\(\times\) sin f(x) \\ \hline \(\tan x\) & \(\sec^{2}x\) & tan f(x) & f'(x)\(\times\) sec2 f(x) \\ \hline sec \(x\) & sec \(x\tan x\) [MF 26] & sec f(x) & f'(x)\(\times\) sec f(x) tan f(x) \\ \hline cosec \(x\) & \(-\) cosec \(x\cot x\) [MF 26] & cosec f(x) & \(-\) f'(x)\(\times\) cosec f(x) cot f(x) \\ \hline cot \(x\) & \(-\) cosec2\(x\) & cot f(x) & \(-\) f'(x)\(\times\) cosec2 f(x) \\ \hline \end{tabular}
+
+Table 7.1:
+
+\begin{tabular}{|l|l|l|l|} \hline  & & \\ \(\frac{\text{d}}{\text{d}\phi}\) & \(\dot{\phi}\dot{\eta}\theta^{*}\) & \(\frac{\text{d}}{\text{d}\phi}\) & \(\frac{\text{d}\tau}{\text{d}\phi}\) \\ \hline
+1. & When differentiating trigonometric functions, \(x\) must be in radians. & \(\simeq\frac{\pi}{\text{f}\theta}\) [\(\phi\)] & \(\frac{\text{d}\pi}{\text{d}\phi}\) \\
+2. & You could write sec \(x\) as \(\left(\cos x\right)^{-1}\) or \(\frac{1}{\cos x}\) and obtain the derivative by applying \\ \(\frac{\text{d}}{\text{d}x}\big{[}\text{f}(x)\big{]}^{*}=n\big{[}\text{f}(x) \big{]}^{*-1}\times\text{f'}(x)\) (Chain Rule) or \(\frac{\text{d}}{\text{d}x}\bigg{(}\frac{u}{v}\bigg{)}=\frac{v \frac{\text{d}u}{\text{d}x}-u\,\frac{\text{d}v}{\text{d}x}}{v^{2}}\) (Quotient Rule). \\ \end{tabular}
+
+The same method applies to differentiating cosec \(x\) and cot \(x\).
+
+**Important:**\(\left(\cos x\right)^{-1}\) is not to be written as cos\({}^{-1}\)\(x\).
+
+\[y=\cos^{-1}x\,\) is the inverse function of \(y=\cos x\).
+
+[MISSING_PAGE_EMPTY:6]
+
+**Chapter 7: Differentiation**
+
+**Method 1:** We can enter the function into the graphic calculator and find the value of the derivative of function at the point where \(x=2\).
+
+Solution:
+
+**Step 1:** Press to call the command **3:nDeriv**( on the screen.
+
+**Step 2:** Enter the function \(y=3x^{4}+5\) and \(x=2\) into the GC as shown below.
+
+**Method 2:** We can also find the derivative by graphing the function using the GC.
+
+Solution:
+
+**Step 1**: Enter the function \(y=3x^{4}+5\) into \(\mathrm{Y_{1}}=\) and press to graph the function.
+
+**Step 2**: Press to select the command **6:dy/dx,** the numeric derivative option. This will return the user to the graph screen.
+
+**Step 3**: Enter the X value by pressing, and you will see X=2 on the graph screen. Then
+
+press. This will give you the value of \(\dfrac{\mathrm{dy}}{\mathrm{dx}}\) at \(x=2\).
+
+**Note:**
+
+When using the GC, there are some restrictions in it giving numerical answers instead of exact answers.
+
+### 7.4 Differentiation by first principles
+
+The gradient at any point on the curve is defined as the gradient of the tangent at that point on the curve.
+
+Consider a curve \(y=\mathbb{f}(x)\). Let \(P(x,\,y)\) be an arbitrary fixed point chosen on the curve. Our objective is to find the gradient of the curve at \(P\).
+
+Let \(Q(x+\bar{\alpha},y+\bar{\delta}y)\) be another point on the curve near \(P\) where \(\bar{\alpha}x\) (read as 'delta x') denotes the small increment of \(x\) and \(\bar{\delta}y\) (delta y) denotes the corresponding small increment of \(y\).
+
+The gradient of the chord \(PQ=\frac{\delta y}{\delta x}\).
+
+Now imagine \(Q\) to be a "bead" threaded to the curve and is gradually sliding down towards \(P\).
+
+As \(Q\) approaches \(P\), we see that the gradient of the chord \(PQ\) approaches the gradient of the tangent to the curve at \(P\).
+
+Gradient of the curve at \(P=\lim\limits_{Q\to P}\left(\text{gradient of the chord }PQ\right)\)
+
+\[=\lim\limits_{\delta x\to 0}\frac{\delta y}{\delta x}\,\,\left(\text{since }Q \to P\,\,\text{ as }\,\,\bar{\alpha}x\to 0\right)\]
+
+Since \(\delta y=\mathbb{f}(x+\delta x)-\mathbb{f}(x)\), the gradient of tangent at \(P\) is
+
+\[\boxed{\lim\limits_{\delta x\to 0}\frac{\delta y}{\delta x}=\lim\limits_{ \delta x\to 0}\frac{\mathbb{f}(x+\delta x)-\mathbb{f}(x)}{\delta x}}\]
+
+This process of taking the limit of \(\frac{\delta y}{\delta x}\) as \(\delta x\to 0\) to find the gradient of the tangent at a point on the curve is known as differentiation by first principles.
+
+The symbol '\(\frac{\mathrm{d}y}{\mathrm{d}x}\)' is used to denote the more cumbersome notation \(\lim\limits_{\delta x\to 0}\frac{\delta y}{\delta x}\), i.e. \(\frac{\mathrm{d}y}{\mathrm{d}x}=\lim\limits_{\delta x\to 0}\frac{\delta y}{\delta x}\)
+
+The symbol '\(\frac{\mathrm{d}y}{\mathrm{d}x}\)' is called the derivative of \(y\) with respect to \(x\) or equivalently, the gradient function corresponding to the curve \(y=\mathbb{f}(x)\).
+
+**Remarks:**
+
+1. If \(y=\mathds{f}(x)\), we can also denote \(\frac{\mathrm{d}y}{\mathrm{d}x}\) by \(\mathrm{f}^{\prime}\big{(}x\big{)}\) (read as 'fprime of \(x\)').
+2. '\(\frac{\mathrm{d}}{\mathrm{d}x}\)' is an operator, not a fraction. \(\frac{\mathrm{d}y}{\mathrm{d}x}\) is read as 'the result when \(\frac{\mathrm{d}}{\mathrm{d}x}\) operates on \(y\)' or 'differentiate \(y\) with respect to \(x\)'.
+
+**Example 4**
+
+Use 'Differentiation by First Principles' to find \(\mathrm{f}^{\prime}\big{(}x\big{)}\) given that \(\mathrm{f}(x)=x^{2}\).
+
+Solution:
+
+Using first principles,
+
+\[\mathrm{f}^{\prime}(x) =\lim_{\delta x\to 0}\frac{\mathrm{f}(x+\delta x)-\mathrm{f}(x)}{ \delta x}=\lim_{\delta x\to 0}\frac{(x+\delta x)^{2}-x^{2}}{\delta x}=\lim_{ \delta x\to 0}\frac{x^{2}+2x\delta x+(\delta x)^{2}-x^{2}}{\delta x}\] \[=\lim_{\delta x\to 0}\frac{2x\delta x+(\delta x)^{2}}{\delta x}= \lim_{\delta x\to 0}\frac{\delta x\big{[}2x+(\delta x)\big{]}}{\delta x}= \lim_{\delta x\to 0}(2x+\delta x)=2x\]
+
+**Example 5**
+
+Use 'Differentiation by First Principles' to find \(\mathrm{f}^{\prime}\big{(}x\big{)}\) given that \(\mathrm{f}(x)=\frac{1}{x}\).
+
+Solution:
+
+Using first principles,
+
+\[\mathrm{f}^{\prime}(x)=\lim_{\delta x\to 0}\frac{\mathrm{f}(x+\delta x)- \mathrm{f}(x)}{\delta x}=\lim_{\delta x\to 0}\frac{\frac{1}{x+\delta x}- \frac{1}{x}}{\delta x}=\lim_{\delta x\to 0}\frac{x-(x+\delta x)}{\delta x}= \lim_{\delta x\to 0}\frac{\frac{-\delta x}{x(x+\delta x)}}{\delta x}\] \[=\lim_{\delta x\to 0}\frac{-1}{x(x+\delta x)}=-\frac{1}{x^{2}}\]
+
+**Example 6**
+
+Use 'Differentiation by First Principles' to find \(\mathrm{f}^{\prime}\big{(}x\big{)}\) given that \(\mathrm{f}(x)=\sin x\).
+
+[Take \(\lim_{\theta\to 0}\frac{\sin\theta}{\theta}=1\)]
+
+**Chapter 7: Differentiation**
+
+Solution:
+
+\[\begin{array}{ll}\mbox{Using first principles,}&\\ \mbox{f'}(x)=\lim_{\delta x\to 0}\frac{\mbox{f}(x+\delta x)-\mbox{f}(x)}{ \delta x}&\mbox{Recall that in [MF 26]:}\\ \mbox{sin}\,P-\sin Q=2\cos\frac{1}{2}\big{(}P+Q\big{)}\sin\frac{1}{2}\big{(}P-Q \big{)}\\ \mbox{}=\lim_{\delta x\to 0}\frac{2\cos\frac{1}{2}\big{(}2x+\delta x \big{)}\sin\frac{1}{2}\big{(}\delta x\big{)}}{\delta x}\\ \mbox{}=\lim_{\delta x\to 0}\frac{\cos\frac{1}{2}\big{(}2x+ \delta x\big{)}\sin\frac{1}{2}\big{(}\delta x\big{)}}{\frac{1}{2} \big{(}\delta x\big{)}}\\ \mbox{}=\lim_{\delta x\to 0}\cos\frac{1}{2}\big{(}2x+ \delta x\big{)}\lim_{\delta x\to 0}\frac{\sin\frac{1}{2}\big{(}\delta x \big{)}}{\frac{1}{2}\big{(}\delta x\big{)}}&\mbox{Applying theorem of limits:}\\ \mbox{Given that }\lim_{x\to 0}\mbox{f}\big{(}x\big{)}\mbox{ and }\lim_{x\to 0}\mbox{g}\big{(}x\big{)}\mbox{ exists,}\\ \mbox{lim}_{x\to 0}\big{[}\mbox{f}\big{(}x\big{)}\mbox{g}\big{(}x \big{)}\big{]}=\lim_{x\to 0}\mbox{f}\big{(}x\big{)}\lim_{x\to 0}\mbox{g} \big{(}x\big{)}\\ \mbox{Using }\lim_{\delta\to 0}\frac{\sin\theta}{\theta}=1\\ \mbox{}=\cos x\end{array}\]
+
+**Self-Review 1**
+
+Use 'Differentiation by First Principles' to find \(\mbox{f'}\big{(}x\big{)}\) given that \(\mbox{f}(x)=x^{3}\).
+
+### Implicit Differentiation
+
+Suppose we are given \(y=\mbox{f}(x)\). Then to find \(\frac{\mbox{d}\nu}{\mbox{d}x}\), we simply differentiate \(\mbox{f}(x)\) directly. However, there are instances when \(y\) cannot be written explicitly as a function of \(x\). In this case, \(y\) is said to be an **implicit function** of \(x\). In such cases, we will use the **chain rule** to find \(\frac{\mbox{d}\nu}{\mbox{d}x}\). This process is known as **implicit differentiation.** So to differentiate a function in \(y\) with respect to \(x\), we have \(\frac{\mbox{d}}{\mbox{d}x}\big{[}\mbox{g}(y)\big{]}=\frac{\mbox{d} \mbox{g}(y)}{\mbox{d}y}\frac{\mbox{d}\nu}{\mbox{d}x}\). For example \(\frac{\mbox{d}}{\mbox{d}x}\,y^{2}=\frac{\mbox{d}}{\mbox{d}y}(y^{2})\frac{\mbox {d}\nu}{\mbox{d}x}=2y\frac{\mbox{d}y}{\mbox{d}x}\).
+
+To obtain the derivative of an implicit function, **differentiate** the given equation **term by term** with respect to the variable required.
+
+[MISSING_PAGE_FAIL:11]
+
+[MISSING_PAGE_EMPTY:12]
+
+**Chapter 7: Differentiation**
+
+**7.6 The Derivative of \(\log_{a}x\) (\(a>0\), \(a\neq 1\), \(x>0\))**
+
+We know that \(\frac{\mathrm{d}}{\mathrm{d}x}(\log_{a}x)=\frac{\mathrm{d}}{\mathrm{d}x}(\ln x)= \frac{1}{x}\) (Or more generally, \(\frac{\mathrm{d}}{\mathrm{d}x}\ln f(x)=\frac{1}{f(x)}\times f^{\prime}(x)\))
+
+So \(\frac{\mathrm{d}}{\mathrm{d}x}\big{(}\log_{a}x\big{)}=\frac{\mathrm{d}}{ \mathrm{d}x}\bigg{(}\frac{\ln x}{\ln a}\bigg{)}=\frac{\mathrm{d}}{\mathrm{d}x }\bigg{(}\frac{1}{\ln a}\times\ln x\bigg{)}\)Change of logarithm base:
+
+\(\log_{a}b=\frac{\log_{a}b}{\log_{a}a}=\frac{\ln b}{\ln a}\)
+
+More generally, \(\frac{\mathrm{d}}{\mathrm{d}x}\big{[}\log_{a}f\big{(}x\big{)}\big{]}=\frac{f^ {\prime}\big{(}x\big{)}}{\left(\ln a\right)f\big{(}x\big{)}}\)
+
+### The Derivative of \(a^{x}\) (\(a>0\), \(x\in\mathbb{R}\))
+
+We know that \(\frac{\mathrm{d}}{\mathrm{d}x}(\mathrm{e}^{x})=\mathrm{e}^{x}\).
+
+More generally, by the chain rule, \(\frac{\mathrm{d}}{\mathrm{d}x}(\mathrm{e}^{f(x)})=f^{\prime}(x) \mathrm{e}^{f(x)}\)
+
+Let us consider the function \(y=a^{x}\) in general.
+
+Taking ln both sides gives \(\ln y=x\ln a\)
+
+\(\frac{\mathrm{d}y}{\mathrm{d}x}=\ln a\)
+
+\(\frac{\mathrm{d}}{\mathrm{d}x}\Big{(}a^{x}\Big{)}=a^{x}\ln a\)
+
+More generally, \(\frac{\mathrm{d}}{\mathrm{d}x}\Big{(}a^{x(x)}\Big{)}=a^{x}\ln a\)
+
+**Example 9**
+
+Differentiate the following with respect to \(x\):
+
+(a) \(x^{3}\log_{2}x\) (b) \(\sin\left(\mathrm{e}^{x^{2}}\right)\) (c) \(x^{2}\mathrm{e}^{\frac{1}{x}}\) (d) \(10^{3x}\)
+
+(e) \(\mathrm{e}^{\ln x^{2}}\) (f) \(\ln\left(\frac{(2x+1)^{2}}{\mathrm{e}^{-x}(1+x^{3})}\right)\) (g) \(\frac{(2x+1)^{2}}{\mathrm{e}
+
+[MISSING_PAGE_EMPTY:14]
+
+[MISSING_PAGE_EMPTY:15]
+
+[MISSING_PAGE_EMPTY:16]
+
+[MISSING_PAGE_FAIL:17]
+
+[MISSING_PAGE_EMPTY:18]
+
+[MISSING_PAGE_EMPTY:19]
+
+[MISSING_PAGE_EMPTY:20]
+
+## Chapter 8 Applications of Differentiation
+
+\begin{tabular}{|l|} \hline \hline At the end of this chapter, students should be able to: \\ (a) & interpret the graphs of \(\,\mathsf{f}^{\prime}\big{(}x\big{)}>0\,,\,\mathsf{f}^{\prime}\big{(}x\big{)}=0 \,,\,\mathsf{f}^{\prime}\big{(}x\big{)}<0\,,\,\mathsf{f}^{\prime}\big{(}x \big{)}>0\,\) and \(\,\mathsf{f}^{\prime}\big{(}x\big{)}<0\,;\) \\ (b) & relate the graph of \(\,y=\mathsf{f}^{\prime}\big{(}x\big{)}\,\) to the graph of \(\,y=\mathsf{f}\big{(}x\big{)}\,;\) \\ (c) & determine the nature of stationary points (local maximum, minimum and points of inflexion) \\  & analytically using first derivative test or second derivative test; \\ (d) & find the local maximum and minimum points using GC; \\ (e) & find equations of tangents and normal to curves defined implicitly or parametrically; \\ (f) & apply and solve local maxima and minima problems; \\ (g) & apply and solve problems with connected rates of change. \\ \hline \end{tabular}
+
+## 8 The Gradient Function
+
+Let \(y=\mathsf{f}(x)\,,\) then \(\,y=\mathsf{f}^{\prime}(x)\,\) where \(\,\mathsf{f}^{\prime}(x)=\frac{\mathrm{d}y}{\mathrm{d}x}\,\) is called the **gradient function** of \(y=\mathsf{f}(x)\). \(\,y=\mathsf{f}^{\prime}(x)\,\) is the function whose value at \(x\) is the slope or gradient of the tangent line to the graph of \(y=\mathsf{f}(x)\,\) at \(x\).
+
+### Interpretation of \(\,\mathsf{f}^{\prime}(x)>0\,\)and \(\,\mathsf{f}^{\prime}(x)<0\,\)
+
+Algebraically, a function \(\mathsf{f}\) is said to be **strictly increasing** on a domain \(D\) if for all \(\,x_{1},x_{2}\in D\,\), \(\,x_{1}<x_{2}\,\Rightarrow\mathsf{f}\big{(}x_{1}\big{)}<\mathsf{f}\big{(}x_{2 }\big{)}\,.\) Similarly, a function \(\mathsf{f}\) is said to be **strictly decreasing** on a domain \(D\) if for all \(\,x_{1},x_{2}\in D\,,\,\,x_{1}<x_{2}\,\Rightarrow\mathsf{f}\big{(}x_{1}\big{)} >\mathsf{f}\big{(}x_{2}\big{)}\,.\)
+
+Consider a function given by \(y=\mathsf{f}(x)\).
+
+If \(\,\frac{\mathrm{d}y}{\mathrm{d}x}>0\,\) for \(\,a<x<b\), then \(\,y=\mathsf{f}(x)\,\) is **strictly increasing** for \(\,a<x<b\).
+
+If \(\,\frac{\mathrm{d}y}{\mathrm{d}x}<0\,\) for \(\,a<x<b\), then \(\,y=\mathsf{f}(x)\,\) is **strictly decreasing** for \(\,a<x<b\).
+
+[MISSING_PAGE_EMPTY:22]
+
+**Question:**: If f is strictly increasing (or decreasing) on a domain \(D\), prove that f is a 1-1 function on \(D\).
+
+ Illustrate your result with an example.
+
+[Recall that a function f is 1-1 on \(D\) if for all \(x_{1},x_{2}\in D\), \(x_{1}\neq x_{2}\Rightarrow\mathrm{f}\left(x_{1}\right)\neq\mathrm{f}\left(x_{2 }\right)\)]
+
+### Stationary Points
+
+A point \((a,\,\mathrm{f}(a))\) on the graph of \(y=\mathrm{f}(x)\) is called a **stationary point** if \(\frac{\mathrm{d}y}{\mathrm{d}x}=0\) at that point. In other words, \(\mathrm{f}^{\prime}\left(a\right)=0\). The value of \(\mathrm{f}(a)\) is called the **stationary value** at this stationary point \((a,\,\mathrm{f}(a))\).
+
+#### 8.2.1 Nature of Stationary Points
+
+**(a)**: **Turning Points**
+
+Turning points are either maximum points or minimum points.
+
+A **maximum** point on a curve is a stationary point at which the \(y\)-coordinate is greater than the \(y\)-coordinates of any other points on the curve in the neighbourhood of the point.
+
+A **minimum** point on a curve is a stationary point at which the \(y\)-coordinate is smaller than the \(y\)-coordinates of any other points on the curve in the neighbourhood of the point.
+
+**(b)**: **Stationary Points of Inflexion**
+
+A **stationary point of inflexion** is a point with zero gradient and the curvature of the curve changes in the neighbourhood of the stationary point.
+
+**Example 4** (Using GC to sketch \(y=f(x)\) ): Given that \(f\left(x\right)=x^{3}+3x^{2}-x-3\), sketch the graph \(y=f\left(x\right)\). On the same axes, sketch the graph of \(y=f\left(x\right)\).
+
+State the set of values of \(x\) for which the graph is
+
+(a) strictly increasing,
+
+(b) strictly decreasing,
+
+(c) stationary.
+
+#### 8.2.2 Investigating the Nature of Stationary Points
+
+There are various ways to determine whether a stationary point is a maximum, a minimum or a stationary point of inflexion. Below are two methods.
+
+**Method 1: The First Derivative Test**
+
+This method involves constructing a table and finding the sign of \(\mathrm{f}^{\prime}(x)\) in the neighbourhood of the stationary point. Let \(\mathrm{f}(x)\) be a function and \((a,\,\mathrm{f}(a))\) a stationary point of \(y=\,\mathrm{f}(x)\). Let \(a^{-}\) and \(a^{+}\) denote respectively arbitrary numbers which are slightly less than and larger than \(a\) respectively.
+
+\begin{tabular}{|c|c|c|c|} \hline Test for maximum point: & \(y=\mathrm{f}(x)\) & \(a^{+}\) & \(a^{+}\) \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(>0\) & \(0\) & \(<0\) \\ \hline slope & / & \(-\) & \(\backslash\) \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}(x)\) has a maximum point at \((a,\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for minimum point: & \(y=\mathrm{f}(x)\) & \(y=\mathrm{f}(x)\) \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(<0\) & \(0\) & \(>0\) \\ \hline slope & \(\backslash\) & \(-\) & / \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}^{\prime}(x)\) has a minimum point at \((a\), \(\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for stationary point of inflexion: & & & \\ \hline Case (i) & & & \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(>0\) & \(0\) & \(>0\) \\ \hline slope & / & \(-\) & / \\ \hline \end{tabular} From the two tables, we conclude that the graph of \(y=\mathrm{f}(x)\) has a stationary point of inflexion at \((a\), \(\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for maximum point: & & & \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(>0\) & \(0\) & \(<0\) \\ \hline slope & / & \(-\) & / \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}(x)\) has a maximum point at \((a,\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for maximum point: & & & \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(>0\) & \(0\) & \(<0\) \\ \hline slope & / & \(-\) & / \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}(x)\) has a maximum point at \((a,\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for minimum point: & & & \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(<0\) & \(0\) & \(>0\) \\ \hline slope & / & \(-\) & / \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}^{\prime}(x)\) has a minimum point at \((a\), \(\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for maximum point: & & & \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(<0\) & \(0\) & \(>0\) \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}^{\prime}(x)\) has a minimum point at \((a\), \(\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for maximum point: & & & \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(<0\) & \(0\) & \(<0\) \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}^{\prime}(x)\) has a minimum point at \((a\), \(\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for maximum point: & & & \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(<0\) & \(0\) & \(<0\) \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}^{\prime}(x)\) has a minimum point at \((a\), \(\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for maximum point: & & & \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(<0\) & \(0\) & \(<0\) \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}^{\prime}(x)\) has a minimum point at \((a\), \(\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for maximum point: & & & \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(<0\) & \(0\) & \(<0\) \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}^{\prime}(x)\) has a minimum point at \((a\), \(\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for maximum point: & & & \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(<0\) & \(0\) & \(<0\) \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}^{\prime}(x)\) has a minimum point at \((a\), \(\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for maximum point: & & & \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(<0\) & \(0\) & \(<0\) \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}^{\prime}(x)\) has a minimum point at \((a\), \(\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for maximum point: & & & \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(<0\) & \(0\) & \(<0\) \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}^{\prime}(x)\) has a minimum point at \((a\), \(\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for maximum point: & & & \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(<0\) & \(0\) & \(<0\) \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}^{\prime}(x)\) has a minimum point at \((a\), \(\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for maximum point: & & & \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(<0\) & \(0\) & \(<0\) \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}^{\prime}(x)\) has a minimum point at \((a\), \(\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for maximum point: & & & \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(<0\) & \(0\) & \(<0\) \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}^{\prime}(x)\) has a minimum point at \((a\), \(\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for maximum point: & & & \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(<0\) & \(0\) & \(<0\) \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}^{\prime}(x)\) has a minimum point at \((a\), \(\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for maximum point: & & & \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(<0\) & \(0\) & \(<0\) \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}^{\prime}(x)\) has a minimum point at \((a\), \(\mathrm{f}(a))\).
+
+\begin{tabular}{|c|c|c|c|} \hline Test for maximum point: & & & & \\ \hline \(\mathrm{f}^{\prime}(x)\) & \(<0\) & \(0\) & \(<0\) \\ \hline \end{tabular} From the table, we conclude that the graph of \(y=\mathrm{f}^{\prime}(x)\) has a minimum point at \((a\), \(\mathrm{f}(a))\).
+
+[MISSING_PAGE_EMPTY:27]
+
+[MISSING_PAGE_EMPTY:28]
+
+[MISSING_PAGE_EMPTY:29]
+
+[MISSING_PAGE_FAIL:30]
+
+[MISSING_PAGE_EMPTY:31]
+
+\begin{tabular}{|l|} \hline (d) & Graph is concave upwards when \(\dfrac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}>0\), i.e. the values \(\mathrm{of}x\) where \(\dfrac{\mathrm{d}y}{\mathrm{d}x}\) or \(\mathbf{Y}_{2}\) is strictly increasing. \\ \hline \end{tabular}
+
+Use the graphic calculator to determine the minimum point of the \(\dfrac{\mathrm{d}y}{\mathrm{d}x}\) or \(\mathbf{Y}_{2}\) graph or plot the \(\dfrac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}\) or \(\mathbf{Y}_{3}\) graph and find its roots. Therefore, the set of values required is \(\{x\in\mathbb{R}:x>-1\}\).
+
+\begin{tabular}{|l|} \hline (e) & Graph is concave downwards when \(\dfrac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}<0\) or \(\mathbf{Y}_{3}<0\), \\ & i.e. the values of \(x\) where \(\dfrac{\mathrm{d}y}{\mathrm{d}x}\) is strictly decreasing. \\ \hline \end{tabular}
+
+Therefore, the set of values required is \(\{x\in\mathbb{R}:x<-1\}\).
+
+### Relationship between the graphs of \(y=\mathbf{f}(x)\) and \(y=\mathbf{f}^{\prime}(x)\)
+
+The diagram below shows the graph of \(y=\mathbf{f}(x)\) with stationary points at points \(A\), \(C\) and \(E\), and the corresponding graph of the gradient function \(\dfrac{\mathrm{d}y}{\mathrm{d}x}\) or \(y=\mathbf{f}^{\prime}(x)\).
+
+\begin{tabular}{|c|c|c|c|} \multicolumn{4}{c}{**Procedure to obtain the graph of \(y=f^{\prime}(x)\) from the graph of \(y=f(x)\) :**} \\ \hline
+**Step** & \(y=f(x)\) & \(y=f^{\prime}(x)\) & Remarks \\ \hline  & Stationary points at \(x=h\) & & \\ \cline{2-4}  & Maximum point at \((h,\,k)\) & & Graph of \(y=f^{\prime}(x)\) \\
+1 & & \(x\)-intercept at \(x=h\) & changes from positive to negative \\ \cline{2-4}  & Minimum point at \((h,\,k)\) &. & Graph of \(y=f^{\prime}(x)\) \\  & & & changes from negative to positive \\ \hline
+2 & Vertical asymptote at \(x=a\) & Vertical asymptote at \(x=a\) & \\ \hline  & Horizontal asymptote (if any) & & \\  & \(y=a\) & Horizontal asymptote \(y=0\) & Graph of \(y=f^{\prime}(x)\) has \\
+3 & & & horizontal asymptote at \(y=k\), where \(k=\) gradient of \\  & & Horizontal asymptote \(y=a\) & asymptote in graph of \(y=f(x)\) \\  & & & \(y=f(x)\) \\ \hline \end{tabular} In particular, the gradient function for the graph of \(y=f^{\prime}(x)\) is the second derivative \(\frac{d^{2}y}{dx^{2}}(=f^{\prime}(x))\). In other words, \(\frac{d^{2}y}{dx^{2}}(=f^{\prime}(x))\) is the gradient of the graph of \(y=f^{\prime}(x)\).
+
+**Example 9**: The diagram below shows the graph of \(y=f(x)\). Sketch the graph of \(y=f^{\prime}(x)\) on a separate diagram.
+
+**Example 10**:
+
+The diagram shows the graph of \(y=\mathrm{f}(x)\). State the values of \(x\) for which
+
+(i) \(\mathrm{f}^{\prime}(x)<0\),
+
+(ii) the graph of \(y=\mathrm{f}(x)\) is stationary,
+
+(iii) the graph of \(y=\mathrm{f}(x)\) is strictly increasing.
+
+Sketch the graph of \(y=\mathrm{f}^{\prime}(x)\) on a separate diagram.
+
+[MISSING_PAGE_EMPTY:35]
+
+**Example 11** (2015 Promo/RI(JC)/1/4) (Independent Reading): A curve \(C\) has equation \(xy^{2}=1\) for \(x\neq 0\), \(y\neq 0\).
+
+(i) Find \(\frac{\mathrm{d}y}{\mathrm{d}x}\) in terms of \(x\) and \(y\).
+
+(ii) Show that the equation of the normal to \(C\) at the point \(P\left(\frac{1}{p^{2}},\ p\right)\), where \(p\) is a non-zero constant, is \(p^{5}y=2p^{2}x-2+p^{6}\).
+
+(iii) Hence, write down the equation of the normal at the point \(Q\left(1,\ -1\right)\) and use an algebraic method to determine if this normal meets \(C\) again.
+
+**Solution:**
+
+\begin{tabular}{|l|l|l|} \hline (i) & Differentiate \(xy^{2}=1\) implicitly with respect to \(x\), & We do not need to make \(y\) the subject of the equation before differentiating. \\  & Rearranging, \(\frac{\mathrm{d}y}{\mathrm{d}x}=-\frac{y}{2x}\) & \\ (ii) & At \(P\left(\frac{1}{p^{2}},\ p\right)\), \(\frac{\mathrm{d}y}{\mathrm{d}x}=-\frac{p}{2\left(\frac{1}{p^{2}}\right)}=- \frac{p^{3}}{2}\) & \\  & Gradient of normal at \(P\) is \(\frac{2}{p^{3}}\) & \\  & Equation of normal at \(P\) is \(y-p=\frac{2}{p^{3}}\left(x-\frac{1}{p^{2}}\right)\) & \\  & \(y=\frac{2}{p^{3}}x-\frac{2}{p^{5}}+p\) & \\  & \(p^{5}y=2p^{2}x-2+p^{6}\) & \\ (iii) & At \(Q\left(1,\ -1\right)\), \(p=-1\) & \\  & Equation of normal at \(Q\) is & \\  & \(-y=2x-2+1\) & \\  & \(y=-2x+1\) & \\  & When the normal meets the curve, & The normal meets the curve at the point(s) of intersection. \\  & \(x\left(-2x+1\right)^{2}=1\) & \\  & \(4x^{3}-4x^{2}+x-1=0\) & \\  & \(\left(x-1\right)\left(4x^{2}+1\right)=0\) & \\ \end{tabular}
+
+The only real solution is \(x=1\). When \(x=1\), \(y=-1\).
+
+[MISSING_PAGE_EMPTY:37]
+
+\begin{tabular}{|l|l|} \hline \(2(x+y)(1+\frac{\mathrm{d}y}{\mathrm{d}x})+2\big{(}2\big{)}(x-y)(1-\frac{\mathrm{d} y}{\mathrm{d}x})=0\) & **Ans:** \\ \(2(x+y)+2(x+y)\frac{\mathrm{d}y}{\mathrm{d}x}+4(x-y)-4(x-y)\frac{\mathrm{d}y}{ \mathrm{d}x}=0\) & When \(\frac{\mathrm{d}y}{\mathrm{d}x}=1\), \\ \((2x+2y-4x+4y)\frac{\mathrm{d}y}{\mathrm{d}x}=-2(x+y)-4(x-y)\) & \(x=-y\) \\ \((-2x+6y)\frac{\mathrm{d}y}{\mathrm{d}x}=-6x+2y\) & \(\Rightarrow\) & \(\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{3x-y}{x-3y}\) \\ For tangent parallel to the \(x\)-axis, \(\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{3x-y}{x-3y}=0\). & The coordinates are \\ Thus, \(3x-y=0\Rightarrow y=3x\). & \\ Substitute \(y=3x\,\mathrm{into}\ \ (x+y)^{2}+2(x-y)^{2}=24\) gives & \\ \((4x)^{2}+2(-2x)^{2}=24\) & \\ \(x=1\) or \(-1\) & \\ \(y=3x=3\) or \(-3\) & \\ The points at which the tangents are parallel to the \(x\)-axis are & \\ (1,3) and \((-1,-3)\). & \\ The equations of the tangents parallel to \(x\)-axis are \(y=3\) at the point \((1,3)\) and \(y=-3\) at the point \((-1,-3)\). & \\ When the tangent is parallel to \(y\)-axis, we must have \(x-3y=0\) (see & \\ Example 12) & \\ Substitute \(x=3y\,\mathrm{into}\ \ (x+y)^{2}+2(x-y)^{2}=24\) we have, & \\ \((4y)^{2}+2(2y)^{2}=24\) & \\ \(y=1\) or \(-1\) & \\ \(x=3\) or \(-3\) & \\ The points at which the tangents are parallel to the \(y\)-axis are & \\ (3,1) and \((-3,-1)\). & \\ Hence, the equations of the tangents parallel to \(y\)-axis are \(x=3\) at the & \\ point \((3,1)\) and \(x=-3\) at the point \((-3,-1)\). & \\ \hline \end{tabular}
+
+#### 8.6.1 Tangents and Normals for Parametric Equations
+
+**Example 14**: A curve is defined parametrically by \(x=a^{2}\), \(y=2a\), where \(a\) is a positive constant.
+
+Find \(\frac{\mathrm{d}y}{\mathrm{d}x}\) in terms of \(t\).
+
+(i) State the equation of the tangent at \(t=0\).
+
+* Show that the equation of the normal at the point \(P\) ( \(ap^{2}\), \(2ap\)) where \(p\neq 0\) is \(y+xp-ap^{3}-2ap=0\).
+* The normal to the curve at the point \(P\) meets the curve again at the point \(Q\). Find the value of the parameter at \(Q\) in terms of \(p\).
+* The normal cuts the \(y\)-axis at the point \(R\). Find, in term of \(a\) and \(p\), the area of the triangle _ROQ_, where \(O\) is the origin.
+
+**Solution:**
+
+\[x=at^{2}\ \Rightarrow\ \frac{\mathrm{d}x}{\mathrm{d}t}=\framebox{$2at$}\mbox{ and }\ y=2at\ \Rightarrow\ \frac{\mathrm{d}y}{\mathrm{d}t}=\framebox{$2a$}\]
+
+Thus \(\ \frac{\mathrm{d}y}{\mathrm{d}x}=\frac{\mathrm{d}y}{\mathrm{d}t}+\frac{ \mathrm{d}x}{\mathrm{d}t}=\frac{2a}{2at}=\frac{1}{t}\).
+
+* At \(t=0\), \(x=y=0\) and gradient of tangent is undefined. Hence tangent is parallel to \(y\)-axis.
+
+Equation of tangent is \(x\)=\(\sigma\)
+* At the point \(P\ (ap^{2},2ap)\), \(t=p\), then \(\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{p}\)
+
+Gradient of the normal at the point \(P\) with parameter \(p\) is \(-p\)
+
+The equation of the normal at the point \(P\) is
+
+\[\framebox{$\begin{array}{c}\psi-2ap=\Leftarrow\ \gamma\narrow+q\varphi 3\\ \psi+p\times-q\varphi^{3}-2ap=0\end{array}$}\]
+
+* \(C_{N}:\ y+px-ap^{3}-2ap=0\)
+* \(C:\ x=at^{2}\quad,\quad y=2at\)
+* Equating: \(2at+p(at^{2})-ap^{3}-2ap=0\)
+* \(p\neq p^{2}+2t-p(2+p^{2})=0\)
+* \((t-p)\framebox{$pt+(2+p^{2})$}=0\)
+
+As the parameter at the point \(P\) is \(p\), thus the parameter at \(Q\) should be \(-\frac{2+p^{2}}{p}\).
+
+* At \(R\): \(x=0\) for \(y+px-2ap-ap^{3}=0\)
+* \(y=2ap+ap^{3}\).
+
+Thus, the coordinates of the point \(R\) is \((0,\ 2ap+ap^{3})\).
+
+At \(Q\): coordinates is \(\left(a\left(-\frac{2+p^{2}}{p}\right)^{2},\ 2a\left(-\frac{2+p^{2}}{p}\right) \right)\).
+
+Area of the triangle \(ROQ=\frac{1}{2}\times\) base\(\times\)height
+
+The parametric equations of a curve are \(x=a\sin t\), \(y=b\cos t\) where \(a\) and \(b\) are positive constants.
+
+(i) Find \(\frac{\mathrm{d}y}{\mathrm{d}x}\) in terms of \(t\). Express your answer as a single trigonometric function.
+
+(ii) Show that the equation of the tangent to the curve at the point \(P(a\sin\alpha,\ b\cos\alpha)\) is of the form \(\frac{x\sin\alpha}{a}+\frac{y\cos\alpha}{b}=1\).
+
+(iii) The tangent at the point \(Q\)\((a\sin\theta,\ b\cos\theta)\) intersects the \(x\)-axis and the \(y\)-axis at the points \(A\) and \(B\) respectively. Find a cartesian equation of the locus of the mid-point of \(AB\) as \(\theta\) varies.
+
+(Note: A locus is a set of points which satisfies a certain condition. Please refer to Annex for a short note about locus.)
+
+**Solution:**
+
+(i) \(x=a\sin t\)\(\Rightarrow\)\(\frac{\mathrm{d}x}{\mathrm{d}t}=a\cos t\), and \(y=b\cos t\)\(\Rightarrow\)\(\frac{\mathrm{d}y}{\mathrm{d}t}=-b\sin t\)
+
+\(\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{\mathrm{d}y}{\mathrm{d}t}+\frac{\mathrm{ d}x}{\mathrm{d}t}\)\(=\)\(-\)\(\frac{b\sin\Phi}{\alpha\cos t}\)\(=\)\(-\)\(\frac{b\sin\Phi}{\alpha\cos t}\)\(\Rightarrow\)\(-\)\(\frac{b\sin\Phi}{\alpha\cos t}\).
+
+(ii) At point \(P\)\((a\sin\alpha,\ b\cos\alpha)\), \(t=\alpha\), then \(\frac{\mathrm{d}y}{\mathrm{d}x}=-\frac{b}{a}\tan\alpha\)
+
+Equation of tangent at the point \(P\):
+
+\(y-b\cos\alpha=-\frac{b}{a}\tan\alpha\)\((x-a\sin\alpha)\)
+
+\(y-b\cos\alpha=-\frac{b\sin\alpha}{a\cos\alpha}\)\((x-a\sin\alpha)\)
+
+\(\Rightarrow\)\(ay\cos\alpha-ab\cos^{\dagger}\alpha=-bx\sin\alpha+ab\sin^{2}\alpha\)
+
+\(bx\sin\alpha+ay\cos\alpha=ab(\sin^{2}\alpha+\cos^{2}\alpha)\)
+
+[MISSING_PAGE_EMPTY:41]
+
+To solve problems of this nature, we either use implicit differentiation or apply the chain rule which says
+
+\[\frac{\mathrm{d}y}{\mathrm{d}t}=\frac{\mathrm{d}y}{\mathrm{d}x}\frac{\mathrm{d}x}{ \mathrm{d}t}\,.\]
+
+**Example 16**: A hemispherical bowl of radius \(a\) cm is initially filled with water. The water runs through a small hole at the bottom of the bowl. It is given that, at the instant when the depth of the water is \(\frac{1}{2}\,a\), the water level is decreasing at a rate of \(\frac{a}{27}\) cm/s.
+
+Find, in terms of \(a\), the rate at which the top surface area of the water is decreasing at the instant when the depth of the water is \(\frac{1}{2}\,a\).
+
+**Solution:**
+
+\begin{tabular}{|p{113.8pt}|p{113.8pt}|p{113.8pt}|} \hline  & **Question says "...** & **Interpretation in context** \\ \hline
+**STEP 1: Define variables** & _Find the rate at which the \(\underline{\mathrm{dom}}\) surface area of the water is decreasing at the instant when the depth of the water is \(\frac{1}{2}\,a\)._ & Let \(A\)\(cm^{2}\) represents the area of the top surface area of the water and \(x\)\(cm\) represents the depth of water. \\ \hline
+**STEP 2: Translate given info to notations** & _It is given that, when the depth of the water is \(\frac{1}{2}\,a\), the water level is decreasing at a rate of \(\frac{a}{27}\) cm/s._ & \(\mathrm{You\;need\;to\;find}\;\frac{\mathrm{d}A}{\mathrm{d}t}\) when \(x=\frac{1}{2}\,a\)._ \\ \hline
+**STEP 3: Construct an equation that links the identified variables** & _You need to obtain an equation that connects \(A\) and \(x\). Obviously, when the depth of water is \(x\)\(cm\), \(A=\pi r^{2}\) where \(r\) is the radius of the top surface area of the water._ & \(x=\pi r^{2}\) where \(r\) is the radius of the top surface area of the water. So, you need an equation that connects \(r\) and \(x\)! Sketch diagrams to help in visualizing. From the diagram, note that: \(r^{2}=a^{2}-(a-x)^{2}=2\alpha x-x^{2}\) & \(\mathrm{Also}\), \(A=\pi r^{2}\) \\  & \(\mathrm{So}\)\(A=\pi(2\alpha x-x^{2})\). & \(\mathrm{Differentiate}\;A=\pi(2\alpha x-x^{2})\) implicitly w.r.t. \(t\), \\
+**STEP 4: Perform implicit differentiation with respect to \(t\) or apply chain rule** & _find, in terms of \(a\), the rate at which the top surface area of the water is decreasing._ & \(\mathrm{d}t=\pi(2a\frac{\mathrm{d}x}{\mathrm{d}t}-2x\frac{\mathrm{d}x}{\mathrm{ d}t})=\pi(2a-2x)\frac{\mathrm{d}x}{\mathrm{d}t}\)._ \\ \hline
+**STEP 5: Solve for the required rate** & \(\mathrm{i.e.}\): & \(\mathrm{i.e.}\): & \(\mathrm{i.e.}\): & \(\mathrm{d}t=\pi(2a-2\cdot\frac{a}{27})(-\frac{a}{27})=-\frac{\pi a^{2}}{27}\) cm/s. \\ \hline \end{tabular}
+
+[MISSING_PAGE_EMPTY:43]
+
+[MISSING_PAGE_EMPTY:44]
+
+\begin{tabular}{|p{142.3pt}|p{142.3pt}|} \hline STEP 2: & Write down what you are given, for example, \(x\) and \(\frac{\mathrm{d}x}{\mathrm{d}t}\). \\ \hline STEP 3: & Form an equation relating the variables, for example, \(A\) and \(x\). \\  & If there are more than 2 variables in the equation, for example, \(A=xy\), form **another equation** to relate the two variables \(x\) and \(y\), for example, \(y=\frac{1}{2}\,x\). \\  & Substitute this equation into \(A=xy\) to **reduce** the number of **variables** to **only 2**. The equation becomes \(A=\frac{1}{2}\,x^{2}\). \\  & If the variables are not defined in the question, you have to define them. \\ \hline STEP 4: & **Differentiate** the equation **implicitly** with respect to \(t\), substituting the known values of \(x\) and \(\frac{\mathrm{d}x}{\mathrm{d}t}\) to get the desired result. \\ \hline STEP 5: & Write **conclusion** statement. \\ \hline \end{tabular}
+
+### Derivative as a Rate of change
+
+Suppose that a particle is moving along a straight line so that we know its position \(s\), relative to a fixed point \(O\) on the line, as a function of time \(t\) : \(s=\mathrm{f}(t)\). That is, the function \(\mathrm{f}(t)\) tells us its position from point \(O\) at any time \(t\). This is the **displacement** of the particle at time \(t\). The rate at which a particle's displacement changes is called the **velocity** of the particle. Then, if a particle's displacement at time \(t\) is \(s=\mathrm{f}(t)\), then the particle's velocity **(instantaneous velocity)** at time \(t\) is the derivative of displacement with respect to time, that is, \(\nu(t)=\frac{\mathrm{d}x}{\mathrm{d}t}\). Similarly, the rate at which a particle's velocity changes is called the **acceleration** of the particle. The acceleration measures how quickly the particle picks up or loses speed. If a particle's position at time \(t\) is \(s=\mathrm{f}(t)\), then the particle's acceleration at time \(t\) is the derivative of velocity with respect to time, that is, \(a(t)=\frac{\mathrm{d}\nu}{\mathrm{d}t}=\frac{\mathrm{d}^{\prime}s}{\mathrm{d}t}\).
+
+\begin{tabular}{|p{142.3pt}|p{142.3pt}|} \hline
+**Scalar** & **Vector** \\ \hline Distance & Displacement \\ \hline Speed & Velocity \\ \hline - & Acceleration \\ \hline \end{tabular}
+
+**Example 18**
+
+A weather balloon is released at time \(t=0\) and allowed to rise. Suppose its height above the ground at time \(t\) seconds is given by \(H(t)=\frac{1}{3}t^{3}-5t^{2}+23t\) m.
+
+(i) Find the velocity of the balloon \(t\) seconds after its release. (ii) Find when the balloon is rising and when (if ever) it is falling.
+
+3. Because of unforeseen problems, the balloon bursts after 11 seconds of flight. How fast is it rising at the moment it bursts?
+
+**Solution**:
+
+1. The velocity, \(V(t)\), of the balloon \(t\) seconds after its release \(V(t)=H^{\ast}(t)=t^{2}-10t+23\) m s\({}^{-1}\)
+2. The balloon is rising when \(V(t)>0\), thus \(t^{2}-10t+23>0\)\(\Rightarrow\)\(\left(t-5\right)^{2}-2>0\)\(\Rightarrow\)\(t<5-\sqrt{2}\) or \(t>5+\sqrt{2}\) The balloon is falling when \(V(t)<0\), \(t^{2}-10t+23<0\)\(\Rightarrow\)\(5-\sqrt{2}<t<5+\sqrt{2}\)**Note:** The starting time Since \(t\geq 0\), the balloon is rising from the start till the time is \(\left(5-\sqrt{2}\right)\) sec, then begin falling until the time is \(\left(5+\sqrt{2}\right)\) sec, and after this moment, it will be continue rising forever.
+3. When \(t=11\) sec, \(V(11)=11^{2}-10(11)+23=34\) ms\({}^{-1}\). The balloon is rising at the speed of 34 ms\({}^{-1}\)
+
+**Example 19**:
+
+A particle moves in a straight line. Its displacement \(s\) m from a fixed point on the line is given by \(s=t^{2}-4t-5\), at a time \(t\) after the start, where \(t\geq 0\). Find
+
+1. where the particle starts and its initial velocity,
+2. when and where it comes to instantaneous rest,
+3. when it passes through the fixed point,
+4. its acceleration,
+5. the total distance travelled by the particle when it passes the fixed point.
+
+**Solution**:
+1. \(v=\frac{\mathrm{d}s}{\mathrm{d}t}=2t-4\) When \(t=0\), \(s=-5\), \(v=-4\) So the particle starts at \(-5\) m from the fixed point with an initial velocity \(-4\) ms\({}^{-1}\).
+2. When \(v=0\), \(t=2\), \(s=-9\) The particle comes to rest 2 seconds after it started at a distance of 9 m from the fixed point.
+3. When \(s=0\), \(t^{2}-4t-5=0\)\(t=5\) or \(t=-1\)(NA)
+
+The particle passes through the fixed point 5 seconds after it started.
+
+\(a=\frac{\mathrm{d}\nu}{\mathrm{d}t}=2\)
+
+The acceleration of the particle is \(2\) m/s\({}^{2}\).
+
+Sketch the path of travel of (v)Total distance travelled = (-5 - (-9)) + 9 = 13 m.
+
+The total distance travelled is 13 m.
+
+#### 8.8.1 Application of the relationship between the graphs \(y=f(x)\) and \(y=f^{\prime}(x)\)
+
+(i)Displacement-Time graph and Velocity-Time graph
+
+Suppose that a particle is moving in a straight line, and \(s(t)\) is the distance of the particle from a fixed point \(O\) at time \(t\), then the displacement-time graph is the graph of the function \(y=s(t)\), and the velocity-time graph is the graph of the function \(y=s(t)\).
+
+(ii)Velocity-Time graph and Acceleration-Time graph
+
+Similarly, if \(\nu(t)\) is the velocity of the particle at time \(t\), then the velocity-time graph is the graph of the function \(y=\nu(t)\), and the acceleration-time graph is the graph of the function \(y=\nu(t)\).
+
+**Example 20**
+
+A particle moves along a straight line and \(O\) is a fixed point on that line. The displacement \(s\) m of the particle from \(O\) at time \(t\) seconds is given by:
+
+\(s\)Draw the velocity-time graph and the acceleration-time graph for the particle.
+
+\(s\)
+
+### Applications of Differentiation to Optimisation Problems (Maxima or Minima Problems)
+
+In many real-life problems, we are interested to optimize, that is, maximize or minimize certain quantities under certain constraints. For example, given some constraints, we may wish to maximize the volume of a geometrical solid or minimize the cost of building a fence round a garden. Problems of this nature are called maximum and minimum problems and differentiation is an extremely useful tool to solve this class of problems.
+
+**Example 21 (DHS Prelim 2009 / I / 11 modified)**
+
+A mould in the shape of a letter-box as shown in the diagram below, is to be made from a metal sheet. The lower portion of the cross-section of the mould is in the shape of a rectangle with a length of \(x\) cm and a height of \(y\) cm. The upper portion is in the shape of a semi-circle with diameter \(x\) cm. When completed, the mould has a length of \(2x\) cm and the total area of the metal sheet used, excluding the base of the mould, is \(800\pi\,\mathrm{cm}^{2}\).
+
+Considering the total area of the metal sheet used, show that \(5\pi x^{2}+24xy=3200\pi\).
+
+Deduce that the volume, \(V\) cm\({}^{3}\) of the mould (neglecting thickness of the metal) is given by \(V=\frac{1}{6}\pi x\Big{(}1600-x^{2}\Big{)}\).
+
+If \(x\) and \(y\) may vary, use differentiation to find the values of \(x\) and \(y\) for which \(V\) has its maximum value and give this maximum value in the form \(k\pi\) where \(k\) is a number rounded off to the nearest integer.
+
+**Solution:**
+
+\[\boxed{\begin{array}{l}\mbox{Area of the metal sheet}\\ =2\Bigg{[}xy+(2x)y+\frac{1}{2}\pi\left(\frac{1}{2}x\right)^{2}\Bigg{]}+\frac{ \pi x}{2}(2x)=800\pi\mbox{ \ (Given)}\\ \mbox{Hint: Total area used have to be}\\ \mbox{$\Rightarrow$ }2\Bigg{[}3xy+\frac{1}{8}\pi x^{2}\Bigg{]}+\pi x^{2}=800\pi\\ \mbox{$\Rightarrow$ }5\pi x^{2}+24xy=3200\pi\\ \mbox{$\Rightarrow$ }y=\frac{3200\pi-5\pi x^{2}}{24x}\end{array}}\]
+
+Write \(y\) in terms of \(x\).
+
+\(V=\mbox{base area}\times\mbox{height}\)\[\begin{array}{ll}\framebox{\begin{array}{l}V=\left[xy+\frac{1}{2}\pi\left( \frac{x}{2}\right)^{2}\right]\left(2x\right)=2x^{2}y+\frac{1}{4}\pi x^{3}& \mbox{Step 2: Obtain equation}\\ \mbox{connecting variable to be}\\ \mbox{optimized, $V$, and $x$ and $y$.}\end{array}}\\ V=2x^{2}\left(\frac{3200\pi-5\pi x^{2}}{24x}\right)+\frac{1}{4}\pi x^{3}= \frac{x}{12}\left(3200\pi-5\pi x^{2}\right)+\frac{1}{4}\pi x^{3}&\mbox{Step 3: Substitute}\\ \mbox{$y=\frac{3200\pi-5\pi x^{2}}{24x}$ into equation}\\ \mbox{for $V$ to obtain an equation}\\ \mbox{connecting $V$ and the variable $x$}\end{array}}\\ V=\frac{1}{6}\pi x\left(1600-x^{2}\right)\qquad\mbox{( Shown)}&\mbox{only.}\end{array}\]
+
+Since \(V=\frac{1}{6}\pi x(1600-x^{2})=\frac{1}{6}\pi(1600x-x^{3})\)
+
+\[\Rightarrow\ \frac{\mbox{d}V}{\mbox{d}x}=\frac{1}{6}\pi(1600-3x^{2})\]
+
+For stationary \(V\), \(\frac{\mbox{d}V}{\mbox{d}x}=0\). Then \(3x^{2}=1600\).
+
+\[\Rightarrow\ \ x=23.094\,\ -23.094\quad\mbox{(rejected, as $x>0$)}\\ \mbox{$y=\frac{3200\pi-5\pi x^{2}}{24x}=\frac{3200\pi-5\pi(23.094)^{2}}{24(23. 094)}=3.0230$}\\ \mbox{the value of $x$.}\end{array}}\]
+
+So the values of \(x\) and \(y\) are \(23.1\) and \(3.02\)cm respectively.
+
+\[\frac{\mbox{d}^{2}V}{\mbox{d}x^{2}}=\frac{1}{6}\pi(-6x)=-\pi x<0\quad \Rightarrow\ \ V\ \mbox{is maximum.}\]
+
+\[\mbox{Max $V$ }=\frac{1}{6}\pi x\left(1600-x^{2}\right)=\frac{1}{6}\pi\left(23. 094\right)\left(1600-23.094^{2}\right)\\ \mbox{$V\approx 4106\pi\ \ \mbox{cm}^{3}$.}\end{array}}\]
+
+Step 6: Determine nature of stationary value of \(V\).
+
+Step 7: Obtain optimum value.
+
+**Example 22** (H2 Math 2010/I /9)
+
+\(y\)\(x\)\(y\)\(x\)\(y\)\(x\)
+
+Box
+
+\(x\)
+
+A company requires a box made of cardboard of negligible thickness to hold 300 cm\({}^{3}\) of powder when full. The length of the box is 3\(x\) cm, the width is \(x\) cm and the height is \(y\) cm. The lid has depth \(ky\) cm, where \(0<k\leq 1\) (see diagram).
+
+(i)
+
+Use differentiation to find, in terms of \(k\), the value of \(x\) which gives a minimum total external surface area of the box and the lid.
+
+(ii)
+
+Find also the ratio of the height to the width, \(\frac{y}{x}\), in this case, simplifying your answer.
+
+(iii)
+
+Find the values between which \(\frac{y}{x}\) must lie.
+
+(iv)
+
+Find the value of \(k\) for which the box has square ends.
+
+**Solution:**
+
+\begin{tabular}{|l|l|} \hline (i) & find the value of \(x\) which gives a minimum total external \\ \hline \hline surface area of the box and the lid & External surface of the box \\  & Volume of box = \(3x^{2}y=300\)\(\Rightarrow\)\(y=\frac{100}{x^{2}}\). & consists of the two long sides (\(3x\)\(\times\)\(y\)), the two ends (\(x\times\)\(y\)) and the \\  & External surface area of box \\  & \(=\big{(}3x\big{)}\big{(}x\big{)}+2\big{(}3x\big{)}\big{(}y\big{)}+2\big{(}x \big{)}\big{(}y\big{)}\) \\  & \(=3x^{2}+8xy\) & Can you identify the external \\  & External surface of lid = \(\big{(}3x\big{)}\big{(}x\big{)}+2\big{(}ky\big{)}\big{(}3x\big{)}+2\big{(}ky \big{)}\big{(}x\big{)}\) \\  & \(=3x^{2}+8kxy\) \\  & Total external surface area of box and lid, denoted by \(A\), is \\  & given by: \\  & \(A=3x^{2}+8xy+3x^{2}+8kxy=6x^{2}+8xy\big{(}k+1\big{)}\) \\  & Substiture \(y=\frac{100}{x^{2}}\) into the above, we have \\ \hline \end{tabular}
+
+\(A=6x^{2}+8x\left(\frac{100}{x^{2}}\right)\left(k+1\right)=6x^{2}+\frac{800\left(k+1 \right)}{x}\)
+
+When \(A\) is stationary, \(\frac{\mathrm{d}{\,}d}{\mathrm{d}x}=0\). Thus
+
+It is mandatory to do a first or second derivative test to ensure that \(A\) is minimum even if only one value of \(x\) is obtained for \(\frac{\mathrm{d}{\,}d}{\mathrm{d}x}=0\).
+
+Hence \(A\) is a minimum when \(x=\left[\frac{200\left(k+1\right)}{3}\right]^{\frac{1}{3}}\).
+
+(ii)Find the ratio \(\frac{\frac{2}{x}}{x}\) in terms of \(\mathrm{d}{\,}\)
+
+\(y=\frac{100}{x^{2}}\)\(\Rightarrow\)\(\frac{y}{x}=\frac{100}{x^{3}}=100+\frac{200\left(k+1\right)}{3}=\frac{3}{2\left(k+1 \right)}\)
+
+(iii)Find the values between which \(\frac{y}{x}\)\(\frac{3}{2\left(k+1\right)}\) must lie
+
+\(0<k\leq 1\)\(\Rightarrow\)\(1<k+1\leq 2\)\(\Rightarrow\)\(2<2\left(k+1\right)\leq 4\)
+
+\(\Rightarrow\)\(\frac{1}{2}>\frac{1}{2\left(k+1\right)}\geq\frac{1}{4}\)\(\Rightarrow\)\(\frac{3}{2}>\frac{3}{2\left(k+1\right)}\geq\frac{3}{4}\)
+
+Hence \(\frac{3}{2}>\frac{y}{x}\geq\frac{3}{4}\).
+
+(iv)Find the value of \(k\) when the box has square ends.
+
+If the box has square ends, then
+
+Thus,
+
+Therefore
+
+[MISSING_PAGE_FAIL:52]
+
+[MISSING_PAGE_EMPTY:53]
+
+[MISSING_PAGE_FAIL:54]
+
+**Annex: A short note about locus**
+
+A locus is a path formed by a moving point which moves according to certain conditions.
+
+**Example 1**: The locus of a point \(P\) moves so that it is always a same distance \(r\) from a fixed point \(C\left(h,\,k\right)\). What shape is it? Find its Cartesian equation.
+
+**Solution**:
+
+Obviously, it is a circle. The centre is the point \(C\) and the radius is \(r\).
+
+To find the Cartesian equation of the locus of a moving point, we always let the coordinates of the moving point \(P\) be \(\left(x,y\right)\), then we have
+
+\[CP=r \Rightarrow \sqrt{\left(x-h\right)^{2}+\left(y-k\right)^{2}}=r\] \[\Rightarrow \left(x-h\right)^{2}+\left(y-k\right)^{2}=r^{2}\]
+
+**Example 2**: The locus of a point which moves so that it is an equal distance from two points, \(A\left(a,\,b\right)\) and \(B\left(c,\,d\right)\).
+
+What shape is it? Find its Cartesian equation.
+
+Solution:
+
+It is a straight line. In fact, it is the perpendicular bisector of the line joining \(A\) and \(B\). To find the Cartesian equation of the locus, we let the coordinates of the moving point \(P\) be \(\left(x,y\right)\), then,
+
+\[PA=PB \Rightarrow \sqrt{\left(x-a\right)^{2}+\left(y-b\right)^{2}}=\sqrt{\left(x-c \right)^{2}+\left(y-d\right)^{2}}\] \[\Rightarrow \left(x-a\right)^{2}+\left(y-b\right)^{2}=\left(x-c\right)^{2}+ \left(y-d\right)^{2}\] \[\Rightarrow \left[\left(x-a\right)-\left(x-c\right)\right]\left[\left(x-a \right)+\left(x-c\right)\right]=\left[\left(y-d\right)-\left(y-b\right)\right] \left[\left(y-d\right)+\left(y-b\right)\right]\] \[\Rightarrow \left(c-a\right)\left(2x-a-c\right)=\left(b-d\right)\left(2y-b-d\right)\] \[\Rightarrow 2y-b-d=\frac{c-a}{b-d}\left(2x-a-c\right)=\frac{2\left(c-a \right)x}{b-d}-\frac{\left(c-a\right)\left(a+c\right)}{b-d}\] \[\Rightarrow y=\frac{c-a}{b-d}x-\frac{a+c}{2}\left(\frac{c-a}{b-d}\right)+ \frac{b+d}{2}\] \[\Rightarrow y=\frac{c-a}{b-d}x-\frac{c^{2}-a^{2}}{2\left(b-d\right)}+ \frac{\left(b+d\right)\left(b-d\right)}{2\left(b-d\right)}\] \[\Rightarrow y=\frac{c-a}{b-d}x-\frac{c^{2}-a^{2}-b^{2}+d^{2}}{2\left(b-d \right)}\quad\quad....\left(\text{I}\right)\]
+
+It is an equation for a straight line.
+
+Now, we want to prove that this locus is the perpendicular bisector of the line \(AB\).
+
+Proof:
+
+\[\text{Gradient of }AB\text{ is }\frac{d-b}{c-a}.\] \[\text{Gradient of the locus }=-\frac{c-a}{d-b}.\] \[\text{Since }\frac{d-b}{c-a}\times\left[-\frac{c-a}{d-b}\right]=-1\]
+
+The locus is perpendicular to the line joining \(A\) and \(B\).
+
+Hence the locus is a perpendicular bisector of the line joining \(A\) and \(B\).
+
+In general, to find the Cartesian equation of the locus of a moving point \(P\) that satisfies a certain rule or condition, we let the co-ordinates of the point \(P\) be \(\left(x,\,y\right)\), and form an expression connecting the variables \(x\) and \(y\) based on the given rule or condition.

@@ -1,0 +1,322 @@
+## Chapter 4 Binomial Distribution
+
+At the end of this chapter, students should be able to
+
+* relate that binomial distribution is an example of a discrete probability distribution;
+* use the binomial distribution, \(\,\mathrm{B}(n,p)\), as a probability model to model practical situations;
+* recognise conditions under which the binomial distribution is a suitable model and comment on the appropriate use of a model and the assumptions made;
+* calculate binomial probabilities using a graphic calculator;
+* calculate the mean and variance of a binomial distribution.
+
+### 4.1 The Binomial Distribution
+
+Consider an experiment with a fixed number, \(n\), of independent repeated trials, with two possible outcomes, of which one is defined as'success' and the other '**failure**'. Suppose the probability of success is a constant, \(p\), and the probability of failure is \(1-p\) (or \(q\)).
+
+Let \(X\) be the random variable denoting the number of successes occurring in the \(n\) independent trials such that the probability of success for each trial is \(p\). Then \(X\) can take the values \(0\), \(1\), \(2\),..., \(n\), so that \(X\) is a discrete random variable.
+
+If \(X\) is distributed in this way, we write \(X\sim\mathrm{B}\big{(}n,p\big{)}\) to denote that the random variable \(X\) has a binomial (probability) distribution with **parameters**\(n\) and \(p\), where \(n\) is the number of independent trials and \(p\) is the probability of success. The probability density function (p.d.f.) of \(X\) is given by
+
+\[\mathrm{P}\big{(}X=x\big{)}=\binom{n}{x}p^{x}\big{(}1-p\big{)}^{n-x},\,\text{ where }\,x=0\,,\,1,\,2\,,\,...,\,n\,.\quad\text{\bf(In MF 26)}\]
+
+For example, if \(X\) is the random variable denoting the number of successes occurring in the 40 independent trials such that the probability of success for each trial is 0.3, we write \(X\sim\mathrm{B}\big{(}40,0.3\big{)}\). We can also use a diagram to illustrate the respective probabilities of the distribution.
+
+As you progress through the chapters, you will learn about other distributions. Thus, it is necessary to correctly identify the random variable and its distribution to ensure that we model a particular situation using the correct probability model. You are also required to justify the appropriateness of the model and the assumptions made **in the context of the question**.
+
+Necessary conditions for a binomial distribution to be an appropriate model:
+
+The experiment has a fixed number, \(n\), of repeated trials, where \(n\in\mathbb{Z}^{*}\).
+
+There are 2 mutually exclusive outcomes, namely success and failure.
+
+The outcome of each trial is independent of the outcomes of other trials.
+
+The probability of success, \(p\), is constant for each trial, where \(0\leq p\leq 1\).
+
+**Note:**
+
+1. **All** conditions must be fulfilled before a random variable can be well-modelled by a binomial distribution.
+2. When a question asks for assumptions needed for a random variable to be well-modelled by a binomial distribution, **write down the conditions that you cannot find in the question as assumptions**.
+3. All assumptions must be written **in the context of the question**.
+
+**Example 1**: For each of the random variable described below, state whether the binomial distribution is a suitable model. If it is, justify your answer and give the appropriate values for the parameters. If it is not, give one reason.
+
+The number of heads when a fair coin is tossed five times.
+
+The number of draws, out of 8, (without replacement) a red ball is drawn from a bag containing 10 red and 15 white balls.
+
+The number of draws, out of 8, (with replacement) a red ball is drawn from a bag containing 10 red and 15 white balls.
+
+The number of tosses of a coin to get a head.
+
+**Solution**
+
+**(i) Yes:**
+
+- There are n-S repeated (nice)
+
+- There are 2 mutually exclusive outcomes, namely
+
+- There are 2 mutually exclusive outcomes, namely success and failure.
+
+- The event of getting ahead in each trial do not
+
+not affect the event of getting head in the
+
+- Are the outcomes of each trial
+
+- _independent?_
+
+- Is the probability of success a constant?
+
+In **(ii)**, what if the total number of balls
+
+in the bag was large?
+
+**(iii)** Yes:
+
+* There are \(n=8\) repeated draws
+* There are 2 mutually exclusive outcomes, namely
+
+drawing a red ball or white ball.
+* The event of getting a red ball in each draw does not affect the event of getting red balls in other draws hence
+
+the outcomes are independent.
+
+[MISSING_PAGE_FAIL:3]
+
+**Example 9** (**Question involving binomial distribution within a binomial distribution**): In a large population, the proportion of people having blood group A is 35%. Specimens of blood from the first five people attending a clinic are to be tested. It can be assumed that these five people are a random sample from the population. The random variable \(X\) denotes the number of people in the sample who are found to have blood group A.
+**(i)**: State the distribution of \(X\), **justifying your answer**. Find the probability that there are two or fewer people with blood group A.
+**(ii)**: Three such samples of five people are taken. Find the probability that each of these three samples has more than two people with blood group A.
+**(iii)**: Twenty such samples of five people are taken. Find the probability that at least fifteen out of these twenty samples will contain at most two with blood group A.
+
+**Solution**: **Think Zone**: (i) \(X\) is a binomial distribution since \(X\) is a **fixed number** of number of people to be tested, \(n=5\), \(X\) each person either has blood group A or does not, \(X\) the blood group of each person is **independent** of others, \(X\) the probability of a person having blood group A, \(p=0.35\), can be considered to be a **constant** since the population is large.
+
+\(X\sim\mathrm{B}\big{(}5,0.35\big{)}\): Using G.C., \(\mathrm{P}\big{(}X\leq 2\big{)}\approx 0.76483\): \(\mathrm{=0.765\ (3\ s.f)}\): We usually leave answers to 5 s.f. for accuracy in case we need the value in computing subsequent parts of the questions. However, you still need to leave the **final** answer in 3 **s.f.**
+
+**(ii)**: _Let be the RV density the number of people in a sample of 5 with blood group A. Instead we are interested to know how many samples out of the 3 groups of 5 that satisfy the condition of "having more than 2 with blood group A". Hence we need to
+
+[MISSING_PAGE_EMPTY:5]
+
+**Example 11 (Independent Reading)**
+
+In a binomial probability distribution, there are \(n\) trials and the probability of success for each trial is \(p\). If the mean is 8 and the variance is 4.8, find the values of \(n\) and \(p\).
+
+**Solution**
+
+Let \(X\) be the random variable representing the number of success out of \(n\) trials. Then, \(X-\mathrm{B}\big{(}n,p\big{)}\)
+
+\(\mathrm{E}\big{(}X\big{)}=np=8\)
+
+\(\mathrm{Var}\big{(}X\big{)}=np\big{(}1-p\big{)}=4.8\)
+
+\(\mathrm{Subst.}\) (1) into (2):
+
+\(8\big{(}1-p\big{)}=4.8\)
+
+\(1-p=0.6\)
+
+\(p=0.4\)
+
+\(\therefore n=\dfrac{8}{0.4}=20\)
+
+**Example 12 (Airline Overbooking)**
+
+**Air Canada has apologised to a Canadian family and offered "very generous compensation" after the airline bumped a 10-year-old boy from a flight. Agencies, S. A. (2017, April 17). Air Canada apologises for bumping boy, 10, from family holiday flight. [https://www.theguardian.com/world/2017/apr/18/air-canada-apologises-bumping-boy-family-holiday-flight](https://www.theguardian.com/world/2017/apr/18/air-canada-apologises-bumping-boy-family-holiday-flight)**
+
+**United passenger dragged off plane**
+
+**likely to sue airline, attorney says**
+
+David Dao, a 69-year-old Vietnamese American doctor, was hospitalized after Chicago aviation police dragged him from the plane as the airline sought to make space on a flight from the city's O'Hare international airport to Louisville, Kentucky. Agencies, S. A. (2017, April 13). [https://www.theguardian.com/world/2017/apr/13//united-airlines-passenger-lawsuit-david-dao](https://www.theguardian.com/world/2017/apr/13//united-airlines-passenger-lawsuit-david-dao)**
+
+[MISSING_PAGE_FAIL:7]
+
+\begin{tabular}{|l|} \hline
+**(iv)** Revenue \(\simeq\) (0000(_l0)\(\subset\)l0\(\subset\)l0\(\subset\)l0\(\subset\)l0\(\subset\)l0\(\subset\)l0\(\subset\)l0\(\subset\)l0 Since the expected revenue of selling all 12 tickets (with compensation for overbooking) is more than selling all 10 tickets, the airline should continue with the first method. \\ \hline \end{tabular}
+
+The above example is a simplified version of calculations used by airlines when they overbook flights. As the airline issues more tickets, there is a higher chance of having to bump passengers from the flight, but there is also a higher chance of filling most seats. In reality, the airline has to make a trade-off between these two, by taking, its various costs and revenues and how sensitive the various no-show probabilities are to the number of tickets it issues, into account to determine the optimal number of tickets to issue.
+
+**Effects of varying \(n\) and \(p\) on the shape of the binomial distribution**
+
+Applet to explore how the binomial distribution change as \(n\) and \(p\) changes:
+
+[https://www.geogebra.org/m/GKb9XrA5](https://www.geogebra.org/m/GKb9XrA5)What observations can you make and what conclusion can you come to?
+
+1. For small \(p\) and small \(n\), e.g. \(X-\mathrm{B}\big{(}12,0.2\big{)}\), the binomial distribution is skewed right (i.e. the bulk of the probability falls in the smaller numbers 0, 1, 2,..., and the distribution tails off to the right). In the context of the airline overbooking in Example 15; it corresponds to the case where the no-show rate is \(\mathbf{\hat{8}0\%}\) and there is allowance to more than 12 tickets such that the bulk of the probability still falls in the numbers smaller than 10 (number of seats).
+2. For small \(n\) and large \(p\), the binomial distribution is skewed left.
+3. For \(p=0.5\) and large and small \(n\), the binomial distribution is symmetric.
+4. For large \(n\), the binomial distribution approaches a bell shape.
+
+### Mode of \(X\) or most likely value of \(X\)
+
+The **mode** is the value of \(X\) that is most likely to occur, i.e., **the most probable value** of \(X\). To find the mode of a binomial distribution, we will calculate all the binomial probabilities and find the value of \(X\) with the highest probability.
+
+**Important:** The **mode** (most probable number) is usually close to the **expected number** but both refer to different concepts and **must not** be used interchangeably.
+
+The expected number refers to the average that is expected to be obtained if a sufficiently large number of the same experiment were repeated under the same set of conditions. The most probable number is the value most likely to occur in any given experiment.
+
+**Example 13**
+
+Of the inhabitants of a certain African village, 80% are known to have a particular eye disorder. If the eye specialist sees a total of 12 randomly selected inhabitants, what is the most likely number of them with the eye disorder?
+
+\begin{tabular}{|p{142.3pt}|p{142.3pt}|} \hline
+**Solution** & **Think Zone** \\ \hline Let \(X\) be the random variable denoting the number of inhabitants with eye disorder, out of 12 inhabitants. & Press followed by down to '**A:binompdf**' and press \\ \(X\sim\mathrm{B}\big{(}12,0.8\big{)}\) & Key in the values: '**trials:** [12], **p:** [0.8] and **x value:** [2] \\ From GC, & \\ \hline
+9 & 0.23622 \\ \hline
+10 & 0.28347 \\ \hline
+11 & 0.20616 \\ \hline The most likely number (mode) of \(X\) is 10. & \\ \hline \end{tabular}
+
+\begin{tabular}{|p{142.3pt}|p{142.3pt}|} \hline
+**Shink Zone** \\ \hline Press & \(\mathbf{\hat{v}}\) followed by down to '**A:binompdf**' and press \\ Key in the values: '**trials:** [12], **p:** [0.8] and **x value:** [2] \\ \hline \end{tabular}
+
+\begin{tabular}{|p{142.3pt}|p{142.3pt}|} \hline
+**Shink Zone** \\ \hline Press & \(\mathbf{\hat{v}}\) followed by down to '**A:binompdf**' and press \\ Key in the values: '**trials:** [12], **p:** [0.
+
+[MISSING_PAGE_EMPTY:10]
+
+[MISSING_PAGE_EMPTY:11]
+
+[MISSING_PAGE_EMPTY:12]
+
+[MISSING_PAGE_EMPTY:13]
+
+[MISSING_PAGE_FAIL:14]
+
+\begin{tabular}{l l} \hline \hline (iii) & Let \(W\) be the random variable denoting the number of people who have their birthday in January, \\  & out of 8 people. Then, \(W\) - B\(\left(8,\dfrac{1}{12}\right)\) \\ \(\text{P}\left(W\geq 1\right)=1-\text{P}\left(W=0\right)=0.50147\) (5 s.f.) \\  & \(=0.501\) (3.s.f.) \\ \(\text{P}\left(W\geq 2\,|\,W\geq 1\right)=\dfrac{\text{P}\left(W\geq 2\text{ and }W\geq 1\right)}{ \text{P}\left(W\geq 1\right)}\) \\  & \(=\dfrac{\text{P}\left(W\geq 2\right)}{\text{P}\left(W\geq 1\right)}=\dfrac{1- \text{P}\left(W\leq 1\right)}{\text{P}\left(W\geq 1\right)}\) \\  & \(=\dfrac{0.13890}{0.50147}\) \\  & \(=0.277\) \\ \hline (iv) & Let \(R\) be the random variable denoting the number of people who have their birthday in January, \\  & out of \(M\) people. Then, \(R\) - B\(\left(M,\dfrac{1}{12}\right)\) \\  & Since \(\text{P}\left(R\geq 2\right)>0.8\) \\  & \(/-\)\(\rho\left(R\leq\,1\right)\)\(>\)\(\
+
+## 1.1. **Nanyang Junior College Department of Mathematics**
+
+**H2 Mathematics**
+
+**Tutorial S4 - Binomial Distribution**
+
+**1.**: In practising the high jump, Darren has 5 attempts at a particular height. The probability that he succeeds in an attempt is \(p\). **(i)**: State two assumptions needed for the number of successful jumps to be modelled by a binomial distribution. **(ii)**: Find an expression, in terms of \(p\), for the probability that he succeeds exactly 4 times. **(iii)**: The probability that he succeeds exactly 4 times is twice the probability that he succeeds exactly 2 times. Without the use of GC, find the value of \(p\). **(2/3)**
+
+**2.**: A sample of 6 objects is to be drawn from a population in which 20% are defective. Explain why, if there are 10 000 objects in the whole population, the probability of obtaining 3 defective objects in the sample can be very accurately estimated by using the binomial probability formula, whereas, if there are only 20 objects in the population, this method gives quite the wrong answer. For the large population, use this method to estimate the probability that a sample of 6 contains 3 or fewer defective objects. **(0.983)**: Another large population contains a proportion \(p\) of defective items. Write down an expression in terms of \(p\) for \(P\), the probability that a sample of 6 contains exactly 2 defectives. Find \(\dfrac{\mathrm{d}P}{\mathrm{d}p}\) and show that \(P\) is greatest when \(p=\dfrac{1}{3}\). **3.**: Doreen has a 60% chance of scoring from the free-throw line when she plays basketball. If she makes 11 such throws in a typical game, find her most probable number of successful throws and state the probability of this occurrence. Write down the expected number of successful throws. **(7, 0.236, 6.6)**
+
+**4.**: **J76/1/3 (modified)**: \(X\) is a binomial variable with mean 4 and variance \(\dfrac{4}{3}\). Show that the largest value \(X\) can take is 6 and find P(\(X=5\)). This variable \(X\) represents the number of eggs laid each year by a certain species of bird. Find the largest value of \(r\) such that the probability of at least \(r\) eggs laid in a single year is more than 0.1. **[0.263, 5]**
+
+**5.**: Nation-wide surveys have shown that 1 in 20 junior college students is a student volunteer. **(i)**: Twelve junior college students are randomly selected to form a group. Find the probability that there are at least two student volunteers in the group. **(0.118)**: **(ii)**: Three such groups are randomly chosen. Find the probability that one of these three groups has no student volunteer, another has exactly one student volunteer and the remaining group has at least two student volunteers. **(0.131)**: **(iii)**: Ten such groups are randomly chosen. Find the probability that there are at least seven groups with less than two student volunteers in the group. **[0.977]**6. A crossword puzzle is published in the Times each day of the week, excluding Sunday. A man is able to complete, on average, 8 out of 10 of the crossword puzzles. **(i)** State the expected value and standard deviation of the number of crossword puzzles the man would be able to complete in a given week. **(ii)** Find the probability that he will complete at least 5 puzzles in a given week. **(0.655)** Given that he completes the puzzle on Monday, find the probability that he will complete at least 4 puzzles in the rest of the week. **(0.737)** Given that he completes the puzzle on Monday, find the probability that he will complete at least 4 puzzles for the week. **(0.942)** Find the probability that in a period of 4 weeks, he completes 4 or less puzzles in only one of the 4 weeks. **(0.388)**
+7. In order to be offered a scholarship, a candidate has to pass two rounds of interview. In the first round, there will be a panel of 10 interviewers and the probability of each interviewer passing a candidate is 0.9. The candidate fails to qualify for the second round if more than one interviewer decides not to pass him or her. It is assumed that all interviewers' decisions are independent. **(i)** Find the probability that a candidate passes the first round of interview. **(0.736)** In the second round, there will be a panel of 5 interviewers and the probability of each interviewer passing a candidate is 0.8. The candidate is offered a scholarship only if all interviewers pass him or her in the second round. **(ii)** Show that the probability that the candidate is offered the scholarship is 0.241, correct to three significant figures. **(iii)** There are \(n\) candidates going for the interviews. Find the smallest \(n\) such that there is at least a 98% chance of 2 or more candidates being offered scholarships. **[**22**]**
+8. **SAJC/2012/ P2/ Q13 (modified)** On the average, 30% of the students in a particular junior college could do the Binomial Distribution question in the JC 2 Mid-year Examination. The Level Head randomly select a class of 30 students to analyse the results. **(i)** State, in the context of this question, two assumptions needed to model the results by a binomial distribution. **(ii)** Find the probability that at least 6 students in that class could do that question. **(0.923)** Find the probability that only 2 students among the first 8 selected students in that class could do the question given that at least 6 students could do that question. **(0.299)** The probability of no more than 5 students could do the question in another randomly selected class exceeds 0.9. Find the largest possible number of students in this class. **(11)** Another class of 30 students is randomly chosen. What should be the level of difficulty of the question (in terms of the percentage of students who could do the question on average) so that the probability that more than half of the class could do the question is 0.9? **(63%)**
+9. **N2009/H1/10 (i),(ii) (DIY)** Over a long period of time, it is found that 20% of candidates who take a particular piano examination fail the examination. **(i)** Find the probability that, in a group of 10 randomly chosen candidates who take the examination, exactly 2 will fail. **(2)** It is given that 15% of the candidates who pass the piano examination are awarded a distinction. Find the probability that, in a randomly chosen group of 10 candidates who take the examination, fewer than 2 will be awarded a distinction. **[**3**]**10. N81/2/12 In each batch of manufactured articles, the proportion of defective articles is \(p\). From each batch, a random sample of nine is taken and each of the nine articles is examined. If two or more of the nine articles are found to be defective, that batch is rejected; otherwise it is accepted. Prove that the probability that a batch is accepted is \(\left(1-p\right)^{\ast}\left(1+8p\right).\) It is decided that to modify the sampling scheme so that, when one defective is found in the sample, a second sample of nine is taken and the batch rejected if this contains any defectives. With this exception, the original scheme is continued. Find an expression in terms of \(p\) for the probability that a batch is accepted. For this modified scheme, evaluate the average number sampled for manufactured batch over a large number of batches when \(p\) has the value \(0.1\). [(1-p)^{\ast}\left[1+9p\left(1-p\right)^{\ast}\right]\), 12.5]
+
+11. 2018 MYE/ACJC/8 The random variable \(X\) is the number of successes in \(n\) independent trials of an experiment in which the probability of a success at any trial is \(p\). Denoting \(\mathrm{P}(X=k)\) by \(p_{k}\), it is given that \(\dfrac{p_{k}}{p_{k-1}}=\dfrac{(n-k+1)p}{k(1-p)},\ k=1,\ 2,\...,\ n\). A distribution is said to be bimodal if it has two modes. Find the least value of \(n\), and the corresponding modes of \(X\), given that \(X\) is bimodal and that \(p=\dfrac{18}{25}.\)[17, 18]
+
+1. 2017/RVHS/II/8 (modified) A car park next to a small commercial building has a total of 12 parking lots. Land surveillance officers have been observing the usage of parking lots per day to determine if the land has been efficiently utilised. Each parking lot can be occupied by at most one vehicle per day. (I) Denoting the number of occupied parking lots per day by \(X\), state in context, two assumptions needed for \(X\) to be well modelled by a binomial distribution. (II) Explain why one of the assumptions stated in (I) may not hold in this context. It is further observed that for 80% of the days in the survey period, there are at least 4 occupied lots in the car park for each day. Assume that the assumptions in (I) hold, (III) Find the probability that a parking lot is being occupied in a day. (IV) Using the value of the probability found in (III), find the expected number of parking lots occupied.
+2. 2015/DHS/II/7 (modified) Data is transmitted in bytes, where each byte consists of 8 bits. The probability of a bit being corrupted during its transmission is 0.03. A byte is considered 'corrupted' if it contains at least 2 corrupted bits. Assume that all bits are not corrupted prior to their transmission. (I) Find the probability that a randomly chosen byte is corrupted during its transmission. (II) Given that a randomly chosen byte is not corrupted during its transmission, find the probability that it contains no corrupted bits. (III) Find the probability that between 5 and 10 bytes are corrupted during the transmission of 100 bytes. In another transmission system, the probability of having at least 3 corrupted bytes during the transmission of 20 bytes is 0.85. Find the probability that a bit is corrupted during its transmission.
+
+**Extra Practice Questions**
+
+(_The questions will not be discussed during tutorials. Full solutions will be uploaded to NYJC portal_)
+
+**1**: **2017/MJC/MYE/Q9**
+
+An airline company sold 105 tickets for a particular flight. Based on past experience, 8% of passengers do not turn up for the flight. Let \(X\) be the number of passengers who do not turn up for that flight.
+
+**(I)**: State, in context, two assumptions needed for \(X\) to be well modelled by a binomial distribution.
+
+[2]
+
+**(II)**: Find the probability that fewer than 5 do not turn up for the flight.
+
+[2]
+
+**"Overbooking"** occurs when there are more passengers who turn up than the number of seats available for the flight. When this happens, the airline will re-accommodate the excess passengers, that is, arrangements will be made for them to take another flight.
+
+**(III)**: It is given that the particular flight has only 100 seats. Find the probability that at least 3 passengers have to be re-accommodated given that "overbooking" has occurred.
+
+[3]
+**2**: **2014/YJC/II/Q9**
+
+A female doctor wishes to test a new treatment for a certain genetic disease. On a particular day, she asks \(n\) (where \(n\) is fixed) patients who come to her clinic suffering from this disease if they are willing to take part in a trial. Based on past experiences, she finds that the probability of such a patient willing to take part is 0.3. The number of patients who are willing to take part is the random variable \(R\).
+
+**(I)**: State, in the context of this question, two assumptions needed to model \(R\) by a binomial distribution.
+
+[2]
+**(II)**: Explain why one of the assumptions stated in part **(I)** may not hold in this context.
+
+Assume now that these assumptions do in fact hold.
+
+**(III)**: Given that \(n=8\), find the probability that \(R\) is at least 2.
+
+[1]
+**(IV)**: If the chance of at least 2 patients willing to take part in this trial is more than 90%, find the least possible integer value of \(n\).
+
+[3]
+**3**: **2016/ACJC/II/11 (modified)**
+
+The manager of a car show room wants to study the number of cars sold by a car salesman under his charge. The number of potential car-buyers that he meet in a particular week is 60 and the average probability that he is successful in closing a deal with each customer is 0.2.
+
+**(I)**: It is assumed that the deals closed are independent of one another. State, in context, another assumption needed for the number of deals closed by a car salesman to be well modelled by a binomial distribution.
+
+[1]
+**(II)**: Explain why the assumption that the deals closed are independent of one another may not hold in this context.
+
+[1]
+**(III)**: Assuming that the assumptions stated in part **(I)** hold, find the probability that the salesman closed a total of more than 20 deals in a particular week.
+
+[2]
+
+A new salesman joined the company. During his probation week, he met 60 potential car-buyers. The number of car deals he closed during his probation week is denoted by \(C\) with the distribution \(\mathrm{B}(60,p)\).
+
+**(IV)**: Given that \(\mathrm{P}(C=30)=0.03014\). Find an equation for \(p\). Hence find the value of \(p\), correct to 1 decimal place, given that \(p<0.5\).
+
+2016/TJC/II/10 (part) Newmob is a mobile phone service provider which sells several brands of mobile phones. uPhones and Samseng phones are sold at a subsidy to its subscribers. Each subscriber can either buy one uPhone or one Samseng phone or both one uPhone and one Samseng phone. The probability that a randomly chosen subscriber buys a uPhone is 0.3, and independently, the probability that the subscriber buys a Samseng phone is \(p\). **(i)**: In a random sample of 50 subscribers, the probability that at most 20 subscribers buy a Samseng phone is twice the probability that exactly 15 subscribers buy a uPhone. Find the value of \(p\). [3] For the remainder of this question, you may take the value of \(p\) to be 0.4. **(ii)**: In a random sample of 50 subscribers, find the probability that the number of subscribers who buy a uPhone is greater than the expected number of subscribers who buy a Samseng phone. [2]
+* 5 2016/MJC/II/6 A box consists of a very large number of balls, of which 20% are red and 80% are white. A game consists of a player drawing \(n\) balls at random from the box and counting the number of red balls drawn. If at most one red ball is drawn, the player wins. If more than two red balls are drawn, the player loses. If exactly two red balls are drawn, the player draws another \(n\) balls and if none of these \(n\) balls drawn are red, the player wins. Otherwise, the player loses. Show that the probability that a randomly chosen player wins is \(P\) where \[P=\big{(}0.8+0.2n\big{)}\big{(}0.8\big{)}^{n-1}+\binom{n}{2}\big{(}0.2\big{)}^ {2}\big{(}0.8\big{)}^{2n-2}.\] [3] **(i)**: Given that the probability that a randomly chosen player wins is less than 0.1, write down an inequality in terms of \(n\) to represent this information. Hence find the least possible value of \(n\). [3] **(ii)**: Given instead that \(P=0.3\), find the probability that out of 100 games played, at least 40 games are won. [2]
+* 6 2016/HCI/MYE/6 (modified) A factory produces large numbers of bulbs that are packed in boxes of 10. On average, 5% of the bulbs are spoiled. Assume that the quality of all bulbs are independent of one another. **(i)**: Show that the probability that one box contains at least two spoiled bulbs is 0.0861. [1] A box is rejected if there are at least two spoiled bulbs in it. **(ii)**: A quality test is conducted on 10 randomly chosen boxes. Find the probability that the 10th box is the third rejected box. **(iii)**: Find the probability that, out of 50 randomly chosen boxes, at most 5 boxes are rejected. [2] **(iv)**: The probability that, among \(n\) randomly chosen boxes, fewer than 2 boxes are rejected is more than 0.7. Find the largest possible value of \(n\). [3]
+
+**2016/NYJC/MYE/II/7**
+
+In a large population the proportion of people with disability is 15%. A random sample of 20 people is taken.
+
+**(i)**: State, in context, an assumption needed for the number of people in the sample with disability to be well modelled by a binomial distribution. [1]
+**(ii)**: Four such samples of 20 people are taken. Find the probability that two of these samples have exactly one person with disability, and the other two samples have more than two people with disability. [3]
+**(iii)**: Find the least number of such samples of 20 people that must be taken so that the probability of having at least two samples with more than two people with disability is not less than 0.95. [3]
+**(8)**: **2017/CJC/MYE/1/9**
+
+The chocolate brand 'Kid Cats' are sold in packets of 20 individual pieces. Each packet is made up of randomly chosen flavours of Kid Cats pieces produced. On average 15% of the Kid Cats pieces are hazelnut flavoured.
+
+**(i)**: Let the random variable \(X\) denote the number of hazelnut flavoured Kid Cats pieces in a randomly chosen packet. State, in context, one assumption needed for \(X\) to be well modelled by a binomial distribution. [1]
+**(ii)**: Find the probability that a randomly chosen packet of Kid Cats contains no more than 4 hazelnut flavoured pieces. [2]
+**(iii)**: The Interact Club buys 100 randomly chosen packets of Kid Cats for their event. Find the probability that at least 75 of these packets contain no more than 4 hazelnut flavoured pieces. [3]
+
+On average the proportion of Kid Cats pieces that are almond flavoured is \(q\). It is known that the most common number of almond flavoured pieces in a packet is 6.
+**(iv)**: Use this information to find exactly the range of values that \(q\) can take. [4]
+**(9)**: **2006/VJC/II/29(Either) (modified)**
+
+11 cards marked with the letters from the word MATHEMATICS are placed in a bag. Mary draws 3 cards at random and without replacement. She scores 1 point for every vowel drawn and 2 points for every consonant drawn.
+
+Let \(X\) denote Mary's score. Show that
+
+\[\mathbb{P}\big{(}X\geq 4\big{)}=\frac{161}{165}\]
+
+and find E(\(X\)) and Var(\(X\)).
+
+The cards are now replaced in the bag.
+
+John draws 3 cards at random and without replacement. Like Mary, John scores 1 point for every vowel drawn and 2 points for every consonant drawn. After noting his score, he replaced the 3 cards in the bag. John carries out the same experiment a total of 165 times.
+
+Find the probability that he gets a score of at least 4 for at least 161 times. [2]2005/RJC/II/26
+
+Alex undergoes 4 training sessions each week, on separate days. In each of his training session, Alex has to run 10 laps of 400m. The probability of him meeting his target time for each lap on a sunny day is 0.95. On a rainy day, the probability of achieving his target time is 0.9. Each day is either sunny or rainy, and the probability of a sunny day is 0.8.
+
+**(I)**: Calculate the probability of Alex achieving his target time for at least 8 of the laps on a rainy day. [2]
+**(II)**: Given that there was a week of rainy days, determine the conditional probability of Alex being able to achieve his target time for 8 or more laps, in each of the sessions, on 3 separate days.
+
+There was sunny weather for 2 consecutive weeks. Find the probability of Alex not meeting his target time for more than 4 laps during the 2 weeks. [2]
+
+**Answer:**
+
+\begin{tabular}{|c|} \hline
+1 & (ii) 0.0706 (iii) 0.115 \\ \hline
+2 & (i) (a) The probability of willing to take part is 0.3 remains constant for all patients \\  & (b) All patients willing to take parts are independent \\  & (ii) The patients may not be independent as the disease is genetic, may affect same people from same family \\  & (iii) 0.745 \\  & (iv) \(n=12\) \\ \hline
+3 & (iii) 0.00483 (iv) 0.4 \\ \hline
+4 & (i) 0.459 (ii) 0.0478 \\ \hline
+5 & (i) 19 (ii) 0.0210 \\ \hline
+6 & (i) 0.0861 (ii) 0.0122 (iii) 0.741 (iv) 12 \\ \hline
+7 & (ii) 0.0398 (iii) 6 \\ \hline
+8 & (ii) 0.830 (iii)0.985 (iv) \(\frac{2}{7}<q<\frac{1}{3}\) \\ \hline
+9 & 4.91, 0.555, 0.629 \\ \hline
+10 & (i) 0.930 (ii) 0.226 (iii) 0.371 \\ \hline \end{tabular}
+
+[MISSING_PAGE_EMPTY:23]

@@ -1,0 +1,506 @@
+## Chapter 5 Normal Distribution
+
+In this chapter, you will learn to
+
+* understand the concept of a normal distribution as an example of a continuous probability model, and its mean and variance;
+* standardise a normal distribution, and use it to calculate probabilities;
+* make use of the symmetry of the normal distribution curve to solve problems;
+* solve problems involving the use of \(\mathrm{E}(\mathrm{a}X+\mathrm{b})\) and \(\mathrm{Var}(\mathrm{a}X+\mathrm{b})\);
+* solve problems involving two independent normal distributions.
+
+### 5.1 Continuous Random Variables
+
+A **continuous random variable** is a **random variable** where the data can take infinitely many values. For example, a random variable measuring the time taken for something to be done is continuous since there are infinite number of possible times that can be taken. The random variables may take any value in an interval of the real number line.
+
+For continuous probability distributions, the area under the curve of the **probability density function**\(\mathrm{(\textbf{p.d.f})\,f\left(x\right)}\) between points \(a\) and \(b\) is equal to \(\mathrm{P}\left(a\leq X\leq b\right)\).
+
+\[\begin{array}{c}\includegraphics[width=142.26378pt]{images/142.eps}\\ \includegraphics[width=142.
+
+#### 5.1.1 Properties of Expectation and Variance
+
+Recall the following results for mean and variance for discrete random variables with random variable \(X\) and \(Y\). They also hold for continuous random variables.
+
+\begin{tabular}{|c|c|} \hline
+**Mean** & **Variance** \\ \hline If \(a\) is a constant, & If \(a\) is a constant, \\
+**(a)**\(\mathrm{E}\big{(}a\big{)}=a\) & **(a)**\(\mathrm{Var}\big{(}a\big{)}=0\) \\
+**(b)**\(\mathrm{E}\big{(}aX\big{)}=a\,\mathrm{E}\big{(}X\big{)}\) & **(b)**\(\mathrm{Var}\big{(}aX\big{)}=a^{2}\,\mathrm{Var}\big{(}X\big{)}\) \\
+**(c)**\(\mathrm{E}\big{(}X+a\big{)}=\mathrm{E}\big{(}X\big{)}+a\) & **(c)**\(\mathrm{Var}\big{(}X+a\big{)}=\mathrm{Var}\big{(}X\big{)}\) \\
+**(d)**\(\mathrm{E}\big{(}X-a\big{)}=\mathrm{E}\big{(}X\big{)}-a\) & **(d)**\(\mathrm{Var}\big{(}X-a\big{)}=\mathrm{Var}\big{(}X\big{)}\) \\  & If \(X\) and \(Y\) are independent, then \\
+**(e)**\(\mathrm{E}\big{(}X+Y\big{)}=\mathrm{E}\big{(}X\big{)}+\mathrm{E}\big{(}Y\big{)}\) & **(e)**\(\mathrm{Var}\big{(}X+Y\big{)}=\mathrm{Var}\big{(}X\big{)}+\mathrm{Var}\big{(}Y \big{)}\) \\
+**(f)**\(\mathrm{E}\big{(}X-Y\big{)}=\mathrm{E}\big{(}X\big{)}-\mathrm{E}\big{(}Y\big{)}\) & **(f)**\(\mathrm{Var}\big{(}X\big{)}=\mathrm{Var}\big{(}X\big{)}+\mathrm{Var}\big{(}Y \big{)}\) \\ \hline \end{tabular}
+
+### Introduction to Normal Distribution
+
+The Normal Distribution is an example of a _continuous_ probability model and is one of the most important distributions in statistics. Many statistical problems in real-world situations (e.g. in social sciences) are modelled using the normal distribution. Examples include marks, heights, masses, time and length.
+
+**Definition:** A continuous random variable \(X\) having a probability density function (p.d.f.)
+
+\[\mathrm{f}\big{(}x\big{)}=\frac{1}{\sigma\sqrt{2\pi}}\,\mathrm{c}^{-\frac{(x -\mu)^{2}}{2\sigma^{2}}}\qquad\quad\mathrm{for}\;\;x\in(-\infty\,,\,\infty)\;,\;\sigma>0\]
+
+is said to follow a **normal distribution with mean \(\mu\) and variance \(\sigma^{2}\)**.
+
+The mean \(\mu\) and variance \(\sigma^{2}\) are the parameters of the distribution, where \(\mathrm{E}(X)=\mu\) and \(\mathrm{Var}\big{(}X\big{)}=\sigma^{2}\).
+
+If \(X\) follows a **normal distribution with mean \(\mu\) and variance \(\sigma^{2}\)**, we write
+
+\(X\)\(\sim\) N ( \(\mu\), \(\sigma^{2}\) )For \(X\!\sim\!\) N (\(\mu\), \(\sigma^{2}\)),
+
+\[\mathrm{P}\big{(}a\leq X\leq b\big{)}\!=\ \int_{a}^{b}\!\frac{1}{\sigma\sqrt{2\pi}} \mathrm{e}^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}\mathrm{d}x\,,\] which is the shaded area under the p.d.f.
+
+The **normal distribution curve** has the following features:
+
+1. The total area under the curve and above the horizontal axis is equal to 1.
+2. The distribution is symmetrical about the mean \(\mu\)Implications: The mode, median and mean are all equal, due to the symmetry of the distribution. \[P\big{(}X\leq\mu\big{)}=P\big{(}X\geq\mu\big{)}=\frac{1}{2}\]
+3. The curve is bell-shaped but not every bell-shaped curve, is a normal curve. For a normal curve, 68.3%, 95.5% and 99.7% of the values of \(x\) are expected to lie within \(\pm 1\), \(\pm 2\) and \(\pm 3\) standard deviations of the mean of \(X\) respectively (Figure 1). Thus the normal distribution, while theoretically taking all real values, can be used to model real life random variables such as height which will only take finite range of values. (See Section 5.7)
+4. The location and shape depends on the values of \(\mu\) and \(\sigma\) respectively.
+
+Figure 1: Normal Distribution Curve
+
+### Finding Probabilities of a Normal Distribution
+
+It is impractical to find the area of the region under graph of \(y=\frac{1}{\sigma\sqrt{2\pi}}\,\mathrm{e}^{-\frac{(\epsilon-\mu)^{2}}{2\sigma^{ 2}}}\) using integration. As such, we will use the graphing calculator's command "normalcdf(" to provide the probabilities of specified ranges.
+
+When doing so, we may approximate "\(\alpha\) with \(-10^{99}\), and \(\alpha\) with \(10^{99}\).
+
+**Example 1:**
+
+The heights of female NYJCians follow a **normal distribution** with mean 150 cm and standard deviation 22 cm. Find the probability that the height of a randomly chosen female NYJCian is
+
+**(i)**: between 141.2 cm and 166 cm.
+**(ii)**: less than 164.08 cm.
+**(iii)**: at least 175.5 cm.
+**(iv)**: differs from the mean by more than 10 cm.
+
+Figure 2: How the values of \(\mu\) and \(\sigma\) affect the location and shape of the normal curve
+
+## Chapter S5 Normal Distribution
+
+\begin{tabular}{|p{142.3pt}|p{142.3pt}|} \hline
+**Solution:** & \\ \hline
+**(i)** & Let \(H\) be the random variable & \(\Lambda\) \\ denoting the height of a randomly chosen & Define the random variable and state its distribution \\ female NYJCian. & with parameters \(\mu\) and \\ i,e. \(H\sim\) N (150, 222) & \(\sigma^{2}\). \\ P(141.2\(\leq H<\) 166) \(\approx\) 0.42189 & **Step 1:** \\  & Go to the distribution \\  & menu by pressing \\  & **[2ND] [VARS] (DISTR) and select 2:normalcdf(** \\ \hline Graphical representation: & **Step 2:** \\  & Key in the values for \\  & P(141.2 \(<H<\) 166), i.e. \\  & **lower bound: 141.2** \\  & **upper bound: 166** \\  & **\(\mu\): 150** \\  & Select **Paste** and press \\  & **ENTER** to evaluate. \\  & \(\Lambda\) & For \(\sigma\), input the value of the **standard deviation**, not the variance. \\ \hline
+**(ii)** & P(\(H<\) 164.08) \(\approx\) 0.73891 & Repeat **Step 1**. \\  & **Step 2:** \\ Graphical representation: & **lower bound: - E99 \\  & **upper bound: 164.08** \\  & **\(\mu\): 150** \\  & **\(\sigma\): 22** \\  & **Note:** Press \\  & Select **Paste** and press **ENTER** to evaluate. \\ \hline \end{tabular}
+
+**Chapter S5 Normal Distribution**
+
+**Chapter S5 Normal Distribution**
+
+**Example 2**
+
+The random variable \(Y\) is normally distributed with standard deviation 4, but its mean is unknown. Find the greatest possible value of \(\mathrm{P}(-\,3.74<Y<5.82)\).
+
+**Solution:**
+
+Given: \(Y\sim\mathrm{N}(\mu,\,4^{2})\) Which of the following case should it be?
+
+For \(\mathrm{P}(-3.74<Y<5.82)\) to be greatest, the area representing the probability must be symmetrical about the mean \(\mu\)
+
+Hence \(\mu=\frac{-\,3.74\,+\,5.82}{2}=1.04\)
+
+\(\vdots\), \(Y\sim\mathrm{N}(1.04,\,4^{2})\)
+
+P(\(-\,3.74<Y<5.82)=0.76791\)
+
+\(\equiv 0.768\)\((3\,\mathrm{s.f.})\)
+
+**Self-review 1:**
+
+Given that \(X\sim\mathrm{N}(12,\,3^{2})\), find the probabilities:
+
+**(a)**: \(\mathrm{P}(X<12.5)\)**(b)**: \(\mathrm{P}(X>18.5)\)**(c)**: \(\mathrm{P}(10<X<14)\)
+
+**(d)**: \(\mathrm{P}(|X-4|<15)\)**(e)**: \(\mathrm{P}(|X-8|>3)\)
+
+**(a)**: \(0.566\)\((0)\)\(0.0151\)\((\mathrm{c})\)\(0.495\)\((\mathrm{d})\)\(0.990\)\((\mathrm{e})\)\(0.640\)
+
+[MISSING_PAGE_FAIL:8]
+
+[MISSING_PAGE_FAIL:9]
+
+**Chapter S5 Normal Distribution**
+
+**Note:** Given probability \(p\), known parameters \(\mu\), and \(\sigma^{2}\),
+
+(I) invNorm(\(p\), \(\mu\), \(\sigma\), LEFT) returns the value \(x\) such that P(\(X\)\(<\)\(x\)) = \(p\), where \(X\)\(\sim\) N(\(\mu\), \(\sigma^{2}\))
+
+(II) invNorm(\(p\), \(\mu\), \(\sigma\), RIGHT) returns the value \(x\) such that P(\(X\)\(>\)\(x\)) = \(p\), where \(X\)\(\sim\) N(\(\mu\), \(\sigma^{2}\)).
+
+(III) invNorm(\(p\), \(\mu\), \(\sigma\), CENTER) returns the value \(x\) such that P(\(-x\)\(<\)\(X\)\(-\)\(\mu\)\(<\)\(x\)) = \(p\), where \(X\)\(\sim\) N(\(\mu\), \(\sigma^{2}\)).
+
+To use invNorm + Center, both the lower and upper bound must be symmetrical about the mean.
+
+**Self-review 2:**
+
+**1.** Given that \(X\)\(\sim\) N(12,9), find the value(s) of \(k\) such that
+
+**(a)** P(\(X\)\(<\)\(k\)) = 0.55 **(b)** P(\(X\)\(>\)\(k\)) = 0.77 **(c)** P(\(6\)\(<\)\(X\)\(<\)\(k\)) = 0.444
+
+**(a)** 12.4 **(b)** 9.71 **(c)** 11.7 5
+
+#### Solving For Range of Possible Values
+
+For questions that require a range of \(x\) such that \(\mathrm{P}\big{(}X<x\big{)}\) (or \(\mathrm{P}\big{(}X>x\big{)}\)) satisfy an inequality, we first solve for the equality case then evaluate the possible values that satisfy the inequality.
+
+**Example 4:**
+
+Given that \(X\sim\mathrm{N}(12,9)\), find the value(s) of \(k\) such that
+
+**(a)**: \(\mathrm{P}(X\leq k)>0.222\) **(b)**: \(\mathrm{P}(X<k)\leq 0.6\) **(c)**: \(\mathrm{P}(X>k)>0.2\) **(d)**: \(\mathrm{P}(X>k)<0.3\)
+
+Consider \(\mathrm{P}(X>k)=0.222\)
+
+Using GC, \(k=9.7036\)
+
+\(\therefore k>9.7036\)
+
+\(k\geq 9.71\)
+
+Consider \(\mathrm{P}(X<k)=0.6\)
+
+Using GC, \(k=12.760\)
+
+\(\therefore k\leq 12.760\)
+
+\(k\leq 12.7\)
+
+Consider \(\mathrm{P}(X>k)=0.2\)
+
+Using GC, \(k=14.525\)
+
+\(\therefore k<14.525\)
+
+\(k\leq 14.5\)
+
+Consider \(\mathrm{P}(X>k)=0.3\)
+
+Using GC, \(k=13.573\)
+
+\(\therefore k>13.573\)
+
+\(k\geq 13.6\)
+
+**Example 5:**
+
+The marks of 500 candidates in an examination are normally distributed with mean 45 and standard deviation 20. A candidate obtains a distinction by scoring \(x\) marks or more. If less than 5 % of the candidates obtain a distinction, find the range of values of \(x\), correct to 1 decimal place.
+
+\begin{tabular}{|l|l|} \hline
+**Solution:** & **ThinkZone** \\ \hline Let \(M\) be the random variable denoting the examination & \\ marks obtained by a randomly chosen candidate, i.e. \(M\sim\) N (45, 20\({}^{2}\)) & \\ \(\mathbb{P}(M\geq x)\) \(<\) 0.05 & \\ \(1\) - \(\mathbb{P}\big{(}M\leq x\big{)}\) \(<\) 0.05 & \\ \(\mathbb{P}\big{(}M\leq x\big{)}\) \(>\) 0.95 & \\ Let \(\mathbb{P}\big{(}M\leq k\big{)}\) \(>\) 0.95. Using GC, \(k>\) 77.897 & \\ \(\Rightarrow\) \(x\) \(\geq\) 77.9 (to 1 d.p.) & \\ \hline \end{tabular}
+
+Therefore, a candidate will obtain a distinction by scoring 77.9 marks or more.
+
+**Self-review 3:**
+
+The mass of a bar of candy is normally distributed with mean 90g and standard deviation 10g.
+
+**(i)** Find probability that a randomly chosen bar of candy has a mass more than 90.7g.
+
+**(ii)** The probability that a randomly chosen bar of candy has a mass of less than \(w\) g is 0.2.
+
+Find the value of \(w\) [0.472, 81.6]
+
+### Standard Normal Distribution
+
+The **standard normal distribution** is a special normal distribution with mean \(\mu=0\) and standard deviation \(\sigma=1\). A random variable following such a distribution is called the **standard normal random variable**. The letter \(Z\) is _reserved_ to denote the standard normal random variable: \(Z\sim\)**N(0, 1)**. The standard normal random variable is also called a **standard score** or a **z-score**.
+
+The p.d.f. of \(Z\) is \(\phi(z)=\dfrac{1}{\sqrt{2\pi}}\,\mathrm{e}^{-\frac{1}{2}z^{2}}\), \(z\in(-\infty\), \(\infty)\). The **cumulative distribution function of z** is defined as \(\mathrm{P}(Z\leq z)\) and is denoted by \(\Phi(z)\).
+
+* We can transform a non-standard normal distribution to a standard normal distribution by using the substitution \(z=\dfrac{x-\mu}{\sigma}\), i.e. we can standardise the distribution of \(X\) where \(X\sim\)N(\(\mu,\sigma^{2}\)) by letting \(Z=\dfrac{X-\mu}{\sigma}\) where \(Z\sim\)N(0,1).
+
+* The area in any normal distribution bounded by some \(x\) is the same as the area bounded by the equivalent \(z\)-score in the standard normal distribution, i.e. \(P\big{(}X<x\big{)}=P\bigg{(}\dfrac{X-\mu}{\sigma}<\dfrac{x-\mu}{\sigma}\bigg{)}= P\bigg{(}Z<\dfrac{x-\mu}{\sigma}\bigg{)}\).
+
+Figure 3: Standardising a Normal Distribution with mean \(100\) and standard deviation \(10\)
+
+#### 5.5.1 Standardising Normal Distributions for unknown \(\mu\) or \(\sigma\)
+
+The invNorm( function cannot be used when \(\mu\) or \(\sigma\)is unknown). We need to transform a non-standard normal distribution \(X\sim\) N(\(\mu\), \(\sigma^{2}\)) to a standard normal distribution \(Z\sim\) N(0,1) through the operation \(Z=\dfrac{X~{}-~{}\mu}{\sigma}\) first before using the function.
+
+**Example 6:**
+
+The length of metal rods produced by a machine has lengths that are normally distributed with mean 40 cm and standard deviation \(\sigma\) cm. A quality control engineer recorded that 85.1 % of the rods have length less than 46cm. Find the value of \(\sigma\).
+
+**Solution:**
+
+Let \(L\) be the random variable denoting the length of a randomly chosen metal rod
+
+i.e. \(L\sim\) N(40, \(\sigma^{2}\))
+
+P(\(L<46\)) \(-\) 0.851
+
+Using GC, \(\dfrac{6}{\sigma}\approx\) 1.0407
+
+\(\Rightarrow\)\(\sigma\approx\) 5.7654 = 5.77
+
+**Alternative Method:**
+
+We can use a graphical method to solve the equation \(\text{P}(L<46)=0.851\). We can let \(\sigma\) be the variable and graph the LHS of the equation in GC as show on the right.
+
+From the graph, \(\sigma\) = 5.77 (3 s.f.)
+
+**Chapter S5 Normal Distribution**
+
+**Example 7:**
+
+The masses of articles produced in a workshop are normally distributed with mean \(\mu\) and standard deviation \(\sigma\). 5% of the articles have mass greater than 85g and 10 % have mass less than 25g. Find the value of \(\mu\) and \(\sigma\).
+
+**Solution:**
+
+**ThinkZone**
+
+Let \(M\) be the random variable denoting the mass of a randomly chosen article, i.e. \(M\sim\) N(\(\mu\), \(\sigma^{2}\)).
+
+Given: P(\(M>85\)) = 0.05
+
+\(\Rightarrow\) P(\(M-\mu\) > \(\frac{85-\mu}{\sigma}\)) = 0.05
+
+\(\Rightarrow\) P(\(Z>\frac{85-\mu}{\sigma}\)) = 0.05
+
+\(\therefore\)\(\frac{85-\mu}{\sigma}\approx\) 1.6449
+
+\(85-\mu\approx\) 1.6449 \(\sigma\)................. (1)
+
+Given: P(\(M<25\)) = 0.10
+
+\(\Rightarrow\) P(\(M<25\)) = 0.10
+
+\(\Rightarrow\) P(\(Z<\frac{25-\mu}{\sigma}\)) = 0.10
+
+\(\frac{25-\mu}{\sigma}\approx\) - 1.2816
+
+\(25-\mu\approx\) - 1.2816 \(\sigma\)................. (2)
+
+Solving (1) and (2):
+
+mean, \(\mu=51.3\) g (3 s.f.) and
+
+standard deviation, \(\sigma=20.5\) g (3 s.f.)
+
+[MISSING_PAGE_EMPTY:16]
+
+### Solving Problem Sums
+
+#### Linear Combinations of normal variables
+
+\begin{tabular}{|c|} \hline \(\bullet\) & If \(X\) and \(Y\) are two independent normally distributed random variables, i.e. \(X\sim\mathrm{N}(\mu_{\mathrm{i}},\sigma_{\mathrm{i}}^{2})\) and \(Y\sim\mathrm{N}(\mu_{\mathrm{2}},\sigma_{\mathrm{2}}^{2})\), then \\ \(\bullet\) & \(X+Y\sim\mathrm{N}(\mu_{\mathrm{i}}+\mu_{\mathrm{2}},\sigma_{\mathrm{i}}^{2}+ \sigma_{\mathrm{2}}^{2})\) \\ \(\bullet\) & \(X-Y\sim\mathrm{N}(\mu_{\mathrm{i}}-\mu_{\mathrm{2}},\sigma_{\mathrm{i}}^{2}+ \sigma_{\mathrm{2}}^{2})\) \\ \hline \(\bullet\) & For \(n\) independent normal variables of \(X\), where \(X_{i}\sim\mathrm{N}(\mu_{\mathrm{i}},\sigma_{\mathrm{i}}^{2})\), \(i=1\), \(2\), \(3\), \(\ldots\), \(n\), it is true that the sum of these variables is also normally distributed, i.e. \\ \(X_{1}+X_{2}+...+X_{n}\sim\mathrm{N}(\mu_{\mathrm{i}}+\mu_{\mathrm{2}}+...+\mu_ {\mathrm{s}},\sigma_{\mathrm{i}}^{2}+\sigma_{\mathrm{2}}^{2}+...+\sigma_{ \mathrm{s}}^{2})\) \\ \hline \(\bullet\) & For the normal variable such that \(X\sim\mathrm{N}(\mu,\sigma^{2})\) and for any constant \(d\), \\ \(\alpha X\sim\mathrm{N}(a\mu,a^{2}\sigma^{2})\) \\ \hline \(\bullet\) & For two independent normal variables such that \(X\sim\mathrm{N}(\mu_{\mathrm{i}},\sigma_{\mathrm{i}}^{2})\) and \(Y\sim\mathrm{N}(\mu_{\mathrm{2}},\sigma_{\mathrm{2}}^{2})\) and for any constants \(a\) and \(b\), \\ \(\bullet\) & \(aX+bY\sim\mathrm{N}(a\mu_{\mathrm{i}}+b\mu_{\mathrm{2}},a^{2}\sigma_{\mathrm{i}} ^{2}+b^{2}\sigma_{\mathrm{2}}^{2})\) \\ \(\bullet\) & \(aX-bY\sim\mathrm{N}(a\mu_{\mathrm{i}}-b\mu_{\mathrm{2}},a^{2}\sigma_{\mathrm{i}} ^{2}+b^{2}\sigma_{\mathrm{2}}^{2})\) \\ \hline \end{tabular}
+
+**Example 8:**
+
+The mass of a brand '\(\mathrm{NY}\) potato' is normally distributed with mean 50g and standard deviation 6g.
+
+**(i)**: If one potato is chosen at random, find the probability that its mass exceeds 44g.
+**(ii)**: If 3 potatoes are chosen at random, find the probability that their total mass will exceed 135g.
+**(iii)**: If one potato is chosen at random, find the probability that three times the mass of the potato will exceed 135g.
+**(iv)**: Four potatoes are chosen at random. Find the probability that their mean mass is less than 55g.
+
+**Solution:**
+
+Let \(M\) be the random variable denoting the mass of a randomly chosen '\(\mathrm{NY}\) potato' i.e. \(M\sim\mathrm{N}(50\), \(6^{2})\)
+
+**(i)**: P(\(M>44\)) = 0.841 (3 s.f.)
+**(ii)**: The required probability is P(\(M_{1}+M_{2}+M_{3}>135\))
+
+E(\(M_{1}+M_{2}+M_{3}\) ) = E(\(M_{1}\)) + E(\(M_{2}\)) + E(\(M_{3}\) ) = 3E(\(M\)) = 3(50) = 150
+
+Var (\(M_{1}+M_{2}+M_{3}\) ) = Var (\(M_{1}\)) + Var (\(M_{2}\)) + Var (\(M_{3}\)) = 3Var(\
+
+[MISSING_PAGE_FAIL:18]
+
+**Chapter S5 Normal Distribution**
+
+**Solution:**
+
+Let \(B\) and G be the random variable denoting the mass of a randomly chosen Nanyang JC boy and girl respectively i.e. \(B\sim\) N(60, \(3^{2}\))
+
+\(G\sim\) N(50, \(4^{2}\))
+
+**(i)** required probability is \(P\big{(}56<B<62\big{)}=0.656\)
+
+**(ii)** The required probability is \(=\) P\(\big{(}56<B<62\big{)}\Big{[}\) P\(\big{(}B<56\big{)}\Big{]}^{2}\times\dfrac{3!}{2!}\)
+
+**(iii)** The required probability is \(=\) P\(\big{(}B_{1}+B_{2}>2G\big{)}=\) P\(\big{(}B_{1}+B_{2}-2G>0\big{)}\)
+
+\(\text{E}(\,B_{1}+B_{2}-2G\,)=\) E\((B)+\) E\((B)-2\) E\((G)-60\,+60-2(50)-20\)
+
+\(\text{Var}(\,B_{1}+B_{2}-2G\,)=\) Var\((B)+\) Var\((B)+4\) Var\((G)=3^{2}+3^{2}+4(4^{2})=82\)
+
+\(B_{1}+B_{2}-2G\sim\) N(20,82)
+
+\(\therefore\) The required probability is \(=\) P\(\big{(}B_{1}+B_{2}>2G\big{)}=\) P\(\big{(}B_{1}+B_{2}-2G\,)=\) 0.98640
+
+**(iv)** The required probability is \(\text{P}(|B-G|>3)\)
+
+\(\text{E}(B-G)=\) E\((B)-\) E\((G)=60-50-10\)
+
+\(\text{Var}(B-G)=\) Var\((B)+\) Var\((G)=3^{2}+4^{2}=25\)
+
+i.e. \(B-G\sim\) N(10, \(5^{2}\))
+
+\(\therefore\). P\((|B-G|>3)=\) 1 - P(-3 \(<B-G<3\))
+
+\(\text{=0.92390}=0.924\) (3 s.f.)
+
+The probability that the _difference_ in mass between a Nanyang JC boy and a girl in this age group is more than 3kg is 0.924.
+
+**Example 10**
+
+Watermelons are sold by weight at a price of $2.00 per kilogram. The masses of watermelons are normally distributed with mean 1.2 kg and standard deviation 0.3 kg. Papaya are sold by weight at a price of $1.70 per kilogram. The masses of papaya are normally distributed with mean 1.0 kg and standard deviation 0.2 kg.
+
+**(i)** Find the probability that the total price of 5 randomly chosen watermelons and 3 randomly chosen papayas exceeds $18.
+
+**(ii)** In another purchase, 3 randomly chosen papayas are packed in a plastic bag. Each plastic bag costs $1. Find the probability that the total price of this purchase is less than $6.
+
+**Solution:**
+
+Let \(W\) be the random variable denoting the mass of a randomly chosen watermelon i.e. \(W\sim\) N(1.2, 0.3\({}^{2}\))
+
+Let \(P\) be the random variable denoting the mass of a randomly chosen papaya i.e. \(P\sim\) N(1.0, 0.2\({}^{2}\))
+
+**(i)** Let \(T\) be the random variable denoting the total price of 5 watermelons and 3 papayas.
+
+i.e. \(T=\) 2.0(\(W_{1}+W_{2}+W_{3}+W_{4}+W_{5}\)) + 1.7(\(P_{1}+P_{2}+P_{3}\))
+
+The required probability is P(\(T>18\))
+
+\[\begin{split}\text{E}(T)&=2.0\text{E}(W_{1}+W_{2}+ W_{3}+W_{4}+W_{5})+1.7\text{E}(P_{1}+P_{2}+P_{3})\\ &=2.0[5\text{E}(W)]+1.7[3\text{E}(P)]\ -2.0(5)(1.2)+1.7(3)(1.0)=17.1\\ \text{Var}(T)&=2.0^{2}\ \text{Var}(W_{1}+W_{2}+W_{3}+W_{4 }+W_{5})+1.7^{2}\ \text{Var}(P_{1}+P_{2}+P_{3})\\ &\quad-2.0^{2}\ [5\text{Var}(W)]\ +\ 1.7^{2}\ [3\text{Var}(P)]\ -2.0^{2}(5)(0.3^{2})+1.7^{2}(3)(0.2^{2})\ -2.1468\\ \text{i.e.}\ \ T\sim&\text{N}\left(17.1,\left( \sqrt{2.1468}\right)^{2}\right)\\ \therefore\ \text{P}(T>18)\approx 0.26952=0.270\ \ \ \ (3\ \text{s.f.})\end{split}\]
+
+The probability that the total price of 5 randomly chosen watermelons and 3 randomly chosen papayas exceeds S18 is 0.270.
+
+**(ii)** Let \(X\) be the random variable denoting the total price 3 papayas and a plastic bag.
+
+i.e. \(X=1.7(P_{1}+P_{2}+P_{3})+1\)
+
+The required probability is P(\(X<6\))
+
+\[\begin{split}\text{E}(X)&=1.7\text{E}(P_{1}+P_{2}+ P_{3})+1\\ &=1.7[3\text{E}(P)]\ +1\\ &=1.7(3)(1.0)+1\\ &=6.1\\ \text{Var}(X)&=1.7^{2}\ [3\text{Var}(P)]\\ &\quad\equiv 1.7^{2}(3)(0.2^{2})\\ &=0.3468\\ \end{split}\]
+
+i.e. \(X\sim\) N(6.1,\(\left(\sqrt{0.3468}\right)^{2}\))
+
+\(\therefore\ \text{P}(X<6)\approx 0.43258=0.433\ \ (3\ \text{s.f.})\)
+
+The probability that the total price of the purchase is less than S6 is 0.433.
+
+[MISSING_PAGE_FAIL:21]
+
+**Self-review 5:**
+
+**1.**: If \(X\) - N(15, 4) and \(Y\) - N(10, 2\({}^{2}\)), find
+
+**(a)**: P(\(X\) < 12) **(b)**: P(\(Y\) < \(X\)) **(c)**: P(\(4X\) + 5\(Y\) > 90)
+
+**2.**: In a cafeteria, baked beans are served either in ordinary portions or in children's portions. The quantity given for an ordinary portion is a normal variable with mean 90g and standard deviation 3g and the quantity given for a child's portion is a normal variable with mean 43g and standard deviation 2g. What is the probability that Paul, who has two children's portion, is given more than his father, who has an ordinary portion?
+**3.**: Two firms, \(A\) and \(B\) manufacture similar components with a mean breaking strength of 6 KN and 5.5 kN and standard deviations of 0.4 kN and 0.2 kN respectively. If both distributions are normal and random samples of 100 components from manufacturer \(A\) and of 50 from\(B\) are tested, find
+
+**(i)**: the probability that the mean breaking strength of the components from manufacturer \(A\) will be between 0.45 kN and 0.55 kN more than the mean of those from manufacturer \(B\).
+**(ii)**: the probability that the difference in breaking strength between a randomly chosen component from manufacturer \(\mathrm{A}\) and a component from manufacturer \(\mathrm{B}\) is more than 0.05 kN
+
+**(0.693, 0.952 ]**
+
+### Appropriateness of Normal Model
+
+**Example 12** [**UCLES Specim Paper/II/Qn5**]
+
+A school has a large number of girls. For each year-group it may be assumed that the heights of girls are normally distributed, with average heights and standard deviations as given in the following table.
+
+\begin{tabular}{|l|c|c|} \hline Year-group & Average height & Standard deviation \\ \hline
+11-year old girls & 1.1 m & 0.2m \\ \hline
+16-year old girls & 1.7 m & 0.3 m \\ \hline \end{tabular}
+
+**(i)**: For each of the following cases, state, with a reason, whether or not a normal model is likely to be appropriate.
+
+**(a)**: The number of days since her last birthday of a randomly chosen 11-year old girl from the school.
+**(b)**: The height of a pupil chosen at random from the combined group of 11-year and 16-year old girls in the school.
+**(c)**: The average height of a randomly chosen sample of eight 11-year old girls from the school.
+**(ii)**: One 11-year old girl and one 16-year old girl are chosen at random from the school. Find the probability that the 16-year old girl is at least 0.5m taller than the 11-year old girl.
+**(iii)**:
+**Solution:**
+**(i)(a)**: Number of days is discrete and not continuous, therefore the model is not normal.
+**(b)**: As there are two distributions involved here, the combined distribution is bimodal. Hence the model is not normal.
+**(c)**: Since the random sample is from a normal distribution, the average height is a normal random variable. A normal model is appropriate.
+**(ii)**: Let \(X\) be the random variable denoting the height of a randomly chosen 11-year old girl i.e.
+
+\(X\)\(\sim\)N\(\left(1,1,0,2^{2}\right)\)
+
+Let \(Y\) be the random variable denoting the height of a randomly chosen 16-year old girl i.e.
+
+\(X\)\(\sim\)N\(\left(1.7,3\right)\)\(0.3^{2}\)
+
+The required probability is P(\(Y\)\(-\)\(X\)\(\geq\) 0.5)
+
+\(\mbox{E}\left(Y-X\right)\) = E\(\left(Y\right)\) - E\(\left(X\right)\) = 1.7 - 1.1 = 0.6
+
+\(\mbox{Var}\left(Y-X\right)\) = Var\(\left(Y\right)\)\(+\)Var\(\left(X\right)\) = 0.3\({}^{2}\) + 0.2\({}^{2}\) = 0.13
+
+i.e. \(Y\)\(-\)\(X\)\(\sim\)N\(\left(0.6,\left(\sqrt{0.13}\right)^{2}\right)\)
+
+\(\therefore\) P(\(Y\)\(-\)\(X\)\(\geq\) 0.5) \(\approx\) 0.60924 - 0.609 (3 s.f.)
+
+**Example 13 [H1/N2008/1/7]**
+
+An examination is marked out of \(100\). It is taken by a large number of candidates. The mean mark, for all candidates, is 72.1, and the standard deviation is 15.2. Give a reason why a normal distribution with this mean and standard deviation, would not give a good approximation to the distribution of marks.
+
+**Solution:**
+
+Let \(X\) be the random variable denoting the mark obtained by a randomly chosen candidate.
+
+If \(X\sim\) N(72.1,15.2\({}^{2}\)), \(\mathrm{P}(X>\)100)=0.0332\(.\)
+
+There is approximately 3% of the population whose mark is greater than 100, which is not possible.
+
+Therefore a normal distribution will not provide a good approximation to the distribution of the mark.
+
+**Alternatively,**
+
+If \(X\sim\) N(72.1,15.2\({}^{2}\)), \(\mathrm{P}\big{(}\mu-3\sigma<X<\mu+3\sigma\big{)}=0.997\)
+
+But \(\mu+3\sigma=72.1+3(15.2)=117.7>\)100, which is not possible.
+
+Therefore a normal distribution will not provide a good approximation to the distribution of the mark.
+
+### Miscellaneous Examples
+
+**Example 14**
+
+A fruit grower grows both red and green apples, which have masses that are normally distributed.
+
+The mass of a randomly chosen red apple has mean 75g and standard deviation 12.5g. The mass of a randomly chosen green apple has mean of 55g and standard deviation 10.5g.
+
+**(i)**: Find the probability that the total mass of 3 randomly chosen green apples exceeds twice the mean mass of 3 randomly chosen red apples.
+**(ii)**: A red apple is considered "underweight" if it weighs less than 70g. Red apples are packed into bags of 10 for transportation to a supermarket. A bag is considered to have passed the quality test if it contains less than 2 "underweight" apples. Calculate the probability that a randomly chosen bag of red apples fail the quality test.
+
+**Solution:**
+
+Let \(R\) be the random variable denoting the mass of a randomly chosen red apple i.e. \(R\sim\) N (75,
+
+12.5\({}^{2}\))
+
+Let \(G\) be the random variable denoting the mass of a randomly chosen green apple i.e.
+
+\(G\sim\) N (55, 10.5 \({}^{2}\))
+
+**(i)** Let \(\overline{R}\) denotes the mean mass of 3 randomly chosen red apples i.e. \(\overline{R}=\dfrac{\overline{R_{1}+R_{2}+R_{3}}}{3}\)
+
+The required probability is \(\mathrm{P}\big{(}G_{1}+G_{2}+G_{3}>2\overline{R}\big{)}=\mathrm{P}\big{(}G_{1}+ G_{2}+G_{3}-2\overline{R}>0\big{)}\)
+
+\(\mathrm{E}(\overline{R})=\mathrm{E}\bigg{[}\dfrac{1}{3}\big{(}R_{1}+R_{2}+R_{3 }\big{)}\bigg{]}=\dfrac{1}{3}\Big{[}3\mathrm{E}\big{(}R\big{)}\Big{]}=\mathrm{E }\big{(}R\big{)}=75\)
+
+\(\mathrm{Var}(\overline{R})=\mathrm{Var}\bigg{[}\dfrac{1}{3}\big{(}R_{1}+R_{2}+ R_{3}\big{)}\bigg{]}=\left(\dfrac{1}{3}\right)^{2}\Big{[}3\mathrm{Var}\big{(}R \big{)}\Big{]}=\dfrac{1}{3}\left(12.5^{2}\right)=\dfrac{625}{12}\)
+
+\(\mathrm{E}\left(G_{1}+G_{2}+G_{3}-2\overline{R}\right)=3E\big{(}G\big{)}-2E \left(\overline{R}\right)=3\left(55\right)-2\left(75\right)=15\)
+
+\(\mathrm{Var}\left(G_{1}+G_{2}+G_{3}-2\overline{R}\right)=3\mathrm{Var}\big{(} G\big{)}+2^{2}\mathrm{Var}\left(\overline{R}\right)=3\left(10.5^{2}\right)+2^{2} \left(\dfrac{625}{12}\right)=\dfrac{6469}{12}\)
+
+\(\mathrm{i.e.}\)\(G_{1}+G_{2}+G_{3}-2\overline{R}\sim\mathrm{N}\Bigg{(}15,\ \ \left(\sqrt{\dfrac{6469}{12}}\right)^{2}\Bigg{)}\)
+
+\(\therefore\)\(\mathrm{P}\big{(}G_{1}+G_{2}+G_{3}-2\overline{R}>0\big{)}\ \approx\ 0.74088=0.741\) (3 s.f.)
+
+**(ii)** P(a red apple is considered "underweight") \(=\mathrm{P}(R<70)=0.34458\) (5 s.f.)
+
+Let \(X\) denote the number of red apples out of 10 which are underweight. i.e. \(X\sim\mathrm{B}(10,\ 0.34458)\)
+
+Given: P(a bag of red apples passed the quality test) \(=\mathrm{P}(X<2)\)
+
+\(\therefore\)\(\mathbb{P}\)(a bag of red apples fails the quality test) \(=\mathrm{P}\big{(}X\geq 2)\)
+
+\(\equiv 1-\mathrm{P}(X\leq 1)\approx 0.90846=0.908\) (3 s.f.)
+
+[MISSING_PAGE_POST]
+
+. Kibble

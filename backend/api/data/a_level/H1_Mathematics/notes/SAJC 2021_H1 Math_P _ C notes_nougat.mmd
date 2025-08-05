@@ -1,0 +1,446 @@
+**Chapter 1 (Statistics) : Permutations and Combinations (Teacher's Copy)**
+
+**Objectives:**
+
+At the end of the chapter, you should be able to
+
+**(a)**: understand and use the addition and multiplication principles for counting;
+**(b)**: understand the concepts of permutation \({}^{n}\mathbf{P}_{r}\) and combination \({}^{n}\mathbf{C}_{r}\), and differentiate between permutations and combinations;
+**(c)**: understand the concept of arrangements of distinct objects in a line including cases involving restriction, and know how to calculate them
+
+**Content**
+
+1.1 Basic Counting Principles
+
+1.1.1 Addition Principle
+
+1.1.2 Multiplication Principle
+
+1.2 Permutations
+
+1.3 Combinations
+
+[MISSING_PAGE_FAIL:2]
+
+**Example 1**
+
+Mary and John go to a restaurant that offers 5 types of pizza and 6 types of salads. Mary would like to have either a pizza or a salad. John would like to have a pizza and a salad. How many choices do Mary and John have respectively?
+
+**Solution:**
+
+\begin{tabular}{|l|l|} \hline Mary & John \\ \hline Case 1 Chooses pizza: \(\mathbf{\bar{5}}\) ways & Stage 1 pizza & Stage 2 salad \\ \hline Case 2 Chooses salad: \(\mathbf{\pm\bar{6}}\) ways & \\ No. of choices & No. of choices = \(\mathbf{\bar{5}}\) ways & x & \(\mathbf{\bar{6}}\) ways = \(\mathbf{\bar{50}}\) \\ \hline \end{tabular}
+
+**Exercise 1**
+
+A bookshelf holds 6 different English books, 8 different Malay books and 10 different Chinese books.
+
+**(a)**: How many ways are there to select 1 book in any of the languages?
+**(b)**: How many ways are there to select 3 books, 1 in each language?
+**(c)**: How many ways are there to select 2 books in 2 languages?
+
+[Ans: (a) 24; (b) 480; (c) 188]
+
+**Solution**
+
+**(a)**: No. of ways = \(\mathbf{\bar{6}}\)\(\mathbf{\pm\bar{8}}\)\(\mathbf{\pm\bar{10}}\)\(\mathbf{\pm\bar{24}}\)
+**(b)**: No. of ways = \(\mathbf{\bar{6}}\)\(\mathbf{\pm\bar{8}}\)\(\mathbf{\pm\bar{10}}\)\(\mathbf{\pm\bar{480}}\)
+**(c)**: 3 cases: The 2 books can be English and Malay or English and Chinese or Malay and Chinese.
+
+No. of ways = \(\mathbf{\bar{6}}\)\(\mathbf{\pm\bar{8}}\)\(\mathbf{\pm\bar{6}}\)\(\mathbf{\pm\bar{10}}\)\(\mathbf{\pm\bar{8}}\)\(\mathbf{\pm\bar{10}}\)\(\mathbf{\pm\bar{188}}\)
+
+### Permutations
+
+A permutation is an arrangement of objects where the **order** is important.
+
+**Example**
+
+1. Permutations (or arrangements) that can be formed with the letters A, B, C by taking three at a time.
+
+The first slot can have 3 choices (A, B or C ).The second slot can have 2 choices. The third slot can have 1 choice.
+
+No of ways to arrange A, B, C = \(3\times 2\times 1=3!=6\) ways
+
+ABC  BAC  CAB
+
+ACB  BCA  CBA
+
+2. Permutations (or arrangements) that can be formed with the letters A, B, C by taking two at a time.
+
+In this case, the first slot can have 3 choices (A, B or C ).The second slot can have 2 choices. = {AB, AC, BA, BC, CA, CB} = \(3\times 2\ =6\) ways
+
+**Example 2**
+
+**Without replacement (i.e. no repetition)**
+
+How many 5-letter code-words can be formed from the letters of
+
+the word _MATRICES_?
+
+Number of 5-letter code-words
+
+\(=\)8\(\times\)7\(\times\)6\(\times\)5\(\times\)4 = 6720
+
+Unless otherwise stated, a permutation of objects refers to one _without replacement_.
+
+The symbol \(\ {}^{n}\mathbf{P}_{r}\) is used to represent the number of permutations of \(r\) objects out of a total of \(n\) objects. Thus, the answer in Example 2(a) is \({}^{8}\mathbf{P}_{5}\). There is a GC command for it:
+
+In particular, the number of permutations of \(n\) distinct objects taken all at a time is
+
+\({}^{n}\mathrm{P}_{n}=n(n-1)...(2)(1)=n!\). E.g. \({}^{8}\mathrm{P}_{8}=8!\)
+
+The number of permutations of \(r\) distinct objects out of \(n\) distinct objects is
+
+\({}^{n}\mathrm{P}_{r}=n(n-1)...(n-r+1)=\frac{n!}{(n-r)!}\) E.g. \({}^{8}\mathrm{P}_{5}=8\times 7\times 6\times 5\times 4=\frac{8!}{3!}\)
+
+**Example 3**
+
+1. How many 4-digit numbers greater than 2000 can be formed from {0,1,2,3,4} if no repetition is allowed?
+2. How many of these numbers from **(a)** will be divisible by 5 if no repetition is allowed?
+3. How many of these numbers from **(a)** are even if no repetition is allowed?
+
+**Solution:**
+
+(a)(4 digits)
+
+The first slot can only be taken by the numbers 2,3 or 4.
+
+The subsequent slots can only be taken by the remaining numbers and arranged in \({}^{4}\mathrm{P}_{3}\) ways.
+
+No. of numbers \(=\sqrt[3]{3\times 4}\mathrm{P}_{3}=72\)
+
+**(b)(the 4\({}^{\mathrm{th}}\) slot has to be 0)**
+
+The first slot can take 2, 3 or 4, the last slot has to take 0, the remaining 3 numbers will be used to fill the remaining two slots.
+
+No. of numbers \(=\sqrt[3]{3\times 4}\mathrm{P}_{2}\times 1=18\)
+
+**(c)**
+
+Case 1:
+
+(3 digits)(0,2,4)The first slot is taken by an even number 2 or 4. (2 ways)
+
+The last slot has to be taken by 0 or the other even number **not taken** by first slot. (2 ways)
+
+No. of numbers = 2x^3P2x2=24
+
+Case 2:
+
+The first slot is taken by an odd number 3.
+
+(1 way)
+
+The last slot has to be taken by either 0, 2, or 4. (3 ways)
+
+No. of numbers = 1x^3P2x3=18
+
+Total no. of numbers = 24+18=42
+
+**Exercise 2**
+
+**1(i)**: How many 3-digit numbers can be formed from the digits { 4, 5, 6, 7, 8 } if repetitions of number are not allowed?
+**(ii)**: Find the number of ways that a 3-digit number can be formed from the digits {4, 5, 6, 7, 8 } if repetitions of number are not allowed and that it
+
+**(a)**: is an odd number,
+
+**(b)**: is an even number,
+
+**(c)**: contains the digit 4 at most once,
+
+**(d)**: contains the digit 8 twice.
+
+[Ans : (i) 60; (ii)(a) 24 ; (ii)(b) 36 ; (ii)(c) 60 ; (ii)(d) 12]
+
+**Solution:**
+
+**(i)**: No. of ways = 5 x 4 x 3 = 60 or ^5P3
+
+**(ii)**: (a)No. of odd numbers = ^4P2 x 2 = 24
+
+**(b)**: No. of even numbers = ^4P2 x 3 = 36
+
+**(c)**: Only 1 ^4* = 1 x 4 x 3 x 3 = 36
+
+No ^4* = ^4P3 = 24
+
+Total no. = 36+24=60
+
+(e) Total no. =1x1x4x3=12
+
+Question for (ii)(c)
+
+Why is there a need to multiply by 3?
+
+Because of 3 cases:
+
+4_ - \(4\) - \(4\) - _4_
+
+[MISSING_PAGE_FAIL:7]
+
+[MISSING_PAGE_FAIL:8]
+
+[MISSING_PAGE_FAIL:9]
+
+### 1.3 Combinations (or Selection)
+
+A combination is a selection of objects in which the order of selection **does not** matter.
+
+In English we use the word "combination" loosely, without thinking if the **order** of things is important. In other words:
+
+_"My fruit salad is a combination of apples, grapes and bananas"_
+
+We don't care what order the fruits are in, they could also be "bananas, grapes and apples" or "grapes, apples and bananas", it's the same fruit salad.
+
+_"The combination to the safe was 472"_.
+
+Now we **do** care about the order. "724" would not work, nor would "247". It has to be exactly **4-7-2**.
+
+So, in Mathematics we use more _precise_ language:
+
+\(\bullet\)
+
+If the order **does not** matter, it is a **Combination**.
+
+\(\bullet\)
+
+If the order **does** matter, it is a **Permutation**.
+
+In the above description, the fruit salad is correctly described as a combination, but the safe number should be described as a permutation instead.
+
+\begin{tabular}{|c|c|} \hline
+**Combinations** & **Permutations** \\ \hline ORDER DOES NOT MATTER & ORDER MATTERS \\ \hline Number of combinations of \(r\) objects from \(n\) & Number of permutations of \(r\) objects from \(n\) \\ different objects = \({}^{n}\mathbf{C}_{r}\)\(\mathbf{\mathrm{\,or\,}}\left(\begin{array}{c}n\\ r\end{array}\right)\) & different objects = \({}^{n}\mathbf{P}_{r}\) \\ \hline \end{tabular}
+
+**Example**
+
+1. Combinations that can be formed with the letters A, B, C.
+
+\(\bullet\)
+
+No of ways to select A, B, C = {A, B, C} = \({}^{3}\mathbf{C}_{3}\) = 1 way
+
+2. Combinations that can be formed with 2 letters from A, B or C.
+
+\(\bullet\)
+
+No of ways to select A, B, C = {AB, AC, BC} = \({}^{3}\mathbf{C}_{2}\) = 3 ways
+
+**Establishing the Formula for Combinations**
+
+Since \(\ {}^{n}\mathrm{P}_{r}=\ ^{n}\mathrm{C}_{r}\times r!\),
+
+\[\ {}^{n}\mathrm{C}_{r} =\ ^{n}\mathrm{P}_{r}+r!\] \[=\frac{n!}{(n-r)!}\div r!\] \[=\frac{n!}{(n-r)!r!}\]
+
+**Example 6**
+
+In how many ways can a **committee** of five be formed from a group of eight people consisting of 3 men, 3 women and a married couple if
+
+(i) there is no restriction in a selection?
+
+(ii) the committee must include the married couple?
+
+(iii) the married couple cannot serve in the same committee?
+
+**Solution:**
+
+(i) No. of ways \(=\)\(\ \raisebox{-1.72pt}{\includegraphics[width=1.72pt]{_1.pdf}}\)
+
+(ii) The married couple must be included in the committee. Need to select 3 more people from the remaining 6 people. Thus, no. of ways \(=\)\(\ \raisebox{-1.72pt}{\includegraphics[width=1.72pt]{_1.pdf}}\)
+
+(iii) The committee can only include the married couple or not include the married couple. Thus they are mutually exclusive.
+
+No. of ways \(=\) no of ways without restriction - no of ways the committee includes the couple \(=\)\(\ \raisebox{-1.72pt}{\includegraphics[width=1.72pt]{_1.pdf}}\)
+
+**Example 7**
+
+Find the number of ways in which ten people can be divided into
+
+(i) two groups consisting of seven and three people;
+
+(ii) three groups consisting of four, three and two people, with one person being excluded;
+
+(iii) Group 1 and Group 2 with five people each.
+
+**Solution:**
+
+(i) No of ways \(=\)\(\ \raisebox{-1.72pt}{\includegraphics[width=1.72pt]{_1.pdf}}\)
+
+(ii) No of ways \(=\)\(\ \raisebox{-1.72pt}{\includegraphics[width=1.72pt]{_1.pdf}}\)
+
+(iii) No. of ways \(=\)\(\ \raisebox{-1.72pt}{\includegraphics[width=1.72pt]{_1.pdf}}\)
+
+(Note: the two groups are distinct)
+
+(iii) No. of ways \(=\)\(\ \raisebox{-1.72pt}{\includegraphics[width=1.72pt]{_1.pdf}}\)
+
+(Note: the three groups are distinct)
+
+(Note: The two groups are distinct since they are labelled.)
+
+**Exercise 4**
+
+A CCA group consists of 12 Ex-co members, 10 female ordinary members and 9 male ordinary members. A team of 4 Ex-co members, 4 female ordinary members and 3 male ordinary members is to be formed. Find the number of ways of forming the team.
+
+[Ans: 8731800]
+
+**Solution**
+
+No. of ways = \({}^{12}\)C\({}_{4}\times{}^{10}\)C\({}_{4}\times{}^{9}\)C\({}_{3}\) = 8731800
+
+**Exercise 5**
+
+1(a) A panel of judges in an essay competition has to select, and place in order of merit, 4 winning entries from a total entry of 20. Find the number of ways in which this can be done.
+
+(b) As a first step in the selection, 5 finalists are selected, without being placed in order. Find the number of ways in which this can be done.
+
+[Ans: (a) 116280; (b) 15504]
+
+**Solution**
+
+**(a)** Number of ways = \({}^{20}\)P\({}_{4}\) =116280
+
+**(b)** Number of ways = \({}^{20}\)C\({}_{5}\) =15504
+
+2) How many odd numbers, greater than 500 000, can be made from the digits 2, 3, 4, 5, 6, 7 without repetitions? [Ans: 168]
+
+**Solution**
+
+Case I:
+
+[6]
+
+[3, 5, 7]
+
+Number of ways = \(1\times 4!\times 3=72\)
+
+Case II:
+
+[5, 7]
+
+Number of ways = \(2\times 4!\times 2=96\)
+
+Total no. of ways = \(96+72\) = 1683. A chess team of 5 players is to be selected from 15 boys. In how many ways can the team be chosen if (i) not more than one of the three best is to be included; (ii) at least one of the 4 youngest players is to be included. [Ans : (i) 2277; (ii) 2541] **Solution** **(i)**: Case 1: 1 best player chosen 
+
+4. A group of diplomats is to be chosen to represent three islands, \(K\), \(L\) and \(M\). The group is to consist of 8 diplomats and is chosen from a set of 12 diplomats consisting of 3 from \(K\), 4 from \(L\) and 5 from \(M\). Find the number of ways in which the group can be chosen if it includes (i) 2 diplomats from \(K\), 3 from \(L\) and 3 from \(M\), (ii) diplomats from \(L\) and \(M\) only, (iii) at least 4 diplomats from \(M\), (iv) at least 1 diplomat from each island. [Ans: (i) 120; (ii) 9; (iii) 210; (iv) 485] **Solution**: **(i)**: No. of ways \(\equiv\)\({}^{3}\)C\({}_{2}\)\(\times\)\({}^{4}\)C\({}_{3}\)\(\times\)\({}^{5}\)C\({}_{3}\)\(=\)120 **(ii)**: Method 1: No. of ways \(\equiv\)\({}^{4}\)C\({}_{4}\)\(\times\)\({}^{5}\)C\({}_{4}\)\(+\)\({}^{4}\)C\({}_{3}\)\(\times\)\({}^{5}\)C\({}_{5}\)\(=\)9 **(iii)**: No. of ways \(\equiv\)\({}^{5}\)C\({}_{4}\)\(\times\)\({}^{7}\)C\({}_{4}\)\(+\)\({}^{5}\)C\({}_{5}\)\(\times\)\({}^{7}\)C\({}_{3}\)\(=\)210 **(iv)**: No. of ways \(=\)total - no \(K\) - no \(L\) - no \(M\)\(=\)\(=\)\({}^{12}\)C\({}_{8}\)\(-\)\({}^{9}\)C\({}_{8}\)\(=\)0\(=\)485 **Question for (iv)**
+
+Why are there 0 ways for no \(M\)? Because the total number of diplomats from \(L\) and \(K\) is less than 8, thus there must be diplomat(s) selected from \(M\).
+
+**Practice Questions**
+
+1. In how many ways can 4 boys and 2 girls seat themselves in a row if (i) there is no restriction; (ii) the two girls are to sit next to each other; (iii) the two girls are not to sit next to each other; (iv) the two girls are to be separated by two boys between them; (v) the two girls are to be separated by two particular boys between them? [Ans: (i) 720; (ii) 240; (iii) 480; (iv) 144; (v) 24]
+
+**Solution:**
+
+1. No. of ways = 6! = 720
+2. (ii)
+
+Let us treat the two girls as one unit and the first stage is to arrange the 5 units first. Then we have to arrange the two girls within the unit. No. of ways to arrange 5 distinct units = 5! No. of ways to arrange the two girls among themselves = 2! Total no. of ways = 5!x 2! = 240
+3. (iii)
+
+We arrange the boys first = 4! We slot the girls in between the boys. Note that there are 5 possible slots for the 2 girls: \(\mbox{\raisebox{-1.72pt}{\scriptsize$\stackrel{{\mbox{\tiny$ 5$}}}{{\mbox{\tiny$\mbox{$\mbox{$\mbox{$\mbox{$\mbox{$ \mbox{$\mbox{$\mbox{$\mbox{$\mbox{$\mbox{$\mbox{$}}}$}$}$}}}}}}}$}}}\, \mbox{C}_{2}\times 2!=20\) No. of ways to arrange 4 boys and 2 girls = 4! x 20 = 480
+
+**Alternative method:**
+
+Required no. of ways
+
+= total no. of ways with no restriction - no. of ways where the 2 girls sit next to each other
+
+= 720 - 240
+
+= 4802. In how many ways can a 4-digit number greater than 3000 be formed using the digits 0, 1, 3, 4, 5 if (a) no repetition of digits is allowed, (b) these numbers, formed without repetition, are even? [Ans: (a) 72; (b) 30]
+
+**Solution:**
+
+(a). Noting that we can only place the digits 3, 4, 5 as the first 3 digits, [therefore the number of ways = 3 x 4 x 3 x 2 = 72]
+
+(b) Case 1: The digit 0 is the last digit [ Number of ways = 3 x 3 x 2 x 1 = 18] [ Case 2: The digit 4 is the last digit [ Number of ways = 2 x 3 x 2 x 1 = 12] [ Thus total number of ways = 18 + 12 = 30]
+
+3. [2016/CJC/Promo/Q10] A five-digit non-zero code-word is to be generated using the digits {0, 2, 3, 5, 9}. How many code-words can be formed if repetitions of numbers are not allowed, and the digits 2 and 5 are not separated by exactly one other digit? [Ans: 84]
+
+**Solution:**
+
+Number of permutations when 2 and 5 are 1 digit apart [ = \({}^{3}\)C\({}_{1}\times\)3x 2!= 36] [ \({}^{3}\)C\({}_{1}\) to choose a number between 2 and 5, [ 3! to permutate the group 2] [ 5 and the remaining 2 numbers, 2! to exchange the position of 2 and 5]
+
+Total number of permutations without restriction [ = 5!= 120]
+
+Number of permutations when 2 and 5 are not 1 digit apart [ = 120 - 36 = 844. [2016/CJC/Promo/Q11]
+
+10 student leaders are shortlisted to form a committee of 5 members in a school. 3 of them are house captains, 3 of them are class presidents and the remaining 4 are CCA leaders. (i) How many different committees can be formed? [1] (ii) Elly and Elva are twins who are shortlisted. They decide that they will either sit in the committee together, or stay out of it. How many different committees can be formed? [3] (iii) How many different committees can be formed if the committee must contain at least one representative from each category of student leaders? [3] [Ans: (i) 252; (ii) 112; (iii) 204]
+
+**Solution:**
+
+(i) No. of ways =\({}^{10}\)C\({}_{5}\)=252
+
+(ii) Case 1: Elly and Elva are both in committee
+
+No. of ways =\({}^{8}\)C\({}_{3}\)=56
+
+Case 2: Elly and Elva are not in committee
+
+No. of ways =\({}^{8}\)C\({}_{5}\)=56
+
+Total no. of ways = 56 + 56 = 112
+
+(iii) Number of committees with at least one representative from each category
+
+= Total number of committees - Number of committees with no house
+
+captains - Number of committees with no class presidents - Number of
+
+committees with no CCA leaders
+
+=252 - \({}^{7}\)C\({}_{5}\) - \({}^{7}\)C\({}_{5}\) - \({}^{6}\)C\({}_{5}\)
+
+= 204.
+
+* In a mathematics quiz, each student either wins a prize or does not win a prize.
+* Assuming no order of merit, find the number of ways in which ten students can stand in a line at the end of the quiz. [1]
+* Ten students are finalists for three prizes - one for $5, one for $10 and one for $20. In how many different ways can the prizes be awarded? [1]
+* Six male and four female students are finalists for four prizes of $10 each. In how many different ways can the prizes be awarded such that there are at least one male and at least one female recipients?
+* Mr Lim would like to bid for a four-digit car plate license number from the Land Transport Authority for his new car. He was informed by the Authority that only numbers with the digits 1, 2, 3, 6, 7, 8, and 9 can be used. Mr Lim prefers an even licence number with no repeated digits. Find the number of different licence numbers that he can form based on his preference. [2]
+* [Ans: (ai) 3628800; (aii) 720; (aiii) 194; (b) 360]
+* Number of ways\(=\)10!\(=\)3628800
+* (aii) Number of ways\(=\)10P\({}_{3}\)=720
+* Number of ways \(=\)10C\({}_{4}-{}^{6}\)C\({}_{4}-{}^{4}\)C\({}_{4}\) =194
+
+Alternative method
+
+Number of ways
+
+\(=\)\({}^{6}\)C\({}_{3}\)\(\times\)\({}^{4}\)C\({}_{1}\)\(+\)\({}^{6}\)C\({}_{2}\)\(\times\)\({}^{4}\)C\({}_{2}\)\(+\)\({}^{6}\)C\(\times\)\({}^{4}\)C\({}_{3}\)
+
+\(=\)194
+
+(b)Number of ways
+
+\(=\)\({}^{6}\)P\({}_{3}\)\(\times\)\({}^{3}\)C\({}_{1}\)
+
+\(=\)360
+
+[MISSING_PAGE_FAIL:19]
+
+7. [2016/RVHS/Promo/Q6]
+
+1. Alice keeps a mathematics book library of 7 different mathematics books. Betty, Clare and Danielle visited Alice to borrow her books. Find the number of ways to distribute these 7 different books among the 3 girls if 1. any girl can have any number of books; [2] 2. Betty and Clare get 3 books each. [2]
+2. MY LITTLE EVENT organisers decided to issue serialised tickets to their audience. They decided that the serial number should contain 4 digits consisting of 0, 3, 6, 8 and 9. For security reason, they also decided that the number should be greater than 6000. How many tickets can they have if no repetition of digits is allowed? [2] [Ans: (ai) 2187; (aii) 140; (b) 72]
+
+**Solution:**
+
+1. Each book can go to either of the 3 girls; 1. number of ways = 3? 1. = 2187
+2. Out of 7 books, 3 are selected for Betty, and out of the remaining 4 books, 3 are selected for Clare, the remaining book will belong to Danielle. (Alternatively, we can select for Danielle, then Betty, then Clare OR Betty then Danielle then Clare etc.) 1. = 1. = 2. Noting that we can only place the digits 6, 8, 9 as the first digit; therefore the number of ways. = 3 x 4 x 3 x 2 = 72
+8. [2016/SRJC/Promo/Q5] A committee of 10 members consisting of 3 married couples, 2 other men and 2 other women sit in a line to conduct a first round interview of potential candidates. **(i)** Find the number of possible eating arrangements. [1] **(ii)** Find the number of possible eating arrangements in which each married man sits next to his wife. [2] A further sub-committee is to be formed with 5 members to conduct the second round of interview. **(iii)** Find the number of ways such that there are more men than women chosen to form the sub-committee. [Ans: (i) 3628800; (ii) 40320; (iii) 126]
+
+**Solution:**
+
+(i): No. of possible seating arrangements = 10! = 3628800
+
+(ii): No. of possible arrangements such that the couple sits together
+
+= 7! \(\times\)2! \(\times\)2! \(\times\)2! \(\times\)2! = 40320
+
+(iii): No of ways = 5M + 4M1W + 3M2W
+
+=5C5+5C4\(\times^{5}\)C1+5C3\(\times^{5}\)C2
+
+= 126
+
+[MISSING_PAGE_EMPTY:22]

@@ -1,0 +1,318 @@
+[MISSING_PAGE_FAIL:1]
+
+### Introduction
+
+Temperature, pressure, and volume are quantities that describe _macroscopic_ properties of a system. Typically, when we discuss them, we refer to a bulk body of gas, liquid or solid. Together, the quantities (_T_, \(p\) and _V_) define a _state_ of a system; in the field of thermal physics we refer to gas/liquid/solid as _phases_.
+
+**Microscopic model.**_Describes the extent of interactions between particles that lead to the bulk (microscopic) behavior - whether it is in the gaseous phase, liquid phase or solid phase._
+
+In this field of study of these _macroscopic_ properties, physicists hypothesize simple _microscopic_ models to explain the bulk behaviour - that the system consists a large number of objects having complex and random interactions.
+
+We often describe the _collective_ behaviour of a large distribution of interacting objects by their _statistical averages_, which may be more meaningful than the chaos exhibited by individual objects. For example, rather than the individual changes in momentum of gas particles against the inner walls of the container, we describe the statistical average via the bulk property of _pressure_ for a gas.
+
+The fact that most real gases generally behave similarly to each other with only slight deviations suggests that the ideal gas model is a good approximation worth studying. Newtonian mechanics and its concepts of kinematics and dynamics is used to model the _microscopic_ motion of gas particles.
+
+**8.1 Temperature and Thermal Equilibrium**
+
+When two bodies are in **thermal equilibrium**, there is
+
+no net flow of thermal energy between
+
+the bodies that are in thermal contact
+
+because they are at equal temperature.
+
+**Computer chips run hot. There needs to be very good thermal contact between the chip and the heatsink to dissipate the thermal energy built up. Thermal-conducting pastes are placed between the chip and heatsink to fill in and squeeze out small pockets of air because air is an insulator of heat.**
+
+To be in thermal contact means the 2 bodies are able to exchange thermal energy. There will be net flow of thermal energy (heat) _if_ the bodies are at different temperatures.
+
+**Heat is thermal energy that flows**
+
+**from a region of higher temperature**
+
+**to a region of lower temperature.**
+
+**Temperature** _difference_ **between 2 bodies provides 2 pieces of information**
+
+**direction of thermal energy flow**
+
+**(from higher to lower temperature)**
+
+**rate (speed) of transfer of thermal energy**
+
+**(the bigger the temperature difference, the faster the rate)**
+
+_also see Annex 1: The Zeroth Law of Thermodynamics_
+
+#### 8.2.1 Empirical Centigrade Scales
+
+Empirical means "verifiable from observation". Centigrade means "to divide into 100 steps". Therefore, an empirical centigrade scale is set up by the following:
+
+* measure the thermometric property at fixed point of 0 \({}^{\circ}\)C (ice point), \(T_{0}\)
+* pure melting ice in equilibrium with water at standard atmospheric pressure
+* measure the thermometric property at fixed point of 100 \({}^{\circ}\)C (steam point), \(T_{100}\)
+* pure boiling water in equilibrium with steam at standard atmospheric pressure
+* assume that the thermometric property varies linearly with temperature
+
+With this calibration, we measure an unknown temperature \(T_{\text{unknown}}\) by measuring its thermometric property \(X_{\text{unknown}}\) at the unknown temperature, and using the known values of \(T_{0}\) and \(T_{100}\) in the following equation:
+
+Temperature measurements from empirical centigrade scales across different types of thermometers may not agree because
+
+* thermometric properties are _assumed_ to vary linearly with temperature, which is not the case in reality
+* temperature measurements agree only at fixed points of ice point and steam points
+
+[MISSING_PAGE_EMPTY:5]
+
+**Example 1**: In the circuit shown, an analogue ammeter is to be recalibrated as a thermometer. The ammeter is connected in series with a thermistor. The graph shows how the resistance \(R\) of the thermistor changes with temperature \(T\).
+
+Which of the diagram could represent the temperature scale on the ammeter?
+
+**Solution:**
+
+The thermometric property used here is the resistance but what is measured is the current when the thermistor is subjected to a constant e.m.f.: \(I=\frac{V}{R}\).
+
+When temperature is low, \(R\) is high and so current is low >> Eliminate Options C and D because on analogue ammeter, \(I=0\) starts from the left.
+
+Looking at the \(\frac{1}{R}\) trend:
+
+For the same increase in temperature \(\delta T\), there is a larger change in 1/R at the lower temperatures than higher temperatures.
+
+The thermometer is _more sensitive_ to changes in temperature at the lower temperatures.
+
+#### 8.2.2 Absolute Temperature Scale
+
+Since temperature readings from an empirical configrade scale depend on the type of thermometer, the accuracy is unsatisfactory for scientific work. The _thermodynamic temperature_, measured on the _absolute temperature scale_, is the result of looking for a more accurate measurement.
+
+\begin{tabular}{p{142.3pt} p{142.3pt}}  & Scientists experimented with _empirical configrade_ scaled constant-volume gas thermometers using pressure as the thermometric property of any substance. \\ \end{tabular}
+
+liquid bath that is in thermal equilibrium with the fixed mass of gas
+
+**Constant-volume gas thermometer measures pressure of fixed mass of gas contained in the last immersed in liquid bath. The gas volume is kept constant by raising or lowering reservoir B to keep the mercury level constant.**
+
+**Absolute zero is defined as the zero point (0 K). It is a fixed point on the absolute temperature scale.**
+
+2 fixed points are needed to establish a temperature scale. Absolute zero is taken as the lower fixed point. The triple point of water ( 0.01\({}^{\circ}\)C / 273.16 K) is the upper fixed point. It is the single set of temperature and pressure at which ice, liquid water and water vapour can co-exist in equilibrium in a compact cell.
+
+#### 8.2.3 The Celsius Scale
+
+Since there are two identified fixed points the absolute temperature scale has, we can assign the value of what 1 K exactly means: the kelvin is \(\frac{1}{273.16}\) of the thermodynamic temperature of the triple point of water.
+
+\[T_{\text{unknown}}=\frac{X_{\text{unknown}}-X_{\text{lower}\text{fund pt}}}{X_{\text{upper}\text{fund pt}}-X_{\text{lower}\text{fund pt}}}\times\Delta T\]
+
+for the constant volume thermometer \(T_{\text{unknown}}=\frac{P_{\text{unknown}}}{P_{\text{lower}\text{fund pt}}}\times 273.16\) K
+
+The Celsius Scale (not to be confused with the _centgrade_ scale) respects that 1\({}^{\circ}\)C = 1 K, but shifts the absolute scale such that ice point is at 0\({}^{\circ}\)C and boiling point is at 100\({}^{\circ}\)C.
+
+The conversion is:
+
+\[T/K=T/^{\circ}\text{C}+273.15\]
+
+### The Ideal Gas
+
+In 8.2.2 where we discussed fixed masses of real gases all approaching a common lower bound, there is an implied idea that their behaviours approached a theoretical _ideal_.
+
+#### 8.3.1 Equation of State (a.ka. Ideal Gas Law)
+
+There is an equivalent equation of state which uses actual number of gas particles \(N\) rather than the amount of gas in moles.
+
+It reads as \(\underline{PV=NK}\) where \(k\) is the Boltzmann's constant \(1.38\times 10^{-23}\) J K-1.
+
+Rather than "states of matter" such as solid, liquid or gas, the "state" in "equation of state" refers to a quantity that describes the condition of the system.
+
+Think of it as for e.g. "this gas is in a highly pressurized state", "this gas is in a low temperature state". When describing systems, we "phase" to describe regions where all physical properties are uniform.
+
+Referring to the diagram on the left, we can say that water typically exist in solid _phase_ at lower temperatures and higher pressures.
+
+We say that that there is a solid-liquid _phase boundary_ near \(T\) = 0 \({}^{\circ}\)C if pressure is greater than 500 N m\({}^{2}\). Using the same lingo, when water boils, we say that there is a _phase transition_ from liquid to gas.
+
+**Example 2**
+
+The volume of an oxygen tank is 50.0 \(l\). As oxygen gas exits the tank, the tank pressure drops from 21.4 atm to 7.8 atm and the temperature decreases from 30.0\({}^{\circ}\)C to 10.0\({}^{\circ}\)C. Calculate the number of oxygen molecules withdrawn. (1 atm = 1.01 \(\times\) 10\({}^{5}\) Pa)
+
+**Solution**
+
+Assume oxygen gas molecules behave like an ideal gas.
+
+\[\rho V=NkT\quad\ \ \Rightarrow\quad\ N=\frac{\rho V}{kT}\]
+
+Number of particles removed \[=N_{i}-N_{t}\] \[=\frac{V}{k}\left(\frac{\rho_{i}}{T_{i}}-\frac{\rho_{r}}{T_{r}}\right)\] \[=\frac{50\times 10^{-3}}{1.38\times 10^{-23}}\left(\frac{21.4 \times\left(1.01\times 10^{5}\right)}{30.0+273.15}-\frac{7.8\times\left(1.01 \times 10^{5}\right)}{10.0+273.15}\right)\] \[=1.58\times 10^{25}\]
+
+**Example 3**
+
+Two vessels X and Y of volumes 10\(\times\)10\({}^{-4}\) m\({}^{3}\) and 5\(\times\)10\({}^{-4}\) m\({}^{3}\) respectively, are connected by a tube of negligible volume and kept at temperatures 400 K and 200 K respectively. Both contain the same ideal gas.
+
+What is the ratio \(\frac{\text{number of molecules in X}}{\text{number of molecules in Y}}\)?
+
+**Solution**
+
+At equilibrium condition, there is uniform pressure throughout the vessel.
+
+\[\rho V=NkT\quad\ \ \Rightarrow\quad\ \ \ \rho=\frac{NkT}{V}\]
+
+\[\frac{N_{x}kT_{x}}{V_{x}}=\frac{N_{r}kT_{r}}{V_{r}}\]
+
+\[\frac{N_{x}k\left(400\right)}{10\times 10^{-4}}=\frac{N_{r}k\left(200\right)}{5 \times 10^{-4}}\]
+
+\[\frac{N_{x}}{N_{r}}=1\]
+
+#### 8.3.2 The Avogadro's Constant
+
+The actual number of gas particles in a typical volume of gas considered is very big. To aid in the counting, we refer to the "amount in moles" rather than the actual number:
+
+One **mole** of any substance contains \(6.02\times 10^{23}\) particles
+
+**Avogadro's number**, \(N_{\rm A}=6.02\times 10^{23}\) mol-1 is the number of atoms in 12 grams (0.012 kg) of carbon-12
+
+The _molar mass_ of hydrogen gas molecules (H\({}_{2}\)) is 2 g mol-1, i.e. \(6.02\times 10^{23}\) hydrogen gas molecules will have a total mass of 0.002 kg.
+
+#### 8.4 The Kinetic Theory of Gases
+
+Kinetic theory explains the properties of gases in terms of the motions of the particles that make up the gas. It is an attempt to explain _macroscopic behaviour_ in terms of _microscopic motion_. The number of particles involved is so large that keeping track of each particle's individual motion is impossible. The theory relies on the average behaviour of all the particles being similar.
+
+#### 8.4.1 Macroscopic Demonstration of Microscopic Motion of Gas Molecules
+
+The gas particles (represented by the smaller blue dots) cannot be directly observed. However, effects that the gas particles have on the smoke particles can. Statistically, the number of gas particles striking one side of the smoke particle will fluctuate and not be equal to the other side, causing the smoke particles to have unpredictable paths.
+
+Under a microscope, the motion of small particles such as smoke or pollen enclosed in an illuminated closed cell is seen as _specks_ of _reflected light_ in _random motion_. Interpreting the results:
+
+* cannot see what is causing smoke particles to move \(\Rightarrow\) gas particles are much smaller than smoke particles
+* smoke particles are in continuous (not _constant_) motion \(\Rightarrow\) gas particles are in continuous motion
+* smoke particles are in random motion \(\Rightarrow\) gas particles are in random motion
+
+Note: If the smoke particles used are bigger, the randomness of collisions with gas particles will be 'averaged out' and so the movement of the smoke particles will be _less haphazard_.
+
+#### 8.4.2 Assumptions behind the Kinetic Theory of Gases
+
+The model is built on the following assumptions:
+
+[style=]
+**a) Gas molecules are hard, elastic identical spheres**
+
+**b) Large numbers of gas molecules are in continuous random motion**
+
+**c) No intermolecular forces except during collisions**
+
+**d) Total volume of molecules negligible compared to**
+
+**volume of containing vessel**
+
+**e) Time of collisions negligible compared to time between collisions**
+
+4.3 Macroscopic Property of Pressure Demonstrates Microscopic Collisions of Gas Molecules Against Inner Walls of Container
+
+The gas particles in the kinetic theory model are hard, elastic identical spheres which obey Newton's Laws of motion whenever they collide i.e. forces are only exerted during collisions. As pressure is force / (area normal to the force exerted), we can use the kinetic model to explain the pressure exerted by a gas on a container.
+
+In essence, gas particles exert pressure on the wall of its container because:
+
+* **Gas particles** are in **continuous random motion** and **experience changes in momentum when they collide with inner walls of container**.
+* **By Newton's 2nd Law, a gas particle experiences a force** from the rate of change in momentum during the collision.
+* **By Newton's 3rd Law, there is a force exerted on the wall that is equal in magnitude and opposite in direction to the force exerted on the gas particle.
+* Hence, an **average force** is exerted over the area of the wall due to many collisions from many gas particles in a random distribution of velocitiesLet us **derive the relationship**\(\mathbf{pV}=\frac{1}{3}\mathbf{Nm}\left\langle\mathbf{c}^{2}\right\rangle,\) where \(\left\langle\mathbf{c}^{2}\right\rangle\) is the mean square speed of the gas molecules within a cube container of sides \(L\) containing \(N\) particles of ideal gas each of mass \(m\).
+
+**Consider 1 gas particle moving only in the positive x-direction:**
+
+Change in momentum of one particle during collision
+
+\[\Delta P =P_{\text{final}}-P_{\text{initial}}\] \[=\left(-mc_{x}\right)-mc_{x}\] \[=-2mc_{x}\]
+
+**Use Newton's 2\({}^{\text{nd}}\) Law to find average force on each gas particle:**
+
+Distance covered for "1 round trip" = 2\(L\)
+
+_We usually apply N2L for a collision using the time interval \(\vec{\alpha}\) over which collision takes place. In those cases, we are trying to find the force in that 1 collision. Here instead, we find the **average force over many consecutive collisions**, so we use the time taken **between successive collisions (time duration between 2 consecutive collisions with same wall._
+
+[MISSING_PAGE_EMPTY:13]
+
+#### 8.4.4 Macroscopic Property of Temperature Reflects Kinetic Energy of Gas Particles
+
+In this section, we discover the quantitative relationship between a gas' internal energy and its temperature. From section 8.3.1, we have the equation of state:
+
+\[\rho V=NkT\]
+
+In section 8.4.3, we proved
+
+Combining these 2 equations, we get
+
+\[\frac{1}{3}Nm\left\langle c^{2}\right\rangle=NkT\] \[\frac{1}{2}m\left\langle c^{2}\right\rangle=\frac{3}{2}kT\]
+
+Hence
+
+\[\left\langle E_{\kappa}\right\rangle=\frac{3}{2}kT\]
+
+i.e.
+
+#### 8.4.5 The Root-Mean-Square speed
+
+The r.m.s. speed is an indicative speed that represents the average translational kinetic energy of gas particles:
+
+\[\frac{3}{2}kT =\frac{1}{2}m\left\langle c^{2}\right\rangle\] \[\left\langle c^{2}\right\rangle =\frac{3kT}{m}\] \[c_{\text{rms}} =\sqrt{\left\langle c^{2}\right\rangle}\] \[=\sqrt{\frac{\left({c_{\kappa,1}}^{2}+{c_{\kappa,2}}^{2}+{c_{ \kappa,3}}^{2}+\ldots+{c_{\kappa,N}}^{2}\right)}{N}}\] \[c_{\text{rms}} =\sqrt{\frac{3kT}{m}}\] \[\text{(also)} =\sqrt{\frac{3RT}{M_{r}}}\] where \[M_{r}\] is molar mass
+
+The Maxwell-Boltzmann Distribution shows how the speed of particles vary with the proportion of all particles in random motion. As all particles are in continuous random motion, there are no particles at rest. There is no upper limit - there will always be a small proportion of particles with very high speeds.
+
+**Example 4**: A vessel contains 20 gas particles and their velocities are given in the table below. Find the (i) most probable speed, (ii) average speed and (iii) root-mean-square speed of the particles.
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|} \hline velocities / m s-1 & - 3.0 & - 2.0 & - 1.0 & 0.0 & 1.0 & 2.0 & 3.0 \\ \hline number of particles & 1 & 7 & 4 & 0 & 2 & 5 & 1 \\ \hline \(\nu^{2}\) & 9.0 & 4.0 & 1.0 & 0.0 & 1.0 & 4.0 & 9.0 \\ \hline \end{tabular}
+
+**Solution**
+
+(i) there are 2 particles of speed 3.0 m s-1,
+
+12 particles of speed 2.0 m s-1, and
+
+6 particles of speed 1.0 m s-1. The most probable speed is 2.0 m s-1.
+
+(ii) average speed, (iii) root-mean-square speed
+
+\(\left\langle\nu\right\rangle=\frac{2\left(3.0\right)+12\left(2.0\right)+6\left( 1.0\right)}{20}\)\(\nu_{rms}=\sqrt{\left\langle\nu^{2}\right\rangle}=\sqrt{\frac{\nu_{1}^{2}+\ldots+\nu_{ M}^{2}}{N}}\)
+
+\(=\sqrt{\frac{2\left(9.0\right)+12\left(4.0\right)+6\left(1.0\right)}{20}}\)
+
+**Example 5**: In order for an atom to escape completely from the Earth's gravitational field, it must have a speed of approximately 1.1\(\times\)10\({}^{4}\) m s-1 at the top of Earth's atmosphere.
+
+(a) Estimate the temperature at the top of the atmosphere such that helium, assumed to be an ideal gas, could escape from the Earth. The molar mass of helium is 4.0 g mol-1.
+
+(b) Suggest why some helium atoms will escape at temperatures below that of (a).
+
+**Solution**
+
+(a)
+
+\[\frac{1}{2}m\left\langle c^{2}\right\rangle =\frac{3}{2}kT\] \[T =\frac{m\left\langle c^{2}\right\rangle}{3k}\] \[=\frac{\left(\frac{4.0\times 10^{-3}}{6.02\times 10^{23}}\right) \left(1.1\times 10^{4}\right)^{2}}{3\left(1.38\times 10^{-23}\right)}\] \[=19\ 400\ \mathrm{K}\]
+
+(b) In a gas, the particles are in a random distribution and not all have the same speed There is a wide range of speeds and a small proportion will have speeds higher than the escape speed.
+
+## Summary
+
+When two bodies are in **thermal equilibrium**, they are at equal temperature and so there is no net flow of thermal energy between these bodies that are in thermal contact.
+
+Where there is a temperature difference, heat flows from higher to lower temperature.
+
+The bigger the temperature difference, the faster the rate of flow of thermal energy.
+
+To measure temperature, we use **thermometric properties,** properties of substances which change with temperature.
+
+An empirical configrade scale assumes that a thermometric property varies linearly between 2 fixed points of temperature. Temperatures measured this way may not be very accurate.
+
+The search for an accurate scale resulted in the **absolute temperature scale**. On this scale, the **thermodynamic temperature does not depend on the thermometric property of any substance**.
+
+The conversion for Celsius scale is \(T/\,\mathrm{K}=T/^{\circ}\mathrm{C}+273.15\).
+
+Constant-volume gas thermometers tended towards a common ideal behaviour as absolute zero temperature was approached.
+
+An ideal gas obeys the _equation of state \(pV=nRT\)_ at all pressures, volumes and temperature.
+
+The **Kinetic Theory of Gases** uses a simplified, microscopic model to describe an ideal gas. The assumptions are:
+
+**a)**: Gas molecules are hard, elastic identical spheres
+**b)**: Large numbers of gas molecules are in continuous random motion
+**c)**: No intermolecular forces except during collisions
+**d)**: Total volume of molecules negligible compared to volume of containing vessel
+**e)**: Time of collisions negligible compared to time between collisions
+
+Brownian motion is a macroscopic demonstration of the **continuous random motion** of microscopic gas particles.
+
+The pressure of a gas is a macroscopic demonstration of the collisions of gas particles against the inner walls of containers.
+
+The temperature of a gas is a macroscopic demonstration of the speeds of the gas particles. Specifically, the mean translational kinetic energy of particles is directly proportional to thermodynamic temperature of gas, \(\left\langle E_{\kappa}\right\rangle=\frac{3}{2}kT\).
+
+To further understand the model behind the Kinetic Theory of Gases, we need the next topic where we discuss Internal Energy and the First Law of Thermodynamics.

@@ -1,0 +1,533 @@
+## Appendix C Current of Electricity Content
+
+* Electric current
+* Potential difference
+* Resistance and resistivity
+* Electromotive force
+
+### Candidates should be able to:
+
+1. show an understanding that electric current is the rate of flow of charge
+2. derive and use the equation \(I=nAvq\) for a current-carrying conductor, where \(n\) is the number density of charge carriers and \(v\) is the drift velocity
+3. recall and solve problems using the equation \(Q=It\)
+4. recall and solve problems using the equation \(V=W/Q\)
+5. recall and solve problems using the equations \(P=VI\), \(P=\dot{P}R\) and P = \(V^{\prime}/R\)
+6. recall and solve problems using the equation \(V=IR\)
+7. sketch and explain the \(I\)-V characteristics of various electrical components such as an ohmic resistor, a semiconductor diode, a filament lamp and a negative temperature coefficient (NTC) thermistor
+8. sketch the resistance-temperature characteristic of an NTC thermistor
+9. recall and solve problems using the equation \(R=\rho/A\)
+10. distinguish between electromotive force (e.m.f.) and potential difference (p.d.) using energy considerations
+11. show an understanding of the effects of the internal resistance of a source of e.m.f. on the terminal potential difference and output power.
+
+[MISSING_PAGE_FAIL:2]
+
+* It is important to note that current even though being given a direction and magnitude, is **NOT a vector** because it does not obey vector addition laws.
+* Current is being chosen as one of the 7 base quantities in place of charge because it is easier to define the unit of electric current, which is linked to electric charge then to derive the coulomb from the current.
+* Since \(=\frac{dQ}{dt}\), current can be found by determining the gradient of a charge-time graph (\(Q\)-\(t\) graph).
+
+##### 14.1.1 (Conventional) Current Flow and Electron Current Flow
+
+By convention, the direction of electric current is taken to be the direction of flow of positively charged particles (**conventional current**), which means flowing from a point of higher potential to a point of lower potential as shown in Figure 1. In metals, where the charge carriers are electrons (-ve), the electron flow is opposite to the direction of the conventional current. This type of current flow is known as the **electron current flow**.
+
+**Note that in physics, most of the problems are being discussed via adopting the direction of conventional current unless otherwise stated.**
+
+**Figure 1** **Circuit diagram showing the direction of conventional current flow (left) and Electron Current Flow (right).**
+
+**Note that in physics, most of the problems are being discussed via adopting the direction of conventional current unless otherwise stated.**
+
+#### 14.1.2 Electric Charge
+
+Electric charge is the physical quantity of matter that causes it to experience an electric force when it is in the vicinity of other electrically charged matter. However in this section, the focus is simply on the relation between charge and current.
+
+\begin{tabular}{|p{113.8pt}|p{113.8pt}|} \hline Physical Quantity & Electric Charge \\ \hline Definition & Charge is the property of a particle that causes an interaction of the particle with other charged particles and material of electrical nature. \\ \hline Type & Scalar \\ \hline Symbol & \(Q\) \\ \hline \multirow{3}{*}{SI Unit} & Coulomb (C) \\ \cline{2-2}  & One coulomb is the amount of charge which flows pass a point when a steady current of one ampere flows for one second. \\ \cline{2-2}  & In general \\ \cline{2-2}  & Formula \\ \cline{2-2}  & If current is constant, then \(Q=It\) \\ \hline \end{tabular}
+
+\begin{tabular}{|p{113.8pt}|} \hline \(Q=\int Id\) \\ \hline \end{tabular}
+
+\begin{tabular}{|p{113.8pt}|} \hline \(Q=\int Id\) \\ \hline \end{tabular}
+The amount of charge entering and leaving each junction is the same (or conserved) i.e. charges do not accumulate or disappear. This implies that the current remains constant along one single conductor. Similar to energy, charges obey the law of conservation: charges cannot be destroyed or created.
+* Examples of charge carriers 
+
+**Worked Example 1**
+
+A portable battery charger has a capacity of 7.49 x 10\({}^{4}\) C (20800 mAh). When it is being recharged, it draws a steady current of 1.5 A from the power supply.
+
+1. Determine the time required to fully recharge the portable battery charger. **Solution**
+
+Using \(Q=It\), \[t =\frac{7.49\times 10^{4}}{1.5}\] \[=49933.33\ \mathrm{s}\] \[=13.9\ \mathrm{hr}\] 2. Determine the number of electron required to carry 7.49 x 10\({}^{4}\) C of charge. **Solution**
+
+Each electron carries an elementary charge e = 1.60 \(\times\) 10\({}^{\text{-19}}\) C. Using \(Q=Ne\), \[N=\frac{Q}{e}=\frac{7.49\times 10^{4}}{1.60\times 10^{-19}}=4.68\times 10^{23}\] Therefore, 4.68 x 10\({}^{23}\) electrons are needed to carry this amount of charge.
+
+#### 14.1.3 Deriving _I = nAvq_ for a current-carrying conductor
+
+When no potential difference is applied across a conductor, its mobile charge carriers undergo random motion similar to gas molecules in the air as shown in Fig. 2(a).
+
+Taking metal as an example, each atom contributes one or more free electrons to form the ionic bonds which hold the positive ions together in a metallic structure. The electrons are not attached to any particular ion but are mobile within the boundary of the lattice. As they are moving in random motion, they collide among themselves and with the positive ions. **The random speed of the charge carriers at room temperature is of the order 10\({}^{5}\) m s\({}^{4}\).**
+
+When a potential difference is being applied across the conductor, an electric field is set up at every point within the conductor. The mobile charge carriers will then experience a force directing them to the terminal that have an opposite charge to the charge they are carrying. As a result, the presence of a potential difference applied across the conductor causes the mobile charge carrier to drift axially along the conductor while it is moving randomly as shown in Fig. 2b. This rate of change of axial displacement of the mobile charge carriers with respect to time is known as **drift velocity**, \(\nu_{d}\).
+
+This drifting of mobile charge carriers causes a flow of charge and thus result in an electric current. **The typical drift velocity of electrons in metals is of the order of 10\({}^{4}\) m s\({}^{-1}\).**
+
+In short, the relationship between Current \(I\) and Drift velocity, \(\nu_{d}\) can be given as such:
+
+\[I=nAv_{d}q\]
+
+where \(n\) is the number density of mobile charge carriers (number of charge carriers per unit volume),
+
+\(A\) is the cross-sectional area of the conductor,
+
+_V\({}_{d}\)_ is the drift velocity, and
+
+\(q\) is the charge carried by each mobile charge carrier.
+
+The derivation of the above equation is presented in the following page and it is essential for you to know how to derive it.
+
+Figure 2: **(a) Charge carriers in random motion (left) and (b) Charge carriers in random motion with axial drift when a potential difference is applied (right)**
+
+\begin{tabular}{|p{28.5pt}|p{113.8pt}|p{113.8pt}|} \hline Step & Explanation & Mathematical steps & Diagram \\ \hline
+1 & To relate the current \(I\) to the flow of charges \(q\), we consider a small flow of charge \(\Delta Q\) through a small segment of conductor with volume \(\Delta V\) in a time interval \(\Delta t\). & By definition, the current in this segment is given by \(I=\frac{\Delta Q}{\Delta t}\) & Charge \(\Delta Q\) flowing through a segment of the conductor \\ \hline
+2 & The total charge, \(\Delta Q\) flowing in the segment can be found by taking the product of the number of charge \(\Delta N\) and the charge \(q\) carried by each mobile charge carrier. & \(I=\frac{(n\Delta V)q}{\Delta t}\) \\ \hline
+3 & Let \(n\) be the number density of charge carriers (i.e. number of mobile charge carriers per unit volume). The number of charge carriers \(\Delta N\) is the product of the number density of charge carriers \(n\) and the volume of the segment \(\Delta V\). & \(I=\frac{n(\Delta x)q}{\Delta t}\) \\ \hline
+4 & The volume of this segment of conductor, \(\Delta V\) is given by the product of its length \(\Delta x\) and cross sectional area \(A\). & \(I=\frac{n(\Delta x)q}{\Delta t}\) \\ \hline
+5 & Since \(\frac{\Delta x}{\Delta t}\) is the average distance travelled by the charge carriers per unit time, it is also known as the **drift velocity**, \(\nu_{d}\). & Finally, \(I=nAv_{d}q\) & _Macroscopic view_ \\ \hline \end{tabular}
+
+## 5 Conclusion
+
+In this paper, we have proposed a new method to calculate the energy of a
+
+## 6 Worked Example 2
+
+A copper wire carrying a 1.0 A current has a diameter of 0.500 mm. The number density of charge carriers in the wire is 8.5 x 10\({}^{28}\) m\({}^{-3}\). Assuming the charge carriers in this wire are electrons, determine the drift velocity of the charge carriers.
+
+### Solution
+
+Since the charge carriers are electrons, each electron will carry a charge of \(e=1.6\times 10^{-19}\) C Using \(I=nAv_{d}q=n\left(\frac{\pi d^{2}}{4}\right)v_{d}e\)
+
+\[1.0 =(8.5\times 10^{28})\left(\frac{(\pi)(0.500\times 10^{-3})^{2}}{4} \right)v_{d}(1.6\times 10^{-19})\] \[v_{d} =3.74\times 10^{-4}\,\mathrm{m\,s^{-1}}\]
+
+### Electric Potential Energy and Power
+
+In a **closed circuit with current**, charge carriers possess electric potential energy (or electrical energy). The electric potential energy of a charge carrier may change as other forms of energy (such as heat or chemical energy) are converted from it or to it. This section deals with the energy considerations in various parts of a closed circuit.
+
+In **an isolated wire** there is no net charge flow. The ions are in their lattice positions and their only movements are very small vibrations, the size (amplitude) of which depends upon the temperature of the wire. The charge carriers (e.g. free electrons) will also have a certain amount of kinetic energy associated with their temperature, but this thermal motion will be randomly directed like that of molecules in a gas and certainly won't cause a current. So how is it possible to arrange for a net movement of charge carriers (free electrons) through the wire?
+
+The simplest answer follows from considering the energetics of the system: **Charge carriers (free electrons) will flow from A to B in a wire if, by so doing, the _potential energy_ of the system is reduced.**
+
+Hence, we see that an electric current flows through an electrical component (other than the e.m.f source) to reduce the potential energy of the system. In other words, current flows from a region of higher electric potential energy to a region of lower electric potential energy. This decrease in electric potential energy implies that electrical energy is being converted to other form of energies (heat, light, sound, mechanical etc.) when the current flows through the electrical component according to the principle of conservation of energy.
+
+You may find the analogy between the flow of water in a pipe and the flow of a positive charge in a wire helpful in understanding the concept.
+
+\begin{tabular}{|c|c|c|} \hline \multicolumn{2}{|c|}{Analogy} & \multicolumn{1}{c|}{height} & \multicolumn{1}{c|}{\(F\)= weight} \\ \hline Situation & Flow of water down a pipe & Flow of charge carriers (free electrons) in a wire \\ \hline Reasoning & Due to: Height difference & Due to: Circuit connected to terminal of different electric potential \\ \multicolumn{2}{|c|}{} & Difference in **gravitational potential** \\ \multicolumn{2}{|c|}{} & **energy** between the ends of pipe & Difference in **electric potential energy** \\ \multicolumn{2}{|c|}{} & **across the wire** \\ \multicolumn{2}{|c|}{} & **across the pipe** & **across the pipe** & **An electric field is being set up \\ \multicolumn{2}{|c|}{} & **across the pipe** & **Accts on water to push the water along \\ \multicolumn{2}{|c|}{} & **the pipe from high to low potential** & **Accts on water along \\ \hline Energy conversion & Water flowing down the pipes can be used to drive a turbine to do mechanical work. & Current can be passed through a light bulb to light up a room. \\ \multicolumn{2}{|c|}{} & **gravitational potential energy** & Electrical potential energy \\ \multicolumn{2}{|c|}{} & **mechanical energy** & **Accts on water along \\ \hline \end{tabular}
+
+**Table 14**: _Current of Electricity_
+
+#### 14.2.1 Electric Potential
+
+When the terminals of a battery is connected to an electrical device (e.g. light bulb or buzzer), current (and hence charge) flow through the device from a point of higher electrical potential energy to a point of lower electrical potential energy in the direction of the electric field as shown in Fig. 3.
+
+Analogous to the definition of gravitational potential which give the gravitational potential energy per unit mass at any point in space we can also describe **electric potential** which gives the electrical potential energy per unit charge at any point in a circuit. This will thus help us in setting up a "reference ruler" to determine the change in electric potential energy.
+
+With regards to the reference zero potential, it can be chosen at any point in the circuit (more on zero point selection in topic 15) just like how the zero reference point can be chosen for gravitational potential (at infinity or at sea level depending on situation). This is because the difference in potential is the quantity that is physically meaningful, not the potential itself.
+
+**Note to self:**
+
+* Higher does not always means positive, lower does not always means negative. They are just references being made to a point.
+* For convenience, the point where the circuit is earthed will be set as the zero potential. If the circuit is not earthed, the negative terminal is usually set as the zero potential.
+
+Figure 3: Current flow from a point of high electric potential to a point of low electric potential through a device, converting electrical energy to other forms of energy
+
+#### 14.2.2 Electric Potential Difference (p.d)
+
+In a close circuit, when the current passes through an electrical component (e.g. a resistor, bulb or buzzer), electrical energy is converted into other forms of energy such as heat light or sound. This results in a decrease in the electric potential energy of the charge carrier after passing through the component.
+
+It is also known that the change in the electric potential energy of a charge carrier as it moves within an electric field is proportional to the total charge of that charge carrier. In other words:
+
+Thus, if we divide the change in a charge carrier's electric potential energy by its total charge we get a new quantity, the change in electric potential energy per unit charge, that is independent of the charge carrier's charge and therefore tells us more about the electrical environment (i.e. the electric field) in which the charge carrier is located. Furthermore, it is important to note that in this case, the electric potential energy carried by the charge carrier is being converted to other form of energy. With this, we are now ready to define the term **Electric Potential Difference or potential difference (p.d.).**
+
+\begin{tabular}{|p{113.8pt}|p{113.8pt}|} \hline Physical Quantity & Electric Potential Difference or potential difference (p.d.) \\ \hline \multirow{2}{*}{Definition} & The potential difference across a device is the electrical energy converted to other forms of energy, per unit charge passing through the device. \\ \hline \multirow{2}{*}{Type Symbol} & Scalar \\ \cline{2-2}  & Volt (V) \\ \cline{2-2}  & \multirow{2}{*}{SI Unit} & One volt is the potential difference across a device when the amount of electrical energy converted to other form of energy per unit charge passing through the device is one joule per coulomb. \\ \hline \multirow{2}{*}{Formula} & In general \\ \cline{2-2}  & \multirow{2}{*}{Where \(W\) is the amount of energy converted from electric potential energy to other forms of energy (in joule) \(Q\) is the amount of charge passing through the device (in coulomb) \(Therefore\) SI unit can also be expressed as J C-1 \\ \hline \end{tabular}
+
+Figure 4: **Change in electric potential energy across a device is proportional to charge carried by charge carrier**
+
+**Worked Example 3**: An electric iron is connected to a 230 V voltage supply for 15 minutes. During this 15 minutes, it produced 720 kJ of heat.
+
+1. Determine the amount of charge that flow through the heating element.
+
+**Solution**: Using \(V=\frac{W}{Q}\)
+
+\[Q=\frac{W}{V}=\frac{(720\times 10^{3})}{230}=3130\text{ C}\]
+2. State an assumption that you made in your calculations.
+
+**Solution**: All electrical energy are being converted to heat. The efficiency of the electric iron is 100%.
+
+**Note to self**
+
+#### 14.2.3 Electromotive Force (e.m.f.)
+
+In section 14.2.2, we discussed about the electrical energy being converted into other forms of energy. However, it must be noted that for the charge carriers to possess electrical potential energy, there must be an energy source that provides for these electrical energy. In this section, we are going to discuss about these sources of energy and quantify them.
+
+The battery/dry cell is a simple and common source of electrical energy. When conventional current flows out of a battery, the charge carriers +Q moves from the positive terminal to the negative terminal of the battery. When these charge carriers return to the battery at the negative terminal, they have used up all the electrical potential energy it originally possessed. Inside the battery, they are driven by the battery internally to the positive terminal. When this happens, the battery is said to have done work on the charge carriers. The energy to do work on the charge carrier to increase their electrical potential energy comes from the chemical energy of the battery. (Go read up on 9729 H2 Chemistry Topic 12 Electrochemistry).
+
+#### 14.2.3 Electromotive Force (e.m.f.)
+
+In section 14.2.2, we discussed about the electrical energy being converted into other forms of energy. However, it must be noted that for the charge carriers to possess electrical potential energy, there must be an energy source that provides for these electrical energy. In this section, we are going to discuss about these sources of energy and quantify them.
+
+The battery/dry cell is a simple and common source of electrical energy. When conventional current flows out of a battery, the charge carriers +Q moves from the positive terminal to the negative terminal of the battery. When these charge carriers return to the battery at the negative terminal, they have used up all the electrical potential energy it originally possessed. Inside the battery, they are driven by the battery internally to the positive terminal. When this happens, the battery is said to have done work on the charge carriers. The energy to do work on the charge carrier to increase their electrical potential energy comes from the chemical energy of the battery. (Go read up on 9729 H2 Chemistry Topic 12 Electrochemistry).
+
+#### 14.2.4 Electromotive Force (e.m.f.)
+
+In section 14.2.2, we discussed about the electrical energy being converted into other forms of energy. However, it must be noted that for the charge carriers to possess electrical potential energy, there must be an energy source that provides for these electrical energy. In this section, we are going to discuss about these sources of energy and quantify them.
+
+The battery/dry cell is a simple and common source of electrical energy. When conventional current flows out of a battery, the charge carriers +Q moves from the positive terminal to the negative terminal of the battery. When these charge carriers return to the battery at the negative terminal, they have used up all the electrical potential energy it originally possessed. Inside the battery, they are driven by the battery internally to the positive terminal. When this happens, the battery is said to have done work on the charge carriers. The energy to do work on the charge carrier to increase their electrical potential energy comes from the chemical energy of the battery. (Go read up on 9729 H2 Chemistry Topic 12 Electrochemistry).
+
+#### 14.2.5 Electromotive Force (e.m.f.)
+
+In section 14.2.2, we discussed about the electrical energy being converted into other forms of energy. However, it must be noted that for the charge carriers to possess electrical potential energy, there must be an energy source that provides for these electrical energy. In this section, we are going to discuss about these sources of energy and quantify them.
+
+The battery/dry cell is a simple and common source of electrical energy. When conventional current flows out of a battery, the charge carriers +Q moves from the positive terminal to the negative terminal of the battery. When these charge carriers return to the battery at the negative terminal, they have used up all the electrical potential energy it originally possessed. Inside the battery, they are driven by the battery internally to the positive terminal. When this happens, the battery is said to have done work on the charge carriers. The energy to do work on the charge carrier to increase their electrical potential energy comes from the chemical energy of the battery. (Go read up on 9729 H2 Chemistry Topic 12 Electrochemistry).
+
+#### 14.2.6 Electromotive Force (e.m.f.)
+
+In section 14.2.7, we discussed about the electrical energy being converted into other forms of energy. However, it must be noted that for the charge carriers to possess electrical potential energy, there must be an energy source that provides for these electrical energy. In this section, we are going to discuss about these sources of energy and quantify them.
+
+The battery/dry cell is a simple and common source of electrical energy. When conventional current flows out of a battery, the charge carriers +Q moves from the positive terminal to the negative terminal of the battery. When these charge carriers return to the battery at the negative terminal, they have used up all the electrical potential energy it originally possessed. Inside the battery, they are driven by the battery internally to the positive terminal. When this happens, the battery is said to have done work on the charge carriers. The energy to do work on the charge carrier to increase their electrical potential energy comes from the chemical energy of the battery. (Go read up on 9729 H2 Chemistry Topic 12 Electrochemistry).
+
+#### 14.2.7 Electromotive Force (e.m.f.)
+
+In section 14.2.8, we discussed about the electrical energy being converted into other forms of energy. However, it must be noted that for the charge carriers to possess electrical potential energy, there must be an energy source that provides for these electrical energy. In this section, we are going to discuss about these sources of energy and quantify them.
+
+The battery/dry cell is a simple and common source of electrical energy. When conventional current flows out of a battery, the charge carriers +Q moves from the positive terminal to the negative terminal of the battery. When these charge carriers return to the battery at the negative terminal, they have used up all the electrical potential energy it originally possessed. Inside the battery, they are driven by the battery internally to the positive terminal. When this happens, the battery is said to have done work on the charge carriers. The energy to do work on the charge carrier to increase their electrical potential energy comes from the chemical energy of the battery. (Go read up on 9729 H2 Chemistry Topic 12 Electrochemistry).
+
+#### 14.2.8 Electromotive Force (e.m.f.)
+
+In section 14.2.8, we discussed about the electrical energy being converted into other forms of energy. However, it must be noted that for the charge carriers to possess electrical potential energy, there must be an energy source that provides for these electrical energy. In this section, we are going to discuss about these sources of energy and quantify them.
+
+The battery/dry cell is a simple and common source of electrical energy. When conventional current flows out of a battery, the charge carriers +Q moves from the positive terminal to the negative terminal of the battery. When these charge carriers return to the battery at the negative terminal, they have used up all the electrical potential energy it originally possessed. Inside the battery, they are driven by the battery internally to the positive terminal. When this happens, the battery is said to have done work on the charge carriers. The energy to do work on the charge carrier to increase their electrical potential energy comes from the chemical energy of the battery. (Go read up on 9729 H2 Chemistry Topic 12 Electrochemistry).
+
+#### 14.2.4 Electric Power
+
+In this section, we will discuss about **electric power produced by electrical devices** and **electrical power provided by a power source**. It is important for us to distinguish between the two so that we know exactly what we are substituting into the formula to calculate the power that we are interested in.
+
+Electrical appliances are devices that allow us to harness electrical energy. This is mainly done by converting electrical energy to other forms of energy. The more electrical energy a device can convert per unit time, the more power it produces.
+
+\begin{tabular}{|p{85.4pt}|p{85.4pt}|p{85.4pt}|} \hline Physical Quantity & Electric Power \\ \hline Definition & Power is the rate of work done \\ \hline Type & Scalar \\ \hline Symbol & \(P\) \\ \hline SI Unit & Vatt (W) \\ \hline \end{tabular}
+
+\begin{tabular}{|p{85.4pt}|p{85.4pt}|} \hline \(P=\frac{dW}{dt}=\mathbb{V}I=I^{2}R=\frac{\mathbb{V}^{2}}{R}\) \\ \hline \end{tabular}
+
+\begin{tabular}{|p{85.4pt}|p{85.4pt}|p{85.4pt}|} \hline Power emitted by electrical devices & Power supplied by electric source \\ \hline Substitute \(\mathbb{V}\) as p.d. applied across the device \(V\) to determine the power emitted: & Substitute \(\mathbb{V}\) as e.m.f. provided by the source, \(\varepsilon\) to determine the power provided: \\ \hline \end{tabular}
+
+\begin{tabular}{|p{85.4pt}|p{85.4pt}|p{85.4pt}|} \hline \(P_{emitted\ by\ device}=VI=I^{2}R=\frac{V^{2}}{R}\) & \(P_{provided\ by\ source}=\varepsilon I\) \\ \hline \end{tabular}
+
+\begin{tabular}{|p{85.4pt}|p{85.4pt}|p{85.4pt}|} \hline \(P_{emitted\ by\ device}=EI\) \\ \hline \end{tabular}
+
+\begin{tabular}{|p{85.4pt}|p{85.4pt}|p{85.4pt}|} \hline Power emitted by electrical devices & Power supplied by electric source \\ \hline Substitute \(\mathbb{V}\) as e.m.f. provided by the device \(V\) to determine the power emitted: & Substitute \(\mathbb{V}\) as e.m.f. provided by the source, \(\varepsilon\) to determine the power provided: \\ \hline \end{tabular}
+
+\begin{tabular}{|p{85.4pt}|p{85.4pt}|p{85.4pt}|p{85.4pt}|} \hline \(P_{emitted\ by\ device}=VI=I^{2}R=\frac{V^{2}}{R}\) & Substitute \(\mathbb{V}\) as e.m.f. provided by the source, \(\varepsilon\) to determine the power provided: \\ \hline \end{tabular}
+
+\begin{tabular}{|p{85.4pt}|p{85.4pt}|p{85.4pt}|p{85.4pt}|} \hline \(P_{emitted\ by\ device}=EI\) \\ \hline \end{tabular}
+
+\begin{tabular}{|p{85.4pt}|p{85.4pt}|p{85.4pt}|} \hline \(P_{emitted\ by\ device}=VI=I^{2}R=\frac{V^{2}}{R}\) \\ \hline \end{tabular}
+
+[MISSING_PAGE_POST]
+
+### Worked Example 4
+
+An electric kettle operates at 230 V and draws a current of 8 A. It requires 5 minutes to bring a full kettle of water from room temperature to its boiling point.
+
+1. Determine the power rating of the electric kettle. Solution Using \(P=IV\) \[Power=(8)(230)=1840\,\mathrm{W}\]
+2. Determine the thermal energy gained by the kettle of water. Solution \[\mathrm{UsingP}=\frac{E}{t}\] \[E=Pt=(1840)(5\times 60)=5.52\times 10^{5}\,\mathrm{J}\]
+
+#### 14.2.5 Distinguishing between p.d. and e.m.f.
+
+Taking a broader view on what we have just discussed, it is not difficult for one to realise that the terms voltage and volts are being used interchangeably to discuss about potential difference (p.d.) and electromotive force (e.m.f).
+
+It is therefore very tempting for students to naively think that since voltage is being used interchangeably to describe p.d. and e.m.f, we can also use the terms p.d. and e.m.f interchangeably as well. This is a very wrong misconception!!!!
+
+This is because, p.d. and e.m.f refers to 2 different physical quantities and talks about different parts of an electrical circuit (if they are the same, reading section 14.2.2 and 14.2.3 will be completely a waste of your time). Even though they both refer to the amount of work done per unit charge and share the same unit, they are still fundamentally different in their energy considerations.
+
+The following table gives a quick comparison between p.d. and e.m.f.
+
+\begin{tabular}{|c|c|} \hline Potential Difference (p.d.) & Electromotive Force (e.m.f.) \\ \hline Compared across 2 points in the circuit & All about the source \\ \hline Electrical energy \(\xrightarrow{}\) other form of energy & Other form of energy \(\xrightarrow{}\) Electrical energy \\ Per unit charge & Per unit charge \\ Passing through the device & To drive a unit charge round a complete \\  & circuit \\ \hline \(V=\frac{W}{Q}\) & \(\varepsilon=\frac{W}{Q}\) \\ \(W\) is the amount of electric potential energy & \(W\) is the amount of electric potential energy \\ converted **to** other form of energy. & converted **from** other form of energy. \\ \hline p.d. is zero when no current if flowing & e.m.f. is independent on current flowing in circuit or the total resistance of the circuit. \\ \hline To determine the power emitted by a device with resistance \(R\) when a p.d. of \(V\)is applied across it. & To determine the power supplied by the electrical source when current is flowing in the circuit. \\ \(P_{emitted\ by\ device}=VI=I^{2}R=\frac{V^{2}}{R}\) & \(P_{provided\ by\ source}=\varepsilon I\) \\ \hline \end{tabular}
+
+**Table 14**: Current of Electricity
+
+### Resistance and Resistivity
+
+#### 14.3.1 Resistance
+
+Resistance is the property of a conductor which limits the current flow. Microscopically, it is due to frequent collisions of the drifting charge carriers by
+
+(i) Vibrating lattice and
+
+(ii) Crystal defects in lattice e.g. impurity atoms and dislocations.
+
+When accelerated by an electric field, free moving charge carriers collide with the vibrating ions in the lattice. The electron transfer part of their energy to the ions and hence slow down. The frequency of collision can be increased by increasing temperature and by the presence of crystal defects in the lattice, resulting in greater resistance.
+
+\begin{tabular}{|c|l|} \hline Physical Quantity & Resistance \\ \hline Definition & The resistance of a conductor is defined as the **ratio** of the potential difference across the conductor to the current flowing through it. \\ \hline Type & Scalar \\ \hline Symbol & \(R\) \\ \hline Sl Unit & Ohm (\(\Omega\)) \\ \hline \end{tabular}
+
+One ohm is defined as the resistance of a conductor when the potential difference across it is one volt per ampere of current flowing through it.
+
+\begin{tabular}{|c|l|} \hline  & In general \\ Formula & Where \(R\) is the resistance (in ohms), \\  & \(V\) is the potential difference across the conductor (in volts), \\  & \(I\) is the current through the conductor (in ampere) \\ \hline \end{tabular}
+
+Note: The gradient of the \(I\)-\(V\) graph does not carry any physical meaning because resistance is defined as the ratio of p.d. against current, not rate of change of p.d. with current. Hence, it is conceptually incorrect to use the gradient of the \(I\)-\(V\) graph to determine the resistance of the conductor.
+
+### Worked Example 5
+
+The diagram below shows the _I-V_ graph of an electrical component. List the points a-g in descending order of resistance.
+
+**Solution**
+
+To determine \(R\) from _I-V_ graph,
+
+1. Draw a line **from the origin** to the point of interest on the _I-V_ graph.
+2. The gradient of this line (not the tangent at that point) gives the ratio \(\frac{t}{\nu}\).
+3. Calculate the inverse of \(\frac{t}{\nu}\) to determine \(R\).
+
+The gradient of each line gives the ratio \(\frac{t}{\nu}\) which is the inverse of \(I\). Thus the steepest gradient indicates the lowest resistance. Therefore, the **points in descending order of resistance are g, f, (e =b), c, d, and a.**
+
+#### 14.3.2 Ohm's Law
+
+**Definition**
+
+Ohm's Law states that the current, \(I\) through a metallic conductor is directly proportional to the potential difference, \(V\) across it, provided the temperature and other physical conditions are kept constant.
+
+**Mathematical**
+
+where
+
+\(I\) is the current flowing through the material in ampere (A)
+
+\(V\) is the potential difference applied across the conductor in volts (V)
+
+**Features of graph:**
+
+1) Linear graph (straight line)
+
+2) Passes through the origin
+
+Inferences
+
+- Current increases with
+
+increasing p.d. applied
+
+proportionally.
+
+- Resistance remains constant
+
+with varying p.d.
+
+**Problem**
+
+Whether a conductor obeys Ohm Law or not is empirically determined by conducting an experiment described later in section 14.3.3. For most conductors, \(I\) is not directly proportional to \(V\). In other words, \(R\) is not constant. Even for a pure metallic conductor, when current is increased with an increase in p.d., the temperature increases and thus increasing theresistance. The current in the metallic conductor would only be directly proportional to the p.d. when temperature and other physical conditions are kept constant. E.g. by immersing the specimen in a constant temperature heat bath.
+
+_The "million dollar question": Since resistance is a ratio of p.d. against current, why not analyse a \(V-I\) graph instead of an \(I-V\) graph?_
+
+Answer: Experimentally, it is often easier to control the p.d. applied across a device than to control the amount of current passing through it (more on this during practicals). Hence, this make p.d. (\(V\)) the independent variable which is normally plotted on the \(x-\)axis.
+
+**Worked Example 6**
+
+#### 14.3.3 \(I\)-V Characteristic Curve
+
+To investigate the variation of resistance of different electrical components/device, it is useful for us to plot an \(I\)-\(V\) characteristic curve for the device of interest. To do so, the following circuit (potential divider) as shown in Fig. 6 can be set up.
+
+By varying the p.d. applied across the device using the above set up (a potential divider), we can obtain the current flowing across the device. An \(I\)-\(V\) characteristic curve of the device can then be drawn to investigate the resistance across the device at different p.d.
+
+Due to the fact that not all devices are ohmic conductors, certain devices possess unique electrical properties that gives rise to unique characteristic \(I\)-\(V\) curves. These \(I\)-\(V\) curves helps to show how their resistance varies with increasing p.d. across them.
+
+In this section, we are going to discuss and explain for the characteristic \(I\)-\(V\) curve for 4 different devices: **1) A metallic conductor** at constant temperature, **2) a filament lamp, 3) a semiconductor diode, and 4) a Negative Temperature Coefficient (NTC) thermistor.
+
+Figure 6: **A potential divider circuit used to obtain a \(I\)-\(V\) graph of the device**
+
+**Note to self:**
+
+- The standard resistor, if heat up due to external factors does changes its resistance, but not as significant as a thermistor. Under normal usage, the temperature of a resistor remains constant and thus remains ohmic.
+
+**Note to self:**
+
+[MISSING_PAGE_EMPTY:21]
+
+* [14] However, in the reverse bias direction, the graph is almost a horizontal line from the origin followed by a near-vertical line. This shows that there is still a small current flowing in the reverse direction, but the magnitude is insignificant. We call this the **leakage current**. Since \(I\) is rather insignificant before reaching the breakdown voltage, the diode's resistance in this region is very high.
+* [15] Current \(I\) increases at a decreasing rate with potential difference \(V\). Hence, the ratio \(\frac{V}{t}\) is not constant.
+* [16] A semiconductor diode is a **non-ohmic** conductor.
+* [17] When the diode is in forward biased direction, its resistance is very low when p.d. is above the threshold voltage. Hence, it conducts electric current more easily than in reverse biased direction where the resistance in such case is very high.
+* [18] More explanation on why a semiconductor diode works this way requires knowledge on p-n junction which will not be elaborated here as it is out of syllabus.
+
+**Note to self:**
+**14.3.3.4 Thermistor**
+
+**Descriptions &**
+
+**Examples**
+
+Thermistor as the name suggest is a type of resistor (-stor) whose resistance varies with temperature (Thermi-) more significantly as compared to standard resistors.
+
+There are 2 type of thermistor:
+
+1) Negative Temperature Coefficient (NTC) (in syllabus):
+
+- Resistance decreases as temperature increases and vice versa.
+
+2) Positive Temperature Coefficient (PTC) (not in syllabus)
+
+- Resistance increases as temperature increases and vice versa.
+
+**Graph**
+
+**Characteristics**
+
+The _I-V_ characteristic curve of a NTC thermistor is a characteristic **reverse-S-shape curve** that **passes through the origin.**
+
+Current \(I\) increases at an increasing rate with potential difference \(V\). Hence, the ratio \(\frac{V}{t}\) is decreasing, indicating that **resistance \(R\) decreases **with increasing p.d. applied across.**
+
+A NTC thermistor is a **non-ohmic** conductor.
+
+**Explanation**
+
+A thermistor is made of a semiconductor material such as silicon and germanium. For a semiconductor, an increase in temperature would increase the thermal agitation of the atoms and set free more electrons and holes (a type of positive charge carrier) in the crystal lattice. This increase in concentration of charge carriers offsets the increase in resistance due to increase in frequency of collisions with the lattice ions. Therefore the resistance of a NTC thermistor decreases as temperature increases.
+
+**Figure 14**: _Current of Electricity_
+
+#### 14.3.4 Resistivity
+
+The resistance of a conductor can also be affected by its own dimension. Hence, it makes it difficult for us to just simply use resistance to quantify how well a material resists current flow. Hence, to break free from the dependence of the conductor's dimension when comparing how well different material resist current flow, we need to introduce the term resistivity.
+
+\begin{tabular}{|p{113.8pt}|p{113.8pt}|} \hline Physical Quantity & Resistivity \\ \hline Definition & Resistivity is a measure of how strongly a material opposes electric current. It characterises the resistance of materials at a fixed temperature regardless of the materials' dimension (shape and sizes) \\ \hline Type & Scalar \\ \hline Symbol & \(\rho\) \\ \hline SI Unit & Ohm metre (\(\Omega\) m) \\ \hline \end{tabular}
+
+\begin{tabular}{|p{113.8pt}|} \hline \(R=\frac{\rho L}{A}\) \\ \hline Resistance \& Hence, mathematically speaking, we can say that resistivity \(\rho\) behaves like a proportionality constant helping us to relate resistance \(R\) to the dimension of the wire. \\ \hline \end{tabular}
+
+\begin{tabular}{|p{113.8pt}|} \hline \(A\) \\ \hline \end{tabular}
+
+\begin{tabular}{|p{113.
+
+#### 14.3.5 Internal Resistance of an e.m.f source
+
+##### 14.3.5.1 What is internal resistance?
+
+For all the discussions above, we see that the e.m.f. source is a power source that provides electrical energy to all part of the circuit except for itself. In practice, this ideal situation is not possible because of **internal resistance**. Any source of e.m.f. has an internal resistance. For example, in the a.c. generator, it is due to the resistance of the coils. Inside a dry cell, it is mainly due to resistance of the electrolyte and polarisation around the electrodes. The internal resistance of a dry cell is approximately 1 \(\Omega\).
+
+As the internal resistance is an "inherent resistance" present in a practical e.m.f. source, it is impossible for us to eliminate it. To continue our work of analysing a practical circuit, we can **consider a practical cell as equivalent to a pure source of e.m.f. \(\varepsilon\) connected in series with its internal resistance \(r\) (drawn in a dashed-line box)** as shown in **Fig. 7**.
+
+#### 14.3.5.2 Effects of internal resistance
+
+When an e.m.f. source supplies a current to the circuit, part of the energy is used to overcome the internal resistance of the cell. Hence, the p.d. across the terminals of the cell drops. To find out about the p.d. across the terminals also known as terminal p.d., we can consider the following circuits shown in Fig. 8.
+
+Figure 8: A practical cell connected in series to a resistor with resistance \(R\)
+
+Figure 7: A practical cell can be conceptualised as an ideal cell connected in series to an internal resistoreunoa
+
+###### Abstract
+
+In this circuit, a cell of e.m.f. \(\varepsilon\) and internal resistance \(r\) is connected in series with an external resistance \(R\). As a result, the total resistance in the circuit becomes \((r+R)\).
+
+By the Principle of Conservation of Energy,
+
+Power supplied by e.m.f. source = Power output in \(R\) + Power loss through \(r\)
+
+\[\begin{array}{l}P_{\varepsilon}=P_{R}+P_{r}\\ I\varepsilon=IV_{R}+IV_{r}\\ I\varepsilon=I^{2}R+I^{2}r\\ \varepsilon=IR+Ir\end{array}\]
+
+Using \(V_{T}=IR\) and rearranging the equation, we arrive at
+
+\[\begin{array}{l}V_{T}=\varepsilon-Ir\end{array}\]
+
+where \(V_{T}\) is the terminal p.d.
+
+Note that : The p.d. across the resistor \(R\) is equal to the p.d. supplied at the terminal, i.e. \(V_{T}=IR=V_{R}\)
+
+As seen from the above, the p.d. across the terminals of the practical cell, known as the **terminal potential difference**, is less than the e.m.f. \(\varepsilon\) of the cell. The 'lost' voltage appears as the potential difference across the internal resistance of the cell.
+
+Thus, for a practical source of e.m.f., the total electrical power generated is not fully available to the external load; part of the total electrical power is spend in overcoming the internal resistance of the source. This represents the power loss as heat in the e.m.f. source. (Also the reason why your phone battery heats up!!)
+
+###### Worked Example 8
+
+(a) A 3.0 V cell of internal resistance 2.0 \(\Omega\) releases a current of 0.2 A, determine the terminal p.d. across the cell.
+
+(b) A 3.0 V cell of internal resistance 2.0 \(\Omega\) is being charged by a current of 0.5 A, determine the terminal p.d. across the cell.
+
+###### Solution
+
+(a) During discharging,
+
+\[\begin{array}{l}V_{T}=\varepsilon-Ir\\ =3.0-(0.2)(2.0)\\ =2.6\,V\end{array}\]
+
+(b) During charging, we need to supply a terminal p.d. larger than the e.m.f. plus the "lost voltage" so as to compensate for the energy lost due to internal resistance.
+
+\[\begin{array}{l}V_{T}=\varepsilon+Ir\\ =3.0+(0.5)(2.0)\\ =4.0\,V\end{array}\]
+
+(c) Charging \(V_{T}\)
+
+#### 14.3.5.3 Determining internal resistance \(r\)
+
+As the internal resistance of an e.m.f. source is an inherent resistance, there is no way of physically separating the resistance from the source to measure its resistance. We can only perform the measurement indirectly via the following set up in Fig. 9.
+
+In the circuit shown in Fig. 9, When the switch is open, the resistance in the circuit is infinite (ideal voltmeter) and the current in the circuit is zero. Therefore, the voltmeter gives the reading of the e.m.f. \(\varepsilon\) of the source.
+
+When the switch is closed, the resistance in the external circuit becomes (\(R+\mathit{\prime}\)). By varying \(R\), the voltmeter will give us a set of readings for the terminal p.d. \(V_{T}\) across the practical cell, while the ammeter will give us the corresponding current \(\mathit{\prime}\) flowing in the circuit.
+
+A graph of terminal p.d., \(V_{T}\) against current in circuit, \(\mathit{\prime}\) can be plotted as shown in Fig. 10 and the internal resistance \(r\) can be determined via calculating the gradient of the graph. The y-intercept can then be used to verify the e.m.f. \(\varepsilon\) of the cell.
+
+In summary
+
+* Ideal source internal resistance, \(r=0\)\(\Omega\)\(\mathtt{\xrightarrow{}}\) e.m.f. of source, \(\varepsilon\) = terminal p.d., \(V_{T}\)
+* Practical source Internal resistance > 0\(\Omega\)\(\mathtt{\xrightarrow{}}\) e.m.f. of source > terminal p.d, \(V_{T}\)
+* Note: When no current is flowing, e.m.f. of source, \(\varepsilon\) = terminal p.d., \(V_{T}\) (No energy loss to overcome internal resistance.)
+
+Figure 10: Graph of \(V_{T}\) against \(\mathit{\prime}\)
+
+Figure 9: Set up to determine the internal resistance of an e.m.f. source
+
+## 6 Worked Example 9
+
+A battery is connected to a variable resistor and a voltmeter is connected across its terminals as shown on the left. When the variable resistor has resistance of 6.0 \(\Omega\), the voltmeter reading is 4.0 V. When the resistance is 10 \(\Omega\) the voltmeter reading is 4.4 V. Determine the e.m.f. and the internal resistance of the battery.
+
+### Solution
+
+When \(R=6.0\,\Omega\), \(V_{T}=4.0\,\mathrm{V}\)\(I=\frac{V_{T}}{R}=\frac{4.0}{6.0}=0.67\) A
+
+Applying \(V_{T}=\varepsilon-Ir\) we get,
+
+\(\varepsilon=4.0+(0.67)r\) (1)
+
+When \(R=10.0\,\Omega\), \(V_{T}=4.4\,\mathrm{V}\)\(I=\frac{V_{T}}{R}=\frac{4.4}{10.0}=0.44\) A
+
+Applying \(V_{T}=\varepsilon-Ir\) we get,
+
+\(\varepsilon=4.4+(0.44)r\) (2)
+
+Solving (1) and (2),
+
+\(\varepsilon=5.2\,\mathrm{V}\) and \(r=1.7\,\Omega\)
+
+#### 6.3.5.2 Maximum Power Transfer Theorem
+
+In practice, when an energy source is being used to supply energy, we would want it to give as much useful energy output as possible at the external load i.e. Maximum efficiency (100% if ideal). However, the presence of internal energy in practice means that the amount of useful energy output that we can get from the source is being reduced because some of the input energy is being lost via energy dissipation through internal resistance in the e.m.f source itself.
+
+Aim: Find out the optimal resistance of the external load, \(R\) such that the useful energy output at the external load can be maximised.
+
+Given variables:
+
+1. External load: a variable resistor with resistance: \(R\)
+2. Internal resistance of source: \(r\)
+3. E.m.f. of source: \(\varepsilon\)
+
+Figure 11: Set up to investigate maximum power theorem
+
+[MISSING_PAGE_FAIL:29]
+
+[MISSING_PAGE_FAIL:30]
+
+## Appendix B Internal resistance of handphone batteries
+
+Capacity alone is of limited use if the pack cannot deliver the stored energy effectively; a battery also needs low internal resistance. Measured in milliohms (m\(\Omega\)), resistance is the gatekeeper of the battery; the lower the resistance, the less restriction the pack encounters. This is especially important in heavy loads such as power tools and electric powertrains. High resistance causes the battery to heat up and the voltage to drop under load, triggering an early shutdown. Figure 1 illustrates a battery with low internal resistance in the form of a free-flowing tap against a battery with elevated resistance in which the tap is restricted.
+
+Lead acid has a very low internal resistance and the battery responds well to high current bursts that last for a few seconds. Due to inherent sluggishness, however, lead acid does not perform well on a sustained high current discharge; the battery soon gets tired and needs a rest to recover. Some sluggishness is apparent in all batteries at different degrees but it is especially pronounced with lead acid. This hints that power delivery is not based on internal resistance alone but also on the responsiveness of the chemistry, as well as temperature. In this respect, nickel- and lithium-based technologies are more responsive than lead acid.
+
+**Sulfation** and grid corrosion are the main contributors to the rise of the internal resistance with lead acid. Temperature also affects the resistance; heat lowers it and cold raises it. Heating the battery will momentarily lower the internal resistance to provide extra runtime. This, however, does not restore the battery and will add momentary stress.
+
+Crystalline formation, also known as "memory," contributes to the internal resistance in nickel-based batteries. This can often be reversed with deep-cycling. The internal resistance of Li-ion also increases with use and aqia but improvements have been made with electrolyte additives to keep the buildup of films on the electrodes under control. (**See** BU-808b: What causes Li-ion to Die?) With all batteries, SoC affects the internal resistance. Li-ion has higher resistance at full charge and at end of discharge with a big flat low resistance area in the middle.
+
+Alkaline, carbon-zinc and most primary batteries have a relatively high internal resistance, and this limits their use to low-current applications such as flashlights, remote controls, portable entertainment devices and kitchen clocks. As these batteries deplete, the resistance increases further. This explains the relative short runtime when using ordinary alkaline cells in digital cameras.
+
+Two methods are used to read the internal resistance of a battery: Direct current (DC) by measuring the voltage drop at a given current, and alternating current (AC), which takes reactance into account. When measuring a reactive device such as a battery, the resistance values vary greatly between the DC and AC test methods, but neither reading is right or wrong. The DC reading looks at pure resistance (R) and
+
+Figure 1: Effects of internal battery resistance.
+
+[MISSING_PAGE_FAIL:32]

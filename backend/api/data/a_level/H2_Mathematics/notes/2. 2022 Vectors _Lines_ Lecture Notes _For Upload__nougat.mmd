@@ -1,0 +1,595 @@
+## 1 Introduction
+
+We've all marveled at the incredibly life-like computer generated images in the movies. What most of us don't realise is that the dinosaurs of Jurassic Park and the wonders of Lord of the Rings - particularly the star turn of Gollum - wouldn't have been possible without vector geometry and math.
+
+But how are these amazing images made? Computer graphics and computer vision are huge subjects. The first step in creating a computer generated movie is to create the characters in the story and the world they live in. Each of these objects is modelled as a surface, made up of connected flat polygons that are usually triangles, with the vertices of each triangle stored in computer memory.
+
+Now that the surface of our object is a wire mesh of triangles, we are ready to colour each of its components. Here it's important to realistically capture the lighting of the scene we're modelling, and this is done using a process called _ray tracing_. Starting from our viewpoint, we trace rays backwards towards the object and let them reflect off it. If the ray from our eye reflects off the facet (one of our wire mesh triangles) and intersects a light source, we shade that facet in a bright colour so that it appears lit up the light source. If the reflected ray does not meet the light source, we shade the facet in a darker colour.
+
+To trace a ray back to a particular facet, we need to describe the surface mathematically, and solve geometric equations involving the straight lines described by the ray and the plane described by that facet. This is done using _vectors_.
+
+In the next two chapters, we would be introduced to the mathematical representation of lines and planes.
+
+CJC MATMETMETMICS DEPARTMENT
+
+2022 JC4 H2 MATHEMATICS (9758)
+
+TOPIC: VECTORS
+
+### 10 Equation of a Line
+
+#### Vector Equation of a Line
+
+#### Exploration Activity
+
+Let \(l\) be the line passing through two points, \(P\) and \(Q\), as shown in the diagram below:
+
+Suppose the position vector of \(P\) is \(\mathbf{p}\) and the vector \(\overline{PQ}=\mathbf{m}\).
+
+**(a)** Express the position vector of \(Q\) in terms of \(\mathbf{p}\) and \(\mathbf{m}\).
+
+\(\overline{QQ}=\underline{\mathbf{p}}+\underline{\mathbf{m}}\)
+
+**(b)** It is given that the point \(E\) lies on the line \(PQ\) produced such that \(PE=3PQ\), the point \(F\) is the midpoint of the line segment \(PQ\) and the point \(G\) lies on \(QP\) produced such that \(PG:PQ=2:1\).
+
+**(i)** Mark \(E\), \(F\) and \(G\) on the diagram above
+
+**(ii)** Express the position vectors of \(E\), \(F\) and \(G\) in terms of \(\mathbf{p}\) and \(\mathbf{m}\) respectively.
+
+\(\overline{OE}=\underline{\mathbf{p}}+3\underline{\mathbf{m}}\)
+
+\(\overline{OF}=\underline{\mathbf{p}}+\frac{1}{2}\underline{\mathbf{m}}\)
+
+\(\overline{OG}=\underline{\mathbf{p}}-2\underline{\mathbf{m}}\)
+
+**(c)** Based on parts **(a)** and **(b)**, what can you conclude about the position vector of any point \(R\) lying on the line \(l\)?
+
+\(\overline{OR}=\underline{\mathbf{p}}+\lambda\underline{\mathbf{m}}\) for some scalar value \(\lambda\in\mathbb{R}\)
+
+**General Case:**
+
+Consider a line in space passing through a **fixed** point \(A\), with position vector \(\mathbf{a}\), and parallel to a given non-zero vector \(\mathbf{m}\), usually named direction vector.
+
+Let \(R\) be a general point on the line with position vector \(\mathbf{r}\), then
+
+\[\mathbf{r}=\mathbf{a}+\overline{AR}\.\]
+
+Since we have \(\overline{AR}\ /\mathbf{m}\), \(\overline{AR}=\lambda\mathbf{m}\) for some \(\lambda\in\mathbb{R}\), thus for the general point \(R\) on the line,
+
+\[\mathbf{r}=\mathbf{a}+\lambda\mathbf{m}\), \(\lambda\in\mathbb{R}\).
+
+_Online Resource: [https://www.geogebra.org/m/gGEvauyc_](https://www.geogebra.org/m/gGEvauyc_)
+
+**Vector equation** of a line passing through point \(A\) with position vector \(\mathbf{a}\) in the direction \(\mathbf{m}\) is given by
+
+\[\mathbf{r}=\mathbf{a}+\lambda\mathbf{m}\), \(\lambda\in\mathbb{R}\]
+
+where \(\mathbf{r}\) is the position vector of a general point on the line,
+
+\(\mathbf{m}\) is a direction vector of the line.
+
+**Remarks:**
+
+* A line is infinitely long.
+* \(\mathbf{r}\) represents the position vector of all possible points on the line.
+* Every value of \(\lambda\) corresponds to a unique point on the line. Conversely, every point on the line has a unique value of \(\lambda\).
+* There is more than one way to represent the same line \(\mathbf{r}=\mathbf{a}+\lambda\mathbf{m}\), \(\lambda\in\mathbb{R}\). For example, if another point \(B\) with position vector \(\mathbf{b}\) also lies on the line and \(\mathbf{n}\) is another vector that is parallel to the line (i.e. parallel to \(\mathbf{m}\)), another possible vector equation of the line is \(\mathbf{r}=\mathbf{b}+\mu\mathbf{m}\), \(\mu\in\mathbb{R}\).
+
+CJC MATMETMETAICS DEPARTMENT
+
+2022 JC1 H2 MATHEMATATICS (9758)
+
+TOPIC: VECTORS
+
+### Cartesian Equation of a Line
+
+Given a line with vector equation \(\mathbf{r=a+\lambda m,\ \lambda\in\mathbb{R}\.}\)
+
+Let \(\mathbf{r=\begin{pmatrix}x\\ y\\ z\end{pmatrix},\ \mathbf{a=\begin{pmatrix}a_{1}\\ a_{2}\\ a_{3}\end{pmatrix}}\) and \(\mathbf{m=\begin{pmatrix}m_{1}\\ m_{2}\\ m_{3}\end{pmatrix}}\), then
+
+\[\begin{split}\begin{pmatrix}x\\ y\\ z\end{pmatrix}&=\begin{pmatrix}a_{1}\\ a_{2}\\ a_{3}\end{pmatrix}&+\lambda\begin{pmatrix}m_{1}\\ m_{2}\\ m_{3}\end{pmatrix}\\ \end{split}\]
+
+In this manner, the vector equation of a line can be seen as a set of parametric functions for \(x\), \(y\) and \(z\) in terms of the parameter \(\lambda\) (Parametric equations will be covered in later a module).
+
+Given a set of parametric equations related to the vector equation of a line \(x=a_{1}+\lambda m_{1}\), \(y=a_{2}+\lambda m_{2}\), \(z=a_{3}+\lambda m_{3}\), \(\lambda\in\mathbb{R}\), we can make \(\lambda\) the subject.
+
+\[\lambda=\frac{x-a_{1}}{m_{1}}=\frac{y-a_{2}}{m_{2}}=\frac{z-a_{3}}{m_{3}}\]
+
+**Cartesian equation** of the line passing through \(\begin{array}{c}\left(a_{1},a_{2},a_{3}\right)\text{ with direction }\begin{pmatrix}m_{1}\\ m_{2}\\ m_{3}\end{pmatrix}\text{ is }\\ \end{array}\)
+
+\[\frac{x-a_{1}}{m_{1}}=\frac{y-a_{2}}{m_{2}}=\frac{z-a_{3}}{m_{3}}\.\]
+
+**Example 20:**: Find an equation of the line passing through the points \(\left(3,-4,7\right)\) and \(\left(5,-4,6\right)\) in vector form and cartesian form.
+
+**Solution:**
+
+\(\underline{m}=\left(\begin{array}{c}5\\ -4\\ 6\end{array}\right)\left(\begin{array}{c}3\\ -4\\ 7\end{array}\right)=\left(\begin{array}{c}2\\ 0\\ -1\end{array}\right)\)
+
+**Vector equation:**
+
+\(\underline{r}=\left(\begin{array}{c}3\\ -4\\ 7\end{array}\right)+\lambda\left(\begin{array}{c}2\\ 0\\ -1\end{array}\right),\lambda\in\mathbb{R}\)
+
+Let \(\underline{r}=\left(\begin{array}{c}x\\ y\\ z\end{array}\right)\), then \(\left(\begin{array}{c}x\\ y\\ z\end{array}\right)=\left(\begin{array}{c}3\\ -4\\ 7\end{array}\right)+\lambda\left(\begin{array}{c}2\\ 0\\ -1\end{array}\right)\), \(\lambda\in\mathbb{R}\).
+
+So we have \(\left(\begin{array}{c}x\\ y\\ z\end{array}\right)=\left(\begin{array}{c}3+2\lambda\\ -4\\ 7-\lambda\end{array}\right)\)
+
+\(\left[\begin{array}{c}x=3+2\lambda\\ y=-4\\ z=7-\lambda\end{array}\right.\)\(\lambda=7-z\)
+
+**Cartesian equation:**
+
+\(\underline{x-3}=7-z\); \(\ y=-4\)
+
+**Remark:**
+
+If \(m_{1}=0\) or \(m_{2}=0\) or \(m_{3}=0\), the cartesian equation of the line would be written differently. For example, if \(m_{3}=0\) while \(m_{1}\neq 0\) and \(m_{2}\neq 0\), then
+
+\(\dfrac{x-a_{1}}{m_{1}}=\dfrac{y-a_{2}}{m_{2}}\); \(z=a_{3}\).
+
+**Example 21:** A line has equation \(\dfrac{x-5}{3}=1-y=2z+4\). Find a vector equation of the line.
+
+**Solution:**
+
+Let \(\dfrac{x-5}{3}=1-y=2z+4=\lambda\), \(\lambda\in\mathbb{R}\).
+
+Then \(\dfrac{x-5}{3}=\lambda\)\(\Rightarrow\)\(x=5+3\lambda\)
+
+\(1-y=\lambda\)\(\Rightarrow\)\(y=1-\lambda\)
+
+\(2z+4=\lambda\)\(\Rightarrow\)\(z=-2+\dfrac{1}{2}\lambda\)
+
+Hence \(\mathbb{I}=\begin{pmatrix}5\\ 1\\ -2\end{pmatrix}+\lambda\begin{pmatrix}3\\ -1\\ \gamma\end{pmatrix}\), \(\lambda\in\mathbb{R}\)
+
+\(\mathbb{I}=\begin{pmatrix}5\\ 1\\ -2\end{pmatrix}+\lambda\begin{pmatrix}6\\ -2\\ 1\end{pmatrix}\), \(\lambda^{\prime}\in\mathbb{R}\) where \(\lambda^{\prime}=\dfrac{1}{2}\lambda\)
+
+**Self-Practice 7:**
+
+**(a)** Convert the vector equation of a line \(\mathbf{r}=\begin{pmatrix}2\\ 3\\ -1\end{pmatrix}+\lambda\begin{pmatrix}3\\ 4\\ 5\end{pmatrix}\), \(\lambda\in\mathbb{R}\) to a cartesian equation.
+
+**(b)** Convert the vector equation of a line \(\mathbf{r}=\mathbf{i}+\mathbf{j}+\lambda\left(\mathbf{i}+5\mathbf{k}\right)\), \(\lambda\in\mathbb{R}\) to a cartesian equation.
+
+**(c)** Convert the cartesian equation of a line \(\dfrac{x-1}{2}=\dfrac{y}{3}=z-4\) to a vector equation.
+
+**(d)** Convert the cartesian equation of a line \(\dfrac{1-x}{3}=\dfrac{2y-1}{5}\); \(z=4\) to a vector equation.
+
+**(e)** Write down a vector equation and cartesian equation for the line through the point \(\mathcal{A}\) with position vector \(\mathbf{a}=\mathbf{i}-3\mathbf{j}+2\mathbf{k}\) and is parallel to the vector \(\mathbf{m}=5\mathbf{i}+4\mathbf{j}-\mathbf{k}\).
+
+**Answers:**
+
+**(a)**\(\dfrac{x-2}{3}=\dfrac{y-3}{4}=\dfrac{z+1}{5}\)**(b)**\(x-1-\dfrac{z}{5}\); \(y=1\)
+
+**(c)**\(\underline{r}=\begin{pmatrix}1\\ 0\\ 4\end{pmatrix}+\lambda\begin{pmatrix}2\\ 3\\ 1\end{pmatrix}\), \(\lambda\in\mathbb{R}\)**(d)**\(\underline{r}=\begin{pmatrix}1\\ \gamma_{2}\\ 4\end{pmatrix}+\lambda\begin{pmatrix}-3\\ \gamma_{2}\\ 0\end{pmatrix}\), \(\lambda\in\mathbb{R}\)
+
+**(e)**\(\underline{r}=\begin{pmatrix}1\\ -3\\ 2\end{pmatrix}+\lambda\begin{pmatrix}5\\ 4\\ -1\end{pmatrix}\), \(\lambda\in\mathbb{R}\); \(\dfrac{x-1}{5}=\dfrac{y+3}{4}=-z+2\)
+
+### Calculations Involving a Point and a Line
+
+#### Determining whether a Point Lies on a Line
+
+Suppose we want to check if point \(P\), with position vector \(\mathbf{p}\), lies on the line, \(l:\mathbf{r}=\mathbf{a}+\lambda\mathbf{m}\), \(\lambda\in\mathbb{R}\). The following steps could be used:
+
+**Step 1:** Assume that point \(P\) lies on the line, then \(\mathbf{p}=\mathbf{a}+\lambda\mathbf{m}\) for a \(\lambda\) value.
+
+**Step 2:** Comparing each of the \(x\), \(y\) and \(z\) components, form three equations and solve for \(\lambda\).
+
+**Step 3:** If \(\lambda\) obtained from each equation is the same (i.e. **consistent**), then \(P\) lies on the line.
+
+**Example 22:** Determine whether the point \(\left(-1,3,-3\right)\) lies on the line in **Example 21**.
+
+**Solution:**
+
+**Method 0:**
+
+To check whether \(\left(-1,3,-3\right)\) lies on the required line, whose vector equation is
+
+\[\Gamma=\begin{pmatrix}5\\ 1\\ -2\end{pmatrix}+\lambda^{\prime}\begin{pmatrix}6\\ -2\\ 1\end{pmatrix},\ \lambda^{\prime}\in\mathbb{R}\]
+
+Let \(\begin{pmatrix}-1\\ 3\\ -3\end{pmatrix}=\begin{pmatrix}5\\ 1\\ -2\end{pmatrix}+\lambda^{\prime}\begin{pmatrix}6\\ -2\\ 1\end{pmatrix},\ \lambda^{\prime}\in\mathbb{R}\)
+
+\(-1=5+6\lambda^{\prime}\)
+
+\(3=1-2\lambda^{\prime}\)
+
+\(-3=-2+\lambda^{\prime}\)
+
+\(\lambda^{\prime}\)= \(-1\) consistently solves all three equations. Hence the point \(\left(-1,3,-3\right)\) lies on the line.
+
+**Method 0:**
+
+Check whether the \(x\), \(y\) and \(z\) coordinates of the required point \(\left(-1,3,-3\right)\) satisfies the cartesian equation of the required line.
+
+When \(x=-1\), \(y=3\), \(z=-3\),
+
+\(\frac{x-5}{3}=\frac{\left(-1\right)-5}{3}=-2\)
+
+\(1-y=1-\left(3\right)=-2\)
+
+\(2z+4=2\left(-3\right)+4=-2\)
+
+Hence, \(\frac{x-5}{3}=1-y=2z+4\) at the point \(\left(-1,3,-3\right)\), and as such this point lies on the line.
+
+### Finding Foot of Perpendicular from a Point to a Line
+
+Given a line \(l:\!\mathbf{r}=\mathbf{a}+\lambda\mathbf{m}\), \(\lambda\in\mathbb{R}\), a point \(P\) that is not on the line and we want to find the foot of the perpendicular \(F\) from \(P\) to \(l\). The following steps could be used:
+
+**Method \(\mathbf{\Omega}\):**
+
+**Step 1:** Since \(F\) lies on \(l\), \(\overline{OF}=\mathbf{a}+\lambda\mathbf{m}\) for a \(\lambda\) value.
+
+**Step 2:** Find \(\overline{PF}\) (in terms of parameter \(\lambda\)).
+
+**Step 3:** Since \(\overline{PF}\perp l\Leftrightarrow\overline{PF}\perp\mathbf{m}\Leftrightarrow \overline{PF}\cdot\mathbf{m}=0\). Solve for \(\lambda\).
+
+**Step 4:** Substitute the value of \(\lambda\) into \(\overline{OF}=\mathbf{a}+\lambda\mathbf{m}\).
+
+**Method \(\mathbf{\Omega}\):**
+
+\(\overline{AF}\) is the projection vector of \(\overline{AP}\) on \(\mathbf{m}\).
+
+\(\overline{AF}=\left(\overline{AP}\cdot\hat{\mathbf{m}}\right)\hat{\mathbf{m}}\)
+
+\(\overline{OF}-\overline{OA}=\left(\overline{AP}\cdot\hat{\mathbf{m}}\right) \hat{\mathbf{m}}\)
+
+\(\overline{OF}=\overline{OA}+\left(\overline{AP}\cdot\hat{\mathbf{m}}\right) \hat{\mathbf{m}}\)
+
+**Example 23:**
+
+**(i)**: Find the coordinates of the foot of the perpendicular from the point \(P\big{(}1,1,-1\big{)}\) to the line \(\mathbf{r}=\begin{pmatrix}1\\ 2\\ 3\end{pmatrix}+\lambda\begin{pmatrix}1\\ 2\\ 1\end{pmatrix}\), \(\lambda\in\mathbb{R}\).
+**(ii)**: Deduce the shortest distance from \(P\) to the line.
+**(iii)**: Find the position vector of the image of \(P\) in the line.
+
+**Solution:**
+
+**(i)**: Let \(F\) be the foot-of-perpendicular from \(P\) to the line.
+
+**Method \(\mathbb{Q}\):**
+
+Since \(F\) lies on the line, \(\overline{OF}=\begin{pmatrix}1\\ 2\\ 3\end{pmatrix}+\lambda\begin{pmatrix}1\\ 2\\ 1\end{pmatrix}\) for a \(\lambda\in\mathbb{R}\).
+
+\(\overline{PF}=\overline{OF}-\overline{OP}\)
+
+\(=\begin{pmatrix}1\\ 2\\ 3\end{pmatrix}+\lambda\begin{pmatrix}1\\ 2\\ 1\end{pmatrix}-\begin{pmatrix}1\\ 1\\ -1\end{pmatrix}\)
+
+\(=\begin{pmatrix}\lambda\\ 1+2\lambda\\ 4+\lambda\end{pmatrix}\)
+
+Since \(PF\perp I\),
+
+\(\lambda+2+4\lambda+4+\lambda=0\)
+
+\(\lambda=-1\)
+
+Hence \(\overline{OF}=\begin{pmatrix}1\\ 2\\ 3\end{pmatrix}-\begin{pmatrix}1\\ 2\\ 1\end{pmatrix}=\begin{pmatrix}0\\ 0\\ 2\end{pmatrix}\).
+
+Coordinates of \(F\) is \(\big{(}0,0,2\big{)}\).
+
+[MISSING_PAGE_EMPTY:10]
+
+### Finding the Perpendicular Distance from a Point to a Line
+
+Given a line, \(l:\mathbf{r}=\mathbf{a}+\lambda\mathbf{m}\), \(\lambda\in\mathbb{R}\) and a point \(P\) that is not on the line, we want to find the perpendicular distance, \(h\), from \(P\) to \(l\).
+
+Method \(\mathbf{Q}\): Using Cross Product
+
+Referring to **Section 8.4.3**, \(h=\left|\overrightarrow{AP}\times\widehat{\mathbf{m}}\right|\).
+
+Method \(\mathbf{Q}\): Through Finding Foot of Perpendicular
+
+Referring to **Example 23**, we can find the foot of the perpendicular \(F\) from \(P\) to \(l\) first.
+
+Then \(h=\left|\overrightarrow{PF}\right|\). This method is used when we already have the foot of the perpendicular.
+
+Method \(\mathbf{Q}\): Through Finding Length of Projection
+
+Step 1: Find length of projection of \(\overrightarrow{AP}\) on \(\mathbf{m}\), \(d=\left|\overrightarrow{AP}\cdot\widehat{\mathbf{m}}\right|\).
+
+Step 2: Using Pythagoras Theorem, \(h=\sqrt{AP^{2}-d^{2}}=\sqrt{\left|\overrightarrow{AP}\right|^{2}-\left| \overrightarrow{AP}\cdot\widehat{\mathbf{m}}\right|^{2}}\).
+
+This method is usually used when we already have the length of projection \(d\).
+
+**Example 24:** The three points \(A\), \(B\) and \(P\) have position vectors \(\mathbf{i}+2\mathbf{j}+3\mathbf{k}\), \(2\mathbf{i}+4\mathbf{j}+4\mathbf{k}\) and \(\mathbf{i}+\mathbf{j}-\mathbf{k}\). Find the perpendicular distance from \(P\) to the line passing through \(A\) and \(B\).
+
+**Solution:**
+
+Let \(F\) be foot of perpendicular from \(P\) to \(I_{{}_{AB}}\).
+
+\[\overline{AB}=\begin{pmatrix}2\\ 4\\ 4\end{pmatrix}-\begin{pmatrix}1\\ 2\\ 3\end{pmatrix}=\begin{pmatrix}1\\ 2\\ 1\end{pmatrix}\quad\text{and}\quad\overline{AP}=\begin{pmatrix}1\\ 1\\ -1\end{pmatrix}-\begin{pmatrix}1\\ 2\\ 3\end{pmatrix}=\begin{pmatrix}0\\ -1\\ -4\end{pmatrix}\]
+
+**Method Q:** **Using Cross Product**
+
+\[\left|\overline{PF}\right|= \left|\overline{AP}\times\frac{1}{\sqrt{6}}\begin{pmatrix}1\\ 2\\ 1\end{pmatrix}\right|\] \[= \frac{1}{\sqrt{6}}\begin{pmatrix}0\\ -1\\ -4\end{pmatrix}\begin{pmatrix}1\\ 1\end{pmatrix}\] \[= \frac{1}{\sqrt{6}}\begin{pmatrix}\begin{pmatrix}-1\\ -1\\ -4\end{pmatrix}\begin{pmatrix}1\\ 1\end{pmatrix}\] \[= \frac{1}{\sqrt{6}}\begin{pmatrix}7\\ -4\end{pmatrix}\] \[= \frac{1}{\sqrt{6}}\times\sqrt{49+16+1}\] \[= \sqrt{11}\]
+
+**Method Q:** **Through Finding Length of Projection**
+
+\[AF= \begin{pmatrix}0\\ -1\\ -4\end{pmatrix}\cdot\frac{1}{\sqrt{6}}\begin{pmatrix}1\\ 2\\ 1\end{pmatrix}\] \[= \frac{6}{\sqrt{6}}\] \[= \sqrt{6}\] \[AP= \sqrt{0^{2}+(-1)^{2}+(-4)^{2}}\] \[= \sqrt{17}\]
+
+_:. \(PF=\sqrt{17-6}=\sqrt{11}\)_CJC MATMETMETICS DEPARTMENT
+
+2022 JC1 H2 MATHEMATICS (9758)
+
+TOPIC: VECTORS
+
+### Calculations Involving Two Lines
+
+#### Relationship between Two Distinct Lines
+
+Given two distinct lines, three possible relationships exist.
+
+They can be
+
+**(1)**: Parallel lines (Coincidental line or distinct)
+**(2)**: Intersecting at a point
+**(3)**: Skew lines (non-parallel and not intersecting)
+
+#### Question:
+
+The diagram depicts a cuboid with vertices _A, B, C, D, E, F, G_ and \(H\).
+
+Write down the relationship (parallel/intersecting/skew) between the following pairs of lines :
+
+\begin{tabular}{l c c} \(\bullet\) & _AC_ and _CD_. & intersecting \\ \(\bullet\) & _AE_ and _DH_. & parallel \\ \(\bullet\) & _AE_ and _CD_. & skew \\ \(\bullet\) & _AF_ and _BE_. & intersecting \\ \(\bullet\) & _DG_ and _BE_. & parallel \\ \(\bullet\) & _AD_ and _GF_. & skew \\ \(\bullet\) & _AH_ and _CF_. & intersecting \\ \(\bullet\) & _AH_ and _BE_. & skew \\ \end{tabular}
+
+#### Remark:
+
+If two distinct lines are intersecting or parallel, then they are coplanar (i.e. they lie on a common plane).
+
+[MISSING_PAGE_EMPTY:14]
+
+[MISSING_PAGE_EMPTY:15]
+
+Since \(\lambda=-2\) and \(\mu=-1\) satisfy all equations, the 2 lines intersect.
+
+Position vector of the point of intersection is \(\begin{pmatrix}1\\ 2\\ 3\end{pmatrix}-2\begin{pmatrix}1\\ 2\\ 1\end{pmatrix}=\begin{pmatrix}-1\\ -2\\ 1\end{pmatrix}\).
+
+**(c)**: \(l_{\rm i}:\mathbf{r}=\begin{pmatrix}1\\ 2\\ 3\end{pmatrix}+\lambda\begin{pmatrix}1\\ 2\\ 1\end{pmatrix}\), \(\lambda\in\mathbb{R}\) and \(l_{2}:\mathbf{r}=\begin{pmatrix}0\\ 1\\ 2\end{pmatrix}+\mu\begin{pmatrix}1\\ 3\\ 4\end{pmatrix}\), \(\mu\in\mathbb{R}\).
+
+Since \(\begin{pmatrix}1\\ 2\\ 1\end{pmatrix}\neq k\begin{pmatrix}1\\ 3\\ 4\end{pmatrix}\) for any \(k\), the 2 lines are not parallel.
+
+Assume that the two lines intersect,
+
+\(1+\lambda=0+\mu\)\(\Rightarrow\)\(\lambda-\mu=-1\)\(\quad\)-- (1)
+
+\(2+2\lambda=1+3\mu\)\(\Rightarrow\)\(2\lambda-3\mu=-1\)\(\quad\)-- (2)
+
+\(3+\lambda=2+4\mu\)\(\Rightarrow\)\(\lambda-4\mu=-1\)\(\quad\)-- (3)
+
+**Method \(\mathbf{\Omega}\):**: **Analytical**
+
+(1) - (3): \(3\mu=0\)\(\Rightarrow\)\(\mu=0\)
+
+Substituting \(\mu=0\) into (1): \(\lambda=-1\)
+
+Substituting \(\mu=1\) and \(\lambda=-2\) into (2):
+
+\(\mathrm{L.H.S.}=2\left(-1\right)-3\left(0\right)=-2\)
+
+\(\mathrm{R.H.S.}=-1\neq\mathrm{L.H.S.}\)
+
+**Method \(\mathbf{\Omega}\):**: **Using G.C. - PlySmt2**
+
+Since there is no pair of values for \(\lambda\) and \(\mu\) that will satisfy all 3 equations, no point of intersection exists between the 2 lines (i.e. they do not intersect). The 2 lines are skew.
+
+### Angle Between Two Lines
+
+Consider two lines with vector equation \(l_{1}:\mathbf{r}=\mathbf{a}_{1}+\lambda\mathbf{m}_{1},\ \lambda\in\mathbb{R}\) and \(l_{2}:\mathbf{r}=\mathbf{a}_{2}+\mu\mathbf{m}_{2},\ \mu\in\mathbb{R}\). The angle \(\alpha\) between the two lines is taken to be the acute angle between them. This angle could be determined by firstly finding the angle \(\theta\) between the respective direction vectors \(\mathbf{m}_{1}\) and \(\mathbf{m}_{2}\) of the two lines.
+
+For details on finding the angle \(\theta\) between two vectors, refer to **Section 7.4.1**.
+
+\[\mathbf{m}_{1}\cdot\mathbf{m}_{2}=\left|\mathbf{m}_{1}\right|\left|\mathbf{m} _{2}\right|\cos\theta\ \ \ \Leftrightarrow\ \ \ \theta=\cos^{-1}\left(\frac{\mathbf{m}_{1}\cdot\mathbf{m}_{2}}{\left|\mathbf{m }_{1}\right|\left|\mathbf{m}_{2}\right|}\right)\]
+
+**Case Q:**
+
+If the angle \(\theta\) between \(\mathbf{m}_{1}\) and \(\mathbf{m}_{2}\) is acute, then the angle \(\alpha\) between both lines is also \(\theta\).
+
+**Case Q:**
+
+If the angle \(\theta\) between \(\mathbf{m}_{1}\) and \(\mathbf{m}_{2}\) is obtuse, then the angle \(\alpha\) between both lines is \(\pi-\theta\).
+
+_Online Resource: [https://www.geogebra.org/m/Y58MZHv9_](https://www.geogebra.org/m/Y58MZHv9_)
+
+**Remarks:**
+
+* The **acute** angle between both lines \(l_{1}\) and \(l_{2}\) can also be directly found by using \[\left(\alpha=\cos^{-1}\left|\frac{\mathbf{m}_{1}\cdot\mathbf{m}_{2}}{\left| \mathbf{m}_{1}\right|\left|\mathbf{m}_{2}\right|}\right|\right)\.\]
+* The two lines need not be intersecting for the angle to be determined.
+
+**Example 26:** Find the acute angle between the two lines:
+
+\[l_{i}:\mathbf{r}=\begin{pmatrix}4\\ 3\\ 1\end{pmatrix}+\lambda\begin{pmatrix}1\\ 2\\ 1\end{pmatrix},\lambda\in\mathbb{R}\;\text{ and }\;l_{2}:\mathbf{r}=\begin{pmatrix}-1\\ 0\\ -1\end{pmatrix}+\mu\begin{pmatrix}3\\ 2\\ 6\end{pmatrix},\mu\in\mathbb{R}\]
+
+**Solution:**
+
+Let the angle between the lines' respective direction vectors be \(\theta\).
+
+\[\begin{pmatrix}1\\ 2\\ 1\end{pmatrix}\begin{pmatrix}3\\ 2\\ 6\end{pmatrix}= \begin{pmatrix}1\\ 2\\ 1\end{pmatrix}\begin{pmatrix}3\\ 2\\ 6\end{pmatrix}\cos\theta\] \[13= \sqrt{6}\times 7\times\cos\theta\] \[\theta= \cos^{-1}\begin{pmatrix}13\\ 7\sqrt{6}\end{pmatrix}= 40.69639...^{\circ}\] \[\theta= 40.7^{\circ}\;\big{(}\text{to }1\text{ d.p.}\big{)}\;\text{ or }\;\;0.710\;\text{ rad (to }3\text{ s.f.)}\]
+
+\(\therefore\) angle between two lines is \(40.7^{\circ}\).
+
+**C****Self-Practice 8:**
+
+Given two lines \(l_{1}:\mathbf{r}=\big{(}\mathbf{i}+2\mathbf{j}+3\mathbf{k}\big{)}+\lambda \big{(}\mathbf{i}+2\mathbf{j}+5\mathbf{k}\big{)}\), \(\lambda\in\mathbb{R}\;\) and
+
+\(l_{2}:\mathbf{r}=\big{(}2\mathbf{i}+\mathbf{j}+7\mathbf{k}\big{)}+\mu\big{(} \mathbf{i}+5\mathbf{j}+6\mathbf{k}\big{)}\), \(\mu\in\mathbb{R}\).
+
+Find
+
+**(i)**: the point of intersection between them,
+
+**(ii)**: the acute angle between the them.
+
+**Answers: (i) \(\big{(}3,\;6,\;13\big{)}\;\) **(ii) \(18.1^{\circ}\,\big{(}\text{to }1\text{ d.p}\big{)}\;\text{ or }\;0.315\;\text{rad }\big{(}\text{to }3\text{ s.f}\big{)}\)**
+
+[MISSING_PAGE_FAIL:19]
+
+[MISSING_PAGE_EMPTY:20]
+
+A.CJC MATHEMATICS DEPARTMENT
+
+2022 JC1 H2 MATHEMATATICS (9758)
+
+TOPIC: VECTORS
+
+MSUSUHYLEMENTING OBJECTIVS
+
+**Vectors (Lines)**
+
+At the end of this chapter, I should be able to:
+
+At the end of lecture...
+
+At the end
+
+of lecture...
+
+tutorial...
+
+\begin{tabular}{|p{113.8pt}|p{113.8pt}|p{113.8pt}|} \hline \(\bullet\) & formulate a vector equation for a line given a point on the line & At the end of \\  & and a direction vector, or given two points on the line. & \\ \hline \(\bullet\) & convert a vector equation for a line to a cartesian equation, and vice versa. & \\ \hline \(\bullet\) & investigate and determine the relationship between a given point and a given line. & \\ \hline \(\bullet\) & find the position vector of the foot of the perpendicular from a point to a line. & \\ \hline \(\bullet\) & find the perpendicular or shortest distance from a point to a line. & \\ \hline \(\bullet\) & find the position vector of the reflection of a given point about a given line. & \\ \hline \(\bullet\) & determine and describe the relationship between two distinct lines in three-dimensional space. & \\ \hline \(\bullet\) & find the position vector of the point of intersection between 2 given lines. & \\ \hline \(\bullet\) & find the angle between two lines. & \\ \hline \end{tabular}
+
+**DISCUSSION**
+
+**1**: Find a vector equation and cartesian equation of the following lines:
+
+**(a)**: passing through the point with position vector \(\gamma\mathbf{i}+2\mathbf{j}-4\mathbf{k}\) and parallel to to \(\mathbf{i}-3\mathbf{j}+\mathbf{k}\)
+**(b)**: passing through the points \((2,-2,\,1)\) and \((0,\,4,\,9\,)\)
+**(c)**: passing through the point with position vector \(7\mathbf{i}\) and parallel to the line
+
+\(\mathbf{r}\,=\,(2-p)\,\mathbf{i}+p\mathbf{j}+5\mathbf{k}\)
+**2**: Convert the equations of following lines to their vector equation form:
+
+**(a)**: \(3y=2x-6=\dfrac{z-1}{2}\)
+**(b)**: \(x+5=2-4y,\,\,\,z=3\)
+**3**: Given three points \(A\big{(}0,2,7\big{)}\), \(B\big{(}5,-3,\,2\big{)}\) and \(C\big{(}1,1,1\big{)}\), find the position vector of the point \(R\) on \(AB\) such that \(CR\) is perpendicular to \(AB\). Hence find the perpendicular distance from \(C\) to \(AB\) and the position vector of the reflection of \(C\) in \(AB\).
+**4**: Given a line with vector equation \(\mathbf{r}=\big{(}\mathbf{i}+2\mathbf{j}+3\mathbf{k}\big{)}+\lambda\big{(} \mathbf{i}+2\mathbf{j}+5\mathbf{k}\big{)}\), \(\lambda\in\mathbb{R}\),
+**(i)**: show that point \(A\big{(}3,6,13\big{)}\) lies on the line,
+**(ii)**: find the perpendicular distance from point \(B\big{(}1,7,4\big{)}\) to the line.
+**5**: Find whether the following pairs of lines are parallel, intersecting or skew. If they intersect, find the point of intersection and the acute angle between the lines.
+**(a)**: \(\mathbf{r}=\begin{pmatrix}1\\ -1\\ 1\end{pmatrix}+\lambda\begin{pmatrix}3\\ 4\\ 1\end{pmatrix}\), \(\lambda\in\mathbb{R}\) and \(\mathbf{r}=\begin{pmatrix}1\\ 2\\ 3\end{pmatrix}+\mu\begin{pmatrix}9\\ 12\\ 3\end{pmatrix}\), \(\mu\in\mathbb{R}\).
+**(b)**: \(\mathbf{r}=\begin{pmatrix}1\\ 0\\ 3\end{pmatrix}+s\begin{pmatrix}2\\ 1\\ 1\end{pmatrix}\), \(s\in\mathbb{R}\) and \(\mathbf{r}=\begin{pmatrix}2\\ -1\\ 1\end{pmatrix}+t\begin{pmatrix}1\\ -2\\ 0\end{pmatrix}\), \(t\in\mathbb{R}\).
+**(c)**: \(\mathbf{r}=4\mathbf{i}+8\mathbf{j}+3\mathbf{k}+\alpha\big{(}\mathbf{i}+2 \mathbf{j}+\mathbf{k}\big{)},\alpha\in\mathbb{R}\) and \(\mathbf{r}=7\mathbf{i}+6\mathbf{j}+5\mathbf{k}+\beta\big{(}6\mathbf{i}+4 \mathbf{j}+5\mathbf{k}\big{)}\), \(\beta\in\mathbb{R}\).
+**(d)**: \(\mathbf{r}=\begin{pmatrix}4\\ 2\\ 1\end{pmatrix}+\lambda\begin{pmatrix}2\\ 1\\ -2\end{pmatrix}\), \(\lambda\in\mathbb{R}\) and \(z\)-axis.
+**[Hint: The \(z\)-axis has equation \(\mathbf{r}=\gamma\begin{pmatrix}0\\ 0\\ 1\end{pmatrix}\), \(\gamma\in\mathbb{R}\).]**
+
+**6**: Given two lines \(l_{1}:4\big{(}1-x\big{)}=y=2z+4\) and \(l_{2}:8-4x=y+3=2z\), explain why \(l_{1}\) and \(l_{2}\) are parallel. Find the distance between them.
+**7**: **[2012/I/9]**: **(i)**: Find a vector equation of the line through the points \(A\) and \(B\) with position vectors \(7i+8j+9k\) and \(-i-8j+k\) respectively.
+**(ii)**: The perpendicular to this line from the point \(C\) with position vector \(i+8j+3k\) meets the line at the point \(N\). Find the position vector \(N\) and the ratio of \(AN:NB\).
+**(iii)**: Find a Cartesian equation of the line which is a reflection of the line \(AC\) in the line \(AB\).
+**8**: **[2017&2020/I/(modified)]**: **(a)**: Interpret geometrically the vector equation \(r=a+tb\), where \(a\) and \(b\) are constant vectors and \(t\) is a parameter.
+**(b)**: The points \(P\), \(Q\) and \(R\) have position vectors \(p\), \(q\) and \(r\) respectively. The points \(P\) and \(Q\) are fixed and \(R\) varies. Given that \(p\) is non-zero and \(\big{(}r-p\big{)}\times q=0\), describe geometrically the set of all possible positions of the point \(R\).
+**9**: **[2017/I/10]**: Electrical engineers are installing electricity cables on a building site. Points \(\big{(}x,y,z\big{)}\) are defined relative to a main switching site at \(\big{(}0,0,0\big{)}\), where units are metres. Cables are laid in straight lines and the widths of cables can be neglected.
+
+An existing cable \(C\) starts at the main switching site and goes in the direction \(\left(\begin{array}{c}3\\ 1\\ -2\end{array}\right)\).
+
+A new cable is installed which passes through points \(P\big{(}1,\ 2,-1\big{)}\) and \(Q\big{(}5,\ 7,a\big{)}\).
+**(i)**: Find the value of \(a\) for which \(C\) and the new cable will meet.
+
+To ensure that the cables do not meet, the engineers use \(a=-3\). The engineers wish to connect each of the points \(P\) and \(Q\) to a point \(R\) on \(C\).
+**(ii)**: The engineers wish to reduce the length of cable required and believe in order to do this that angle \(PRQ\) should be \(90^{\lx@math@degree}\). Show that this is not possible.
+**(iii)**: The engineers discover that the ground between \(P\) and \(R\) is difficult to drill through and now decide to make the length of \(PR\) as small as possible. Find the coordinates of \(R\) in this case and the exact minimum length.
+
+**Answer:**
+
+1. **(a)**: \(\Gamma=\begin{pmatrix}7\\ 2\\ -4\end{pmatrix}+\lambda\begin{pmatrix}1\\ -3\\ 1\end{pmatrix}\), \(\lambda\in\mathbb{R}\) ; \(x-7=\frac{y-2}{-3}=z+4\)
+2. **(b)**: \(\Gamma=\begin{pmatrix}2\\ -2\\ 1\end{pmatrix}+\lambda\begin{pmatrix}-1\\ 3\\ 4\end{pmatrix}\), \(\lambda\in\mathbb{R}\) ; \(2-x=\frac{y+2}{3}=\frac{z-1}{4}\)
+3. **(c)**: \(\Gamma=\begin{pmatrix}7\\ 0\\ 0\end{pmatrix}+\lambda\begin{pmatrix}-1\\ 1\\ 0\end{pmatrix}\), \(\lambda\in\mathbb{R}\) ; \(7-x=y\), \(z=0\)
+4. **(a)**: \(\Gamma=\begin{pmatrix}3\\ 0\\ 1\end{pmatrix}+\lambda\begin{pmatrix}3\\ 2\\ 12\end{pmatrix}\), \(\lambda\in\mathbb{R}\)
+5. **(b)**: \(\Gamma=\begin{pmatrix}-5\\ \frac{1}{2}\\ 3\end{pmatrix}+\lambda\begin{pmatrix}4\\ -1\\ 0\end{pmatrix}\), \(\lambda\in\mathbb{R}\)
+6. **(a)**: \(\sqrt{\frac{37}{2}}\)
+7. **(i)**: \(\Gamma=\begin{pmatrix}7\\ 8\\ 9\end{pmatrix}+\lambda\begin{pmatrix}1\\ 2\\ 1\end{pmatrix}\), \(\lambda\in\mathbb{R}\) (ii)**: \(\left(\begin{array}{c}5\\ 4\\ 7\end{array}\right)\), \(1:3\) (iii)**: \(x-7=\frac{y-8}{-4}=z-9\)
+8. **(i)**: \(-\frac{22}{5}\) (iii)**: \(\left(\frac{3}{2},\frac{1}{2},-1\right)\), \(\frac{1}{2}\sqrt{10}\)
+
+**ESSNENTIAL PRACTICE**
+
+**1**: [2004/I/15(part of)]
+
+The equation of the line \(L\) is \(\mathbf{r}=\begin{pmatrix}1\\ 3\\ 7\end{pmatrix}+t\begin{pmatrix}2\\ -1\\ 5\end{pmatrix}\), \(t\in\mathbb{R}\). The points \(A\) and \(B\) have position vectors \(\begin{pmatrix}9\\ 3\\ 26\end{pmatrix}\) and \(\begin{pmatrix}13\\ 9\\ \alpha\end{pmatrix}\) respectively. The line \(L\) intersects the line through \(A\) and \(B\) at \(P\). Find \(\alpha\) and the acute angle between line \(L\) and \(AB\). [7]
+**2**: [2000/II/15]
+
+Relative to the origin \(O\), the points \(A\), \(B\) and \(C\) have position vectors \(\mathbf{5i+4j+10k}\), \(-4i+4j-2k\), \(-5i+9j+5k\), respectively.
+
+**(i)**: Find the Cartesian equation of the line \(AB\). [3]
+**(ii)**: Find the length of projection of \(\overline{AC}\) onto the line \(AB\). [3]
+**(iii)**: Hence or otherwise find the perpendicular distance from \(C\) to the line \(AB\), and the position vector of the foot \(N\) of the perpendicular from \(C\) to the line \(AB\). [6]
+**(iv)**: The point \(D\) lies on the line \(CN\) produced and is such that \(N\) is the mid-point of \(CD\). Find the position vector of \(D\). [2]
+**3**: [2008/NYJC/Promo/5]
+
+The line \(l\) passes through the points \(A\) and \(B\) with coordinates \(\bigl{(}1,\,2,\,-1\bigr{)}\) and \(\bigl{(}2,\,\,\mathrm{a},\,1\bigr{)}\) respectively.
+
+**(i)**: Show that the line \(l\) cuts the \(x\)-axis when \(a=-2\). [3]
+**(ii)**: Find the length of projection of \(OA\) onto the line \(l\) and hence, the shortest distance of the origin from \(l\). [5]
+**4**: [2012/IJC/Promo/10]
+
+Relative to the origin \(O\), the points \(A\), \(B\) and \(C\) have position vectors \(\mathbf{i+6j-2k}\), \(-3i+2j-5k\) and \(3i-2j+2k\) respectively. The line \(L\) passes through the points \(A\) and \(C\).
+
+**(i)**: Find a vector equation of \(L\). [2]
+**(ii)**: Find the exact length of projection of \(\overline{AB}\) onto \(L\). [3]
+**(iii)**: Hence or otherwise, find the shortest distance from \(B\) to \(L\), leaving your answer in exact form. [2]
+
+\(D\) is a point such that \(ABCD\) is a parallelogram. Use a vector product to find the exact area of the parallelogram. [3]
+
+**[2008/NYJC/Promo/8]**: Relative to the origin \(O\), the points \(A\), \(B\) and \(C\) have position vectors \(-3\mathbf{i}+8\mathbf{j}+\mathbf{k}\), \(7\mathbf{i}+3\mathbf{j}+6\mathbf{k}\) and \(\alpha\mathbf{i}+\beta\mathbf{j}-6\mathbf{k}\) respectively, where \(\alpha\) and \(\beta\) are real numbers.
+**(i)**: Given that the vector equation of line \(BC\) is \(\mathbf{r}=\left(7+3\lambda\right)\mathbf{i}+3\mathbf{j}+\left(6+4\lambda \right)\mathbf{k}\), find the values of \(\alpha\) and \(\beta\). [2]
+**(ii)**: Find the length of projection of \(\overline{AB}\) onto the line \(BC\). [2]
+**(iii)**: Hence or otherwise, find the position vector of the foot of perpendicular from \(A\) to the line \(BC\). [3]
+**(iv)**: Find the exact area of the triangle \(ABC\). [3]
+**6**: **[2010/HCI/Promo/8]**: The position vector of \(A\), relative to the origin \(O\), is \(\mathbf{j}+7\mathbf{k}\). The line \(l\) through \(A\) is parallel to the vector \(\mathbf{i}+\mathbf{j}-\mathbf{k}\) and the foot of perpendicular from \(O\) to \(l\) is denoted by \(S\).
+**(a)**: Find the acute angle between \(l\) and \(\overline{OA}\). [2]
+**(b)**: Find the coordinates of \(S\). [3]
+
+Point \(B\) is on \(OA\) such that \(3OB=OA\) and point \(C\) is the mid-point of \(OS\). \(T\) is a point on \(l\) such that \(B\), \(C\) and \(T\) are collinear.
+**(c)**: Find the position vector of \(T\). [4]
+**7**: **[2012/MJC/Promo/6]**: Relative to the origin \(O\), points \(A\) and \(B\) have position vectors \(4\mathbf{i}+3\mathbf{j}\) and \(5\mathbf{i}+7\mathbf{j}\) respectively. The line \(I_{1}\) passes through point \(B\) and is parallel to the vector \(\mathbf{i}+2\mathbf{j}+\alpha\mathbf{k}\).. The line \(I_{2}\) has cartesian equation \(\frac{1-x}{2}=\frac{z-2}{1}\), \(y=4\).
+**(i)**: Given that \(I_{1}\) and \(I_{2}\) are perpendicular, show that the value of \(\alpha\) is 2. [2]
+**(ii)**: Find the length of projection of \(\overline{BA}\) onto line \(I_{1}\). Hence find the vector \(\overline{BN}\), where \(N\) is the foot of perpendicular from \(A\) to line \(I_{1}\). [4]
+**(iii)**: Point \(A\)' is the reflection of point \(A\) in the line \(I_{1}\) and point \(C\) is such that \(AA\)'\(CB\) forms a parallelogram. Find the exact area of the parallelogram \(AA\)'\(CB\). [3]
+
+**[2012/CJC/Promo/10(a)]**
+
+The line \(\,l_{{}_{1}}\,\) passes through the points \(\,A\,\) and \(\,B\,\) with coordinates (-1, -2, 1) and (0, 1, 5) respectively. The line \(\,l_{{}_{2}}\,\) has equation \(\,x-1=\dfrac{y-2}{2}=z-3\). \(\,l_{{}_{1}}\,\) and \(\,l_{{}_{2}}\,\) intersect at the point \(\,A\,\). Find
+
+**(i)**: the vector equations of the lines \(\,l_{{}_{1}}\,\) and \(\,l_{{}_{2}}\,\), [2]
+**(ii)**: the acute angle between the lines \(\,l_{{}_{1}}\,\) and \(\,l_{{}_{2}}\,\), [2]
+**(iii)**: the position vector of the foot of perpendicular, \(\,F\,\), from \(\,B\,\) to the line \(\,l_{{}_{2}}\,\), [3]
+**(iv)**: the equation of the line \(\,l_{{}_{3}}\,\) which is the mirror image of \(\,l_{{}_{1}}\,\) in \(\,l_{{}_{2}}\,\). [3]
+**9**: **[2012/HCI/Promo/13]**
+
+With respect to the origin \(\,O\,\), the points \(\,A\,\), \(\,B\,\) and \(\,C\,\) have position vectors \(\,\mathbf{a}=\left(\begin{array}{c}1\\ \sin t\\ 0\end{array}\right)\,\), \(\,\mathbf{b}=\left(\begin{array}{c}\cos t\\ 2\\ 1\end{array}\right)\,\) and \(\,\mathbf{c}=\left(\begin{array}{c}2\\ -1\\ 1\end{array}\right)\,\) respectively, where \(\,t\,\) is a real parameter such that \(\,0\leq t<\pi\).
+
+**(a)**: Find the exact value of \(\,t\,\) given that \(\,\mathbf{a}\,\) is perpendicular to \(\,\mathbf{b}\,\). [3]
+**(b)**: The point \(\,X\,\) is on \(\,AB\,\) produced such that \(\,AB\,\):\(\,B\,\)is \(\,1\,\):\(\,4\,\) and the point \(\,Y\,\) is such that \(\,ACXY\,\) is a parallelogram. Take \(\,t=\dfrac{\pi}{2}\,\) for the rest of the question.
+
+**(i)**: Find the position vectors of \(\,X\,\) and \(\,Y\,\). [4]
+**(ii)**: Find the area of \(\,ACXY\,\). Hence, find the shortest distance from \(\,X\,\) to the line that passes through the points \(\,A\,\) and \(\,C\,\). [3]
+**(iii)**: The line \(\,l_{{}_{1}}\,\) has equation \(\dfrac{x-2}{6}=\dfrac{3-y}{h}\), \(\,z=k\,\), where \(\,h\,\) and \(\,k\,\) are constants. The line that passes through \(\,A\,\) and \(\,B\,\) intersects \(\,l_{{}_{1}}\,\) at a right angle. Find the values of \(\,h\,\) and \(\,k\,\). [4]
+**10**: **[2016/AJC/Promo/7]**
+
+Relative to the origin \(\,O\,\), three points \(\,A\,\), \(\,B\,\) and \(\,C\,\) have position vectors given by \(\,\mathbf{a}=3\mathbf{i}-\mathbf{j}\,\), \(\,\mathbf{b}=3\mathbf{i}+4\mathbf{j}-12\mathbf{k}\) and \(\,\mathbf{c}=\lambda\mathbf{j}+12\mathbf{k}\,\), where \(\,\lambda\,\) is a constant. The line \(\,l_{{}_{1}}\,\), passing through points \(\,A\,\) and \(\,C\,\), has equation \(\dfrac{x-3}{3}=\dfrac{y+1}{4}=-\dfrac{z}{12}\,\).
+
+**(i)**: Show that \(\,\lambda=-5\,\). [2]
+**(ii)**: Find the position vector of the point \(\,P\,\) on \(\,OA\,\) such that \(\,BP\,\) is perpendicular to \(\,OA\,\). Hence or otherwise, prove that \(\,OBAC\,\) is a rhombus. [5]
+**(iii)**: Find the area of \(\,OBAC\,\). [2]
+**(iv)**: The line \(\,l_{{}_{2}}\,\) passes through points \(\,O\,\) and \(\,Q\,\), where \(\,Q\,\) lies on \(\,BA\,\) produced such that \(\dfrac{BA}{BQ}=\dfrac{1}{4}\,\). Find the acute angle between lines \(\,l_{{}_{1}}\,\) and \(\,l_{{}_{2}}\,\). [3]CJC MATHEMATICS DEPARTMENT
+
+2022 JC1 H2 MATHEMATICS (9758)
+
+TOPIC: VECTORS
+
+Answers:
+
+134; 44.6\({}^{\circ}\)
+
+21 (i) \(\frac{x-5}{3}=\frac{z-10}{4};\ y=4\) (ii) \(10\) (iii) \(\sqrt{50}\) (iv) \(\begin{pmatrix}-1\\ 4\\ 2\end{pmatrix}\)
+
+3 (ii) \(\frac{9}{\sqrt{21}};\ \sqrt{\frac{15}{7}}\)
+
+4 (i) \(\underline{r}=\begin{pmatrix}1\\ 6\\ -2\end{pmatrix}+\lambda\begin{pmatrix}1\\ -4\\ 2\end{pmatrix}\), \(\lambda\in\mathbb{R}\) (ii) \(\frac{6}{\sqrt{21}}\) (iii) \(5\sqrt{\frac{11}{7}}\) ; \(10\sqrt{33}\)
+
+5 (i) \(\alpha=-2\), \(\beta=3\) (ii) \(10\) (iii) \(\begin{pmatrix}1\\ 3\\ -2\end{pmatrix}\) (iv) \(\frac{75\sqrt{2}}{2}\)
+
+6 (a) \(60.7\) (b) \((2,3,5)\) (c) \(\begin{pmatrix}4\\ 5\\ 3\end{pmatrix}\)
+
+7 (ii) \(3\) \(,\begin{pmatrix}-1\\ -2\\ -2\end{pmatrix}\) (iii) \(12\sqrt{2}\)
+
+8 (i) \(l_{i}:r=\begin{pmatrix}0\\ 1\\ 5\end{pmatrix}+\lambda\begin{pmatrix}1\\ 3\\ 4\end{pmatrix}\), \(\lambda\in\mathbb{R}\) ; \(l_{i}:r=\begin{pmatrix}1\\ 2\\ 3\end{pmatrix}+\mu\begin{pmatrix}1\\ 2\\ 1\end{pmatrix}\), \(\mu\in\mathbb{R}\) (ii) \(28.3^{\circ}\)
+
+9 (a) \(\pi-\tan^{-1}\frac{1}{2}\) (b)(i) \(\overline{OX}=\begin{pmatrix}-4\\ 6\\ 5\end{pmatrix}\), \(\overline{OY}=\begin{pmatrix}-5\\ 8\\ 4\end{pmatrix}\)
+
+(ii) \(\sqrt{350}\), \(\sqrt{\frac{175}{3}}\) (iii) \(h=-6\), \(k=\frac{1}{2}\)
+
+10 (ii) \(\frac{1}{2}\begin{pmatrix}3\\ -1\\ 0\end{pmatrix}\) (iii) \(40.8\) (iii) \(18.5^{\circ}\)

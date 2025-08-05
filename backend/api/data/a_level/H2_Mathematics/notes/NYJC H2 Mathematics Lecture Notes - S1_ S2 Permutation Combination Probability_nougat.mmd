@@ -1,0 +1,350 @@
+## Chapter 1 Permutations and Combinations
+
+In this chapter, students will be able to:
+
+* apply the addition and multiplication principles for counting;
+* distinguish between permutations and combinations;
+* understand that "\(P_{r}\) is the number of permutations of \(r\) objects taken from \(n\) distinct objects; and that in the special case when \(n=r\), the number of permutations of \(n\) distinct objects arranged in a straight line is \(n!\);
+* understand that "\(C_{r}\) or \(\binom{n}{r}\) is the number of combinations of \(r\) objects from \(n\) distinct objects;
+* interpret the relation "\(P_{r}=\)"\(C\), \(r!\) (i.e. permutation is selection followed by arrangement) and use the formula: "\(C_{r}=\frac{n(n-1)(n-2)...(n-r+1)}{r!\ \.}=\frac{n!}{r!(n-r)!}\);
+* find the number of permutations of \(n\) distinct objects arranged in a circle;
+* find the number of permutations of \(n\) objects which are not all distinct, e.g. if \(m\) of the objects are identical and the rest are distinct, the number of permutations is \(\frac{n!}{m!}\);
+* use "\(P_{r}\), \(n!\) and "\(C\), to solve counting problems, including cases involving repetition and restriction.
+
+### 1.1 Fundamental Principles of Counting
+
+**The Addition Principle:**
+
+Assume that there are \(n_{1}\) ways for the event \(E_{1}\) to occur,
+
+\(n_{2}\) ways for the event \(E_{2}\) to occur,
+
+\(\vdots\)
+
+\(n_{k}\) ways for the event \(E_{k}\) to occur,
+
+where \(k\geq 1\).
+
+If \(E_{1}\), \(E_{2}\),..., \(E_{k}\) are **mutually exclusive** (i.e. they cannot occur at the same time), then the number of ways for at least one of the events to occur is \(n_{1}+n_{2}+\cdots+n_{k}\).
+
+**Example 1**
+
+There is 1 way to go to Town B from Town A by land, 2 ways by air and 3 ways by sea. How many ways are there to go to Town B from Town A?
+
+**Solution 1**
+
+By the Addition Principle, there are
+
+\(\begin{array}{c}\mbox{\tt\small{$\bullet$}}\mbox{\tt\small{$\bullet$}} \mbox{\tt\small{$
+
+[MISSING_PAGE_FAIL:2]
+
+[MISSING_PAGE_EMPTY:3]
+
+**Example 17** (2011/TJC/II/Q6b): Six people sit at a round table with eight identical chairs. Find the number of seating arrangements if (i) there are no restrictions, (ii) the seats are numbered.
+
+Self-Review 9
+
+Hillary Tan has 9 cousins. In how many ways can she invite some or all of them to her birthday party? At the birthday party, Hillary sets up a round table of 10 seats with a different mathematics puzzle at each seat. Four of her cousins are from the Siow family, three are from the Ding family and two are from the Dong family and all her cousins turn up for the party. Find the number of ways that they can be seated with Hillary if families with the same surname are seated together but members of the Ding and Dong families are not adjacent to each other. [511, 5760]
+
+## Chapter 2 Probability
+
+In this chapter, you will learn to
+
+* understand that the probability of an event measures how likely the event will occur;
+* construct a table of possible outcomes to calculate probabilities and understand that the total probability of all the possible outcomes is equal to 1;
+* calculate probabilities using the addition and multiplication principles;
+* calculate probabilities using permutations and combinations;
+* understand the meaning of mutually exclusive events, determine if two events \(A\) and \(B\) are mutually exclusive and calculate probabilities when \(A\) and \(B\) are mutually exclusive;
+* understand the meaning of independent events, determine if two events \(A\) and \(B\) are independent and calculate probabilities when \(A\) and \(B\) are independent;
+* understand the meaning of conditional probability and use the result \(\operatorname{P}(A\,|\,B)\!=\!\frac{\operatorname{P}\bigl{(}A\!\cap\!B\bigr{)} }{\operatorname{P}\bigl{(}B\bigr{)}}\) to compute conditional probability;
+* use a Venn diagram to interpret and calculate probabilities such as \(\operatorname{P}\bigl{(}A^{\prime}\bigr{)}\), \(\operatorname{P}\bigl{(}A\!\cup\!B\bigr{)}\), \(\operatorname{P}\bigl{(}A\!\cap\!B\bigr{)}\) and \(\operatorname{P}\bigl{(}A\,|\,B\bigr{)}\);
+* construct a tree diagram and use it to interpret and calculate probabilities such as probabilities of combined events and conditional probabilities.
+
+Probability is the likelihood of an outcome or event. Some examples of probabilities
+
+1. The probability of getting a one when a fair die is tossed is \(\frac{1}{6}\).
+2. The probability (or odds) of winning the first prize in the Singapore Sweep is 1 in 3,200,000.
+
+### 2.1 Basic Concepts
+
+#### Random Experiments, Sample Space and Events
+
+In our everyday life, we encounter '**random experiments'** very frequently. The word '**experiment'** or '**trial'** can be thought of as an action that can be repeated under the same set of conditions. The adjective '**random'** implies that the **outcome** of the experiment cannot be predicted with certainty.
+
+The set of all possible outcomes of an experiment is called the **sample space** and is denoted by \(S\).
+
+A subset \(A\) of the sample space \(S\) of a random experiment is known as an **event**, i.e. an event consists of one or more possible outcomes.
+
+#### 2.1.2 Definition of Probability
+
+The probability of an event measures how likely the event will occur. The classical interpretation of the probability of an event is the relative frequency or ratio of the number of occurrences that correspond to the event to all possible outcomes given that all the outcomes have an equal chance of occurring.
+
+If the sample space \(S\) contains a **finite number** of **equally likely outcomes**, then the probability that an event \(A\) will occur is given by
+
+\[\mathrm{P}(A)=\frac{\mathrm{n}(A)}{\mathrm{n}(S)}\,\left(\text{i.e.}\,\,\,\, \frac{\text{number of outcomes corresponding to event $A$}}{\text{total number of possible outcomes in the sample space $S$}}\right)\]
+
+Using the example earlier
+
+\[\begin{array}{c|c|c|c}&\text{\bf Sample Space, $S$}&\text{\bf An event, $A$}& \text{\bf P}(A)=\frac{\mathrm{n}(A)}{\mathrm{n}(S)}&\text{\bf Remarks}\\ \hline 1.&S=\{\text{HH,HT,TH,TT}\}&\text{$\begin{array}{l}\text{`a head is obtained'}\\ =\{\text{HH,HT,TH}\}\end{array}$}&\frac{3}{4}&\text{Coin is unbiased means that the outcomes are _equally likely_.}\\ \hline 2.&S=\{\text{\bf\$},\text{\bf\$},\text{\bf\$},\text{\bf\$},\text{\bf \$},\text{\bf\$},\text{\bf\$},\text{\bf\$}\}&\text{`a black suit is obtained'}=\{\text{\bf\$},\text{\bf\$},\text{\bf\$},\text{\bf\$}\}&\frac{1}{2}&\text{The card is drawn at random.}\\ &\text{\bf\$}&\text{\bf\$}&\text{\bf\$}&\text{This ensures that the outcomes}\\ &\text{\bf\$}&\text{are _equally likely_.}\\ \hline 3.&S=\{\text{win, lose, draw}\}&\text{`Bernard wins the game'}=\{\text{win }\}&\text{Not enough}\\ &\text{\bf\$}&\text{information to}\\ &\text{evaluate it}\end{array}&\begin{array}{l}\text{Not enough}\\ \text{Information to}\\ \text{We do not know if it is _equally_}\\ \text{likely_ for Bernard to win, lose or}\\ \text{draw the game.}\end{array}\]
+
+Important notes:
+* For any sample space \(S\), \(\mathrm{P}\big{(}S\big{)}=1\) (i.e. the sum of the probability of all possible outcomes is \(1\)).
+* For any event \(A\) of \(S\), \(0\leq\mathrm{P}\big{(}A\big{)}\leq 1\).
+* If \(A\) is an **impossible event** (or **null event**), then \(\mathrm{P}\big{(}A\big{)}=0\). \(A\) can also be represented by the empty set \(\phi\).
+* \(\mathrm{P}\big{(}A\big{)}=1\) means that \(A\) is a **sure event** and \(A=S\).
+
+**Example 1:**
+
+A fair die is thrown and the number was observed. Write down the sample space and the set that corresponds to the following events:
+
+**(i)**: a multiple of 3 is obtained.
+**(ii)**: the number is less than 7.
+**(iii)**: the number is a factor of 6.
+
+Hence state the probability of each of the event.
+
+**Solution 1:**
+
+Sample space, \(S=\{1\), 2, 3, 4, 5, 6\}
+
+Let \(A\) be the event that 'the number obtained is a multiple of 3'. \(A=\{3,6\}\).
+
+Let \(B\) be the event that 'the number obtained is less than 7'. \(B=\{1\), 2, 3, 4, 5, 6\}.
+
+Let \(C\) be the event that 'the number obtained is a factor of 6' \(C=\{1\), 2, 3, 6\}.
+
+**(i)**: \(\mbox{P}\big{(}A\big{)}=\frac{2}{6}=\frac{1}{3}\)
+**(ii)**: \(\mbox{P}\big{(}B\big{)}=\frac{6}{6}=1\) (Event \(B\) is a sure event)
+**(iii)**: \(\mbox{P}\big{(}C\big{)}=\frac{4}{6}=\frac{2}{3}\)
+
+**Remark 1:** Do you know that a die need not be six-sided only and the numbering need not be in running order? Can you have a two-sided die?
+
+**Representing a Sample Space using a Table of Outcomes**
+
+**Example 2:**
+
+Two unbiased dice are thrown and the outcome is observed. One with 5 faces numbered 1, 1, 1, 2 and 4.
+
+The other with 6 faces numbered 2, 4, 6, 6, 6 and 6. Find the probability that
+
+**(i)**: the sum of their scores is 7.
+**(ii)**: the sum of their scores is even.
+**(iii)**: the sum of their scores is more than 4.
+
+**Solution 2:**
+
+Let \(D_{1}\) and \(D_{2}\) denote the numbers shown on the first and second die respectively.
+
+\begin{tabular}{|c|c|c|c|c|c|c|} \hline \(D_{1}\)\(D_{2}\) & 2 & 4 & 6 & 6 & 6 & 6 \\ \hline
+1 & 3 & 5 & \(\overline{\tau}\) & \(\overline{\tau}\) & \(\overline{\tau}\) & \(\overline{\tau}\) \\ \hline
+1 & 3 & 5 & \(\overline{\tau}\) & \(\overline{\tau}\) & \(\overline{\tau}\) & \(\overline{\tau}\) \\ \hline
+1 & 3 & 5 & 7 & 7 & 7 & 7 \\ \hline
+2 & 4 & 6 & 8 & 8 & 8 & 8 \\ \hline
+4 & 6 & 8 & 10 & 10 & 10 & 10 \\ \hline \end{tabular}
+
+Total number of possible outcomes = 30.
+
+**(i)**: The sum of scores is 7 when (1, 6) (twelve occurrences).
+
+P(sum of scores is 7) = \(\frac{12}{30}\) = \(\frac{2}{5}\)
+**(ii)**: There are 12 ways to have the sum of scores being even.
+
+P(sum of scores is even) = \(\frac{12}{30}\) = \(\frac{2}{5}\) Contrary to some's believe the probability is \(\not{\lambda}\). Their argument is that the outcome is either odd or even. This example shows that this kind of argument doesn't work!
+**(iii)**: P(sum of scores > 4) =
+
+**Self-Review 1:**
+
+A standard fair die is thrown two times. Calculate the probability that the total score is 7.
+
+**Solution:**
+
+\begin{tabular}{|c|c|c|c|c|c|} \hline \(D_{1}\)\(\backslash\) D\({}_{2}\) & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+1 & 2 & 3 & 4 & 5 & 6 & 7 \\ \hline
+2 & 3 & 4 & 5 & 6 & 7 & 8 \\ \hline
+3 & 4 & 5 & 6 & 7 & 8 & 9 \\ \hline
+4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
+5 & 6 & 7 & 8 & 9 & 10 & 11 \\ \hline
+6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline \end{tabular}
+
+**Representing a Sample Space using a Venn Diagram**
+
+Venn diagrams derive their name from John Venn, who popularized their use in 1880 with his paper entitled, "On the Diagrammatic and Mechanical Representation of Propositions and Reasonings". He developed George Boole's symbolic logic and is best known for Venn diagrams, which pictorially represent the relations between sets. Venn diagrams were a respected, if not ubiquitous, learning tool for all ages and grade levels.
+
+[MISSING_PAGE_FAIL:9]
+
+[MISSING_PAGE_EMPTY:10]
+
+**Self-Review 3:**
+
+Analysis of the results of a certain group of students who had taken Block Test in both Mathematics and Physics produced the following information 75% of the students passes Mathematics, 70% passed in Physics and 40% failed at least one of these subjects.
+
+**(i)**: Find the probability that the student taken at random passing exactly one \(\circ\):the two subjects.
+
+**(ii)**: Find the probability that the student passing both subjects. Hence, determine if the events of passing mathematics and that of physics are mutually exclusive. [0.15, 0.6]
+
+**Remark:** Why is the probability in Self-Review 3(ii) not equals to probability of passing Mathematics multiplied by the probability of passing Physics? This has to do with the concept of independence of events which we will discuss in the next section.
+
+#### 2.1.7 Independent Events
+
+Two events \(A\) and \(B\) are **independent** if the occurrence of one does not affect the occurrence of the other. Some examples of independent events are:
+
+* Landing on head after tossing a coin **AND** rolling a 5 on a 6-sided die.
+* Choosing a King from a deck of cards, **replacing** it, **AND** then choosing an Ace as the second card.
+* Rolling a 4 on a 6-sided die, **AND** then rolling a 1 on a second roll of the die.
+
+**Result 1:**
+
+If events \(A\) and \(B\) are independent, then
+
+\[\mathrm{P}\big{(}A\cap B\big{)}=\mathrm{P}\big{(}A\big{)}\times\mathrm{P} \big{(}B\big{)}\]
+
+This is the multiplication law for independent events.
+
+**Result 2:**
+
+If we can show that \(\mathrm{P}\big{(}A\cap B\big{)}=\mathrm{P}\big{(}A\big{)}\times\mathrm{P} \big{(}B\big{)}\), then we say event \(A\) and \(B\) are independent.
+
+**Example 10:**
+
+Select one card randomly from a standard deck of 52. Let \(R\) be the event that the card is red, and let \(Q\) be the event that the card is queen. Are the events \(R\) and \(Q\) independent?
+
+**Solution 10:**
+
+\[\mathrm{P}\big{(}R\big{)}=\frac{26}{52}=\frac{1}{2},\ \ \mathrm{P}\big{(}Q \big{)}=\frac{4}{52}=\frac{1}{13}\]
+
+The event \(R\cap Q\) is selection of a red queen. Since there are two red queens in the deck,
+
+\[\mathrm{P}\big{(}R\cap Q\big{)}=\frac{1}{52}=\frac{1}{26}\]
+
+Since \(\mathrm{P}\big{(}R\big{)}\times\mathrm{P}\big{(}Q\big{)}=\frac{1}{2}\times \frac{1}{13}=\frac{1}{26}=\mathrm{P}\big{(}R\cap Q\big{)}\), \(R\) and \(Q\) are independent.
+
+[MISSING_PAGE_FAIL:12]
+
+**Example 13:**
+
+Two bags each contains 7 balls which are indistinguishable apart from their colour. The first bag contains 4 red and 3 yellow balls and second, 3 red and 4 yellow balls. A ball is chosen at random from the first bag and placed in the second, then after thoroughly mixing, a ball is taken from the second bag and placed in the first. If a ball is now taken from the first bag, what is the probability that it is red?
+
+**Solution 13:**
+
+**Self-Review 5:**
+
+A manufacturer carried out a survey of the defects in their soft toys. It is found that the probability of a toy having poor stitching is 0.03 and that a toy with poor stitching has a probability 0.7 of splitting open. A toy without poor stitching has a probability 0.02 of splitting open.
+
+(i) Draw a tree diagram to represent this information.
+
+(ii) Find the probability that a randomly chosen toy splitting open.
+
+(iii) Find the probability that a randomly chosen toy has exactly one of the two defects, poor stitching or splitting open.
+
+The manufacturer also finds that the fabric can become faded with a probability 0.05 and that this defect is independent of poor stitching or splitting open. A soft toy is chosen at random.
+
+(iv) Find the probability that the soft toy has none of these 3 defects.
+
+[MISSING_PAGE_FAIL:14]
+
+#### 2.2.1 Definition of Conditional Probability
+
+Example 14 illustrated that for two events \(X\) and \(Y\), the conditional probability of \(X\) given \(Y\) is simply the proportion of outcomes in \(X\) that are in \(Y\), i.e. \(\mathrm{P}\big{(}X\,|\,Y\big{)}=\frac{\mathrm{n}\big{(}X\cap Y\big{)}}{\mathrm{n }\big{(}Y\big{)}}\).
+
+If we divide both the numerator and denominator by \(\mathrm{n}\big{(}S\big{)}\), the number of elements in the sample space
+
+\(S\), we get a more useful result \(\mathrm{P}\big{(}X\,|\,Y\big{)}=\frac{\mathrm{n}\big{(}X\cap Y\big{)}}{ \mathrm{n}\big{(}S\big{)}}=\frac{\mathrm{P}\big{(}X\cap Y\big{)}}{\mathrm{P} \big{(}Y\big{)}}\).
+
+If \(X\) and \(Y\) are two events such that \(\mathrm{P}(Y)>0\), then the probability that \(X\) occurs given that \(Y\) has already occurred is given by the conditional probability \(\mathrm{P}\) (\(X\,|\,Y\)) with
+
+\[\mathrm{P}\big{(}X\,|\,Y\big{)}=\frac{\mathrm{P}\big{(}X\cap Y\big{)}}{\mathrm{ P}\big{(}Y\big{)}}\]
+
+Note:
+**(i)**: In general, \(\mathrm{P}\big{(}X\,|\,Y\big{)}\neq\mathrm{P}\big{(}Y\,|\,X\big{)}\) (illustrated in Example 1\(\blacksquare\))
+**(ii)**: \(\mathrm{P}(X\,|\,Y)=\frac{\mathrm{P}(X\cap Y)}{\mathrm{P}(Y)}\)\(\Rightarrow\)\(\mathrm{P}(X\cap Y)=\mathrm{P}(X\,|\,Y)\mathrm{P}(Y)\)
+
+\(\mathrm{P}(Y\,|\,X)=\frac{\mathrm{P}(X\cap Y)}{\mathrm{P}(X)}\)\(\Rightarrow\)\(\mathrm{P}(X\cap Y)=\mathrm{P}(Y\,|\,X)\mathrm{P}(X)\)
+
+When would
+
+\(\mathrm{P}\big{(}X\,|\,Y\big{)}=\mathrm{P}\big{(}Y\,|\,X\big{)}\)?
+
+Example 15: **[J86/2/6 modified]**: A game is played with an ordinary six-sided die. A player throws this die, and if the result is 2, 3, 4 or 5, that result is the player's score. If the result is 1 or 6, the player throws the die a second time and the sum of the two numbers resulting from both throws is the player's score. Events \(A\) and \(B\) are defined as follows:
+
+\(A:\) the player's score is 5, 6, 7, 8 or 9;
+
+\(B:\) the player has two throws.
+
+Show that \(\mathrm{P}\big{(}A\big{)}=\frac{1}{3}\).
+
+Find (i) \(\mathrm{P}\big{(}A\cap B\big{)}\), (ii) \(\mathrm{P}\big{(}A\cup B\big{)}\), (iii) \(\mathrm{P}\big{(}A\,|\,B\big{)}\), (iv) \(\mathrm{P}\big{(}B\,|\,A\big{)}\) and (v) \(\mathrm{P}\big{(}B\,|\,A^{*}\big{)}\).
+
+[MISSING_PAGE_EMPTY:16]
+
+**Example 16:**
+
+A bag contains 20 balls, 10 of which are red, 8 of which are white and 2 of which are blue. The balls are indistinguishable apart from the colour. Two balls are drawn in succession, without replacement. Using a tree diagram or otherwise, find the probability that
+
+**(i)**: the first ball is blue and the second ball is white,
+**(ii)**: the second ball is white given that the first ball is blue,
+**(iii)**: one ball is blue and the other is white,
+**(iv)**: the second ball drawn is red,
+**(v)**: the second ball drawn is red if it is known that the first ball drawn is not blue.
+
+**Solution 16:**
+
+(i) \(\text{P}(\text{the 1st ball is blue and the 2nd ball is white})\)
+
+\(\text{= P}(BW)\)
+
+\(\text{= }\frac{2}{20}\times\frac{8}{19}=\frac{4}{95}\)
+
+(ii) \(\text{P}(\text{2nd ball is white }|\text{ 1st is blue})\)
+
+\(\text{= }\frac{\text{P}\left(\text{2nd ball is white and 1st is blue}\right)}{\text{P}\left(\text{1st is blue}\right)}\)
+
+\(\text{= }\frac{2}{20}\times\frac{8}{19}\)
+
+\(\text{= }\frac{8}{19}\)
+
+[MISSING_PAGE_EMPTY:18]
+
+[MISSING_PAGE_FAIL:19]
+
+**Example 18: [J91/2/6 modified]**
+
+A choir has 7 sopranos, 6 altos, 3 tenors and 4 bases. The sopranos and altos are women and the tenors and bases are men. At a particular rehearsal, three members of the choir are chosen at random to make tea.
+
+Find the probability that three sopranos are chosen.
+
+Find the probability that exactly one bass is chosen.
+
+Find the probability that the chosen group contains exactly one tenor or exactly one bass (or both).
+
+Find the probability that the chosen group contains exactly one tenor, given that it contains exactly one bass.
+
+**Solution 18:**
+
+7 sopranos, 6 altos \(\rightarrow\) 13 women
+
+3 tenors, 4 bases \(\rightarrow\) 7 men
+
+Alternatively, we can also solve part (i)
+
+\(\mathrm{P}\big{(}3\ \mathrm{sopranos}\big{)}=\frac{7}{20}\bigg{(}\frac{6}{19} \bigg{)}\bigg{(}\frac{5}{18}\bigg{)}=\frac{7}{228}\) and also
+
+adopt a similar approach for the other parts of the question but we choose not to since **when**
+
+**ordering is not important, the combinatorics**
+
+**method is preferred.**
+
+When the question is phrased in the form of
+
+\(\mathrm{P}\big{(}A\ \mathrm{or}\ B\ \mathrm{(or\ both)}\big{)}\), it refers to \(\mathrm{P}\big{(}A\cup B\big{)}\).
+
+\(=\mathrm{P}\big{(}\mathrm{exactly\ 1\ tenor}\big{)}+\mathrm{P}\big{(} \mathrm{exactly\ 1\ bass}\big{)}-\mathrm{P}\big{(}\mathrm{exactly\ 1\ tenor\ \&\ 1\ bass}\big{)}\)
+
+\(=\)
+
+[MISSING_PAGE_EMPTY:21]
+
+[MISSING_PAGE_EMPTY:22]
+
+[MISSING_PAGE_EMPTY:23]

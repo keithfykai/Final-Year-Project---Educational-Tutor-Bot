@@ -1,0 +1,371 @@
+**Topic 8**: _Temperature and Ideal Gases_
+
+_Guiding Questions:_
+
+_What is the difference between temperature and heat? What is internal energy?_
+
+_How can we define a simple model of a gas that is valid for real gases under certain assumptions?_
+
+_How can we relate microscopic behaviour of gas molecules to the macroscopic properties of a gas?_
+
+**Content**:
+
+\(\bullet\) Thermal equilibrium
+
+\(\bullet\) Temperature scales
+
+\(\bullet\) Equation of state
+
+\(\bullet\) Kinetic theory of gases
+
+\(\bullet\) Kinetic energy of a molecule
+
+**Learning Outcomes**:
+
+Candidates should be able to:
+
+(a) show an understanding that regions of equal temperature are in thermal equilibrium.
+
+(b) explain how empirical evidence leads to the gas laws and to the idea of an absolute scale of temperature (i.e. the thermodynamic scale that is independent of the property of any particular substance and has an absolute zero).
+
+(c) convert temperatures measured in degrees Celsius to kelvin: \(T/K=T/\,^{\circ}C+273.15\).
+
+(d) recall and use the equation of state for an ideal gas expressed as \(pV=nRT\), where \(n\) is the amount of gas in moles.
+
+(e) state that one mole of any substance contains 6.02 x \(10^{23}\) particles and use the Avogadro number N\({}_{\rm A}=6.02\) x \(10^{23}\,\)mol\({}^{-1}\).
+
+(f) state the basic assumptions of the kinetic theory of gases.
+
+(g) explain how molecular movement causes the pressure exerted by a gas and hence derive the relationship \(\,pV=\frac{1}{3}\,Nm<c^{2}>\), where \(N\) is the number of gas molecules (a simple model considering the one-dimensional collisions and then extending to three dimensions using \(<{c_{x}}^{2}>=\frac{1}{3}<c^{2}>\) is sufficient).
+
+(h) recall and apply the relationship that the mean kinetic energy of a molecule of an ideal gas is proportional to the thermodynamic temperature (i.e. \(\frac{1}{2}\,m<c^{2}>=\frac{3}{2}\,kT\)) to new situations or to solve related problems.
+
+## Introduction
+
+Heat and temperature are often used interchangeably in everyday language. However, these terms have different and specific meanings in physics. Macroscopically, temperature can be defined in terms of its measurement, while heat refers to the energy transferred between two systems at different temperatures. Linking these two ideas is the zeroth law of thermodynamics, which states that when two objects at different temperature are placed in thermal contact, there will be energy exchange between them until thermal equilibrium is reached. The zeroth law allows the use of thermometers to measure temperature. When thermal equilibrium is achieved, the thermometer reflects its own temperature as well as the temperature of the other body that it is in thermal contact with.
+
+_(a) show an understanding that regions of equal temperature are in thermal equilibrium._
+
+**Temperature** is a measure of degree of hotness of an object. Thermal energy moves from objects at a higher temperature to objects at a lower temperature.
+
+Note: temperature does NOT measure the amount of thermal energy in an object. It only indicates in which direction thermal energy will flow unaided.
+
+Temperature is a fundamental quantity (i.e. it cannot be defined from other physical quantities) that measures the degree of hotness of a body as indicated on a calibrated scale. When two systems have different temperatures, a net thermal energy is transferred from the system at a higher temperature to a system at a lower temperature.
+
+**Heat** is energy that flows from a higher-temperature object to a lower-temperature object because of differences in temperature.
+
+Two systems are in thermal contact with each other if there is a mechanism for the transfer of thermal energy (i.e. by conduction, convection or radiation). Thermal contact may not necessarily mean physical contact only as thermal energy can be transmitted even through a vacuum by radiation (e.g. in space!).
+
+When two objects in thermal contact has no net heat transfer between them, they are said to be in **thermal equilibrium** and are at the same temperature.
+
+The **zeroth law of thermodynamics** states that if objects A and B are separately in thermal equilibrium with object C, then object A and B are in thermal equilibrium with each other.
+
+Object C can function as a measuring device known as a thermometer, and the temperature can be measured on a suitable temperature scale.
+
+_Watch this video about Heat & Temperature!_* _explain how empirical evidence leads to the gas laws and to the idea of an absolute scale of temperature (i.e. the thermodynamic scale that is independent of the property of any particular substance and has an absolute zero)._
+
+Therometers are devices that are used to measure the temperature of a system. All thermometers are based on the principle that some physical property (known as thermometric property) of a system changes as the system's temperature changes.
+
+**Empirical temperature scale** is a scale of temperature that is based on the variation with temperature of a property of a substance, _assuming_ that the property varies linearly with temperature.
+
+How do we set up an empirical temperature scale?
+
+_Step 1: Choose an appropriate thermometric property._
+
+We choose a physical property that varies with temperature. This property must be reproducible.
+
+_Examples of Thermometric Quantities are:_
+
+* Volume of a fixed mass of liquid: Liquid-in-glass thermometer
+* Resistance of a metal: Platinum resistance thermometer
+
+* Pressure of a fixed mass of gas at constant volume: Constant volume gas thermometer
+* EMF produced between junctions of dissimilar metals that are at different temperatures:
+
+[MISSING_PAGE_POST]
+
+### Step 2: Select two fixed temperature points.
+
+We then choose an upper point and a lower point with which we will calibrate our thermometer from. For example, on the **Celsius temperature** scale, these two fixed points are the ice point of water, which is assigned to be 0 \({}^{\circ}\)C, and the steam point of water, which is assigned to be 100 \({}^{\circ}\)C.
+
+### Step 3: Calibrate the thermometer.
+
+Lastly, we calibrate the thermometer by placing it in systems of the lower and upper fixed points. The values of the thermometric quantity at these temperatures are recorded. The value at the lower fixed point is \(\mathbf{X_{o}}\) and that of the upper fixed point is \(\mathbf{X_{too}}\). We then **assume a linear relationship** between these two points.
+
+Illustration:
+
+Using similar triangles or gradient formula, the following relationship can be obtained:
+
+\[\theta=\frac{L_{o}-L_{0}}{L_{100}-L_{0}}\times 100\]
+
+In general, for all thermometers,
+
+\[\theta=\frac{X_{o}-X_{0}}{X_{100}-X_{0}}\times 100\]
+
+\[X_{o}\]
+
+Value of thermometric quantity at temp \(\theta\)
+
+Value of thermometric quantity at ice point
+
+\[X_{too}\]
+
+Value of thermometric quantity at steam point
+
+**Example 1**
+
+At ice-point, the mercury column of an unmarked thermometer has a height of 2.0 cm. At boiling point, the mercury column has a height of 24.0 cm. What is the temperature when the mercury column reads 18.0 cm? (Ans: 72.7 \({}^{\circ}\)C)
+
+**Example 2**
+
+A resistance thermometer gives a resistance of 20 \(\Omega\) when the temperature is known to be -10 \({}^{\circ}\)C. When the temperature is 110 \({}^{\circ}\)C, the resistance thermometer has a resistance of 500 \(\Omega\). What is the temperature when the resistance is 360 \(\Omega\). (Ans: 75 \({}^{\circ}\)C)
+
+_The problem with empirical scales_
+
+Although different thermometers agree with one another at the fixed points, they may disagree at other temperatures due to their possibly non-linear variation with temperature.
+
+**Absolute zero** is the temperature at which all substances have minimum internal energy.
+
+**The absolute temperature scale or thermodynamic temperature scale does not depend on the thermometric property of any particular substance and has absolute zero and triple point of water as fixed points.**
+
+**The triple point of water is the particular temperature and pressure (273.16 K, 4.58mmHg) at which the three states of water (solid, liquid and vapour states) can co-exist in equilibrium.**
+
+**Properties of the Absolute scale:**
+
+1. **The absolute or thermodynamic scale is based on the theoretical efficiency of a perfectly reversible heat engine. It is theoretical and hence is not based on any thermometric property.**
+2. **The lower fixed point is the absolute zero to which a value of 0 K is allocated. No temperature at this value and lower could be attained. Hence, at 0 K, all substances have a minimum internal energy.**
+3. **The upper fixed point is the Triple Point of Water, to which a value of 273.16 K is allocated.**
+3. _convert temperatures measured in degrees Celsius to kelvin: T/K = T/ ^C + 273.15._
+
+_Watch this video on temperature conversions! Remember that Fahrenheit is not in our syllabus!_
+
+**To convert temperature measured in Celsius scale to thermodynamic scale (in Kelvins)**
+
+**T/K = 0/ ^C + 273.15*** _recall and use the equation of state for an ideal gas expressed as_ \(\mathit{pV}=\mathit{nRT}\)_, where_ \(n\) _is the amount of gas in moles._
+
+* _Watch this video to learn more about the three laws and the Ideal Gas Law!_
+
+For a gas, it is useful to know how the quantities volume \(V\), pressure \(p\), and temperature \(T\) are related for a fixed amount of gas. In general, the equation that relates these quantities, called the _equation of state_, is very complicated. However, when the pressure is sufficiently low and temperature sufficiently high, the equation of state can be easily found experimentally. Such a gas is known as an ideal gas, and these experimental observations are summarised below:
+
+*
+
+[MISSING_PAGE_EMPTY:8]
+
+**Example 6**
+
+An ideal gas exerts a pressure of 60Pa when its temperature is 400 K and the number of molecules present per unit volume is \(N\).
+
+Another sample of the same gas exerts a pressure of 30 Pa when its temperature is 300 K. How many molecules are present in unit volume of this second sample?
+
+(Ans: 0.667 \(N\) molecules per m\({}^{3}\))
+
+**Example 7**
+
+Two bulbs, X of volume 100 cm\({}^{3}\) and Y of volume 50 cm\({}^{3}\), are connected with a tube of negligible volume. A valve prevents gas to flow between the two bulbs. Initially bulb X is filled with an ideal gas at 10 'C to a pressure of 3x10\({}^{5}\) Pa. Bulb Y is filled with the same ideal gas at 100 'C to a pressure of 1x10\({}^{5}\) Pa. The valve is opened and the temperature of A and B are maintained at their initial temperatures. Determine the new equilibrium pressure of the system.
+
+_Watch this video on the kinetic theory of gases!_
+
+Some symbols used might be different so just follow the notes when presenting your answer:)
+
+_Assumption (a) was not mentioned in the video but please study it as well!_
+
+_(f) state the basic assumptions of the kinetic theory of gases._
+
+So far, we were only concerned with the macroscopic states (pressure, volume, temperature) of the gases. However, we know from _Brownian motion (see appendix for more details)_ that gases actually consist of moving molecules. The kinetic theory of gases is a theoretical model that seeks to explain what gave rise to the states of gases on a microscopic(molecular) level.
+
+Before we start, we need to state the **assumptions of kinetic theory of gases**:
+
+1. All gases consist of a very large number of atoms or molecules.
+2. The atoms or molecules behave as if they are hard, perfectly elastic, identical spheres.
+3. There are no forces of attraction or repulsion between atoms or molecules unless they are in collision with each other or with the walls of the containing vessel.
+4. The molecules are in constant, random motion and obey Newton's laws of motion.
+5. Total volume of atoms or molecules is negligible compared with the volume of the containing vessel.
+6. Time of collisions is negligible compared with time between collisions.
+
+**(g)**: _explain how molecular movement causes the pressure exerted by a gas and hence derive the relationship_ \(\rho V=\frac{1}{3}\,Nm<c^{2}>\)_, where N is the number of gas molecules (a simple model considering the one-dimensional collisions and then extending to three dimensions using_ \(<c_{x}^{\ 2}>=\frac{1}{3}<c^{2}>\)_is sufficient)._
+
+Suppose there is a cubical box of sides \(l\), containing \(N\) molecules of a gas (mass of each molecule = _m_).
+
+By considering the elastic collision of one molecule with a wall, we note that the change in momentum of the molecule due to the collision is
+
+\(\Delta\rho=-2\ m\ c_{x}\)
+
+where \(c_{x}\) is the x component of the molecule's velocity and direction to the right is taken as positive.
+
+Conservation of linear momentum tells us that the wall experiences a change in momentum
+
+\(\Delta\rho_{wall}=2\ m\ c_{x}\)
+
+The next time the same molecule collides with the same wall, the molecule would have t ravealed a total distance of _2l_ in the x direction. Hence time between collisions
+
+\(\Delta t=\frac{2l}{c_{x}}\)
+
+Therefore, rate of change of momentum for the wall due to one molecule is
+
+\(\frac{\Delta\rho_{wall}}{\Delta t}=\left(2mc_{x}\right)\left(\frac{c_{x}}{2l} \right)=\frac{m{c_{x}}^{\ 2}}{l}\)
+
+According to Newton's 2\({}^{\text{nd}}\) Law, total force acting on the wall is rate of change of momentum for the wall due to all \(N\) molecules
+
+\(F_{wall}=\frac{m{c_{x}}^{\ 2}}{l}+\frac{m{c_{x}}^{\ 2}}{l}+\frac{m{c_{x }}^{\ 2}}{l}+...\)
+
+If we now define mean-square-speed as \(\left\langle{c_{x}}^{\ 2}\right\rangle=\frac{{c_{x}}^{\ 2}+{c_{x}}^{\ 2}+...+{c_{x}}^{\ 2}}{N}\),
+
+\(F_{wall}=\frac{Nm}{l}\left\langle{c_{x}}^{\ 2}\right\rangle\)
+
+Pressure on the wall is force acting per unit area, hence
+
+\(P_{wall}=\frac{F_{wall}}{l^{2}}=\frac{Nm}{V}\left\langle{c_{x}}^{\ 2}\right\rangle\)Applying the Pythagoras Theorem to the 3D velocity vector for any molecule leads to
+
+\[c^{2}=c_{x}{}^{2}+c_{y}{}^{2}+c_{z}{}^{2}\] \[<c^{2}> = <c_{x}{}^{2}>+<c_{y}{}^{2}>+<c_{z}{}^{2}>\]
+
+However, since \(N\) is large and the molecules are moving randomly (with no preference in any direction), \(<c_{x}{}^{2}>=<c_{y}{}^{2}>=<c_{z}{}^{2}>\).
+
+Therefore,
+
+\[\left<c_{x}{}^{2}\right>=\frac{1}{3}\left<c^{2}\right>\]
+
+which leads us to
+
+\[pV=\frac{1}{3}Nm\left<c^{2}\right>\]
+
+* _recall and apply the relationship that the mean kinetic energy of a molecule of an ideal gas is proportional to the thermodynamic temperature (i.e. \(\frac{1}{2}m<c^{2}>=\frac{3}{2}kT\) ) to new situations or to solve related problems._ If we combine this equation with the equation of state, we deduce that \[pV=\frac{1}{3}Nm\left<c^{2}\right>=NkT\] (multiplying both sides by \(\frac{3}{2}\) ) \[\frac{1}{2}m\left<c^{2}\right>=\frac{3}{2}kT\] which tells us that the average kinetic energy of an ideal gas molecule is \(\frac{3}{2}kT\).
+
+For 1 molecule, \[\frac{1}{2}m\left<c^{2}\right>=\frac{3}{2}kT\] For N molecules, total KE of all \(N\) gas molecules \[= N\times\left(\frac{1}{2}m\left<c^{2}\right>\right)=\frac{3}{2}NkT=\frac{3}{2}nRT\] We usually use \(<c^{2}>\) instead of the usual \(v^{2}\) for square speed. Different molecules in an ideal gas actually move at different speeds. Unfortunately, the simpler 'arithmetic mean' speed does not give us the true average speed of all the gas molecules. Based on the conservation of KE, the root-mean-square speed, which is written as \(\vee\)\(<c^{2}>\) was instead found to be the true average speed of the gas molecules.
+
+**Mean Square Speed \(<\)\(c^{2}\)\(>\)**
+
+Consider \(N\) molecules in the gas with respective molecular speeds \(c_{1}\), \(c_{2}\), \(c_{3}\), \(c_{4}\)....\(.c_{N}\)
+
+_The mean square speed \(<\)\(c^{2}\)\(>\) of the molecules is the mean of the square of the speeds,_
+
+\[<\)\(c^{2}\)\(>\)\(=\dfrac{{c_{1}}^{2}+{c_{2}}^{2}+{c_{3}}^{2}+...+{c_{N}}^{2}}{N}\)
+
+**Root Mean Square Speed \(c_{\text{rms}}\)**
+
+The root mean square speed \(c_{\text{rms}}\) of the molecules is
+
+\[c_{\text{rms}}\)\(=\sqrt[]{<\,{\rm c}^{2}\,>}\)\(=\sqrt[]{{c_{1}}^{2}+{c_{2}}^{2}+{c_{3}}^{2}+...+{c_{N}}^{2}}\)
+
+**Example 8**
+
+Ten particles have the following speeds in m s\({}^{\text{-}1}\):
+
+1.0 7.0 9.0 5.0 5.0 6.0 6.0 5.0 3.0 4.0
+
+Calculate (a) the mean speed, and (b) the r.m.s. speed.
+
+**Example 9**
+
+The molar mass of hydrogen gas is 2.016 g. A container of 1 mole of hydrogen gas is at pressure 2.00 x 10\({}^{5}\) Pa and temperature 300 K. Find the density of the gas and the \(c_{ms}\) of the hydrogen gas molecules.
+
+**Example 10**
+
+Find the relationship between root-mean-square speed \(c_{ms}\) and
+
+(a) the temperature for a fixed mass of gas;
+
+(b) mass of different gases at the same temperature;
+
+(c) temperature and molar mass;
+
+(d) Hence, deduce the \(c_{ms}\) of a gas at 450.0 K given that the \(c_{ms}\) of the same gas at 50.0 K is 800 ms\({}^{-1}\).
+
+**Example 11**
+
+Consider 1 mole of oxygen (molar mass = 32 g) at a temperature of 300 K in a cubical container of sides 10 cm. Calculate
+
+(a) the average KE of a molecule;
+
+(b) the total KE;
+
+(c) the average value of the square of the speeds;
+
+(d) the root-mean-square speed;
+
+(e) the average momentum of a molecule;
+
+(f) the average force exerted by the molecules on the walls of the container using your answer in (e);
+
+(g) the average pressure exerted by the molecules using your answer in (f). Verify this answer using the equation of state.
+
+[MISSING_PAGE_EMPTY:16]
+
+### Why was the centigrade scale abandoned?
+
+The problem was that the ice point, the "temperature of melting ice...at standard atmospheric pressure," which was used to define zero degrees on the centigrade scale, cannot be measured with enough precision. Ideally one takes the temperature of a bath of pure, air-saturated water containing pure melting ice. But as ice melts it surrounds itself with a layer of insulating meltwater that is not air-saturated. The bath cannot be stirred because that would heat it.
+
+In contrast, the Kelvin scale has a nearby set point, the triple point of water. The triple point is the temperature and pressure at which water can exist simultaneously as a solid, liquid and gas. Measurements of the temperature of the triple point are reproducible with an variation of 0.000 050 K or less. By the definition of the Kelvin scale the triple point of water is 273.16 kelvin. Replacing the hard-to-measure ice point with the triple point made possible more precise measurements. To indicate the change, the "zero is freezing, 100 is boiling" scale was given a new name.
+
+### Annex B: Evidence of Continuous Random Molecular Motion - Brownian Motion
+
+According to the Kinetic Theory, gases are made up of molecules and that these molecules are in continuous random motion.
+
+Brownian motion gives direct evidence for the perpetual molecular movement. It is named after biologist Robert Brown who is credited with its discovery in 1827.
+
+While he was observing tiny pollen grains suspended in water under a microscope Brown noted that the tiny grains moved about in tortuous paths even though the water appeared to be perfectly still. The tiny pollen grains jostled about by the vigorous barrage of rapidly moving molecules of water.
+
+Brownian motion can also be seen clearly in the motion of smoke particles in air and gives direct evidence of collisions between its individual molecules and the tiny smoke particles.
+
+Figure on the left shows an arrangement for viewing smoke particles in air.
+
+A beam of light is directed at a cell containing the smoke. Some of the light is reflected by the particles into the microscope. An observer looking down the microscope sees the particles as pinpoints of light. The particles move about in an erratic, unpredictable way, continually changing directions at random.
+
+The cause of the motion is the continual impacts on each smoke particle by air molecules that are too small to be seen. The smoke particles are much larger than the air molecules so each smoke particle is bombarded from different sides by air molecules, but the bombardments are random and uneven. The result is that each smoke particle is pushed around haphazardly. The random nature of the bombardments is because the air molecules move about at random; the uneven nature is because the smoke particles are small enough to make even bombardment unlikely.
+
+## Appendix A
+
+**Tutorial Questions**
+
+**Temperature**
+
+1. Two objects, with different sizes, masses and temperatures, are placed in thermal contact. Energy travels (a) from the larger object to the smaller object. (b) from the object with more mass to the one with less. (c) from the object at higher temperature to the object at lower temperature. Which statement(s) (a), (b) or (c) is/are true?
+2. Is it possible for two objects to be in thermal equilibrium if they are not in contact with each other? Explain.
+3. How does the absolute (Thermodynamic) scale of temperature differ from the empirical temperature scale?
+4. The table below gives data for two thermometers at three different temperatures (the ice-point, the steam point and room temperature). **Types of**
+
+**Thermoder**
+
+**Property**
+
+**Tice point**
+
+**steam point**
+
+**room temp**
+
+Gas
+
+Pressure in mmHg
+
+760
+
+1040
+
+795
+
+Thermistor
+
+Current in mA
+
+12.0
+
+54.0
+
+15.0
+
+(a) Calculate the temperature of the room temperature according to each thermometer. (b) State why the thermometers disagree in their value for room temperature. **Ideal Gases**
+
+5. A partially inflated balloon contains 500 m\({}^{3}\) of helium at 27 'C and 1.0 atm pressure. What is the volume of the helium at height where the pressure is 0.50 atm and the temperature is -3.0 'C? [900 m\({}^{3}\)]
+6. A uniform capillary tube, closed at one end, contained air trapped by a thread of mercury 85 mm long. When the tube was held horizontal, the length of the air column was 50 mm; when it was held vertically with the closed end downwards, the length was 45 mm. Taking g to be 10 m.s\({}^{-2}\) and the density of mercury = 14 x 10\({}^{3}\) kg.m\({}^{-3}\), find the atmospheric pressure. [1.1 x 10\({}^{5}\) Pa]
+7. Two identical gas cylinders each contain 20 kg of compressed air at 1000 kPa pressure and 275 K. One of the cylinders is fitted with a safety valve which releases air from the cylinder into the atmosphere if the pressure in the cylinder rises above 1100 kPa. The cylinders are then moved to a room where the temperature is 310 K. Calculate 1. the pressure in the cylinder which is not fitted with a safety valve, 2. the mass of gas lost from the cylinder fitted with the safety valve. [1127kPa, 0.48 kg]8. Two containers of volume V and 4V are connected by a capillary tube. Initially both containers are at 280 K and contain air at a pressure of 101 kPa. The larger container is now warmed to 350 K and the smaller container cooled to 210 K. i. Why may we not apply pV/T = constant to either container separately? ii. Calculate the final pressure in both containers. [111 kPa]
+9. A car tire of volume 1.60x10-2 m\({}^{3}\) contains air at a temperature of 30.0 'C and a pressure of 2.60x10\({}^{5}\) Pa. A foot pump is used to pump air into the tire to increase the pressure to 3.10x10\({}^{5}\) Pa. Each stroke of the pump pushes 3.0x10\({}^{4}\) m\({}^{3}\) of air at 1.0x10\({}^{5}\) Pa into the tire. The temperature of the air stays constant at 30.0 'C throughout the whole process. You may assume that air behaves as an ideal gas. i. Calculate the initial number of moles of air that the tire contains. ii. Calculate the number of strokes needed to raise the pressure of the car tire to 3.10x10\({}^{5}\) Pa. iii. Explain whether the answer calculate in the previous section is a minimum or a maximum number of strokes required. [1.65 mol, 27, minimum]
+10. Helium gas occupies a volume of 0.040 m\({}^{3}\) at a pressure of 2.0x10\({}^{5}\) Pa and temperature of 300 K. Calculate 1. The mass of helium 2. The rms speed of the molecules 3. The rms speed at 432 K when the gas is heated at constant pressure to this temperature 4. The rms speed of hydrogen molecules at 432 K Take the relative molecular mass of hydrogen and helium to be 2 and 4 respectively. [12.8 g, 1367 m.s-1, 1641 m.s-1, 2321 m.s-1]
+11. The atomic mass of Helium is 4.0 g. In a sample of Helium at 30 'C, find 1. the root mean square speed of an atom of Helium. 2. the mean average translational kinetic energy of a Helium atom in this gas. 3. the total internal energy of the atoms in this gas sample, given that the mass of gas involved is 50 g. Assume the gas behaves as an ideal gas. [1374 m.s-1, 6.27x10\({}^{21}\) J, 4.72x10\({}^{4}\) J]
+12. The molecules of two ideal gases A and B have an average KE of 6.2x10\({}^{21}\) J at 27 'C. Molecular masses of gas A and B are 1.7x10\({}^{27}\) kg and 3.0x10\({}^{26}\) kg respectively. 1. Determine the root mean square speeds of the molecules of A and B. 2. The escape velocity from Earth is about 11 km s-1 and from Jupiter is 60 km s-1. Which of the gases, A or B is likely to be found in the Earth's atmosphere and which in Jupiter's? Why? [643 m.s-1]
+
+Data-based Question
+13. An object that is at a higher temperature than its surroundings loses thermal energy by emitting electromagnetic radiation. For loss of thermal energy as electromagnetic radiation, the intensity \(I_{\lambda}\) of the emitted radiation of wavelength \(\lambda\) varies with wavelength as shown in Fig. A.
+
+Figure A shows the variation of \(\lambda\), with \(\lambda\) for the body when it is at 1000 K. The distribution of intensity is different at different temperatures. This is shown in Fig. B below.
+
+[MISSING_PAGE_EMPTY:22]

@@ -1,0 +1,196 @@
+**Raffles Institution**
+
+**H2 Mathematics (9758)**
+
+**2016 Year 5**
+
+**Chapter 4A: Complex Numbers I**
+
+SYLLABUS INCLUDES
+
+* extension of the number system from real numbers to complex numbers
+* complex roots of quadratic equations
+* four operations of complex numbers expressed in the form (\(x\) + iy)
+* equating real parts and imaginary parts
+* conjugate roots of a polynomial equation with real coefficients
+* representation of complex numbers in the Argand diagram
+* calculation of modulus (\(r\)) and argument (\(\theta\)) of a complex number
+
+PRE-REQUISITES
+
+* Trigonometry
+* Coordinate Geometry
+* Vectors
+
+**CONTENT**
+
+**1** **Introduction to the Imaginary Number i**
+
+**2** **Complex Numbers**
+
+2.1 Definition of a Complex Number
+
+2.2 Operations on Complex Numbers
+
+2.3 Complex Conjugates
+
+2.4 Some Properties of Complex Conjugates
+
+**3** **Complex Roots of Polynomial Equations**
+
+**4** **Geometrical Representation of a Complex Number**
+
+4.1 Argand Diagram
+
+4.2 Geometrical Representation of Addition and Subtraction of Complex Numbers
+
+4.3 Modulus and Argument of a Complex Number
+
+**Appendix:** **Proof of Result that Non-Real Roots of a Polynomial Equation with Real Coefficients occur in Conjugate Pairs
+
+**Introduction to the Imaginary Number i**
+
+We know that the solution to the equation \(x^{2}+1=0\) cannot be a real number, as the square of a real number cannot be negative. We say \(x^{2}=-1\) has no real roots.
+
+In order to solve the above equation, we need to find a "number" whose square is -1.
+
+Let's suppose such a "number" exists.
+
+Since we imagined it, let's call this number the **imaginary number i**.
+
+We define i as
+
+Hence the solutions to \(x^{2}+1=0\) are \(x=\pm\sqrt{-1}=\pm i\).
+
+**Example 1**
+
+**(a)** If i = \(\sqrt{-1}\), simplify i\({}^{2}\), i\({}^{3}\), i\({}^{4}\), i\({}^{2000}\), i\({}^{2010}\), i\({}^{2011}\), i\({}^{2012}\).
+
+**Solution**
+
+\(\{\begin{array}{l}\
+
+[MISSING_PAGE_EMPTY:3]
+
+### Operations on Complex Numbers
+
+In this section, let \(a,\ b,\ c,\ d\in\mathbb{R}\) and \(z_{i},\ z_{z},\ z_{y}\in\mathbb{C}\).
+
+**(a)**: **Equality of Two Complex Numbers**
+
+2 complex numbers are equal if and only if their corresponding real and imaginary parts are equal, i.e. \(a+\mathrm{i}b=c+\mathrm{i}d\)\(\ \ \ \ \Leftrightarrow\ \ \ a=c\) and \(b=d\).
+
+For example, if \(x+\mathrm{i}y=5-3\mathrm{i}\), we have \(x\cdot\mathrm{i}\cdot\mathrm{i}\cdot\mathrm{i}\cdot\mathrm{i}\cdot\mathrm{i}\).
+**(b)**: **Addition of Complex Numbers**
+
+\((a+\mathrm{i}b)+(c+\mathrm{i}d)=(a+c)+\mathrm{i}(b+d)\)
+
+Addition of complex numbers is commutative: \(z_{1}+z_{2}=z_{2}+z_{1}\)
+
+Addition of complex numbers is associative: \((z_{1}+z_{2})+z_{3}=z_{1}+(z_{2}+z_{3})\)
+
+For example, \((3+4\mathrm{i})+(1-\mathrm{i})=\)
+**(c)**: **Subtraction of Complex Numbers**
+
+\((a+\mathrm{i}b)-(c+\mathrm{i}d)=(a-c)+\mathrm{i}(b-d)\)
+
+For example, \((3+4\mathrm{i})-(1-\mathrm{i})=\)
+**(d)**: **Multiplication of Complex Numbers**
+
+\((a+\mathrm{i}b)(c+\mathrm{i}d)=ac+\mathrm{i}ad+\mathrm{i}bc+\mathrm{i}^{2}bd= ac+\mathrm{i}ad+\mathrm{i}bc+(-1)bd\)
+
+Multiplication of complex numbers is commutative: \(z_{1}z_{2}=z_{2}z_{1}\)
+
+Multiplication of complex numbers is associative: \((z_{1}z_{2})z_{3}=z_{1}(z_{2}z_{3})\)
+
+Multiplication of complex numbers is distributive over addition: \(z_{1}(z_{2}+z_{3})=z_{1}z_{2}+z_{1}z_{3}\)
+
+For example, \((3+4\mathrm{i})(1-\mathrm{i})=\)
+
+\((3+4\mathrm{i})^{2}=(3+4\mathrm{i})(3+4\mathrm{i})=\)
+
+**Remarks:**: The above manipulations of complex numbers are the same as algebraic manipulations of expressions such as \(\big{(}a+b\big{)}\big{(}c+d\big{)},\big{(}a+b\big{)}\pm\big{(}c+d\big{)}\) and so on.
+
+The only additional consideration is \(\mathrm{i}^{2}=-1\).
+
+We can use the GC to perform operations on complex numbers
+
+\begin{tabular}{|l|c|c|} \hline
+**Operation** & **Example** & **GC Screen** \\ \hline Multiplication of complex numbers & \((3+4i)(1-i)\) & \((3+4i)(1-i)\) \\ (Press [20d] to get i ) & & \\ \hline Square of a complex number & \((3+4i)^{2}\) & \((3+4i)^{2}\) \\ (Only works in Classic, not in MathPrint) & & \\ \hline \end{tabular}
+
+How did the GC obtain \(\dfrac{3+4i}{1-i}=-0.5+3.5i\)?
+
+**(e)** & **Division of Complex Numbers** \\ Recall when we tried to simplify \(\dfrac{2-\sqrt{3}}{1+\sqrt{2}}\), we multiply it by \(\dfrac{1-\sqrt{2}}{1-\sqrt{2}}\) so that we could **Tationalize the denominator.** \\ For \(\dfrac{3+4i}{1-i}\), we will multiply it by \(\dfrac{1+i}{1+i}\), so that \\ \(\dfrac{3+4i}{1-i}=\frac{(\frac{i+1}{1-i})(\frac{i+1}{1-i})}{\frac{i+1}{1-i}}: \frac{i+1}{1-i}:\frac{i+1}{1-i}:\frac{i+1}{1-i}\), \(\frac{i+1}{1-i}\) \\ In general, \(\dfrac{a+ib}{c+id}=\dfrac{a+ib}{c+id}\times\dfrac{c-id}{c-id}=\dfrac{\left(a +ib\right)\left(c-id\right)}{c^{2}-i^{3}d^{2}}=\dfrac{\left(a+ib\right)\left(c -id\right)}{c^{2}+d^{2}}\) \\ \(\mathbf{Remark:}\) & Note that \(c-id\) is chosen based on the denominator of \(\dfrac{a+ib}{c+id}\). \\ We call \(c-id\), the conjugate of \(c+id\).
+
+[MISSING_PAGE_EMPTY:6]
+
+[MISSING_PAGE_FAIL:7]
+
+[MISSING_PAGE_EMPTY:8]
+
+[MISSING_PAGE_EMPTY:9]
+
+[MISSING_PAGE_FAIL:10]
+
+[MISSING_PAGE_EMPTY:11]
+
+[MISSING_PAGE_EMPTY:12]
+
+\[\begin{split}\hline\varepsilon^{2}-5z^{2}+8z-6&=[z-(1+i)] \ [z-(1-i)](z-k)\\ &=(z^{2}-2z+2)(z-k)\\ &=z^{3}-(k+2)z^{2}+(2k+2)z-2k\end{split}\]
+
+Comparing the constant, \(-6=-2k\Rightarrow k=3\)
+
+The other 2 roots are 1+ i and 3.
+
+## 4 Geometrical Representation of a Complex Number
+
+Recall that we represent real number on a number line.
+
+For complex numbers, since there are imaginary numbers, it makes sense for us to have a imaginary number line as well.
+
+### Argand Diagram
+
+A complex number \(z=x+iy\), \(x\), \(y\in\mathbb{R}\) can be represented by the point \(P(x,y)\). This idea was formally introduced by the French mathematician Jean-Robert Argand, and hence the diagram which represents a complex number in this way was named after him.
+
+An **Argand diagram** is similar to the Cartesian plane with the
+
+* Horizontal axis (labeled as Re) representing the real part of \(z\), and
+* Vertical axis (labeled as Im) representing the imaginary part of \(z\).
+
+**Remarks:**
+
+Points on the horizontal axis represent real numbers and points on the vertical axis represent purely imaginary numbers.
+
+On an Argand diagram, complex numbers behave (in terms of additions and subtractions) like 2-D vectors, but they are NOT vectors. In particular, we can divide complex numbers, but we cannot do the same to vectors.
+
+[MISSING_PAGE_FAIL:14]
+
+[MISSING_PAGE_FAIL:15]
+
+[MISSING_PAGE_EMPTY:16]
+
+## Appendix
+
+PROOF OF RESULT THAT NON-REAL ROOTS OF A POLYNOMIAL EQUATION WITH REAL COEFFICIENTS OCCUR IN CONJUGATE PAIRS
+
+Consider the equation
+
+\[a_{n}z^{n}+a_{n-1}z^{n-1}+a_{n-2}z^{n-2}+...+a_{1}z^{2}+a_{0}=0\,,\]
+
+where \(a_{n}\), \(a_{n-1}\), \(a_{n-2}\),..., \(a_{1}\), \(a_{0}\in\mathbb{R}\), \(a_{n}\neq 0\), \(n\in\mathbb{Z}^{*}\).
+
+Suppose \(\beta\) is a non-real root of the equation,
+
+i.e.
+
+\[a_{n}\beta^{n}+a_{n-1}\beta^{n-1}+a_{n-2}\beta^{n-2}+...+a_{1}\beta+a_{0}=0\,.\]
+
+Taking conjugates on both sides of the equation,
+
+\[(a_{n}\beta^{n}+a_{n-1}\beta^{n-1}+a_{n-2}\beta^{n-2}+...+a_{1}\beta+a_{0})^{*}= 0\,*\]
+
+\[(a_{n}\beta^{n})^{*}+(a_{n-1}\beta^{n-1})^{*}+(a_{n-2}\beta^{n-2})^{*}+...+(a_ {1}\beta)^{*}+a_{0}^{*}=0\,*\]
+
+Now \((\beta^{k})^{*}=(\beta^{*})^{k}\
+
+[MISSING_PAGE_EMPTY:18]

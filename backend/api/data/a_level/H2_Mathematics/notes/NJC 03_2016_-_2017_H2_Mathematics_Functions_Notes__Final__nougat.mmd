@@ -1,0 +1,602 @@
+```
+National Junior College National Junior College National 2016 - 2017 H2 Mathematics
+```
+
+**Topic 3: Functions**
+
+_Key Questions to Answer_:
+
+1. What is a function? - _What kinds of relationships hold between x and f(x)? - _What is the difference between a function and a relation?_
+2. How do you define a function? - _What does function notation look like? - _When are two functions equal?_
+3. How do you determine the range of a function? - _Is it sufficient to check the endpoints of the domain? Why?_
+4. What is a one-one function? - _What are the other possible type(s) of relations? - _What makes a one-one function different from the rest?_
+5. What is an inverse function? - _What is the condition for an inverse function to exist? - _Why is this condition necessary?_ - _How do you find the rule of the inverse function? - _How is the domain and range of the inverse function related to that of the original function? - _What is the graphical relationship between a function and its inverse?_
+6. What is a composite function? - _What is the condition for a composite function to exist? - _Why is this condition necessary?_ - _How do you find the rule of a composite function?_ - _What is the domain of a composite function?_ - _How do you find the range of a composite function?_ - _In finding the range, is it sufficient to check the endpoints of the domain? Why?_
+
+Before we begin the topic on Functions, it is important for students to be familiar with the use of set notation to represent a range of values.
+
+## 1 Set Notation
+
+Recall that a set is a collection of distinct elements. The curly brackets "{...}" represent the phrase "the set of...". When several sets are being discussed simultaneously, they can be denoted using capital letters.
+
+```
+
+**Set operators:**
+
+\begin{tabular}{|c|c|c|} \hline
+**Notation** & **Meaning** & **Usage** \\ \hline \(\in\) & (element) that belongs to (set) & \(2\in\{\,0,\,2,\,4\,\}\) \\ \hline \(\cup\) & union (of two sets) & \(\{0\}\cup\{2\}=\{0,2\}\) \\ \hline \(\setminus\) & (set) take away (set) & \(\{0,2\}\setminus\{2\}=\{0\}\) \\ \hline \(\cap\) & intersection (of two sets) & \(\{\,0,\,2,\,4\,\}\cap\{\,0,\,2,\,\}=\{\,0,\,2\,\}\) \\ \hline \end{tabular}
+
+By convention, particular symbols are reserved for the most important sets of numbers:
+
+\begin{tabular}{|c|c|} \hline
+**Symbol** & **Meaning** \\ \hline \(\mathbb{R}\) & Set of real numbers (see Remark 1 below). \\ \hline \(\mathbb{R}^{+}\) & Set of positive real numbers (does not include zero). \\ \hline \(\mathbb{R}^{-}\) & Set of negative real numbers (does not include zero). \\ \hline \(\mathbb{R}^{+}\cup\{0\}\) & Set of non-negative real numbers. \\ \hline \end{tabular}
+**Remarks:**
+
+1. A number that can be represented on the number line is a real number. This means that for any real number \(x,\ -\infty<x<\infty\).
+2. By definition, zero is neither positive nor negative.
+
+\begin{tabular}{|c|c|} \hline
+**WONDER** \\ \hline \(\mathbb{R}^{+}\) & **Answer:**\(\mathbb{Z}\), \(\mathbb{Q}\), \(\mathbb{N}\). \\ \hline \end{tabular}
+
+### Representation of Sets of Values
+
+The use of set builder notation and/or interval notation is helpful to represent a range of values as a set.
+
+\begin{tabular}{|c|c|c|} \hline
+**Range of values** & \multicolumn{2}{c|}{**Equivalent representation as a set of values**} \\ \cline{2-3}  & **Set Builder Notation** & **Interval Notation** \\ \hline \(-2<x<3\) & \(\left\{x\in\mathbb{R}\,|\,-2<x<3\right\}\) & (\(-2\), \(3\)) \\ \hline \(-2\leq x<3\) & \(\left\{x\in\mathbb{R}\,|\,-2\leq x<3\right\}\) & [\(-2\), \(3\)) \\ \hline \(-2\leq x\leq 3\) & \(\left\{x\in\mathbb{R}\,|\,-2\leq x\leq 3\right\}\) & [\(-2\), \(3\)] \\ \hline \(x\leq-2\) & \(\left\{x\in\mathbb{R}\,|\,x\leq-2\right\}\) & (\(-\infty\), \(-2\)) \\ \hline \(x>3\) & \(\left\{x\in\mathbb{R}\,|\,x>3\right\}\) & (\(3\), \(\infty\)) \\ \hline \end{tabular}
+
+In the use of interval notation such as \([a\), \(b)\) or \((a\), \(b)\), note that
+
+\begin{tabular}{l l} \(\bullet\) & \(a<b\), \\ \(\bullet\) & we use round brackets if we want to exclude the extreme values of the range, and \\ \(\bullet\) & we use square brackets if we want to include the extreme values of the range. \\ \hline \end{tabular}
+
+## 8 Special Type of Relations: Functions
+
+### Representations of a Relation
+
+A relation is an association between two sets of data (in our case, they are usually numbers).
+
+A relation can be represented in the following ways.
+
+\begin{tabular}{|c|c|} \hline \begin{tabular}{c} **(i)** \\ \end{tabular} & \begin{tabular}{c} Numerically (as a table of values) \\ Example: \\ \end{tabular} & **(ii)** & Graphically (using a curve or line) \\ 
+\begin{tabular}{c} \(x\) \\ \hline
+0 \\ \hline
+1 \\ \hline
+2 \\ \hline
+3 \\ \hline \end{tabular} & **Note:** This form of representation is useful especially when the inputs are a set of a finite number of discrete values. \\ \hline \begin{tabular}{c} **(iii)** \\ \end{tabular} & Diagrammatically (using set diagram) & **(iv)** & Algebraically (as an equation) \\ Example: & Example: \\ \begin{tabular}{c} \(X\) (Input) \\ \end{tabular} & \begin{tabular}{c} \(Y\) (Output) \\ \end{tabular} & \begin{tabular}{c} \(y=x^{2}\) \\ \(x^{2}+y^{2}=4\) \\ \end{tabular} \\ \end{tabular} & \begin{tabular}{c} \(2\) \\ \end{tabular} & \begin{tabular}{c} \(3\) \\ \end{tabular} & 
+\begin{tabular}{c} \(4\) \\ \end{tabular} \\ \hline \end{tabular}
+
+### Relations versus Functions
+
+**Example 2.2.1**
+
+\begin{tabular}{|c|c|} \hline 
+\begin{tabular}{c} \(x\) \\ \hline
+0 \\ \hline
+1 \\ \hline
+2 \\ \hline
+3 \\ \end{tabular} & 
+\begin{tabular}{c} \(y=x+1\) \\ \(2\) \\ \end{tabular} \\ \hline \end{tabular}
+
+### Relations versus Functions
+
+**Example 2.2.1**
+
+\begin{tabular}{|c|c|} \hline 
+\begin{tabular}{c} \(x\) \\ \hline
+0 \\ \hline
+1 \\ \hline
+2 \\ \hline
+3 \\ \end{tabular} & 
+\begin{tabular}{c} \(y=x+1\) \\ \(2\) \\ \end{tabular} \\ \hline \end{tabular}
+
+### Relations versus Functions
+
+**Example 2.2.1**
+
+\begin{tabular}{|c|c|} \hline 
+\begin{tabular}{c} \(x\) \\ \hline
+0 \\ \hline
+1 \\ \hline
+2 \\ \hline
+3 \\ \end{tabular} & 
+\begin{tabular}{c} \(y=x+1\) \\ \(2\) \\ \end{tabular} \\ \hline \end{tabular}
+
+### Relations versus Functions
+
+**Example 2.2.2**
+
+\begin{tabular}{|c|c|} \hline 
+\begin{tabular}{c} \(x\) \\ \hline
+0 \\ \hline
+1 \\ \hline
+2 \\ \hline
+3 \\ \end{tabular} & 
+\begin{tabular}{c} \(y=x+1\) \\ \(2\) \\ \end{tabular} \\ \hline \end{tabular}
+
+**Note:** This form of representation is useful when the input is an interval of real numbers. \\ \begin{tabular}{c} \(x\) \\ \end{tabular} & 
+\begin{tabular}{c} \(y=x+1\) \\ \(The table above illustrates a relation \(R\) (i.e. \(y=x+1\)) between the elements of two sets of numbers {0,1,2,3} and {1,2,3,4}, namely \(x\) and \(y\). It is obvious that \(R\) maps 0 to 1, 1 to 2, 2 to 3, and 3 to 4. Since each _input_ (i.e. \(x\)-value) is mapped to exactly one _output_ (i.e. \(y\)-value), this relation is a function.
+
+**Example 2.2.2**: The relation depicted in the set diagram above is not a function as the input "0" is mapped to two outputs, namely "1" and "2".
+
+In this topic, our focus is to study functions, which is defined (not so formally) as follows.
+
+A **function** is a relation that has exactly one output for every possible input.
+
+A formal definition for function is given in **Section 2.3**.
+
+### Rule, Domain and Range of a Function
+
+We shall introduce the formal definition of a function.
+
+**Definition 2.3.1** (Function): A relation \(f:X\to Y\) is a function if and only if for each element \(x\in X\), there exists exactly one element \(y\in Y\) such that \(f(x)=y\).
+
+In the above definition, the element \(x\) is mapped to the element \(y\), and \(y\) is said to be the **image** of \(x\).
+
+A function f can be expressed algebraically as
+
+\[f:x\mapsto f(x),\ \ \ x\in X,\]
+
+where \(f(x)\) is the **rule** of the function f, and the set \(X\) is the **domain** ("inputs") of the function f.
+
+The domain of function f is denoted by \(D_{t}\). Alternatively, a function f can be expressed as
+
+\[y=f(x),\ \ x\in X\qquad\text{ or }\qquad f:X\to Y,\ x\mapsto f(x),\]
+
+where the set \(Y\) is the **codomain** of the function f (usually it is the set of real numbers \(\mathbb{R}\)).
+
+[MISSING_PAGE_FAIL:5]
+
+**IMPORTANT:** A function is defined by both its **rule AND domain**.
+
+Note that if the domain of a function is not given explicitly in the question, the convention is that the domain is the set of all numbers for which the rule makes sense and defines a real number.
+
+For example, let \(f(x)=\frac{1}{x}\). If domain is not specified, then take \(D_{t}\) to be \(\mathbb{R}\setminus\left\{0\right\}\).
+
+This choice of domain is also known as the **maximal domain** of a function.
+
+**Example 2.3.4**
+
+It is given that \(f(x)=\ln\left(x+1\right)\). State the maximal domain and its corresponding range of \(f\).
+
+_Solution:_
+
+\(D_{t}=\left(-1,\ \infty\right),\ R_{t}=\mathbb{R}\).
+
+[To help you see this, **sketch the graph** of \(y=\ln\left(x+1\right)\) and observe the range of values of \(y\).]
+
+**IMPORTANT:**
+
+Two functions with the _same rule_ but _different domains_ are **different** functions.
+
+For instance, consider
+
+\[f:x\mapsto x^{2},\ \ \ x\in\mathbb{R},\]
+
+\[g:x\mapsto x^{2},\ \ \ -1<x\leq 1.\]
+
+Even though the rules are the same, that is, \(f(x)=g(x)=x^{2}\), the domains \(D_{t}\) and \(D_{g}\) are different. This has implications on how the corresponding graphs look.
+
+**Example 2.3.5**
+
+State the domain and find the range of each of the following functions.
+
+\[\begin{array}{ll}\text{(a)}&f:x\mapsto x^{2},x\in\mathbb{R},\\ \text{(b)}&g:x\mapsto x^{2},x\in[-1,\ 1],\\ \text{(c)}&h:x\mapsto x^{2},x\in[-1,2).\end{array}\]
+
+[MISSING_PAGE_EMPTY:7]
+
+### Vertical Line Test (Testing for Functions)
+
+The vertical line test is a **graphical** method for testing whether a relation is a function.
+
+\begin{tabular}{c|c} \hline To prove that a relation f is a function: & To prove that a relation f is **NOT** a function: \\ \hline EITHER & Provide a counter-example, that is, \\ Show that **every** vertical line \(\left|x=a,\ a\in\overline{D_{t}}\right|\) cuts & find **one** vertical line such that it cuts the graph \\ the graph of \(\ y=\mathrm{f}(x),\ x\in D_{t}\) & of \(\ y=\mathrm{f}(x),\ x\in D_{t}\) \\
+**exactly once.** & **at least two times**. \\ OR & \\ Show that **every** vertical line \(\left|x=a,\ a\in\mathbb{R}\right|\) & \\ cuts the graph of \(\ y=\mathrm{f}(x),\ x\in D_{t}\) & \\
+**at most once.** & \\ \hline \end{tabular}
+
+**Example 2.4.1**
+
+Prove that \(\ y=x\big{|}x\big{|}\) defined on \(\mathbb{R}\) is a function.
+
+_Solution:_
+
+\begin{tabular}{c|c} \hline \(y=x\big{|}x\big{|}x\big{|}\) & \(x\in\mathbb{R}\) is a function, since from the graph, any vertical line cuts the curve exactly once. \\ \hline
+**Example 2.4.2**
+
+State whether \(\ y^{2}=x\) defined on \(\mathbb{R}\) is a function, and explain your answer.
+
+_Solution:_
+
+From the graph, the line \(x=1\) cuts the graph of \(\ y^{2}=x\) two times. Hence \(\ y^{2}=x\) is not a function.
+
+**Alternatively,**
+
+When \(x=1,\ y=-1\) and \(y=1\) are two images of \(x\). This contradicts definition of a function.
+
+**Remarks:**
+
+* When asked to prove a result, you must show ALL steps clearly.
+* To prove that the relation is indeed a function, it is necessary to provide a relevant graph.
+* To prove that the relation is not a function, \(\circ\) you must state explicitly the equation of the vertical line that fails the vertical line test, and \(\circ\) you do not have to find all the vertical lines that cut the graph of \(y=\operatorname{f}(x)\), \(x\in D_{\operatorname{f}}\) more than once. (Why?)
+
+_UNDERSTAND_
+
+How is the vertical line test consistent with the definition of a function?
+
+**Answer:** When you place a vertical line on the graph, you are choosing a particular \(x\).
+
+_CHECK_
+
+Does the line \(x=0\) cut the graph shown in **Example 2.3.6** more than once?
+
+**Answer:** No.
+
+## 3 One-One (1-1) Functions
+
+### Definition of One-One Functions
+
+A function \(\operatorname{f}\) is said to be **one-one** (1-1) or **injective** if no two distinct elements in its domain have the same image under \(\operatorname{f}\). In other words,
+
+if \(k\) is an image under \(\operatorname{f}\), then there is only one value of \(x\) that gives \(\operatorname{f}(x)=k\).
+
+**Example 3.1.1**
+
+[MISSING_PAGE_POST]
+
+\begin{tabular}{l l} \hline \hline \hline \end{tabular}
+
+[MISSING_PAGE_POST]
+
+[MISSING_PAGE_EMPTY:10]
+
+**Example 3.2.1**:
+
+Determine if the following are one-one functions, giving your reasons. If it is not one-one, find a restriction of the function with a maximal domain such that it is one-one and has the same range as the original function.
+
+(i) \(\mathrm{f}:x\mapsto x^{2},x\in\mathbb{R}\),
+
+(ii) \(\mathrm{g}:x\mapsto x^{2}-4x+1\), \(x\in\mathbb{R},x\geq 1\),
+
+(iii) \(\mathrm{h}:x\mapsto\dfrac{1-x}{x}\), \(x>0\).
+
+**Remark:** A restriction of a function \(\mathrm{f}\), say \(\mathrm{g}\), is a function that has the same rule \(\mathrm{g}(x)=\mathrm{f}(x)\), but a smaller domain \(D_{\mathrm{g}}\subset D_{\mathrm{f}}\).
+
+_Solution:_
+
+(i): The horizontal line \(y=1\) cuts the graph of \(y=x^{2}\) twice. Hence, \(\mathrm{f}\) is not 1-1.
+
+**Alternatively,** since \(\mathrm{f}(-1)=1=\mathrm{f}(1)\), \(\mathrm{f}\) is not 1-1.
+
+Now \(\mathrm{R}_{t}=\left[0,\infty\right)\). From the graph, if we restrict the domain to \(\left[0,\infty\right)\), then every horizontal line will cut the graph exactly once. Furthermore, the range is the same as \(\mathrm{R}_{t}\). Therefore, a required restriction of \(\mathrm{f}\) is
+
+\(\mathrm{f}_{1}:x\mapsto x^{2}\), \(x\geq 0\).
+
+(ii): \(\mathrm{g}(x)=x^{2}-4x+1=\left(x-2\right)^{2}-3\), \(x\geq 1\).
+
+From the graph, the horizontal line \(y=-2\) cuts the curve at \(2\) points. Hence the function is not 1-1.
+
+**Alternatively,** since \(\mathrm{f}(1)=-2=\mathrm{f}(3)\), \(\mathrm{f}\) is not 1-1.
+
+Now \(\mathrm{R}_{g}=\left[-3,\infty\right)\). From the graph, a restriction of \(\mathrm{g}\) is \(\mathrm{g}_{1}:x\mapsto x^{2}-4x+1\), \(x\geq 2\).
+
+(iii): \(\mathrm{h}:x\mapsto\dfrac{1-x}{x}\), \(x>0\).
+
+From the graph, any horizontal line \(y=k\), \(k>-1\) cuts the graph exactly once. Therefore \(\mathrm{h}\) is a 1-1 function.
+
+_WONDER_
+
+Are the answers to **Examples 3.2.1(i)** and **(ii)** unique? Explain.
+
+**Answer:** No for **(i)**, and yes for **(ii)**. For **(i)**, you can also choose the domain as \((-\infty,0]\).
+
+## 4 Inverse Functions
+
+### Inverse OF Function versus Inverse Function
+
+It is very natural to ask if a process is reversible. Similarly for functions, it is very tempting for us to ask if there is a function that reverses what another function does. This leads to the notion of the inverse OF function. (**Caution:** This is not the same as inverse functions.)
+
+Consider the function g as shown in the diagram below (observe that g is not 1-1).
+
+Suppose that h reverses the mapping by function g.
+
+Notice that h, the inverse OF function g, is only a relation. It is **NOT** a function.
+
+We shall consider another example, where the function f and the inverse OF f are shown below (observe that f is 1-1).
+
+In this case, notice that the inverse OF f is a function. Hence we have the following definition.
+
+**Definition 4.1.1 (Inverse Function)**
+
+Let \(f:X\to Y\) be a function such that \(f:x\mapsto y\), \(x\in X\). Also, let \(g:Y\to X\) be a relation such that \(x\) can be obtained from g(y).
+
+Then the relation g is the **inverse of function** f. Additionally, if g is a function, then g is called the **inverse function**, and we write g as \(f^{-1}\).
+
+**Answer:** Similarity - both are "un-doing" a function. Difference - one of them may not be a function. Which one is it?
+
+_CHECK_
+
+True or False: The inverse of function f can be written as f\({}^{-1}\).
+
+**Answer:** False.
+
+_WONDER_
+
+With reference to the domain and range of f, what can you say about the domain and range of f\({}^{-1}\)?
+
+**Answer:** Read below.
+
+**Important Results:**
+
+1. The inverse function f\({}^{-1}\) exists only if and only if the function f is one-one.
+2. The domain of f\({}^{-1}\) is the range of f, and the range of f\({}^{-1}\) is the domain of f, i.e., \(D_{{}_{\ell^{-1}}}=R_{{}_{\mathrm{f}}}\) and \(R_{{}_{\ell^{-1}}}=D_{{}_{\mathrm{f}}}\). (**Exercise:** Use the set diagram to deduce this.)
+
+**Example 4.1.2**
+
+For each of the following functions, determine if the inverse function exist. Justify your answer.
+
+1. \(\mathrm{f}:x\mapsto x^{4}\), \(x\in\mathbb{R}\),
+2. \(\mathrm{g}:x\mapsto x^{4}\), \(x\in\mathbb{R}\), \(x\geq 1\).
+
+_Solution:_
+
+1. The horizontal line \(y=1\) cuts the graph of \(y=x^{4}\) twice. Hence, f is not 1-1. Therefore f\({}^{-1}\) does not exist.
+2. The function g is 1-1 since any horizontal line \(y=b\), \(b\in\mathbb{R}\) cuts the graph of \(y=\mathrm{g}(x)\) at most once. Therefore g\({}^{-1}\) exists.
+
+**Remarks:**
+
+* Recall that the horizontal line test is a graphical method that determines whether a function is 1-1.
+* Even though we have the result that all one-one functions have an inverse function, it is **NOT** correct to write the following statement: "... by the horizontal line test, \(\,\mathrm{f}^{\,\text{-1}}\,\) exists."
+* This is because the horizontal line test does not graphically determine whether the inverse function exists.
+
+**Reminders:**
+
+* It is **INCORRECT** to view "\(\,-1\)" in the notation "\(\,\mathrm{f}^{\,\text{-1}}\,\)" as a power and treat \(\,\mathrm{f}^{\,\text{-1}}\,\) as \(\dfrac{1}{\mathrm{f}}\,\). You may wish to compare the terms "inverse" and "reciprocal".
+* You have seen inverse functions in trigonometry previously. They are the inverse trigonometric functions, e.g. \(\cos^{\,\text{-1}}x\) is the arc cosine of \(x\) and is **not** equal to \(\sec x\), i.e. \(\cos^{\,\text{-1}}x\neq\dfrac{1}{\cos x}\).
+
+### Relationship between Graph of a One-One Function and its Inverse Function
+
+Consider the graph of a one-one function \(\,\mathrm{f}:x\mapsto y\), \(x\in D_{t}\). When \(x=a\), the coordinates of the point on the graph of \(y=\mathrm{f}(x)\) is \(\,\big{(}\,a,\mathrm{f}(a)\,\big{)}\,\).
+
+We recall from earlier that the inverse function \(\,\mathrm{f}^{\,\text{-1}}\,\) exists, and that
+
+\[D_{t^{\,\text{-1}}}=R_{t}\,\,\text{ and }\,\,R_{t^{\,\text{-1}}}=D_{t}\,\,.\]
+
+This means that the corresponding point on the graph of \(\,\,y=\mathrm{f}^{\,\text{-1}}(x)\,\) is \(\,\big{(}\,\mathrm{f}(a),\,a\big{)}\,\).
+
+We will visualise 6 points on the graph of \(\,\,y=\mathrm{f}(x)=x^{2}\), \(x>0\,\).
+
+\begin{tabular}{|c|c|c|} \hline Value of \(a\) & \(\big{(}\,a,\mathrm{f}(a)\,\big{)}\,\), coordinates of \(\,\) & \(\big{(}\,\mathrm{f}(a),\,a\big{)}\,\), coordinates of \(\,\) \\  & points on graph of \(\,\,y=\mathrm{f}(x)\,\) & points on graph of \(\,\,y=\mathrm{f}^{\,\text{-1}}(x)\,\) \\ \hline
+1 & (1, 1) & (1, 1) \\ \hline
+2 & (2, 4) & (4, 2) \\ \hline
+3 & (3, 9) & (9, 3) \\ \hline
+4 & (4, 16) & (16, 4) \\ \hline
+5 & (5, 25) & (25, 5) \\ \hline
+6 & (6, 36) & (36, 6) \\ \hline \end{tabular}
+
+Plotting these 6 points on the Cartesian plane will help us see that the coordinates in the right column are reflection of those in the left column about the line \(y=x\). That means the **graph of \(\boldsymbol{y}=\mathbf{f}^{\,\text{-1}}(\boldsymbol{x})\)** is the reflection of the graph of \(\boldsymbol{y}=\mathbf{f}(\boldsymbol{x})\) about the line \(\boldsymbol{y}=\boldsymbol{x}\).
+
+_THINK_
+
+The following two diagrams illustrate both the same graphs of \(y=\mathbf{f}\left(x\right)\) and \(y=\mathbf{f}^{\,\text{-1}}(x)\). Which diagram is a correct (i.e. convincing) illustration of \(y=x\) being the line of symmetry? Why?
+
+**Answer:** The keyword is "reflection". What does it mean to reflect a graph?
+
+**Example 4.2.1 (Do it yourself)**
+
+The graphs of \(y=\mathbf{f}(x)\) and \(y=x\) are shown below. Sketch, on the same diagram, the graph of \(y=\mathbf{f}^{\,\text{-1}}(x)\), labelling the coordinates of the endpoints.
+
+[MISSING_PAGE_EMPTY:16]
+
+**Important:**
+
+1. It only makes sense to find the rule of the inverse function \(\mathrm{f}^{-1}\)**after** we establish its existence (i.e. we need to ensure that function \(\mathrm{f}\) is one-one).
+2. You are expected to know how to sketch inverse graphs **without** actually finding the rule of the inverse function (make use of the relationship between a function and its inverse), and to label the respective axial intercepts, range, and domains of the inverse graphs accurately.
+
+**Read Appendix A3 on use of GC to sketch graphs of inverse functions.**
+
+## 5 Composite Functions
+
+Suppose that there are two functions, say \(\mathrm{f}\) and \(\mathrm{g}\).
+
+It is natural to ask if we can first apply \(\mathrm{f}\) to an input \(x\) to obtain the "output" of \(\mathrm{f}\), i.e. \(\mathrm{f}(x)\), and then apply \(\mathrm{g}\) to this output.
+
+If it is possible, we can denote
+
+\[\mathrm{g}\left(\mathrm{f}(x)\right)=\mathrm{gf}(x),\,x\in D_{t}\,\]
+
+where \(\mathrm{gf}\ \left(\mathrm{or}\ \mathrm{g}^{\circ}\mathrm{f}\right)\) is the composite function.
+
+In this particular case, function \(\mathrm{f}\) is first applied to \(x\) to obtain \(\mathrm{f}(x)\), the "output" of \(\mathrm{f}\), and then \(\mathrm{g}\) is applied to \(\mathrm{f}(x)\).
+
+\begin{tabular}{|p{28.5pt}|} \hline _WONDER_ \\ How would you denote the composite function where g is applied on \(x\) to obtain an "output", and then f is applied on this "output"? \\ \hline
+**Answer:** fg (note that this is not the same as gf, and we shall see this later). \\ \hline \end{tabular}
+
+**Example 5.0.1**
+
+The functions f and g are defined as
+
+\[\text{f}:x\mapsto x+1,\hskip 14.226378ptx\in\mathbb{R},\hskip 56.905512pt \text{g}:x\mapsto x^{2},\hskip 28.452756ptx\in\mathbb{R}.\]
+
+Find fg(2) and gf(2).
+
+_Solution:_
+
+\[\text{fg}(2)=\text{f}\left(\text{g}(2)\right)=\text{f}(4)=5;\hskip 28.452756pt \text{gf}\left(2\right)=\text{g}\left(\text{f}(2)\right)=\text{g}(3)=9.\]
+
+### Existence of Composite Functions
+
+Consider the following functions:
+
+\[\text{f}:x\mapsto-x,\hskip 28.452756ptx\in\mathbb{R},\hskip 56.905512pt\text{g}:x \mapsto\ln x,\hskip 28.452756ptx\in(0,\,\infty).\]
+
+We would like to ask if the composite function gf exist. While gf(\(x\)) is defined for certain values of \(x\), say \(x=-3\), it is easy to see that when \(x=2\),
+
+\[\text{gf}\left(2\right)=\text{g}\left(-2\right)=\text{undefined}.\]
+
+Hence we would like to know the condition for which a composite function gf exists. To answer this question, we consider two cases: \(R_{\text{f}}\subseteq D_{\text{g}}\) and \(R_{\text{f}}\not\subseteq D_{\text{g}}\).
+
+\begin{tabular}{|p{28.5pt}|} \hline _WONDER_ \\ Use the above illustration to explain why we would want to consider these two cases. \\ \hline
+**Answer:** The two cases arise because g(value) can either be defined or undefined. \\ \hline \end{tabular}
+
+**Case I:**\(R_{\text{f}}\subseteq D_{\text{g}}\)
+
+\begin{tabular}{|p{28.5pt}|} \hline _WONDER_ \\ Use the above illustration to explain why we would want to consider these two cases. \\ \hline
+**Answer:** The two cases arise because g(value) can either be defined or undefined. \\ \hline \end{tabular}
+
+**Case II:**\(R_{\text{f}}\subseteq D_{\text{g}}\)
+
+\begin{tabular}{|p{28.5pt}|} \hline _WONDER_ \\ Use the above illustration to explain why we would want to consider these two cases. \\ \hline \end{tabular}
+
+**Case III:**\(R_{\text{f}}\subseteq D_{\text{g}}\)
+
+\begin{tabular}{|p{28.5pt}|} \hline _WONDER_ \\ Use the above illustration to explain why we would want to consider these two cases. \\ \hline \end{tabular}
+
+**Case IV:**\(R_{\text{f}}\subseteq D_{\text{g}}\)
+
+\begin{tabular}{|p{28.5pt}|} \hline _WONDER_ \\ Use the above illustration to explain why we would want to consider these two cases. \\ \hline \end{tabular}
+
+**Case IV:**\(R_{\text{f}}\subseteq D_{\text{g}}\)
+
+\begin{tabular}{|p{28.5pt}|} \hline _WONDER_ \\ Use the above illustration to explain why we would want to consider these two cases. \\ \hline \end{tabular}
+
+**Case IV:**\(R_{\text{f}}\subseteq D_{\text{g}}\)
+
+\begin{tabular}{|p{28.5pt}|} \hline _WONDER_ \\ Use the above illustration to explain why we would want to consider these two cases. \\ \hline \end{tabular}
+
+**Case IV:**\(R_{\text{f}}\subseteq D_{\text{g}}\)
+
+\begin{tabular}{|p{28.5pt}|} \hline _WONDER_ \\ Use the above illustration to explain why we would want to consider these two cases. \\ \hline \end{tabular}
+
+**Case IV:**\(R_{\text{f}}\subseteq D_{\text{g}}\)
+
+\begin{tabular}{|p{28.5pt}|} \hline _WONDER_ \\ Use the above illustration to explain why we would want to consider these two cases. \\ \hline \end{tabular}
+
+**Case IV:**\(R_{\text{f}}\subseteq D_{\text{g}}\)
+
+### Determining the Rule of a Composite Function
+
+**Example 5.2.1**: The functions f and g are defined as
+
+\[\begin{split}\text{f}:&\,x\mapsto x+1,\qquad x\in \mathbb{R},\\ \text{g}:&\,x\mapsto x^{2}\,,\qquad x\in\mathbb{R}. \end{split}\]
+
+Assuming that fg and gf exists, find \(\text{fg}(x)\) and \(\text{gf}(x)\).
+
+_Solution:_
+
+\[\text{fg}(x)=\text{f}\left(\text{g}(x)\right)=\text{f}\left(x^{2}\right)=x^{2} +1;\qquad\quad\text{gf}(x)=\text{g}\left(\text{f}(x)\right)=\text{g}(x+1)=(x+1) ^{2}.\]
+
+**Remark: Examples 5.0.1** and 5.2.1 illustrate the fact that generally gf and fg are **NOT** equivalent, that is, composition of functions are not commutative.
+
+### Determining the Range of a Composite Function
+
+There are typically 2 methods of determining the range of a composite function, say gf.
+
+**Method 1:** Using the graphs of both \(y=\mathrm{f}(x)\) and \(y=\mathrm{g}(x)\)
+
+* The key idea of this method is to obtain \(\mathrm{R}_{\mathrm{f}}\) first graphically from \(y=\mathrm{f}(x)\), and then use \(\mathrm{R}_{\mathrm{f}}\) to find \(\mathrm{R}_{\mathrm{gf}}\) graphically from \(y=\mathrm{g}(x)\).
+* You may wish to recall how to find the range of a function using its rule and domain (refer to Page 6) and using GC (refer to Appendixes A1 and A2).
+
+**Method 2:** Sketching the graph of the composite function \(y=\mathrm{gf}(x)\), \(x\in D_{\mathrm{gf}}\).
+
+* The GC may be used to sketch the composite function (Beware of the limitations of GC!)
+* In certain situations, for example, there is an unknown constant in the rule of gf, algebraic methods are required.
+* The range of the composite function is determined from the graph.
+
+**Method 3:**
+
+* The 2 methods above are **NOT** necessary to find \(\mathrm{R}_{\mathrm{gf}}\) when \(R_{\mathrm{f}}=D_{\mathrm{g}}\), because \(R_{\mathrm{gf}}=R_{\mathrm{g}}\). Similarly when \(R_{\mathrm{g}}=D_{\mathrm{f}}\), \(R_{\mathrm{fg}}=R_{\mathrm{f}}\).
+
+**Example 5.3.1**:
+
+The functions \(f\) and \(g\) are defined as
+
+\[f:x\mapsto e^{1-x}, x\in\mathbb{R},x>0,\] \[g:x\mapsto\ln(x-1), x\in\mathbb{R},x>1.\]
+
+(i) Sketch the graphs of \(y=f(x)\) and \(y=g(x)\), and state the range of \(f\) and \(g\). (ii) State why the composite function \(fg\) does not exist. (iii) By restricting the domain of \(g\) to \(\big{(}a,\infty\big{)}\), where \(a\) is a real number, find the least value of \(a\) such that the composite function \(fg\) exists. Define \(fg\) in similar form. State the range of \(fg\).
+
+_Solution:_
+
+From the graphs of \(y=f(x)\) and \(y=g(x)\), \(R_{t}=\big{(}0,e\big{)}\) and \(R_{g}=\mathbb{R}\).
+
+(ii) Since \(\mathbb{R}=R_{g}\bigtriangleup D_{t}=\big{(}0,\infty\big{)}\), \(fg\) does not exist. (iii) For the composite function to exist, we must restrict the domain of \(g\) such that the range of the restriction function is a subset of \(D_{t}\). Since we want the least value of \(a\), we will use the 'largest' possible subset of \(D_{t}\) and \(R_{g}\), i.e. \(R_{g}\cap D_{t}=\big{(}0,\infty\big{)}\). From the graph of \(y=g(x)\), we see that if we restrict the domain to \(\big{(}2,\infty\big{)}\), then the range of the restriction of \(g\) is \(\big{(}0,\infty\big{)}\), which is \(D_{t}\). Therefore least value of \(a=2\).
+
+\[fg(x)=f\big{(}g(x)\big{)}=f\big{(}\ln(x-1)\big{)}=e^{1-\ln(x-1)}=\frac{e}{x-1} \quad\Rightarrow\quad fg:x\mapsto\frac{e}{x-1}\,,\,x>2.\] \[R_{g}=\big{(}0,e\big{)}.\]
+
+**Reminder:** When defining a function, the rule and domain of the function must be stated.
+
+**Example 5.3.2**: It is given that
+
+\[\begin{array}{ll}\mathrm{f}:&x\mapsto\mathrm{e}^{x},&x\in\mathbb{R},\\ \mathrm{g}:&x\mapsto-x^{2},&x\in\mathbb{R},\\ \mathrm{h}:&x\mapsto\ln\left(1-x\right),&x<1.\end{array}\]
+
+Determine whether the composite functions \(\mathrm{fg}\), \(\mathrm{gh}\), \(\mathrm{hg}\) and \(\mathrm{hf}\) exist. If the composite function exists, define the function and state its range. If the composite function does not exist, find the maximal domain such that it exists.
+
+_Solution:_
+
+\[\begin{array}{ll}\includegraphics[width=142.364pt]{Fig2}&\includegraphics[width=142.364pt]{Fig2}&\includegraphics[width=142.364pt]{Fig2}&\includegraphics[width=142.364pt]{Fig2}&\includegraphics[width=142.364pt]{Fig2}\\ \end{array}\]
+
+\[\begin{array}{ll}\includegraphics[width=142.364pt]{Fig2}&\includegraphics[width=142.364pt]{Fig2}&\includegraphics[width=142.364pt]{Fig2}&\includegraphics[width=142.364pt]{Fig2}&\includegraphics[width=142.364pt]{Fig2}\\ \end{array}\]
+
+\[\begin{array}{ll}\includegraphics[width=142.364pt]{Fig2}&\includegraphics[width=142.364pt]{Fig2}&\includegraphics[width=142.364pt]{Fig2}&\includegraphics[width=142.364pt]{Fig2}&\includegraphics[width=142.364pt]{Fig2}\\ \end{array}\]
+
+\[\begin{array}{ll}\includegraphics[width=142.364pt]{Fig2}&\includegraphics[width=142.364pt]{Fig2}&\includegraphics[width=142.
+
+### Composition of a One-One Function and its Inverse Function
+
+Recall that the inverse function of \(f\) reverses what the function \(f\) does. As such, if \(f^{-1}\) is applied to \(f(x)\), then we will get \(x\). In other words, we obtain \(f^{-1}f(x)=x\) without performing any algebraic manipulation. Similarly, we can also deduce that \(ff^{-1}(x)=x\).
+
+\begin{tabular}{|l|} \hline _THINK_ \\ Since \(f^{-1}f(x)=ff^{-1}(x)=x\), can we conclude that the two functions \(f^{-1}f\) and \(ff^{-1}\) are indeed the same? Explain. \\ \hline \end{tabular}
+
+**Answer:** No. Do ask yourself what defines a function.
+
+**Example 5.4.1**: It is given that \(f\) is a one-one function defined by \(f:x\mapsto 2x+3,-2\leq x\leq 2\). Find
+
+\[(i)f^{-1},\qquad\qquad\qquad\qquad(ii)f^{-1}f,\qquad\qquad\qquad(iii)ff^{-1}.\]
+
+Sketch the graphs of \(y=f^{-1}f(x)\) and \(y=ff^{-1}(x)\) on a single diagram. Hence solve \(f^{-1}f(x)=ff^{-1}(x)\).
+
+_Solution:_
+
+\[D_{t}=[-2,2],\ R_{t}=[-1,7].\]
+
+\[(i)\qquad\text{Let }y=2x+3\] \[\Rightarrow x=\frac{y-3}{2}\] \[\Rightarrow f^{-1}(x)=\frac{x-3}{2},\ x\in[-1,7].\] \[(ii)f^{-1}f(x)=f^{-1}\left(f(x)\right)=x,\ x\in D_{t}=[-2,2].\] \[(iii)ff^{-1}(x)=f\left(f^{-1}(x)\right)=x,\ x\in D_{t^{-1}}=[-1,7].\] \[(Last\text{part})f^{-1}f(x)=ff^{-1}(x)\Rightarrow-1\leq x\leq 2.\]
+
+\begin{tabular}{|l|} \hline **Remarks:** \\ \((i)\) & \(f^{-1}f\) and \(ff^{-1}\) are generally two different functions because the domains might be different. Therefore, care must be taken when you sketch these graphs. \\ \((ii)\) & \(ff^{-1}(x)=x,\ D_{ff^{-1}}=D_{f^{-1}}=R_{t}\); \(f^{-1}f(x)=x,\ D_{t^{-1}f}=D_{t}\). \\ \hline \end{tabular}
+
+[MISSING_PAGE_FAIL:24]
+
+**Exercise:**: Sketch the graph of \(f:x\mapsto(x-2)^{2},x<4\). You may find the following screenshots helpful.
+
+**Remarks:**
+
+* If the rule of the function contains more than one term, then the rule must be placed inside the parentheses, i.e. \(\left((x-2)^{2}\right)(x<4)\).
+* If the domain is given as \(-2\leq x<2\), then enter "(X\(<\)2 and X\(\geq-2\))". The "and" can be found in TEST \(>\) LOGIC tab.
+
+**Explanation of Syntax:**
+
+The syntax "(X\(\geq-2\))" or the like can be seen to take the value "1" when the condition inside the parentheses is true and the value "0" if it is false. Since a function is unchanged when it is divided by 1, and a function is undefined when it is divided by 0, we have
+
+\[\frac{X^{2}}{(X\geq-2)}=\begin{cases}X^{2}&\text{if }\,X\geq-2\\ \text{undefined}&\text{if }\,X\not\geq-2.\end{cases}\]
+**Exercise:**: Justify why the two GC screenshots correspond to each other (Please view this in colour - there is a blue horizontal line.)
+
+**Challenge:**: By using \(Y_{1}=-X(X\leq 0)\) and \(Y_{2}=X^{2}(X\geq 0)\), you can plot
+
+\[f(x)=\begin{cases}-x,&x\leq 0,\\ x^{2},&x\geq 0.\end{cases}\]
+
+Are you able to use **only**\(Y_{1}\) to plot the same function on your GC?
+
+## Appendix A2 Finding Range of Functions
+
+Example. Find the range of \(\ f:x\mapsto\dfrac{x^{2}+1}{x-1}\), \(x\in\mathbb{R}\), \(x\neq 1\) using GC.
+
+\begin{tabular}{p{142.3pt} p{142.3pt} p{142.3pt}} \hline \hline
+**Key Press** & **Screen Shot** & **Steps/Notes/Descriptions** \\ \hline \hline \end{tabular}
+
+\begin{tabular}{p{142.3pt} p{142.3pt}} \hline \hline \end{tabular}
+
+\begin{tabular}{p{142.3pt} p{142.3pt}} \hline \hline \end{tabular}
+
+[MISSING_PAGE_EMPTY:27]
+
+[MISSING_PAGE_FAIL:28]
+
+\begin{tabular}{l|l|l|l} \hline  & bottom (from top) & top (from top) & **1** & Choose Y\({}_{1}\) since the function is entered \\ ENTER & & & into Y\({}_{1}\). Press ENTER. \\ \cline{2-3} ENTER & & & \\ \cline{2-3} ENTER & & & \\ \cline{2-3} ENTER & & & \\ \cline{2-3} ENTER & & & \\ \cline{2-3} ENTER & & & \\ \cline{2-3} ENTER & & & \\ \cline{2-3} ENTER & & & \\ \cline{2-3} ENTER & & & \\ \cline{2-3} \end{tabular} Note that the graph that was newly drawn does not look like a reflection of the original graph about the line \(y=x\). The reason for this is because the scale is different for both axes. To rectify this problem, we use **ZSquare** under the ZOOM menu. You should see that the axes markings are equally spaced for both axes. However, the graph for the inverse function is gone. This is exactly what is meant by "artificial". The inverse is not plotted as a function but rather is drawn as a picture. Hence you should repeat DrawInv Y\({}_{1}\). Since you have already entered the command previously, you can easily recall it by pressing 2nd ENTER which gives ENTRY. You can repeated press ENTRY to recall the pass commands you have entered. Now you should get the correct graphs. Therefore if you want to draw the inverse function, do remember to use ZSquare so that the scale for both axes are the same.
+
+[MISSING_PAGE_FAIL:30]

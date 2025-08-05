@@ -1,0 +1,195 @@
+## Chapter 14 Alternating Current
+
+Content
+
+* Characteristics of alternating currents
+* The transformer
+* Rectification with a diode
+
+### 14.1 Learning Outcomes
+
+Candidates should be able to
+
+* show an understanding of and use the terms period, frequency, peak value and root-mean-square (r.m.s.) value as applied to an alternating current or voltage.
+* deduce that the mean power in a resistive load is half the maximum (peak) power for a sinusoidal alternating current.
+* represent an alternating current or an alternating voltage by an equation in the from \(x=x_{o}\sin{ot}\)
+* distinguish between r.m.s. and peak values and recall and solve problems using the relationship \(I_{m}=\frac{I_{o}}{\sqrt{2}}\) for the sinusoidal case.
+* show an understanding of the principle of operation of a simple iron-cored transformer and recall and solve problems using \(\frac{N_{s}}{N_{p}}=\frac{V_{s}}{V_{p}}=\frac{I_{p}}{I_{s}}\) for an ideal transformer.
+* explain the use of a single diode for the half-wave rectification of an alternating current.
+
+### Introduction
+
+An alternating current (a.c.) is an electric current which has a flow direction that reverses periodically with time. An a.c. at the microscopic level can be considered as having the charge carriers oscillate about a fixed point.
+
+It is important to understand a.c. because they are so much a part of our everyday life. Each time a television set, computer or any other electric appliances which are connected to the wall socket are turned on, an a.c. provides the power to operate them. The principles of direct current in resistors learned in previous topics can be applied to resistors in a.c. circuits. However, major differences in circuit analysis arise when inductors and capacitors are to be considered.
+
+### Quantities Characterising an Alternating Current
+
+\begin{tabular}{|p{56.9pt}|p{142.3pt}|p{142.3pt}|} \hline
+**Quantity** & **Symbol** & **Description** \\ \hline _Period_ & \(T\) & The time taken for the a.c. to complete one cycle. \\ \hline _Frequency_ & \(f\) & The number of complete cycles undergone by the a.c. in one second. \\ \hline _Angular Frequency_ & \(\omega\) & A way of expressing the frequency of the a.c. in terms of radians per second instead of cycles per second. \\ \hline _Peak Value_ & \(I_{o}\) & The maximum value of the a.c. in either direction within a cycle. \\ _(Amplitude)_ & & \\ \hline _Peak to Peak Value_ & & The difference between the positive peak value and the negative peak value of the a.c. within a cycle. \\ \hline _Mean Value_ & \(<\)\(I\)\(>\) & The average value of an a.c. over a given time interval. \\ \hline _Root Mean_ & \(I_{rms}\) & The value of a steady d.c. that will dissipate energy at the same rate as the a.c. in a given resistor. \\ \hline \end{tabular}
+
+### Sinusoidal Alternating Current
+
+The most commonly encountered a.c. takes a sinusoidal form as shown and the waveform can be expressed by the equation
+
+\[\boxed{I=I_{o}sinot}\]
+
+As voltage is related to current by the equation \(V=IR\),
+
+\[V= \left(I_{0}\sinot\right)R\] \[= \left(I_{0}R\right)\sinot\] \[= V_{0}\sinot\]
+
+Hence, current and voltage across a resistor are in phase.
+
+\[\boxed{I_{0}}\]
+
+For any positive value of current, there will be a corresponding negative value within a complete cycle, thus the mean value of current <\(I\)> is zero. However heat is dissipated when an a.c. flows in a resistor, effectively implying that the mean value of an a.c. does not represent the effective value of the a.c.
+
+### Mean Power
+
+The instantaneous power, \(P\), is given by the following equations,
+
+\[P =IV P =I^{2}R\] \[=\left(I_{0}\sinot\right)\left(V_{0}\sinot\right) =\left(I_{0}\sinot\right)^{2}R\] or \[=\left(I_{0}^{2}R\right)\sin^{2}ot\] \[=P_{0}\sin^{2}ot\] \[=P_{0}\sin^{2}ot\]
+
+\[P =\frac{V^{2}}{R}\] \[=\frac{\left(V_{0}\sinot\right)^{2}}{R}\] \[=\frac{\left(V_{0}^{2}\sin^{2}ot\right)}{R}\] \[=P_{0}\sin^{2}ot\]
+
+[MISSING_PAGE_EMPTY:4]
+
+### Root Mean Square Value
+
+\(I\)\(R\)\(P\)\(=\)\(I_{\omega}\)\({}^{2}R\)\(\langle P\rangle\)\(=\)\((I_{ae}\)\({}^{2})R\)\(=\)\((\dfrac{I_{ae}}{2})R\)\(=\)\(I_{ma}\)\({}^{2}R\)\(P\)\(=\)\((P)\)\(I_{\omega}\)\(=\)\(I_{ms}\)\(I_{ma}\)\({}^{2}\)\(=\)\(\dfrac{I_{ae}}{2}\)\(I_{ma}\)\(=\)\(\dfrac{I_{ga}}{\sqrt{2}}\)
+
+Since energy is dissipated at the same rate then \(I_{ac}=I_{rms}\).
+
+\(I_{rms}\) is the square root of the mean value of \(I^{2}\) and hence is known as the root-mean-square (r.m.s.) current of the a.c.
+
+**The r.m.s. value of an a.c. is the value of a steady d.c. which will dissipate energy at the same rate as the mean power dissipated by an a.c. in a given resistor.**
+
+Thus the r.m.s. value can be considered as the effective value of the a.c.
+
+[MISSING_PAGE_EMPTY:6]
+
+Similarly,
+
+\[V_{rms}=\frac{V_{o}}{\sqrt{2}}\]
+
+#### General Knowledge
+
+The alternating electrical supply from wall sockets in Singapore is 240 V, 50 Hz.
+
+Is 240 V the peak value, or the r.m.s. value of the supply?
+
+\begin{tabular}{l l}
+**Problem Solving Skill Set (PS\({}^{3}\))** \\
+1. & Consider one period of the alternating quantity. \\
+2. & Square the quantity. \\
+3. & Mean (average) the squared quantity. \\
+4. & Square root the mean-square quantity. \\ \end{tabular}
+
+Since r.m.s. values are the effective values of a.c.,
+
+\[\left\langle P\right\rangle=I_{rms}V_{rms}\qquad\qquad\text{or}\qquad\qquad \left\langle P\right\rangle=I_{rms}^{\ \ 2}R\qquad\qquad\text{or}\qquad\qquad\left\langle P\right\rangle= \frac{V_{rms}^{\ 2}}{R}\]
+
+For a **sinusoidal** a.c.,
+
+\[\left\langle P\right\rangle = I_{rms}V_{rms}\] \[= \left(\frac{I_{o}}{\sqrt{2}}\right)\left(\frac{V_{o}}{\sqrt{2}}\right)\] \[= \frac{I_{o}V_{o}}{2}\] \[= \frac{P_{o}}{2}\]
+
+which is the same result as shown previously.
+
+Note:
+
+1. The expressions \(I_{rms}=\frac{I_{o}}{\sqrt{2}}\) and \(V_{rms}=\frac{V_{o}}{\sqrt{2}}\) are only true for sinusoidal a.c.
+2. The three equations for mean power i.e. \(\left\langle P\right\rangle=I_{rms}V_{rms}\), \(\left\langle P\right\rangle=I_{rms}^{\ 2}R\) and \(\left\langle P\right\rangle=\frac{V_{rms}^{\ 2}}{R}\) can be used for all types of a.c.
+3. Current and voltage ratings in electrical appliances/supplies are expressed in r.m.s. values.
+4. Power ratings in electrical appliances/supplies refer to the mean (average) power.
+
+Example 2: A tourist from U.S.A. brings an electric water kettle designed to operate with 110 V to Singapore and plugs it into a 240 V outlet. The heater breaks down due to overheating. (a) If the heater normally consumes 500 W, calculate the resistance of the heating coil. (\(P\)) = \(\dfrac{V_{rms}^{2}}{R}\) 500 = \(\dfrac{110^{2}}{R}\) \(R\) = 24.2 \(\Omega\) (b) Determine the power it consume using our 240 V electrical supply. Assuming that \(R\) remains constant (\(P\)) = \(\dfrac{V_{rms}^{2}}{R}\) = \(\dfrac{240^{2}}{24.2}\) = 2380 W (c) Determine the r.m.s. current that flows when the potential difference is 240 V. \(I_{rms}\) = \(\dfrac{V_{rms}^{2}}{R}\) = \(\dfrac{240}{24.2}\) = 9.9 A 
+
+### The Transformer
+
+The transformer is a device that is used for increasing (stepping up) or decreasing (stepping down) the potential difference (p.d.) of an alternating supply using electromagnetic induction and it plays an important role in the transmission of electricity. Power plants are often situated some distance from the city and electricity must be transmitted over long distances to reach the consumers. Inevitably, some power is lost in the transmission lines. This power loss can be minimized if the power is transmitted at high p.d. (and consequentially, low current).
+
+Two insulated copper coils, called the primary and secondary coils, not electrically connected to one another, are wound on separate limbs of a soft iron core, which is laminated to reduce eddy current losses. The soft iron core ensures that most of the flux associated with one coil also passes through the other. When an alternating voltage is applied to the primary coil, the resulting current produces a large alternating magnetic flux which links the secondary coil and induces an e.m.f. in it.
+
+### The Ideal Transformer
+
+An ideal transformer is one in which there is _no energy loss_ when stepping up or down the primary e.m.f.
+
+\[\frac{N_{s}}{N_{p}}=\frac{V_{s}}{V_{p}}\]
+
+where, \(N_{p}=\) no. of turns in the primary coil, \(N_{s}=\) no. of turns in the secondary coil, \(V_{p}=\) e.m.f. in the primary coil, \(V_{s}=\) e.m.f. in the secondary coil
+
+\({}^{*}\) _It should be noted that the output waveform in the secondary coil is \(\pi\) rad out of phase with the input waveform to the primary coil._Also for an ideal transformer, the power input at the primary coil is equal to the power output at the secondary circuit. Hence:
+
+\[I_{p}V_{p}=I_{s}V_{s}\] \[\frac{V_{s}}{V_{p}}=\frac{I_{p}}{I_{s}}\]
+
+Thus **for an ideal transformer**:
+
+\[\boxed{\frac{N_{s}}{N_{p}}=\frac{V_{s}}{V_{p}}=\frac{I_{p}}{I_{s}}}\]
+
+### The Practical Transformer
+
+Practical transformers lose power through
+
+1. _Resistance of the windings (coils)_: The wires used for the windings of the coils have resistance and so heating occurs, resulting in power loss (\(\hat{P}R\)). This form of power loss is also known as Joule heating. Thicker wires made of material with low resistivity (i.e. high purity copper) are used to reduce this power loss.
+2. _Eddy Currents:_ The alternating magnetic flux induces eddy currents in the iron core and cause heating. This effect is reduced by laminating the iron core. Laminations reduce the area of circuits in the core, and thus reduce the e.m.f. induced and current flowing within the core, which leads to a reduction in the energy lost.
+3. _Hysteresis:_ There are hysteresis losses in the core. The magnetization of the core is repeatedly reversed by the alternating magnetic field. The energy required to magnetise the core (while the current is increasing) is not entirely recovered during demagnetisation. The difference in energy is lost as heat in the core. The energy loss is kept to a minimum by using a magnetic material with low hysteresis loss.
+
+* (iv)_Flux Leakage:_ The flux due to the primary may not all link to the secondary coil if the coil is badly designed or has air gaps in it. When flux is "leaked "to the surrounding, power is loss and thus not all the power from the primary coil can be transferred to the secondary coil.
+
+[MISSING_PAGE_EMPTY:13]
+
+### Rectification
+
+The e.m.f. obtained from the mains supply is alternating in nature, but we often require constant voltage to operate the electronic circuitries of many household devices. A means of deriving d.c. from a.c. is desired.
+
+The process of converting a.c. to d.c. is known as rectification. This is achieved through the use of rectifiers which conduct current in one direction only. An example of a rectifier is the p-n diode which will be covered in the topic on lasers and semiconductors.
+
+#### 18.9.1 Half Wave Rectification
+
+A diode is forward-biased when it is connected to a supply in such a way that current flows through it. It is reverse-biased if connected such that little or no current flows through it.
+
+The a.c. to be rectified is connected in series with the diode and the electronic equipment that requires a d.c. output (represented by resistor \(R\)) as shown below.
+
+Let us consider the case of a sinusoidal a.c. If the first half cycle acts in the forward-biased direction of the diode (i), current flows in the circuit and a p.d., V is obtained across \(R\) (which will have almost the same value as the applied p.d., V\({}_{p}\), due to the low resistance of the diode when it is forward-biased). During the second half cycle, the diode is reverse-biased (ii). No current flows in the circuit and the p.d. across \(R\) is zero. This is repeated for each cycle of the a.c.
+
+Hence, the output p.d. across \(R\) is a pulsating d.c.
+
+## Appendix A Full-Wave Rectification
+
+_Source: [http://www.circuitstoday.com/full-wave-bridge-rectifier_](http://www.circuitstoday.com/full-wave-bridge-rectifier_)
+
+While a.c. is particularly important and useful in power generation and distribution, most electrical devices operate on d.c. sources only. Hence rectification of the a.c. is necessary. This can be done by using appropriate rectifiers and associated smoothing elements. The example below shows how a full-wave rectification could be introduced by using a full-wave (or bridge) rectifier. The circuit and output voltage for this layout is illustrated below.
+
+During the positive half of cycle of the input voltage (i.e. when A is positive with respect to F), only diodes D\({}_{2}\) and D\({}_{4}\) are in forward bias and hence conduct. During the negative half of cycle of the input voltage (i.e. when F is positive with respect to A), only diodes D\({}_{3}\) and D\({}_{1}\) conduct. Since the current through the load \(R\) is unidirectional from C to D, the output voltage \(V_{R}\) is always positive. In this way, both halves of the a.c. voltage are rectified and we have a full-wave rectified voltage across \(R\).
+
+Full Wave Bridge Rectifier with Capacitor FilterYou can observe from the output diagram above that output of full-wave rectifier is not a constant d.c. voltage as it is a pulsating d.c. voltage with ac ripples. In real life applications,
+
+we need a power supply with smooth wave forms as it directly impacts the reliability of the electronic device we connect to the power supply.
+
+A simple way to do this is to include a large output reservoir capacitor in parallel to \(R\). A capacitor is a conducting device capable of storing charges. It is made up of a pair of metal plates separated by an insulator. The action of capacitor in the full-wave rectifier will help to reduce the ripples and give a steadier output.
+
+## Appendix B Wireless Power Charging
+
+_Source: [http://www.explainthatsut.off.com/inductionchargers.html_](http://www.explainthatsut.off.com/inductionchargers.html_)
+
+If you've got an electric toothbrush with a plastic bottom, you might have marveled at how it charges up apparently by magic standing on what seems to be a plastic stand! How do two bits of plastic charge up the battery inside your toothbrush when there is no direct metallic contact between them? How on Earth can electricity flow between two plastic insulators?
+
+What's happening here is a neat trick called wireless (induction) charging, and it's the power behind everything from rechargeable toothbrushes and phone charging mats to the latest wireless recharging bays for electric cars. All these are based on the simple working mechanism of transformer.
+
+### How ordinary chargers work
+
+Most of the small electronic appliances we use in our homes work on relatively low voltages--typically 5-10 percent as much voltage as hefty electric appliances like vacuum cleaners and clothes washers. That means we generally need to use transformers to "step down" the domestic voltage so it will safely power electronic gadgets without blowing them up. All those chargers actually have electricity transformers hiding inside.
+
+Current flows into the charger from the power outlet on your wall. Inside the charger, a transformer "steps down" the electricity to a much lower voltage. The low-voltage current then flows from the charger into the battery in your appliance. The important thing to note is that all three parts of the transformer (the primary coil, secondary coil, and iron core linking them together) are contained inside the charger:
+
+### How induction chargers work
+
+It is just another kind of transformer in a cunning disguise. An electric toothbrush and its charger use a transformer that is cleverly split into two pieces.
+
+When the toothbrush is standing on the peg, you've got a complete transformer that works by electromagnetic induction: magnetic flux from the primary coil in the charger unit is linked to the secondary coil in the toothbrush itself via the U-shaped iron core. The two ends of the coil in the toothbrush are simply hooked up to the rechargeable battery inside, allowing the latter to be charged.
+
+A charger that works like this is called an induction charger. Safety is the main reason for using an induction charger in the bathroom: you don't need a power cable or exposed leads coming out of the base of your toothbrush, which typically gets wet. Electric shavers often use induction chargers for the same reason.
+
+Find out more about the latest development in wireless chargers:
+
+[https://www.computerworld.com/article/3235176/mobile-wireless/wireless-charging-explained-what-is-it-and-how-does-it-work.html](https://www.computerworld.com/article/3235176/mobile-wireless/wireless-charging-explained-what-is-it-and-how-does-it-work.html)
