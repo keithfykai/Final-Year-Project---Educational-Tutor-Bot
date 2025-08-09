@@ -1,32 +1,36 @@
 "use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../.././firebase/firebaseConfig";
 
 export default function Navbar() {
-  const [darkMode, setDarkMode] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
 
-  // Toggle dark mode class on html element
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode);
-  }, [darkMode]);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
 
-  // Close menu on navigation
   const handleNavClick = () => setMenuOpen(false);
 
   return (
-    <nav className="bg-white dark:bg-slate-900 border-b border-sky-100 dark:border-slate-700">
+    <nav>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
-          {/* Logo & Brand */}
-          <div className="flex items-center gap-2">
+          {/* Logo */}
+          <div className="flex items-center gap-4">
             <Link href="/" onClick={handleNavClick}>
               <Image src="/Eddy.png" alt="Logo" width={40} height={40} />
             </Link>
             <Link href="/" onClick={handleNavClick}>
-               <span className="text-xl font-bold text-slate-900 dark:text-white">
-                Educational Tutor Bot
+              <span className="text-xl font-bold text-slate-900 dark:text-white">
+                Eduble
               </span>
             </Link>
           </div>
@@ -45,13 +49,28 @@ export default function Navbar() {
             >
               About
             </Link>
-            <Link
-              href="/signin"
-              className="text-gray-700 dark:text-gray-300 hover:underline"
-              onClick={handleNavClick}
-            >
-              Sign In
-            </Link>
+
+            {user ? (
+              <>
+                {/* <span className="text-gray-700 dark:text-gray-300">
+                  {user.displayName}
+                </span> */}
+                <button
+                  onClick={() => signOut(auth)}
+                  className="text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400"
+                >
+                  Sign Out
+                </button>
+              </>
+            ) : (
+              <Link
+                href="/signin"
+                className="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400"
+                onClick={handleNavClick}
+              >
+                Sign In
+              </Link>
+            )}
           </div>
 
           {/* Mobile Hamburger */}
@@ -99,13 +118,32 @@ export default function Navbar() {
           >
             About
           </Link>
-          <Link
-            href="/signin"
-            className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
-            onClick={handleNavClick}
-          >
-            Sign In
-          </Link>
+
+          {user ? (
+            <>
+              <span className="block px-3 py-2 text-gray-700 dark:text-gray-300">
+                {user.displayName || user.email}
+              </span>
+              <button
+                onClick={() => {
+                  signOut(auth);
+                  handleNavClick();
+                }}
+                className="block px-3 py-2 text-red-500 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md"
+              >
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <Link
+              href="/signin"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+              onClick={handleNavClick}
+            >
+              Sign In
+            </Link>
+          )}
+
           <Link
             href="/chat"
             className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"

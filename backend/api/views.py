@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from .tutor_pipeline import load_or_get_retriever, query_ollama_with_context
-
+from django.http import StreamingHttpResponse
 
 @api_view(['POST'])
 def chat_with_bot(request):
@@ -30,7 +30,6 @@ def chat_with_bot(request):
         retriever, memory = load_or_get_retriever(level, subject)
         docs = retriever.get_relevant_documents(user_input)
 
-        # Build context from both syllabus and notes
         syllabus_context = "\n".join([doc.page_content for doc in docs if doc.metadata.get("source") == "SYLLABUS"])
         notes_context = "\n".join([doc.page_content for doc in docs if doc.metadata.get("source", "").startswith("NOTES")])
         context = f"{syllabus_context}\n\n{notes_context}"
@@ -54,8 +53,12 @@ def chat_with_bot(request):
         {user_input}
         """
 
-        reply = query_ollama_with_context(prompt, valid_history)
-        return Response({"response": reply})
+        # Return a streaming response to frontend
+        def stream_response():
+            for chunk in query_ollama_with_context(prompt, valid_history):
+                yield chunk
+
+        return StreamingHttpResponse(stream_response(), content_type="text/event-stream")
 
     except Exception as e:
         return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

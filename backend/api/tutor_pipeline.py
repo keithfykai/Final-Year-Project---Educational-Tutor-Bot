@@ -95,20 +95,19 @@ def query_ollama_with_context(prompt: str, history: List[dict]) -> str:
         "messages": history + [{"role": "user", "content": prompt}],
         "stream": True  # Important: Streaming output
     }
-    response = requests.post(OLLAMA_URL, json=payload, stream=False)
+    response = requests.post(OLLAMA_URL, json=payload, stream=True)
     response.raise_for_status()
 
     # Stream the chunks and combine them
-    full_reply = ""
+    # Yield each token chunk as it comes
     for line in response.iter_lines():
         if line:
             try:
                 data = json.loads(line.decode("utf-8"))
                 delta = data.get("message", {}).get("content", "")
-                full_reply += delta
+                yield delta
             except Exception as e:
                 print(f"⚠️ Failed to parse line: {line}\nError: {e}")
-    return full_reply
 
 retriever_cache = {}
 

@@ -3,21 +3,23 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const CATEGORY_SUBJECT_LIST = {
   psle: {
     science: 'Science',
     mathematics: 'Mathematics',
   },
-  ib: {
-    hl_mathematics: 'HL_Mathematics',
-    sl_mathematics: 'SL_Mathematics',
-    hl_biology: 'HL_Biology',
-    sl_biology: 'SL_Biology',
-    hl_physics: 'HL_Physics',
-    sl_physics: 'SL_Physics',
-    hl_chemistry: 'HL_Chemistry',
-    sl_chemistry: 'SL_Chemistry',
+  o_level: {
+    combined_physics: 'Combined_Physics',
+    combined_chemistry: 'Combined_Chemistry',
+    combined_biology: 'Combined_Biology',
+    pure_physics: 'Pure_Physics',
+    pure_chemistry: 'Pure_Chemistry',
+    pure_biology: 'Pure_Biology',
+    add_math: 'Additional_Mathematics',
+    elem_math: 'Elementary_Mathematics',
   },
   a_level: {
     h2_mathematics: 'H2_Mathematics',
@@ -29,15 +31,15 @@ const CATEGORY_SUBJECT_LIST = {
     h2_chemistry: 'H2_Chemistry',
     h1_chemistry: 'H1_Chemistry',
   },
-  o_level: {
-    combined_physics: 'Combined_Physics',
-    combined_chemistry: 'Combined_Chemistry',
-    combined_biology: 'Combined_Biology',
-    pure_physics: 'Pure_Physics',
-    pure_chemistry: 'Pure_Chemistry',
-    pure_biology: 'Pure_Biology',
-    add_math: 'Additional_Mathematics',
-    elem_math: 'Elementary_Mathematics',
+  ib: {
+    hl_mathematics: 'HL_Mathematics',
+    sl_mathematics: 'SL_Mathematics',
+    hl_biology: 'HL_Biology',
+    sl_biology: 'SL_Biology',
+    hl_physics: 'HL_Physics',
+    sl_physics: 'SL_Physics',
+    hl_chemistry: 'HL_Chemistry',
+    sl_chemistry: 'SL_Chemistry',
   },
 };
 
@@ -64,6 +66,13 @@ export default function ChatPage() {
     setInput('');
     setLoading(true);
 
+    // Add empty bot message and capture its index correctly
+    let botMsgIndex = 0;
+    setMessages((prev) => {
+      botMsgIndex = prev.length;
+      return [...prev, { sender: 'bot', text: '' }];
+    });
+
     try {
       const res = await fetch('http://localhost:8000/api/chat/', {
         method: 'POST',
@@ -81,50 +90,72 @@ export default function ChatPage() {
         }),
       });
 
-      const data = await res.json();
+      if (!res.body) throw new Error("ReadableStream not supported");
 
-      if (res.ok) {
-        setMessages((prev) => [
-          ...prev,
-          { sender: 'bot', text: data.response || '[No response from bot]' },
-        ]);
-      } else {
-        setMessages((prev) => [
-          ...prev,
-          { sender: 'bot', text: `Error: ${data.error || 'Unknown error'}` },
-        ]);
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let done = false;
+      let botReply = "";
+
+      while (!done) {
+        const { value, done: doneReading } = await reader.read();
+        done = doneReading;
+        if (value) {
+          botReply += decoder.decode(value, { stream: true });
+          setMessages((prev) => {
+            const newMessages = [...prev];
+            newMessages[botMsgIndex] = { sender: "bot", text: botReply };
+            return newMessages;
+          });
+        }
       }
     } catch (error) {
       setMessages((prev) => [
         ...prev,
-        { sender: 'bot', text: `Network error: ${String(error)}` },
+        { sender: "bot", text: `Network error: ${String(error)}` },
       ]);
     } finally {
       setLoading(false);
     }
   };
 
+
   // Auto scroll to bottom when messages update
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, loading]);
 
-  return (
-    <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300">
-      <header className="p-6 border-b border-slate-300 dark:border-slate-700">
-        <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100">
-          Educational Tutor Bot
-        </h1>
+  function Header() {
+    return (
+      <header className="px-6 py-3 flex bg-sky-200 dark:bg-black justify-between items-center">
+        <div className='flex items-center gap-4'>
+          <Link href='/' className="">
+            <Image 
+              src="/Eddy.png"
+              alt="Eddy the Educator"
+              width={70}
+              height={70}
+              className="rounded-full"
+            />
+          </Link>
 
-        <h2 className="text-l mt-2 text-slate-600 dark:text-slate-400">
-          Select Level and Subject to start chatting!
-        </h2>
+          <div className="px-2">
+            <h1 className="text-xl font-bold text-slate-800 dark:text-slate-100">
+              Eddy the Educator
+            </h1>
+
+            <h2 className="text-sm mt-1 text-slate-600 dark:text-slate-400">
+              Select Level and Subject to start learning!
+              <br/> Or click on Eddy to go back home.
+            </h2>
+          </div>
+        </div>
 
         <div className="flex gap-4 mt-4">
           {/* LEVEL SELECT */}
           <select
             title="level-select"
-            className="p-2 px-4 border rounded bg-white dark:bg-slate-800"
+            className="p-2 px-4 border rounded-2xl bg-white dark:bg-slate-800"
             value={selectedLevel}
             onChange={(e) => {
               setSelectedLevel(e.target.value as LevelKey | '');
@@ -142,7 +173,7 @@ export default function ChatPage() {
           {/* SUBJECT SELECT */}
           <select
             title="subject-select"
-            className="p-2 px-4 border rounded bg-white dark:bg-slate-800"
+            className="p-2 px-4 border rounded-2xl bg-white dark:bg-slate-800"
             value={selectedSubject}
             onChange={(e) => setSelectedSubject(e.target.value)}
             disabled={!selectedLevel}
@@ -159,12 +190,18 @@ export default function ChatPage() {
           </select>
         </div>
       </header>
+    )
+  }
 
-      <main className="flex-1 overflow-y-auto p-6 w-full space-y-4 h-0 grow">
+  return (
+    <div className="flex flex-col h-screen dark:bg-gradient-to-b dark:from-black dark:via-slate-700 dark:to-black bg-gradient-to-b from-sky-200 via-white to-sky-200 dark:bg-black text-slate-700 dark:text-slate-300">
+      <Header />
+
+      <main className="flex-1 min-h-0 overflow-y-auto p-6 w-full space-y-4">
         {messages.length === 0 && !loading && (
-          <div className="flex flex-col justify-center items-center h-full">
-            <p className="text-center text-slate-400 text-lg">
-              Start chatting with your tutor bot...
+          <div className="flex flex-col justify-center items-center h-100">
+            <p className="text-center text-slate-500 text-md dark:text-slate-200">
+              How can I assist you today? Please select a level and subject first to start learning!
             </p>
           </div>
         )}
@@ -201,11 +238,18 @@ export default function ChatPage() {
           </div>
         ))}
 
-        {loading && (
-          <div className="mr-auto bg-white dark:bg-slate-700 p-3 rounded-lg w-fit max-w-[70%]">
-            <TypingDots />
-          </div>
-        )}
+        {loading && (() => {
+          const lastBotMessage = [...messages].reverse().find(msg => msg.sender === 'bot');
+          if (lastBotMessage && lastBotMessage.text === '') {
+            return (
+              <div className="mr-auto bg-white dark:bg-slate-700 p-3 rounded-lg w-fit max-w-[70%]">
+                <TypingDots />
+              </div>
+            );
+          }
+          return null;
+        })()}
+
 
         <div ref={messagesEndRef} />
       </main>
@@ -215,12 +259,12 @@ export default function ChatPage() {
           e.preventDefault();
           sendMessage();
         }}
-        className="flex justify-center p-4 border-t border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800"
+        className="flex justify-center p-4 border-t border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-black"
       >
         <div className="flex gap-2 w-4/5 max-w-4xl">
           <input
             type="text"
-            className="flex-1 p-3 border rounded bg-white dark:bg-slate-700 focus:outline-none focus:ring focus:ring-sky-500"
+            className="flex-1 p-3 border border-gray-400 rounded-4xl bg-white dark:bg-slate-700 focus:outline-none focus:ring focus:ring-sky-500"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type your question..."
@@ -228,7 +272,7 @@ export default function ChatPage() {
           />
           <button
             type="submit"
-            className="px-6 py-3 bg-sky-600 text-white rounded hover:bg-sky-700 disabled:opacity-50"
+            className="px-6 py-3 dark:bg-slate-600 dark:hover:bg-slate-500 bg-sky-600 text-white rounded-4xl hover:bg-sky-700 disabled:opacity-50"
             disabled={loading || !selectedLevel || !selectedSubject}
           >
             Send
