@@ -1,11 +1,12 @@
 "use client";
+
 import * as React from "react";
-import { auth } from "../../../firebase/firebaseConfig";
+import { useRouter } from "next/navigation";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { useRouter } from "next/navigation";
+import { getAuthClient } from "../../../firebase/firebaseClient"; // <-- client-only auth
 
 export default function SignInPage() {
   const [isSignIn, setIsSignIn] = React.useState(true);
@@ -22,23 +23,21 @@ export default function SignInPage() {
     setLoading(true);
 
     try {
+      const auth = getAuthClient(); // initialize only in browser
+
       if (isSignIn) {
         // Sign In
         await signInWithEmailAndPassword(auth, email, password);
         alert("Welcome Back!");
-        router.push("/");
       } else {
         // Sign Up
         await createUserWithEmailAndPassword(auth, email, password);
         alert("Account created successfully!");
-        router.push("/");
       }
+      router.push("/");
     } catch (err: unknown) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError(String(err));
-      }
+      if (err instanceof Error) setError(err.message);
+      else setError(String(err));
     } finally {
       setLoading(false);
     }
@@ -51,9 +50,7 @@ export default function SignInPage() {
           {isSignIn ? "Sign In" : "Create Account"}
         </h1>
 
-        {error && (
-          <p className="mb-4 text-sm text-red-500 text-center">{error}</p>
-        )}
+        {error && <p className="mb-4 text-sm text-red-500 text-center">{error}</p>}
 
         <form className="space-y-4" onSubmit={handleSubmit}>
           {!isSignIn && (
@@ -111,11 +108,7 @@ export default function SignInPage() {
             disabled={loading}
             className="w-full py-2 px-4 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-400 disabled:opacity-50"
           >
-            {loading
-              ? "Loading..."
-              : isSignIn
-              ? "Sign In"
-              : "Create Account"}
+            {loading ? "Loading..." : isSignIn ? "Sign In" : "Create Account"}
           </button>
         </form>
 

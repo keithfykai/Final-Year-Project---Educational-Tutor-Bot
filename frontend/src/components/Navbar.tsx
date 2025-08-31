@@ -4,13 +4,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
-import { auth } from "../.././firebase/firebaseConfig";
+import { getAuthClient } from "../../firebase/firebaseClient"; // <-- client-only wrapper
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
+    const auth = getAuthClient(); // initialize only in browser
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
@@ -18,6 +19,12 @@ export default function Navbar() {
   }, []);
 
   const handleNavClick = () => setMenuOpen(false);
+
+  const handleSignOut = () => {
+    const auth = getAuthClient();
+    signOut(auth);
+    handleNavClick();
+  };
 
   return (
     <nav>
@@ -51,17 +58,12 @@ export default function Navbar() {
             </Link>
 
             {user ? (
-              <>
-                {/* <span className="text-gray-700 dark:text-gray-300">
-                  {user.displayName}
-                </span> */}
-                <button
-                  onClick={() => signOut(auth)}
-                  className="text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400"
-                >
-                  Sign Out
-                </button>
-              </>
+              <button
+                onClick={handleSignOut}
+                className="text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400"
+              >
+                Sign Out
+              </button>
             ) : (
               <Link
                 href="/signin"
@@ -125,10 +127,7 @@ export default function Navbar() {
                 {user.displayName || user.email}
               </span>
               <button
-                onClick={() => {
-                  signOut(auth);
-                  handleNavClick();
-                }}
+                onClick={handleSignOut}
                 className="block px-3 py-2 text-red-500 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md"
               >
                 Sign Out
