@@ -316,11 +316,11 @@ function parseMarkdownWithMath(text: string) {
     if (part.startsWith('\\[') && part.endsWith('\\]')) {
       // Remove delimiters \[ and \]
       const math = part.slice(2, -2);
-      return <BlockMath key={i}>{math}</BlockMath>;
+      return <BlockMath key={i} math={math}/>;
     } else if (part.startsWith('\\(') && part.endsWith('\\)')) {
       // Remove delimiters \( and \)
       const math = part.slice(2, -2);
-      return <InlineMath key={i}>{math}</InlineMath>;
+      return <InlineMath key={i} math={math}/>;
     } else {
       // For normal text, also parse **bold**
       return parseBoldMarkdown(part, i);
