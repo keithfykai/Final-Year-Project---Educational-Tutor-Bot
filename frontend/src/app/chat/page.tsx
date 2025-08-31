@@ -158,7 +158,7 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="flex flex-col h-full bg-white dark:bg-gray-900 text-slate-700 dark:text-slate-300">
+    <div className="flex flex-col h-screen bg-white dark:bg-gray-900 text-slate-700 dark:text-slate-300">
       <Header />
 
       <main className="flex-1 overflow-y-auto p-6 w-full space-y-4">

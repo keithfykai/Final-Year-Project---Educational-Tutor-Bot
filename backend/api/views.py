@@ -2,7 +2,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .tutor_pipeline import load_or_get_retriever, query_ollama_with_context
+from .tutor_pipeline import load_or_get_retriever, query_hf_with_context
 from django.http import StreamingHttpResponse
 
 @api_view(['POST'])
@@ -38,14 +38,14 @@ def chat_with_bot(request):
 
         If the question is multiple-choice, answer with the letter and a concise explanation.
         If the question is open-ended or complex, provide a clear, step-by-step, multi-paragraph explanation.
-        
+
         When writing mathematical expressions, always:
         - Use \\( ... \\) for inline math
         - Use \\[ ... \\] for block math (e.g., full equations)
         - Do not use dollar signs ($) for LaTeX
 
         Ensure the math is LaTeX-formatted correctly so it renders properly on the frontend.
-        
+
         Context:
         {context}
 
@@ -53,10 +53,11 @@ def chat_with_bot(request):
         {user_input}
         """
 
-        # Return a streaming response to frontend
+        # Streaming response generator for SSE
         def stream_response():
-            for chunk in query_ollama_with_context(prompt, valid_history):
-                yield chunk
+            for token in query_hf_with_context(prompt, valid_history):
+                yield f"data: {token}\n\n"
+            yield "data: [DONE]\n\n"
 
         return StreamingHttpResponse(stream_response(), content_type="text/event-stream")
 
