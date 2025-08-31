@@ -16,7 +16,7 @@ export default function SignInPage() {
   const [error, setError] = React.useState("");
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
     setLoading(true);
@@ -33,8 +33,12 @@ export default function SignInPage() {
         alert("Account created successfully!");
         router.push("/");
       }
-    } catch (err) {
-      setError(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError(String(err));
+      }
     } finally {
       setLoading(false);
     }
