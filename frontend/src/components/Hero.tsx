@@ -5,7 +5,7 @@ export default function Hero() {
   const router = useRouter();
 
   return (
-    <section className="flex flex-col bg-gradient-to-b from-white via-sky-200 to-white dark:bg-gradient-to-b dark:from-black dark:via-slate-800 dark:to-black items-center justify-center text-center pt-20">
+    <section className="flex flex-col bg-gradient-to-b from-white via-sky-200 to-white dark:bg-gradient-to-b dark:from-black dark:via-slate-800 dark:to-black items-center justify-center text-center py-20">
       <div className="w-full max-w-4xl px-4">
         <div className="flex flex-row items-center justify-center">
           <Image

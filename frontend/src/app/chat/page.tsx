@@ -194,14 +194,18 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="flex flex-col h-screen dark:bg-gradient-to-b dark:from-black dark:via-slate-700 dark:to-black bg-gradient-to-b from-sky-200 via-white to-sky-200 dark:bg-black text-slate-700 dark:text-slate-300">
+    <div className="flex flex-col h-full bg-white dark:bg-gray-900 text-slate-700 dark:text-slate-300">
       <Header />
 
-      <main className="flex-1 min-h-0 overflow-y-auto p-6 w-full space-y-4">
+      <main className="flex-1 overflow-y-auto p-6 w-full space-y-4">
         {messages.length === 0 && !loading && (
           <div className="flex flex-col justify-center items-center h-100">
-            <p className="text-center text-slate-500 text-md dark:text-slate-200">
+            <p className="text-center text-xl text-slate-700 dark:text-slate-300">
               How can I assist you today? Please select a level and subject first to start learning!
+
+              <br />
+
+              You can ask me questions related to your syllabus, past papers, or any topic you need help with. 
             </p>
           </div>
         )}

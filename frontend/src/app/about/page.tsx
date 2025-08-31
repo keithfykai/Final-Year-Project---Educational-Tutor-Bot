@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function AboutPage() {
   return (
-    <main className="flex flex-col py-20 dark:bg-gradient-to-b dark:from-black dark:via-black dark:to-black bg-gradient-to-b from-white via-sky-200 to-white min-h-screen w-full px-20 text-left">
+    <main className="flex flex-col py-20 px-20 dark:bg-gradient-to-b dark:from-black dark:via-black dark:to-black bg-gradient-to-b from-white via-sky-200 to-white min-h-screen w-full text-left">
       <section className="mb-6 max-w-4xl">
         <h1 className="text-4xl font-bold mb-6">What is Eduble?</h1>
         <p>
@@ -22,7 +22,7 @@ export default function AboutPage() {
         <h2 className="text-2xl font-semibold mb-2">Why did we build it?</h2>
         <p>
           I created Educational Tutor Bot to make education more accessible, 
-          especially for students who cannot afford traditional tuition. The hope 
+          especially for students who cannot afford private tuition. The hope 
           is to empower learners through affordable, AI-driven academic 
           assistance.
         </p>

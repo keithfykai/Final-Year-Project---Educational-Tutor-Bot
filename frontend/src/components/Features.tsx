@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Features() {
   return (
-    <section className="py-16 px-6 mx-auto bg-blue-50 dark:bg-slate-800">
+    <section className="py-30 px-20 mx-auto bg-blue-50 dark:bg-slate-800">
       <h2 className="text-3xl pb-6 text-center font-semibold mb-5 text-slate-800 dark:text-white">
         ✨ Features
       </h2>
