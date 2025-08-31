@@ -227,7 +227,7 @@ export default function ChatPage() {
                     parsed.some(
                       (el: any) =>
                         React.isValidElement(el) &&
-                        el.type?.name === 'BlockMath'
+                        el.type === 'BlockMath'
                     );
 
                   return (
