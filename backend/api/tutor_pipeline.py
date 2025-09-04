@@ -16,20 +16,27 @@ from constants import CATEGORY_SUBJECT_LIST
 load_dotenv()
 
 # --- CONFIGURATION ---
-EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 # OLLAMA_URL = "http://host.docker.internal:11434/api/chat"
 # OLLAMA_MODEL = "llama3.1"
 HUGGINGFACE_MODEL = "meta-llama/Llama-3.1-8B-Instruct"
 HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY")
 HF_API_URL = f"https://api-inference.huggingface.co/models/{HUGGINGFACE_MODEL}"
 
+EMBEDDING_MODEL = "all-MiniLM-L6-v2"
+EMBEDDING_API_URL = f"https://api-inference.huggingface.co/pipeline/feature-extraction/{EMBEDDING_MODEL}"
+EMBEDDING_HEADERS = {"Authorization": f"Bearer {HUGGINGFACE_API_KEY}"}
+
 # Initialize the client
 HF_CLIENT = InferenceClient(
-    provider="fireworks-ai",
+    provider="fireworks-ai", # Hugging Face Inference Provider
     api_key=os.getenv("HUGGINGFACE_API_KEY"),  # Make sure this is set in your environment
 )
 
+# Cache retrievers to avoid repeated DB
+retriever_cache = {}
+
 # --- DOCUMENT LOADING ---
+# Loads syllabus and notes
 def load_documents(syllabus_path: str, notes_folder: str) -> List[Document]:
     all_docs = []
 
@@ -59,7 +66,9 @@ def chunk_documents(documents):
 
 # --- EMBEDDING & STORAGE ---
 def embed_and_store(docs, persist_dir):
-    embedder = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
+    embedder = HuggingFaceEmbeddings(
+        model_name=EMBEDDING_MODEL, 
+        )
     vectordb = Chroma.from_documents(docs, embedding=embedder, persist_directory=persist_dir)
     vectordb.persist()
     return vectordb
@@ -95,11 +104,9 @@ def query_hf_with_context(prompt: str, history: List[dict]):
 
     for chunk in stream:
         delta = chunk.choices[0].delta.content
-        if delta:
-            # Remove any stray 'data:' or whitespace issues
-            clean_delta = delta.strip()
-            if clean_delta and clean_delta != "[DONE]":
-                yield clean_delta
+        if delta is not None:
+            print("BOT RESPONSE: ", delta, "DELTA Type: ", type(delta))
+            yield delta
 
 
 def get_clean_answer(prompt: str, history: List[dict]) -> str:
@@ -156,41 +163,45 @@ def get_structured_qa(prompt: str, history: List[dict]) -> List[dict]:
 #             except Exception as e:
 #                 print(f"⚠️ Failed to parse line: {line}\nError: {e}")
 
-retriever_cache = {}
-
-# Run once and cache
+# --- LOAD OR GET RETRIEVER ---
 def load_or_get_retriever(level: str, subject: str):
-    # Cache
-    cache_key = f"{level}:{subject}"
+    """
+    Returns a Chroma retriever and conversation memory for a given level & subject.
+    """
+    # Normalize
+    level_key = level.lower()
+    subject_key = subject.lower()
+    cache_key = f"{level_key}:{subject_key}"
+
     if cache_key in retriever_cache:
         return retriever_cache[cache_key]
 
-    # Normalize inputs
-    level = level.lower()
-    subject = subject.lower()
-
-    # Validate level and subject
-    if level not in CATEGORY_SUBJECT_LIST or subject not in CATEGORY_SUBJECT_LIST[level]:
+    # Validate
+    if level_key not in CATEGORY_SUBJECT_LIST or subject_key not in CATEGORY_SUBJECT_LIST[level_key]:
         raise ValueError(f"Invalid level/subject: {level}/{subject}")
 
-    # Use the VALUE as the folder and filename
-    subject_folder = CATEGORY_SUBJECT_LIST[level][subject]
-    base_path = os.path.join("./api/data", level, subject_folder)
+    subject_folder = CATEGORY_SUBJECT_LIST[level_key][subject_key]
+    base_path = os.path.join("./api/data", level_key, subject_folder)
     syllabus_file = os.path.join(base_path, f"{subject_folder} Syllabus.mmd")
     notes_folder = os.path.join(base_path, "notes")
-    chroma_dir = os.path.join("./api/chroma_db", level, subject_folder)
+    chroma_dir = os.path.join("./api/chroma_db", level_key, subject_folder)
 
     # Load or create Chroma DB
     if os.path.exists(chroma_dir):
-        vectordb = Chroma(persist_directory=chroma_dir,
-                          embedding_function=HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL))
+        vectordb = Chroma(
+            persist_directory=chroma_dir,
+            embedding_function=HuggingFaceEmbeddings(
+                model_name=EMBEDDING_MODEL,
+            )
+        )
     else:
-        print(f"🔍 Creating new Chroma DB for {level}/{subject_folder}...")
+        print(f"🔍 Creating new Chroma DB for {level_key}/{subject_folder}...")
         docs = load_documents(syllabus_file, notes_folder)
         chunks = chunk_documents(docs)
         vectordb = embed_and_store(chunks, chroma_dir)
 
     retriever = vectordb.as_retriever()
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+
     retriever_cache[cache_key] = (retriever, memory)
     return retriever, memory

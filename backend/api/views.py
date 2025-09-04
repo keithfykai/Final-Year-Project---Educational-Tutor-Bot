@@ -56,8 +56,8 @@ def chat_with_bot(request):
         # Streaming response generator for SSE
         def stream_response():
             for token in query_hf_with_context(prompt, valid_history):
-                yield f"data: {token}\n\n"
-            yield "data: [DONE]\n\n"
+                yield f"{token}"
+            yield "\n\n"
 
         return StreamingHttpResponse(stream_response(), content_type="text/event-stream")
 

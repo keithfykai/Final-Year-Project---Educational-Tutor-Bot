@@ -38,7 +38,7 @@ export default function ChatPage() {
     });
 
     try {
-      const res = await fetch('http://localhost:8000/api/chat/', {
+      const res = await fetch('http://13.251.124.88:8000/api/chat/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -272,34 +272,49 @@ function Dot({ delay }: { delay: string }) {
 }
 
 function parseMarkdownWithMath(text: string) {
-  // Regex to split text by inline \( ... \) and block \[ ... \] math
   const regex = /(\\\[.*?\\\]|\\\(.*?\\\))/g;
   const parts = text.split(regex);
 
-  return parts.map((part, i) => {
+  return parts.flatMap((part, i) => {
     if (part.startsWith('\\[') && part.endsWith('\\]')) {
-      // Remove delimiters \[ and \]
-      const math = part.slice(2, -2);
-      return <BlockMath key={i} math={math}/>;
+      return <BlockMath key={i} math={part.slice(2, -2)} />;
     } else if (part.startsWith('\\(') && part.endsWith('\\)')) {
-      // Remove delimiters \( and \)
-      const math = part.slice(2, -2);
-      return <InlineMath key={i} math={math}/>;
+      return <InlineMath key={i} math={part.slice(2, -2)} />;
     } else {
-      // For normal text, also parse **bold**
-      return parseBoldMarkdown(part, i);
+      return parseBoldMarkdown(part, i); // returns array of <strong> or text
     }
   });
 }
 
-// Updated bold markdown parser to receive a key
 function parseBoldMarkdown(text: string, keyBase: number) {
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
-  return parts.map((part, i) => {
-    if (part.startsWith('**') && part.endsWith('**')) {
-      const content = part.slice(2, -2);
-      return <strong key={`${keyBase}-${i}`}>{content}</strong>;
+  const regex = /\*\*(.*?)\*\*/g;
+  const elements: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match;
+  
+  while ((match = regex.exec(text)) !== null) {
+    const [fullMatch, boldText] = match;
+    const index = match.index;
+
+    // Add text before bold
+    if (index > lastIndex) {
+      elements.push(
+        <React.Fragment key={`${keyBase}-${lastIndex}`}>{text.slice(lastIndex, index)}</React.Fragment>
+      );
     }
-    return <React.Fragment key={`${keyBase}-${i}`}>{part}</React.Fragment>;
-  });
+
+    // Add bold text
+    elements.push(
+      <strong key={`${keyBase}-bold-${index}`}>{boldText}</strong>
+    );
+
+    lastIndex = index + fullMatch.length;
+  }
+
+  // Add remaining text
+  if (lastIndex < text.length) {
+    elements.push(<React.Fragment key={`${keyBase}-end`}>{text.slice(lastIndex)}</React.Fragment>);
+  }
+
+  return elements;
 }
