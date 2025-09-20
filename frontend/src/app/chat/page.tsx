@@ -38,7 +38,7 @@ export default function ChatPage() {
     });
 
     try {
-      const res = await fetch('http://13.251.124.88:8000/api/chat/', {
+      const res = await fetch('http://47.129.112.204:8000/api/chat/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
