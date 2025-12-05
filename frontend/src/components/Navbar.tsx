@@ -3,28 +3,28 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { onAuthStateChanged, signOut, User } from "firebase/auth";
-import { getAuthClient } from "../../firebase/firebaseClient"; // <-- client-only wrapper
+// import { onAuthStateChanged, signOut, User } from "firebase/auth";
+// import { getAuthClient } from "../../firebase/firebaseClient"; // <-- client-only wrapper
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [user, setUser] = useState<User | null>(null);
+  // const [user, setUser] = useState<User | null>(null);
 
-  useEffect(() => {
-    const auth = getAuthClient(); // initialize only in browser
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-    return () => unsubscribe();
-  }, []);
+  // useEffect(() => {
+  //   const auth = getAuthClient(); // initialize only in browser
+  //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+  //     setUser(currentUser);
+  //   });
+  //   return () => unsubscribe();
+  // }, []);
 
   const handleNavClick = () => setMenuOpen(false);
 
-  const handleSignOut = () => {
-    const auth = getAuthClient();
-    signOut(auth);
-    handleNavClick();
-  };
+  // const handleSignOut = () => {
+  //   const auth = getAuthClient();
+  //   signOut(auth);
+  //   handleNavClick();
+  // };
 
   return (
     <nav>
@@ -57,9 +57,9 @@ export default function Navbar() {
               About
             </Link>
 
-            {user ? (
+            {/* {user ? (
               <button
-                onClick={handleSignOut}
+                // onClick={handleSignOut}
                 className="text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400"
               >
                 Sign Out
@@ -72,7 +72,7 @@ export default function Navbar() {
               >
                 Sign In
               </Link>
-            )}
+            )} */}
           </div>
 
           {/* Mobile Hamburger */}
@@ -121,13 +121,13 @@ export default function Navbar() {
             About
           </Link>
 
-          {user ? (
+          {/* {user ? (
             <>
               <span className="block px-3 py-2 text-gray-700 dark:text-gray-300">
                 {user.displayName || user.email}
               </span>
               <button
-                onClick={handleSignOut}
+                // onClick={handleSignOut}
                 className="block px-3 py-2 text-red-500 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md"
               >
                 Sign Out
@@ -141,7 +141,7 @@ export default function Navbar() {
             >
               Sign In
             </Link>
-          )}
+          )} */}
 
           <Link
             href="/chat"

@@ -1,16 +1,16 @@
 services:
-  backend:
-    build: ./backend # Path to the backend Dockerfile
-    container_name: backend
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./backend:/app
-    environment:
-      - DEBUG=1
-    env_file: .env
-    # depends_on:
-    #   - db
+  # backend:
+  #   build: ./backend # Path to the backend Dockerfile
+  #   container_name: backend
+  #   ports:
+  #     - "8000:8000"
+  #   volumes:
+  #     - ./backend:/app
+  #   environment:
+  #     - DEBUG=1
+  #   # env_file: .env
+  #   # depends_on:
+  #   #   - db
 
   frontend:
     build: ./frontend # Path to the frontend Dockerfile
@@ -25,5 +25,5 @@ services:
       - CHOKIDAR_USEPOLLING=true
     working_dir: /app
     command: npm run dev
-    env_file: .env
+    # env_file: .env
 

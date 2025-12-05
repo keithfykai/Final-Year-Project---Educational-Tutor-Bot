@@ -91,7 +91,7 @@ export default function ChatPage() {
 
   function Header() {
     return (
-      <header className="px-6 py-3 flex bg-sky-200 dark:bg-black justify-between items-center">
+      <header className="px-6 py-3 flex bg-black justify-between items-center">
         <div className='flex items-center gap-4'>
           <Link href='/' className="">
             <Image 
@@ -158,7 +158,7 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-white dark:bg-gray-900 text-slate-700 dark:text-slate-300">
+    <div className="flex flex-col h-screen bg-black text-slate-700 dark:text-slate-300">
       <Header />
 
       <main className="flex-1 overflow-y-auto p-6 w-full space-y-4">
