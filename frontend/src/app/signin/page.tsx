@@ -1,3 +1,12 @@
+export default function SignInPage() {
+  return (
+    <div>
+      Sign in page
+    </div>
+  );
+}
+
+
 // "use client";
 
 // import * as React from "react";
