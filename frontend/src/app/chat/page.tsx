@@ -9,9 +9,10 @@ import { CATEGORY_SUBJECT_LIST } from './consts';
 
 type LevelKey = keyof typeof CATEGORY_SUBJECT_LIST;
 
+const SUPPORTED_LEVELS = ['psle', 'o_level', 'a_level'];
+
 export default function ChatPage() {
   const [selectedLevel, setSelectedLevel] = useState<LevelKey | ''>('');
-  const [selectedSubject, setSelectedSubject] = useState('');
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<
     { sender: 'user' | 'bot'; text: string }[]
@@ -20,71 +21,61 @@ export default function ChatPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const sendMessage = async () => {
-    if (!input.trim() || !selectedLevel || !selectedSubject) {
-      alert('Please select both level and subject, and enter a message.');
+    if (!input.trim() || !selectedLevel) {
+      alert('Please select a level, and enter a message.');
       return;
     }
 
     const userMessage = input;
-    setMessages((prev) => [...prev, { sender: 'user', text: userMessage }]);
     setInput('');
     setLoading(true);
 
-    // Add empty bot message and capture its index correctly
-    let botMsgIndex = 0;
-    setMessages((prev) => {
-      botMsgIndex = prev.length;
-      return [...prev, { sender: 'bot', text: '' }];
-    });
+    setMessages((prev) => [
+      ...prev,
+      { sender: 'user', text: userMessage },
+      { sender: 'bot', text: '' },
+    ]);
 
     try {
-      const res = await fetch('http://47.129.112.204:8000/api/chat/', {
+      const res = await fetch('http://localhost:5018/llm/chat', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          message: userMessage,
           level: selectedLevel,
-          subject: selectedSubject,
-          history: messages.map((msg) => ({
-            role: msg.sender === 'user' ? 'user' : 'assistant',
-            content: msg.text,
-          })),
+          prompt: userMessage,
         }),
       });
 
-      if (!res.body) throw new Error("ReadableStream not supported");
-
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let done = false;
-      let botReply = "";
-
-      while (!done) {
-        const { value, done: doneReading } = await reader.read();
-        done = doneReading;
-        if (value) {
-          botReply += decoder.decode(value, { stream: true });
-          setMessages((prev) => {
-            const newMessages = [...prev];
-            newMessages[botMsgIndex] = { sender: "bot", text: botReply };
-            return newMessages;
-          });
-        }
+      if (!res.ok) {
+        const err = await res.text();
+        throw new Error(err);
       }
+
+      const data = await res.json();
+
+      setMessages((prev) => {
+        const updated = [...prev];
+        updated[updated.length - 1] = {
+          sender: 'bot',
+          text: data.response ?? data.output ?? 'No response from model.',
+        };
+        return updated;
+      });
+
     } catch (error) {
-      setMessages((prev) => [
-        ...prev,
-        { sender: "bot", text: `Network error: ${String(error)}` },
-      ]);
+      setMessages((prev) => {
+        const updated = [...prev];
+        updated[updated.length - 1] = {
+          sender: 'bot',
+          text: `Error: ${String(error)}`,
+        };
+        return updated;
+      });
     } finally {
       setLoading(false);
     }
   };
 
-
-  // Auto scroll to bottom when messages update
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, loading]);
@@ -92,9 +83,9 @@ export default function ChatPage() {
   function Header() {
     return (
       <header className="px-6 py-3 flex bg-black justify-between items-center">
-        <div className='flex items-center gap-4'>
-          <Link href='/' className="">
-            <Image 
+        <div className="flex items-center gap-4">
+          <Link href="/">
+            <Image
               src="/Eddy.png"
               alt="Eddy the Educator"
               width={70}
@@ -104,157 +95,98 @@ export default function ChatPage() {
           </Link>
 
           <div className="px-2">
-            <h1 className="text-xl font-bold text-slate-800 dark:text-slate-100">
+            <h1 className="text-xl font-bold text-slate-100">
               Eddy the Educator
             </h1>
-
-            <h2 className="text-sm mt-1 text-slate-600 dark:text-slate-400">
-              Select Level and Subject to start learning!
-              <br/> Or click on Eddy to go back home.
+            <h2 className="text-sm mt-1 text-slate-400">
+              Select a Level to start learning!
             </h2>
           </div>
         </div>
 
-        <div className="flex gap-4 mt-4">
-          {/* LEVEL SELECT */}
+        <div className="flex gap-4">
           <select
-            title="level-select"
-            className="p-2 px-4 border rounded-2xl bg-white dark:bg-slate-800"
+            className="p-2 px-4 rounded-2xl bg-slate-800 text-white"
             value={selectedLevel}
             onChange={(e) => {
               setSelectedLevel(e.target.value as LevelKey | '');
-              setSelectedSubject('');
             }}
           >
             <option value="">Select Level</option>
-            {Object.keys(CATEGORY_SUBJECT_LIST).map((levelKey) => (
+            {SUPPORTED_LEVELS.map((levelKey) => (
               <option key={levelKey} value={levelKey}>
                 {levelKey.replace('_', ' ').toUpperCase()}
               </option>
             ))}
           </select>
-
-          {/* SUBJECT SELECT */}
-          <select
-            title="subject-select"
-            className="p-2 px-4 border rounded-2xl bg-white dark:bg-slate-800"
-            value={selectedSubject}
-            onChange={(e) => setSelectedSubject(e.target.value)}
-            disabled={!selectedLevel}
-          >
-            <option value="">Select Subject</option>
-            {selectedLevel &&
-              Object.entries(CATEGORY_SUBJECT_LIST[selectedLevel as LevelKey]).map(
-                ([subjectKey, subjectLabel]) => (
-                  <option key={subjectKey} value={subjectKey}>
-                    {subjectLabel.replace(/_/g, ' ')}
-                  </option>
-                )
-              )}
-          </select>
         </div>
       </header>
-    )
+    );
   }
 
   return (
-    <div className="flex flex-col h-screen bg-black text-slate-700 dark:text-slate-300">
+    <div className="flex flex-col h-screen bg-black text-slate-300">
       <Header />
 
-      <main className="flex-1 overflow-y-auto p-6 w-full space-y-4">
-        {messages.length === 0 && !loading && (
-          <div className="flex flex-col justify-center items-center h-100">
-            <p className="text-center text-xl text-slate-700 dark:text-slate-300">
-              How can I assist you today? Please select a level and subject first to start learning!
-
-              <br />
-
-              You can ask me questions related to your syllabus, past papers, or any topic you need help with. 
-            </p>
-          </div>
-        )}
-
+      <main className="flex-1 overflow-y-auto p-6 space-y-4">
         {messages.map((msg, index) => (
           <div
             key={index}
-            className={`p-4 rounded-lg max-w-[60%] whitespace-pre-wrap ${
+            className={`p-4 rounded-xl max-w-[60%] whitespace-pre-wrap ${
               msg.sender === 'user'
-                ? 'ml-auto bg-sky-100 dark:bg-sky-900'
-                : 'mr-auto bg-white dark:bg-slate-700'
+                ? 'ml-auto bg-sky-900'
+                : 'mr-auto bg-slate-700'
             }`}
           >
-            {msg.sender === 'bot' ? (
-              msg.text.split('\n').map((paragraph, i) => {
-                const parsed = parseMarkdownWithMath(paragraph.trim());
-
-                  const containsBlockMath = Array.isArray(parsed) &&
-                    parsed.some(
-                      (el) =>
-                        React.isValidElement(el) &&
-                        el.type === 'BlockMath'
-                    );
-
-                  return (
-                    <div key={i} className="mb-2">
-                      {containsBlockMath ? parsed : <p>{parsed}</p>}
-                    </div>
-                  );
-                })
-            ) : (
-              msg.text
-            )}
+            {msg.sender === 'bot'
+              ? msg.text.split('\n').map((line, i) => (
+                  <div key={i}>{parseMarkdownWithMath(line)}</div>
+                ))
+              : msg.text}
           </div>
         ))}
 
-        {loading && (() => {
-          const lastBotMessage = [...messages].reverse().find(msg => msg.sender === 'bot');
-          if (lastBotMessage && lastBotMessage.text === '') {
-            return (
-              <div className="mr-auto bg-white dark:bg-slate-700 p-3 rounded-lg w-fit max-w-[70%]">
-                <TypingDots />
-              </div>
-            );
-          }
-          return null;
-        })()}
-
+        {loading &&
+          messages[messages.length - 1]?.sender === 'bot' &&
+          messages[messages.length - 1]?.text === '' && (
+            <div className="mr-auto bg-slate-700 p-3 rounded-xl w-fit">
+              <TypingDots />
+            </div>
+          )}
 
         <div ref={messagesEndRef} />
       </main>
 
       <form
-        onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+        onSubmit={(e) => {
           e.preventDefault();
           sendMessage();
         }}
-        className="flex justify-center p-4 border-t border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-black"
+        className="flex p-4 border-t border-slate-700 bg-black"
       >
-        <div className="flex gap-2 w-4/5 max-w-4xl">
-          <input
-            type="text"
-            className="flex-1 p-3 border border-gray-400 rounded-4xl bg-white dark:bg-slate-700 focus:outline-none focus:ring focus:ring-sky-500"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Type your question..."
-            disabled={loading}
-          />
-          <button
-            type="submit"
-            className="px-6 py-3 dark:bg-slate-600 dark:hover:bg-slate-500 bg-sky-600 text-white rounded-4xl hover:bg-sky-700 disabled:opacity-50"
-            disabled={loading || !selectedLevel || !selectedSubject}
-          >
-            Send
-          </button>
-        </div>
+        <input
+          type="text"
+          className="flex-1 p-3 rounded-l-xl bg-slate-700 text-white"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          disabled={loading}
+          placeholder="Type your question..."
+        />
+        <button
+          type="submit"
+          disabled={loading}
+          className="px-6 bg-sky-600 rounded-r-lg hover:bg-sky-700"
+        >
+          Send
+        </button>
       </form>
     </div>
   );
 }
 
-// Typing animation component
 function TypingDots() {
   return (
-    <span className="inline-flex items-center space-x-1">
+    <span className="inline-flex gap-1">
       <Dot delay="0" />
       <Dot delay="200" />
       <Dot delay="400" />
@@ -265,7 +197,7 @@ function TypingDots() {
 function Dot({ delay }: { delay: string }) {
   return (
     <span
-      className="w-2 h-2 bg-sky-600 rounded-full animate-bounce"
+      className="w-2 h-2 bg-sky-500 rounded-full animate-bounce"
       style={{ animationDelay: `${delay}ms` }}
     />
   );
@@ -275,46 +207,13 @@ function parseMarkdownWithMath(text: string) {
   const regex = /(\\\[.*?\\\]|\\\(.*?\\\))/g;
   const parts = text.split(regex);
 
-  return parts.flatMap((part, i) => {
-    if (part.startsWith('\\[') && part.endsWith('\\]')) {
+  return parts.map((part, i) => {
+    if (part.startsWith('\\[')) {
       return <BlockMath key={i} math={part.slice(2, -2)} />;
-    } else if (part.startsWith('\\(') && part.endsWith('\\)')) {
+    }
+    if (part.startsWith('\\(')) {
       return <InlineMath key={i} math={part.slice(2, -2)} />;
-    } else {
-      return parseBoldMarkdown(part, i); // returns array of <strong> or text
     }
+    return <span key={i}>{part}</span>;
   });
-}
-
-function parseBoldMarkdown(text: string, keyBase: number) {
-  const regex = /\*\*(.*?)\*\*/g;
-  const elements: React.ReactNode[] = [];
-  let lastIndex = 0;
-  let match;
-  
-  while ((match = regex.exec(text)) !== null) {
-    const [fullMatch, boldText] = match;
-    const index = match.index;
-
-    // Add text before bold
-    if (index > lastIndex) {
-      elements.push(
-        <React.Fragment key={`${keyBase}-${lastIndex}`}>{text.slice(lastIndex, index)}</React.Fragment>
-      );
-    }
-
-    // Add bold text
-    elements.push(
-      <strong key={`${keyBase}-bold-${index}`}>{boldText}</strong>
-    );
-
-    lastIndex = index + fullMatch.length;
-  }
-
-  // Add remaining text
-  if (lastIndex < text.length) {
-    elements.push(<React.Fragment key={`${keyBase}-end`}>{text.slice(lastIndex)}</React.Fragment>);
-  }
-
-  return elements;
 }
