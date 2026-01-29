@@ -51,7 +51,10 @@ type QuizStartResponse = {
 function backendBaseUrl() {
   // Option A: set NEXT_PUBLIC_BACKEND_URL="http://localhost:8000" (or your server)
   // Option B: leave empty to use same-origin (e.g. if you proxy /llm)
-  return "http://localhost:5000";
+  const url = process.env.NEXT_PUBLIC_BACKEND_URL?.trim();
+
+  if (!url) return ""; // same-origin: fetch("/llm/...")
+  return url.replace(/\/+$/, ""); // remove trailing slash
 }
 
 export default function QuizPage() {
@@ -97,7 +100,8 @@ export default function QuizPage() {
     setQuiz(null);
 
     try {
-      const res = await fetch(`${backendBaseUrl()}/llm/quiz/start`, {
+      const base = backendBaseUrl();
+      const res = await fetch(`${base}/llm/quiz/start`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -151,7 +155,8 @@ export default function QuizPage() {
     setError("");
 
     try {
-      const res = await fetch(`${backendBaseUrl()}/llm/quiz/summary`, {
+      const base = backendBaseUrl();
+      const res = await fetch(`${base}/llm/quiz/summary`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

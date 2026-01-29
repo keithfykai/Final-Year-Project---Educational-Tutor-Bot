@@ -11,6 +11,18 @@ type LevelKey = keyof typeof CATEGORY_SUBJECT_LIST;
 
 const SUPPORTED_LEVELS = ['psle', 'o_level', 'a_level'];
 
+function backendBaseUrl() {
+  // Option A: set NEXT_PUBLIC_BACKEND_URL="http://localhost:8000" (or your server)
+  // Option B: leave empty to use same-origin (e.g. if you proxy /llm)
+  const url = process.env.NEXT_PUBLIC_BACKEND_URL?.trim();
+
+  if (!url) return ""; // same-origin: fetch("/llm/...")
+  return url.replace(/\/+$/, ""); // remove trailing slash
+}
+
+const API_BASE = backendBaseUrl(); // "" (same-origin) or "https://...run.app"
+
+
 export default function ChatPage() {
   const [selectedLevel, setSelectedLevel] = useState<LevelKey | ''>('');
   const [input, setInput] = useState('');
@@ -103,12 +115,12 @@ export default function ChatPage() {
         }
         formData.append('image', imageFile);
 
-        res = await fetch('http://localhost:5000/llm/chat', {
+        res = await fetch(`${API_BASE}/llm/chat`, {
           method: 'POST',
           body: formData,
         });
       } else {
-        res = await fetch('http://localhost:5000/llm/chat', {
+        res = await fetch(`${API_BASE}/llm/chat`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
