@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import Image from 'next/image';
-import { CATEGORY_SUBJECT_LIST } from './consts';
+import { CATEGORY_SUBJECT_LIST } from '../app/chat/consts';
 
 type LevelKey = keyof typeof CATEGORY_SUBJECT_LIST;
 
