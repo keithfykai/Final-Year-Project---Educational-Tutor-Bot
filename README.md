@@ -1,77 +1,119 @@
-# 🧠 Final Year Project: Educational Tutor Bot
+# 🧠 Final Year Project: AI Educational Tutor
 
-### 🇸🇬 A Singapore-Tailored AI Exam Preparation Assistant
+### 🇸🇬 A Syllabus-Aligned AI Learning Assistant for Exam Preparation
 
-This project is an **LLM + RAG-based Tutor Bot** that scrapes, processes, and understands past-year exam papers and syllabi. It leverages cutting-edge tools like **Ollama (LLaMA 3.1)**, **Meta's Nougat OCR**, **ChromaDB**, **LangChain**, and is deployed with a **Next.js frontend (Vercel)** and **Django backend (Firebase Auth)**.
+This project is an **AI-powered educational tutor** designed to help students prepare effectively for examinations using **syllabus-specific guidance** and **intelligent practice questions**.
 
-Unlike generic AI chatbots, our system is **specifically trained on Singaporean national exams** — including PSLE, O-Level, and A-Level content — to deliver **accurate, syllabus-aligned answers** that truly help students prepare.
+The system supports two main learning modes:
+
+- **💬 Chatbot Mode** – a smart conversational tutor trained on a specific syllabus level  
+- **📝 Quiz Mode** – AI-generated multiple-choice quizzes tailored to a student’s level and subject  
+
+Unlike generic AI tools, this tutor is **focused on real exam preparation**, reinforcing concepts through **exam-style questions** and targeted explanations to help students truly understand and retain knowledge.
+
+---
+
+<p align="left">
+  <img src="https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=nextdotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vercel-000?style=for-the-badge&logo=vercel&logoColor=white" />
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/Google%20Cloud-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white" />
+  <img src="https://img.shields.io/badge/OpenAI-000?style=for-the-badge&logo=openai&logoColor=white" />
+</p>
+
+---
+
+## ✨ Key Features
+
+### 💬 Chatbot Mode
+- Context-aware AI tutor
+- Answers questions based on **specific syllabus levels**
+- Provides clear, structured explanations
+- Designed to simulate how students revise and clarify doubts before exams
+
+### 📝 Quiz Mode
+- AI-generated **MCQ quizzes**
+- Questions are adapted to:
+  - Student’s academic level
+  - Selected subject
+- Helps students:
+  - Practise exam-style questions
+  - Identify weak areas
+  - Reinforce understanding through active recall
 
 ---
 
 ## 🧰 Tech Stack
 
-**Frontend**: Next.js · React · TypeScript · TailwindCSS · Vercel  
-**Backend**: Django · DRF · Firebase Auth · LangChain · ChromaDB · Nougat (OCR)  
-**LLM**: Ollama (LLaMA 3.1)  
-**Infra**: Dockerized for deployment
+### Frontend
+- Next.js
+- React
+- TypeScript
+- TailwindCSS
+- Hosted on Vercel
 
-<p align="left">
-  <img src="https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=nextdotjs&logoColor=white" />
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
-  <img src="https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white" />
-  <img src="https://img.shields.io/badge/Vercel-000?style=for-the-badge&logo=vercel&logoColor=white" />
-  <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" />
-  <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" />
-  <img src="https://img.shields.io/badge/Chroma-5C2D91?style=for-the-badge&logo=neural&logoColor=white" />
-  <img src="https://img.shields.io/badge/Nougat OCR-ff4088?style=for-the-badge&logo=meta&logoColor=white" />
-  <img src="https://img.shields.io/badge/Ollama-2E2E2E?style=for-the-badge&logo=ai&logoColor=white" />
-  <img src="https://img.shields.io/badge/LLaMA 3.1-4CAF50?style=for-the-badge&logo=openai&logoColor=white" />
-</p>
+### Backend
+- FastAPI
+- Google Cloud Platform (GCP)
+
+### AI & Data
+- OpenAI **GPT-5-mini**
+- OpenAI Embeddings
+- OpenAI Vector Store (semantic retrieval)
 
 ---
 
-## 🧠 How It Works
+## 🧠 System Overview
 
-1. **Scrape PDF exam papers and syllabi**
-2. **Use OCR (Nougat)** to convert content into clean markdown/text
-3. **Chunk and embed documents** using HuggingFace + ChromaDB
-4. **Store vector DB** for fast semantic search
-5. **Use LangChain RAG pipeline**: retrieve top-k chunks relevant to the user query
-6. **Pass to LLaMA 3.1 (via Ollama)** for generating contextual answers
-7. **Serve via Django API** and render in a **Next.js chat interface**
+1. Syllabus-specific content is embedded using OpenAI embeddings  
+2. Embeddings are stored in an OpenAI-managed vector database  
+3. User input is handled in one of two modes:
+   - **Chat Mode** → contextual, syllabus-aligned responses  
+   - **Quiz Mode** → dynamic MCQ generation  
+4. Relevant context is retrieved from the vector store  
+5. **GPT-5-mini** generates:
+   - Explanations (Chatbot Mode)
+   - Exam-style MCQs (Quiz Mode)  
+6. Responses are served via **FastAPI** and rendered on a **Next.js frontend**
 
 ---
 
 ## 🖥 Frontend
 
-- ✅ Next.js + TypeScript
-- 🎨 TailwindCSS for styling
-- 🚀 Vercel deployment
-- 🔐 Firebase Auth for secure user login
-
-## ⚙️ Backend
-
-- 🐍 Django + Django REST Framework
-- 🔥 Firebase Admin SDK for token validation
-- 🧠 LangChain + custom RAG logic
-- 🗂️ ChromaDB for vector search
-- 📄 Nougat OCR (Meta AI) for PDF parsing
-
-## 🧠 Local AI
-
-- 🧩 LLaMA 3.1 served via **Ollama**
-- 🧠 Runs locally for privacy + speed
-- 🔍 Uses document embeddings for **contextual, syllabus-based answers**
+- Interactive chat interface
+- Quiz UI with MCQ-style questions
+- Responsive design using TailwindCSS
+- Deployed on **Vercel**
+- **This repository contains frontend code only**
 
 ---
 
-## 📚 Supported Syllabi
+## ☁️ Backend (External)
+
+> ⚠️ Backend code is **not included in this repository**
+
+- Built with **FastAPI**
+- Hosted on **Google Cloud**
+- Handles:
+  - AI requests
+  - Vector search
+  - Prompt orchestration
+- Communicates with OpenAI APIs for:
+  - Language model inference
+  - Vector retrieval
+
+---
+
+## 📚 Supported Academic Levels & Subjects
 
 ### ✅ A-Level
-- H1/H2 Mathematics
-- H1/H2 Chemistry
-- H1/H2 Physics
-- H1/H2 Biology
+- H1 / H2 Mathematics
+- H1 / H2 Chemistry
+- H1 / H2 Physics
+- H1 / H2 Biology
 
 ### ✅ O-Level
 - Pure & Combined Physics
@@ -80,42 +122,32 @@ Unlike generic AI chatbots, our system is **specifically trained on Singaporean 
 - Elementary Mathematics
 - Additional Mathematics
 
-### 🛠 Coming Soon
-- PSLE (Science, Math)
-- IB HL/SL Subjects
+### 🛠 Planned Extensions
+- PSLE subjects
+- Additional exam boards and curricula
 
 ---
 
-## 💻 Local Development
-
-### Frontend
+## 💻 Local Development (Frontend Only)
 
 ```bash
-cd frontend
 npm install
 npm run dev
-```
-
-### Backend
-
-```bash
-cd backend
-pip install -r requirements.txt
-python manage.py runserver
 ```
 
 ---
 
 ## 📝 Notes
 
-- 🤖 All AI processing is **fully local** (Ollama)
-- 🧱 Vector DB built using Chroma
-- 🔐 Secure API via Firebase Auth middleware
-- ⚙️ Easily extendable to new subjects or exam boards
+- AI responses are **syllabus-focused**, not generic
+- Quiz questions are **dynamically generated**, not pre-written
+- Designed to encourage **active learning and exam readiness**
+- Architecture is scalable and cloud-native
 
 ---
 
 ## 📌 Contributions & License
 
-Currently not accepting contributions (Final Year Solo Project)
-This project is open-source and for educational purposes only.
+This project is a **Final Year Project** and is not currently accepting contributions.
+
+Open-source and intended **strictly for educational purposes**.
