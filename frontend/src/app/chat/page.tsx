@@ -7,21 +7,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CATEGORY_SUBJECT_LIST } from './consts';
 
-type LevelKey = keyof typeof CATEGORY_SUBJECT_LIST;
-
-const SUPPORTED_LEVELS = ['psle', 'o_level', 'a_level'];
-
 function backendBaseUrl() {
-  // Option A: set NEXT_PUBLIC_BACKEND_URL="http://localhost:8000" (or your server)
-  // Option B: leave empty to use same-origin (e.g. if you proxy /llm)
   const url = process.env.NEXT_PUBLIC_BACKEND_URL?.trim();
 
   if (!url) return ""; // same-origin: fetch("/llm/...")
   return url.replace(/\/+$/, ""); // remove trailing slash
 }
 
-const API_BASE = backendBaseUrl(); // "" (same-origin) or "https://...run.app"
-
+type LevelKey = keyof typeof CATEGORY_SUBJECT_LIST;
 
 export default function ChatPage() {
   const [selectedLevel, setSelectedLevel] = useState<LevelKey | ''>('');
@@ -31,6 +24,7 @@ export default function ChatPage() {
   const chatScrollRef = useRef<HTMLElement | null>(null);
   const [isNearBottom, setIsNearBottom] = useState(true);
   const shouldAutoScrollRef = useRef(true);
+
   type ChatMessage = {
     sender: 'user' | 'bot' | 'system';
     text: string;
@@ -44,9 +38,7 @@ export default function ChatPage() {
     return level;
   }
 
-
   const [loading, setLoading] = useState(false);
-
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const prevLevelRef = useRef<LevelKey | ''>('');
   const textInputRef = useRef<HTMLInputElement>(null);
@@ -54,7 +46,6 @@ export default function ChatPage() {
   useEffect(() => {
     textInputRef.current?.focus();
   }, []);
-
 
   useEffect(() => {
     if (!selectedLevel) return;
@@ -76,6 +67,50 @@ export default function ChatPage() {
     prevLevelRef.current = selectedLevel;
   }, [selectedLevel]);
 
+  // --- Streaming helper: parse SSE from fetch() ---
+  const streamSSE = async (res: Response, onDelta: (t: string) => void) => {
+    if (!res.body) throw new Error('No response body (streaming not supported).');
+
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder('utf-8');
+
+    let buffer = '';
+
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+
+      // SSE events end with double newline
+      const parts = buffer.split('\n\n');
+      buffer = parts.pop() ?? '';
+
+      for (const part of parts) {
+        const lines = part.split('\n');
+        for (const line of lines) {
+          if (!line.startsWith('data: ')) continue;
+          const jsonStr = line.slice('data: '.length).trim();
+          if (!jsonStr) continue;
+
+          try {
+            const evt = JSON.parse(jsonStr);
+
+            if (evt.type === 'delta' && typeof evt.delta === 'string') {
+              onDelta(evt.delta);
+            } else if (evt.type === 'error') {
+              throw new Error(evt.error || 'Stream error');
+            } else if (evt.type === 'done') {
+              // server always sends done; we can ignore here
+            }
+          } catch (e) {
+            // If JSON parse fails due to partial chunking, ignore (buffer should handle most cases)
+            // But if it’s a real error event we rethrow above.
+          }
+        }
+      }
+    }
+  };
 
   const sendMessage = async () => {
     if (!selectedLevel) {
@@ -93,13 +128,12 @@ export default function ChatPage() {
     setLoading(true);
     shouldAutoScrollRef.current = true;
 
+    // Add user message + bot placeholder (empty initially)
     setMessages(prev => [
       ...prev,
       {
         sender: 'user',
-        text: imageFile
-          ? `${userMessage || ''}\n[Image uploaded]`
-          : userMessage,
+        text: imageFile ? `${userMessage || ''}\n[Image uploaded]` : userMessage,
       },
       { sender: 'bot', text: '' },
     ]);
@@ -107,40 +141,37 @@ export default function ChatPage() {
     try {
       let res: Response;
 
+      // STREAM endpoint (supports same-origin or NEXT_PUBLIC_BACKEND_URL)
+      const url = `${backendBaseUrl()}/llm/chat/stream`;
+
       if (imageFile) {
         const formData = new FormData();
         formData.append('level', selectedLevel);
-        if (userMessage.trim()) {
-          formData.append('prompt', userMessage);
-        }
+        if (userMessage.trim()) formData.append('prompt', userMessage);
         formData.append('image', imageFile);
 
-        res = await fetch(`${API_BASE}/llm/chat`, {
-          method: 'POST',
-          body: formData,
-        });
+        res = await fetch(url, { method: 'POST', body: formData });
       } else {
-        res = await fetch(`${API_BASE}/llm/chat`, {
+        res = await fetch(url, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            level: selectedLevel,
-            prompt: userMessage,
-          }),
+          body: JSON.stringify({ level: selectedLevel, prompt: userMessage }),
         });
       }
 
       if (!res.ok) throw new Error(await res.text());
 
-      const data = await res.json();
+      let acc = '';
 
-      setMessages(prev => {
-        const next = [...prev];
-        next[next.length - 1] = {
-          sender: 'bot',
-          text: data.response ?? data.output ?? 'No response from model.',
-        };
-        return next;
+      await streamSSE(res, (delta) => {
+        acc += delta;
+
+        setMessages(prev => {
+          const next = [...prev];
+          // Update last message (bot placeholder)
+          next[next.length - 1] = { sender: 'bot', text: acc };
+          return next;
+        });
       });
 
       setImageFile(null);
@@ -165,12 +196,8 @@ export default function ChatPage() {
     const el = chatScrollRef.current;
     if (!el) return;
 
-    // Autoscroll only if:
-    // - user was already near bottom, OR
-    // - we just sent a message (force it once)
     if (!isNearBottom && !shouldAutoScrollRef.current) return;
 
-    // Do it after layout settles (KaTeX can change heights)
     requestAnimationFrame(() => {
       el.scrollTo({
         top: el.scrollHeight,
@@ -180,13 +207,9 @@ export default function ChatPage() {
     });
   }, [messages, isNearBottom]);
 
-
   return (
     <div className="flex flex-col h-dvh min-h-0 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
-      <Header
-        selectedLevel={selectedLevel}
-        setSelectedLevel={setSelectedLevel}
-      />
+      <Header selectedLevel={selectedLevel} setSelectedLevel={setSelectedLevel} />
 
       {/* CHAT AREA */}
       <main
@@ -195,17 +218,14 @@ export default function ChatPage() {
         onClick={() => textInputRef.current?.focus()}
         onScroll={(e) => {
           const el = e.currentTarget;
-          const threshold = 120; // px
+          const threshold = 120;
           const distanceFromBottom = el.scrollHeight - el.scrollTop - el.clientHeight;
           setIsNearBottom(distanceFromBottom < threshold);
         }}
       >
         <div className="max-w-3xl mx-auto min-h-0 px-6 py-8 space-y-6">
           {messages.map((msg, idx) => {
-            // 🚫 Skip empty bot placeholder (used only for loading)
-            if (msg.sender === 'bot' && msg.text === '') return null;
-
-            // 🔔 SYSTEM MESSAGE (e.g. level change)
+            // SYSTEM MESSAGE
             if (msg.sender === 'system') {
               return (
                 <div key={idx} className="flex justify-center">
@@ -225,12 +245,9 @@ export default function ChatPage() {
             return (
               <div
                 key={idx}
-                className={`flex ${
-                  msg.sender === 'user' ? 'justify-end' : 'justify-start'
-                }`}
+                className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {msg.sender === 'user' ? (
-                  /* USER MESSAGE — right-aligned, size to content */
                   <div
                     className={`
                       inline-block max-w-[75%]
@@ -243,7 +260,6 @@ export default function ChatPage() {
                     {msg.text}
                   </div>
                 ) : (
-                  /* BOT MESSAGE — full width */
                   <div className="w-full">
                     <div
                       className={`
@@ -254,31 +270,14 @@ export default function ChatPage() {
                         whitespace-pre-wrap
                       `}
                     >
-                      {renderMath(msg.text)}
+                      {/* If empty, show typing dots while streaming */}
+                      {msg.text ? renderMath(msg.text) : <TypingDots />}
                     </div>
-
                   </div>
                 )}
               </div>
             );
           })}
-
-
-          {loading &&
-            messages[messages.length - 1]?.sender === 'bot' &&
-            messages[messages.length - 1]?.text === '' && (
-              <div className="w-full">
-                <div
-                  className={`
-                    bg-white dark:bg-slate-800
-                    border border-slate-200 dark:border-slate-700
-                    rounded-2xl px-6 py-4 w-fit
-                  `}
-                >
-                  <TypingDots />
-                </div>
-              </div>
-            )}
 
           <div ref={messagesEndRef} />
         </div>
@@ -385,7 +384,6 @@ function Header({
   return (
     <header className="flex-shrink-0 border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
       <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* LEFT: Home / Chat identity */}
         <Link href="/" aria-label="Back Home">
           <div
             className="
@@ -405,9 +403,7 @@ function Header({
               className="rounded-full shrink-0"
             />
 
-            {/* TEXT CONTAINER (fixed height, relative) */}
             <div className="relative h-[32px] w-[160px] overflow-hidden">
-              {/* DEFAULT TEXT */}
               <div
                 className="
                   absolute inset-0 flex flex-col justify-center
@@ -418,105 +414,85 @@ function Header({
                 <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
                   Eddy Chat
                 </span>
-                <span className="text-xs text-slate-500 dark:text-slate-400">
-                  AI study assistant
-                </span>
               </div>
 
-              {/* HOVER TEXT */}
               <div
                 className="
-                  absolute inset-0 flex items-center
-                  opacity-0 translate-x-[-8px]
-                  group-hover:opacity-100 group-hover:translate-x-0
+                  absolute inset-0 flex flex-col justify-center
+                  opacity-0 translate-x-[8px]
                   transition-all duration-300
-                  text-sm font-medium text-slate-700 dark:text-slate-200
+                  group-hover:opacity-100 group-hover:translate-x-0
                 "
               >
-                Back Home
+                <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+                  Back Home
+                </span>
               </div>
             </div>
           </div>
         </Link>
 
-        {/* RIGHT: Level selector */}
-        <select
-          className="
-            text-sm px-4 py-2 rounded-full
-            bg-slate-100 dark:bg-slate-800
-            border border-slate-200 dark:border-slate-700
-            focus:outline-none focus:ring-2 focus:ring-sky-500
-          "
-          value={selectedLevel}
-          onChange={e => setSelectedLevel(e.target.value as LevelKey | '')}
-        >
-          <option value="">Select level</option>
-          {SUPPORTED_LEVELS.map(level => (
-            <option key={level} value={level}>
-              {level.replace('_', ' ').toUpperCase()}
-            </option>
-          ))}
-        </select>
+        <LevelSelect selectedLevel={selectedLevel} setSelectedLevel={setSelectedLevel} />
       </div>
     </header>
   );
 }
 
-/* --------- MATH RENDERER --------- */
-
-function renderMath(text: string) {
-  const regex = /(\\\[([\s\S]*?)\\\]|\\\((.*?)\\\))/g;
-  const nodes: React.ReactNode[] = [];
-
-  let last = 0;
-  let match;
-
-  while ((match = regex.exec(text)) !== null) {
-    if (match.index > last) {
-      nodes.push(<span key={last}>{text.slice(last, match.index)}</span>);
-    }
-
-    if (match[2]) {
-      nodes.push(
-        <div key={match.index} className="overflow-x-auto">
-          <BlockMath math={match[2]} />
-        </div>
-      );
-    }
-
-    if (match[3]) {
-      nodes.push(
-        <InlineMath key={match.index} math={match[3]} />
-      );
-    }
-
-    last = regex.lastIndex;
-  }
-
-  if (last < text.length) {
-    nodes.push(<span key={last}>{text.slice(last)}</span>);
-  }
-
-  return nodes;
+function LevelSelect({
+  selectedLevel,
+  setSelectedLevel,
+}: {
+  selectedLevel: LevelKey | '';
+  setSelectedLevel: (v: LevelKey | '') => void;
+}) {
+  return (
+    <select
+      className="
+        px-4 py-2 rounded-full
+        bg-slate-100 dark:bg-slate-800
+        border border-slate-200 dark:border-slate-700
+        text-sm
+        focus:outline-none focus:ring-2 focus:ring-sky-500
+      "
+      value={selectedLevel}
+      onChange={(e) => setSelectedLevel(e.target.value as LevelKey)}
+    >
+      <option value="" disabled>
+        Select level…
+      </option>
+      <option value="psle">PSLE</option>
+      <option value="o_level">O Level</option>
+      <option value="a_level">A Level</option>
+    </select>
+  );
 }
-
-/* --------- TYPING DOTS --------- */
 
 function TypingDots() {
   return (
-    <span className="inline-flex gap-1">
-      <Dot delay="0" />
-      <Dot delay="200" />
-      <Dot delay="400" />
-    </span>
+    <div className="flex items-center gap-1">
+      <span className="w-2 h-2 rounded-full bg-slate-400 animate-bounce [animation-delay:-0.2s]" />
+      <span className="w-2 h-2 rounded-full bg-slate-400 animate-bounce [animation-delay:-0.1s]" />
+      <span className="w-2 h-2 rounded-full bg-slate-400 animate-bounce" />
+    </div>
   );
 }
 
-function Dot({ delay }: { delay: string }) {
-  return (
-    <span
-      className="w-2 h-2 bg-sky-500 rounded-full animate-bounce"
-      style={{ animationDelay: `${delay}ms` }}
-    />
-  );
+function renderMath(text: string) {
+  const parts = text.split(/(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$|\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\))/g);
+
+  return parts.map((part, idx) => {
+    if (part.startsWith('$$') && part.endsWith('$$')) {
+      return <BlockMath key={idx}>{part.slice(2, -2)}</BlockMath>;
+    }
+    if (part.startsWith('$') && part.endsWith('$')) {
+      return <InlineMath key={idx}>{part.slice(1, -1)}</InlineMath>;
+    }
+    if (part.startsWith('\\[') && part.endsWith('\\]')) {
+      return <BlockMath key={idx}>{part.slice(2, -2)}</BlockMath>;
+    }
+    if (part.startsWith('\\(') && part.endsWith('\\)')) {
+      return <InlineMath key={idx}>{part.slice(2, -2)}</InlineMath>;
+    }
+    return <span key={idx}>{part}</span>;
+  });
 }
