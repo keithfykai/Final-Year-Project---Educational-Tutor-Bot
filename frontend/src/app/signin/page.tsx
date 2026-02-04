@@ -10,10 +10,15 @@ import {
   setPersistence,
   browserLocalPersistence,
   browserSessionPersistence,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from "firebase/auth";
 import { getAuthClient } from "../../../firebase/firebaseClient"; // <-- client-only auth
 
-function friendlyAuthError(err: unknown, mode: "signin" | "signup" | "reset"): string {
+function friendlyAuthError(
+  err: unknown,
+  mode: "signin" | "signup" | "reset" | "google"
+): string {
   const anyErr = err as { code?: string; message?: string };
   const code = anyErr?.code ?? "";
 
@@ -22,6 +27,8 @@ function friendlyAuthError(err: unknown, mode: "signin" | "signup" | "reset"): s
       ? "Unable to send reset email. Please try again."
       : mode === "signup"
       ? "Unable to create your account. Please try again."
+      : mode === "google"
+      ? "Google sign-in failed. Please try again."
       : "Unable to sign in. Please try again.";
 
   switch (code) {
@@ -53,6 +60,16 @@ function friendlyAuthError(err: unknown, mode: "signin" | "signup" | "reset"): s
       return "Please enter your email address first.";
     case "auth/user-not-found":
       return "Account does not exist for this email.";
+
+    // Google sign-in common errors
+    case "auth/popup-closed-by-user":
+      return "Google sign-in was cancelled.";
+    case "auth/cancelled-popup-request":
+      return "Google sign-in is already in progress. Please try again.";
+    case "auth/popup-blocked":
+      return "Popup blocked by your browser. Please allow popups and try again.";
+    case "auth/account-exists-with-different-credential":
+      return "An account already exists with the same email but a different sign-in method. Try signing in using email/password first.";
     default:
       return generic;
   }
@@ -76,6 +93,8 @@ export default function SignInPage() {
   const [resetLoading, setResetLoading] = React.useState(false);
   const [resetMessage, setResetMessage] = React.useState("");
 
+  const [googleLoading, setGoogleLoading] = React.useState(false);
+
   const [error, setError] = React.useState("");
 
   const router = useRouter();
@@ -87,7 +106,10 @@ export default function SignInPage() {
 
   const applyPersistence = async () => {
     const auth = getAuthClient();
-    await setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence);
+    await setPersistence(
+      auth,
+      rememberMe ? browserLocalPersistence : browserSessionPersistence
+    );
     return auth;
   };
 
@@ -105,7 +127,6 @@ export default function SignInPage() {
     }
 
     if (!isSignIn) {
-      // Sign up validations
       if (!name.trim()) {
         setError("Please enter a username.");
         return;
@@ -129,11 +150,12 @@ export default function SignInPage() {
         await signInWithEmailAndPassword(auth, email.trim(), password);
         alert("Welcome back!");
       } else {
-        const cred = await createUserWithEmailAndPassword(auth, email.trim(), password);
-
-        // Set display name
+        const cred = await createUserWithEmailAndPassword(
+          auth,
+          email.trim(),
+          password
+        );
         await updateProfile(cred.user, { displayName: name.trim() });
-
         alert("Account created successfully!");
       }
 
@@ -157,11 +179,33 @@ export default function SignInPage() {
       setResetLoading(true);
       const auth = getAuthClient();
       await sendPasswordResetEmail(auth, email.trim());
-      setResetMessage("Password reset email sent. Please check your inbox (and spam folder).");
+      setResetMessage(
+        "Password reset email sent. Please check your inbox (and spam folder)."
+      );
     } catch (err: unknown) {
       setError(friendlyAuthError(err, "reset"));
     } finally {
       setResetLoading(false);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    clearAlerts();
+    setGoogleLoading(true);
+
+    try {
+      const auth = await applyPersistence();
+      const provider = new GoogleAuthProvider();
+      // Optional: force account selection each time
+      provider.setCustomParameters({ prompt: "select_account" });
+
+      await signInWithPopup(auth, provider);
+      alert("Signed in with Google!");
+      router.push("/");
+    } catch (err: unknown) {
+      setError(friendlyAuthError(err, "google"));
+    } finally {
+      setGoogleLoading(false);
     }
   };
 
@@ -177,6 +221,30 @@ export default function SignInPage() {
         {resetMessage && (
           <p className="mb-4 text-sm text-green-600 text-center">{resetMessage}</p>
         )}
+
+        {/* Continue with Google */}
+        <button
+          type="button"
+          onClick={handleGoogleSignIn}
+          disabled={googleLoading || loading || resetLoading}
+          className="w-full py-2 px-4 mb-4 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-semibold rounded-lg shadow-md border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-400 disabled:opacity-50 flex items-center justify-center gap-2"
+        >
+          {googleLoading ? (
+            "Signing in..."
+          ) : (
+            <>
+              <span className="text-lg">G</span>
+              Continue with Google
+            </>
+          )}
+        </button>
+
+        {/* Divider */}
+        <div className="flex items-center gap-3 mb-4">
+          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+          <span className="text-xs text-gray-500 dark:text-gray-400">OR</span>
+          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+        </div>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
           {!isSignIn && (
@@ -298,7 +366,7 @@ export default function SignInPage() {
               <button
                 type="button"
                 onClick={handleForgotPassword}
-                disabled={resetLoading || loading}
+                disabled={resetLoading || loading || googleLoading}
                 className="text-sm text-sky-500 hover:underline disabled:opacity-50"
               >
                 {resetLoading ? "Sending..." : "Forgot password?"}
@@ -308,7 +376,7 @@ export default function SignInPage() {
 
           <button
             type="submit"
-            disabled={loading || resetLoading}
+            disabled={loading || resetLoading || googleLoading}
             className="w-full py-2 px-4 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-400 disabled:opacity-50"
           >
             {loading ? "Loading..." : isSignIn ? "Sign In" : "Create Account"}
