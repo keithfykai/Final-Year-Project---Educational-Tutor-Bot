@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import Image from 'next/image';
@@ -9,27 +9,63 @@ import { CATEGORY_SUBJECT_LIST } from './consts';
 
 function backendBaseUrl() {
   const url = process.env.NEXT_PUBLIC_BACKEND_URL?.trim();
-
-  if (!url) return ""; // same-origin: fetch("/llm/...")
-  return url.replace(/\/+$/, ""); // remove trailing slash
+  if (!url) return '';
+  return url.replace(/\/+$/, '');
 }
 
 type LevelKey = keyof typeof CATEGORY_SUBJECT_LIST;
+
+type ChatMessage = {
+  sender: 'user' | 'bot' | 'system';
+  text: string;
+};
+
+function isIOSDevice() {
+  if (typeof navigator === 'undefined') return false;
+  const ua = navigator.userAgent || '';
+  const iOS =
+    /iPad|iPhone|iPod/.test(ua) ||
+    // iPadOS 13+ reports as Mac; detect touch support as hint
+    (ua.includes('Mac') && 'ontouchend' in document);
+  return iOS;
+}
+
+function isMobileDevice() {
+  if (typeof navigator === 'undefined') return false;
+  return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent || '');
+}
 
 export default function ChatPage() {
   const [selectedLevel, setSelectedLevel] = useState<LevelKey | ''>('');
   const [input, setInput] = useState('');
   const [imageFile, setImageFile] = useState<File | null>(null);
+
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [loading, setLoading] = useState(false);
+
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const textInputRef = useRef<HTMLInputElement>(null);
+
   const chatScrollRef = useRef<HTMLElement | null>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
   const [isNearBottom, setIsNearBottom] = useState(true);
   const shouldAutoScrollRef = useRef(true);
 
-  type ChatMessage = {
-    sender: 'user' | 'bot' | 'system';
-    text: string;
-  };
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const prevLevelRef = useRef<LevelKey | ''>('');
+
+  // --- iOS / mobile separation ---
+  const isIOS = useMemo(() => (typeof window === 'undefined' ? false : isIOSDevice()), []);
+  const isMobile = useMemo(() => (typeof window === 'undefined' ? false : isMobileDevice()), []);
+  const useIOSKeyboardFix = isIOS && isMobile;
+
+  // iOS: VisualViewport lift (how much the keyboard overlaps the layout viewport)
+  const [kbLiftPx, setKbLiftPx] = useState(0);
+
+  // Input bar height (we measure it so the chat can pad correctly)
+  const inputBarRef = useRef<HTMLFormElement>(null);
+  const [inputBarH, setInputBarH] = useState(76); // reasonable default
+  const [attachmentBarH, setAttachmentBarH] = useState(0);
 
   function formatLevel(level: string) {
     if (level === 'psle') return 'PSLE';
@@ -38,22 +74,22 @@ export default function ChatPage() {
     return level;
   }
 
-  const [loading, setLoading] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-  const prevLevelRef = useRef<LevelKey | ''>('');
-  const textInputRef = useRef<HTMLInputElement>(null);
-
+  // Focus on load
   useEffect(() => {
-    textInputRef.current?.focus();
-  }, []);
+    // On iOS, focusing immediately can sometimes cause a weird jump.
+    // Delay a tick.
+    const t = setTimeout(() => textInputRef.current?.focus(), useIOSKeyboardFix ? 150 : 0);
+    return () => clearTimeout(t);
+  }, [useIOSKeyboardFix]);
 
+  // System message when level changes
   useEffect(() => {
     if (!selectedLevel) return;
 
     const prev = prevLevelRef.current;
     const formatted = formatLevel(selectedLevel);
 
-    setMessages(prevMsgs => [
+    setMessages((prevMsgs) => [
       ...prevMsgs,
       {
         sender: 'system',
@@ -67,13 +103,78 @@ export default function ChatPage() {
     prevLevelRef.current = selectedLevel;
   }, [selectedLevel]);
 
+  // Measure input bar height (for padding the scroll area)
+  useEffect(() => {
+    const el = inputBarRef.current;
+    if (!el) return;
+
+    const measure = () => {
+      const rect = el.getBoundingClientRect();
+      // If rect.height becomes 0 during layout shifts, keep previous.
+      if (rect.height > 20) setInputBarH(rect.height);
+    };
+
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+
+    return () => ro.disconnect();
+  }, []);
+
+  // Measure attachment bar height
+  useEffect(() => {
+    const el = document.getElementById('attachment-bar');
+    if (!el) {
+      setAttachmentBarH(0);
+      return;
+    }
+
+    const measure = () => {
+      const rect = el.getBoundingClientRect();
+      if (rect.height >= 0) setAttachmentBarH(rect.height);
+    };
+
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [imageFile]);
+
+  // iOS keyboard handling via VisualViewport
+  useEffect(() => {
+    if (!useIOSKeyboardFix) return;
+
+    const vv = window.visualViewport;
+    if (!vv) return;
+
+    const update = () => {
+      // layout viewport height is window.innerHeight
+      // visual viewport height shrinks when keyboard opens
+      // also the visual viewport can be offset (page zoom / scroll)
+      const lift = Math.max(0, window.innerHeight - vv.height - (vv.offsetTop || 0));
+      setKbLiftPx(lift);
+    };
+
+    update();
+    vv.addEventListener('resize', update);
+    vv.addEventListener('scroll', update);
+
+    // Some iOS versions need window resize too
+    window.addEventListener('resize', update);
+
+    return () => {
+      vv.removeEventListener('resize', update);
+      vv.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, [useIOSKeyboardFix]);
+
   // --- Streaming helper: parse SSE from fetch() ---
   const streamSSE = async (res: Response, onDelta: (t: string) => void) => {
     if (!res.body) throw new Error('No response body (streaming not supported).');
 
     const reader = res.body.getReader();
     const decoder = new TextDecoder('utf-8');
-
     let buffer = '';
 
     while (true) {
@@ -82,7 +183,6 @@ export default function ChatPage() {
 
       buffer += decoder.decode(value, { stream: true });
 
-      // SSE events end with double newline
       const parts = buffer.split('\n\n');
       buffer = parts.pop() ?? '';
 
@@ -101,11 +201,10 @@ export default function ChatPage() {
             } else if (evt.type === 'error') {
               throw new Error(evt.error || 'Stream error');
             } else if (evt.type === 'done') {
-              // server always sends done; we can ignore here
+              // ignore
             }
-          } catch (e) {
-            // If JSON parse fails due to partial chunking, ignore (buffer should handle most cases)
-            // But if it’s a real error event we rethrow above.
+          } catch {
+            // ignore partial
           }
         }
       }
@@ -128,21 +227,15 @@ export default function ChatPage() {
     setLoading(true);
     shouldAutoScrollRef.current = true;
 
-    // Add user message + bot placeholder (empty initially)
-    setMessages(prev => [
+    setMessages((prev) => [
       ...prev,
-      {
-        sender: 'user',
-        text: imageFile ? `${userMessage || ''}\n[Image uploaded]` : userMessage,
-      },
+      { sender: 'user', text: imageFile ? `${userMessage || ''}\n[Image uploaded]` : userMessage },
       { sender: 'bot', text: '' },
     ]);
 
     try {
-      let res: Response;
-
-      // STREAM endpoint (supports same-origin or NEXT_PUBLIC_BACKEND_URL)
       const url = `${backendBaseUrl()}/llm/chat/stream`;
+      let res: Response;
 
       if (imageFile) {
         const formData = new FormData();
@@ -162,13 +255,10 @@ export default function ChatPage() {
       if (!res.ok) throw new Error(await res.text());
 
       let acc = '';
-
       await streamSSE(res, (delta) => {
         acc += delta;
-
-        setMessages(prev => {
+        setMessages((prev) => {
           const next = [...prev];
-          // Update last message (bot placeholder)
           next[next.length - 1] = { sender: 'bot', text: acc };
           return next;
         });
@@ -176,22 +266,19 @@ export default function ChatPage() {
 
       setImageFile(null);
     } catch (err) {
-      setMessages(prev => {
+      setMessages((prev) => {
         const next = [...prev];
-        next[next.length - 1] = {
-          sender: 'bot',
-          text: `Error: ${String(err)}`,
-        };
+        next[next.length - 1] = { sender: 'bot', text: `Error: ${String(err)}` };
         return next;
       });
     } finally {
       setLoading(false);
-      requestAnimationFrame(() => {
-        textInputRef.current?.focus();
-      });
+      // iOS: focusing immediately can re-trigger viewport jump; delay slightly
+      setTimeout(() => textInputRef.current?.focus(), useIOSKeyboardFix ? 80 : 0);
     }
   };
 
+  // Auto-scroll behavior
   useEffect(() => {
     const el = chatScrollRef.current;
     if (!el) return;
@@ -207,25 +294,74 @@ export default function ChatPage() {
     });
   }, [messages, isNearBottom]);
 
+  // On focus, ensure we scroll the chat container (NOT the page)
+  useEffect(() => {
+    const inputEl = textInputRef.current;
+    if (!inputEl) return;
+
+    const onFocus = () => {
+      requestAnimationFrame(() => {
+        // Keep the bottom message visible without page jumping
+        messagesEndRef.current?.scrollIntoView({ block: 'end' });
+      });
+    };
+
+    inputEl.addEventListener('focus', onFocus);
+    return () => inputEl.removeEventListener('focus', onFocus);
+  }, []);
+
+  // Dynamic bottom padding for the chat scroll area:
+  // - input bar height
+  // - attachment bar height (if any)
+  // - safe area
+  // - + iOS keyboard lift (so chat can scroll above the keyboard + fixed input)
+  const chatBottomPadStyle: React.CSSProperties = useMemo(() => {
+    // iOS fixed input: chat must have enough padding to remain scrollable above it.
+    // On web sticky: padding just needs input+attachments.
+    const base = inputBarH + attachmentBarH + 12; // little breathing room
+    const extra = useIOSKeyboardFix ? kbLiftPx : 0;
+
+    // We also add safe-area inset via CSS var in the global style.
+    // Here we add only the measured px parts.
+    const total = Math.max(0, base + extra);
+
+    return {
+      paddingBottom: `calc(${total}px + var(--safe-bottom, 0px))`,
+    };
+  }, [inputBarH, attachmentBarH, kbLiftPx, useIOSKeyboardFix]);
+
+  // Input bar positioning style:
+  // - iOS mobile: fixed bottom, lifted by keyboard overlap
+  // - web: sticky bottom
+  const inputBarPositionStyle: React.CSSProperties = useMemo(() => {
+    if (!useIOSKeyboardFix) return {};
+    // Lift by keyboard overlap; also keep above safe area
+    return {
+      transform: `translateY(-${kbLiftPx}px)`,
+    };
+  }, [useIOSKeyboardFix, kbLiftPx]);
+
   return (
-    <div className="flex flex-col h-dvh min-h-0 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+    <div className="flex flex-col min-h-[100dvh] h-[100dvh] min-h-0 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
       <Header selectedLevel={selectedLevel} setSelectedLevel={setSelectedLevel} />
 
-      {/* CHAT AREA */}
+      {/* CHAT AREA (only this scrolls) */}
       <main
         ref={chatScrollRef as any}
         className="flex-1 min-h-0 overflow-y-auto overscroll-contain"
         onClick={() => textInputRef.current?.focus()}
         onScroll={(e) => {
           const el = e.currentTarget;
-          const threshold = 120;
+          const threshold = 140;
           const distanceFromBottom = el.scrollHeight - el.scrollTop - el.clientHeight;
           setIsNearBottom(distanceFromBottom < threshold);
         }}
       >
-        <div className="max-w-3xl mx-auto min-h-0 px-6 py-8 space-y-6">
+        <div
+          className="max-w-3xl mx-auto min-h-0 px-6 py-8 space-y-6"
+          style={chatBottomPadStyle}
+        >
           {messages.map((msg, idx) => {
-            // SYSTEM MESSAGE
             if (msg.sender === 'system') {
               return (
                 <div key={idx} className="flex justify-center">
@@ -270,7 +406,6 @@ export default function ChatPage() {
                         whitespace-pre-wrap
                       `}
                     >
-                      {/* If empty, show typing dots while streaming */}
                       {msg.text ? renderMath(msg.text) : <TypingDots />}
                     </div>
                   </div>
@@ -283,29 +418,51 @@ export default function ChatPage() {
         </div>
       </main>
 
+      {/* Attachment bar (stays above input) */}
       {imageFile && (
-        <div className="border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800">
+        <div
+          id="attachment-bar"
+          className="border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800"
+        >
           <div className="max-w-3xl mx-auto px-6 py-2 flex items-center justify-between text-sm">
             <span className="text-slate-600 dark:text-slate-400">
               Image attached: {imageFile.name}
             </span>
-            <button
-              onClick={() => setImageFile(null)}
-              className="text-red-500 hover:underline"
-            >
+            <button onClick={() => setImageFile(null)} className="text-red-500 hover:underline">
               Remove
             </button>
           </div>
         </div>
       )}
 
-      {/* INPUT */}
+      {/* INPUT BAR:
+          - iOS mobile: fixed + keyboard-lift via VisualViewport
+          - Web/desktop: sticky bottom-0
+      */}
       <form
-        onSubmit={e => {
+        ref={inputBarRef}
+        onSubmit={(e) => {
           e.preventDefault();
           sendMessage();
         }}
-        className="border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900"
+        className={
+          useIOSKeyboardFix
+            ? `
+              fixed left-0 right-0 bottom-0 z-50
+              border-t border-slate-200 dark:border-slate-700
+              bg-white/95 dark:bg-slate-900/95
+              backdrop-blur
+              pb-[env(safe-area-inset-bottom)]
+            `
+            : `
+              sticky bottom-0 z-50
+              border-t border-slate-200 dark:border-slate-700
+              bg-white/95 dark:bg-slate-900/95
+              backdrop-blur
+              pb-[env(safe-area-inset-bottom)]
+            `
+        }
+        style={inputBarPositionStyle}
       >
         <div className="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
           <button
@@ -321,12 +478,15 @@ export default function ChatPage() {
             type="file"
             accept="image/*"
             className="hidden"
-            onChange={e => setImageFile(e.target.files?.[0] ?? null)}
+            onChange={(e) => setImageFile(e.target.files?.[0] ?? null)}
           />
 
           <input
             ref={textInputRef}
             type="text"
+            inputMode="text"
+            autoCorrect="on"
+            autoCapitalize="sentences"
             className={`
               flex-1 px-4 py-3 rounded-full
               bg-slate-100 dark:bg-slate-800
@@ -335,27 +495,40 @@ export default function ChatPage() {
             `}
             placeholder="Ask a question, paste a problem, or upload an image…"
             value={input}
-            onChange={e => setInput(e.target.value)}
+            onChange={(e) => setInput(e.target.value)}
             disabled={loading}
           />
 
           <button
             type="submit"
             disabled={loading}
-            className="px-5 py-2 rounded-full bg-sky-600 hover:bg-sky-700 text-white"
+            className="px-5 py-2 rounded-full bg-sky-600 hover:bg-sky-700 text-white disabled:opacity-60"
           >
             Send
           </button>
         </div>
       </form>
 
-      {/* GLOBAL KATEX FIX */}
+      {/* GLOBAL CSS:
+          - DO NOT set overflow:hidden on body/html for iOS keyboard
+          - keep safe area bottom available
+      */}
       <style jsx global>{`
         html,
         body,
         #__next {
           height: 100%;
-          overflow: hidden;
+        }
+
+        body {
+          margin: 0;
+          overscroll-behavior-y: none;
+          -webkit-text-size-adjust: 100%;
+          touch-action: manipulation;
+        }
+
+        :root {
+          --safe-bottom: env(safe-area-inset-bottom, 0px);
         }
 
         .katex-display {
@@ -373,7 +546,7 @@ export default function ChatPage() {
   );
 }
 
-/* ---------------- HELPERS ---------------- */
+/* ---------------- HEADER ---------------- */
 function Header({
   selectedLevel,
   setSelectedLevel,
@@ -467,6 +640,7 @@ function LevelSelect({
   );
 }
 
+/* ---------------- UI HELPERS ---------------- */
 function TypingDots() {
   return (
     <div className="flex items-center gap-1">
@@ -478,7 +652,9 @@ function TypingDots() {
 }
 
 function renderMath(text: string) {
-  const parts = text.split(/(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$|\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\))/g);
+  const parts = text.split(
+    /(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$|\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\))/g
+  );
 
   return parts.map((part, idx) => {
     if (part.startsWith('$$') && part.endsWith('$$')) {
