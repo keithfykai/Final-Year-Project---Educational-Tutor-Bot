@@ -482,16 +482,16 @@ function renderMath(text: string) {
 
   return parts.map((part, idx) => {
     if (part.startsWith('$$') && part.endsWith('$$')) {
-      return <BlockMath key={idx}>{part.slice(2, -2)}</BlockMath>;
+      return <BlockMath key={idx} math={part.slice(2, -2)} />;
     }
     if (part.startsWith('$') && part.endsWith('$')) {
-      return <InlineMath key={idx}>{part.slice(1, -1)}</InlineMath>;
+      return <InlineMath key={idx} math={part.slice(1, -1)} />;
     }
     if (part.startsWith('\\[') && part.endsWith('\\]')) {
-      return <BlockMath key={idx}>{part.slice(2, -2)}</BlockMath>;
+      return <BlockMath key={idx} math={part.slice(2, -2)} />;
     }
     if (part.startsWith('\\(') && part.endsWith('\\)')) {
-      return <InlineMath key={idx}>{part.slice(2, -2)}</InlineMath>;
+      return <InlineMath key={idx} math={part.slice(2, -2)} />;
     }
     return <span key={idx}>{part}</span>;
   });
