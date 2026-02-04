@@ -14,7 +14,7 @@ export default function HomePage() {
       </main>
 
       {/* Floating chatbot (overlay) */}
-      <ChatWidget />
+      {/* <ChatWidget /> */}
     </>
   );
 }
