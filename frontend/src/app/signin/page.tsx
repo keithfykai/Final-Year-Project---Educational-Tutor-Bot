@@ -261,7 +261,7 @@ export default function SignInPage() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="mt-1 p-2 block w-full rounded-md border border-gray-300 shadow-sm focus:border-gray-900 focus:ring-gray-900 dark:focus:border-gray-100 dark:focus:ring-gray-100 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white"
-                placeholder="e.g., Keith"
+                placeholder="e.g., John Smith"
                 autoComplete="name"
               />
             </div>
@@ -280,7 +280,7 @@ export default function SignInPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white"
-              placeholder="you@example.com"
+              placeholder="JohnSmith@example.com"
               autoComplete="email"
               inputMode="email"
             />

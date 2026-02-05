@@ -284,7 +284,7 @@ export default function QuizPage() {
                 disabled={loading}
                 className="
                   inline-flex items-center justify-center gap-3
-                  rounded-full px-6 py-3
+                  rounded-full px-6 py-2
                   bg-black dark:bg-white
                   text-white dark:text-black font-medium
                   shadow-sm hover:shadow-md

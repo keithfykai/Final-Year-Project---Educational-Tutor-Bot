@@ -75,7 +75,7 @@ export default function Hero() {
               bg-black dark:bg-white
               text-white dark:text-black
               font-semibold text-base
-              px-8 py-6
+              px-8 py-4
               hover:opacity-80 transition
             "
           >

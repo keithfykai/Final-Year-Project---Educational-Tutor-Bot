@@ -101,7 +101,7 @@ export default function NavbarComponent() {
             <Button
               as={Link}
               href={SIGN_IN_PATH}
-              className="bg-black text-white dark:bg-white dark:text-black hover:opacity-80"
+              className="bg-white text-black hover:opacity-80 rounded-full border border-gray-300"
             >
               Sign in
             </Button>

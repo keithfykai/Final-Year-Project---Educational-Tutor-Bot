@@ -92,7 +92,7 @@ export default function AboutPage() {
                       href="https://github.com/keithfykai"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-full bg-black dark:bg-white text-white dark:text-black"
+                      className="rounded-full py-2 bg-black dark:bg-white text-white dark:text-black"
                     >
                       GitHub Profile
                     </Button>
@@ -131,9 +131,9 @@ export default function AboutPage() {
             rel="noopener noreferrer"
             className="
               inline-flex items-center gap-2
-              rounded-full px-6 py-3
-              bg-black dark:bg-white
-              text-white dark:text-black font-medium
+              rounded-full px-6 py-2
+              bg-black border border-gray-300
+              text-white font-medium
               shadow-sm hover:shadow-md
               hover:opacity-80 transition
             "
