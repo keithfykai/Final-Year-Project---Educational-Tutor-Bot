@@ -456,60 +456,68 @@ export default function ChatPage() {
           className="max-w-3xl mx-auto min-h-0 px-6 py-8 space-y-6"
           style={chatBottomPadStyle}
         >
-          {messages.map((msg, idx) => {
-            if (msg.sender === 'system') {
-              return (
-                <div key={idx} className="flex justify-center">
-                  <div
-                    className={`
-                      text-xs px-4 py-2 rounded-full
-                      bg-gray-200 dark:bg-gray-800
-                      text-gray-600 dark:text-gray-400
-                    `}
-                  >
-                    {msg.text}
-                  </div>
-                </div>
-              );
-            }
-
-            return (
-              <div
-                key={idx}
-                className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-              >
-                {msg.sender === 'user' ? (
-                  <div
-                    className={`
-                      inline-block max-w-[75%]
-                      px-5 py-4 rounded-2xl
-                      text-sm leading-relaxed
-                      whitespace-pre-wrap break-words
-                      bg-white dark:bg-white text-black
-                      border border-gray-300
-                    `}
-                  >
-                    {msg.text}
-                  </div>
-                ) : (
-                  <div className="w-full">
+          {messages.length === 0 && selectedLevel === '' ? (
+            <div className="flex items-center justify-center h-full">
+              <p className="text-gray-400 dark:text-gray-500 text-center">
+                Chat with Eddy by first selecting your Educational Level! ✨
+              </p>
+            </div>
+          ) : (
+            messages.map((msg, idx) => {
+              if (msg.sender === 'system') {
+                return (
+                  <div key={idx} className="flex justify-center">
                     <div
                       className={`
-                        bg-black dark:bg-black
-                        border border-gray-400 dark:border-gray-600
-                        rounded-2xl px-6 py-5
-                        text-sm leading-relaxed
-                        whitespace-pre-wrap
-                        text-white
+                        text-xs px-4 py-2 rounded-full
+                        bg-gray-200 dark:bg-gray-800
+                        text-gray-600 dark:text-gray-400
                       `}
                     >
-                      {msg.text ? renderMath(msg.text) : <TypingDots />}
+                      {msg.text}
                     </div>
                   </div>
-                )}
-              </div>
-            );
-          })}
+                );
+              }
+
+              return (
+                <div
+                  key={idx}
+                  className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  {msg.sender === 'user' ? (
+                    <div
+                      className={`
+                        inline-block max-w-[75%]
+                        px-5 py-4 rounded-2xl
+                        text-sm leading-relaxed
+                        whitespace-pre-wrap break-words
+                        bg-white dark:bg-white text-black
+                        border border-gray-300
+                      `}
+                    >
+                      {msg.text}
+                    </div>
+                  ) : (
+                    <div className="w-full">
+                      <div
+                        className={`
+                          bg-black dark:bg-black
+                          border border-gray-400 dark:border-gray-600
+                          rounded-2xl px-6 py-5
+                          text-sm leading-relaxed
+                          whitespace-pre-wrap
+                          text-white
+                        `}
+                      >
+                        {msg.text ? renderMath(msg.text) : <TypingDots />}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })
+          )}
 
           <div ref={messagesEndRef} />
         </div>

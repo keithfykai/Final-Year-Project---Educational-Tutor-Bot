@@ -53,3 +53,5 @@ grail_pdfs
 notes and syllabus/
 
 .flowbite-react
+
+.env.*
