@@ -40,7 +40,7 @@ export default function NavbarComponent() {
   if (!mounted) return null;
 
   return (
-    <Navbar isBordered maxWidth="full" className="bg-white dark:bg-black border-gray-200 dark:border-gray-800 py-6 md:py-12" height="120px md:240px">
+    <Navbar isBordered maxWidth="full" className="bg-white dark:bg-black border-gray-200 dark:border-gray-800 py-3 md:py-6" height="60px md:120px">
       <NavbarBrand>
         <Link href="/" className="flex items-center gap-3">
           <Image src="/Eddy.png" alt="Logo" width={50} height={50} />

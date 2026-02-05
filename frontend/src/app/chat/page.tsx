@@ -385,7 +385,7 @@ export default function ChatPage() {
         </div>
       )}
 
-      {/* Sidebar */}
+      {/* Sidebar overlay */}
       <div
         className={`fixed inset-0 z-40 transition-opacity ${isSidebarOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
         aria-hidden={!isSidebarOpen}
@@ -398,16 +398,16 @@ export default function ChatPage() {
         />
       </div>
 
+      {/* Sidebar - Toggleable on all screen sizes */}
       <aside
         className={`fixed left-0 top-0 z-50 h-full w-[280px] bg-white dark:bg-black border-r border-gray-200 dark:border-gray-800 transform transition-transform duration-200 ease-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
-        role="dialog"
+        role="navigation"
         aria-label="Navigation"
-        aria-hidden={!isSidebarOpen}
       >
         <div className="h-[72px] px-5 flex items-center justify-between border-b border-gray-200 dark:border-gray-800">
-          <Link href="/" className="flex items-center gap-2" onClick={() => setIsSidebarOpen(false)}>
+          <Link href="/" className="flex items-center gap-2">
             <Image src="/Eddy.png" alt="Eduble" width={28} height={28} className="rounded-full" />
             <span className="font-semibold text-black dark:text-white">Eduble</span>
           </Link>
@@ -641,7 +641,6 @@ export default function ChatPage() {
     </div>
   );
 }
-
 /* ---------------- HEADER ---------------- */
 function Header({
   selectedLevel,
