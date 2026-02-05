@@ -202,10 +202,11 @@ export default function ChatPage() {
                     {msg.text}
                   </div>
                 ) : (
-                  /* BOT MESSAGE — full width */
+                  /* BOT MESSAGE — limited width */
                   <div className="w-full">
                     <div
                       className={`
+                        w-fit max-w-full md:max-w-[500px]
                         bg-slate-800
                         border border-slate-700
                         rounded-2xl px-6 py-5
@@ -229,9 +230,10 @@ export default function ChatPage() {
               <div className="w-full">
                 <div
                   className={`
+                    w-fit max-w-full md:max-w-[500px]
                     bg-slate-800
                     border border-slate-700
-                    rounded-2xl px-6 py-4 w-fit
+                    rounded-2xl px-6 py-4
                   `}
                 >
                   <TypingDots />
