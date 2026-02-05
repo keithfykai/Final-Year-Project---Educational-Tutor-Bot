@@ -320,13 +320,13 @@ export default function QuizPage() {
           >
             <div className="flex items-start justify-between gap-4">
               <div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">{progressText}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">💬 {progressText}</div>
                 <div className="mt-1 text-xs inline-flex rounded-full px-3 py-1 bg-gray-100 dark:bg-black border border-gray-200 dark:border-gray-800">
                   Topic: {current.topic}
                 </div>
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
-                Score: <span className="font-semibold text-black dark:text-white">{correctCount}</span>
+                🎯 Score: <span className="font-semibold text-black dark:text-white">{correctCount}</span>
               </div>
             </div>
 
@@ -477,7 +477,7 @@ export default function QuizPage() {
 
             {finalSummary && (
               <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-black px-5 py-4 space-y-2">
-                <div className="text-lg font-semibold">Your Results</div>
+                <div className="text-lg font-semibold">Your Results 📝</div>
                 <div className="text-sm text-gray-700 dark:text-gray-300">
                   You scored{" "}
                   <span className="font-semibold text-black dark:text-white">
