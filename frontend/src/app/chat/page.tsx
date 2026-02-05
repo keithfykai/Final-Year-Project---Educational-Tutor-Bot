@@ -39,6 +39,8 @@ export default function ChatPage() {
   const [selectedLevel, setSelectedLevel] = useState<LevelKey | ''>('');
   const [input, setInput] = useState('');
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isDraggingFile, setIsDraggingFile] = useState(false);
 
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [loading, setLoading] = useState(false);
@@ -341,9 +343,102 @@ export default function ChatPage() {
     };
   }, [useIOSKeyboardFix, kbLiftPx]);
 
+  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    setIsDraggingFile(true);
+  };
+
+  const handleDragLeave = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    if (event.currentTarget.contains(event.relatedTarget as Node)) return;
+    setIsDraggingFile(false);
+  };
+
+  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    setIsDraggingFile(false);
+    const file = event.dataTransfer.files?.[0];
+    if (file && file.type.startsWith('image/')) {
+      setImageFile(file);
+    }
+  };
+
   return (
-    <div className="flex flex-col min-h-[100dvh] h-[100dvh] min-h-0 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
-      <Header selectedLevel={selectedLevel} setSelectedLevel={setSelectedLevel} />
+    <div
+      className="flex flex-col min-h-[100dvh] h-[100dvh] min-h-0 bg-white dark:bg-black text-black dark:text-white"
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop}
+    >
+      <Header
+        selectedLevel={selectedLevel}
+        setSelectedLevel={setSelectedLevel}
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
+      />
+
+      {isDraggingFile && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60">
+          <div className="rounded-2xl border border-gray-700 bg-black px-6 py-4 text-white">
+            Drop image to upload
+          </div>
+        </div>
+      )}
+
+      {/* Sidebar */}
+      <div
+        className={`fixed inset-0 z-40 transition-opacity ${isSidebarOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+        aria-hidden={!isSidebarOpen}
+      >
+        <button
+          type="button"
+          onClick={() => setIsSidebarOpen(false)}
+          className="absolute inset-0 bg-black/40"
+          aria-label="Close sidebar"
+        />
+      </div>
+
+      <aside
+        className={`fixed left-0 top-0 z-50 h-full w-[280px] bg-white dark:bg-black border-r border-gray-200 dark:border-gray-800 transform transition-transform duration-200 ease-out ${
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+        role="dialog"
+        aria-label="Navigation"
+        aria-hidden={!isSidebarOpen}
+      >
+        <div className="h-[72px] px-5 flex items-center justify-between border-b border-gray-200 dark:border-gray-800">
+          <Link href="/" className="flex items-center gap-2" onClick={() => setIsSidebarOpen(false)}>
+            <Image src="/Eddy.png" alt="Eduble" width={28} height={28} className="rounded-full" />
+            <span className="font-semibold text-black dark:text-white">Eduble</span>
+          </Link>
+          <button
+            type="button"
+            onClick={() => setIsSidebarOpen(false)}
+            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-900"
+            aria-label="Close sidebar"
+          >
+            ✕
+          </button>
+        </div>
+
+        <nav className="px-3 py-4 space-y-1">
+          {[
+            { href: '/', label: 'Home' },
+            { href: '/chat', label: 'Chat' },
+            { href: '/quizmode', label: 'Quiz Mode' },
+            { href: '/about', label: 'About' },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setIsSidebarOpen(false)}
+              className="block rounded-xl px-4 py-3 text-sm font-medium text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+      </aside>
 
       {/* CHAT AREA (only this scrolls) */}
       <main
@@ -368,8 +463,8 @@ export default function ChatPage() {
                   <div
                     className={`
                       text-xs px-4 py-2 rounded-full
-                      bg-slate-200 dark:bg-slate-700
-                      text-slate-600 dark:text-slate-300
+                      bg-gray-200 dark:bg-gray-800
+                      text-gray-600 dark:text-gray-400
                     `}
                   >
                     {msg.text}
@@ -399,8 +494,8 @@ export default function ChatPage() {
                   <div className="w-full">
                     <div
                       className={`
-                        bg-white dark:bg-slate-800
-                        border border-slate-200 dark:border-slate-700
+                        bg-gray-100 dark:bg-gray-900
+                        border border-gray-200 dark:border-gray-800
                         rounded-2xl px-6 py-5
                         text-sm leading-relaxed
                         whitespace-pre-wrap
@@ -422,10 +517,10 @@ export default function ChatPage() {
       {imageFile && (
         <div
           id="attachment-bar"
-          className="border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800"
+          className="border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900"
         >
           <div className="max-w-3xl mx-auto px-6 py-2 flex items-center justify-between text-sm">
-            <span className="text-slate-600 dark:text-slate-400">
+            <span className="text-gray-600 dark:text-gray-400">
               Image attached: {imageFile.name}
             </span>
             <button onClick={() => setImageFile(null)} className="text-red-500 hover:underline">
@@ -449,15 +544,15 @@ export default function ChatPage() {
           useIOSKeyboardFix
             ? `
               fixed left-0 right-0 bottom-0 z-50
-              border-t border-slate-200 dark:border-slate-700
-              bg-white/95 dark:bg-slate-900/95
+              border-t border-gray-200 dark:border-gray-800
+              bg-white/95 dark:bg-black/95
               backdrop-blur
               pb-[env(safe-area-inset-bottom)]
             `
             : `
               sticky bottom-0 z-50
-              border-t border-slate-200 dark:border-slate-700
-              bg-white/95 dark:bg-slate-900/95
+              border-t border-gray-200 dark:border-gray-800
+              bg-white/95 dark:bg-black/95
               backdrop-blur
               pb-[env(safe-area-inset-bottom)]
             `
@@ -468,7 +563,7 @@ export default function ChatPage() {
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800"
+            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800"
           >
             📎
           </button>
@@ -489,9 +584,10 @@ export default function ChatPage() {
             autoCapitalize="sentences"
             className={`
               flex-1 px-4 py-3 rounded-full
-              bg-slate-100 dark:bg-slate-800
-              border border-slate-200 dark:border-slate-700
-              focus:outline-none focus:ring-2 focus:ring-sky-500
+              bg-black
+              border border-gray-800
+              focus:outline-none focus:ring-2 focus:ring-gray-500
+              text-white
             `}
             placeholder="Ask a question, paste a problem, or upload an image…"
             value={input}
@@ -502,7 +598,7 @@ export default function ChatPage() {
           <button
             type="submit"
             disabled={loading}
-            className="px-5 py-2 rounded-full bg-sky-600 hover:bg-sky-700 text-white disabled:opacity-60"
+            className="px-5 py-2 rounded-full bg-black text-white hover:opacity-80 disabled:opacity-60"
           >
             Send
           </button>
@@ -550,21 +646,31 @@ export default function ChatPage() {
 function Header({
   selectedLevel,
   setSelectedLevel,
+  isSidebarOpen,
+  setIsSidebarOpen,
 }: {
   selectedLevel: LevelKey | '';
   setSelectedLevel: (v: LevelKey | '') => void;
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: (v: boolean) => void;
 }) {
   return (
-    <header className="flex-shrink-0 border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+    <header className="flex-shrink-0 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
       <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href="/" aria-label="Back Home">
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-900"
+            aria-label="Toggle sidebar"
+          >
+            ☰
+          </button>
+
           <div
             className="
               group flex items-center gap-3
               px-3 py-2 rounded-full
-              cursor-pointer
-              hover:bg-slate-100 dark:hover:bg-slate-800
-              transition-colors
               h-[48px]
             "
           >
@@ -577,33 +683,14 @@ function Header({
             />
 
             <div className="relative h-[32px] w-[160px] overflow-hidden">
-              <div
-                className="
-                  absolute inset-0 flex flex-col justify-center
-                  transition-all duration-300
-                  group-hover:opacity-0 group-hover:translate-x-[-8px]
-                "
-              >
-                <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+              <div className="absolute inset-0 flex flex-col justify-center">
+                <span className="text-sm font-semibold text-black dark:text-white">
                   Eddy Chat
-                </span>
-              </div>
-
-              <div
-                className="
-                  absolute inset-0 flex flex-col justify-center
-                  opacity-0 translate-x-[8px]
-                  transition-all duration-300
-                  group-hover:opacity-100 group-hover:translate-x-0
-                "
-              >
-                <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
-                  Back Home
                 </span>
               </div>
             </div>
           </div>
-        </Link>
+        </div>
 
         <LevelSelect selectedLevel={selectedLevel} setSelectedLevel={setSelectedLevel} />
       </div>
@@ -622,10 +709,11 @@ function LevelSelect({
     <select
       className="
         px-4 py-2 rounded-full
-        bg-slate-100 dark:bg-slate-800
-        border border-slate-200 dark:border-slate-700
+        bg-black
+        border border-gray-800
         text-sm
-        focus:outline-none focus:ring-2 focus:ring-sky-500
+        text-white
+        focus:outline-none focus:ring-2 focus:ring-gray-500
       "
       value={selectedLevel}
       onChange={(e) => setSelectedLevel(e.target.value as LevelKey)}
@@ -644,9 +732,9 @@ function LevelSelect({
 function TypingDots() {
   return (
     <div className="flex items-center gap-1">
-      <span className="w-2 h-2 rounded-full bg-slate-400 animate-bounce [animation-delay:-0.2s]" />
-      <span className="w-2 h-2 rounded-full bg-slate-400 animate-bounce [animation-delay:-0.1s]" />
-      <span className="w-2 h-2 rounded-full bg-slate-400 animate-bounce" />
+      <span className="w-2 h-2 rounded-full bg-gray-400 animate-bounce [animation-delay:-0.2s]" />
+      <span className="w-2 h-2 rounded-full bg-gray-400 animate-bounce [animation-delay:-0.1s]" />
+      <span className="w-2 h-2 rounded-full bg-gray-400 animate-bounce" />
     </div>
   );
 }

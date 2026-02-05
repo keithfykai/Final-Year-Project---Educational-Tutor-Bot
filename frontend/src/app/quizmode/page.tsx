@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { Spinner } from "@heroui/react";
 
 type Level = "psle" | "o_level" | "a_level";
 
@@ -196,14 +197,14 @@ export default function QuizPage() {
   const showResults = quiz && index === quiz.num_questions - 1 && submitted;
 
   return (
-    <main className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+    <main className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
       <div className="max-w-5xl mx-auto px-6 py-16 space-y-10">
         {/* Header */}
         <section className="text-center space-y-3">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Quiz Mode</h1>
 
           {!quiz && (
-            <p className="text-slate-600 dark:text-slate-400">
+            <p className="text-gray-700 dark:text-gray-300">
               Quiz Mode lets you practise exactly what you need for your exams. Choose your level, subject,
               and number of questions, then test yourself with AI-generated MCQs that are aligned to your syllabus.
               At the end, you’ll receive a clear performance summary highlighting your strengths, mistakes, and topics
@@ -219,8 +220,8 @@ export default function QuizPage() {
         {!quiz && (
           <section
             className="
-              rounded-2xl bg-white dark:bg-slate-800
-              border border-slate-200 dark:border-slate-700
+              rounded-2xl bg-white dark:bg-black
+              border border-gray-200 dark:border-gray-800
               p-6 md:p-8 shadow-sm
             "
           >
@@ -228,7 +229,7 @@ export default function QuizPage() {
               <div>
                 <label className="block text-sm font-medium mb-2">Level</label>
                 <select
-                  className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2"
+                  className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-black px-3 py-2 text-black dark:text-white"
                   value={level}
                   onChange={(e) => {
                     const nextLevel = e.target.value as Level;
@@ -246,7 +247,7 @@ export default function QuizPage() {
               <div>
                 <label className="block text-sm font-medium mb-2">Subject</label>
                 <select
-                  className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2"
+                  className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-black px-3 py-2 text-black dark:text-white"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
                 >
@@ -266,7 +267,7 @@ export default function QuizPage() {
                   max={30}
                   value={numQuestions}
                   onChange={(e) => setNumQuestions(Math.max(5, Math.min(30, Number(e.target.value))))}
-                  className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2"
+                  className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-black px-3 py-2 text-black dark:text-white"
                 />
               </div>
             </div>
@@ -284,22 +285,15 @@ export default function QuizPage() {
                 className="
                   inline-flex items-center justify-center gap-3
                   rounded-full px-6 py-3
-                  bg-sky-600 hover:bg-sky-700
-                  text-white font-medium
+                  bg-black dark:bg-white
+                  text-white dark:text-black font-medium
                   shadow-sm hover:shadow-md
-                  transition disabled:opacity-60
+                  hover:opacity-80 transition disabled:opacity-60
                 "
               >
                 {loading ? (
                   <>
-                    <span
-                      className="
-                        inline-block h-5 w-5
-                        animate-spin rounded-full
-                        border-2 border-white/30 border-t-white
-                      "
-                      aria-hidden="true"
-                    />
+                    <Spinner size="sm" color="current" />
                     <span>Generating Questions...</span>
                   </>
                 ) : (
@@ -308,7 +302,7 @@ export default function QuizPage() {
               </button>
 
 
-              <span className="text-sm text-slate-600 dark:text-slate-400">
+              <span className="text-sm text-gray-600 dark:text-gray-400">
                 Covers the syllabus broadly for the selected subject.
               </span>
             </div>
@@ -319,20 +313,20 @@ export default function QuizPage() {
         {quiz && current && (
           <section
             className="
-              rounded-2xl bg-white dark:bg-slate-800
-              border border-slate-200 dark:border-slate-700
+              rounded-2xl bg-white dark:bg-black
+              border border-gray-200 dark:border-gray-800
               p-6 md:p-8 shadow-sm space-y-6
             "
           >
             <div className="flex items-start justify-between gap-4">
               <div>
-                <div className="text-sm text-slate-600 dark:text-slate-400">{progressText}</div>
-                <div className="mt-1 text-xs inline-flex rounded-full px-3 py-1 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+                <div className="text-sm text-gray-600 dark:text-gray-400">{progressText}</div>
+                <div className="mt-1 text-xs inline-flex rounded-full px-3 py-1 bg-gray-100 dark:bg-black border border-gray-200 dark:border-gray-800">
                   Topic: {current.topic}
                 </div>
               </div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">
-                Score: <span className="font-semibold text-slate-900 dark:text-white">{correctCount}</span>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                Score: <span className="font-semibold text-black dark:text-white">{correctCount}</span>
               </div>
             </div>
 
@@ -353,10 +347,10 @@ export default function QuizPage() {
                     onClick={() => !submitted && setSelected(k)}
                     className={[
                       "text-left rounded-2xl border px-4 py-3 transition",
-                      "bg-white dark:bg-slate-900",
-                      "border-slate-200 dark:border-slate-700",
-                      !submitted && "hover:border-sky-300 dark:hover:border-sky-700",
-                      isPicked && !submitted && "ring-2 ring-sky-500/30 border-sky-300 dark:border-sky-700",
+                      "bg-white dark:bg-black",
+                      "border-gray-200 dark:border-gray-800",
+                      !submitted && "hover:border-gray-400 dark:hover:border-gray-600",
+                      isPicked && !submitted && "ring-2 ring-gray-400/30 border-gray-400 dark:border-gray-600",
                       correct && "border-emerald-300 dark:border-emerald-700 ring-2 ring-emerald-500/20",
                       wrongPick && "border-red-300 dark:border-red-700 ring-2 ring-red-500/20",
                     ]
@@ -366,7 +360,7 @@ export default function QuizPage() {
                   >
                     <div className="flex gap-3">
                       <div className="font-semibold">{k}.</div>
-                      <div className="text-slate-700 dark:text-slate-300">{current.options[k]}</div>
+                      <div className="text-gray-700 dark:text-gray-300">{current.options[k]}</div>
                     </div>
                   </button>
                 );
@@ -390,7 +384,7 @@ export default function QuizPage() {
                     <div>
                       ❌ Not quite. Correct answer: <span className="font-semibold">{current.answer}</span>
                     </div>
-                    <div className="text-slate-700 dark:text-slate-200">
+                    <div className="text-gray-700 dark:text-gray-200">
                       {current.explanation}
                     </div>
                   </div>
@@ -407,10 +401,10 @@ export default function QuizPage() {
                   className="
                     inline-flex items-center justify-center
                     rounded-full px-6 py-3
-                    bg-sky-600 hover:bg-sky-700
-                    text-white font-medium
+                    bg-black dark:bg-white
+                    text-white dark:text-black font-medium
                     shadow-sm hover:shadow-md
-                    transition disabled:opacity-60
+                    hover:opacity-80 transition disabled:opacity-60
                   "
                 >
                   Submit
@@ -423,8 +417,8 @@ export default function QuizPage() {
                       className="
                         inline-flex items-center justify-center
                         rounded-full px-6 py-3
-                        bg-slate-900 dark:bg-white
-                        text-white dark:text-slate-900
+                        bg-black dark:bg-white
+                        text-white dark:text-black
                         font-medium shadow-sm hover:shadow-md
                         transition
                       "
@@ -436,15 +430,22 @@ export default function QuizPage() {
                       onClick={finishQuiz}
                       disabled={loading}
                       className="
-                        inline-flex items-center justify-center
+                        inline-flex items-center justify-center gap-3
                         rounded-full px-6 py-3
-                        bg-slate-900 dark:bg-white
-                        text-white dark:text-slate-900
+                        bg-black dark:bg-white
+                        text-white dark:text-black
                         font-medium shadow-sm hover:shadow-md
                         transition disabled:opacity-60
                       "
                     >
-                      {loading ? "Finishing..." : "Finish Quiz"}
+                      {loading ? (
+                        <>
+                          <Spinner size="sm" color="current" />
+                          <span>Generating Summary...</span>
+                        </>
+                      ) : (
+                        "Finish Quiz"
+                      )}
                     </button>
                   )}
 
@@ -453,11 +454,11 @@ export default function QuizPage() {
                     className="
                       inline-flex items-center justify-center
                       rounded-full px-6 py-3
-                      border border-slate-200 dark:border-slate-700
-                      bg-white dark:bg-slate-900
-                      text-slate-800 dark:text-slate-200
+                      border border-gray-200 dark:border-gray-800
+                      bg-white dark:bg-black
+                      text-gray-800 dark:text-gray-200
                       font-medium
-                      hover:bg-slate-50 dark:hover:bg-slate-800
+                      hover:bg-gray-50 dark:hover:bg-gray-800
                       transition
                     "
                   >
@@ -475,23 +476,23 @@ export default function QuizPage() {
             )}
 
             {finalSummary && (
-              <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-5 py-4 space-y-2">
+              <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-black px-5 py-4 space-y-2">
                 <div className="text-lg font-semibold">Your Results</div>
-                <div className="text-sm text-slate-700 dark:text-slate-300">
+                <div className="text-sm text-gray-700 dark:text-gray-300">
                   You scored{" "}
-                  <span className="font-semibold text-slate-900 dark:text-white">
+                  <span className="font-semibold text-black dark:text-white">
                     {correctCount}/{quiz.num_questions}
                   </span>
                   .
                 </div>
                 {wrongTopics.length > 0 && (
-                  <div className="text-sm text-slate-700 dark:text-slate-300">
+                  <div className="text-sm text-gray-700 dark:text-gray-300">
                     Topics to brush up on:{" "}
                     <span className="font-medium">{wrongTopics.slice(0, 8).join(", ")}</span>
                     {wrongTopics.length > 8 ? "…" : ""}
                   </div>
                 )}
-                <div className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                <div className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                   {finalSummary}
                 </div>
               </div>

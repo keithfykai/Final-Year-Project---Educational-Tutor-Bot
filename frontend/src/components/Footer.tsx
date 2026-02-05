@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="py-8 text-center border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900">
-      <p className="text-sm text-slate-500">
+    <footer className="py-8 text-center border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
+      <p className="text-sm text-gray-600 dark:text-gray-400">
         © {new Date().getFullYear()} Eduble · Built for better learning
       </p>
     </footer>

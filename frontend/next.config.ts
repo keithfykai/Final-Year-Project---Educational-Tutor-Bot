@@ -1,11 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: Partial<NextConfig> = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   images: {
-    domains: ["cassette.sphdigital.com.sg, images.unsplash.com", "flowbite.com", "static1.straitstimes.com.sg"],
+    domains: [
+      "avatars.githubusercontent.com",
+      "cassette.sphdigital.com.sg",
+      "images.unsplash.com",
+      "flowbite.com",
+      "static1.straitstimes.com.sg",
+    ],
   },
   async rewrites() {
     return [
