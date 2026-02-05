@@ -485,7 +485,8 @@ export default function ChatPage() {
                       px-5 py-4 rounded-2xl
                       text-sm leading-relaxed
                       whitespace-pre-wrap break-words
-                      bg-sky-600 text-white
+                      bg-white dark:bg-white text-black
+                      border border-gray-300
                     `}
                   >
                     {msg.text}
@@ -494,11 +495,12 @@ export default function ChatPage() {
                   <div className="w-full">
                     <div
                       className={`
-                        bg-gray-100 dark:bg-gray-900
-                        border border-gray-200 dark:border-gray-800
+                        bg-black dark:bg-black
+                        border border-gray-400 dark:border-gray-600
                         rounded-2xl px-6 py-5
                         text-sm leading-relaxed
                         whitespace-pre-wrap
+                        text-white
                       `}
                     >
                       {msg.text ? renderMath(msg.text) : <TypingDots />}
