@@ -271,7 +271,7 @@ export default function ChatPage() {
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="p-2 rounded-full hover:bg-slate-800">
+            className="p-2 rounded-full hover:bg-slate-800"
           >
             📎
           </button>
