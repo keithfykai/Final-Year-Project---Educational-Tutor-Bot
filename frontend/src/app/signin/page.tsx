@@ -210,9 +210,9 @@ export default function SignInPage() {
   };
 
   return (
-    <main className="flex flex-col items-center py-20 dark:bg-black bg-white min-h-screen w-full px-6">
-      <section className="bg-white dark:bg-black shadow-lg rounded-xl p-8 w-full max-w-md border border-gray-200 dark:border-gray-800">
-        <h1 className="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-white">
+    <main className="flex flex-col items-center py-20 bg-black min-h-screen w-full px-6">
+      <section className="bg-black shadow-lg rounded-xl p-8 w-full max-w-md border border-gray-800">
+        <h1 className="text-2xl font-bold mb-6 text-center text-white">
           {isSignIn ? "Sign In" : "Create Account"}
         </h1>
 
@@ -227,7 +227,7 @@ export default function SignInPage() {
           type="button"
           onClick={handleGoogleSignIn}
           disabled={googleLoading || loading || resetLoading}
-          className="w-full py-2 px-4 mb-4 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-semibold rounded-lg shadow-md border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 dark:focus:ring-gray-600 disabled:opacity-50 flex items-center justify-center gap-2"
+          className="w-full py-2 px-4 mb-4 bg-gray-800 text-white font-semibold rounded-lg shadow-md border border-gray-700 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 disabled:opacity-50 flex items-center justify-center gap-2"
         >
           {googleLoading ? (
             "Signing in..."
@@ -241,9 +241,9 @@ export default function SignInPage() {
 
         {/* Divider */}
         <div className="flex items-center gap-3 mb-4">
-          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
-          <span className="text-xs text-gray-500 dark:text-gray-400">OR</span>
-          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+          <div className="h-px flex-1 bg-gray-700" />
+          <span className="text-xs text-gray-400">OR</span>
+          <div className="h-px flex-1 bg-gray-700" />
         </div>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
@@ -251,7 +251,7 @@ export default function SignInPage() {
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                className="block text-sm font-medium text-gray-300"
               >
                 Username
               </label>
@@ -260,7 +260,7 @@ export default function SignInPage() {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="mt-1 p-2 block w-full rounded-md border border-gray-300 shadow-sm focus:border-gray-900 focus:ring-gray-900 dark:focus:border-gray-100 dark:focus:ring-gray-100 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+                className="mt-1 p-2 block w-full rounded-md border border-gray-700 shadow-sm focus:border-gray-100 focus:ring-gray-100 sm:text-sm bg-gray-800 text-white"
                 placeholder="e.g., John Smith"
                 autoComplete="name"
               />
@@ -270,7 +270,7 @@ export default function SignInPage() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              className="block text-sm font-medium text-gray-300"
             >
               Email
             </label>
@@ -279,7 +279,7 @@ export default function SignInPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+              className="mt-1 p-2 block w-full rounded-md border-gray-700 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm bg-gray-800 text-white"
               placeholder="JohnSmith@example.com"
               autoComplete="email"
               inputMode="email"
@@ -290,7 +290,7 @@ export default function SignInPage() {
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              className="block text-sm font-medium text-gray-300"
             >
               Password
             </label>
@@ -301,7 +301,7 @@ export default function SignInPage() {
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="p-2 block w-full rounded-md border border-gray-300 shadow-sm focus:border-gray-900 focus:ring-gray-900 dark:focus:border-gray-100 dark:focus:ring-gray-100 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+                className="p-2 block w-full rounded-md border border-gray-700 shadow-sm focus:border-gray-100 focus:ring-gray-100 sm:text-sm bg-gray-800 text-white"
                 placeholder={isSignIn ? "Enter your password" : "At least 6 characters"}
                 autoComplete={isSignIn ? "current-password" : "new-password"}
               />
@@ -309,7 +309,7 @@ export default function SignInPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword((v) => !v)}
-                className="px-3 rounded-md border border-gray-300 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
+                className="px-3 rounded-md border border-gray-700 text-sm text-gray-200 hover:bg-gray-800"
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? "🙈" : "👁️"}
@@ -322,7 +322,7 @@ export default function SignInPage() {
             <div>
               <label
                 htmlFor="confirmPassword"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                className="block text-sm font-medium text-gray-300"
               >
                 Confirm Password
               </label>
@@ -333,7 +333,7 @@ export default function SignInPage() {
                   type={showConfirmPassword ? "text" : "password"}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="p-2 block w-full rounded-md border border-gray-300 shadow-sm focus:border-gray-900 focus:ring-gray-900 dark:focus:border-gray-100 dark:focus:ring-gray-100 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+                  className="p-2 block w-full rounded-md border border-gray-700 shadow-sm focus:border-gray-100 focus:ring-gray-100 sm:text-sm bg-gray-800 text-white"
                   placeholder="Re-enter your password"
                   autoComplete="new-password"
                 />
@@ -341,7 +341,7 @@ export default function SignInPage() {
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword((v) => !v)}
-                  className="px-3 rounded-md border border-gray-300 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
+                  className="px-3 rounded-md border border-gray-700 text-sm text-gray-200 hover:bg-gray-800"
                   aria-label={showConfirmPassword ? "Hide password" : "Show password"}
                 >
                   {showConfirmPassword ? "🙈" : "👁️"}
@@ -352,12 +352,12 @@ export default function SignInPage() {
 
           {/* Remember Me + Forgot password */}
           <div className="flex items-center justify-between">
-            <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+            <label className="flex items-center gap-2 text-sm text-gray-300">
               <input
                 type="checkbox"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
-                className="rounded border-gray-300 text-black dark:text-white focus:ring-gray-900 dark:focus:ring-gray-100"
+                className="rounded border-gray-700 text-white focus:ring-gray-100"
               />
               Remember me
             </label>
@@ -367,7 +367,7 @@ export default function SignInPage() {
                 type="button"
                 onClick={handleForgotPassword}
                 disabled={resetLoading || loading || googleLoading}
-                className="text-sm text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:underline disabled:opacity-50"
+                className="text-sm text-gray-300 hover:text-white hover:underline disabled:opacity-50"
               >
                 {resetLoading ? "Sending..." : "Forgot password?"}
               </button>
@@ -377,7 +377,7 @@ export default function SignInPage() {
           <button
             type="submit"
             disabled={loading || resetLoading || googleLoading}
-            className="w-full py-2 px-4 bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 dark:focus:ring-gray-100 disabled:opacity-50"
+            className="w-full py-2 px-4 bg-white text-black hover:bg-gray-200 font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-100 disabled:opacity-50"
           >
             {loading ? "Loading..." : isSignIn ? "Sign In" : "Create Account"}
           </button>
@@ -391,7 +391,7 @@ export default function SignInPage() {
               setPassword("");
               setConfirmPassword("");
             }}
-            className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:underline text-sm"
+            className="text-gray-300 hover:text-white hover:underline text-sm"
             type="button"
           >
             {isSignIn ? "Don't have an account? Create one" : "Already have an account? Sign in"}
@@ -399,7 +399,7 @@ export default function SignInPage() {
         </div>
       </section>
 
-      <footer className="mt-5 text-sm text-gray-600 dark:text-gray-400">
+      <footer className="mt-5 text-sm text-gray-400">
         Powered by Firebase 🔥
       </footer>
     </main>

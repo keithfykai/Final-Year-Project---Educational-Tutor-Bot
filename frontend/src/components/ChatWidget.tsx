@@ -30,16 +30,16 @@ export default function ChatWidget() {
             fixed bottom-6 right-6 z-50
             w-[360px] h-[520px]
             rounded-2xl shadow-2xl
-            border dark:border-slate-700
+            border border-slate-700
             overflow-hidden
-            bg-white dark:bg-slate-900
+            bg-slate-900
             flex flex-col
           `}
         >
         {/* Info banner */}
-        <div className="px-4 py-3 text-sm text-slate-600 dark:text-slate-300
-                        bg-slate-50 dark:bg-slate-800
-                        border-b dark:border-slate-700
+        <div className="px-4 py-3 text-sm text-slate-300
+                        bg-slate-800
+                        border-b border-slate-700
                         flex items-center justify-between">
         <span>
             For the best experience, open this chat in a new tab.
@@ -51,8 +51,8 @@ export default function ChatWidget() {
             rel="noopener noreferrer"
             className="
             ml-3 inline-flex items-center gap-1
-            font-medium text-sky-600 dark:text-sky-400
-            hover:text-sky-700 dark:hover:text-sky-300
+            font-medium text-sky-400
+            hover:text-sky-300
             transition-colors
             "
         >
@@ -62,7 +62,7 @@ export default function ChatWidget() {
         </div>
 
           {/* Close bar */}
-          <div className="flex justify-end px-3 py-2 border-b dark:border-slate-700">
+          <div className="flex justify-end px-3 py-2 border-b border-slate-700">
             <button
               onClick={() => setOpen(false)}
               className="text-sm text-slate-500 hover:text-slate-800"

@@ -8,27 +8,27 @@ import { Card, CardBody } from "@heroui/react";
 export default function HomePage() {
   return (
     <>
-      <main className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
+      <main className="min-h-screen bg-black text-white">
         <Hero />
         <Features />
         
         {/* Vector Database Information Section */}
-        <section className="py-20 px-6 max-w-7xl mx-auto bg-white dark:bg-black">
-          <h2 className="text-4xl font-bold text-center mb-12 text-black dark:text-white">
+        <section className="py-20 px-6 max-w-7xl mx-auto bg-black">
+          <h2 className="text-4xl font-bold text-center mb-12 text-white">
             Powered by Curated Knowledge
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Vector Database Card */}
-            <Card className="rounded-2xl bg-white dark:bg-black border border-gray-200 dark:border-gray-800">
+            <Card className="rounded-2xl bg-black border border-gray-800">
               <CardBody className="p-8">
-                <h3 className="text-2xl font-bold text-black dark:text-white mb-4">
+                <h3 className="text-2xl font-bold text-white mb-4">
                   Our Knowledge Base
                 </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                <p className="text-gray-300 mb-4">
                   Eduble leverages a sophisticated <span className="font-semibold">Vector Database</span> built from official syllabi and curated educational documents. This enables semantic search across millions of curriculum-aligned learning materials.
                 </p>
-                <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+                <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start">
                     <span className="mr-3 font-bold">✓</span>
                     <span><strong>Official Syllabi:</strong> Singapore MOE PSLE, O-Level, A-Level, and International Baccalaureate (IB) curricula</span>
@@ -46,15 +46,15 @@ export default function HomePage() {
             </Card>
 
             {/* Technical Details Card */}
-            <Card className="rounded-2xl bg-white dark:bg-black border border-gray-200 dark:border-gray-800">
+            <Card className="rounded-2xl bg-black border border-gray-800">
               <CardBody className="p-8">
-                <h3 className="text-2xl font-bold text-black dark:text-white mb-4">
+                <h3 className="text-2xl font-bold text-white mb-4">
                   How It Works
                 </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                <p className="text-gray-300 mb-4">
                   Our system uses advanced retrieval-augmented generation (RAG) to deliver answers grounded in verified sources.
                 </p>
-                <ol className="space-y-3 text-gray-700 dark:text-gray-300">
+                <ol className="space-y-3 text-gray-300">
                   <li className="flex items-start">
                     <span className="mr-3 font-bold">1.</span>
                     <span><strong>Encoding:</strong> Documents are converted to semantic embeddings using OpenAI models</span>

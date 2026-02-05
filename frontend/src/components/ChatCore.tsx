@@ -149,7 +149,7 @@ export default function ChatPage() {
   }, [messages, loading]);
 
   return (
-    <div className="flex flex-col h-dvh min-h-0 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+    <div className="flex flex-col h-dvh min-h-0 bg-slate-900 text-slate-100">
       <Header
         selectedLevel={selectedLevel}
         setSelectedLevel={setSelectedLevel}
@@ -171,8 +171,8 @@ export default function ChatPage() {
                   <div
                     className={`
                       text-xs px-4 py-2 rounded-full
-                      bg-slate-200 dark:bg-slate-700
-                      text-slate-600 dark:text-slate-300
+                      bg-slate-700
+                      text-slate-300
                     `}
                   >
                     {msg.text}
@@ -206,8 +206,8 @@ export default function ChatPage() {
                   <div className="w-full">
                     <div
                       className={`
-                        bg-white dark:bg-slate-800
-                        border border-slate-200 dark:border-slate-700
+                        bg-slate-800
+                        border border-slate-700
                         rounded-2xl px-6 py-5
                         text-sm leading-relaxed
                         whitespace-pre-wrap
@@ -229,8 +229,8 @@ export default function ChatPage() {
               <div className="w-full">
                 <div
                   className={`
-                    bg-white dark:bg-slate-800
-                    border border-slate-200 dark:border-slate-700
+                    bg-slate-800
+                    border border-slate-700
                     rounded-2xl px-6 py-4 w-fit
                   `}
                 >
@@ -244,9 +244,9 @@ export default function ChatPage() {
       </main>
 
       {imageFile && (
-        <div className="border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800">
+        <div className="border-t border-slate-700 bg-slate-800">
           <div className="max-w-3xl mx-auto px-6 py-2 flex items-center justify-between text-sm">
-            <span className="text-slate-600 dark:text-slate-400">
+            <span className="text-slate-400">
               Image attached: {imageFile.name}
             </span>
             <button
@@ -265,13 +265,13 @@ export default function ChatPage() {
           e.preventDefault();
           sendMessage();
         }}
-        className="border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900"
+        className="border-t border-slate-700 bg-slate-900"
       >
         <div className="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800"
+            className="p-2 rounded-full hover:bg-slate-800">
           >
             📎
           </button>
@@ -289,8 +289,8 @@ export default function ChatPage() {
             type="text"
             className={`
               flex-1 px-4 py-3 rounded-full
-              bg-slate-100 dark:bg-slate-800
-              border border-slate-200 dark:border-slate-700
+              bg-slate-800
+              border border-slate-700
               focus:outline-none focus:ring-2 focus:ring-sky-500
             `}
             placeholder="Ask a question, paste a problem, or upload an image…"
@@ -342,7 +342,7 @@ function Header({
   setSelectedLevel: (v: LevelKey | '') => void;
 }) {
   return (
-    <header className="flex-shrink-0 border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+    <header className="flex-shrink-0 border-b border-slate-700 bg-slate-900">
       <div className="px-4 py-3 flex items-center justify-between">
         {/* LEFT: Chat identity (no navigation) */}
         <div className="flex items-center gap-2">
@@ -353,7 +353,7 @@ function Header({
             height={28}
             className="rounded-full"
           />
-          <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+          <span className="text-sm font-semibold text-slate-100">
             Eduble
           </span>
         </div>
@@ -364,8 +364,8 @@ function Header({
             appearance-none
             text-xs px-3 py-1.5
             rounded-full
-            bg-slate-100 dark:bg-slate-800
-            border border-slate-200 dark:border-slate-700
+            bg-slate-800
+            border border-slate-700
             focus:outline-none focus:ring-2 focus:ring-sky-500
             w-[90px]
             text-center

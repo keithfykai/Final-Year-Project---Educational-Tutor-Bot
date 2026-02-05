@@ -50,7 +50,7 @@ export default function NavbarComponent() {
     <Navbar 
       isBordered 
       maxWidth="full" 
-      className="bg-white dark:bg-black border-gray-200 dark:border-gray-800 py-3 md:py-6" 
+      className="bg-black border-gray-800 py-3 md:py-6" 
       height="60px md:120px"
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
@@ -59,7 +59,7 @@ export default function NavbarComponent() {
         <NavbarBrand>
           <Link href="/" className="flex items-center gap-3">
             <Image src="/Eddy.png" alt="Logo" width={50} height={50} />
-            <span className="font-bold text-xl text-black dark:text-white">Eduble</span>
+            <span className="font-bold text-xl text-white">Eduble</span>
           </Link>
         </NavbarBrand>
       </NavbarContent>
@@ -67,7 +67,7 @@ export default function NavbarComponent() {
       <NavbarContent className="sm:hidden" justify="end">
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="text-black dark:text-white p-2"
+          className="text-white p-2"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         >
           <span className="text-2xl">
@@ -78,17 +78,17 @@ export default function NavbarComponent() {
 
       <NavbarContent className="hidden sm:flex gap-8" justify="center">
         <NavbarItem>
-          <Link href="/chat" className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition font-medium">
+          <Link href="/chat" className="text-white hover:text-gray-300 transition font-medium">
             Chat
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/quizmode" className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition font-medium">
+          <Link href="/quizmode" className="text-white hover:text-gray-300 transition font-medium">
             Quiz Mode
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/about" className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition font-medium">
+          <Link href="/about" className="text-white hover:text-gray-300 transition font-medium">
             About
           </Link>
         </NavbarItem>
@@ -113,14 +113,14 @@ export default function NavbarComponent() {
             <DropdownTrigger>
               <Button
                 variant="bordered"
-                className="border-black dark:border-white text-black dark:text-white"
+                className="border-white text-white"
               >
                 {userLabel.split("@")[0]}
               </Button>
             </DropdownTrigger>
-            <DropdownMenu aria-label="User menu" className="bg-white dark:bg-black">
+            <DropdownMenu aria-label="User menu" className="bg-black">
               <DropdownItem key="profile" isDisabled>
-                <p className="font-semibold text-black dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2">{userLabel}</p>
+                <p className="font-semibold text-white border border-gray-700 rounded-lg px-3 py-2">{userLabel}</p>
               </DropdownItem>
               <DropdownItem key="logout" color="danger">
                 <button onClick={handleSignOut} className="w-full text-center text-red-600">
@@ -134,13 +134,13 @@ export default function NavbarComponent() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="sm:hidden absolute top-full right-0 mt-2 w-64 bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-lg shadow-lg z-50">
+        <div className="sm:hidden absolute top-full right-0 mt-2 w-64 bg-black border border-gray-800 rounded-lg shadow-lg z-50">
           <div className="py-2">
             {menuItems.map((item, index) => (
               <Link
                 key={`${item.name}-${index}`}
                 href={item.href}
-                className="block px-4 py-3 text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900"
+                className="block px-4 py-3 text-white hover:bg-gray-900"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
@@ -153,7 +153,7 @@ export default function NavbarComponent() {
                 <Button
                   as={Link}
                   href={SIGN_IN_PATH}
-                  className="w-full mt-2 bg-black text-white dark:bg-white dark:text-black hover:opacity-80"
+                  className="w-full mt-2 bg-white text-black hover:opacity-80"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Sign in
@@ -164,8 +164,8 @@ export default function NavbarComponent() {
             {!authLoading && user && (
               <>
                 <div className="px-4 py-2">
-                  <div className="w-full mt-2 p-3 border border-gray-300 dark:border-gray-700 rounded-lg">
-                    <p className="font-semibold text-black dark:text-white text-sm">{userLabel}</p>
+                  <div className="w-full mt-2 p-3 border border-gray-700 rounded-lg">
+                    <p className="font-semibold text-white text-sm">{userLabel}</p>
                   </div>
                 </div>
                 <div className="px-4 py-2">

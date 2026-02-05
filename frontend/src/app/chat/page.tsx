@@ -365,7 +365,7 @@ export default function ChatPage() {
 
   return (
     <div
-      className="flex flex-col min-h-[100dvh] h-[100dvh] min-h-0 bg-white dark:bg-black text-black dark:text-white"
+      className="flex flex-col min-h-[100dvh] h-[100dvh] min-h-0 bg-black text-white"
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
@@ -400,21 +400,21 @@ export default function ChatPage() {
 
       {/* Sidebar - Toggleable on all screen sizes */}
       <aside
-        className={`fixed left-0 top-0 z-50 h-full w-[280px] bg-white dark:bg-black border-r border-gray-200 dark:border-gray-800 transform transition-transform duration-200 ease-out ${
+        className={`fixed left-0 top-0 z-50 h-full w-[280px] bg-black border-r border-gray-800 transform transition-transform duration-200 ease-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
         role="navigation"
         aria-label="Navigation"
       >
-        <div className="h-[72px] px-5 flex items-center justify-between border-b border-gray-200 dark:border-gray-800">
+        <div className="h-[72px] px-5 flex items-center justify-between border-b border-gray-800">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/Eddy.png" alt="Eduble" width={28} height={28} className="rounded-full" />
-            <span className="font-semibold text-black dark:text-white">Eduble</span>
+            <span className="font-semibold text-white">Eduble</span>
           </Link>
           <button
             type="button"
             onClick={() => setIsSidebarOpen(false)}
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-900"
+            className="p-2 rounded-full hover:bg-gray-900"
             aria-label="Close sidebar"
           >
             ✕
@@ -432,7 +432,7 @@ export default function ChatPage() {
               key={item.href}
               href={item.href}
               onClick={() => setIsSidebarOpen(false)}
-              className="block rounded-xl px-4 py-3 text-sm font-medium text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900"
+              className="block rounded-xl px-4 py-3 text-sm font-medium text-white hover:bg-gray-900"
             >
               {item.label}
             </Link>
@@ -453,12 +453,12 @@ export default function ChatPage() {
         }}
       >
         <div
-          className="max-w-3xl mx-auto min-h-0 px-6 py-8 space-y-6"
+          className="w-full max-w-none px-6 md:px-10 lg:px-16 py-8 space-y-6"
           style={chatBottomPadStyle}
         >
           {messages.length === 0 && selectedLevel === '' ? (
             <div className="flex items-center justify-center h-full">
-              <p className="text-gray-400 dark:text-gray-500 text-center">
+              <p className="text-gray-500 text-center">
                 Chat with Eddy by first selecting your Educational Level! ✨
               </p>
             </div>
@@ -470,8 +470,8 @@ export default function ChatPage() {
                     <div
                       className={`
                         text-xs px-4 py-2 rounded-full
-                        bg-gray-200 dark:bg-gray-800
-                        text-gray-600 dark:text-gray-400
+                        bg-gray-800
+                        text-gray-400
                       `}
                     >
                       {msg.text}
@@ -492,7 +492,7 @@ export default function ChatPage() {
                         px-5 py-4 rounded-2xl
                         text-sm leading-relaxed
                         whitespace-pre-wrap break-words
-                        bg-white dark:bg-white text-black
+                        bg-white text-black
                         border border-gray-300
                       `}
                     >
@@ -502,8 +502,8 @@ export default function ChatPage() {
                     <div className="w-full">
                       <div
                         className={`
-                          bg-black dark:bg-black
-                          border border-gray-400 dark:border-gray-600
+                          bg-black
+                          border border-gray-600
                           rounded-2xl px-6 py-5
                           text-sm leading-relaxed
                           whitespace-pre-wrap
@@ -527,10 +527,10 @@ export default function ChatPage() {
       {imageFile && (
         <div
           id="attachment-bar"
-          className="border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900"
+          className="border-t border-gray-800 bg-gray-900"
         >
-          <div className="max-w-3xl mx-auto px-6 py-2 flex items-center justify-between text-sm">
-            <span className="text-gray-600 dark:text-gray-400">
+          <div className="w-full max-w-none px-6 md:px-10 lg:px-16 py-2 flex items-center justify-between text-sm">
+            <span className="text-gray-400">
               Image attached: {imageFile.name}
             </span>
             <button onClick={() => setImageFile(null)} className="text-red-500 hover:underline">
@@ -554,26 +554,26 @@ export default function ChatPage() {
           useIOSKeyboardFix
             ? `
               fixed left-0 right-0 bottom-0 z-50
-              border-t border-gray-200 dark:border-gray-800
-              bg-white/95 dark:bg-black/95
+              border-t border-gray-800
+              bg-black/95
               backdrop-blur
               pb-[env(safe-area-inset-bottom)]
             `
             : `
               sticky bottom-0 z-50
-              border-t border-gray-200 dark:border-gray-800
-              bg-white/95 dark:bg-black/95
+              border-t border-gray-800
+              bg-black/95
               backdrop-blur
               pb-[env(safe-area-inset-bottom)]
             `
         }
         style={inputBarPositionStyle}
       >
-        <div className="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
+        <div className="w-full max-w-none px-6 md:px-10 lg:px-16 py-4 flex items-center gap-3">
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800"
+            className="p-2 rounded-full hover:bg-gray-800"
           >
             📎
           </button>
@@ -664,13 +664,13 @@ function Header({
   setIsSidebarOpen: (v: boolean) => void;
 }) {
   return (
-    <header className="flex-shrink-0 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
-      <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+    <header className="flex-shrink-0 border-b border-gray-800 bg-black">
+      <div className="w-full max-w-none px-6 md:px-10 lg:px-16 py-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-900"
+            className="p-2 rounded-full hover:bg-gray-900"
             aria-label="Toggle sidebar"
           >
             ☰
@@ -693,7 +693,7 @@ function Header({
 
             <div className="relative h-[32px] w-[160px] overflow-hidden">
               <div className="absolute inset-0 flex flex-col justify-center">
-                <span className="text-sm font-semibold text-black dark:text-white">
+                <span className="text-lg font-semibold text-white">
                   Eddy Chat
                 </span>
               </div>
