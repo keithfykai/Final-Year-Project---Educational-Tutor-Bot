@@ -67,7 +67,7 @@ export default function AboutPage() {
                   >
                     <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white hover:border-gray-400 transition">
                       <Image
-                        src="https://avatars.githubusercontent.com/u/68919845?v=4&size=64"
+                        src="/dp.jpg"
                         alt="Keith Lim"
                         width={128}
                         height={128}

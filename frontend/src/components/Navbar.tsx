@@ -29,6 +29,7 @@ export default function NavbarComponent() {
 
   const handleSignOut = async () => {
     const auth = getAuthClient();
+    await fetch("/api/sessionLogout", { method: "POST" });
     await signOut(auth);
     router.push("/");
   };
@@ -50,7 +51,7 @@ export default function NavbarComponent() {
     <Navbar 
       isBordered 
       maxWidth="full" 
-      className="bg-black border-gray-800 py-3 md:py-6" 
+      className="bg-black border-gray-800 py-3 md:py-3" 
       height="60px md:120px"
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
@@ -58,7 +59,7 @@ export default function NavbarComponent() {
       <NavbarContent>
         <NavbarBrand>
           <Link href="/" className="flex items-center gap-3">
-            <Image src="/Eddy.png" alt="Logo" width={50} height={50} />
+            <Image src="/Eddy.png" alt="Logo" width={40} height={40} />
             <span className="font-bold text-xl text-white">Eduble</span>
           </Link>
         </NavbarBrand>
@@ -78,17 +79,17 @@ export default function NavbarComponent() {
 
       <NavbarContent className="hidden sm:flex gap-8" justify="center">
         <NavbarItem>
-          <Link href="/chat" className="text-white hover:text-gray-300 transition font-medium">
+          <Link href="/chat" className="text-white hover:bg-gray-800 hover:text-gray-300 transition font-medium rounded-lg px-3 py-2">
             Chat
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/quizmode" className="text-white hover:text-gray-300 transition font-medium">
+          <Link href="/quizmode" className="text-white hover:bg-gray-800 hover:text-gray-300 transition font-medium rounded-lg px-3 py-2">
             Quiz Mode
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/about" className="text-white hover:text-gray-300 transition font-medium">
+          <Link href="/about" className="text-white hover:bg-gray-800 hover:text-gray-300 transition font-medium rounded-lg px-3 py-2">
             About
           </Link>
         </NavbarItem>
@@ -101,7 +102,7 @@ export default function NavbarComponent() {
             <Button
               as={Link}
               href={SIGN_IN_PATH}
-              className="bg-white text-black hover:opacity-80 rounded-full border border-gray-300"
+              className="bg-white py-2 text-black hover:opacity-80 rounded-full border border-gray-300"
             >
               Sign in
             </Button>
@@ -113,16 +114,16 @@ export default function NavbarComponent() {
             <DropdownTrigger>
               <Button
                 variant="bordered"
-                className="border-white text-white"
+                className="border-white text-white rounded-2xl py-2 border"
               >
                 {userLabel.split("@")[0]}
               </Button>
             </DropdownTrigger>
-            <DropdownMenu aria-label="User menu" className="bg-black">
-              <DropdownItem key="profile" isDisabled>
-                <p className="font-semibold text-white border border-gray-700 rounded-lg px-3 py-2">{userLabel}</p>
+            <DropdownMenu aria-label="User menu" className="bg-black border border-gray-800 rounded-lg">
+              <DropdownItem key="profile" isDisabled className="bg-black border border-transparent hover:border-gray-800 rounded-lg px-3 py-2 text-white">
+                <p className="font-semibold text-white">{userLabel}</p>
               </DropdownItem>
-              <DropdownItem key="logout" color="danger">
+              <DropdownItem key="logout" color="danger" className="bg-black border border-transparent hover:border-gray-800 rounded-lg px-3 py-2 text-white">
                 <button onClick={handleSignOut} className="w-full text-center text-red-600">
                   Sign out
                 </button>
@@ -140,7 +141,7 @@ export default function NavbarComponent() {
               <Link
                 key={`${item.name}-${index}`}
                 href={item.href}
-                className="block px-4 py-3 text-white hover:bg-gray-900"
+                className="block px-4 py-3 text-white hover:bg-gray-800 rounded-lg transition"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}

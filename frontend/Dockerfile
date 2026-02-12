@@ -7,7 +7,7 @@ WORKDIR /app
 # Install deps using local package.json before mounting
 COPY package*.json ./
 
-RUN rm -rf node_modules package-lock.json && npm install
+RUN rm -rf package-lock.json && npm install
 
 COPY . .
 

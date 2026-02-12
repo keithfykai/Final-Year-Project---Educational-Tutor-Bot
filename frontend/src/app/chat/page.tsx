@@ -5,6 +5,10 @@ import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { onAuthStateChanged, type User } from 'firebase/auth';
+import { getAuthClient, getFirestoreClient } from 'firebase/firebaseClient';
+import { collection, addDoc, query, orderBy, limit, getDocs, Timestamp } from 'firebase/firestore';
 import { CATEGORY_SUBJECT_LIST } from './consts';
 
 function backendBaseUrl() {
@@ -18,6 +22,8 @@ type LevelKey = keyof typeof CATEGORY_SUBJECT_LIST;
 type ChatMessage = {
   sender: 'user' | 'bot' | 'system';
   text: string;
+  timestamp?: Date;
+  imageUrl?: string;
 };
 
 function isIOSDevice() {
@@ -36,6 +42,9 @@ function isMobileDevice() {
 }
 
 export default function ChatPage() {
+  const router = useRouter();
+  const [authUser, setAuthUser] = useState<User | null>(null);
+  const [authChecked, setAuthChecked] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState<LevelKey | ''>('');
   const [input, setInput] = useState('');
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -44,6 +53,7 @@ export default function ChatPage() {
 
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textInputRef = useRef<HTMLInputElement>(null);
@@ -55,6 +65,9 @@ export default function ChatPage() {
   const shouldAutoScrollRef = useRef(true);
 
   const prevLevelRef = useRef<LevelKey | ''>('');
+
+  // Local conversation history for context (only user/bot messages)
+  const conversationHistory = useRef<Array<{ sender: 'user' | 'bot'; text: string }>>([]);
 
   // --- iOS / mobile separation ---
   const isIOS = useMemo(() => (typeof window === 'undefined' ? false : isIOSDevice()), []);
@@ -68,6 +81,65 @@ export default function ChatPage() {
   const inputBarRef = useRef<HTMLFormElement>(null);
   const [inputBarH, setInputBarH] = useState(76); // reasonable default
   const [attachmentBarH, setAttachmentBarH] = useState(0);
+
+  // Firestore helper: save message
+  const saveMessageToFirestore = async (message: ChatMessage) => {
+    if (!authUser?.uid) return;
+    try {
+      const db = getFirestoreClient();
+      const messagesRef = collection(db, 'users', authUser.uid, 'messages');
+      await addDoc(messagesRef, {
+        sender: message.sender,
+        text: message.text,
+        timestamp: Timestamp.now(),
+        imageUrl: message.imageUrl || null,
+      });
+    } catch (error) {
+      console.error('Error saving message to Firestore:', error);
+    }
+  };
+
+  // Firestore helper: load last 10 messages
+  const loadChatHistory = async (userId: string) => {
+    try {
+      const db = getFirestoreClient();
+      const messagesRef = collection(db, 'users', userId, 'messages');
+      const q = query(messagesRef, orderBy('timestamp', 'desc'), limit(10));
+      const snapshot = await getDocs(q);
+      
+      const loadedMessages: ChatMessage[] = [];
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        loadedMessages.push({
+          sender: data.sender as 'user' | 'bot' | 'system',
+          text: data.text || '',
+          timestamp: data.timestamp?.toDate(),
+          imageUrl: data.imageUrl || undefined,
+        });
+      });
+      
+      // Reverse to show oldest first
+      setMessages(loadedMessages.reverse());
+    } catch (error) {
+      console.error('Error loading chat history:', error);
+    }
+  };
+
+  // Load/save chat history per user
+  useEffect(() => {
+    const auth = getAuthClient();
+    const unsub = onAuthStateChanged(auth, (user) => {
+      setAuthUser(user);
+      setAuthChecked(true);
+      if (!user) {
+        router.replace('/signin');
+      } else {
+        // Load chat history when user logs in
+        loadChatHistory(user.uid);
+      }
+    });
+    return () => unsub();
+  }, [router]);
 
   function formatLevel(level: string) {
     if (level === 'psle') return 'PSLE';
@@ -214,26 +286,60 @@ export default function ChatPage() {
   };
 
   const sendMessage = async () => {
+    console.log('🚀 sendMessage called');
+    console.log('Selected level:', selectedLevel);
+    console.log('Input:', input);
+    console.log('Image file:', imageFile);
+    
     if (!selectedLevel) {
-      alert('Please select a level.');
+      setErrorMessage('Please choose a level first');
+      setTimeout(() => setErrorMessage(''), 3000);
       return;
     }
 
     if (!input.trim() && !imageFile) {
-      alert('Please enter a message or upload an image.');
+      setErrorMessage('Please enter a message or upload an image');
+      setTimeout(() => setErrorMessage(''), 3000);
       return;
     }
 
+    setErrorMessage('');
     const userMessage = input;
     setInput('');
     setLoading(true);
     shouldAutoScrollRef.current = true;
 
-    setMessages((prev) => [
-      ...prev,
-      { sender: 'user', text: imageFile ? `${userMessage || ''}\n[Image uploaded]` : userMessage },
-      { sender: 'bot', text: '' },
-    ]);
+    // Add user message to conversation history
+    const userText = imageFile ? `${userMessage || ''}\n[Image uploaded]` : userMessage;
+    conversationHistory.current.push({ sender: 'user', text: userText });
+    
+    // Prepare context: last 10 messages from conversation history
+    const contextMessages = conversationHistory.current.slice(-10);
+
+    console.log('=== SENDING TO BACKEND ===');
+    console.log('Level:', selectedLevel);
+    console.log('Prompt:', userMessage);
+    console.log('Context messages:', contextMessages);
+    console.log('Number of context messages:', contextMessages.length);
+
+    // Add user message to UI
+    const userMsg: ChatMessage = { 
+      sender: 'user' as const, 
+      text: userText 
+    };
+
+    setMessages((prev) => {
+      const next: ChatMessage[] = [
+        ...prev,
+        userMsg,
+        { sender: 'bot' as const, text: '' },
+      ];
+      return next.slice(-20); // keep up to 20 for safety
+    });
+
+    // 120 second timeout
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 120000);
 
     try {
       const url = `${backendBaseUrl()}/llm/chat/stream`;
@@ -244,13 +350,21 @@ export default function ChatPage() {
         formData.append('level', selectedLevel);
         if (userMessage.trim()) formData.append('prompt', userMessage);
         formData.append('image', imageFile);
-
-        res = await fetch(url, { method: 'POST', body: formData });
+        formData.append('context', JSON.stringify(contextMessages));
+        console.log('Sending FormData with context:', JSON.stringify(contextMessages));
+        res = await fetch(url, { method: 'POST', body: formData, signal: controller.signal });
       } else {
+        const requestBody = { 
+          level: selectedLevel, 
+          prompt: userMessage,
+          context: contextMessages 
+        };
+        console.log('Sending JSON body:', JSON.stringify(requestBody, null, 2));
         res = await fetch(url, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ level: selectedLevel, prompt: userMessage }),
+          body: JSON.stringify(requestBody),
+          signal: controller.signal,
         });
       }
 
@@ -262,20 +376,44 @@ export default function ChatPage() {
         setMessages((prev) => {
           const next = [...prev];
           next[next.length - 1] = { sender: 'bot', text: acc };
-          return next;
+          return next.slice(-20);
         });
       });
 
+      clearTimeout(timeoutId);
       setImageFile(null);
+
+      // Add bot response to conversation history
+      conversationHistory.current.push({ sender: 'bot', text: acc });
+
+      console.log('=== BOT RESPONSE COMPLETE ===');
+      console.log('Total conversation history:', conversationHistory.current.length);
+      console.log('Last 10:', conversationHistory.current.slice(-10));
+
+      // Save messages to Firestore
+      await saveMessageToFirestore({
+        sender: 'user',
+        text: userText,
+        timestamp: new Date(),
+      });
+      await saveMessageToFirestore({
+        sender: 'bot',
+        text: acc,
+        timestamp: new Date(),
+      });
     } catch (err) {
+      clearTimeout(timeoutId);
+      const isTimeout = err instanceof DOMException && err.name === 'AbortError';
       setMessages((prev) => {
         const next = [...prev];
-        next[next.length - 1] = { sender: 'bot', text: `Error: ${String(err)}` };
-        return next;
+        next[next.length - 1] = {
+          sender: 'bot',
+          text: isTimeout ? 'Request timed out, please try again.' : `Error: ${String(err)}`,
+        };
+        return next.slice(-20);
       });
     } finally {
       setLoading(false);
-      // iOS: focusing immediately can re-trigger viewport jump; delay slightly
       setTimeout(() => textInputRef.current?.focus(), useIOSKeyboardFix ? 80 : 0);
     }
   };
@@ -362,6 +500,22 @@ export default function ChatPage() {
       setImageFile(file);
     }
   };
+
+  if (!authChecked) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-white text-black dark:bg-black dark:text-white">
+        Loading...
+      </div>
+    );
+  }
+
+  if (!authUser) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-white text-black dark:bg-black dark:text-white">
+        Redirecting to sign in...
+      </div>
+    );
+  }
 
   return (
     <div
@@ -499,12 +653,12 @@ export default function ChatPage() {
                       {msg.text}
                     </div>
                   ) : (
-                    <div className="w-full">
+                    <div className="w-[80%] min-w-[120px]">
                       <div
                         className={`
                           bg-black
-                          border border-gray-600
-                          rounded-2xl px-6 py-5
+                          rounded-4xl px-6 py-5
+                          border border-gray-500
                           text-sm leading-relaxed
                           whitespace-pre-wrap
                           text-white
@@ -540,6 +694,15 @@ export default function ChatPage() {
         </div>
       )}
 
+      {/* Error message bar */}
+      {errorMessage && (
+        <div className="border-t border-gray-800 bg-red-900/30">
+          <div className="w-full max-w-none px-6 md:px-10 lg:px-16 py-2 flex items-center justify-center text-sm">
+            <span className="text-red-300">{errorMessage}</span>
+          </div>
+        </div>
+      )}
+
       {/* INPUT BAR:
           - iOS mobile: fixed + keyboard-lift via VisualViewport
           - Web/desktop: sticky bottom-0
@@ -569,49 +732,58 @@ export default function ChatPage() {
         }
         style={inputBarPositionStyle}
       >
-        <div className="w-full max-w-none px-6 md:px-10 lg:px-16 py-4 flex items-center gap-3">
-          <button
-            type="button"
-            onClick={() => fileInputRef.current?.click()}
-            className="p-2 rounded-full hover:bg-gray-800"
-          >
-            📎
-          </button>
+        <div className="w-full max-w-3xl mx-auto px-6 md:px-10 lg:px-16 py-4">
+          <div className="relative flex items-center">
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="absolute left-3 p-2 rounded-full hover:bg-gray-800 z-10"
+              aria-label="Attach file"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+              </svg>
+            </button>
 
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            className="hidden"
-            onChange={(e) => setImageFile(e.target.files?.[0] ?? null)}
-          />
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={(e) => setImageFile(e.target.files?.[0] ?? null)}
+            />
 
-          <input
-            ref={textInputRef}
-            type="text"
-            inputMode="text"
-            autoCorrect="on"
-            autoCapitalize="sentences"
-            className={`
-              flex-1 px-4 py-3 rounded-full
-              bg-black
-              border border-gray-800
-              focus:outline-none focus:ring-2 focus:ring-gray-500
-              text-white
-            `}
-            placeholder="Ask a question, paste a problem, or upload an image…"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            disabled={loading}
-          />
+            <input
+              ref={textInputRef}
+              type="text"
+              inputMode="text"
+              autoCorrect="on"
+              autoCapitalize="sentences"
+              className={`
+                flex-1 pl-14 pr-24 py-3 rounded-full
+                bg-black
+                border border-gray-700
+                focus:outline-none focus:ring-2 focus:ring-gray-500
+                text-white
+              `}
+              placeholder="Ask a question, paste a problem, or upload an image…"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              disabled={loading}
+            />
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="px-5 py-2 rounded-full bg-black text-white hover:opacity-80 disabled:opacity-60"
-          >
-            Send
-          </button>
+            <button
+              type="submit"
+              disabled={loading}
+              className="absolute right-2 px-3 py-2 rounded-full bg-gray-800 text-white hover:opacity-80 disabled:opacity-60"
+              aria-label="Send message"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
         </div>
       </form>
 
@@ -715,35 +887,45 @@ function LevelSelect({
   setSelectedLevel: (v: LevelKey | '') => void;
 }) {
   return (
-    <select
-      className="
-        px-4 py-2 rounded-full
-        bg-black
-        border border-gray-800
-        text-sm
-        text-white
-        focus:outline-none focus:ring-2 focus:ring-gray-500
-      "
-      value={selectedLevel}
-      onChange={(e) => setSelectedLevel(e.target.value as LevelKey)}
-    >
-      <option value="" disabled>
-        Select level…
-      </option>
-      <option value="psle">PSLE</option>
-      <option value="o_level">O Level</option>
-      <option value="a_level">A Level</option>
-    </select>
+    <div className="relative w-44">
+      <select
+        className="appearance-none w-full px-4 py-2 pr-10 rounded-xl bg-black border border-gray-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gray-500 transition-all hover:border-gray-500 shadow-sm"
+        value={selectedLevel}
+        onChange={(e) => setSelectedLevel(e.target.value as LevelKey)}
+      >
+        <option value="" disabled>
+          Select level…
+        </option>
+        <option value="psle">PSLE</option>
+        <option value="o_level">O Level</option>
+        <option value="a_level">A Level</option>
+      </select>
+      <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6"/></svg>
+      </span>
+    </div>
   );
 }
 
 /* ---------------- UI HELPERS ---------------- */
 function TypingDots() {
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((prev) => prev + 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Circular black and white spinner with text
   return (
-    <div className="flex items-center gap-1">
-      <span className="w-2 h-2 rounded-full bg-gray-400 animate-bounce [animation-delay:-0.2s]" />
-      <span className="w-2 h-2 rounded-full bg-gray-400 animate-bounce [animation-delay:-0.1s]" />
-      <span className="w-2 h-2 rounded-full bg-gray-400 animate-bounce" />
+    <div className="flex flex-col items-center justify-center py-2">
+      <div className="flex items-center justify-center mb-2">
+        <span className="inline-block w-7 h-7 border-4 border-black border-t-white rounded-full animate-spin" />
+      </div>
+      <span className="text-xs text-white opacity-80">Generating Response ({seconds}s)</span>
     </div>
   );
 }

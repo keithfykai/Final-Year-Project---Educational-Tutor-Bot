@@ -1,50 +1,74 @@
 import Image from "next/image";
+import { useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@heroui/react";
 import { motion } from "framer-motion";
 
 export default function Hero() {
   const router = useRouter();
+  const dots = useMemo(
+    () =>
+      Array.from({ length: 18 }, () => ({
+        top: `${Math.floor(6 + Math.random() * 88)}%`,
+        left: `${Math.floor(4 + Math.random() * 92)}%`,
+        size: `${(Math.random() * 2 + 1) * 3}px`,
+        duration: 3 + Math.random() * 4,
+        delay: Math.random() * 2.5,
+      })),
+    []
+  );
 
   return (
     <section
       className="
-        relative flex flex-col items-center justify-center text-center py-24 md:py-32
+        relative flex flex-col items-center justify-center text-center py-20 md:py-28
         bg-black
         border-b border-gray-800
         overflow-hidden
       "
     >
-      {/* Animated background with blurry white lines */}
-      <div className="absolute inset-0 overflow-hidden opacity-60">
-        <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-          <defs>
-            <filter id="blur">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="0.5" />
-            </filter>
-          </defs>
-          <g filter="url(#blur)" stroke="currentColor" strokeWidth="0.3" fill="none">
-            {/* Animated lines */}
-            <motion.path
-              d="M 0,20 Q 25,18 50,20 T 100,20"
-              className="text-white"
-              animate={{ d: ["M 0,20 Q 25,18 50,20 T 100,20", "M 0,24 Q 25,22 50,24 T 100,24", "M 0,20 Q 25,18 50,20 T 100,20"] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      {/* Dynamic background: gradients, blobs, particles, subtle grid */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),rgba(0,0,0,0)_55%)]" />
+        <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:40px_40px]" />
+
+        <motion.div
+          className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-white/10 blur-3xl"
+          animate={{ x: [0, 80, 0], y: [0, 40, 0], scale: [1, 1.2, 1] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute top-1/3 -right-16 h-80 w-80 rounded-full bg-white/10 blur-3xl"
+          animate={{ x: [0, -60, 0], y: [0, -50, 0], scale: [1, 1.25, 1] }}
+          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-[-80px] left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-white/10 blur-3xl"
+          animate={{ y: [0, -40, 0], scale: [1, 1.15, 1] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        <div className="absolute inset-0">
+          {dots.map((dot, idx) => (
+            <motion.span
+              key={idx}
+              className="absolute rounded-full bg-white/60"
+              style={{
+                top: dot.top,
+                left: dot.left,
+                width: dot.size,
+                height: dot.size,
+              }}
+              animate={{ opacity: [0, 0.8, 0], scale: [0.4, 1.2, 0.4] }}
+              transition={{
+                duration: dot.duration,
+                delay: dot.delay,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
             />
-            <motion.path
-              d="M 0,40 Q 25,38 50,40 T 100,40"
-              className="text-white"
-              animate={{ d: ["M 0,40 Q 25,38 50,40 T 100,40", "M 0,44 Q 25,42 50,44 T 100,44", "M 0,40 Q 25,38 50,40 T 100,40"] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.path
-              d="M 0,60 Q 25,58 50,60 T 100,60"
-              className="text-white"
-              animate={{ d: ["M 0,60 Q 25,58 50,60 T 100,60", "M 0,64 Q 25,62 50,64 T 100,64", "M 0,60 Q 25,58 50,60 T 100,60"] }}
-              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </g>
-        </svg>
+          ))}
+        </div>
       </div>
 
       {/* Content */}
@@ -75,7 +99,7 @@ export default function Hero() {
               bg-white
               text-black
               font-semibold text-base
-              px-8 py-4
+              px-6 py-3
               hover:opacity-80 transition
             "
           >

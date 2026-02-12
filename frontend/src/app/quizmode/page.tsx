@@ -1,8 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Spinner } from "@heroui/react";
+import { useRouter } from "next/navigation";
+import { onAuthStateChanged, type User } from "firebase/auth";
+import { getAuthClient } from "firebase/firebaseClient";
 
 type Level = "psle" | "o_level" | "a_level";
 
@@ -59,6 +62,9 @@ function backendBaseUrl() {
 }
 
 export default function QuizPage() {
+  const router = useRouter();
+  const [authUser, setAuthUser] = useState<User | null>(null);
+  const [authChecked, setAuthChecked] = useState(false);
   const [level, setLevel] = useState<Level>("psle");
   const [subject, setSubject] = useState<string>("science");
   const [numQuestions, setNumQuestions] = useState<number>(10);
@@ -76,6 +82,16 @@ export default function QuizPage() {
   const [correctCount, setCorrectCount] = useState(0);
   const [wrongTopics, setWrongTopics] = useState<string[]>([]);
   const [finalSummary, setFinalSummary] = useState<string>("");
+
+  useEffect(() => {
+    const auth = getAuthClient();
+    const unsub = onAuthStateChanged(auth, (user) => {
+      setAuthUser(user);
+      setAuthChecked(true);
+      if (!user) router.replace("/signin");
+    });
+    return () => unsub();
+  }, [router]);
 
   const subjectOptions = useMemo(() => SUBJECTS[level], [level]);
 
@@ -196,6 +212,22 @@ export default function QuizPage() {
 
   const showResults = quiz && index === quiz.num_questions - 1 && submitted;
 
+  if (!authChecked) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-white text-black dark:bg-black dark:text-white">
+        Loading...
+      </div>
+    );
+  }
+
+  if (!authUser) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-white text-black dark:bg-black dark:text-white">
+        Redirecting to sign in...
+      </div>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-black text-white">
       <div className="max-w-5xl mx-auto px-6 py-16 space-y-10">
@@ -221,7 +253,7 @@ export default function QuizPage() {
           <section
             className="
               rounded-2xl bg-black
-              border border-gray-800
+              border border-gray-700
               p-6 md:p-8 shadow-sm
             "
           >

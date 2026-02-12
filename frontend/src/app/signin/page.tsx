@@ -113,6 +113,18 @@ export default function SignInPage() {
     return auth;
   };
 
+  const createSessionCookie = async () => {
+    const auth = getAuthClient();
+    const idToken = await auth.currentUser?.getIdToken(true);
+    if (!idToken) return;
+
+    await fetch("/api/sessionLogin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ idToken }),
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     clearAlerts();
@@ -148,7 +160,8 @@ export default function SignInPage() {
 
       if (isSignIn) {
         await signInWithEmailAndPassword(auth, email.trim(), password);
-        alert("Welcome back!");
+        await createSessionCookie();
+        // alert("Welcome back!");
       } else {
         const cred = await createUserWithEmailAndPassword(
           auth,
@@ -156,7 +169,8 @@ export default function SignInPage() {
           password
         );
         await updateProfile(cred.user, { displayName: name.trim() });
-        alert("Account created successfully!");
+        await createSessionCookie();
+        // alert("Account created successfully!");
       }
 
       router.push("/");
@@ -200,7 +214,8 @@ export default function SignInPage() {
       provider.setCustomParameters({ prompt: "select_account" });
 
       await signInWithPopup(auth, provider);
-      alert("Signed in with Google!");
+      await createSessionCookie();
+      // alert("Signed in with Google!");
       router.push("/");
     } catch (err: unknown) {
       setError(friendlyAuthError(err, "google"));
@@ -212,9 +227,13 @@ export default function SignInPage() {
   return (
     <main className="flex flex-col items-center py-20 bg-black min-h-screen w-full px-6">
       <section className="bg-black shadow-lg rounded-xl p-8 w-full max-w-md border border-gray-800">
-        <h1 className="text-2xl font-bold mb-6 text-center text-white">
+        <h1 className="text-2xl font-bold mb-4 text-center text-white">
           {isSignIn ? "Sign In" : "Create Account"}
         </h1>
+
+        <p className="mb-6 text-sm text-white text-center">
+          Sign in to use Chat and Quiz Mode.
+        </p>
 
         {error && <p className="mb-4 text-sm text-red-500 text-center">{error}</p>}
 
@@ -227,7 +246,7 @@ export default function SignInPage() {
           type="button"
           onClick={handleGoogleSignIn}
           disabled={googleLoading || loading || resetLoading}
-          className="w-full py-2 px-4 mb-4 bg-gray-800 text-white font-semibold rounded-lg shadow-md border border-gray-700 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 disabled:opacity-50 flex items-center justify-center gap-2"
+          className="w-full py-2 px-4 mb-4 bg-gray-700 text-white font-semibold rounded-lg shadow-md border border-gray-700 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 disabled:opacity-50 flex items-center justify-center gap-2"
         >
           {googleLoading ? (
             "Signing in..."

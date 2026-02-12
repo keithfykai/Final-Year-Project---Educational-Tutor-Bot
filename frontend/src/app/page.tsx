@@ -20,7 +20,7 @@ export default function HomePage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Vector Database Card */}
-            <Card className="rounded-2xl bg-black border border-gray-800">
+            <Card className="rounded-2xl bg-black border border-gray-700">
               <CardBody className="p-8">
                 <h3 className="text-2xl font-bold text-white mb-4">
                   Our Knowledge Base
@@ -46,7 +46,7 @@ export default function HomePage() {
             </Card>
 
             {/* Technical Details Card */}
-            <Card className="rounded-2xl bg-black border border-gray-800">
+            <Card className="rounded-2xl bg-black border border-gray-700">
               <CardBody className="p-8">
                 <h3 className="text-2xl font-bold text-white mb-4">
                   How It Works
