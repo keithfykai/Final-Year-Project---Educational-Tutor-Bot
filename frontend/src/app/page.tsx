@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import ChatWidget from "@/components/ChatWidget";
 import { Card, CardBody } from "@heroui/react";
+import { FaFileAlt, FaSearch, FaChartBar } from "react-icons/fa";
 
 export default function HomePage() {
   return (
@@ -82,17 +83,26 @@ export default function HomePage() {
                 All documents in our vector database undergo rigorous validation to ensure educational accuracy and relevance:
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                  <h4 className="font-bold text-white mb-2">📋 Source Verification</h4>
-                  <p className="text-gray-300 text-sm">Only official MOE documents, approved curricula, and peer-reviewed educational materials</p>
+                <div className="bg-gray-800 p-6 rounded-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
+                  <div className="flex items-center gap-2 mb-2">
+                    <FaFileAlt className="text-white text-xl" />
+                    <h4 className="font-bold text-white">Source Verification</h4>
+                  </div>
+                  <p className="text-white text-sm">Only official MOE documents, approved curricula, and peer-reviewed educational materials</p>
                 </div>
-                <div>
-                  <h4 className="font-bold text-white mb-2">🔍 Quality Checks</h4>
-                  <p className="text-gray-300 text-sm">Regular updates and validation against latest exam specifications and syllabus changes</p>
+                <div className="bg-gray-800 p-6 rounded-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
+                  <div className="flex items-center gap-2 mb-2">
+                    <FaSearch className="text-white text-xl" />
+                    <h4 className="font-bold text-white">Quality Checks</h4>
+                  </div>
+                  <p className="text-white text-sm">Regular updates and validation against latest exam specifications and syllabus changes</p>
                 </div>
-                <div>
-                  <h4 className="font-bold text-white mb-2">📊 Accuracy Testing</h4>
-                  <p className="text-gray-300 text-sm">Continuous benchmarking against actual exam questions ensures reliable, accurate responses</p>
+                <div className="bg-gray-800 p-6 rounded-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
+                  <div className="flex items-center gap-2 mb-2">
+                    <FaChartBar className="text-white text-xl" />
+                    <h4 className="font-bold text-white">Accuracy Testing</h4>
+                  </div>
+                  <p className="text-white text-sm">Continuous benchmarking against actual exam questions ensures reliable, accurate responses</p>
                 </div>
               </div>
             </CardBody>

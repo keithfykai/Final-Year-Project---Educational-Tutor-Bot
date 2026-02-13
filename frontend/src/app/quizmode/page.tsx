@@ -252,7 +252,7 @@ export default function QuizPage() {
         {!quiz && (
           <section
             className="
-              rounded-2xl bg-black
+              rounded-2xl bg-gray-900
               border border-gray-700
               p-6 md:p-8 shadow-sm
             "

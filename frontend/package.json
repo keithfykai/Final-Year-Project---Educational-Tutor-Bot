@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@heroui/react": "^2.8.8",
     "@heroui/theme": "^2.4.26",
     "@mui/x-charts": "^8.9.0",
@@ -16,8 +17,8 @@
     "@react-spring/web": "^10.0.1",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
-    "firebase-admin": "^12.5.0",
     "firebase": "^12.8.0",
+    "firebase-admin": "^12.5.0",
     "flowbite-react": "^0.12.4",
     "framer-motion": "^12.31.0",
     "katex": "^0.16.22",

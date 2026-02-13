@@ -33,7 +33,7 @@ export default function Features() {
 
 function FeatureCard({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
   return (
-    <Card className="rounded-2xl bg-black border border-gray-800 hover:border-gray-600 transition">
+    <Card className="rounded-2xl bg-gray-900 border border-gray-800 hover:border-gray-600 transition">
       <CardBody className="p-8">
         <div className="text-4xl mb-6 text-white">
           {icon}

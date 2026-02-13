@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardBody, Button } from "@heroui/react";
+import { FaGithub } from "react-icons/fa";
 
 export default function AboutPage() {
   return (
@@ -55,7 +56,7 @@ export default function AboutPage() {
             About the Developer
           </h2>
           
-          <Card className="rounded-2xl bg-black border border-gray-800">
+          <Card className="rounded-2xl bg-gray-900 border border-gray-800">
             <CardBody className="p-8 md:p-12">
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="flex-shrink-0">
@@ -94,6 +95,7 @@ export default function AboutPage() {
                       rel="noopener noreferrer"
                       className="rounded-full py-2 bg-white text-black"
                     >
+                      <FaGithub className="text-lg" />
                       GitHub Profile
                     </Button>
                     
