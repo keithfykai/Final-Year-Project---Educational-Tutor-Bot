@@ -863,10 +863,13 @@ function Header({
               className="rounded-full shrink-0"
             />
 
-            <div className="relative h-[32px] w-[160px] overflow-hidden">
-              <div className="absolute inset-0 flex flex-col justify-center">
+            <div className="relative overflow-hidden">
+              <div className="flex flex-col justify-center">
                 <span className="text-lg font-semibold text-white">
                   Eddy Chat
+                </span>
+                <span className="text-xs text-gray-300">
+                  Only the last 20 messages are retained for context.
                 </span>
               </div>
             </div>
