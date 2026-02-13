@@ -1,4 +1,4 @@
-# 🧠 Final Year Project: AI Educational Tutor
+# 🧠 Final Year Project: Eduble
 
 ### 🇸🇬 A Syllabus-Aligned AI Learning Assistant for Exam Preparation
 
@@ -56,7 +56,7 @@ Unlike generic AI tools, this tutor is **focused on real exam preparation**, rei
 - Hosted on Vercel
 
 ### Backend
-- FastAPI
+- Flask
 - Google Cloud Platform (GCP)
 
 ### AI & Data
@@ -95,7 +95,7 @@ Unlike generic AI tools, this tutor is **focused on real exam preparation**, rei
 
 > ⚠️ Backend code is **not included in this repository**
 
-- Built with **FastAPI**
+- Built with **Flask**
 - Hosted on **Google Cloud**
 - Handles:
   - AI requests
@@ -122,18 +122,13 @@ Unlike generic AI tools, this tutor is **focused on real exam preparation**, rei
 - Elementary Mathematics
 - Additional Mathematics
 
+### ✅ PSLE
+- Science
+- Math
+
 ### 🛠 Planned Extensions
-- PSLE subjects
-- Additional exam boards and curricula
-
----
-
-## 💻 Local Development (Frontend Only)
-
-```bash
-npm install
-npm run dev
-```
+- International Bacchelaureate (IB)
+- Updated Notes and Exam Papers
 
 ---
 
