@@ -21,7 +21,7 @@ export default function HomePage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Vector Database Card */}
-            <Card className="rounded-2xl bg-black border border-gray-700">
+            <Card className="rounded-2xl bg-gray-800/30 border border-gray-700">
               <CardBody className="p-8">
                 <h3 className="text-2xl font-bold text-white mb-4">
                   Our Knowledge Base
@@ -47,7 +47,7 @@ export default function HomePage() {
             </Card>
 
             {/* Technical Details Card */}
-            <Card className="rounded-2xl bg-black border border-gray-700">
+            <Card className="rounded-2xl bg-gray-800/30 border border-gray-700">
               <CardBody className="p-8">
                 <h3 className="text-2xl font-bold text-white mb-4">
                   How It Works
@@ -74,7 +74,7 @@ export default function HomePage() {
           </div>
 
           {/* Data Validity Section */}
-          <Card className="mt-12 rounded-2xl bg-black border border-gray-700">
+          <Card className="mt-12 rounded-2xl bg-gray-800/30 border border-gray-700">
             <CardBody className="p-8">
               <h3 className="text-2xl font-bold text-white mb-4">
                 Data Integrity & Validation
@@ -83,21 +83,21 @@ export default function HomePage() {
                 All documents in our vector database undergo rigorous validation to ensure educational accuracy and relevance:
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-gray-800 p-6 rounded-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
+                <div className="bg-black border border-gray-400 p-6 rounded-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
                   <div className="flex items-center gap-2 mb-2">
                     <FaFileAlt className="text-white text-xl" />
                     <h4 className="font-bold text-white">Source Verification</h4>
                   </div>
                   <p className="text-white text-sm">Only official MOE documents, approved curricula, and peer-reviewed educational materials</p>
                 </div>
-                <div className="bg-gray-800 p-6 rounded-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
+                <div className="bg-black border border-gray-400 p-6 rounded-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
                   <div className="flex items-center gap-2 mb-2">
                     <FaSearch className="text-white text-xl" />
                     <h4 className="font-bold text-white">Quality Checks</h4>
                   </div>
                   <p className="text-white text-sm">Regular updates and validation against latest exam specifications and syllabus changes</p>
                 </div>
-                <div className="bg-gray-800 p-6 rounded-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
+                <div className="bg-black border border-gray-400 p-6 rounded-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
                   <div className="flex items-center gap-2 mb-2">
                     <FaChartBar className="text-white text-xl" />
                     <h4 className="font-bold text-white">Accuracy Testing</h4>

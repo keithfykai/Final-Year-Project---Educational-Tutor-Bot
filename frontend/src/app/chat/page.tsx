@@ -646,7 +646,7 @@ export default function ChatPage() {
                         px-5 py-4 rounded-2xl
                         text-sm leading-relaxed
                         whitespace-pre-wrap break-words
-                        bg-white text-black
+                        bg-white/90 text-black
                         border border-gray-300
                       `}
                     >
@@ -656,7 +656,7 @@ export default function ChatPage() {
                     <div className="w-[80%] min-w-[120px]">
                       <div
                         className={`
-                          bg-black
+                          bg-gray-800/40
                           rounded-4xl px-6 py-5
                           border border-gray-500
                           text-sm leading-relaxed

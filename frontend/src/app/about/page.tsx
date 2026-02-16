@@ -50,13 +50,16 @@ export default function AboutPage() {
 
         </section>
 
+        {/* Divider */}
+        <hr className="border-gray-800" />
+
         {/* Developer Section */}
         <section className="max-w-3xl mx-auto w-full">
           <h2 className="text-4xl font-bold mb-12 text-center">
             About the Developer
           </h2>
           
-          <Card className="rounded-2xl bg-gray-900 border border-gray-800">
+          <Card className="rounded-2xl bg-gray-800/30 border border-gray-800">
             <CardBody className="p-8 md:p-12">
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="flex-shrink-0">
@@ -116,6 +119,9 @@ export default function AboutPage() {
           </Card>
         </section>
 
+        {/* Divider */}
+        <hr className="border-gray-800" />
+
         {/* Technical Section */}
         <section className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-semibold mb-4">
@@ -161,9 +167,9 @@ function InfoCard({
   return (
     <Card
       className="
-        rounded-2xl bg-black
+        rounded-2xl bg-gray-800/30
         border border-gray-800
-        hover:border-gray-600
+        hover:border-white
         transition
       "
     >
