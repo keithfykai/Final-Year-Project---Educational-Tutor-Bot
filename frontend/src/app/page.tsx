@@ -32,7 +32,7 @@ export default function HomePage() {
                 <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start">
                     <span className="mr-3 font-bold">✓</span>
-                    <span><strong>Official Syllabi:</strong> Singapore MOE PSLE, O-Level, A-Level, and International Baccalaureate (IB) curricula</span>
+                    <span><strong>Official Syllabi:</strong> Singapore MOE PSLE, O-Level and A-Level curricula</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-3 font-bold">✓</span>

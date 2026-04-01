@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState, useEffect } from "react";
 import { Spinner } from "@heroui/react";
 import { useRouter } from "next/navigation";
@@ -68,8 +67,10 @@ export default function QuizPage() {
   const [level, setLevel] = useState<Level>("psle");
   const [subject, setSubject] = useState<string>("science");
   const [numQuestions, setNumQuestions] = useState<number>(10);
+  const [numQuestionsInput, setNumQuestionsInput] = useState<string>("10");
 
   const [loading, setLoading] = useState(false);
+  const [downloadingPdf, setDownloadingPdf] = useState(false);
   const [error, setError] = useState<string>("");
 
   const [quiz, setQuiz] = useState<QuizStartResponse | null>(null);
@@ -110,6 +111,19 @@ export default function QuizPage() {
     setError("");
   }
 
+  function commitNumQuestions(value: string) {
+    const parsed = Number(value);
+
+    if (!Number.isFinite(parsed)) {
+      setNumQuestionsInput(String(numQuestions));
+      return;
+    }
+
+    const clamped = Math.max(5, Math.min(50, Math.round(parsed)));
+    setNumQuestions(clamped);
+    setNumQuestionsInput(String(clamped));
+  }
+
   async function startQuiz() {
     setLoading(true);
     setError("");
@@ -144,6 +158,68 @@ export default function QuizPage() {
       setError(e?.message || "Something went wrong.");
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function downloadQuizPdf() {
+    if (!quiz || !finalSummary) {
+      setError("Finish the quiz and generate the summary before downloading the PDF.");
+      return;
+    }
+
+    setDownloadingPdf(true);
+    setError("");
+
+    try {
+      const base = backendBaseUrl();
+      const res = await fetch(`${base}/llm/quiz/pdf`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          level: quiz.level,
+          subject: quiz.subject,
+          total: quiz.num_questions,
+          correct: correctCount,
+          wrong_topics: wrongTopics,
+          summary: finalSummary,
+          questions: quiz.questions,
+        }),
+      });
+
+      if (!res.ok) {
+        const contentType = res.headers.get("content-type") ?? "";
+        let message = "Failed to download quiz PDF.";
+
+        if (contentType.includes("application/json")) {
+          const data = await res.json();
+          message = data?.error || message;
+        } else {
+          const text = await res.text();
+          if (text) message = text;
+        }
+
+        throw new Error(message);
+      }
+
+      const blob = await res.blob();
+      const contentDisposition = res.headers.get("content-disposition") ?? "";
+      const fileNameMatch = contentDisposition.match(/filename="?([^"]+)"?/i);
+      const fileName =
+        fileNameMatch?.[1] ||
+        `quiz-${quiz.level}-${quiz.subject}-${quiz.num_questions}q-results.pdf`;
+
+      const downloadUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(downloadUrl);
+    } catch (e: any) {
+      setError(e?.message || "Something went wrong.");
+    } finally {
+      setDownloadingPdf(false);
     }
   }
 
@@ -233,14 +309,11 @@ export default function QuizPage() {
       <div className="max-w-5xl mx-auto px-6 py-16 space-y-10">
         {/* Header */}
         <section className="text-center space-y-3">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Quiz Mode</h1>
+          <h1 className="text-4xl md:text-5xl pb-8 font-bold tracking-tight">Quiz Mode</h1>
 
           {!quiz && (
-            <p className="text-gray-300">
-              Quiz Mode lets you practise exactly what you need for your exams. Choose your level, subject,
-              and number of questions, then test yourself with AI-generated MCQs that are aligned to your syllabus.
-              At the end, you’ll receive a clear performance summary highlighting your strengths, mistakes, and topics
-              to improve — helping you revise smarter and focus on what matters most.
+            <p className="mx-auto max-w-xl text-center text-gray-300">
+              Quiz Mode helps you practise smarter with AI-generated MCQs tailored to your level, subject, and chosen number of questions. After each quiz, you’ll receive a clear summary of your strengths, mistakes, and topics to improve, and you can download the completed quiz as a PDF for later review.
             </p>
           )}
 
@@ -292,13 +365,19 @@ export default function QuizPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Questions (5–30)</label>
+                <label className="block text-sm font-medium mb-2">Questions (5–50)</label>
                 <input
                   type="number"
                   min={5}
-                  max={30}
-                  value={numQuestions}
-                  onChange={(e) => setNumQuestions(Math.max(5, Math.min(30, Number(e.target.value))))}
+                  max={50}
+                  value={numQuestionsInput}
+                  onChange={(e) => setNumQuestionsInput(e.target.value)}
+                  onBlur={(e) => commitNumQuestions(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      commitNumQuestions((e.target as HTMLInputElement).value);
+                    }
+                  }}
                   className="w-full rounded-xl border border-gray-800 bg-black px-3 py-2 text-white"
                 />
               </div>
@@ -310,10 +389,10 @@ export default function QuizPage() {
               </div>
             )}
 
-            <div className="mt-6 flex items-center gap-3">
+            <div className="mt-6 flex flex-wrap items-center gap-3">
               <button
                 onClick={startQuiz}
-                disabled={loading}
+                disabled={loading || downloadingPdf}
                 className="
                   inline-flex items-center justify-center gap-3
                   rounded-full px-6 py-2
@@ -332,7 +411,6 @@ export default function QuizPage() {
                   "Start Quiz"
                 )}
               </button>
-
 
               <span className="text-sm text-gray-400">
                 Covers the syllabus broadly for the selected subject.
@@ -481,16 +559,42 @@ export default function QuizPage() {
                     </button>
                   )}
 
+                  {finalSummary && (
+                    <button
+                      onClick={downloadQuizPdf}
+                      disabled={loading || downloadingPdf}
+                      className="
+                        inline-flex items-center justify-center gap-3
+                        rounded-full px-6 py-3
+                        border border-gray-700
+                        bg-black
+                        text-white
+                        font-medium
+                        hover:bg-gray-900
+                        transition disabled:opacity-60
+                      "
+                    >
+                      {downloadingPdf ? (
+                        <>
+                          <Spinner size="sm" color="current" />
+                          <span>Preparing PDF...</span>
+                        </>
+                      ) : (
+                        "Download PDF"
+                      )}
+                    </button>
+                  )}
+
                   <button
                     onClick={resetRun}
                     className="
                       inline-flex items-center justify-center
                       rounded-full px-6 py-3
-                      border border-gray-800
-                      bg-black
-                      text-gray-200
+                      bg-white
+                      text-black
                       font-medium
-                      hover:bg-gray-800
+                      shadow-sm hover:shadow-md
+                      hover:opacity-80
                       transition
                     "
                   >
