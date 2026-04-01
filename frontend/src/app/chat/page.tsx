@@ -563,7 +563,7 @@ function ChatInner() {
     const contextMessages = conversationHistory.current.slice(-20);
 
     const userMsg: ChatMessage = { sender: 'user', text: userText };
-    setMessages((prev) => [...prev, userMsg, { sender: 'bot', text: '' }].slice(-40));
+    setMessages((prev) => [...prev, userMsg, { sender: 'bot' as const, text: '' }].slice(-40));
 
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 120000);
