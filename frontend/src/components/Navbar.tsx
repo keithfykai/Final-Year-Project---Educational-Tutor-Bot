@@ -41,24 +41,31 @@ export default function NavbarComponent() {
 
   if (!mounted) return null;
 
-  const menuItems = [
-    { name: 'Chat', href: '/chat' },
-    { name: 'Quiz Mode', href: '/quizmode' },
-    { name: 'About', href: '/about' },
-  ];
+  // Auth-conditional nav items
+  const menuItems = user
+    ? [
+        { name: "Dashboard", href: "/dashboard" },
+        { name: "Chat", href: "/chat" },
+        { name: "Quiz Mode", href: "/quizmode" },
+      ]
+    : [
+        { name: "Chat", href: "/chat" },
+        { name: "Quiz Mode", href: "/quizmode" },
+        { name: "About", href: "/about" },
+      ];
 
   return (
-    <Navbar 
-      isBordered 
-      maxWidth="full" 
-      className="bg-black border-gray-800 py-3 md:py-3" 
+    <Navbar
+      isBordered
+      maxWidth="full"
+      className="bg-black border-gray-800 py-3 md:py-3"
       height="60px md:120px"
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarContent>
         <NavbarBrand>
-          <Link href="/" className="flex items-center gap-3">
+          <Link href={user ? "/dashboard" : "/"} className="flex items-center gap-3">
             <Image src="/Eddy.png" alt="Logo" width={40} height={40} />
             <span className="font-bold text-xl text-white">Eduble</span>
           </Link>
@@ -71,32 +78,24 @@ export default function NavbarComponent() {
           className="text-white p-2"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         >
-          <span className="text-2xl">
-            {isMenuOpen ? "✕" : "☰"}
-          </span>
+          <span className="text-2xl">{isMenuOpen ? "✕" : "☰"}</span>
         </button>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-8" justify="center">
-        <NavbarItem>
-          <Link href="/chat" className="text-white hover:bg-gray-800 hover:text-gray-300 transition font-medium rounded-lg px-3 py-2">
-            Chat
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link href="/quizmode" className="text-white hover:bg-gray-800 hover:text-gray-300 transition font-medium rounded-lg px-3 py-2">
-            Quiz Mode
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link href="/about" className="text-white hover:bg-gray-800 hover:text-gray-300 transition font-medium rounded-lg px-3 py-2">
-            About
-          </Link>
-        </NavbarItem>
+        {menuItems.map((item) => (
+          <NavbarItem key={item.name}>
+            <Link
+              href={item.href}
+              className="text-white hover:bg-gray-800 hover:text-gray-300 transition font-medium rounded-lg px-3 py-2"
+            >
+              {item.name}
+            </Link>
+          </NavbarItem>
+        ))}
       </NavbarContent>
 
       <NavbarContent justify="end" className="hidden sm:flex gap-3 sm:gap-4">
-        {/* Auth Section - Desktop only */}
         {!authLoading && !user && (
           <NavbarItem>
             <Button
@@ -123,6 +122,9 @@ export default function NavbarComponent() {
               <DropdownItem key="profile" isDisabled className="bg-black border border-transparent hover:border-gray-800 rounded-lg px-3 py-2 text-white">
                 <p className="font-semibold text-white">{userLabel}</p>
               </DropdownItem>
+              <DropdownItem key="about" className="bg-black border border-transparent hover:border-gray-800 rounded-lg px-3 py-2 text-white">
+                <Link href="/about" className="w-full block text-white">About</Link>
+              </DropdownItem>
               <DropdownItem key="logout" color="danger" className="bg-black border border-transparent hover:border-gray-800 rounded-lg px-3 py-2 text-white">
                 <button onClick={handleSignOut} className="w-full text-center text-red-600">
                   Sign out
@@ -147,8 +149,17 @@ export default function NavbarComponent() {
                 {item.name}
               </Link>
             ))}
-            
-            {/* Auth in mobile menu */}
+
+            {user && (
+              <Link
+                href="/about"
+                className="block px-4 py-3 text-gray-400 hover:bg-gray-800 rounded-lg transition text-sm"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About
+              </Link>
+            )}
+
             {!authLoading && !user && (
               <div className="px-4 py-2">
                 <Button

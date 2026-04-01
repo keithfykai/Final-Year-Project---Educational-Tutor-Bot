@@ -9,7 +9,6 @@ const footerSections = [
     links: [
       { title: 'Chat', href: '/chat' },
       { title: 'Quiz Mode', href: '/quizmode' },
-      { title: 'Features', href: '/#features' },
     ],
   },
   {
@@ -21,22 +20,31 @@ const footerSections = [
   {
     label: 'Social Links',
     links: [
-      { title: 'LinkedIn', href: '#', icon: BriefcaseIcon },
-      { title: 'GitHub', href: '#', icon: GitBranchIcon },
+      { title: 'LinkedIn', href: 'https://www.linkedin.com/in/keith-lim-en-kai/', icon: BriefcaseIcon },
+      { title: 'GitHub', href: 'https://github.com/keithfykai/Final-Year-Project---Educational-Tutor-Bot', icon: GitBranchIcon },
     ],
   },
 ];
 
-export default function Footer() {
+export default function Footer({
+  className = '',
+  showLogo = true,
+}: {
+  className?: string;
+  showLogo?: boolean;
+}) {
   return (
     <FooterSection
+      className={className}
       logo={
-        <Image
-          src="/Eduble Logo Light.svg"
-          alt="Eduble Logo"
-          width={120}
-          height={20}
-        />
+        showLogo ? (
+          <Image
+            src="/Eduble Logo Light.svg"
+            alt="Eduble Logo"
+            width={60}
+            height={10}
+          />
+        ) : null
       }
       tagline={
         <>© {new Date().getFullYear()} Eduble · Home Grown in Singapore 🇸🇬</>

@@ -10,7 +10,9 @@ import { HeroUIProvider } from "@heroui/react";
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode;}>) {
   const pathname = usePathname();
 
-  const hideNavAndFooter = pathname === '/chat'
+  const hideNavAndFooter = ['/chat', '/dashboard', '/topicmode'].some(
+    (p) => pathname === p || pathname.startsWith(p + '/')
+  );
   
   return (
     <html lang="en" className="dark">

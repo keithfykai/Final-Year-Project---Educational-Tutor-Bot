@@ -16,6 +16,10 @@ const nextConfig: Partial<NextConfig> = {
         source: "/api/:path*",
         destination: "http://backend:8000/api/:path*", // Docker Compose backend service
       },
+      {
+        source: "/llm/:path*",
+        destination: "http://backend:8000/llm/:path*", // Docker Compose backend service
+      },
     ];
   },
 };

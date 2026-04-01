@@ -116,13 +116,21 @@ export default function SignInPage() {
   const createSessionCookie = async () => {
     const auth = getAuthClient();
     const idToken = await auth.currentUser?.getIdToken(true);
+    // If Firebase Admin is not configured, skip session cookie creation
+    // and let client-side Firebase auth handle access control.
     if (!idToken) return;
 
-    await fetch("/api/sessionLogin", {
+    const res = await fetch("/api/sessionLogin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ idToken }),
     });
+
+    if (!res.ok) {
+      // Non-fatal: session cookie failed (e.g. Firebase Admin not configured).
+      // Client-side Firebase auth is still valid for the current tab.
+      console.warn("Session cookie creation failed:", res.status);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -173,8 +181,10 @@ export default function SignInPage() {
         // alert("Account created successfully!");
       }
 
-      router.push("/");
+      router.push("/dashboard");
     } catch (err: unknown) {
+      const anyErr = err as { code?: string };
+      console.error("[Auth error code]", anyErr?.code, err);
       setError(friendlyAuthError(err, isSignIn ? "signin" : "signup"));
     } finally {
       setLoading(false);
@@ -216,7 +226,7 @@ export default function SignInPage() {
       await signInWithPopup(auth, provider);
       await createSessionCookie();
       // alert("Signed in with Google!");
-      router.push("/");
+      router.push("/dashboard");
     } catch (err: unknown) {
       setError(friendlyAuthError(err, "google"));
     } finally {
@@ -225,8 +235,8 @@ export default function SignInPage() {
   };
 
   return (
-    <main className="flex flex-col items-center py-20 bg-black min-h-screen w-full px-6">
-      <section className="bg-black shadow-lg rounded-xl p-8 w-full max-w-md border border-gray-800">
+    <main className="flex flex-col items-center pt-20 bg-black min-h-screen w-full px-6">
+      <section className="bg-gray-800 shadow-lg rounded-xl p-8 w-full max-w-md border border-white">
         <h1 className="text-2xl font-bold mb-4 text-center text-white">
           {isSignIn ? "Sign In" : "Create Account"}
         </h1>
@@ -417,10 +427,6 @@ export default function SignInPage() {
           </button>
         </div>
       </section>
-
-      <footer className="mt-5 text-sm text-gray-400">
-        Powered by Firebase 🔥
-      </footer>
     </main>
   );
 }
