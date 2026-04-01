@@ -6,16 +6,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { onAuthStateChanged, signOut, type User } from "firebase/auth";
 import { getAuthClient } from "../../../firebase/firebaseClient";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { MessageSquare, BookOpen, Map, LogOut, ChevronRight } from "lucide-react";
 import Footer from "@/components/Footer";
 
-const CARD_VARIANTS = {
+const CARD_VARIANTS: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.1 + 0.2, duration: 0.5, ease: "easeOut" },
+    transition: { delay: i * 0.1 + 0.2, duration: 0.5, ease: "easeOut" as const },
   }),
 };
 

@@ -615,7 +615,7 @@ function ChatInner() {
       }
 
       // Generate title after first user message
-      if (isFirstMessage && userMessage.trim()) {
+      if (isFirstMessage && userMessage.trim() && sessionId) {
         generateSessionTitle(userMessage.trim(), sessionId);
       }
     } catch (err) {
