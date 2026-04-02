@@ -234,7 +234,7 @@ export default function SignInPage() {
 
   return (
     <main className="flex flex-col items-center pt-20 bg-black min-h-screen w-full px-6">
-      <section className="bg-gray-800 shadow-lg rounded-xl p-8 w-full max-w-md border border-white">
+      <section className="bg-gradient-to-br from-gray-800 to-black/30 shadow-lg rounded-xl p-8 w-full max-w-md border border-gray-700">
         <h1 className="text-2xl font-bold mb-4 text-center text-white">
           {isSignIn ? "Sign In" : "Create Account"}
         </h1>

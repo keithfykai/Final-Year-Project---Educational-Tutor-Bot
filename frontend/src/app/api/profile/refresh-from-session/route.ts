@@ -5,6 +5,7 @@ import {
   type ProfileRefreshMessage,
 } from '@/lib/profileRefreshApi';
 import type { StudentProfile } from '@/types/profile';
+import { getAdminAuth } from '@/lib/firebaseAdmin';
 
 type RequestBody = {
   sessionId?: unknown;
@@ -15,6 +16,24 @@ type RequestBody = {
 function getBackendBaseUrl() {
   const url = process.env.NEXT_PUBLIC_BACKEND_URL?.trim();
   return url ? url.replace(/\/+$/, '') : '';
+}
+
+async function getUidFromRequest(request: NextRequest): Promise<string | null> {
+  const sessionCookie = request.cookies.get('__session')?.value;
+  if (sessionCookie) {
+    try {
+      const decoded = await getAdminAuth().verifySessionCookie(sessionCookie, true);
+      return decoded.uid;
+    } catch { /* fall through */ }
+  }
+  const authHeader = request.headers.get('Authorization');
+  if (authHeader?.startsWith('Bearer ')) {
+    try {
+      const decoded = await getAdminAuth().verifyIdToken(authHeader.slice(7));
+      return decoded.uid;
+    } catch { /* fall through */ }
+  }
+  return null;
 }
 
 function sanitizeMessages(value: unknown): ProfileRefreshMessage[] {
@@ -35,10 +54,20 @@ function sanitizeMessages(value: unknown): ProfileRefreshMessage[] {
 
 function sanitizeExistingProfile(value: unknown): Partial<StudentProfile> | null {
   if (!value || typeof value !== 'object') return null;
-  return value as Partial<StudentProfile>;
+  const profile = value as Record<string, unknown>;
+  // Backend expects notes as a list — convert string to single-item array if needed
+  if (typeof profile.notes === 'string') {
+    profile.notes = profile.notes.trim() ? [profile.notes.trim()] : [];
+  }
+  return profile as Partial<StudentProfile>;
 }
 
 export async function POST(request: NextRequest) {
+  const uid = await getUidFromRequest(request);
+  if (!uid) {
+    return NextResponse.json({ error: 'Unauthorized.' }, { status: 401 });
+  }
+
   const backendBaseUrl = getBackendBaseUrl();
   if (!backendBaseUrl) {
     return NextResponse.json(
@@ -66,6 +95,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'No chat messages were available for analysis.' }, { status: 400 });
   }
 
+  console.log('[refresh-from-session] uid:', uid, 'sessionId:', sessionId, 'messages:', messages.length);
+
   try {
     const backendResponse = await fetch(`${backendBaseUrl}/llm/profile/refresh-from-session`, {
       method: 'POST',
@@ -77,6 +108,7 @@ export async function POST(request: NextRequest) {
     const backendData = await backendResponse.json().catch(() => null);
 
     if (!backendResponse.ok) {
+      console.error('[refresh-from-session] Backend returned', backendResponse.status, JSON.stringify(backendData));
       const message =
         backendData &&
         typeof backendData === 'object' &&

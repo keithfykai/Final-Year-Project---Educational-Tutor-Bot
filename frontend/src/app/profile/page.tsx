@@ -36,8 +36,8 @@ function RawDocViewer() {
           </p>
           <pre className="text-xs text-green-300 bg-black rounded-xl p-4 overflow-x-auto leading-relaxed">
             {JSON.stringify(
-              profile ? (({ name, educationalLevel, subjectsStudying, learningGoals, weakAreas, strengths, learningPreferences, notes, profileSummary }) =>
-                ({ name, educationalLevel, subjectsStudying, learningGoals, weakAreas, strengths, learningPreferences, notes, profileSummary })
+              profile ? (({ name, educationalLevel, subjectsStudying, learningGoals, weakAreas, strengths, learningPreferences, notes, profileSummary, createdAt, source, updatedAt }) =>
+                ({ name, educationalLevel, subjectsStudying, learningGoals, weakAreas, strengths, learningPreferences, notes, profileSummary, createdAt, source, updatedAt })
               )(profile) : null,
               null, 2
             )}

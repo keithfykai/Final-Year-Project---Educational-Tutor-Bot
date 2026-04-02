@@ -23,7 +23,7 @@ import {
   Timestamp,
   serverTimestamp,
 } from 'firebase/firestore';
-import { Home, BookOpen, Pencil } from 'lucide-react';
+import { Home, BookOpen, Pencil, Pin, PinOff, RefreshCw } from 'lucide-react';
 import { CATEGORY_SUBJECT_LIST } from './consts';
 import StudentProfilePanel from '@/components/StudentProfilePanel';
 import { useProfile } from '@/hooks/useProfile';
@@ -51,6 +51,8 @@ type ChatMessage = {
   text: string;
   timestamp?: Date;
   imageUrl?: string;
+  firestoreId?: string;
+  pinned?: boolean;
 };
 
 type SessionMeta = {
@@ -113,6 +115,10 @@ function ChatInner() {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDraggingFile, setIsDraggingFile] = useState(false);
+  const [pinnedPanelOpen, setPinnedPanelOpen] = useState(false);
+  const [pendingPinIdx, setPendingPinIdx] = useState<number | null>(null);
+  const [isManualRefreshing, setIsManualRefreshing] = useState(false);
+  const lastManualRefreshAt = useRef<number | null>(null);
 
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [loading, setLoading] = useState(false);
@@ -283,6 +289,7 @@ function ChatInner() {
   const loadSessionMessages = async (sessionId: string, uid: string) => {
     setSessionMessagesLoading(true);
     setMessages([]);
+    setPinnedPanelOpen(false);
     conversationHistory.current = [];
     try {
       const db = getFirestoreClient();
@@ -296,6 +303,8 @@ function ChatInner() {
           text: data.text || '',
           timestamp: (data.timestamp as Timestamp)?.toDate(),
           imageUrl: data.imageUrl || undefined,
+          firestoreId: d.id,
+          pinned: data.pinned ?? false,
         };
       });
       setMessages(loaded);
@@ -469,17 +478,18 @@ function ChatInner() {
   };
 
   // ─── Save a message to Firestore (session-based) ──────────────────────────
-  const saveMessageToFirestore = async (message: ChatMessage, sessionId: string) => {
-    if (!authUser?.uid || !sessionId) return;
+  const saveMessageToFirestore = async (message: ChatMessage, sessionId: string): Promise<string | undefined> => {
+    if (!authUser?.uid || !sessionId) return undefined;
     try {
       const db = getFirestoreClient();
       const now = new Date();
       const msgsRef = collection(db, 'users', authUser.uid, 'chatSessions', sessionId, 'messages');
-      await addDoc(msgsRef, {
+      const docRef = await addDoc(msgsRef, {
         sender: message.sender,
         text: message.text,
         timestamp: Timestamp.fromDate(now),
         imageUrl: message.imageUrl || null,
+        pinned: false,
       });
       const currentSession = sessionsRef.current.find((session) => session.id === sessionId);
       const nextMessageCount = (currentSession?.messageCount ?? 0) + 1;
@@ -495,8 +505,50 @@ function ChatInner() {
         lastMessageAt: Timestamp.fromDate(now),
         messageCount: nextMessageCount,
       });
+      return docRef.id;
     } catch (error) {
       console.error('Error saving message:', error);
+      return undefined;
+    }
+  };
+
+  // ─── Toggle pin on a message ──────────────────────────────────────────────
+  const togglePin = async (idx: number) => {
+    const msg = messages[idx];
+    if (!msg || !msg.firestoreId || !currentSessionId || !authUser?.uid) return;
+    const newPinned = !msg.pinned;
+    setMessages((prev) => {
+      const next = [...prev];
+      next[idx] = { ...next[idx], pinned: newPinned };
+      return next;
+    });
+    try {
+      const db = getFirestoreClient();
+      const msgRef = doc(db, 'users', authUser.uid, 'chatSessions', currentSessionId, 'messages', msg.firestoreId);
+      await updateDoc(msgRef, { pinned: newPinned });
+    } catch (err) {
+      // Revert on failure
+      setMessages((prev) => {
+        const next = [...prev];
+        next[idx] = { ...next[idx], pinned: !newPinned };
+        return next;
+      });
+      console.error('Failed to toggle pin:', err);
+    }
+  };
+
+  const handleManualProfileRefresh = async () => {
+    if (!currentSessionId || !authUser || isManualRefreshing || isRefreshingProfile) return;
+    if (lastManualRefreshAt.current && Date.now() - lastManualRefreshAt.current < 30_000) return;
+    const analysisMessages = buildAnalysisMessages(messages);
+    if (analysisMessages.length < 2) return;
+    setIsManualRefreshing(true);
+    console.log('[ManualProfileRefresh] Sending', analysisMessages.length, 'messages for session', currentSessionId);
+    try {
+      await runAutoProfileRefresh(currentSessionId, messages, true);
+      lastManualRefreshAt.current = Date.now();
+    } finally {
+      setIsManualRefreshing(false);
     }
   };
 
@@ -549,11 +601,12 @@ function ChatInner() {
     return true;
   };
 
-  const runAutoProfileRefresh = async (sessionId: string, chatMessages: ChatMessage[]) => {
+  const runAutoProfileRefresh = async (sessionId: string, chatMessages: ChatMessage[], skipCooldownCheck = false) => {
     if (!userProfile) return;
 
     const analysisMessages = buildAnalysisMessages(chatMessages);
-    if (analysisMessages.length === 0 || !shouldAutoRefreshProfile(sessionId, chatMessages)) return;
+    if (analysisMessages.length === 0) return;
+    if (!skipCooldownCheck && !shouldAutoRefreshProfile(sessionId, chatMessages)) return;
 
     setIsRefreshingProfile(true);
     setProfileRefreshError(null);
@@ -575,6 +628,9 @@ function ChatInner() {
           lastProfileRefreshMessageCount: analysisMessages.length,
           lastProfileRefreshReason: result.reasonNoUpdate || 'No high-confidence updates found.',
         });
+        if (skipCooldownCheck) {
+          setProfileRefreshNotice(result.reasonNoUpdate || 'Not enough information in this conversation to update your profile yet.');
+        }
         return;
       }
 
@@ -660,10 +716,20 @@ function ChatInner() {
     }
   }, [selectedLevel]);
 
+  // ─── Auto-focus input when ready ──────────────────────────────────────────
+  useEffect(() => {
+    if (!authChecked || sessionMessagesLoading) return;
+    if (useIOSKeyboardFix) return; // don't auto-focus on iOS — triggers unwanted keyboard pop-up
+    const t = setTimeout(() => textInputRef.current?.focus(), 50);
+    return () => clearTimeout(t);
+  }, [authChecked, sessionMessagesLoading, useIOSKeyboardFix]);
+
   // ─── Input bar / attachment measurements ──────────────────────────────────
   useEffect(() => {
-    const t = setTimeout(() => textInputRef.current?.focus(), useIOSKeyboardFix ? 150 : 0);
-    return () => clearTimeout(t);
+    if (useIOSKeyboardFix) {
+      const t = setTimeout(() => textInputRef.current?.focus(), 150);
+      return () => clearTimeout(t);
+    }
   }, [useIOSKeyboardFix]);
 
   useEffect(() => {
@@ -831,8 +897,16 @@ function ChatInner() {
 
       // Save both messages to Firestore
       if (sessionId) {
-        await saveMessageToFirestore({ sender: 'user', text: userText, timestamp: new Date() }, sessionId);
-        await saveMessageToFirestore({ sender: 'bot', text: acc, timestamp: new Date() }, sessionId);
+        const userDocId = await saveMessageToFirestore({ sender: 'user', text: userText, timestamp: new Date() }, sessionId);
+        const botDocId = await saveMessageToFirestore({ sender: 'bot', text: acc, timestamp: new Date() }, sessionId);
+        if (userDocId || botDocId) {
+          setMessages((prev) => {
+            const next = [...prev];
+            if (botDocId && next[next.length - 1]?.sender === 'bot') next[next.length - 1] = { ...next[next.length - 1], firestoreId: botDocId };
+            if (userDocId && next[next.length - 2]?.sender === 'user') next[next.length - 2] = { ...next[next.length - 2], firestoreId: userDocId };
+            return next;
+          });
+        }
         await runAutoProfileRefresh(sessionId, [...messages, userMsg, { sender: 'bot', text: acc }]);
       }
 
@@ -953,7 +1027,8 @@ function ChatInner() {
         <Header
           selectedLevel={selectedLevel}
           setSelectedLevel={setSelectedLevel}
-          onNewChat={createNewSession}
+          pinnedCount={messages.filter((m) => m.pinned).length}
+          onTogglePinPanel={() => setPinnedPanelOpen((v) => !v)}
         />
 
       {(profileRefreshNotice || profileRefreshError) && (
@@ -1027,12 +1102,27 @@ function ChatInner() {
           </div>
         )}
 
-        {/* Expanded: profile then New Chat button */}
+        {/* Expanded: profile, sync button, then New Chat button */}
         {isSidebarOpen && (
           <>
-            <div className="px-3 pt-2 pb-2 flex-shrink-0">
+            <div className="px-3 pt-2 pb-1 flex-shrink-0">
               <StudentProfilePanel mode="compact" />
             </div>
+            {currentSessionId && messages.filter((m) => m.sender === 'user' || m.sender === 'bot').length >= 2 && (
+              <div className="px-3 pb-2 flex-shrink-0">
+                <button
+                  onClick={handleManualProfileRefresh}
+                  disabled={isManualRefreshing || isRefreshingProfile}
+                  className="w-full flex items-center justify-center gap-1.5 text-[11px] text-gray-500 hover:text-gray-300 border border-gray-800 hover:border-gray-700 rounded-xl py-1.5 transition disabled:opacity-40"
+                >
+                  {isManualRefreshing ? (
+                    <><span className="w-3 h-3 border border-gray-500 border-t-gray-300 rounded-full animate-spin inline-block" />Syncing…</>
+                  ) : (
+                    <><RefreshCw size={11} />Sync Profile from this Chat</>
+                  )}
+                </button>
+              </div>
+            )}
             <div className="px-3 pb-2 flex-shrink-0">
               <button
                 onClick={() => { createNewSession(); }}
@@ -1101,10 +1191,13 @@ function ChatInner() {
               }
 
               return (
-                <button
+                <div
                   key={session.id}
+                  role="button"
+                  tabIndex={0}
                   onClick={() => switchSession(session.id)}
-                  className={`group w-full text-left rounded-xl px-3 py-3 transition flex items-start gap-2 ${activeClass}`}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') switchSession(session.id); }}
+                  className={`group w-full text-left rounded-xl px-3 py-3 transition flex items-start gap-2 cursor-pointer ${activeClass}`}
                 >
                   <div className="flex-1 min-w-0">
                     <div className="text-sm font-medium text-white truncate">{session.title}</div>
@@ -1133,7 +1226,7 @@ function ChatInner() {
                       <Pencil size={14} />
                     </button>
                   </div>
-                </button>
+                </div>
               );
             })
           )}
@@ -1184,7 +1277,7 @@ function ChatInner() {
       {/* CHAT AREA */}
       <main
         ref={chatScrollRef as React.Ref<HTMLElement>}
-        className="flex-1 min-h-0 overflow-y-auto overscroll-contain"
+        className="flex-1 min-h-0 overflow-y-auto overscroll-contain relative"
         onClick={() => textInputRef.current?.focus()}
         onScroll={(e) => {
           const el = e.currentTarget;
@@ -1223,25 +1316,97 @@ function ChatInner() {
                   </div>
                 );
               }
+              const canPin = !!msg.firestoreId;
+              const isPending = pendingPinIdx === idx;
+              const pinButton = canPin ? (
+                <div className="relative flex-shrink-0 mb-1">
+                  <button
+                    onClick={() => setPendingPinIdx(isPending ? null : idx)}
+                    className={`p-1 rounded-full transition opacity-0 group-hover:opacity-100 ${msg.pinned ? 'opacity-100 text-yellow-400 hover:text-yellow-300' : 'text-gray-600 hover:text-gray-300'}`}
+                    aria-label={msg.pinned ? 'Unpin message' : 'Pin message'}
+                  >
+                    {msg.pinned ? <PinOff size={14} /> : <Pin size={14} />}
+                  </button>
+                  {isPending && (
+                    <div className={`absolute z-50 bottom-full mb-1 bg-gray-900 border border-gray-700 rounded-xl px-3 py-2 shadow-xl flex items-center gap-2 whitespace-nowrap ${msg.sender === 'user' ? 'right-0' : 'left-0'}`}>
+                      <span className="text-xs text-gray-300">
+                        {msg.pinned ? 'Remove this pin?' : 'Pin this message?'}
+                      </span>
+                      <button
+                        onClick={() => { togglePin(idx); setPendingPinIdx(null); }}
+                        className="text-xs font-medium text-white bg-blue-600 rounded-lg px-2 py-0.5 hover:bg-blue-500 transition"
+                      >
+                        Confirm
+                      </button>
+                      <button
+                        onClick={() => setPendingPinIdx(null)}
+                        className="text-xs text-gray-400 hover:text-white transition"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : null;
               return (
-                <div key={idx} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div key={idx} data-msg-idx={idx} className={`group flex items-end gap-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                  {msg.sender !== 'user' && pinButton}
                   {msg.sender === 'user' ? (
                     <div className="inline-block max-w-[75%] px-5 py-4 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap break-words bg-white/90 text-black border border-gray-300">
                       {msg.text}
                     </div>
                   ) : (
                     <div className="w-[80%] min-w-[120px]">
-                      <div className="bg-blue-600/10 rounded-4xl px-6 py-5 border border-blue-500/30 text-sm leading-relaxed whitespace-pre-wrap text-white">
+                      <div className={`rounded-4xl px-6 py-5 border text-sm leading-relaxed whitespace-pre-wrap text-white transition ${msg.pinned ? 'bg-yellow-500/5 border-yellow-500/30' : 'bg-blue-600/10 border-blue-500/30'}`}>
                         {msg.text ? renderMath(msg.text) : <TypingDots />}
                       </div>
                     </div>
                   )}
+                  {msg.sender === 'user' && pinButton}
                 </div>
               );
             })
           )}
           <div ref={messagesEndRef} />
         </div>
+
+        {/* Pinned messages panel */}
+        {pinnedPanelOpen && (
+          <div className="absolute right-0 top-0 h-full w-80 z-30 bg-gray-950 border-l border-gray-800 flex flex-col shadow-2xl">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-800 flex-shrink-0">
+              <div className="flex items-center gap-2">
+                <Pin size={15} className="text-yellow-400" />
+                <span className="text-sm font-semibold text-white">Pinned Messages</span>
+              </div>
+              <button onClick={() => setPinnedPanelOpen(false)} className="p-1 rounded hover:bg-gray-800 text-gray-400 hover:text-white transition">✕</button>
+            </div>
+            <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3">
+              {messages.filter((m) => m.pinned).length === 0 ? (
+                <p className="text-sm text-gray-500 text-center py-8">No pinned messages yet.<br />Hover a message and click the pin icon.</p>
+              ) : (
+                messages.map((m, idx) => !m.pinned ? null : (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      const el = document.querySelector(`[data-msg-idx="${idx}"]`);
+                      el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      setPinnedPanelOpen(false);
+                    }}
+                    className="w-full text-left rounded-xl border border-gray-800 bg-gray-900 hover:border-yellow-500/40 px-3 py-2.5 transition"
+                  >
+                    <div className="flex items-center gap-1.5 mb-1">
+                      <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${m.sender === 'user' ? 'bg-gray-700 text-gray-300' : 'bg-blue-900/40 text-blue-300'}`}>
+                        {m.sender === 'user' ? 'You' : 'Eddy'}
+                      </span>
+                      {m.timestamp && <span className="text-[10px] text-gray-600">{relativeTime(m.timestamp)}</span>}
+                    </div>
+                    <p className="text-xs text-gray-300 line-clamp-3 leading-relaxed">{m.text}</p>
+                  </button>
+                ))
+              )}
+            </div>
+          </div>
+        )}
       </main>
 
       {/* Attachment bar */}
@@ -1351,11 +1516,13 @@ export default function ChatPage() {
 function Header({
   selectedLevel,
   setSelectedLevel,
-  onNewChat,
+  pinnedCount,
+  onTogglePinPanel,
 }: {
   selectedLevel: LevelKey | '';
   setSelectedLevel: (v: LevelKey | '') => void;
-  onNewChat: () => void;
+  pinnedCount: number;
+  onTogglePinPanel: () => void;
 }) {
   return (
     <header className="flex-shrink-0 border-b border-gray-800 bg-black">
@@ -1372,13 +1539,20 @@ function Header({
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <button
-            onClick={onNewChat}
-            className="hidden sm:flex items-center gap-1.5 text-xs text-gray-400 hover:text-white border border-blue-500/30 hover:border-blue-500/60 rounded-full px-3 py-1.5 transition"
-          >
-            + New
-          </button>
           <LevelSelect selectedLevel={selectedLevel} setSelectedLevel={setSelectedLevel} />
+          <button
+            onClick={onTogglePinPanel}
+            className={`relative flex items-center justify-center w-9 h-9 rounded-xl border transition ${pinnedCount > 0 ? 'border-yellow-500/40 text-yellow-400 hover:border-yellow-500/70 bg-yellow-500/5' : 'border-gray-700 text-gray-500 hover:text-gray-300 hover:border-gray-600'}`}
+            aria-label="Pinned messages"
+            title="Pinned messages"
+          >
+            <Pin size={15} />
+            {pinnedCount > 0 && (
+              <span className="absolute -top-1.5 -right-1.5 min-w-[16px] h-4 px-1 rounded-full bg-yellow-400 text-black text-[10px] font-bold flex items-center justify-center">
+                {pinnedCount}
+              </span>
+            )}
+          </button>
         </div>
       </div>
     </header>

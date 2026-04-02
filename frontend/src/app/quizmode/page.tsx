@@ -340,7 +340,7 @@ export default function QuizPage() {
         {!quiz && (
           <section
             className="
-              rounded-2xl bg-gradient-to-br from-emerald-500/10 to-emerald-600/5
+              rounded-2xl bg-gradient-to-br from-green-900/40 to-black
               border border-emerald-500/40
               p-6 md:p-8 shadow-sm
             "
@@ -438,7 +438,7 @@ export default function QuizPage() {
         {quiz && current && (
           <section
             className="
-              rounded-2xl bg-gray-900/80 backdrop-blur-sm
+              rounded-2xl bg-gradient-to-br from-green-900/40 to-black
               border border-emerald-500/40
               p-6 md:p-8 shadow-sm space-y-6
             "

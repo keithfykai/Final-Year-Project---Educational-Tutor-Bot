@@ -66,7 +66,11 @@ export function sanitizeSuggestedPatch(value: unknown): ProfileRefreshResult['su
       continue;
     }
 
-    const sanitized = sanitizeString(raw[field]);
+    // Backend may return notes as an array — join into a single string
+    const rawVal = field === 'notes' && Array.isArray(raw[field])
+      ? (raw[field] as string[]).map((s) => String(s).trim()).filter(Boolean).join('\n')
+      : raw[field];
+    const sanitized = sanitizeString(rawVal);
     if (sanitized) {
       patch[field] = sanitized;
     }
@@ -106,7 +110,7 @@ export function normalizeProfileRefreshResult(value: unknown): ProfileRefreshRes
 }
 
 export async function refreshProfileFromSession(payload: ProfileRefreshRequest): Promise<ProfileRefreshResult> {
-  const response = await fetch('/api/profile/refresh-from-session', {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL?.replace(/\/+$/, '')}/llm/profile/refresh-from-session`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
