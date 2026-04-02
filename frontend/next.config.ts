@@ -2,12 +2,27 @@ import type { NextConfig } from "next";
 
 const nextConfig: Partial<NextConfig> = {
   images: {
-    domains: [
-      "avatars.githubusercontent.com",
-      "cassette.sphdigital.com.sg",
-      "images.unsplash.com",
-      "flowbite.com",
-      "static1.straitstimes.com.sg",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cassette.sphdigital.com.sg",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "flowbite.com",
+      },
+      {
+        protocol: "https",
+        hostname: "static1.straitstimes.com.sg",
+      },
     ],
   },
   async rewrites() {

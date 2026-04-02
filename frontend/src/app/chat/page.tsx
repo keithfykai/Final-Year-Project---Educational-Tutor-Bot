@@ -25,12 +25,24 @@ import {
 } from 'firebase/firestore';
 import { Home, BookOpen, Pencil } from 'lucide-react';
 import { CATEGORY_SUBJECT_LIST } from './consts';
+import StudentProfilePanel from '@/components/StudentProfilePanel';
+import { useProfile } from '@/hooks/useProfile';
+import { buildProfileUpdatePreview, mergeStudentProfile } from '@/lib/profileMerge';
+import {
+  refreshProfileFromSession,
+} from '@/lib/profileRefreshApi';
 
 function backendBaseUrl() {
   const url = process.env.NEXT_PUBLIC_BACKEND_URL?.trim();
   if (!url) return '';
   return url.replace(/\/+$/, '');
 }
+
+const AUTO_PROFILE_REFRESH_MIN_MESSAGES = 6;
+const AUTO_PROFILE_REFRESH_MIN_USER_MESSAGES = 2;
+const AUTO_PROFILE_REFRESH_SESSION_COOLDOWN_MS = 15 * 60 * 1000;
+const AUTO_PROFILE_REFRESH_PROFILE_COOLDOWN_MS = 24 * 60 * 60 * 1000;
+const AUTO_PROFILE_REFRESH_MIN_GROWTH_AFTER_RECENT_PROFILE_UPDATE = 6;
 
 type LevelKey = keyof typeof CATEGORY_SUBJECT_LIST;
 
@@ -49,6 +61,10 @@ type SessionMeta = {
   createdAt: Date;
   lastMessageAt: Date;
   messageCount: number;
+  lastProfileRefreshAttemptAt?: Date;
+  lastProfileRefreshAppliedAt?: Date;
+  lastProfileRefreshMessageCount?: number;
+  lastProfileRefreshReason?: string | null;
 };
 
 function isIOSDevice() {
@@ -78,6 +94,12 @@ function relativeTime(date: Date): string {
   return date.toLocaleDateString();
 }
 
+function toOptionalDate(value: unknown): Date | undefined {
+  if (value instanceof Timestamp) return value.toDate();
+  if (value instanceof Date) return value;
+  return undefined;
+}
+
 // ─── Inner chat component (uses useSearchParams) ──────────────────────────────
 function ChatInner() {
   const router = useRouter();
@@ -95,11 +117,15 @@ function ChatInner() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [profileRefreshError, setProfileRefreshError] = useState<string | null>(null);
+  const [profileRefreshNotice, setProfileRefreshNotice] = useState<string | null>(null);
+  const [isRefreshingProfile, setIsRefreshingProfile] = useState(false);
 
   // Session state
   const [currentSessionId, setCurrentSessionId] = useState<string | null>(sessionIdParam);
   const currentSessionIdRef = useRef<string | null>(sessionIdParam);
   const [sessions, setSessions] = useState<SessionMeta[]>([]);
+  const sessionsRef = useRef<SessionMeta[]>([]);
   const [sessionsLoading, setSessionsLoading] = useState(true);
   const [sessionMessagesLoading, setSessionMessagesLoading] = useState(false);
   const [renamingSessionId, setRenamingSessionId] = useState<string | null>(null);
@@ -120,6 +146,26 @@ function ChatInner() {
   const isMobile = useMemo(() => (typeof window === 'undefined' ? false : isMobileDevice()), []);
   const useIOSKeyboardFix = isIOS && isMobile;
   const [isDesktop, setIsDesktop] = useState(false);
+
+  // Set default level from the user's learning profile
+  const { profile: userProfile, updateProfile, refetch: refetchProfile } = useProfile();
+  const profileLevelApplied = useRef(false);
+  useEffect(() => {
+    if (profileLevelApplied.current) return;
+    if (!userProfile?.educationalLevel) return;
+    const level = userProfile.educationalLevel as LevelKey;
+    if (level in CATEGORY_SUBJECT_LIST) {
+      setSelectedLevel(level);
+      profileLevelApplied.current = true;
+    } else {
+      setSelectedLevel('psle');
+      profileLevelApplied.current = true;
+    }
+  }, [userProfile]);
+
+  useEffect(() => {
+    sessionsRef.current = sessions;
+  }, [sessions]);
 
   const [kbLiftPx, setKbLiftPx] = useState(0);
   const inputBarRef = useRef<HTMLFormElement>(null);
@@ -157,6 +203,13 @@ function ChatInner() {
             createdAt: (data.createdAt as Timestamp)?.toDate() || new Date(),
             lastMessageAt: (data.lastMessageAt as Timestamp)?.toDate() || new Date(),
             messageCount: data.messageCount || 0,
+            lastProfileRefreshAttemptAt: toOptionalDate(data.lastProfileRefreshAttemptAt),
+            lastProfileRefreshAppliedAt: toOptionalDate(data.lastProfileRefreshAppliedAt),
+            lastProfileRefreshMessageCount: typeof data.lastProfileRefreshMessageCount === 'number'
+              ? data.lastProfileRefreshMessageCount
+              : undefined,
+            lastProfileRefreshReason:
+              typeof data.lastProfileRefreshReason === 'string' ? data.lastProfileRefreshReason : null,
           };
         });
         setSessions(loaded);
@@ -198,6 +251,7 @@ function ChatInner() {
         messageCount: oldSnap.size,
         isArchived: false,
         topicsDetected: [],
+        lastProfileRefreshReason: null,
       });
 
       // Copy messages to new session
@@ -282,6 +336,7 @@ function ChatInner() {
         messageCount: 0,
         isArchived: false,
         topicsDetected: [],
+        lastProfileRefreshReason: null,
       });
       const newSession: SessionMeta = {
         id: newDoc.id,
@@ -291,6 +346,7 @@ function ChatInner() {
         createdAt: new Date(),
         lastMessageAt: new Date(),
         messageCount: 0,
+        lastProfileRefreshReason: null,
       };
       setSessions((prev) => [newSession, ...prev]);
       setCurrentSessionId(newDoc.id);
@@ -357,26 +413,195 @@ function ChatInner() {
     }
   };
 
+  const updateSessionState = (sessionId: string, updater: (session: SessionMeta) => SessionMeta) => {
+    setSessions((prev) => {
+      const next = prev.map((session) => (session.id === sessionId ? updater(session) : session));
+      sessionsRef.current = next;
+      return next;
+    });
+  };
+
+  const updateSessionRefreshMetadata = async (
+    sessionId: string,
+    updates: {
+      lastProfileRefreshAttemptAt?: Date;
+      lastProfileRefreshAppliedAt?: Date;
+      lastProfileRefreshMessageCount?: number;
+      lastProfileRefreshReason?: string | null;
+    },
+  ) => {
+    if (!authUser?.uid) return;
+
+    updateSessionState(sessionId, (session) => ({
+      ...session,
+      ...(updates.lastProfileRefreshAttemptAt ? { lastProfileRefreshAttemptAt: updates.lastProfileRefreshAttemptAt } : {}),
+      ...(updates.lastProfileRefreshAppliedAt ? { lastProfileRefreshAppliedAt: updates.lastProfileRefreshAppliedAt } : {}),
+      ...(typeof updates.lastProfileRefreshMessageCount === 'number'
+        ? { lastProfileRefreshMessageCount: updates.lastProfileRefreshMessageCount }
+        : {}),
+      ...(updates.lastProfileRefreshReason !== undefined
+        ? { lastProfileRefreshReason: updates.lastProfileRefreshReason }
+        : {}),
+    }));
+
+    const payload: Record<string, unknown> = {};
+    if (updates.lastProfileRefreshAttemptAt) {
+      payload.lastProfileRefreshAttemptAt = Timestamp.fromDate(updates.lastProfileRefreshAttemptAt);
+    }
+    if (updates.lastProfileRefreshAppliedAt) {
+      payload.lastProfileRefreshAppliedAt = Timestamp.fromDate(updates.lastProfileRefreshAppliedAt);
+    }
+    if (typeof updates.lastProfileRefreshMessageCount === 'number') {
+      payload.lastProfileRefreshMessageCount = updates.lastProfileRefreshMessageCount;
+    }
+    if (updates.lastProfileRefreshReason !== undefined) {
+      payload.lastProfileRefreshReason = updates.lastProfileRefreshReason;
+    }
+
+    if (Object.keys(payload).length === 0) return;
+
+    try {
+      const db = getFirestoreClient();
+      await updateDoc(doc(db, 'users', authUser.uid, 'chatSessions', sessionId), payload);
+    } catch (error) {
+      console.error('Error updating profile refresh metadata:', error);
+    }
+  };
+
   // ─── Save a message to Firestore (session-based) ──────────────────────────
   const saveMessageToFirestore = async (message: ChatMessage, sessionId: string) => {
     if (!authUser?.uid || !sessionId) return;
     try {
       const db = getFirestoreClient();
+      const now = new Date();
       const msgsRef = collection(db, 'users', authUser.uid, 'chatSessions', sessionId, 'messages');
       await addDoc(msgsRef, {
         sender: message.sender,
         text: message.text,
-        timestamp: Timestamp.now(),
+        timestamp: Timestamp.fromDate(now),
         imageUrl: message.imageUrl || null,
       });
-      // Update session metadata
+      const currentSession = sessionsRef.current.find((session) => session.id === sessionId);
+      const nextMessageCount = (currentSession?.messageCount ?? 0) + 1;
+
+      updateSessionState(sessionId, (session) => ({
+        ...session,
+        lastMessageAt: now,
+        messageCount: nextMessageCount,
+      }));
+
       const sessionRef = doc(db, 'users', authUser.uid, 'chatSessions', sessionId);
       await updateDoc(sessionRef, {
-        lastMessageAt: Timestamp.now(),
-        messageCount: (sessions.find((s) => s.id === sessionId)?.messageCount ?? 0) + 1,
+        lastMessageAt: Timestamp.fromDate(now),
+        messageCount: nextMessageCount,
       });
     } catch (error) {
       console.error('Error saving message:', error);
+    }
+  };
+
+  const getSessionMeta = (sessionId: string) => sessionsRef.current.find((session) => session.id === sessionId) ?? null;
+
+  const buildAnalysisMessages = (chatMessages: ChatMessage[]) =>
+    chatMessages
+      .filter((message) => (message.sender === 'user' || message.sender === 'bot') && message.text.trim())
+      .map((message) => ({
+        role: message.sender === 'user' ? 'user' as const : 'assistant' as const,
+        content: message.text.trim(),
+      }));
+
+  const shouldAutoRefreshProfile = (
+    sessionId: string,
+    chatMessages: ChatMessage[],
+  ) => {
+    if (!userProfile || isRefreshingProfile) return false;
+
+    const analysisMessages = buildAnalysisMessages(chatMessages);
+    if (analysisMessages.length < AUTO_PROFILE_REFRESH_MIN_MESSAGES) return false;
+
+    const userMessageCount = analysisMessages.filter((message) => message.role === 'user').length;
+    if (userMessageCount < AUTO_PROFILE_REFRESH_MIN_USER_MESSAGES) return false;
+
+    const session = getSessionMeta(sessionId);
+    const now = Date.now();
+
+    if (
+      session?.lastProfileRefreshAttemptAt &&
+      now - session.lastProfileRefreshAttemptAt.getTime() < AUTO_PROFILE_REFRESH_SESSION_COOLDOWN_MS
+    ) {
+      return false;
+    }
+
+    const recentProfileUpdateAt = userProfile.source?.lastAiUpdateAt
+      ? Date.parse(userProfile.source.lastAiUpdateAt)
+      : Number.NaN;
+    const lastAttemptMessageCount = session?.lastProfileRefreshMessageCount ?? 0;
+    const messageGrowthSinceLastAttempt = analysisMessages.length - lastAttemptMessageCount;
+
+    if (
+      Number.isFinite(recentProfileUpdateAt) &&
+      now - recentProfileUpdateAt < AUTO_PROFILE_REFRESH_PROFILE_COOLDOWN_MS &&
+      messageGrowthSinceLastAttempt < AUTO_PROFILE_REFRESH_MIN_GROWTH_AFTER_RECENT_PROFILE_UPDATE
+    ) {
+      return false;
+    }
+
+    return true;
+  };
+
+  const runAutoProfileRefresh = async (sessionId: string, chatMessages: ChatMessage[]) => {
+    if (!userProfile) return;
+
+    const analysisMessages = buildAnalysisMessages(chatMessages);
+    if (analysisMessages.length === 0 || !shouldAutoRefreshProfile(sessionId, chatMessages)) return;
+
+    setIsRefreshingProfile(true);
+    setProfileRefreshError(null);
+
+    const attemptedAt = new Date();
+
+    try {
+      const result = await refreshProfileFromSession({
+        sessionId,
+        messages: analysisMessages,
+        existingProfile: userProfile,
+      });
+
+      const preview = buildProfileUpdatePreview(userProfile, result.suggestedPatch, result.confidence);
+
+      if (!result.shouldUpdateProfile || preview.length === 0) {
+        await updateSessionRefreshMetadata(sessionId, {
+          lastProfileRefreshAttemptAt: attemptedAt,
+          lastProfileRefreshMessageCount: analysisMessages.length,
+          lastProfileRefreshReason: result.reasonNoUpdate || 'No high-confidence updates found.',
+        });
+        return;
+      }
+
+      const mergedProfile = mergeStudentProfile(userProfile, result.suggestedPatch);
+      await updateProfile(mergedProfile);
+      await refetchProfile();
+
+      const appliedAt = new Date();
+      await updateSessionRefreshMetadata(sessionId, {
+        lastProfileRefreshAttemptAt: attemptedAt,
+        lastProfileRefreshAppliedAt: appliedAt,
+        lastProfileRefreshMessageCount: analysisMessages.length,
+        lastProfileRefreshReason: null,
+      });
+      setProfileRefreshNotice('Your profile was updated from recent conversation.');
+    } catch (error) {
+      console.error('Automatic profile refresh failed:', error);
+      await updateSessionRefreshMetadata(sessionId, {
+        lastProfileRefreshAttemptAt: attemptedAt,
+        lastProfileRefreshMessageCount: analysisMessages.length,
+        lastProfileRefreshReason: 'Automatic refresh failed.',
+      });
+      setProfileRefreshError(
+        error instanceof Error ? error.message : 'Automatic profile refresh failed.',
+      );
+    } finally {
+      setIsRefreshingProfile(false);
     }
   };
 
@@ -407,7 +632,6 @@ function ChatInner() {
     if (level === 'psle') return 'PSLE';
     if (level === 'o_level') return 'O Level';
     if (level === 'a_level') return 'A Level';
-    if (level === 'ib') return 'IB';
     return level;
   }
 
@@ -578,12 +802,13 @@ function ChatInner() {
         if (userMessage.trim()) formData.append('prompt', userMessage);
         formData.append('image', imageFile);
         formData.append('context', JSON.stringify(contextMessages));
+        if (userProfile) formData.append('student_profile', JSON.stringify(userProfile));
         res = await fetch(url, { method: 'POST', body: formData, signal: controller.signal });
       } else {
         res = await fetch(url, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ level: selectedLevel, prompt: userMessage, context: contextMessages }),
+          body: JSON.stringify({ level: selectedLevel, prompt: userMessage, context: contextMessages, student_profile: userProfile ?? null }),
           signal: controller.signal,
         });
       }
@@ -608,6 +833,7 @@ function ChatInner() {
       if (sessionId) {
         await saveMessageToFirestore({ sender: 'user', text: userText, timestamp: new Date() }, sessionId);
         await saveMessageToFirestore({ sender: 'bot', text: acc, timestamp: new Date() }, sessionId);
+        await runAutoProfileRefresh(sessionId, [...messages, userMsg, { sender: 'bot', text: acc }]);
       }
 
       if (createdSessionId && sessionId) {
@@ -689,6 +915,17 @@ function ChatInner() {
     if (file && file.type.startsWith('image/')) setImageFile(file);
   };
 
+  useEffect(() => {
+    if (!profileRefreshNotice && !profileRefreshError) return;
+
+    const timeout = window.setTimeout(() => {
+      setProfileRefreshNotice(null);
+      setProfileRefreshError(null);
+    }, 5000);
+
+    return () => window.clearTimeout(timeout);
+  }, [profileRefreshNotice, profileRefreshError]);
+
   if (!authChecked) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-black">
@@ -718,6 +955,22 @@ function ChatInner() {
           setSelectedLevel={setSelectedLevel}
           onNewChat={createNewSession}
         />
+
+      {(profileRefreshNotice || profileRefreshError) && (
+        <div className="border-b border-gray-800 bg-[#060913]">
+          <div className="w-full max-w-none px-6 md:px-10 lg:px-16 py-3">
+            <div
+              className={`rounded-2xl border px-4 py-3 text-sm ${
+                profileRefreshError
+                  ? 'border-red-900/60 bg-red-950/30 text-red-200'
+                  : 'border-blue-900/40 bg-blue-950/20 text-blue-100'
+              }`}
+            >
+              {profileRefreshError ?? profileRefreshNotice}
+            </div>
+          </div>
+        </div>
+      )}
 
       {isDraggingFile && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60">
@@ -761,16 +1014,9 @@ function ChatInner() {
           </div>
         </div>
 
-        {/* New Chat button */}
-        <div className="px-3 pt-4 pb-2 flex-shrink-0">
-          {isSidebarOpen ? (
-            <button
-              onClick={() => { createNewSession(); }}
-              className="w-full flex items-center justify-center gap-2 rounded-xl bg-white text-black text-sm font-semibold py-2.5 hover:opacity-80 transition"
-            >
-              + New Chat
-            </button>
-          ) : (
+        {/* Collapsed: + button right below burger */}
+        {!isSidebarOpen && (
+          <div className="px-3 pb-2 flex-shrink-0">
             <button
               onClick={() => { createNewSession(); }}
               className="w-full flex items-center justify-center rounded-xl bg-white text-black font-bold text-lg py-2 hover:opacity-80 transition"
@@ -778,8 +1024,25 @@ function ChatInner() {
             >
               +
             </button>
-          )}
-        </div>
+          </div>
+        )}
+
+        {/* Expanded: profile then New Chat button */}
+        {isSidebarOpen && (
+          <>
+            <div className="px-3 pt-2 pb-2 flex-shrink-0">
+              <StudentProfilePanel mode="compact" />
+            </div>
+            <div className="px-3 pb-2 flex-shrink-0">
+              <button
+                onClick={() => { createNewSession(); }}
+                className="w-full flex items-center justify-center gap-2 rounded-xl bg-white text-black text-sm font-semibold py-2.5 hover:opacity-80 transition"
+              >
+                + New Chat
+              </button>
+            </div>
+          </>
+        )}
 
         {/* Session list */}
         <div className={`flex-1 overflow-y-auto px-3 py-2 space-y-1 transition-opacity duration-150 ${isSidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
@@ -1140,7 +1403,6 @@ function LevelSelect({
         <option value="psle">PSLE</option>
         <option value="o_level">O Level</option>
         <option value="a_level">A Level</option>
-        <option value="ib">IB</option>
       </select>
       <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
         <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6"/></svg>

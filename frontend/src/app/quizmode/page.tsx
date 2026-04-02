@@ -1,12 +1,13 @@
 "use client";
 
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import { Spinner } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { onAuthStateChanged, type User } from "firebase/auth";
 import { getAuthClient } from "firebase/firebaseClient";
+import { useProfile } from "@/hooks/useProfile";
 
-type Level = "psle" | "o_level" | "a_level" | "ib";
+type Level = "psle" | "o_level" | "a_level";
 
 const SUBJECTS: Record<Level, Record<string, string>> = {
   psle: {
@@ -32,16 +33,6 @@ const SUBJECTS: Record<Level, Record<string, string>> = {
     h1_physics: "H1 Physics",
     h2_chemistry: "H2 Chemistry",
     h1_chemistry: "H1 Chemistry",
-  },
-  ib: {
-    hl_mathematics: "HL Mathematics",
-    sl_mathematics: "SL Mathematics",
-    hl_biology: "HL Biology",
-    sl_biology: "SL Biology",
-    hl_physics: "HL Physics",
-    sl_physics: "SL Physics",
-    hl_chemistry: "HL Chemistry",
-    sl_chemistry: "SL Chemistry",
   },
 };
 
@@ -75,6 +66,15 @@ export default function QuizPage() {
   const [authUser, setAuthUser] = useState<User | null>(null);
   const [authChecked, setAuthChecked] = useState(false);
   const [level, setLevel] = useState<Level>("psle");
+  const { profile: userProfile } = useProfile();
+  const profileLevelApplied = useRef(false);
+  useEffect(() => {
+    if (profileLevelApplied.current) return;
+    if (!userProfile?.educationalLevel) return;
+    const lvl = userProfile.educationalLevel as Level;
+    if (lvl in SUBJECTS) setLevel(lvl);
+    profileLevelApplied.current = true;
+  }, [userProfile]);
   const [subject, setSubject] = useState<string>("science");
   const [numQuestions, setNumQuestions] = useState<number>(10);
   const [numQuestionsInput, setNumQuestionsInput] = useState<string>("10");
@@ -361,7 +361,6 @@ export default function QuizPage() {
                   <option value="psle">PSLE</option>
                   <option value="o_level">O Level</option>
                   <option value="a_level">A Level</option>
-                  <option value="ib">IB</option>
                 </select>
               </div>
 
@@ -439,7 +438,7 @@ export default function QuizPage() {
         {quiz && current && (
           <section
             className="
-              rounded-2xl bg-black
+              rounded-2xl bg-gray-900/80 backdrop-blur-sm
               border border-emerald-500/40
               p-6 md:p-8 shadow-sm space-y-6
             "

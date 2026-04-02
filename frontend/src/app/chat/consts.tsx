@@ -23,14 +23,4 @@ export const CATEGORY_SUBJECT_LIST = {
     h2_chemistry: 'H2_Chemistry',
     h1_chemistry: 'H1_Chemistry',
   },
-  ib: {
-    hl_mathematics: 'HL_Mathematics',
-    sl_mathematics: 'SL_Mathematics',
-    hl_biology: 'HL_Biology',
-    sl_biology: 'SL_Biology',
-    hl_physics: 'HL_Physics',
-    sl_physics: 'SL_Physics',
-    hl_chemistry: 'HL_Chemistry',
-    sl_chemistry: 'SL_Chemistry',
-  },
 };

@@ -169,7 +169,7 @@ export default function SignInPage() {
       if (isSignIn) {
         await signInWithEmailAndPassword(auth, email.trim(), password);
         await createSessionCookie();
-        // alert("Welcome back!");
+        router.push("/dashboard");
       } else {
         const cred = await createUserWithEmailAndPassword(
           auth,
@@ -178,10 +178,8 @@ export default function SignInPage() {
         );
         await updateProfile(cred.user, { displayName: name.trim() });
         await createSessionCookie();
-        // alert("Account created successfully!");
+        router.push("/profile?new=true");
       }
-
-      router.push("/dashboard");
     } catch (err: unknown) {
       const anyErr = err as { code?: string };
       console.error("[Auth error code]", anyErr?.code, err);

@@ -7,8 +7,9 @@ import Image from "next/image";
 import { onAuthStateChanged, signOut, type User } from "firebase/auth";
 import { getAuthClient } from "../../../firebase/firebaseClient";
 import { motion, type Variants } from "framer-motion";
-import { MessageSquare, BookOpen, Map, LogOut, ChevronRight } from "lucide-react";
+import { MessageSquare, BookOpen, Map, LogOut, ChevronRight, Home, UserCircle } from "lucide-react";
 import Footer from "@/components/Footer";
+import { useProfile } from "@/hooks/useProfile";
 
 const CARD_VARIANTS: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -18,6 +19,96 @@ const CARD_VARIANTS: Variants = {
     transition: { delay: i * 0.1 + 0.2, duration: 0.5, ease: "easeOut" as const },
   }),
 };
+
+const LEVEL_LABELS: Record<string, string> = {
+  psle: "PSLE",
+  o_level: "O Level",
+  a_level: "A Level",
+
+};
+
+function ProfileStatsCard() {
+  const { profile, loading } = useProfile();
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.15 }}
+      className="rounded-2xl border border-gray-800 bg-gradient-to-br from-gray-800 to-black/30 p-5 flex flex-col sm:flex-row sm:items-center gap-5"
+    >
+      {/* Icon */}
+      <div className="w-10 h-10 rounded-xl bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0">
+        <UserCircle size={22} />
+      </div>
+
+      {/* Stats */}
+      <div className="flex-grow min-w-0 space-y-3">
+        <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">Your Learner Profile</p>
+
+        {loading ? (
+          <div className="flex gap-4">
+            {[80, 64, 96].map((w, i) => (
+              <div key={i} className={`h-4 rounded-full bg-gray-800 animate-pulse`} style={{ width: w }} />
+            ))}
+          </div>
+        ) : !profile?.educationalLevel && !profile?.subjectsStudying?.length && !profile?.learningGoals?.length ? (
+          <p className="text-sm text-gray-500">No profile set up yet. Fill it in to personalise your experience.</p>
+        ) : (
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            {/* Education Level */}
+            {profile?.educationalLevel && (
+              <div className="flex items-center gap-1.5">
+                <span className="text-xs text-gray-500">Level</span>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-300 border border-blue-500/20">
+                  {LEVEL_LABELS[profile.educationalLevel] ?? profile.educationalLevel}
+                </span>
+              </div>
+            )}
+
+            {/* Subjects */}
+            {profile?.subjectsStudying?.length > 0 && (
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <span className="text-xs text-gray-500">Subjects</span>
+                {profile.subjectsStudying.slice(0, 4).map((s) => (
+                  <span key={s} className="text-xs px-2 py-0.5 rounded-full bg-gray-800 text-gray-300 border border-gray-700">
+                    {s}
+                  </span>
+                ))}
+                {profile.subjectsStudying.length > 4 && (
+                  <span className="text-xs text-gray-600">+{profile.subjectsStudying.length - 4}</span>
+                )}
+              </div>
+            )}
+
+            {/* Learning Goals */}
+            {profile?.learningGoals?.length > 0 && (
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <span className="text-xs text-gray-500">Goals</span>
+                {profile.learningGoals.slice(0, 2).map((g) => (
+                  <span key={g} className="text-xs px-2 py-0.5 rounded-full bg-gray-800 text-gray-300 border border-gray-700">
+                    {g}
+                  </span>
+                ))}
+                {profile.learningGoals.length > 2 && (
+                  <span className="text-xs text-gray-600">+{profile.learningGoals.length - 2}</span>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Edit button */}
+      <Link
+        href="/profile"
+        className="flex-shrink-0 inline-flex items-center gap-2 rounded-full px-4 py-2 bg-white text-black text-sm font-medium hover:opacity-80 transition"
+      >
+        Edit Profile
+      </Link>
+    </motion.div>
+  );
+}
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -99,6 +190,7 @@ export default function DashboardPage() {
       {/* Header */}
       <header className="border-b border-gray-800 px-6 py-4 flex items-center justify-between">
         <Link href="/dashboard" className="flex items-center gap-3">
+          <Home size={20} className="text-white" />
           <span className="font-bold text-lg text-white">Eduble</span>
         </Link>
 
@@ -115,7 +207,7 @@ export default function DashboardPage() {
       </header>
 
       {/* Main content */}
-      <main className="flex-grow max-w-5xl mx-auto w-full px-6 pt-20 pb-40 space-y-12">
+      <main className="flex-grow max-w-5xl mx-auto w-full px-6 pt-20 pb-40 space-y-10">
         {/* Welcome */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -132,6 +224,9 @@ export default function DashboardPage() {
             What would you like to do today? Choose a mode below to get started.
           </p>
         </motion.div>
+
+        {/* Learner profile stats card */}
+        <ProfileStatsCard />
 
         {/* Feature cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -160,7 +255,7 @@ export default function DashboardPage() {
 
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <h2 className="text-lg font-semibold text-white">{f.title}</h2>
+                    <h2 className={`text-lg font-semibold ${f.iconColor}`}>{f.title}</h2>
                     {f.disabled && (
                       <span className="text-[10px] font-medium uppercase tracking-wider px-2 py-0.5 rounded-full bg-gray-700 text-gray-400">
                         Soon

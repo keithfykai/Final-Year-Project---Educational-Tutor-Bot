@@ -45,8 +45,7 @@ export default function NavbarComponent() {
   const menuItems = user
     ? [
         { name: "Dashboard", href: "/dashboard" },
-        { name: "Chat", href: "/chat" },
-        { name: "Quiz Mode", href: "/quizmode" },
+        { name: "About", href: "/about" },
       ]
     : [
         { name: "Chat", href: "/chat" },
@@ -72,7 +71,7 @@ export default function NavbarComponent() {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="sm:hidden" justify="end">
+      <NavbarContent className="flex sm:hidden" justify="end">
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="text-white p-2"
@@ -149,16 +148,6 @@ export default function NavbarComponent() {
                 {item.name}
               </Link>
             ))}
-
-            {user && (
-              <Link
-                href="/about"
-                className="block px-4 py-3 text-gray-400 hover:bg-gray-800 rounded-lg transition text-sm"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About
-              </Link>
-            )}
 
             {!authLoading && !user && (
               <div className="px-4 py-2">

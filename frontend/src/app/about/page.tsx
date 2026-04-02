@@ -25,6 +25,7 @@ export default function AboutPage() {
         <section className="grid gap-8">
 
           <InfoCard
+            accent="blue"
             title="What is Eduble?"
             description="Eduble is an AI-powered educational assistant that provides instant,
             curriculum-aligned academic support tailored to each student's level —
@@ -33,6 +34,7 @@ export default function AboutPage() {
           />
 
           <InfoCard
+            accent="emerald"
             title="Who is it for?"
             description="Eduble is built for students and exam candidates who want a reliable,
             on-demand learning companion to clarify concepts, reinforce understanding,
@@ -41,6 +43,7 @@ export default function AboutPage() {
           />
 
           <InfoCard
+            accent="purple"
             title="Why was it built?"
             description="This project was created to help bridge educational gaps by providing
             affordable, accessible academic support — especially for students who may
@@ -59,7 +62,7 @@ export default function AboutPage() {
             About the Developer
           </h2>
           
-          <Card className="rounded-2xl bg-gray-800/30 border border-gray-800">
+          <Card className="rounded-2xl bg-gradient-to-br from-gray-800 to-black border border-gray-700/50">
             <CardBody className="p-8 md:p-12">
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="flex-shrink-0">
@@ -84,7 +87,7 @@ export default function AboutPage() {
                 <div className="flex-1">
                   <h3 className="text-3xl font-bold mb-2">Keith Lim</h3>
                   <p className="text-gray-400 mb-4">
-                    CS Final Year | Full-Stack Developer | AI Enthusiast
+                    NTU Computer Science | Full-Stack Developer | AI Enthusiast
                   </p>
                   <p className="text-gray-300 mb-6 leading-relaxed">
                     Passionate about leveraging technology to solve real-world educational challenges.
@@ -140,8 +143,7 @@ export default function AboutPage() {
             className="
               inline-flex items-center gap-2
               rounded-full px-6 py-2
-              bg-black border border-gray-300
-              text-white font-medium
+              bg-white text-black font-medium
               shadow-sm hover:shadow-md
               hover:opacity-80 transition
             "
@@ -157,24 +159,26 @@ export default function AboutPage() {
 
 /* ---------- Helper Component ---------- */
 
+const ACCENT_STYLES = {
+  blue:    { card: 'from-blue-500/10 to-blue-600/5 border-gray-800 hover:border-blue-500/40',    title: 'text-blue-400' },
+  emerald: { card: 'from-emerald-500/10 to-emerald-600/5 border-gray-800 hover:border-emerald-500/40', title: 'text-emerald-400' },
+  purple:  { card: 'from-purple-500/10 to-purple-600/5 border-gray-800 hover:border-purple-500/40',  title: 'text-purple-400' },
+};
+
 function InfoCard({
   title,
   description,
+  accent,
 }: {
   title: string;
   description: string;
+  accent: 'blue' | 'emerald' | 'purple';
 }) {
+  const { card, title: titleColor } = ACCENT_STYLES[accent];
   return (
-    <Card
-      className="
-        rounded-2xl bg-gray-800/30
-        border border-gray-800
-        hover:border-white
-        transition
-      "
-    >
+    <Card className={`rounded-2xl bg-gradient-to-br border transition ${card}`}>
       <CardBody className="p-8">
-        <h3 className="text-2xl font-bold mb-4 text-white">{title}</h3>
+        <h3 className={`text-2xl font-bold mb-4 ${titleColor}`}>{title}</h3>
         <p className="text-gray-300 leading-relaxed text-lg">
           {description}
         </p>

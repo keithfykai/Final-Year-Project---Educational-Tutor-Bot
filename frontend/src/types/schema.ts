@@ -31,6 +31,10 @@ export interface ChatSession {
   createdAt: Timestamp;
   lastMessageAt: Timestamp;
   messageCount: number;
+  lastProfileRefreshAttemptAt?: Timestamp;
+  lastProfileRefreshAppliedAt?: Timestamp;
+  lastProfileRefreshMessageCount?: number;
+  lastProfileRefreshReason?: string | null;
   isArchived: boolean;
   topicsDetected: string[];
 }
