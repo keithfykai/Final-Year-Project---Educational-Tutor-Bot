@@ -120,7 +120,33 @@ function FullPanel() {
     if (!resolved.subjectsStudying?.length) errs.subjectsStudying = 'At least one subject is required';
     if (Object.keys(errs).length > 0) { setFieldErrors(errs); return; }
     setFieldErrors({});
-    updateProfile(resolved);
+
+    // Track which fields the user actually changed compared to the saved profile
+    const changedFieldNames: string[] = [];
+    const scalarFields = ['name', 'educationalLevel', 'notes', 'profileSummary'] as const;
+    const arrayFields = ['subjectsStudying', 'learningGoals', 'weakAreas', 'strengths', 'learningPreferences'] as const;
+
+    for (const field of scalarFields) {
+      const before = (profile?.[field] ?? '').toString().trim();
+      const after = (resolved[field] ?? '').toString().trim();
+      if (before !== after) changedFieldNames.push(field);
+    }
+    for (const field of arrayFields) {
+      const before = [...(profile?.[field] ?? [])].sort().join('|');
+      const after = [...(resolved[field] ?? [])].sort().join('|');
+      if (before !== after) changedFieldNames.push(field);
+    }
+
+    const updatedSource = changedFieldNames.length > 0 ? {
+      ...(resolved.source ?? {}),
+      manuallyEdited: true,
+      manuallyEditedFields: Array.from(new Set([
+        ...(profile?.source?.manuallyEditedFields ?? []),
+        ...changedFieldNames,
+      ])),
+    } : resolved.source;
+
+    updateProfile({ ...resolved, source: updatedSource });
     setDraft(null);
   };
 

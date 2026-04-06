@@ -6,9 +6,94 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { onAuthStateChanged, type User } from 'firebase/auth';
 import { getAuthClient } from '../../../firebase/firebaseClient';
-import { UserCircle, ChevronLeft, Code } from 'lucide-react';
+import { UserCircle, ChevronLeft, Code, History } from 'lucide-react';
 import StudentProfilePanel from '@/components/StudentProfilePanel';
 import { useProfile } from '@/hooks/useProfile';
+import type { ProfileChangeLogEntry } from '@/types/profile';
+
+function ChangeLogViewer() {
+  const { profile, loading } = useProfile();
+  const [open, setOpen] = useState(false);
+
+  if (loading || !profile?.changeLog?.length) return null;
+
+  const FIELD_LABELS: Record<string, string> = {
+    name: 'Name',
+    educationalLevel: 'Educational Level',
+    subjectsStudying: 'Subjects Studying',
+    learningGoals: 'Learning Goals',
+    weakAreas: 'Weak Areas',
+    strengths: 'Strengths',
+    learningPreferences: 'Learning Preferences',
+    notes: 'Notes',
+    profileSummary: 'Profile Summary',
+  };
+
+  const formatValue = (v: ProfileChangeLogEntry['before']) =>
+    Array.isArray(v) ? v.join(', ') || '—' : v || '—';
+
+  return (
+    <div className="rounded-2xl border border-gray-800 bg-gradient-to-br from-gray-800/30 to-black/50 overflow-hidden">
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center justify-between px-6 py-4 text-sm text-gray-400 hover:text-white transition"
+      >
+        <span className="flex items-center gap-2">
+          <History size={15} />
+          Recent profile changes
+          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-800 text-gray-500 border border-gray-700">
+            {profile.changeLog.length}
+          </span>
+        </span>
+        <span className="text-gray-600 text-xs">{open ? '▲ Hide' : '▼ Show'}</span>
+      </button>
+      {open && (
+        <div className="border-t border-gray-800 px-6 py-4 overflow-x-auto">
+          <table className="w-full text-xs text-left border-collapse">
+            <thead>
+              <tr className="text-gray-500 border-b border-gray-800">
+                <th className="pb-2 pr-4 font-medium whitespace-nowrap">When</th>
+                <th className="pb-2 pr-4 font-medium whitespace-nowrap">Field</th>
+                <th className="pb-2 pr-4 font-medium whitespace-nowrap">Before</th>
+                <th className="pb-2 pr-4 font-medium whitespace-nowrap">After</th>
+                <th className="pb-2 font-medium whitespace-nowrap">Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              {profile.changeLog.map((entry, i) => (
+                <tr key={i} className="border-b border-gray-900 align-top">
+                  <td className="py-2 pr-4 text-gray-500 whitespace-nowrap">
+                    {new Date(entry.timestamp).toLocaleString()}
+                  </td>
+                  <td className="py-2 pr-4 text-gray-300 whitespace-nowrap">
+                    {FIELD_LABELS[entry.field] ?? entry.field}
+                  </td>
+                  <td className="py-2 pr-4 text-gray-500 max-w-[150px] truncate">
+                    {formatValue(entry.before)}
+                  </td>
+                  <td className="py-2 pr-4 text-white max-w-[150px] truncate">
+                    {formatValue(entry.after)}
+                  </td>
+                  <td className="py-2">
+                    {entry.source === 'ai' ? (
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-blue-900/40 text-blue-300 border border-blue-800">
+                        AI
+                      </span>
+                    ) : (
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-800 text-gray-400 border border-gray-700">
+                        You
+                      </span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+}
 
 function RawDocViewer() {
   const { profile, loading } = useProfile();
@@ -123,6 +208,8 @@ function ProfilePageInner() {
         </div>
 
         <StudentProfilePanel mode="full" />
+
+        <ChangeLogViewer />
 
         <RawDocViewer />
       </main>

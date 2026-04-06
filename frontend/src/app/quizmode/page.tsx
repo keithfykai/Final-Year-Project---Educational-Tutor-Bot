@@ -72,7 +72,11 @@ export default function QuizPage() {
     if (profileLevelApplied.current) return;
     if (!userProfile?.educationalLevel) return;
     const lvl = userProfile.educationalLevel as Level;
-    if (lvl in SUBJECTS) setLevel(lvl);
+    if (lvl in SUBJECTS) {
+      setLevel(lvl);
+      const firstSubjectKey = Object.keys(SUBJECTS[lvl])[0];
+      setSubject(firstSubjectKey);
+    }
     profileLevelApplied.current = true;
   }, [userProfile]);
   const [subject, setSubject] = useState<string>("science");
@@ -105,6 +109,14 @@ export default function QuizPage() {
   }, [router]);
 
   const subjectOptions = useMemo(() => SUBJECTS[level], [level]);
+
+  useEffect(() => {
+    if (subject in subjectOptions) return;
+    const firstSubjectKey = Object.keys(subjectOptions)[0];
+    if (firstSubjectKey) {
+      setSubject(firstSubjectKey);
+    }
+  }, [level, subject, subjectOptions]);
 
   const current = quiz?.questions?.[index] ?? null;
   const progressText = quiz ? `${index + 1} / ${quiz.num_questions}` : "";
@@ -600,21 +612,23 @@ export default function QuizPage() {
                     </button>
                   )}
 
-                  <button
-                    onClick={resetRun}
-                    className="
-                      inline-flex items-center justify-center
-                      rounded-full px-6 py-3
-                      bg-white
-                      text-black
-                      font-medium
-                      shadow-sm hover:shadow-md
-                      hover:opacity-80
-                      transition
-                    "
-                  >
-                    Restart
-                  </button>
+                  <div className="ml-auto">
+                    <button
+                      onClick={resetRun}
+                      className="
+                        inline-flex items-center justify-center
+                        rounded-full px-6 py-3
+                        bg-white
+                        text-black
+                        font-medium
+                        shadow-sm hover:shadow-md
+                        hover:opacity-80
+                        transition
+                      "
+                    >
+                      Restart
+                    </button>
+                  </div>
                 </>
               )}
             </div>

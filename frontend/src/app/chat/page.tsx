@@ -23,7 +23,7 @@ import {
   Timestamp,
   serverTimestamp,
 } from 'firebase/firestore';
-import { Home, BookOpen, Pencil, Pin, PinOff, RefreshCw } from 'lucide-react';
+import { Home, BookOpen, Pencil, Pin, PinOff, RefreshCw, Clock3 } from 'lucide-react';
 import { CATEGORY_SUBJECT_LIST } from './consts';
 import StudentProfilePanel from '@/components/StudentProfilePanel';
 import { useProfile } from '@/hooks/useProfile';
@@ -118,7 +118,8 @@ function ChatInner() {
   const [pinnedPanelOpen, setPinnedPanelOpen] = useState(false);
   const [pendingPinIdx, setPendingPinIdx] = useState<number | null>(null);
   const [isManualRefreshing, setIsManualRefreshing] = useState(false);
-  const lastManualRefreshAt = useRef<number | null>(null);
+  const [forceSyncUsedToday, setForceSyncUsedToday] = useState(false);
+  const backgroundSweepDoneRef = useRef(false);
 
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [loading, setLoading] = useState(false);
@@ -184,10 +185,20 @@ function ChatInner() {
     const unsub = onAuthStateChanged(auth, (user) => {
       setAuthUser(user);
       setAuthChecked(true);
+      backgroundSweepDoneRef.current = false;
       if (!user) router.replace('/signin');
     });
     return () => unsub();
   }, [router]);
+
+  // ─── Force Sync daily limit ────────────────────────────────────────────────
+  useEffect(() => {
+    if (!authUser) return;
+    const key = `forceSyncDate_${authUser.uid}`;
+    const stored = localStorage.getItem(key);
+    const today = new Date().toDateString();
+    setForceSyncUsedToday(stored === today);
+  }, [authUser]);
 
   // ─── Load sessions list ────────────────────────────────────────────────────
   useEffect(() => {
@@ -539,20 +550,63 @@ function ChatInner() {
 
   const handleManualProfileRefresh = async () => {
     if (!currentSessionId || !authUser || isManualRefreshing || isRefreshingProfile) return;
-    if (lastManualRefreshAt.current && Date.now() - lastManualRefreshAt.current < 30_000) return;
+    if (forceSyncUsedToday) return;
     const analysisMessages = buildAnalysisMessages(messages);
     if (analysisMessages.length < 2) return;
     setIsManualRefreshing(true);
-    console.log('[ManualProfileRefresh] Sending', analysisMessages.length, 'messages for session', currentSessionId);
     try {
       await runAutoProfileRefresh(currentSessionId, messages, true);
-      lastManualRefreshAt.current = Date.now();
+      const key = `forceSyncDate_${authUser.uid}`;
+      localStorage.setItem(key, new Date().toDateString());
+      setForceSyncUsedToday(true);
     } finally {
       setIsManualRefreshing(false);
     }
   };
 
   const getSessionMeta = (sessionId: string) => sessionsRef.current.find((session) => session.id === sessionId) ?? null;
+
+  const fetchSessionMessages = async (sessionId: string): Promise<ChatMessage[]> => {
+    if (!authUser) return [];
+    const db = getFirestoreClient();
+    const msgsRef = collection(db, 'users', authUser.uid, 'chatSessions', sessionId, 'messages');
+    const q = query(msgsRef, orderBy('timestamp', 'asc'), limit(100));
+    const snap = await getDocs(q);
+    return snap.docs.map((d) => {
+      const data = d.data();
+      return {
+        sender: data.sender as 'user' | 'bot' | 'system',
+        text: data.text || '',
+        timestamp: (data.timestamp as Timestamp)?.toDate(),
+        imageUrl: data.imageUrl || undefined,
+        firestoreId: d.id,
+        pinned: data.pinned ?? false,
+      };
+    });
+  };
+
+  const processBackgroundSessions = async () => {
+    if (!userProfile || !authUser || backgroundSweepDoneRef.current || isRefreshingProfile) return;
+    backgroundSweepDoneRef.current = true;
+
+    const unprocessed = sessionsRef.current
+      .filter((s) => s.id !== currentSessionIdRef.current)
+      .filter((s) => {
+        const lastCount = s.lastProfileRefreshMessageCount ?? 0;
+        return s.messageCount > lastCount + AUTO_PROFILE_REFRESH_MIN_GROWTH_AFTER_RECENT_PROFILE_UPDATE;
+      })
+      .sort((a, b) => b.lastMessageAt.getTime() - a.lastMessageAt.getTime())
+      .slice(0, 3);
+
+    for (const session of unprocessed) {
+      try {
+        const msgs = await fetchSessionMessages(session.id);
+        await runAutoProfileRefresh(session.id, msgs, false);
+      } catch {
+        // Silent — background sweep errors must not disrupt the UI
+      }
+    }
+  };
 
   const buildAnalysisMessages = (chatMessages: ChatMessage[]) =>
     chatMessages
@@ -634,7 +688,10 @@ function ChatInner() {
         return;
       }
 
-      const mergedProfile = mergeStudentProfile(userProfile, result.suggestedPatch);
+      const mergedProfile = mergeStudentProfile(userProfile, result.suggestedPatch, {
+        patchActions: result.patchActions,
+        confidence: result.confidence,
+      });
       await updateProfile(mergedProfile);
       await refetchProfile();
 
@@ -661,25 +718,35 @@ function ChatInner() {
     }
   };
 
-  // ─── Auto-generate session title after first message ─────────────────────
-  const generateSessionTitle = async (firstMessage: string, sessionId: string) => {
+  // ─── Auto-generate session title after first exchange ────────────────────
+  const generateSessionTitle = async (firstMessage: string, botReply: string, sessionId: string) => {
     if (!authUser) return;
+
+    const applyTitle = async (title: string) => {
+      const db = getFirestoreClient();
+      await updateDoc(doc(db, 'users', authUser.uid, 'chatSessions', sessionId), { title });
+      setSessions((prev) => prev.map((s) => (s.id === sessionId ? { ...s, title } : s)));
+    };
+
+    // Apply truncated first message immediately so the sidebar doesn't stay "New Chat"
+    const fallbackTitle = firstMessage.slice(0, 50).trim() + (firstMessage.length > 50 ? '…' : '');
+    await applyTitle(fallbackTitle);
+
+    // Then try the backend for a better generated title
     try {
       const res = await fetch(`${backendBaseUrl()}/llm/chat/title`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: firstMessage, level: selectedLevel || 'general' }),
+        body: JSON.stringify({ message: firstMessage, reply: botReply, level: selectedLevel || 'general' }),
       });
       if (!res.ok) return;
       const data = await res.json();
-      const title: string = data.title || firstMessage.slice(0, 40);
-      const db = getFirestoreClient();
-      await updateDoc(doc(db, 'users', authUser.uid, 'chatSessions', sessionId), { title });
-      setSessions((prev) =>
-        prev.map((s) => (s.id === sessionId ? { ...s, title } : s))
-      );
+      const generatedTitle: string = typeof data.title === 'string' && data.title.trim() ? data.title.trim() : '';
+      if (generatedTitle && generatedTitle !== fallbackTitle) {
+        await applyTitle(generatedTitle);
+      }
     } catch {
-      // Non-critical — title just stays "New Chat"
+      // Backend unavailable — fallback title already applied above
     }
   };
 
@@ -914,9 +981,9 @@ function ChatInner() {
         router.replace(`/chat?session=${createdSessionId}`);
       }
 
-      // Generate title after first user message
+      // Generate title after first exchange (user + bot reply)
       if (isFirstMessage && userMessage.trim() && sessionId) {
-        generateSessionTitle(userMessage.trim(), sessionId);
+        generateSessionTitle(userMessage.trim(), acc, sessionId);
       }
     } catch (err) {
       clearTimeout(timeoutId);
@@ -999,6 +1066,13 @@ function ChatInner() {
 
     return () => window.clearTimeout(timeout);
   }, [profileRefreshNotice, profileRefreshError]);
+
+  // ─── Background session sweep ──────────────────────────────────────────────
+  useEffect(() => {
+    if (!authUser || !userProfile || sessionsLoading || sessionMessagesLoading) return;
+    processBackgroundSessions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authUser, userProfile, sessionsLoading, sessionMessagesLoading]);
 
   if (!authChecked) {
     return (
@@ -1102,27 +1176,49 @@ function ChatInner() {
           </div>
         )}
 
-        {/* Expanded: profile, sync button, then New Chat button */}
+        {/* Expanded: profile with sync action, then New Chat button */}
         {isSidebarOpen && (
           <>
-            <div className="px-3 pt-2 pb-1 flex-shrink-0">
-              <StudentProfilePanel mode="compact" />
-            </div>
-            {currentSessionId && messages.filter((m) => m.sender === 'user' || m.sender === 'bot').length >= 2 && (
-              <div className="px-3 pb-2 flex-shrink-0">
-                <button
-                  onClick={handleManualProfileRefresh}
-                  disabled={isManualRefreshing || isRefreshingProfile}
-                  className="w-full flex items-center justify-center gap-1.5 text-[11px] text-gray-500 hover:text-gray-300 border border-gray-800 hover:border-gray-700 rounded-xl py-1.5 transition disabled:opacity-40"
-                >
-                  {isManualRefreshing ? (
-                    <><span className="w-3 h-3 border border-gray-500 border-t-gray-300 rounded-full animate-spin inline-block" />Syncing…</>
-                  ) : (
-                    <><RefreshCw size={11} />Sync Profile from this Chat</>
-                  )}
-                </button>
+            <div className="px-3 pt-2 pb-2 flex-shrink-0">
+              <div className="relative">
+                <StudentProfilePanel mode="compact" />
+                {currentSessionId && messages.filter((m) => m.sender === 'user' || m.sender === 'bot').length >= 2 && (
+                  <div
+                    className="absolute bottom-2 right-2"
+                    title={
+                      forceSyncUsedToday
+                        ? 'Force Sync on cooldown, please try again tomorrow'
+                        : 'Force Sync Now'
+                    }
+                  >
+                    <button
+                      onClick={handleManualProfileRefresh}
+                      disabled={forceSyncUsedToday || isManualRefreshing || isRefreshingProfile}
+                      aria-label={
+                        forceSyncUsedToday
+                          ? 'Force sync on cooldown'
+                          : isManualRefreshing || isRefreshingProfile
+                            ? 'Syncing profile'
+                            : 'Force sync profile'
+                      }
+                      className={`inline-flex h-8 w-8 items-center justify-center rounded-full border shadow-sm transition ${
+                        forceSyncUsedToday
+                          ? 'border-gray-800 bg-gray-900 text-gray-600 cursor-not-allowed'
+                          : 'border-blue-500/30 bg-black/90 text-blue-300 hover:border-blue-400/60 hover:text-white'
+                      } ${isManualRefreshing || isRefreshingProfile ? 'opacity-80' : ''}`}
+                    >
+                      {isManualRefreshing ? (
+                        <RefreshCw size={14} className="animate-spin" />
+                      ) : forceSyncUsedToday ? (
+                        <Clock3 size={14} />
+                      ) : (
+                        <RefreshCw size={14} />
+                      )}
+                    </button>
+                  </div>
+                )}
               </div>
-            )}
+            </div>
             <div className="px-3 pb-2 flex-shrink-0">
               <button
                 onClick={() => { createNewSession(); }}
@@ -1275,9 +1371,10 @@ function ChatInner() {
       </aside>
 
       {/* CHAT AREA */}
+      <div className="relative flex-1 min-h-0 overflow-hidden">
       <main
         ref={chatScrollRef as React.Ref<HTMLElement>}
-        className="flex-1 min-h-0 overflow-y-auto overscroll-contain relative"
+        className={`flex-1 min-h-0 h-full overflow-y-auto overscroll-contain transition-[padding-right] duration-200 ${pinnedPanelOpen ? 'lg:pr-80 xl:pr-[22rem]' : ''}`}
         onClick={() => textInputRef.current?.focus()}
         onScroll={(e) => {
           const el = e.currentTarget;
@@ -1370,10 +1467,11 @@ function ChatInner() {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Pinned messages panel */}
-        {pinnedPanelOpen && (
-          <div className="absolute right-0 top-0 h-full w-80 z-30 bg-gray-950 border-l border-gray-800 flex flex-col shadow-2xl">
-            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-800 flex-shrink-0">
+      </main>
+      {pinnedPanelOpen && (
+        <div className="absolute inset-y-0 right-0 z-30 w-full max-w-80 border-l border-gray-800 bg-gray-950 shadow-2xl lg:w-80">
+          <div className="flex h-full flex-col">
+            <div className="flex items-center justify-between border-b border-gray-800 px-4 py-3 flex-shrink-0">
               <div className="flex items-center gap-2">
                 <Pin size={15} className="text-yellow-400" />
                 <span className="text-sm font-semibold text-white">Pinned Messages</span>
@@ -1390,7 +1488,6 @@ function ChatInner() {
                     onClick={() => {
                       const el = document.querySelector(`[data-msg-idx="${idx}"]`);
                       el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                      setPinnedPanelOpen(false);
                     }}
                     className="w-full text-left rounded-xl border border-gray-800 bg-gray-900 hover:border-yellow-500/40 px-3 py-2.5 transition"
                   >
@@ -1406,8 +1503,9 @@ function ChatInner() {
               )}
             </div>
           </div>
-        )}
-      </main>
+        </div>
+      )}
+      </div>
 
       {/* Attachment bar */}
       {imageFile && (
